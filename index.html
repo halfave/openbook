@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>OpenBook — search NYC condo offering plans</title>
+<meta name="description" content="Search the full text of NYC condo offering plans filed with the NY Attorney General. Every answer cites the document and page.">
+<meta property="og:title" content="OpenBook">
+<meta property="og:description" content="What do you want to find? Search NYC condo offering plans by what's inside them.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230E6B5B'/%3E%3Cpath d='M9 23V9h8a5 5 0 0 1 0 10h-8' fill='none' stroke='white' stroke-width='3'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,500;1,6..72,400;1,6..72,500&display=swap">
+<style>
+:root{
+  --ground:#EDF1EF; --panel:#FFFFFF; --ink:#13201B; --muted:#5A6963; --faint:#8E9B96; --rule:#D5DDD9;
+  --accent:#0E6B5B; --accent-2:#46C2A3; --accent-ink:#FFFFFF; --mark:#F3D98B; --mark-ink:#13201B;
+  --land:#DFE6E2; --land-edge:#C5D0CB; --water:#EDF1EF; --dot-meta:#9BA9A3;
+  --chip:#E3EAE7; --warn:#8A5300; --warn-bg:#FBEFD8; --shadow:0 1px 2px rgba(19,32,27,.06),0 8px 24px rgba(19,32,27,.06);
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --ground:#0E1412; --panel:#161E1B; --ink:#E3EBE7; --muted:#9AA8A2; --faint:#6E7C76; --rule:#26312D;
+    --accent:#46C2A3; --accent-2:#2E9C82; --accent-ink:#08110E; --mark:#5B4A12; --mark-ink:#FFF3CC;
+    --land:#1C2623; --land-edge:#2C3834; --water:#0E1412; --dot-meta:#56645F;
+    --chip:#202B27; --warn:#F2BC66; --warn-bg:#2D2412; --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --ground:#0E1412; --panel:#161E1B; --ink:#E3EBE7; --muted:#9AA8A2; --faint:#6E7C76; --rule:#26312D;
+  --accent:#46C2A3; --accent-2:#2E9C82; --accent-ink:#08110E; --mark:#5B4A12; --mark-ink:#FFF3CC;
+  --land:#1C2623; --land-edge:#2C3834; --water:#0E1412; --dot-meta:#56645F;
+  --chip:#202B27; --warn:#F2BC66; --warn-bg:#2D2412; --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box}
+html{color-scheme:light}
+body{margin:0;background:var(--ground);color:var(--ink);font:15px/1.5 var(--sans);padding-inline:16px;padding-block:0 56px}
+.wrap{max-width:1180px;margin:0 auto}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* home */
+.hero{display:flex;flex-direction:column;align-items:center;text-align:center;gap:22px;padding-block:clamp(72px,20vh,200px) 40px;transition:padding .25s ease}
+.brand b{font:italic 500 20px/1 var(--serif);letter-spacing:-.01em;color:var(--accent)}
+h1{font:500 clamp(40px,7vw,72px)/1.02 var(--serif);letter-spacing:-.025em;margin:0;text-wrap:balance}
+h1 em{font-style:italic;color:var(--accent)}
+form.search{width:min(680px,100%);display:flex;flex-direction:column;align-items:center;gap:16px}
+.qbox{width:100%;display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--rule);border-radius:999px;padding:6px 22px;box-shadow:var(--shadow)}
+.qbox svg{flex:none;color:var(--faint)}
+.qbox input{flex:1;min-width:0;border:0;background:transparent;font:18px var(--sans);color:var(--ink);padding:12px 2px}
+.qbox input:focus{outline:none}
+.qbox:focus-within{border-color:var(--accent)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.go,.lucky{font:500 14px var(--sans);border-radius:8px;padding:10px 18px;cursor:pointer;border:1px solid var(--rule);background:var(--panel);color:var(--ink)}
+.go{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.lucky:hover{border-color:var(--accent);color:var(--accent)}
+.go:disabled{opacity:.6;cursor:progress}
+.read{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;align-items:center;font-size:12.5px;color:var(--muted)}
+.read span{background:var(--chip);color:var(--ink);border-radius:999px;padding:3px 10px}
+.hero .notice{max-width:680px}
+
+/* after a search: compact header */
+body.searched .hero{flex-direction:row;flex-wrap:wrap;justify-content:flex-start;text-align:left;gap:10px 18px;padding-block:18px 14px}
+body.searched h1{display:none}
+body.searched form.search{flex-direction:row;width:auto;flex:1 1 520px;gap:10px}
+body.searched .qbox{box-shadow:none;padding:2px 18px}
+body.searched .qbox input{font-size:16px;padding:9px 2px}
+body.searched .read{width:100%;justify-content:flex-start}
+@media (max-width:640px){ body.searched form.search{flex-direction:column;align-items:stretch} body.searched .btns{justify-content:flex-start} }
+
+/* main split */
+.split{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:20px;align-items:start;margin-top:12px}
+@media (max-width:900px){.split{grid-template-columns:1fr}}
+.mapcard{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);background:var(--panel);border:1px solid var(--rule);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+@media (max-width:900px){.mapcard{position:static}}
+.maphead{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:12px 14px;border-bottom:1px solid var(--rule);flex-wrap:wrap}
+.maphead h2{margin:0;font:500 13px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.boros{display:flex;gap:4px;flex-wrap:wrap}
+.boros button{background:var(--chip);border:0;border-radius:6px;padding:4px 9px;font:500 12px var(--sans);color:var(--ink);cursor:pointer}
+.boros button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.mapbox{position:relative;aspect-ratio:1/1;max-height:72vh;width:100%;background:var(--water);touch-action:none;cursor:grab}
+.mapbox:active{cursor:grabbing}
+.mapbox svg{width:100%;height:100%;display:block}
+.boro{fill:var(--land);stroke:var(--land-edge);stroke-width:1;vector-effect:non-scaling-stroke}
+.boro-label{font:italic 500 22px var(--serif);fill:var(--faint);pointer-events:none}
+.dot{cursor:pointer;vector-effect:non-scaling-stroke}
+.dot.meta{fill:var(--panel);stroke:var(--dot-meta);stroke-width:1.2}
+.dot.idx{fill:var(--accent);stroke:var(--panel);stroke-width:1}
+.dot.dim{opacity:.18}
+.dot.hit{fill:#E8A33B;stroke:var(--panel);stroke-width:1.2}
+.dot.sel{stroke:var(--ink);stroke-width:2.2}
+.legend{display:flex;gap:14px;flex-wrap:wrap;padding:10px 14px;border-top:1px solid var(--rule);font-size:12px;color:var(--muted)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+.zoom{position:absolute;right:10px;bottom:10px;display:flex;flex-direction:column;gap:4px}
+.zoom button{width:32px;height:32px;border-radius:8px;border:1px solid var(--rule);background:var(--panel);color:var(--ink);font:600 16px var(--sans);cursor:pointer}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--ground);font:12px/1.35 var(--sans);padding:6px 8px;border-radius:6px;max-width:220px;transform:translate(-50%,calc(-100% - 10px))}
+
+/* results */
+.rhead{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.rhead h2{margin:0;font:500 26px/1.1 var(--serif);letter-spacing:-.01em}
+.status{font:12px var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.notice{background:var(--warn-bg);color:var(--warn);border-radius:10px;padding:10px 14px;font-size:14px;margin-bottom:10px}
+ol.results{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.card{background:var(--panel);border:1px solid var(--rule);border-radius:14px;overflow:hidden;display:grid;grid-template-columns:168px minmax(0,1fr)}
+@media (max-width:520px){.card{grid-template-columns:1fr}}
+.card.sel{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.ph{background:var(--land);aspect-ratio:4/3;width:100%;max-width:100%;display:block;object-fit:cover;height:100%}
+.ph.blank{display:flex;align-items:center;justify-content:center;color:var(--faint);font:italic 14px var(--serif)}
+.cbody{padding:12px 14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.ctop{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.cname{font-weight:600;font-size:15.5px;line-height:1.3}
+.caddr{color:var(--muted);font-size:13.5px}
+.pid{font:500 12px var(--mono);color:var(--accent);white-space:nowrap}
+.chips{display:flex;gap:5px;flex-wrap:wrap}
+.chip{background:var(--chip);border-radius:4px;padding:2px 7px;font-size:12px;font-variant-numeric:tabular-nums}
+.chip.warn{background:var(--warn-bg);color:var(--warn)}
+.snips{display:flex;flex-direction:column;gap:6px;border-top:1px solid var(--rule);padding-top:8px}
+.snip{font-size:13.5px;line-height:1.45}
+.snip .cite{display:block;font:11.5px var(--mono);color:var(--muted)}
+.snip p{margin:0;overflow-wrap:anywhere}
+mark{background:var(--mark);color:var(--mark-ink);padding:0 2px;border-radius:2px}
+.acts{display:flex;gap:8px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:6px;font:500 13px var(--sans);text-decoration:none;border-radius:8px;padding:6px 11px;border:1px solid var(--rule);background:var(--panel);color:var(--ink);cursor:pointer}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn:hover{border-color:var(--accent)}
+.more{align-self:center;margin-top:6px}
+
+/* detail drawer */
+.detail{margin-top:12px;background:var(--panel);border:1px solid var(--rule);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+.detail img{width:100%;max-width:100%;display:block;aspect-ratio:4/3;object-fit:cover;background:var(--land)}
+.dbody{padding:16px;display:flex;flex-direction:column;gap:12px}
+.dbody h3{margin:0;font:500 26px/1.1 var(--serif);letter-spacing:-.01em;text-wrap:balance}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.facts div{border-top:1px solid var(--rule);padding-top:6px}
+.facts dt{font:11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.facts dd{margin:0;font:500 18px var(--sans);font-variant-numeric:tabular-nums}
+.docs{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.docs li{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid var(--rule);font-size:13.5px}
+.docs .meta{font:12px var(--mono);color:var(--muted);white-space:nowrap}
+.caption{font-size:12px;color:var(--muted)}
+.x{background:transparent;border:0;color:var(--muted);font:500 13px var(--sans);cursor:pointer;padding:0}
+footer{margin-top:40px;border-top:1px solid var(--rule);padding-top:16px;font-size:12.5px;color:var(--muted);display:grid;gap:6px;max-width:78ch}
+@media (prefers-reduced-motion: no-preference){ .dot{transition:opacity .2s, r .2s} .card{transition:border-color .15s} }
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <section class="hero" id="hero">
+    <div class="brand"><b>OpenBook</b></div>
+    <h1>What do you want <em>to find?</em></h1>
+    <form class="search" id="f" autocomplete="off">
+      <div class="qbox">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" enterkeyhint="search" placeholder="Ask about any NYC condo offering plan" aria-label="What do you want to find?">
+      </div>
+      <div class="btns">
+        <button class="go" id="go" type="submit">Search</button>
+        <button class="lucky" id="lucky" type="button">Give me an example</button>
+      </div>
+    </form>
+    <div class="read" id="read" hidden></div>
+    <div class="notice" id="notice" hidden></div>
+  </section>
+
+  <div class="after" id="after" hidden>
+  <div class="split">
+    <div class="mapcard" id="mapcard">
+      <div class="maphead">
+        <h2 id="maptitle">Every plan on file</h2>
+        <div class="boros" id="boros" role="group" aria-label="Zoom to borough">
+          <button type="button" data-b="" aria-pressed="true">All</button>
+          <button type="button" data-b="Manhattan" aria-pressed="false">Manhattan</button>
+          <button type="button" data-b="Brooklyn" aria-pressed="false">Brooklyn</button>
+          <button type="button" data-b="Queens" aria-pressed="false">Queens</button>
+          <button type="button" data-b="Bronx" aria-pressed="false">Bronx</button>
+          <button type="button" data-b="Staten Island" aria-pressed="false">S.I.</button>
+        </div>
+      </div>
+      <div class="mapbox" id="mapbox">
+        <svg id="map" viewBox="0 0 1000 1039" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Map of NYC condo offering plans">
+          <g id="land"></g><g id="dots"></g>
+        </svg>
+        <div class="zoom"><button type="button" id="zin" aria-label="Zoom in">+</button><button type="button" id="zout" aria-label="Zoom out">−</button></div>
+        <div class="tip" id="tip" hidden></div>
+      </div>
+      <div class="legend">
+        <span><i style="background:var(--accent)"></i>Full text searchable</span>
+        <span><i style="background:var(--panel);border:1.2px solid var(--dot-meta)"></i>Plan record only</span>
+        <span><i style="background:#E8A33B"></i>Matches your search</span>
+      </div>
+    </div>
+
+    <div>
+      <div id="detail"></div>
+      <div class="rhead" style="margin-top:4px"><h2 id="rtitle">Latest filings</h2><span class="status" id="status" role="status"></span></div>
+      <ol class="results" id="results"></ol>
+    </div>
+  </div>
+
+  </div>
+  <footer id="foot" hidden>
+    <div>Source: NY Attorney General, Real Estate Finance Bureau offering plan database. Plans and amendments are public filings; download them from the AG record. Unit and parking counts come from AG metadata. A plan is only as current as its latest amendment. "Offered in the plan" does not mean "available for sale".</div>
+    <div>Building images are 3D massing drawings from NYC Building Footprints (NYC Open Data), with the plan's building in green. Locations from NYC Planning GeoSearch.</div>
+  </footer>
+</div>
+
+<script>
+(() => {
+  const SERVER = "Supabase", TOOL = "execute_sql", PROJECT = "dvywgltjqpntldlztapu";
+  const AG = "https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=";
+  const $ = (id) => document.getElementById(id);
+  const NS = "http://www.w3.org/2000/svg";
+  let points = [], geo = null, selected = null, lastRows = [];
+  const thumbs = new Map();
+
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const lit = (s) => (s === null || s === undefined || s === "" ? "null" : "'" + String(s).replace(/'/g, "''") + "'");
+  const num = (v) => { const n = parseInt(v, 10); return Number.isFinite(n) && n >= 0 ? String(n) : "null"; };
+  const tc = (s) => String(s ?? "").toLowerCase().replace(/\b([a-z])/g, (c) => c.toUpperCase()).replace(/\b(Llc|Ny|Nyc)\b/g, (w) => w.toUpperCase()).replace(/\(The\)/g, "").trim();
+  const snipHtml = (t) => esc(t).replace(/&lt;&lt;/g, "<mark>").replace(/&gt;&gt;/g, "</mark>").replace(/\s+/g, " ");
+  const docLabel = (f) => { const m = String(f || "").match(/_(Offering Plan|Amendment \d+)[^_]*\.pdf$/i); return m ? m[1] : (f || "Document"); };
+  const date = (d) => d ? new Date(d + "T12:00:00").toLocaleDateString("en-US", { month: "short", year: "numeric" }) : "";
+  const agDocs = (id) => AG + encodeURIComponent(id) + "#tabs-6";
+  const street = (p) => p.lat ? `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${p.lat},${p.lng}` : null;
+
+  // ---------- data (Supabase REST, public read-only) ----------
+  const SB = "https://dvywgltjqpntldlztapu.supabase.co";
+  const KEY = "sb_publishable_At7fyv-9Vp7ByNP3AXHZ7g_qphsg6Rw";
+  const cache = new Map();
+  async function rest(path, body, ttl = 60000) {
+    const k = path + JSON.stringify(body || ""); const hit = cache.get(k);
+    if (hit && Date.now() - hit.t < ttl) return hit.v;
+    const r = await fetch(SB + "/rest/v1/" + path, {
+      method: body ? "POST" : "GET",
+      headers: { apikey: KEY, "Content-Type": "application/json", Accept: "application/json" },
+      body: body ? JSON.stringify(body) : undefined,
+    });
+    if (!r.ok) throw { code: r.status >= 500 ? "server_unavailable" : "tool_error", message: (await r.text()).slice(0, 200) };
+    const v = await r.json(); cache.set(k, { t: Date.now(), v }); return v;
+  }
+  const rpc = (fn, args, ttl) => rest("rpc/" + fn, args || {}, ttl);
+
+  function showError(e) {
+    const msg = {
+      server_unavailable: "The search service didn't answer. Try again in a moment.",
+      tool_error: "That search couldn't run. Try different words.",
+    }[e?.code] || ("Something went wrong: " + (e?.message || "unknown error"));
+    $("notice").textContent = msg; $("notice").hidden = false;
+  }
+
+  // ---------- map ----------
+  const svg = $("map"), land = $("land"), dotsG = $("dots");
+  let vb = { x: 0, y: 0, w: 1000, h: 1039 }, full = { ...vb };
+  const setVB = () => { svg.setAttribute("viewBox", `${vb.x} ${vb.y} ${vb.w} ${vb.h}`); const r = Math.max(2.2, 6 * vb.w / 1000); dotsG.querySelectorAll("circle").forEach((c) => c.setAttribute("r", c.classList.contains("hit") || c.classList.contains("sel") ? r * 1.35 : r)); };
+  const project = (lat, lng) => { const B = geo.B, k = geo.k, sx = geo.W / ((B.maxLng - B.minLng) * k); return [(lng - B.minLng) * k * sx, (B.maxLat - lat) * sx]; };
+
+  function drawLand() {
+    land.innerHTML = "";
+    const labels = { Manhattan: [-73.972, 40.79], Brooklyn: [-73.95, 40.645], Queens: [-73.82, 40.705], Bronx: [-73.865, 40.85], "Staten Island": [-74.15, 40.585] };
+    for (const [name, d] of Object.entries(geo.paths)) {
+      const p = document.createElementNS(NS, "path"); p.setAttribute("d", d); p.setAttribute("class", "boro"); p.dataset.b = name; land.appendChild(p);
+    }
+    for (const [name, [lng, lat]] of Object.entries(labels)) {
+      const [x, y] = project(lat, lng); const t = document.createElementNS(NS, "text"); t.setAttribute("x", x); t.setAttribute("y", y); t.setAttribute("text-anchor", "middle"); t.setAttribute("class", "boro-label"); t.textContent = name; land.appendChild(t);
+    }
+  }
+  function drawDots() {
+    dotsG.innerHTML = "";
+    for (const p of points) {
+      const [x, y] = project(p.lat, p.lng);
+      const c = document.createElementNS(NS, "circle"); c.setAttribute("cx", x.toFixed(1)); c.setAttribute("cy", y.toFixed(1)); c.setAttribute("r", 6);
+      c.setAttribute("class", "dot " + (p.indexed ? "idx" : "meta")); c.dataset.id = p.plan_id; c.setAttribute("tabindex", "0"); c.setAttribute("role", "button");
+      c.setAttribute("aria-label", `${tc(p.name)}, ${tc(p.address)}`);
+      dotsG.appendChild(c); p.el = c;
+    }
+    // draw indexed on top
+    points.filter((p) => p.indexed).forEach((p) => dotsG.appendChild(p.el));
+    setVB();
+  }
+  function highlight(ids) {
+    const set = ids ? new Set(ids) : null;
+    for (const p of points) { p.el.classList.toggle("hit", !!set && set.has(p.plan_id)); p.el.classList.toggle("dim", !!set && !set.has(p.plan_id)); }
+    if (set) points.filter((p) => set.has(p.plan_id)).forEach((p) => dotsG.appendChild(p.el));
+    setVB();
+  }
+  function zoomTo(box, pad = 0.12) {
+    const cw = box.w * (1 + pad * 2), ch = box.h * (1 + pad * 2); const s = Math.max(cw, ch * (1000 / 1039));
+    vb = { w: s, h: s * 1039 / 1000, x: box.x + box.w / 2 - s / 2, y: box.y + box.h / 2 - (s * 1039 / 1000) / 2 }; setVB();
+  }
+  function zoomBy(f, cx, cy) {
+    const nx = cx ?? vb.x + vb.w / 2, ny = cy ?? vb.y + vb.h / 2; const w = Math.min(full.w * 1.2, Math.max(40, vb.w * f)), h = w * 1039 / 1000;
+    vb = { x: nx - (nx - vb.x) * (w / vb.w), y: ny - (ny - vb.y) * (h / vb.h), w, h }; setVB();
+  }
+  $("zin").onclick = () => zoomBy(0.6); $("zout").onclick = () => zoomBy(1.6);
+  $("boros").addEventListener("click", (e) => {
+    const b = e.target.closest("button"); if (!b) return;
+    $("boros").querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+    if (!b.dataset.b) { vb = { ...full }; setVB(); return; }
+    const p = land.querySelector(`path[data-b="${b.dataset.b}"]`); if (p) { const bb = p.getBBox(); zoomTo({ x: bb.x, y: bb.y, w: bb.width, h: bb.height }, 0.05); }
+  });
+  // pan + wheel
+  (() => {
+    const box = $("mapbox"); let drag = null;
+    const toSvg = (ev) => { const r = svg.getBoundingClientRect(); const s = Math.max(vb.w / r.width, vb.h / r.height); const ox = (r.width - vb.w / s) / 2, oy = (r.height - vb.h / s) / 2; return [vb.x + (ev.clientX - r.left - ox) * s, vb.y + (ev.clientY - r.top - oy) * s, s]; };
+    box.addEventListener("wheel", (ev) => { ev.preventDefault(); const [x, y] = toSvg(ev); zoomBy(ev.deltaY > 0 ? 1.18 : 0.85, x, y); }, { passive: false });
+    box.addEventListener("pointerdown", (ev) => { if (ev.target.closest(".zoom")) return; drag = { x: ev.clientX, y: ev.clientY, vb: { ...vb }, moved: false }; box.setPointerCapture(ev.pointerId); });
+    box.addEventListener("pointermove", (ev) => {
+      if (drag) { const [, , s] = toSvg(ev); const dx = (ev.clientX - drag.x) * s, dy = (ev.clientY - drag.y) * s; if (Math.abs(dx) + Math.abs(dy) > 2) drag.moved = true; vb = { ...drag.vb, x: drag.vb.x - dx, y: drag.vb.y - dy }; setVB(); $("tip").hidden = true; return; }
+      const c = ev.target.closest?.("circle.dot"); const tip = $("tip");
+      if (!c) { tip.hidden = true; return; }
+      const p = points.find((q) => q.plan_id === c.dataset.id); const r = box.getBoundingClientRect();
+      tip.innerHTML = `<b>${esc(tc(p.name))}</b><br>${esc(tc(p.address))} · ${p.units_residential ?? "?"} units${p.units_parking ? ` · ${p.units_parking} parking` : ""}`;
+      tip.style.left = (ev.clientX - r.left) + "px"; tip.style.top = (ev.clientY - r.top) + "px"; tip.hidden = false;
+    });
+    box.addEventListener("pointerup", (ev) => { const d = drag; drag = null; if (d && !d.moved) { const c = document.elementFromPoint(ev.clientX, ev.clientY)?.closest?.("circle.dot"); if (c) openDetail(c.dataset.id, true); } });
+    box.addEventListener("pointerleave", () => { $("tip").hidden = true; });
+    box.addEventListener("keydown", (ev) => { const c = ev.target.closest?.("circle.dot"); if (c && (ev.key === "Enter" || ev.key === " ")) { ev.preventDefault(); openDetail(c.dataset.id, true); } });
+  })();
+
+  // ---------- cards ----------
+  function card(r) {
+    const li = document.createElement("li"); li.className = "card"; li.dataset.id = r.plan_id;
+    const idx = r.docs_indexed ?? 0, posted = r.docs_posted ?? 0;
+    const amendGap = idx > 0 && (r.amendments_listed ?? 0) > Math.max(0, idx - 1);
+    const snips = (r.snippets || []).slice(0, 2).map((s) => `<div class="snip"><span class="cite">${esc(docLabel(s.doc))} · p.${esc(s.page)}</span><p>${snipHtml(s.text)}</p></div>`).join("");
+    const t = thumbs.get(r.plan_id);
+    li.innerHTML = `
+      ${t ? `<img class="ph" alt="" src="${esc(t)}">` : `<div class="ph blank">${esc(tc(r.borough))}</div>`}
+      <div class="cbody">
+        <div class="ctop"><div><div class="cname">${esc(tc(r.name))}</div><div class="caddr">${esc(tc(r.address))}, ${esc(tc(r.borough))}</div></div><span class="pid">${esc(r.plan_id)}</span></div>
+        <div class="chips">
+          <span class="chip"><b>${r.units_residential ?? "?"}</b> units</span>
+          <span class="chip"><b>${r.units_parking ?? 0}</b> parking</span>
+          ${r.accepted_date ? `<span class="chip">Accepted ${esc(date(r.accepted_date))}</span>` : ""}
+          ${idx ? `<span class="chip">${idx}/${posted} docs searched</span>` : `<span class="chip">Record only</span>`}
+          ${amendGap ? `<span class="chip warn">Later amendments not searched</span>` : ""}
+          ${r.hits ? `<span class="chip">${r.hits} matching pages</span>` : ""}
+        </div>
+        ${snips ? `<div class="snips">${snips}</div>` : ""}
+        <div class="acts">
+          <a class="btn primary" href="${esc(agDocs(r.plan_id))}" target="_blank" rel="noopener">Download plan ↗</a>
+          <button class="btn" type="button" data-open="${esc(r.plan_id)}">Details</button>
+        </div>
+      </div>`;
+    return li;
+  }
+  function renderCards(rows) {
+    const ol = $("results"); ol.innerHTML = "";
+    rows.forEach((r) => ol.appendChild(card(r)));
+    loadThumbs(rows.map((r) => r.plan_id));
+  }
+  async function loadThumbs(ids) {
+    const need = ids.filter((id) => !thumbs.has(id)).slice(0, 40);
+    if (!need.length) return;
+    try {
+      const rows = await rpc("plan_thumbs", { p_ids: need }, 300000);
+      rows.forEach((r) => thumbs.set(r.plan_id, r.thumb));
+      need.forEach((id) => { if (!thumbs.has(id)) thumbs.set(id, null); });
+      document.querySelectorAll("#results .card").forEach((li) => {
+        const t = thumbs.get(li.dataset.id); const ph = li.querySelector(".ph.blank");
+        if (t && ph) { const img = document.createElement("img"); img.className = "ph"; img.alt = ""; img.src = t; ph.replaceWith(img); }
+      });
+    } catch (e) { /* images are optional */ }
+  }
+  $("results").addEventListener("click", (e) => { const b = e.target.closest("[data-open]"); if (b) openDetail(b.dataset.open, false); });
+
+  // ---------- detail ----------
+  async function openDetail(id, fromMap) {
+    selected = id;
+    points.forEach((p) => p.el.classList.toggle("sel", p.plan_id === id)); setVB();
+    document.querySelectorAll("#results .card").forEach((li) => li.classList.toggle("sel", li.dataset.id === id));
+    const box = $("detail"); box.innerHTML = `<div class="detail"><div class="dbody"><span class="status">Loading ${esc(id)}…</span></div></div>`;
+    if (fromMap) box.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    try {
+      const d = await rpc("plan_detail", { p_id: id }, 300000); const p = d.plan;
+      const docs = d.docs || [];
+      box.innerHTML = `<div class="detail">
+        ${d.image ? `<img alt="3D massing of ${esc(tc(p.name))} and neighboring buildings" src="${esc(d.image)}">` : ""}
+        <div class="dbody">
+          <div class="ctop"><span class="pid">${esc(p.plan_id)} · ${esc(tc(p.plan_type))} · ${esc(tc(p.construction))}</span><button class="x" type="button" id="dclose">Close</button></div>
+          <h3>${esc(tc(p.name))}</h3>
+          <div class="caddr">${esc(tc(p.address))}, ${esc(tc(p.borough))} ${esc(p.zip || "")}</div>
+          <dl class="facts">
+            <div><dt>Residential</dt><dd>${p.units_residential ?? "—"}</dd></div>
+            <div><dt>Parking</dt><dd>${p.units_parking ?? "—"}</dd></div>
+            <div><dt>Storage</dt><dd>${p.units_storage ?? "—"}</dd></div>
+            <div><dt>Accepted</dt><dd>${esc(date(p.accepted_date) || "—")}</dd></div>
+            <div><dt>Amendments</dt><dd>${p.amendments_listed ?? 0}</dd></div>
+            <div><dt>Commercial</dt><dd>${p.units_commercial ?? "—"}</dd></div>
+          </dl>
+          <div class="caption">Sponsor: ${esc(p.sponsor || "—")}${p.law_firm ? ` · Sponsor's counsel: ${esc(p.law_firm)}` : ""}</div>
+          <div class="acts">
+            <a class="btn primary" href="${esc(agDocs(p.plan_id))}" target="_blank" rel="noopener">Download plan ↗</a>
+            ${street(p) ? `<a class="btn" href="${esc(street(p))}" target="_blank" rel="noopener">Street View ↗</a>` : ""}
+            <a class="btn" href="${esc(AG + encodeURIComponent(p.plan_id))}" target="_blank" rel="noopener">AG record ↗</a>
+          </div>
+          ${docs.length ? `<ul class="docs">${docs.map((x) => `<li><span>${esc(docLabel(x.filename))}</span><span class="meta">${x.size_mb ? esc(x.size_mb) + " MB" : ""}${x.pages ? " · " + x.pages + " pp" : ""}${x.status === "done" ? " · searchable" : ""}</span></li>`).join("")}</ul>
+            <div class="caption">Downloads open the plan's Documents tab on the Attorney General's site; tick the files and choose Download.</div>` : `<div class="caption">The AG hasn't posted documents for this plan yet. Copies can be requested through FOIL.</div>`}
+        </div></div>`;
+      $("dclose").onclick = () => { box.innerHTML = ""; selected = null; points.forEach((q) => q.el.classList.remove("sel")); setVB(); document.querySelectorAll("#results .card").forEach((li) => li.classList.remove("sel")); };
+      if (!fromMap && p.lat) { const [x, y] = project(p.lat, p.lng); if (x < vb.x || x > vb.x + vb.w || y < vb.y || y > vb.y + vb.h) zoomTo({ x: x - 40, y: y - 40, w: 80, h: 80 }, 0.5); }
+    } catch (e) { box.innerHTML = ""; showError(e); }
+  }
+
+  // ---------- freeform parsing ----------
+  // Freeform question -> { q, borough, minUnits, maxUnits, minParking, read[] }
+  function parseQuestion(input) {
+    let s = " " + String(input || "").toLowerCase().replace(/[’']/g, "'").replace(/\s+/g, " ") + " ";
+    const out = { q: "", borough: null, minUnits: null, maxUnits: null, minParking: null, read: [] };
+    const W = { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, eleven: 11, twelve: 12, fifteen: 15, twenty: 20, thirty: 30, forty: 40, fifty: 50, hundred: 100 };
+    const n = (t) => (t in W ? W[t] : parseInt(t, 10));
+    const NUM = "(\\d{1,4}|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|fifteen|twenty|thirty|forty|fifty|hundred)";
+    const cut = (re) => { s = s.replace(re, " "); };
+
+    // boroughs + common neighborhoods
+    const B = [
+      ["MANHATTAN", /\b(manhattan|harlem|soho|tribeca|chelsea|midtown|upper (east|west) side|ues|uws|lower east side|les|east village|west village|financial district|fidi|nomad|inwood|washington heights)\b/],
+      ["BROOKLYN", /\b(brooklyn|bk|williamsburg|greenpoint|bushwick|park slope|carroll gardens|cobble hill|bed[- ]?stuy|bedford[- ]stuyvesant|crown heights|flatbush|bay ridge|sunset park|gowanus|dumbo|fort greene|clinton hill|prospect heights|bensonhurst|borough park|sheepshead bay|brighton beach|coney island|red hook|boerum hill)\b/],
+      ["QUEENS", /\b(queens|astoria|long island city|lic|flushing|jackson heights|elmhurst|corona|sunnyside|woodside|forest hills|rego park|jamaica|ridgewood|bayside|maspeth|kew gardens|whitestone|college point|ozone park|richmond hill)\b/],
+      ["BRONX", /\b(the bronx|bronx|riverdale|mott haven|fordham)\b/],
+      ["STATEN ISLAND", /\b(staten island|s\.i\.)\b/],
+    ];
+    for (const [boro, re] of B) {
+      const m = s.match(re);
+      if (m) { out.borough = boro; out.read.push(m[0].trim() === boro.toLowerCase() ? titleCase(boro) : `${titleCase(m[0].trim())} (${titleCase(boro)})`); cut(re); break; }
+    }
+
+    // parking count / presence
+    let m = s.match(new RegExp(`\\b(at least|minimum of|min\\.?|over|more than)?\\s*${NUM}\\+?\\s*(or more\\s*)?(parking|garage)\\s*(spaces?|spots?|units?)?\\b`));
+    if (m) {
+      let k = n(m[2]); if (m[1] && /over|more than/.test(m[1])) k += 1;
+      out.minParking = k; out.read.push(`${k}+ parking units`); cut(m[0]);
+      s += " parking ";
+    } else if (/\b(with|has|have|offers?|include|including|and)\s+(a\s+)?(parking|garage)\b/.test(s) || /\bparking (units?|spaces?)\b/.test(s)) {
+      out.minParking = 1; out.read.push("has parking units");
+    }
+
+    // unit counts (avoid "storage unit", "parking unit")
+    const U = "(?:residential\\s+)?(?:units?|apartments?|apts?|residences|homes)";
+    const rules = [
+      [new RegExp(`\\b(under|fewer than|less than|below)\\s+${NUM}\\s+${U}`), (k) => { out.maxUnits = k - 1; }],
+      [new RegExp(`\\b(at most|no more than|up to|max(?:imum)?(?: of)?)\\s+${NUM}\\s+${U}`), (k) => { out.maxUnits = k; }],
+      [new RegExp(`\\b(over|more than|above)\\s+${NUM}\\s+${U}`), (k) => { out.minUnits = k + 1; }],
+      [new RegExp(`\\b(at least|minimum of)\\s+${NUM}\\s+${U}`), (k) => { out.minUnits = k; }],
+      [new RegExp(`\\b${NUM}\\s*(?:-|to)\\s*${NUM}\\s+${U}`), (a, b) => { out.minUnits = a; out.maxUnits = b; }],
+      [new RegExp(`\\b${NUM}\\s*\\+\\s*${U}`), (k) => { out.minUnits = k; }],
+      [new RegExp(`\\b${NUM}[- ]${U}`), (k) => { out.minUnits = k; out.maxUnits = k; }],
+    ];
+    for (const [re, fn] of rules) {
+      const mm = s.match(re);
+      if (!mm) continue;
+      const nums = mm.slice(1).filter((x) => x && x in W || /^\d+$/.test(x || "")).map(n);
+      fn(...nums); cut(mm[0]); break;
+    }
+    if (/\b(small|boutique)\b/.test(s) && out.maxUnits == null) { out.maxUnits = 10; cut(/\b(small|boutique)\b/); }
+    if (out.minUnits != null && out.maxUnits != null && out.minUnits === out.maxUnits) out.read.push(`${out.maxUnits} units`);
+    else {
+      if (out.minUnits != null && out.maxUnits != null) out.read.push(`${out.minUnits}–${out.maxUnits} units`);
+      else if (out.maxUnits != null) out.read.push(`≤${out.maxUnits} units`);
+      else if (out.minUnits != null) out.read.push(`≥${out.minUnits} units`);
+    }
+
+    // keep quoted phrases, drop filler
+    const quoted = []; s = s.replace(/"([^"]+)"/g, (_, p) => { quoted.push(`"${p.trim()}"`); return " "; });
+    const STOP = new Set(("a an the and of in on at to for from by with without that which who where what show me find list any all some " +
+      "condo condos condominium condominiums building buildings plan plans offering offerings project projects development developments " +
+      "nyc new york city ny has have having include includes including mention mentions mentioning offer offers offered there is are " +
+      "can be only i want looking look search give please sale for-sale available").split(" "));
+    const words = s.replace(/[^a-z0-9\-\s]/g, " ").split(/\s+/).filter((w) => w && !STOP.has(w));
+    const ws = dedupe(words); while (ws[0] === "or") ws.shift(); while (ws[ws.length - 1] === "or") ws.pop();
+    out.q = [...quoted, ...ws].join(" ").replace(/\bor\b/g, "OR").trim();
+    if (out.q) out.read.unshift(`“${out.q}”`);
+    return out;
+  }
+  function dedupe(a) { const seen = new Set(); return a.filter((w) => (seen.has(w) ? false : (seen.add(w), true))); }
+  function titleCase(s) { return String(s).toLowerCase().replace(/\b([a-z])/g, (c) => c.toUpperCase()); }
+
+  // ---------- search ----------
+  const EXAMPLES = [
+    "Queens condos under 20 units with parking spaces",
+    "Brooklyn buildings under 10 units with a private roof terrace",
+    "Plans that mention the 485-x tax exemption",
+    "Condos where parking spaces can only be bought by unit owners",
+    "Condos with EV charging stations",
+    "Staten Island condos with a driveway",
+    "Manhattan condos with storage units",
+    "Condos with solar panels on the roof",
+    "Manhattan condos with a doorman or concierge",
+    "Condos with inclusionary housing (MIH)",
+    "Brooklyn condos under 10 units with no elevator",
+    "Astoria buildings with a gym or fitness center",
+  ];
+  let lastEx = -1, mapReady = null;
+
+  function ensureMap() {
+    if (!mapReady) mapReady = (async () => {
+      const [g] = await rest("site_assets?key=eq.boroughs_svg&select=value", null, 3600000);
+      geo = JSON.parse(g.value); drawLand();
+      points = (await rpc("map_points", {}, 600000)).filter((p) => p.lat);
+      drawDots();
+    })().catch((e) => { mapReady = null; throw e; });
+    return mapReady;
+  }
+
+  async function run() {
+    const text = $("q").value.trim();
+    if (!text) { $("q").focus(); return; }
+    const P = parseQuestion(text);
+    if (!P.q && !P.borough && P.minUnits == null && P.maxUnits == null && P.minParking == null) P.q = text;
+    $("notice").hidden = true; $("go").disabled = true;
+    document.body.classList.add("searched"); $("after").hidden = false; $("foot").hidden = false;
+    $("read").innerHTML = "Searching for " + P.read.map((r) => `<span>${esc(r)}</span>`).join(""); $("read").hidden = !P.read.length;
+    $("status").textContent = "Searching…"; $("results").innerHTML = ""; $("detail").innerHTML = "";
+    const args = { q: P.q || null, p_borough: P.borough, p_min_units: P.minUnits, p_max_units: P.maxUnits, p_min_parking: P.minParking, p_limit: 60 };
+    try {
+      const [rows] = await Promise.all([rpc("search_plans", args), ensureMap()]);
+      lastRows = rows;
+      $("rtitle").textContent = rows.length ? `${rows.length} plan${rows.length === 1 ? "" : "s"}` : "No plans found";
+      $("status").textContent = rows.length ? (P.q ? "ranked by matching pages" : "newest first") : "Try fewer words, or press Give me an example.";
+      $("maptitle").textContent = `${rows.length} matching plan${rows.length === 1 ? "" : "s"}`;
+      renderCards(rows);
+      highlight(rows.map((r) => r.plan_id));
+      const pts = points.filter((p) => rows.some((r) => r.plan_id === p.plan_id));
+      if (pts.length) { const xy = pts.map((p) => project(p.lat, p.lng)); const xs = xy.map((a) => a[0]), ys = xy.map((a) => a[1]); const bx = { x: Math.min(...xs), y: Math.min(...ys), w: Math.max(40, Math.max(...xs) - Math.min(...xs)), h: Math.max(40, Math.max(...ys) - Math.min(...ys)) }; zoomTo(bx, 0.15); }
+      else { vb = { ...full }; setVB(); }
+      $("boros").querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", "false"));
+    } catch (e) { showError(e); $("status").textContent = ""; }
+    finally { $("go").disabled = false; }
+  }
+  $("f").addEventListener("submit", (e) => { e.preventDefault(); run(); });
+
+  const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  $("lucky").addEventListener("click", async () => {
+    let i; do { i = Math.floor(Math.random() * EXAMPLES.length); } while (i === lastEx && EXAMPLES.length > 1);
+    lastEx = i; const t = EXAMPLES[i]; const input = $("q");
+    $("lucky").disabled = true;
+    if (reduce) input.value = t;
+    else { input.value = ""; for (let k = 1; k <= t.length; k++) { input.value = t.slice(0, k); await new Promise((r) => setTimeout(r, 14)); } }
+    $("lucky").disabled = false;
+    run();
+  });
+
+  ensureMap().catch(() => {}); // warm the map quietly; it only shows after a search
+  $("q").focus();
+})();
+</script>
+</body>
+</html>
