@@ -320,8 +320,8 @@ const searchable = new Set(docRows.filter((d) => d.status === "done").map((d) =>
 
 const sections = new Map();
 const sIds = [...searchable];
-for (let i = 0; i < sIds.length; i += 1) {
-  for (const s of await rpc("plan_sections", { p_ids: sIds.slice(i, i + 1) })) {
+for (let i = 0; i < sIds.length; i += 20) {
+  for (const s of await rpc("plan_sections", { p_ids: sIds.slice(i, i + 20) })) {
     if (!sections.has(s.plan_id)) sections.set(s.plan_id, []);
     sections.get(s.plan_id).push(s);
   }

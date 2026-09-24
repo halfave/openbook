@@ -3,140 +3,242 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Open Book — NYC condo offering plans, made searchable</title>
-<meta name="description" content="Search across NYC condo offering plans and amendments. Find the buildings, see the relevant language, and go straight to the source.">
-<meta property="og:title" content="Open Book">
-<meta property="og:description" content="NYC condo offering plans, made searchable.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230E6B5B'/%3E%3Cpath d='M9 23V9h8a5 5 0 0 1 0 10h-8' fill='none' stroke='white' stroke-width='3'/%3E%3C/svg%3E">
+<title>Open Book — NYC condo offering plan search</title>
+<meta name="description" content="Search NYC condo offering plans, Schedule A and B, and amendments filed with the NY Attorney General. Find precedents, pricing, budgets, project teams and floor plans, with the page they came from.">
+<meta property="og:title" content="Open Book — NYC condo offering plan search">
+<meta property="og:description" content="Find what’s in the filing. Search offering plans, schedules, and amendments across New York City.">
+<meta name="theme-color" content="#879CB4">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23879CB4'/%3E%3Crect y='26' width='32' height='6' fill='%2365153B'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='17' fill='%2365153B' stroke='white' stroke-width='.8' paint-order='stroke'%3EOB%3C/text%3E%3C/svg%3E">
 
 <link rel="stylesheet" href="menu.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,500;1,6..72,400;1,6..72,500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap">
 <style>
 :root{
-  --ground:#EDF1EF; --panel:#FFFFFF; --ink:#13201B; --muted:#5A6963; --faint:#8E9B96; --rule:#D5DDD9;
-  --accent:#0E6B5B; --accent-2:#46C2A3; --accent-ink:#FFFFFF; --mark:#F3D98B; --mark-ink:#13201B;
-  --land:#DFE6E2; --land-edge:#C5D0CB; --water:#EDF1EF; --dot-meta:#9BA9A3;
-  --chip:#E3EAE7; --warn:#8A5300; --warn-bg:#FBEFD8; --shadow:0 1px 2px rgba(19,32,27,.06),0 8px 24px rgba(19,32,27,.06);
-  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --ground:#FAF8F2; --panel:#FFFFFF; --ink:#242828; --muted:#5C605D; --faint:#8C8F8A; --rule:#D6D3C9; --rule-strong:#242828;
+  --accent:#65153B; --accent-hover:#4E0F2D; --accent-ink:#FFFFFF; --accent-soft:#F3E7EA;
+  --mast:#879CB4; --sky:#2E3D51; --sky-far:#61778F; --lit:#F4E6B8;
+  --mark:#F3D98B; --mark-ink:#242828;
+  --land:#ECE8DD; --land-edge:#CFCABC; --water:#FAF8F2; --dot-meta:#A8A498; --hit:#D9822B;
+  --chip:#EFEBE0; --warn:#7A4A00; --warn-bg:#F7EBD2; --shadow:none;
+  --display:"Libre Caslon Text",Georgia,"Times New Roman",serif;
   --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --serif:var(--display);
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     color-scheme:dark;
-    --ground:#0E1412; --panel:#161E1B; --ink:#E3EBE7; --muted:#9AA8A2; --faint:#6E7C76; --rule:#26312D;
-    --accent:#46C2A3; --accent-2:#2E9C82; --accent-ink:#08110E; --mark:#5B4A12; --mark-ink:#FFF3CC;
-    --land:#1C2623; --land-edge:#2C3834; --water:#0E1412; --dot-meta:#56645F;
-    --chip:#202B27; --warn:#F2BC66; --warn-bg:#2D2412; --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+    --ground:#17191A; --panel:#1F2223; --ink:#ECE8DE; --muted:#A8A69E; --faint:#7A7C77; --rule:#34383A; --rule-strong:#ECE8DE;
+    --accent:#D4789B; --accent-hover:#E595B3; --accent-ink:#17191A; --accent-soft:#34212A;
+    --mast:#4A5B70; --sky:#1C2633; --sky-far:#34455A; --lit:#8C7B45;
+    --mark:#5B4A12; --mark-ink:#FFF3CC;
+    --land:#26292A; --land-edge:#383C3D; --water:#17191A; --dot-meta:#5E625F; --hit:#E8A33B;
+    --chip:#2A2D2E; --warn:#F2BC66; --warn-bg:#2D2412;
   }
 }
 :root[data-theme="dark"]{
   color-scheme:dark;
-  --ground:#0E1412; --panel:#161E1B; --ink:#E3EBE7; --muted:#9AA8A2; --faint:#6E7C76; --rule:#26312D;
-  --accent:#46C2A3; --accent-2:#2E9C82; --accent-ink:#08110E; --mark:#5B4A12; --mark-ink:#FFF3CC;
-  --land:#1C2623; --land-edge:#2C3834; --water:#0E1412; --dot-meta:#56645F;
-  --chip:#202B27; --warn:#F2BC66; --warn-bg:#2D2412; --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+  --ground:#17191A; --panel:#1F2223; --ink:#ECE8DE; --muted:#A8A69E; --faint:#7A7C77; --rule:#34383A; --rule-strong:#ECE8DE;
+  --accent:#D4789B; --accent-hover:#E595B3; --accent-ink:#17191A; --accent-soft:#34212A;
+  --mast:#4A5B70; --sky:#1C2633; --sky-far:#34455A; --lit:#8C7B45;
+  --mark:#5B4A12; --mark-ink:#FFF3CC;
+  --land:#26292A; --land-edge:#383C3D; --water:#17191A; --dot-meta:#5E625F; --hit:#E8A33B;
+  --chip:#2A2D2E; --warn:#F2BC66; --warn-bg:#2D2412;
 }
 *{box-sizing:border-box}
+[hidden]{display:none !important}
 html{color-scheme:light}
-body{margin:0;background:var(--ground);color:var(--ink);font:15px/1.5 var(--sans);padding-inline:16px;padding-block:0 56px}
-.wrap{max-width:1180px;margin:0 auto}
+body{margin:0;background:var(--ground);color:var(--ink);font:15px/1.5 var(--sans);padding-block:0 56px}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:16px}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
-/* home */
-.hero{display:flex;flex-direction:column;align-items:center;text-align:center;gap:22px;padding-block:clamp(72px,20vh,200px) 40px;transition:padding .25s ease}
-.brand b{font:italic 500 20px/1 var(--serif);letter-spacing:-.01em;color:var(--accent)}
-h1{font:500 clamp(40px,7vw,72px)/1.02 var(--serif);letter-spacing:-.025em;margin:0;text-wrap:balance}
-h1 em{font-style:italic;color:var(--accent)}
-form.search{width:min(680px,100%);display:flex;flex-direction:column;align-items:center;gap:16px}
-.qbox{width:100%;display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--rule);border-radius:999px;padding:6px 22px;box-shadow:var(--shadow)}
-.qbox svg{flex:none;color:var(--faint)}
-.qbox input{flex:1;min-width:0;border:0;background:transparent;font:18px var(--sans);color:var(--ink);padding:12px 2px}
-.qbox input:focus{outline:none}
-.qbox:focus-within{border-color:var(--accent)}
-.btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-.go,.lucky{font:500 14px var(--sans);border-radius:8px;padding:10px 18px;cursor:pointer;border:1px solid var(--rule);background:var(--panel);color:var(--ink)}
-.go{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
-.lucky:hover{border-color:var(--accent);color:var(--accent)}
-.go:disabled{opacity:.6;cursor:progress}
-.read{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;align-items:center;font-size:12.5px;color:var(--muted)}
-.read span{background:var(--chip);color:var(--ink);border-radius:999px;padding:3px 10px}
-.hero .notice{max-width:680px}
+/* ---------- masthead ---------- */
+.mast{background:var(--mast);position:relative;overflow:hidden}
+.mast-in{max-width:1180px;margin:0 auto;padding:0 0 0 16px;height:clamp(92px,13vw,132px);display:flex;align-items:flex-end;justify-content:space-between;position:relative}
+.wordmark{position:relative;z-index:2;display:block;flex:none;text-decoration:none;color:var(--accent);
+  font:700 clamp(36px,7vw,84px)/.82 var(--display);letter-spacing:.015em;padding-bottom:clamp(10px,1.6vw,16px);
+  /* hand-set feel: white keyline plus a slightly off-register ink shadow, like an early-web GIF title */
+  text-shadow:
+    -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff,
+    0 -1.5px 0 #fff, 0 1.5px 0 #fff, -1.5px 0 0 #fff, 1.5px 0 0 #fff,
+    3px 3px 0 rgba(36,40,40,.55)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .wordmark{color:#8E2455} }
+:root[data-theme="dark"] .wordmark{color:#8E2455}
+.skyline{flex:1 1 0;min-width:90px;max-width:760px;height:100%;margin-left:clamp(16px,3vw,40px);display:block;align-self:stretch}
+.skyline .far{fill:var(--sky-far)}
+.skyline .near{fill:var(--sky)}
+.skyline .win{fill:var(--lit)}
+.skyline .wire{stroke:var(--sky);stroke-width:1.4;fill:none}
+.mast-rule{height:7px;background:var(--accent);border-bottom:1px solid var(--ink)}
+.mast-rule + .hairline{height:3px;border-bottom:1px solid var(--rule)}
+@media (max-width:640px){ .skyline .opt{display:none} }
+@media (max-width:420px){ .skyline .far{display:none} }
+.menu{top:12px}
+.menu summary{background:var(--ground);border-radius:2px;border-color:var(--ink)}
 
-/* after a search: compact header */
-body.searched .hero{flex-direction:row;flex-wrap:wrap;justify-content:flex-start;text-align:left;gap:10px 18px;padding-block:18px 14px}
-body.searched h1{display:none}
-body.searched form.search{flex-direction:row;width:auto;flex:1 1 520px;gap:10px}
-body.searched .qbox{box-shadow:none;padding:2px 18px}
-body.searched .qbox input{font-size:16px;padding:9px 2px}
-body.searched .read{width:100%;justify-content:flex-start}
-@media (max-width:640px){ body.searched form.search{flex-direction:column;align-items:stretch} body.searched .btns{justify-content:flex-start} }
+/* ---------- home ---------- */
+.hero{max-width:760px;margin:0;padding:clamp(28px,5vw,48px) 0 8px;display:flex;flex-direction:column;gap:0}
+.kicker{margin:0 0 12px;font:500 12.5px/1.2 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.kicker::before{content:"";display:inline-block;width:22px;height:1px;background:currentColor;vertical-align:.3em;margin-right:10px}
+h1{font:700 clamp(36px,6vw,60px)/1.02 var(--display);letter-spacing:-.012em;margin:0;text-wrap:balance}
+.sub{margin:12px 0 26px;font-size:17px;color:var(--muted);max-width:60ch}
+form.search{display:flex;flex-direction:column;gap:10px}
+.qrow{display:flex;gap:0;align-items:stretch;border:2px solid var(--ink);background:var(--panel)}
+.qrow input{flex:1;min-width:0;border:0;background:transparent;font:19px var(--sans);color:var(--ink);padding:16px 16px}
+.qrow input::placeholder{color:var(--faint)}
+.qrow input:focus{outline:none}
+.qrow:focus-within{outline:3px solid var(--mast);outline-offset:0}
+.go{flex:none;border:0;border-left:2px solid var(--ink);background:var(--accent);color:var(--accent-ink);font:600 15px var(--sans);letter-spacing:.12em;padding:0 30px;cursor:pointer}
+.go:hover{background:var(--accent-hover)}
+.go:disabled{opacity:.7;cursor:progress}
+@media (max-width:560px){
+  .qrow{flex-direction:column;border:0;background:none;gap:8px}
+  .qrow input{border:2px solid var(--ink);background:var(--panel)}
+  .qrow:focus-within{outline:0}
+  .qrow input:focus{outline:3px solid var(--mast)}
+  .go{border:2px solid var(--ink);padding:14px}
+}
+.read{display:flex;gap:8px 14px;flex-wrap:wrap;align-items:baseline;margin-top:12px}
+.qecho{font:italic 400 18px/1.3 var(--display);color:var(--ink)}
+.chiprow{display:flex;gap:6px;flex-wrap:wrap}
+.fchip{display:inline-flex;align-items:center;gap:4px;background:var(--panel);border:1px solid var(--rule-strong);padding:1px 2px 1px 8px;font:12px/1.6 var(--mono);color:var(--ink)}
+.fchip button{border:0;background:none;color:var(--muted);font:600 14px/1 var(--sans);padding:2px 6px;cursor:pointer}
+.fchip button:hover{color:var(--accent)}
+.mastnav{position:absolute;top:16px;right:66px;z-index:3;display:flex;gap:8px;align-items:center;background:var(--ground);border:1px solid var(--ink);padding:3px 10px;font:500 13px var(--sans)}
+.mastnav a{text-decoration:none;color:var(--ink)}
+.mastnav a:hover{color:var(--accent);text-decoration:underline}
+.mastnav span{color:var(--faint)}
+@media (max-width:640px){ .mastnav{display:none} }
+body.searched .mastnav{top:14px;padding:2px 8px}
+.views{display:flex;gap:0;margin:0 0 12px;border-bottom:1px solid var(--rule-strong)}
+.views button{background:none;border:0;border-bottom:3px solid transparent;margin-bottom:-1px;padding:8px 14px;font:600 13px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);cursor:pointer}
+.views button:hover{color:var(--ink)}
+.views button[aria-selected="true"]{color:var(--accent);border-bottom-color:var(--accent)}
+.vnote{margin:0 0 10px;font-size:13px;color:var(--muted)}
+.faint{color:var(--muted)}
+.plink{background:none;border:0;padding:0;font:700 15px/1.3 var(--display);color:var(--ink);cursor:pointer;text-align:left}
+.plink:hover{color:var(--accent);text-decoration:underline}
+.passages{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.passages li{border-top:1px solid var(--rule);padding:10px 0}
+.pmeta{display:flex;flex-wrap:wrap;gap:2px 10px;align-items:baseline}
+.pmeta .cite{font:11.5px var(--mono);color:var(--muted)}
+.passages p{margin:4px 0 0;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.doccards{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.doccards li{background:var(--panel);border:1px solid var(--rule);padding:12px 14px;display:grid;gap:8px}
+.doccards .cname{text-decoration:none}
+.doccards .cname:hover{color:var(--accent);text-decoration:underline}
+.tscroll{overflow-x:auto}
+table.sect,table.cmp{border-collapse:collapse;width:100%;font-size:13.5px}
+table.sect th,table.sect td,table.cmp th,table.cmp td{text-align:left;padding:6px 10px 6px 0;border-bottom:1px solid var(--rule);vertical-align:baseline}
+table.sect th{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);white-space:nowrap;width:1%}
+table.sect td:last-child{white-space:nowrap;text-align:right;padding-right:0}
+table.sect tr.focus th{color:var(--accent)}
+table.sect tr.focus td{font-weight:600}
+table.cmp thead th{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--rule-strong);white-space:nowrap}
+table.cmp .n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+table.cmp .m{font:12.5px var(--mono);white-space:nowrap}
+table.cmp td .pid{display:block;font-size:11px}
+table.cmp td:first-child{min-width:12ch}
+table.cmp .plink{font-size:14px}
+table.cmp .sub2{display:block;font:11px var(--mono);color:var(--muted)}
 
-/* main split */
+.tries{margin:30px 0 0;border-top:1px solid var(--rule-strong)}
+.browse{margin:26px 0 0}
+.browse h2{margin:0 0 6px;font:500 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.tries h2{margin:0;padding:10px 0 4px;font:500 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.examples{list-style:none;margin:0;padding:0}
+.examples li{border-bottom:1px solid var(--rule)}
+.examples button{width:100%;display:flex;align-items:baseline;gap:12px;text-align:left;background:none;border:0;padding:11px 2px;font:17px/1.35 var(--display);color:var(--ink);cursor:pointer}
+.examples button::before{content:"→";font:14px var(--mono);color:var(--accent);flex:none;transition:transform .15s}
+.examples button:hover{color:var(--accent)}
+.examples button:hover::before{transform:translateX(3px)}
+.topics{margin:0;display:flex;flex-wrap:wrap;border-top:3px double var(--rule-strong);border-bottom:1px solid var(--rule-strong)}
+.topics a{flex:1 1 auto;text-align:center;padding:11px 14px;font:600 13px var(--sans);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--ink);border-right:1px solid var(--rule)}
+.topics a:last-child{border-right:0}
+.topics a:hover{background:var(--accent);color:var(--accent-ink)}
+@media (max-width:560px){ .topics a{flex:1 1 45%;border-bottom:1px solid var(--rule)} }
+.coverage{margin:26px 0 0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 18px;font-size:13.5px;color:var(--muted);max-width:880px}
+.coverage .tag{font:500 11px/1.6 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink);border:1px solid var(--ink);padding:1px 6px;align-self:start}
+.coverage p{margin:0;max-width:72ch}
+.coverage b{color:var(--ink);font-family:var(--mono);font-weight:500}
+.coverage a{color:var(--accent)}
+@media (max-width:560px){ .coverage{grid-template-columns:1fr} .coverage .tag{justify-self:start} }
+.hero .notice{margin-top:12px}
+
+/* ---------- after a search: compact header ---------- */
+body.searched .mast-in{height:64px}
+body.searched .wordmark{font-size:40px;padding-bottom:8px}
+body.searched .hero{max-width:1180px;padding:16px 52px 4px 0}
+body.searched .kicker,body.searched h1,body.searched .sub,body.searched .tries,body.searched .browse,body.searched .coverage{display:none}
+body.searched .qrow input{font-size:16px;padding:10px 14px}
+body.searched .go{padding:0 20px;font-size:13px}
+@media (max-width:560px){ body.searched .hero{padding-right:0} body.searched .go{padding:10px} }
+
+/* ---------- map + results (unchanged behavior, restyled) ---------- */
 .split{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:20px;align-items:start;margin-top:12px}
 @media (max-width:900px){.split{grid-template-columns:1fr}}
-.mapcard{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);background:var(--panel);border:1px solid var(--rule);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
-@media (max-width:900px){.mapcard{position:static}}
-.maphead{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:12px 14px;border-bottom:1px solid var(--rule);flex-wrap:wrap}
-.maphead h2{margin:0;font:500 13px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.mapcard{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);background:var(--panel);border:1px solid var(--rule-strong);overflow:hidden}
+@media (max-width:900px){.mapcard{position:static;order:2}}
+.maphead{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid var(--rule-strong);flex-wrap:wrap}
+.maphead h2{margin:0;font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .boros{display:flex;gap:4px;flex-wrap:wrap}
-.boros button{background:var(--chip);border:0;border-radius:6px;padding:4px 9px;font:500 12px var(--sans);color:var(--ink);cursor:pointer}
-.boros button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.boros button{background:var(--chip);border:1px solid var(--rule);padding:3px 8px;font:500 12px var(--sans);color:var(--ink);cursor:pointer}
+.boros button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 .mapbox{position:relative;aspect-ratio:1/1;max-height:72vh;width:100%;background:var(--water);touch-action:none;cursor:grab}
 .mapbox:active{cursor:grabbing}
 .mapbox svg{width:100%;height:100%;display:block}
 .boro{fill:var(--land);stroke:var(--land-edge);stroke-width:1;vector-effect:non-scaling-stroke}
-.boro-label{font:italic 500 22px var(--serif);fill:var(--faint);pointer-events:none}
+.boro-label{font:italic 400 22px var(--display);fill:var(--faint);pointer-events:none}
 .dot{cursor:pointer;vector-effect:non-scaling-stroke}
 .dot.meta{fill:var(--panel);stroke:var(--dot-meta);stroke-width:1.2}
 .dot.idx{fill:var(--accent);stroke:var(--panel);stroke-width:1}
 .dot.dim{opacity:.18}
-.dot.hit{fill:#E8A33B;stroke:var(--panel);stroke-width:1.2}
+.dot.hit{fill:var(--hit);stroke:var(--panel);stroke-width:1.2}
 .dot.sel{stroke:var(--ink);stroke-width:2.2}
-.legend{display:flex;gap:14px;flex-wrap:wrap;padding:10px 14px;border-top:1px solid var(--rule);font-size:12px;color:var(--muted)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;padding:9px 12px;border-top:1px solid var(--rule-strong);font-size:12px;color:var(--muted)}
 .legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
 .zoom{position:absolute;right:10px;bottom:10px;display:flex;flex-direction:column;gap:4px}
-.zoom button{width:32px;height:32px;border-radius:8px;border:1px solid var(--rule);background:var(--panel);color:var(--ink);font:600 16px var(--sans);cursor:pointer}
-.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--ground);font:12px/1.35 var(--sans);padding:6px 8px;border-radius:6px;max-width:220px;transform:translate(-50%,calc(-100% - 10px))}
+.zoom button{width:32px;height:32px;border:1px solid var(--rule-strong);background:var(--panel);color:var(--ink);font:600 16px var(--sans);cursor:pointer}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--ground);font:12px/1.35 var(--sans);padding:6px 8px;max-width:220px;transform:translate(-50%,calc(-100% - 10px))}
 
-/* results */
-.rhead{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:10px;flex-wrap:wrap}
-.rhead h2{margin:0;font:500 26px/1.1 var(--serif);letter-spacing:-.01em}
+.rhead{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:10px;flex-wrap:wrap;border-bottom:1px solid var(--rule-strong);padding-bottom:6px}
+.rhead h2{margin:0;font:700 26px/1.1 var(--display)}
 .status{font:12px var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
-.notice{background:var(--warn-bg);color:var(--warn);border-radius:10px;padding:10px 14px;font-size:14px;margin-bottom:10px}
+.notice{background:var(--warn-bg);color:var(--warn);border-left:3px solid var(--warn);padding:10px 14px;font-size:14px;margin-bottom:10px}
 ol.results{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
-.card{background:var(--panel);border:1px solid var(--rule);border-radius:14px;overflow:hidden;display:grid;grid-template-columns:168px minmax(0,1fr)}
+.card{background:var(--panel);border:1px solid var(--rule);overflow:hidden;display:grid;grid-template-columns:168px minmax(0,1fr)}
 @media (max-width:520px){.card{grid-template-columns:1fr}}
 .card.sel{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
 .ph{background:var(--land);aspect-ratio:4/3;width:100%;max-width:100%;display:block;object-fit:cover;height:100%}
-.ph.blank{display:flex;align-items:center;justify-content:center;color:var(--faint);font:italic 14px var(--serif)}
+.ph.blank{display:flex;align-items:center;justify-content:center;color:var(--faint);font:italic 14px var(--display)}
 .cbody{padding:12px 14px;display:flex;flex-direction:column;gap:8px;min-width:0}
 .ctop{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
-.cname{font-weight:600;font-size:15.5px;line-height:1.3}
+.cname{font:700 16px/1.3 var(--display)}
 .caddr{color:var(--muted);font-size:13.5px}
 .pid{font:500 12px var(--mono);color:var(--accent);white-space:nowrap}
 .chips{display:flex;gap:5px;flex-wrap:wrap}
-.chip{background:var(--chip);border-radius:4px;padding:2px 7px;font-size:12px;font-variant-numeric:tabular-nums}
-.chip.warn{background:var(--warn-bg);color:var(--warn)}
+.chip{background:var(--chip);border:1px solid var(--rule);padding:1px 6px;font-size:12px;font-variant-numeric:tabular-nums}
+.chip.warn{background:var(--warn-bg);border-color:transparent;color:var(--warn)}
 .snips{display:flex;flex-direction:column;gap:6px;border-top:1px solid var(--rule);padding-top:8px}
 .snip{font-size:13.5px;line-height:1.45}
 .snip .cite{display:block;font:11.5px var(--mono);color:var(--muted)}
 .snip p{margin:0;overflow-wrap:anywhere}
-mark{background:var(--mark);color:var(--mark-ink);padding:0 2px;border-radius:2px}
+mark{background:var(--mark);color:var(--mark-ink);padding:0 2px}
 .acts{display:flex;gap:8px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:6px;font:500 13px var(--sans);text-decoration:none;border-radius:8px;padding:6px 11px;border:1px solid var(--rule);background:var(--panel);color:var(--ink);cursor:pointer}
+.btn{display:inline-flex;align-items:center;gap:6px;font:500 13px var(--sans);text-decoration:none;padding:6px 11px;border:1px solid var(--rule-strong);background:var(--panel);color:var(--ink);cursor:pointer}
 .btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
-.btn:hover{border-color:var(--accent)}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn.primary:hover{background:var(--accent-hover);color:var(--accent-ink)}
 .more{align-self:center;margin-top:6px}
 
-/* detail drawer */
-.detail{margin-top:12px;background:var(--panel);border:1px solid var(--rule);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+.detail{margin-top:12px;background:var(--panel);border:1px solid var(--rule-strong);overflow:hidden}
 .detail img{width:100%;max-width:100%;display:block;aspect-ratio:4/3;object-fit:cover;background:var(--land)}
 .dbody{padding:16px;display:flex;flex-direction:column;gap:12px}
-.dbody h3{margin:0;font:500 26px/1.1 var(--serif);letter-spacing:-.01em;text-wrap:balance}
+.dbody h3{margin:0;font:700 26px/1.1 var(--display);text-wrap:balance}
 .facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .facts div{border-top:1px solid var(--rule);padding-top:6px}
 .facts dt{font:11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
@@ -146,29 +248,81 @@ mark{background:var(--mark);color:var(--mark-ink);padding:0 2px;border-radius:2p
 .docs .meta{font:12px var(--mono);color:var(--muted);white-space:nowrap}
 .caption{font-size:12px;color:var(--muted)}
 .x{background:transparent;border:0;color:var(--muted);font:500 13px var(--sans);cursor:pointer;padding:0}
-.brand{display:flex;flex-direction:column;align-items:center;gap:6px}
-.brand .tag{font-size:13px;color:var(--muted)}
-.sub{margin:-6px 0 0;max-width:560px;color:var(--muted);font-size:16.5px;text-wrap:pretty}
-.examples{width:min(680px,100%);text-align:left}
-.examples h2{margin:0 0 8px;font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:center}
-.examples ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
-.examples button{display:flex;flex-direction:column;align-items:flex-start;gap:2px;max-width:220px;text-align:left;background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:9px 13px;font:14px/1.3 var(--sans);color:var(--ink);cursor:pointer}
-.examples button b{font-weight:600}
-.examples button span{font-size:12.5px;color:var(--muted)}
-.examples button:hover{border-color:var(--accent);color:var(--accent)}
-.stats{display:flex;justify-content:center;gap:10px 28px;flex-wrap:wrap;margin:0}
-.stats div{display:flex;flex-direction:column;align-items:center;gap:2px;min-width:0}
-.stats dt{order:2;font-size:12.5px;color:var(--muted)}
-.stats dd{order:1;margin:0;font:500 26px/1 var(--serif);letter-spacing:-.01em;color:var(--ink);font-variant-numeric:tabular-nums}
-body.searched .examples,body.searched .stats,body.searched .sub,body.searched .brand .tag{display:none}
-body.searched .hero{padding-right:52px}
 footer[hidden]{display:none}
-footer{margin-top:40px;border-top:1px solid var(--rule);padding-top:16px;font-size:12.5px;color:var(--muted);display:grid;gap:6px;max-width:78ch}
+footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;font-size:12.5px;color:var(--muted);display:grid;gap:6px;max-width:78ch}
 @media (prefers-reduced-motion: no-preference){ .dot{transition:opacity .2s, r .2s} .card{transition:border-color .15s} }
+@media (prefers-reduced-motion: reduce){ .examples button::before{transition:none} }
 </style>
 
 </head>
 <body>
+<header class="mast">
+  <div class="mast-in">
+    <a class="wordmark" href="index.html" aria-label="Open Book, home">OPEN BOOK</a>
+    <nav class="mastnav" aria-label="About Open Book"><a href="about.html">About</a><span aria-hidden="true">|</span><a href="about.html#coverage">Coverage</a></nav>
+    <svg class="skyline" viewBox="0 0 760 132" preserveAspectRatio="xMaxYMax slice" aria-hidden="true" focusable="false">
+      <defs>
+        <pattern id="screen" width="4" height="4" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".75" fill="#FAF8F2" opacity=".18"/></pattern>
+      </defs>
+      <!-- far row: taller, lighter, halftoned -->
+      <g class="far">
+        <rect class="opt" x="96" y="44" width="30" height="88"/>
+        <rect class="opt" x="150" y="26" width="22" height="106"/><rect class="opt" x="156" y="14" width="10" height="12"/>
+        <rect x="262" y="34" width="34" height="98"/>
+        <path d="M352 132V20l10-12 10 12v112z"/>
+        <rect x="430" y="40" width="28" height="92"/>
+        <rect x="512" y="18" width="26" height="114"/><rect x="522" y="4" width="3" height="14"/>
+        <rect x="604" y="30" width="36" height="102"/>
+        <rect x="690" y="48" width="30" height="84"/>
+      </g>
+      <rect x="0" y="0" width="760" height="132" fill="url(#screen)" class="opt"/>
+      <!-- near row -->
+      <g class="near">
+        <!-- walk-up with water tower -->
+        <rect class="opt" x="40" y="96" width="46" height="36"/>
+        <g class="opt"><path d="M52 80h16v11H52z"/><path d="M50 80l10-7 10 7z"/><path class="wire" d="M54 91l-2 5M66 91l2 5M60 91v5"/></g>
+        <rect class="opt" x="86" y="84" width="28" height="48"/>
+        <!-- setback tower with pyramid cap -->
+        <rect class="opt" x="118" y="58" width="36" height="74"/><rect class="opt" x="124" y="46" width="24" height="12"/><path class="opt" d="M126 46l10-12 10 12z"/>
+        <rect x="158" y="90" width="44" height="42"/>
+        <!-- deco tower: stacked setbacks, notched crown, needle -->
+        <rect x="206" y="50" width="42" height="82"/><rect x="212" y="36" width="30" height="14"/><rect x="218" y="26" width="18" height="10"/>
+        <path d="M220 26l7-14 7 14z"/><rect x="226" y="0" width="2" height="12"/>
+        <rect x="252" y="76" width="30" height="56"/>
+        <!-- slab with rooftop tank -->
+        <rect x="286" y="60" width="26" height="72"/><path d="M293 52h11v8h-11z"/>
+        <rect x="316" y="94" width="40" height="38"/>
+        <!-- stepped block with twin water towers -->
+        <rect x="360" y="70" width="52" height="62"/>
+        <path d="M368 58h11v9h-11z"/><path d="M367 58l6-5 6 5z"/><path class="wire" d="M370 67v3M377 67v3"/>
+        <path d="M394 60h10v7h-10z"/><path d="M393 60l6-5 6 5z"/>
+        <!-- thin supertall with slanted top -->
+        <path d="M418 132V30l20-16v118z"/>
+        <rect x="442" y="84" width="34" height="48"/>
+        <rect x="480" y="66" width="24" height="66"/>
+        <!-- mansard cornice building -->
+        <path d="M508 132V88l6-8h34l6 8v44z"/>
+        <rect x="558" y="54" width="32" height="78"/><rect x="566" y="44" width="16" height="10"/>
+        <rect x="594" y="92" width="44" height="40"/>
+        <!-- art-deco crown with fins -->
+        <rect x="642" y="46" width="40" height="86"/><path d="M646 46l6-10h28l6 10z"/><rect x="660" y="24" width="4" height="12"/><rect x="655" y="30" width="14" height="6"/>
+        <rect x="686" y="78" width="30" height="54"/>
+        <rect x="720" y="62" width="40" height="70"/><path d="M728 52h12v10h-12z"/><path d="M727 52l7-6 7 6z"/>
+      </g>
+      <!-- a few lit windows, set by hand -->
+      <g class="win">
+        <rect x="214" y="58" width="3" height="4"/><rect x="230" y="66" width="3" height="4"/><rect x="238" y="82" width="3" height="4"/><rect x="222" y="98" width="3" height="4"/>
+        <rect x="292" y="70" width="3" height="4"/><rect x="300" y="88" width="3" height="4"/>
+        <rect x="368" y="80" width="3" height="4"/><rect x="396" y="94" width="3" height="4"/>
+        <rect x="426" y="48" width="2" height="4"/><rect x="430" y="76" width="2" height="4"/>
+        <rect x="566" y="64" width="3" height="4"/><rect x="578" y="84" width="3" height="4"/>
+        <rect x="652" y="56" width="3" height="4"/><rect x="668" y="72" width="3" height="4"/><rect x="660" y="100" width="3" height="4"/>
+        <rect x="730" y="76" width="3" height="4"/>
+      </g>
+    </svg>
+  </div>
+</header>
+<div class="mast-rule"></div><div class="hairline"></div>
 <details class="menu" id="menu">
   <summary aria-label="Menu"><svg class="bars-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="x-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></summary>
   <nav aria-label="Site">
@@ -185,36 +339,46 @@ footer{margin-top:40px;border-top:1px solid var(--rule);padding-top:16px;font-si
 </details>
 <div class="wrap">
   <section class="hero" id="hero">
-    <div class="brand"><b>Open Book</b><span class="tag">NYC condo offering plans, made searchable.</span></div>
-    <h1>What do you want <em>to find?</em></h1>
-    <p class="sub">Search across NYC condo offering plans and amendments. Find the buildings, see the relevant language, and go straight to the source.</p>
-    <form class="search" id="f" autocomplete="off">
-      <div class="qbox">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-        <input id="q" type="search" enterkeyhint="search" placeholder="Ask a question about NYC condo offering plans" aria-label="What do you want to find?">
-      </div>
-      <div class="btns">
-        <button class="go" id="go" type="submit">Search plans</button>
-        <button class="lucky" id="lucky" type="button">Show me an example</button>
+    <p class="kicker">NYC condo offering plan search</p>
+    <h1>Find what’s in the filing.</h1>
+    <p class="sub">Search NYC condo offering plans, schedules, and amendments.</p>
+    <form class="search" id="f" role="search" autocomplete="off">
+      <label class="vh" for="q">Search NYC condo offering plans</label>
+      <div class="qrow">
+        <input id="q" name="q" type="search" enterkeyhint="search" placeholder="Ask a question, enter an address, or paste a plan ID">
+        <button class="go" id="go" type="submit">SEARCH</button>
       </div>
     </form>
-    <dl class="stats" id="stats" hidden aria-label="What you can search">
-      <div><dt>offering plans on file</dt><dd id="st-plans"></dd></div>
-      <div><dt>searchable in full text</dt><dd id="st-full"></dd></div>
-      <div><dt>pages indexed</dt><dd id="st-pages"></dd></div>
-    </dl>
     <div class="read" id="read" hidden></div>
-    <div class="examples" id="examples">
-      <h2>I want to…</h2>
-      <ul>
-        <li><button type="button" data-q="Condos with parking sold separately"><b>Find precedents</b><span>Condos with parking sold separately</span></button></li>
-        <li><button type="button" data-q="Brooklyn condos under 20 units, Schedule A purchase price"><b>Compare pricing</b><span>Brooklyn condos under 20 units, Schedule A purchase price</span></button></li>
-        <li><button type="button" data-q="Schedule B projected budget common charges"><b>Review budgets</b><span>Schedule B projected budget common charges</span></button></li>
-        <li><button type="button" data-q="managing agent"><b>Find teams</b><span>managing agent</span></button></li>
-        <li><button type="button" data-q="Manhattan floor plans"><b>Open floor plans</b><span>Manhattan floor plans</span></button></li>
-      </ul>
-    </div>
     <div class="notice" id="notice" hidden></div>
+
+    <section class="tries" aria-labelledby="tries-h">
+      <h2 id="tries-h">Try a search</h2>
+      <ul class="examples" id="examples">
+        <li><button type="button" data-q="Who has sold wine cellars?">Who has sold wine cellars?</button></li>
+        <li><button type="button" data-q="Compare pricing in Carroll Gardens">Compare pricing in Carroll Gardens</button></li>
+        <li><button type="button" data-q="Find Schedule B budgets">Find Schedule B budgets</button></li>
+        <li><button type="button" data-q="Show me the floor plans for 701 Prospect Place">Show me the floor plans for 701 Prospect Place</button></li>
+      </ul>
+    </section>
+
+    <section class="browse" aria-labelledby="browse-h">
+      <h2 id="browse-h">Browse by task</h2>
+      <nav class="topics" aria-label="Browse by task">
+        <a href="index.html?q=parking+sold+separately">Precedents</a>
+        <a href="index.html?q=Compare+pricing+in+Brooklyn">Pricing</a>
+        <a href="index.html?q=Schedule+B+budget">Budgets</a>
+        <a href="index.html?q=managing+agent">Project teams</a>
+        <a href="index.html?q=floor+plans">Floor plans</a>
+      </nav>
+    </section>
+
+    <aside class="coverage" aria-label="Source and coverage">
+      <span class="tag">Source</span>
+      <p>Plans, amendments and plan records come from the <a href="https://offeringplandatasearch.ag.ny.gov/" rel="noopener">NY Attorney General’s Real Estate Finance Bureau filing record</a>. Open Book is independent and not affiliated with that office.</p>
+      <span class="tag">Coverage</span>
+      <p id="stats">Open Book searches the plans and amendments indexed here. The Attorney General has not posted documents for every filing, so a missing result does not mean a feature or project does not exist.</p>
+    </aside>
   </section>
 
   <div class="after" id="after" hidden>
@@ -248,7 +412,9 @@ footer{margin-top:40px;border-top:1px solid var(--rule);padding-top:16px;font-si
     <div>
       <div id="detail"></div>
       <div class="rhead" style="margin-top:4px"><h2 id="rtitle">Latest filings</h2><span class="status" id="status" role="status"></span></div>
+      <div class="views" id="views" role="tablist" aria-label="Result views" hidden></div>
       <ol class="results" id="results"></ol>
+      <div class="rview" id="rview" hidden></div>
     </div>
   </div>
 
@@ -463,14 +629,49 @@ footer{margin-top:40px;border-top:1px solid var(--rule);padding-top:16px;font-si
   }
 
   // ---------- freeform parsing ----------
-  // Freeform question -> { q, borough, minUnits, maxUnits, minParking, read[] }
+  // Freeform question -> { q, borough, zips, minUnits, maxUnits, minParking, planId, address, view, focus, chips[] }
+  // Neighborhoods we can filter precisely use ZIP codes; the rest narrow to the borough only, and the chip says so.
+  const NBHD_ZIPS = {
+    "carroll gardens": ["11231"], "red hook": ["11231"], "park slope": ["11215", "11217"], "williamsburg": ["11211", "11249"],
+    "greenpoint": ["11222"], "dumbo": ["11201"], "long island city": ["11101", "11109"], "lic": ["11101", "11109"],
+    "astoria": ["11102", "11103", "11105", "11106"], "flushing": ["11354", "11355"], "tribeca": ["10007", "10013"],
+    "chelsea": ["10001", "10011"], "harlem": ["10026", "10027", "10030", "10037", "10039"],
+    "upper east side": ["10021", "10028", "10065", "10075", "10128"], "ues": ["10021", "10028", "10065", "10075", "10128"],
+    "upper west side": ["10023", "10024", "10025"], "uws": ["10023", "10024", "10025"],
+  };
+  const SUFFIX = { st: "street", ave: "avenue", av: "avenue", rd: "road", pl: "place", blvd: "boulevard", dr: "drive", ln: "lane", ct: "court", pkwy: "parkway", ter: "terrace", sq: "square" };
+  const DIR = { n: "north", s: "south", e: "east", w: "west" };
+
   function parseQuestion(input) {
     let s = " " + String(input || "").toLowerCase().replace(/[’']/g, "'").replace(/\s+/g, " ") + " ";
-    const out = { q: "", borough: null, minUnits: null, maxUnits: null, minParking: null, read: [] };
+    const out = { q: "", borough: null, zips: null, minUnits: null, maxUnits: null, minParking: null, planId: null, address: null, view: null, focus: null, chips: [] };
+    const chip = (k, label) => out.chips.push({ k, label });
     const W = { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, eleven: 11, twelve: 12, fifteen: 15, twenty: 20, thirty: 30, forty: 40, fifty: 50, hundred: 100 };
     const n = (t) => (t in W ? W[t] : parseInt(t, 10));
     const NUM = "(\\d{1,4}|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|fifteen|twenty|thirty|forty|fifty|hundred)";
     const cut = (re) => { s = s.replace(re, " "); };
+
+    // which result view fits the question, and which document section to put first
+    if (/\bfloor ?plans?\b|\bdrawings?\b/.test(s)) { out.view = "documents"; out.focus = "floor_plans"; }
+    else if (/\bschedule a\b/.test(s)) { out.view = "documents"; out.focus = "schedule_a"; }
+    else if (/\bschedule b\b|\bbudgets?\b|\bcommon charges?\b/.test(s)) { out.view = "documents"; out.focus = "schedule_b"; }
+    else if (/\bby-?laws\b/.test(s)) { out.view = "documents"; out.focus = "bylaws"; }
+    else if (/\bdeclaration\b/.test(s)) { out.view = "documents"; out.focus = "declaration"; }
+    else if (/\bmanagement agreement\b/.test(s)) { out.view = "documents"; out.focus = "management_agreement"; }
+    if (/\b(pric(e|es|ing)|compare|comparison|comps?|sell-?out)\b/.test(s)) { out.view = "compare"; cut(/\b(pric(e|es|ing)|compare|comparison|comps?|sell-?out)\b/g); }
+    else if (!out.view && /\b(managing agent|architect|selling agent|attorneys?|counsel|engineer|contractor|project teams?|team)\b/.test(s)) out.view = "passages";
+
+    // plan ID, e.g. CD240334
+    let m = s.match(/\b([a-z]{2}\d{6})\b/);
+    if (m) { out.planId = m[1].toUpperCase(); chip("planId", `Plan ${out.planId}`); cut(m[0]); }
+
+    // street address, e.g. "701 Prospect Place", "11-36 45th Rd", "220 E 12th St"
+    m = !out.planId && s.match(/\b(\d+(?:-\d+)?)\s+((?:(?:north|south|east|west|n|s|e|w)\.?\s+)?(?:\d+(?:st|nd|rd|th)?|[a-z]+)(?:\s+[a-z]+)?)\s+(street|st|avenue|ave|av|road|rd|place|pl|boulevard|blvd|drive|dr|lane|ln|court|ct|parkway|pkwy|terrace|ter|way|square|sq|plaza)\b\.?/);
+    if (m) {
+      const street = m[2].replace(/\./g, "").split(" ").map((w, i) => (i === 0 && DIR[w] ? DIR[w] : w)).join(" ");
+      out.address = { num: m[1], street: `${street} ${SUFFIX[m[3]] || m[3]}` };
+      chip("address", titleCase(`${out.address.num} ${out.address.street}`)); cut(m[0]);
+    }
 
     // boroughs + common neighborhoods
     const B = [
@@ -481,18 +682,23 @@ footer{margin-top:40px;border-top:1px solid var(--rule);padding-top:16px;font-si
       ["STATEN ISLAND", /\b(staten island|s\.i\.)\b/],
     ];
     for (const [boro, re] of B) {
-      const m = s.match(re);
-      if (m) { out.borough = boro; out.read.push(m[0].trim() === boro.toLowerCase() ? titleCase(boro) : `${titleCase(m[0].trim())} (${titleCase(boro)})`); cut(re); break; }
+      const mm = s.match(re);
+      if (!mm) continue;
+      const name = mm[0].trim();
+      out.borough = boro;
+      if (NBHD_ZIPS[name]) { out.zips = NBHD_ZIPS[name]; chip("area", `${titleCase(name)} · ZIP ${out.zips.join(", ")}`); }
+      else chip("area", name === boro.toLowerCase() || name === "the bronx" ? titleCase(boro) : `${titleCase(boro)} (for ${titleCase(name)})`);
+      cut(re); break;
     }
 
     // parking count / presence
-    let m = s.match(new RegExp(`\\b(at least|minimum of|min\\.?|over|more than)?\\s*${NUM}\\+?\\s*(or more\\s*)?(parking|garage)\\s*(spaces?|spots?|units?)?\\b`));
+    m = s.match(new RegExp(`\\b(at least|minimum of|min\\.?|over|more than)?\\s*${NUM}\\+?\\s*(or more\\s*)?(parking|garage)\\s*(spaces?|spots?|units?)?\\b`));
     if (m) {
       let k = n(m[2]); if (m[1] && /over|more than/.test(m[1])) k += 1;
-      out.minParking = k; out.read.push(`${k}+ parking units`); cut(m[0]);
+      out.minParking = k; chip("parking", `${k}+ parking units`); cut(m[0]);
       s += " parking ";
     } else if (/\b(with|has|have|offers?|include|including|and)\s+(a\s+)?(parking|garage)\b/.test(s) || /\bparking (units?|spaces?)\b/.test(s)) {
-      out.minParking = 1; out.read.push("has parking units");
+      out.minParking = 1; chip("parking", "Has parking units");
     }
 
     // unit counts (avoid "storage unit", "parking unit")
@@ -513,48 +719,62 @@ footer{margin-top:40px;border-top:1px solid var(--rule);padding-top:16px;font-si
       fn(...nums); cut(mm[0]); break;
     }
     if (/\b(small|boutique)\b/.test(s) && out.maxUnits == null) { out.maxUnits = 10; cut(/\b(small|boutique)\b/); }
-    if (out.minUnits != null && out.maxUnits != null && out.minUnits === out.maxUnits) out.read.push(`${out.maxUnits} units`);
-    else {
-      if (out.minUnits != null && out.maxUnits != null) out.read.push(`${out.minUnits}–${out.maxUnits} units`);
-      else if (out.maxUnits != null) out.read.push(`≤${out.maxUnits} units`);
-      else if (out.minUnits != null) out.read.push(`≥${out.minUnits} units`);
-    }
+    if (out.minUnits != null && out.maxUnits != null && out.minUnits === out.maxUnits) chip("units", `${out.maxUnits} units`);
+    else if (out.minUnits != null && out.maxUnits != null) chip("units", `${out.minUnits}–${out.maxUnits} units`);
+    else if (out.maxUnits != null) chip("units", `Under ${out.maxUnits + 1} units`);
+    else if (out.minUnits != null) chip("units", `${out.minUnits}+ units`);
+
+    // A building lookup (address or plan ID) shows that building; the rest of the words pick the view.
+    if (out.planId || out.address) return out;
 
     // keep quoted phrases, drop filler
     const quoted = []; s = s.replace(/"([^"]+)"/g, (_, p) => { quoted.push(`"${p.trim()}"`); return " "; });
-    const STOP = new Set(("a an the and of in on at to for from by with without that which who where what show me find list any all some " +
+    const STOP = new Set(("a an the and of in on at to for from by with without that which who whose where what show me see find list any all some " +
       "condo condos condominium condominiums building buildings plan plans offering offerings project projects development developments " +
-      "nyc new york city ny has have having include includes including mention mentions mentioning offer offers offered there is are " +
-      "can be only i want looking look search give please sale for-sale available").split(" "));
-    const words = s.replace(/[^a-z0-9\-\s]/g, " ").split(/\s+/).filter((w) => w && !STOP.has(w));
+      "nyc new york city ny has have having had include includes including mention mentions mentioning offer offers offered there is are " +
+      "can be only i want looking look search give please sale for-sale available jump open sold sell sells selling get").split(" "));
+    const words = s.replace(/[^a-z0-9\-\s]/g, " ").split(/\s+/).filter((w, i, a) => w && (w.length > 1 || /\d/.test(w) || a[i - 1] === "schedule") && !STOP.has(w));
     const ws = dedupe(words); while (ws[0] === "or") ws.shift(); while (ws[ws.length - 1] === "or") ws.pop();
     out.q = [...quoted, ...ws].join(" ").replace(/\bor\b/g, "OR").trim();
-    if (out.q) out.read.unshift(`“${out.q}”`);
+    if (out.q) out.chips.unshift({ k: "q", label: `Text: ${out.q}` });
     return out;
   }
   function dedupe(a) { const seen = new Set(); return a.filter((w) => (seen.has(w) ? false : (seen.add(w), true))); }
   function titleCase(s) { return String(s).toLowerCase().replace(/\b([a-z])/g, (c) => c.toUpperCase()); }
 
+  // ---------- fetching ----------
+  const PLAN_COLS = "plan_id,name,address,borough,zip,units_residential,units_parking,accepted_date,docs_posted,amendments_listed,latest_amendment_no,ag_url";
+  const inList = (ids) => `(${ids.map((id) => `"${id}"`).join(",")})`;
+  // Plan records straight from the plans table, shaped like search results.
+  async function recordRows(filter) {
+    const rows = await rest(`plans?select=${PLAN_COLS}&${filter}&order=accepted_date.desc.nullslast&limit=60`);
+    if (!rows.length) return rows;
+    const done = await rest(`documents?status=eq.done&plan_id=in.${inList(rows.map((r) => r.plan_id))}&select=plan_id`);
+    const cnt = new Map(); done.forEach((d) => cnt.set(d.plan_id, (cnt.get(d.plan_id) || 0) + 1));
+    return rows.map((r) => ({ ...r, docs_indexed: cnt.get(r.plan_id) || 0, hits: 0, snippets: [] }));
+  }
+  async function fetchRows(P) {
+    if (P.planId) return recordRows(`plan_id=eq.${encodeURIComponent(P.planId)}`);
+    if (P.address) return recordRows(`address=ilike.${encodeURIComponent(`${P.address.num} ${P.address.street}*`)}${P.borough ? `&borough=eq.${encodeURIComponent(P.borough)}` : ""}`);
+    if (P.zips && !P.q) {
+      const f = [`zip=in.(${P.zips.join(",")})`];
+      if (P.minUnits != null) f.push(`units_residential=gte.${P.minUnits}`);
+      if (P.maxUnits != null) f.push(`units_residential=lte.${P.maxUnits}`);
+      if (P.minParking != null) f.push(`units_parking=gte.${P.minParking}`);
+      return recordRows(f.join("&"));
+    }
+    const args = { q: P.q || null, p_borough: P.borough, p_min_units: P.minUnits, p_max_units: P.maxUnits, p_min_parking: P.minParking, p_limit: P.zips ? 400 : 60 };
+    let rows = await rpc("search_plans_v2", args);
+    if (P.zips && rows.length) {
+      const z = await rest(`plans?select=plan_id,zip&plan_id=in.${inList(rows.map((r) => r.plan_id))}`);
+      const zm = new Map(z.map((x) => [x.plan_id, x.zip]));
+      rows = rows.filter((r) => P.zips.includes(zm.get(r.plan_id))).slice(0, 60);
+    }
+    return rows;
+  }
+
   // ---------- search ----------
-  const EXAMPLES = [
-    "Find condos with fewer than 20 units and more than one parking space.",
-    "Which condo plans include MIH units?",
-    "Find buildings that offered parking separately from residential units.",
-    "Which plans include private roof rights?",
-    "Queens condos under 20 units with parking spaces",
-    "Brooklyn buildings under 10 units with a private roof terrace",
-    "Plans that mention the 485-x tax exemption",
-    "Condos where parking spaces can only be bought by unit owners",
-    "Condos with EV charging stations",
-    "Staten Island condos with a driveway",
-    "Manhattan condos with storage units",
-    "Condos with solar panels on the roof",
-    "Manhattan condos with a doorman or concierge",
-    "Condos with inclusionary housing (MIH)",
-    "Brooklyn condos under 10 units with no elevator",
-    "Astoria buildings with a gym or fitness center",
-  ];
-  let lastEx = -1, mapReady = null;
+  let mapReady = null, current = null, view = "buildings", viewToken = 0;
 
   function ensureMap() {
     if (!mapReady) mapReady = (async () => {
@@ -566,45 +786,146 @@ footer{margin-top:40px;border-top:1px solid var(--rule);padding-top:16px;font-si
     return mapReady;
   }
 
-  async function run() {
+  function run() {
     const text = $("q").value.trim();
     if (!text) { $("q").focus(); return; }
     const P = parseQuestion(text);
-    if (!P.q && !P.borough && P.minUnits == null && P.maxUnits == null && P.minParking == null) P.q = text;
+    if (!P.q && !P.borough && !P.zips && P.minUnits == null && P.maxUnits == null && P.minParking == null && !P.planId && !P.address) {
+      P.q = text; P.chips.unshift({ k: "q", label: `Text: ${text}` });
+    }
+    P.text = text;
+    try { history.replaceState(null, "", "?q=" + encodeURIComponent(text)); } catch (e) { /* file:// */ }
+    runP(P);
+  }
+
+  function renderInterpretation(P) {
+    $("read").innerHTML = `<span class="qecho">“${esc(P.text)}”</span>` +
+      (P.chips.length ? `<span class="chiprow" aria-label="How Open Book read your search">${P.chips.map((c) =>
+        `<span class="fchip">${esc(c.label)}<button type="button" data-rm="${esc(c.k)}" aria-label="Remove ${esc(c.label)}">×</button></span>`).join("")}</span>` : "");
+    $("read").hidden = false;
+  }
+  $("read").addEventListener("click", (e) => {
+    const b = e.target.closest("[data-rm]"); if (!b || !current) return;
+    const P = { ...current, chips: current.chips.filter((c) => c.k !== b.dataset.rm) };
+    ({ q: () => { P.q = ""; }, area: () => { P.borough = null; P.zips = null; }, units: () => { P.minUnits = null; P.maxUnits = null; },
+      parking: () => { P.minParking = null; }, planId: () => { P.planId = null; }, address: () => { P.address = null; } })[b.dataset.rm]?.();
+    runP(P);
+  });
+
+  async function runP(P) {
+    current = P;
     $("notice").hidden = true; $("go").disabled = true;
     document.body.classList.add("searched"); $("after").hidden = false; $("foot").hidden = false;
-    $("read").innerHTML = "Searching for " + P.read.map((r) => `<span>${esc(r)}</span>`).join(""); $("read").hidden = !P.read.length;
-    $("status").textContent = "Searching…"; $("results").innerHTML = ""; $("detail").innerHTML = "";
-    const args = { q: P.q || null, p_borough: P.borough, p_min_units: P.minUnits, p_max_units: P.maxUnits, p_min_parking: P.minParking, p_limit: 60 };
+    renderInterpretation(P);
+    $("status").textContent = "Searching…"; $("results").innerHTML = ""; $("rview").innerHTML = ""; $("detail").innerHTML = ""; $("views").hidden = true;
     try {
-      const [rows] = await Promise.all([rpc("search_plans", args), ensureMap()]);
+      const [rows] = await Promise.all([fetchRows(P), ensureMap()]);
+      if (current !== P) return;
       lastRows = rows;
-      $("rtitle").textContent = rows.length ? `${rows.length} plan${rows.length === 1 ? "" : "s"}` : "No plans found";
-      $("status").textContent = rows.length ? (P.q ? "ranked by matching pages" : "newest first") : "Try fewer words, or press Give me an example.";
+      const noun = P.address || P.planId ? "building" : "matching building";
+      $("rtitle").textContent = !rows.length ? "No plans found" : rows.length === 60 ? (P.q ? `Top 60 ${noun}s` : "60 newest buildings") : `${rows.length} ${noun}${rows.length === 1 ? "" : "s"}`;
+      $("status").textContent = rows.length ? (P.q ? "ranked by matching pages" : "newest first")
+        : P.address ? "No plan on file at that address. Check the spelling, or search the building name." : "Try fewer words, or remove a filter above.";
       $("maptitle").textContent = `${rows.length} matching plan${rows.length === 1 ? "" : "s"}`;
       renderCards(rows);
+      renderViews(P, rows);
       highlight(rows.map((r) => r.plan_id));
       const pts = points.filter((p) => rows.some((r) => r.plan_id === p.plan_id));
-      if (pts.length) { const xy = pts.map((p) => project(p.lat, p.lng)); const xs = xy.map((a) => a[0]), ys = xy.map((a) => a[1]); const bx = { x: Math.min(...xs), y: Math.min(...ys), w: Math.max(40, Math.max(...xs) - Math.min(...xs)), h: Math.max(40, Math.max(...ys) - Math.min(...ys)) }; zoomTo(bx, 0.15); }
+      if (pts.length) { const xy = pts.map((p) => project(p.lat, p.lng)); const xs = xy.map((a) => a[0]), ys = xy.map((a) => a[1]); const bx = { x: Math.min(...xs), y: Math.min(...ys), w: Math.max(120, Math.max(...xs) - Math.min(...xs)), h: Math.max(120, Math.max(...ys) - Math.min(...ys)) }; bx.x -= Math.max(0, 120 - (Math.max(...xs) - Math.min(...xs))) / 2; bx.y -= Math.max(0, 120 - (Math.max(...ys) - Math.min(...ys))) / 2; zoomTo(bx, 0.15); }
       else { vb = { ...full }; setVB(); }
       $("boros").querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", "false"));
     } catch (e) { showError(e); $("status").textContent = ""; }
     finally { $("go").disabled = false; }
   }
   $("f").addEventListener("submit", (e) => { e.preventDefault(); run(); });
-
-  const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  $("lucky").addEventListener("click", async () => {
-    let i; do { i = Math.floor(Math.random() * EXAMPLES.length); } while (i === lastEx && EXAMPLES.length > 1);
-    lastEx = i; const t = EXAMPLES[i]; const input = $("q");
-    $("lucky").disabled = true;
-    if (reduce) input.value = t;
-    else { input.value = ""; for (let k = 1; k <= t.length; k++) { input.value = t.slice(0, k); await new Promise((r) => setTimeout(r, 14)); } }
-    $("lucky").disabled = false;
-    run();
-  });
-
   $("examples").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; $("q").value = b.dataset.q; run(); });
+
+  // ---------- result views: one search, several ways to read it ----------
+  const VIEWS = { buildings: "Buildings", passages: "Passages", documents: "Documents", compare: "Compare" };
+  function renderViews(P, rows) {
+    const avail = ["buildings"];
+    if (rows.some((r) => (r.snippets || []).length)) avail.push("passages");
+    if (P.view === "documents" || rows.some((r) => r.docs_indexed)) avail.push("documents");
+    if (P.view === "compare") avail.push("compare");
+    const start = rows.length && avail.includes(P.view) ? P.view : "buildings";
+    $("views").innerHTML = avail.map((v) => `<button type="button" role="tab" data-v="${v}" aria-selected="false">${VIEWS[v]}</button>`).join("");
+    $("views").hidden = !rows.length || avail.length < 2;
+    showView(start);
+  }
+  $("views").addEventListener("click", (e) => { const b = e.target.closest("[data-v]"); if (b) showView(b.dataset.v); });
+  function showView(v) {
+    view = v; viewToken++;
+    $("views").querySelectorAll("button").forEach((b) => b.setAttribute("aria-selected", String(b.dataset.v === v)));
+    $("results").hidden = v !== "buildings"; $("rview").hidden = v === "buildings";
+    if (v === "passages") renderPassages(lastRows);
+    if (v === "documents") renderDocuments(lastRows, current);
+    if (v === "compare") renderCompare(lastRows);
+  }
+  $("rview").addEventListener("click", (e) => { const b = e.target.closest("[data-open]"); if (b) openDetail(b.dataset.open, false); });
+
+  function renderPassages(rows) {
+    const items = rows.flatMap((r) => (r.snippets || []).map((s) => ({ r, s })));
+    $("rview").innerHTML = items.length
+      ? `<p class="vnote">${items.length} passage${items.length === 1 ? "" : "s"} from ${new Set(items.map((i) => i.r.plan_id)).size} plans. Each cites the document and page.</p>
+        <ol class="passages">${items.map(({ r, s }) => `<li><div class="pmeta"><button type="button" class="plink" data-open="${esc(r.plan_id)}">${esc(tc(r.name))}</button><span class="cite">${esc(r.plan_id)} · ${esc(docLabel(s.doc))} · p. ${esc(s.page)}</span></div><p>${snipHtml(s.text)}</p></li>`).join("")}</ol>`
+      : `<p class="vnote">No passages for this search. Passages come from plans whose documents are searchable in full text.</p>`;
+  }
+
+  const KINDS = [["floor_plans", "Floor plans", "floor-plans"], ["schedule_a", "Schedule A", "pricing"], ["schedule_b", "Schedule B", "budget"],
+    ["declaration", "Declaration", "documents"], ["bylaws", "By-laws", "documents"], ["management_agreement", "Management agreement", "team"]];
+  async function renderDocuments(rows, P) {
+    const tok = viewToken, box = $("rview"), list = rows.slice(0, 15), ready = list.filter((r) => r.docs_indexed);
+    box.innerHTML = `<p class="vnote">Finding the pages…</p>`;
+    try {
+      const ids = ready.map((r) => r.plan_id);
+      const [docs, all] = await Promise.all([
+        ids.length ? rest(`documents?status=eq.done&plan_id=in.${inList(ids)}&select=file_id,plan_id,doc_kind,amendment_no`, null, 600000) : [],
+        ids.length ? rpc("plan_sections", { p_ids: ids }, 600000) : [],
+      ]);
+      if (tok !== viewToken) return;
+      const lab = new Map(docs.map((d) => [d.file_id, d.doc_kind === "amendment" ? `Amendment ${d.amendment_no ?? ""}`.trim() : "Offering Plan"]));
+      const secBy = new Map(ids.map((id) => [id, all.filter((x) => x.plan_id === id)]));
+      const order = P.focus ? [KINDS.find((k) => k[0] === P.focus), ...KINDS.filter((k) => k[0] !== P.focus)] : KINDS;
+      const pages = (a, b) => (a === b ? `p. ${a}` : `pp. ${a}–${b}`);
+      box.innerHTML = `<p class="vnote">Pages headed with each section’s name in the searched documents. Page numbers are the PDF’s own; open the plan documents on the AG site and go to the page.</p><ol class="doccards">` +
+        list.map((r) => {
+          const sec = secBy.get(r.plan_id), page = pageFor(r);
+          let body;
+          if (!r.docs_indexed) body = `<p class="faint">This plan’s documents are not searchable here yet.</p>`;
+          else if (!sec) body = `<p class="faint">Couldn’t load this plan’s page index.</p>`;
+          else {
+            const trs = order.map(([k, label, tab]) => {
+              const runs = sec.filter((x) => x.kind === k); if (!runs.length) return "";
+              const top = [...runs].sort((a, b) => (b.last_page - b.first_page) - (a.last_page - a.first_page) || a.first_page - b.first_page).slice(0, 3)
+                .sort((a, b) => a.file_id - b.file_id || a.first_page - b.first_page);
+              return `<tr${k === P.focus ? ' class="focus"' : ""}><th scope="row">${label}</th><td>${top.map((x) => `${esc(lab.get(x.file_id) || "Document")}, ${pages(x.first_page, x.last_page)}`).join("; ")}${runs.length > 3 ? ` <span class="faint">+${runs.length - 3} more</span>` : ""}</td><td>${page ? `<a href="${esc(page)}#${tab}">Building page</a>` : ""}</td></tr>`;
+            }).join("");
+            body = trs ? `<div class="tscroll"><table class="sect"><tbody>${trs}</tbody></table></div>` : `<p class="faint">No section headings found in the searched pages.</p>`;
+          }
+          return `<li><div class="ctop"><div><a class="cname" href="${esc(page || agDocs(r.plan_id))}">${esc(tc(r.name))}</a><div class="caddr">${esc(tc(r.address))}, ${esc(tc(r.borough))}</div></div><span class="pid">${esc(r.plan_id)}</span></div>${body}
+            <div class="acts"><a class="btn" href="${esc(agDocs(r.plan_id))}" target="_blank" rel="noopener">Open plan documents ↗</a></div></li>`;
+        }).join("") + `</ol>` + (rows.length > 15 ? `<p class="vnote">Showing the first 15 of ${rows.length} plans.</p>` : "");
+    } catch (e) { if (tok === viewToken) box.innerHTML = `<p class="vnote">Couldn’t load the page index. Try again.</p>`; }
+  }
+
+  const money = (v) => { const x = Number(String(v || "").replace(/[$,]/g, "")); return x > 0 ? x : null; };
+  const fmtMoney = (x) => x == null ? "—" : x >= 1e6 ? "$" + (x / 1e6).toFixed(2) + "M" : "$" + Math.round(x / 1000).toLocaleString("en-US") + "K";
+  async function renderCompare(rows) {
+    const tok = viewToken, box = $("rview");
+    box.innerHTML = `<p class="vnote">Loading the AG totals…</p>`;
+    try {
+      const sel = encodeURIComponent('plan_id,zip,init:meta->plan->>"Initial Price",cur:meta->plan->>"Current Price"');
+      const data = rows.length ? await rest(`plans?select=${sel}&plan_id=in.${inList(rows.map((r) => r.plan_id))}`, null, 600000) : [];
+      if (tok !== viewToken) return;
+      const by = new Map(data.map((d) => [d.plan_id, d]));
+      const list = [...rows].sort((a, b) => String(b.accepted_date || "").localeCompare(String(a.accepted_date || "")));
+      box.innerHTML = `<p class="vnote">Total offering prices as recorded by the NY Attorney General: the sum of every unit at the plan’s prices, not sale prices. Unit-by-unit Schedule A prices and $/sf are not extracted yet.</p>
+        <div class="tscroll"><table class="cmp"><thead><tr><th>Building</th><th>Accepted</th><th class="n">Units</th><th class="n">Initial total</th><th class="n">Current</th></tr></thead><tbody>` +
+        list.map((r) => { const d = by.get(r.plan_id) || {}; const i = money(d.init), c = money(d.cur);
+          return `<tr><td><button type="button" class="plink" data-open="${esc(r.plan_id)}">${esc(tc(r.name))}</button><span class="pid">${esc(r.plan_id)}${d.zip ? ` · ${esc(d.zip)}` : ""}</span></td><td class="m">${esc(date(r.accepted_date))}</td><td class="n">${r.units_residential ?? "—"}<span class="sub2">${r.units_parking ? `+${r.units_parking} pkg` : ""}</span></td><td class="n">${fmtMoney(i)}</td><td class="n">${c && c !== i ? fmtMoney(c) : "—"}</td></tr>`; }).join("") +
+        `</tbody></table></div>`;
+    } catch (e) { if (tok === viewToken) box.innerHTML = `<p class="vnote">Couldn’t load the AG totals. Try again.</p>`; }
+  }
 
   // ---------- coverage numbers ----------
   async function countRows(path) {
@@ -620,14 +941,15 @@ footer{margin-top:40px;border-top:1px solid var(--rule);padding-top:16px;font-si
         countRows("pages?select=plan_id"),
       ]);
       if (plans == null || pages == null) return;
-      const f = (n) => n.toLocaleString("en-US");
-      $("st-plans").textContent = f(plans); $("st-full").textContent = f(full); $("st-pages").textContent = f(pages);
-      $("stats").hidden = false;
+      const f = (n) => `<b>${n.toLocaleString("en-US")}</b>`;
+      $("stats").insertAdjacentHTML("afterbegin", `Open Book holds ${f(plans)} plan records. ${f(full)} have documents searchable in full text, ${f(pages)} pages in all. `);
     } catch (e) { /* the numbers are optional */ }
   }
   loadStats();
 
   ensureMap().catch(() => {}); // warm the map quietly; it only shows after a search
+  const startQ = new URLSearchParams(location.search).get("q");
+  if (startQ) { $("q").value = startQ; run(); }
   $("q").focus();
 })();
 </script>
