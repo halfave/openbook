@@ -1,0 +1,16 @@
+/* Hamburger menu shared by every page. Uses the color tokens each page defines. */
+.menu{position:absolute;top:14px;right:16px;z-index:50}
+.menu summary{list-style:none;width:42px;height:42px;border-radius:10px;border:1px solid var(--rule);background:var(--panel);color:var(--ink);display:grid;place-items:center;cursor:pointer}
+.menu summary::-webkit-details-marker{display:none}
+.menu summary:hover{border-color:var(--accent)}
+.menu .x-icon{display:none}
+.menu[open] .x-icon{display:block}
+.menu[open] .bars-icon{display:none}
+.menu nav{position:absolute;right:0;top:50px;width:min(240px,calc(100vw - 32px));background:var(--panel);border:1px solid var(--rule);border-radius:12px;box-shadow:0 1px 2px rgba(19,32,27,.06),0 8px 24px rgba(19,32,27,.12);padding:6px;display:flex;flex-direction:column}
+.menu nav a{padding:9px 12px;border-radius:8px;text-decoration:none;color:var(--ink);font:15px/1.3 var(--sans)}
+.menu nav a:hover{background:var(--chip)}
+.menu nav a[aria-current="page"]{color:var(--accent);font-weight:600}
+.menu hr{border:0;border-top:1px solid var(--rule);margin:6px 4px}
+.menu nav .fine a{font-size:13.5px;color:var(--muted);padding:7px 12px}
+.menu small{display:block;padding:8px 12px 6px;font:12px/1.4 var(--sans);color:var(--faint)}
+.menu .fine{display:flex;flex-direction:column}

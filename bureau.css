@@ -1,0 +1,67 @@
+/* Bureau Modern: color tokens, type, masthead and menu shared by every Open Book page. */
+:root{
+  --ground:#FAF8F2; --panel:#FFFFFF; --ink:#242828; --muted:#5C605D; --faint:#8C8F8A; --rule:#D6D3C9; --rule-strong:#242828;
+  --accent:#65153B; --accent-hover:#4E0F2D; --accent-ink:#FFFFFF; --accent-soft:#F3E7EA;
+  --mast:#879CB4; --sky:#2E3D51; --sky-far:#61778F; --lit:#F4E6B8;
+  --mark:#F3D98B; --mark-ink:#242828;
+  --land:#ECE8DD; --land-edge:#CFCABC; --water:#FAF8F2; --dot-meta:#A8A498; --hit:#D9822B;
+  --chip:#EFEBE0; --warn:#7A4A00; --warn-bg:#F7EBD2; --shadow:none;
+  --display:"Libre Caslon Text",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --serif:var(--display);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --ground:#17191A; --panel:#1F2223; --ink:#ECE8DE; --muted:#A8A69E; --faint:#7A7C77; --rule:#34383A; --rule-strong:#ECE8DE;
+    --accent:#D4789B; --accent-hover:#E595B3; --accent-ink:#17191A; --accent-soft:#34212A;
+    --mast:#4A5B70; --sky:#1C2633; --sky-far:#34455A; --lit:#8C7B45;
+    --mark:#5B4A12; --mark-ink:#FFF3CC;
+    --land:#26292A; --land-edge:#383C3D; --water:#17191A; --dot-meta:#5E625F; --hit:#E8A33B;
+    --chip:#2A2D2E; --warn:#F2BC66; --warn-bg:#2D2412;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --ground:#17191A; --panel:#1F2223; --ink:#ECE8DE; --muted:#A8A69E; --faint:#7A7C77; --rule:#34383A; --rule-strong:#ECE8DE;
+  --accent:#D4789B; --accent-hover:#E595B3; --accent-ink:#17191A; --accent-soft:#34212A;
+  --mast:#4A5B70; --sky:#1C2633; --sky-far:#34455A; --lit:#8C7B45;
+  --mark:#5B4A12; --mark-ink:#FFF3CC;
+  --land:#26292A; --land-edge:#383C3D; --water:#17191A; --dot-meta:#5E625F; --hit:#E8A33B;
+  --chip:#2A2D2E; --warn:#F2BC66; --warn-bg:#2D2412;
+}
+
+/* ---------- masthead ---------- */
+.mast{background:var(--mast);position:relative;overflow:hidden}
+.mast-in{max-width:1180px;margin:0 auto;padding:0 0 0 16px;height:clamp(92px,13vw,132px);display:flex;align-items:flex-end;justify-content:space-between;position:relative}
+.wordmark{position:relative;z-index:2;display:block;flex:none;text-decoration:none;color:var(--accent);
+  font:700 clamp(36px,7vw,84px)/.82 var(--display);letter-spacing:.015em;padding-bottom:clamp(10px,1.6vw,16px);
+  /* hand-set feel: white keyline plus a slightly off-register ink shadow, like an early-web GIF title */
+  text-shadow:
+    -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff,
+    0 -1.5px 0 #fff, 0 1.5px 0 #fff, -1.5px 0 0 #fff, 1.5px 0 0 #fff,
+    3px 3px 0 rgba(36,40,40,.55)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .wordmark{color:#8E2455} }
+:root[data-theme="dark"] .wordmark{color:#8E2455}
+.skyline{flex:1 1 0;min-width:90px;max-width:760px;height:100%;margin-left:clamp(16px,3vw,40px);display:block;align-self:stretch}
+.skyline .far{fill:var(--sky-far)}
+.skyline .near{fill:var(--sky)}
+.skyline .win{fill:var(--lit)}
+.skyline .wire{stroke:var(--sky);stroke-width:1.4;fill:none}
+.mast-rule{height:7px;background:var(--accent);border-bottom:1px solid var(--ink)}
+.mast-rule + .hairline{height:3px;border-bottom:1px solid var(--rule)}
+@media (max-width:640px){ .skyline .opt{display:none} }
+@media (max-width:420px){ .skyline .far{display:none} }
+.menu{top:12px}
+.menu summary{background:var(--ground);border-radius:2px;border-color:var(--ink)}
+.mastnav{position:absolute;top:16px;right:66px;z-index:3;display:flex;gap:8px;align-items:center;background:var(--ground);border:1px solid var(--ink);padding:3px 10px;font:500 13px var(--sans)}
+.mastnav a{text-decoration:none;color:var(--ink)}
+.mastnav a:hover{color:var(--accent);text-decoration:underline}
+.mastnav span{color:var(--faint)}
+@media (max-width:640px){ .mastnav{display:none} }
+
+/* shorter masthead on inner pages */
+.mast.compact .mast-in{height:clamp(70px,9vw,100px)}
+.mast.compact .wordmark{font-size:clamp(32px,5.6vw,60px);padding-bottom:clamp(8px,1.2vw,12px)}
+.mast.compact + .mast-rule{height:5px}
