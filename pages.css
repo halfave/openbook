@@ -44,3 +44,58 @@ details p{margin:8px 0 0}
 code{font:14px var(--mono);background:var(--chip);border-radius:4px;padding:1px 5px}
 footer{max-width:760px;margin:28px auto 0;font-size:13px;color:var(--muted);display:grid;gap:6px}
 footer a{color:var(--muted)}
+
+/* building pages + directory */
+main.bldg{max-width:860px}
+.crumbs{font-size:13.5px;color:var(--muted);margin:0 0 10px}
+.crumbs a{color:var(--muted)}
+.addr{margin:0;font-size:17px}
+.bldg .meta{margin:6px 0 20px}
+.tabs{position:sticky;top:0;z-index:5;display:flex;gap:4px;overflow-x:auto;background:var(--panel);border-bottom:1px solid var(--rule);margin:0 0 8px;padding:8px 0;scrollbar-width:thin}
+.tabs a{flex:none;padding:7px 12px;border-radius:8px;text-decoration:none;color:var(--muted);font-size:14.5px;white-space:nowrap}
+.tabs a:hover{background:var(--chip);color:var(--ink)}
+.tabs a[aria-current="true"]{background:var(--accent);color:var(--accent-ink)}
+.js-tabs section.tab h2{display:none}
+.glance{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin:18px 0}
+.glance div{border-top:1px solid var(--rule);padding-top:6px;min-width:0}
+.glance dt{font:11px var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.glance dd{margin:0;font:500 17px/1.35 var(--sans);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.acts{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.btn{display:inline-flex;align-items:center;font:500 14px var(--sans);text-decoration:none;border-radius:8px;padding:8px 13px;border:1px solid var(--rule);background:var(--panel);color:var(--ink)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn:hover{border-color:var(--accent)}
+.cov,.src{font-size:14px;color:var(--muted)}
+.pending{background:var(--chip);border-radius:10px;padding:10px 14px;font-size:14.5px}
+.where{border:1px solid var(--rule);border-radius:10px;padding:10px 14px;margin:12px 0;font-size:14.5px}
+.where-h{font:11px var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.where ul{margin:6px 0 0;padding-left:18px}
+.faint{color:var(--muted)}
+.massing{margin:20px 0}
+.massing img{width:100%;height:auto;border-radius:12px;display:block;background:var(--chip)}
+.massing figcaption{font-size:12.5px;color:var(--muted);margin-top:6px}
+.near,.dir{list-style:none;padding:0;margin:8px 0}
+.near li,.dir li{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2px 12px;padding:8px 0;border-bottom:1px solid var(--rule);max-width:none}
+.near span,.dir span{font-size:13.5px;color:var(--muted)}
+.count{font:13px var(--mono);color:var(--muted)}
+.psearch{border:1px solid var(--rule);border-radius:12px;padding:14px;margin:18px 0;display:grid;gap:10px}
+.psearch label{font-weight:600}
+.prow{display:flex;gap:8px}
+.prow input{flex:1;min-width:0;font:16px var(--sans);padding:9px 12px;border:1px solid var(--rule);border-radius:8px;background:var(--ground);color:var(--ink)}
+.prow button,.psearch .chips button{font:500 14px var(--sans);border-radius:8px;padding:8px 14px;cursor:pointer;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink)}
+.psearch .chips{display:flex;gap:6px;flex-wrap:wrap}
+.psearch .chips button{background:var(--chip);border-color:transparent;color:var(--ink);padding:4px 10px;font-size:13px}
+.hits{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.hits li{max-width:none;border-top:1px solid var(--rule);padding-top:8px}
+.hits .cite{font:12px var(--mono);color:var(--muted)}
+.hits p{margin:2px 0 0;font-size:14.5px;overflow-wrap:anywhere}
+mark{background:#F3D98B;color:#13201B;padding:0 2px;border-radius:2px}
+.doclist{list-style:none;padding:0;margin:8px 0}
+.doclist li{display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px 12px;padding:8px 0;border-bottom:1px solid var(--rule);max-width:none}
+.doclist .m{font:12.5px var(--mono);color:var(--muted)}
+.tscroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+th,td{text-align:left;padding:7px 10px 7px 0;border-bottom:1px solid var(--rule);white-space:nowrap}
+th{font:11px var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.record{margin-top:36px;border-top:1px solid var(--rule);font-size:14px;color:var(--muted)}
+.record h2{font-size:20px;color:var(--ink)}
+.toc a{margin:0 2px}
