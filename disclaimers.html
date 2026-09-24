@@ -10,12 +10,25 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,500;1,6..72,400;1,6..72,500&display=swap">
 <link rel="stylesheet" href="pages.css">
+<link rel="stylesheet" href="menu.css">
 </head>
 <body>
 <header class="top">
   <a class="brand" href="index.html">Open Book</a>
-  <nav aria-label="Site"><a href="index.html">Search</a><a href="about.html">About</a><a href="faq.html">FAQ</a></nav>
 </header>
+<details class="menu" id="menu">
+  <summary aria-label="Menu"><svg class="bars-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="x-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></summary>
+  <nav aria-label="Site">
+    <a href="index.html">Search</a>
+    <a href="about.html">About</a>
+    <a href="about.html#coverage">Coverage</a>
+    <a href="faq.html">FAQ</a>
+    <a href="mailto:hello@halfave.co?subject=Open%20Book%20error%20report">Report an error</a>
+    <hr>
+    <div class="fine"><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a><a href="disclaimers.html">Disclaimers</a></div>
+    <small>© 2026 Half Ave Company LLC</small>
+  </nav>
+</details>
 <main>
   <h1>Disclaimers</h1>
   <p class="meta">Effective September 24, 2026</p>
@@ -50,8 +63,8 @@
 </main>
 <footer>
   <div>Open Book · NYC condo offering plan search · Source: NY Attorney General offering plan database</div>
-  <nav aria-label="Footer"><a href="about.html">About</a><a href="about.html#coverage">Coverage</a><a href="faq.html">FAQ</a><a href="mailto:hello@halfave.co?subject=Open%20Book%20error%20report">Report an error</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a><a href="disclaimers.html" aria-current="page">Disclaimers</a></nav>
   <div>© 2026 Half Ave Company LLC. Open Book is a service of Half Ave Company LLC.</div>
 </footer>
+<script src="menu.js"></script>
 </body>
 </html>

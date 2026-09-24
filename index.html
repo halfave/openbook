@@ -9,6 +9,7 @@
 <meta property="og:description" content="NYC condo offering plans, made searchable.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230E6B5B'/%3E%3Cpath d='M9 23V9h8a5 5 0 0 1 0 10h-8' fill='none' stroke='white' stroke-width='3'/%3E%3C/svg%3E">
 
+<link rel="stylesheet" href="menu.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,500;1,6..72,400;1,6..72,500&display=swap">
@@ -154,29 +155,32 @@ mark{background:var(--mark);color:var(--mark-ink);padding:0 2px;border-radius:2p
 @media (max-width:640px){.examples ul{grid-template-columns:1fr}}
 .examples button{width:100%;height:100%;text-align:left;background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:10px 14px;font:14px/1.4 var(--sans);color:var(--ink);cursor:pointer}
 .examples button:hover{border-color:var(--accent);color:var(--accent)}
-.intro{max-width:880px;margin:24px auto 0;border-top:1px solid var(--rule);padding-top:40px}
-.intro h2{margin:0 0 10px;font:500 clamp(28px,4vw,38px)/1.1 var(--serif);letter-spacing:-.02em}
-.intro .lead{margin:0 0 28px;max-width:68ch;font-size:16.5px;color:var(--muted)}
-.intro .kicker{margin:0 0 10px;font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.steps{list-style:none;margin:0 0 28px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;counter-reset:s}
-@media (max-width:760px){.steps{grid-template-columns:1fr}}
-.steps li{background:var(--panel);border:1px solid var(--rule);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:6px;counter-increment:s}
-.steps li::before{content:counter(s);font:500 12px var(--mono);color:var(--accent)}
-.steps b{font-weight:600}
-.steps span{color:var(--muted);font-size:14.5px}
-.notes{display:grid;gap:10px;font-size:14px;color:var(--muted)}
-.notes p{margin:0;max-width:78ch}
-.notes b{color:var(--ink)}
-body.searched .examples,body.searched .intro,body.searched .sub,body.searched .brand .tag{display:none}
-body:not(.searched) footer .searchnote{display:none}
-.flinks{display:flex;gap:4px 14px;flex-wrap:wrap}
-footer a{color:var(--muted)}
+.stats{display:flex;justify-content:center;gap:10px 28px;flex-wrap:wrap;margin:0}
+.stats div{display:flex;flex-direction:column;align-items:center;gap:2px;min-width:0}
+.stats dt{order:2;font-size:12.5px;color:var(--muted)}
+.stats dd{order:1;margin:0;font:500 26px/1 var(--serif);letter-spacing:-.01em;color:var(--ink);font-variant-numeric:tabular-nums}
+body.searched .examples,body.searched .stats,body.searched .sub,body.searched .brand .tag{display:none}
+body.searched .hero{padding-right:52px}
+footer[hidden]{display:none}
 footer{margin-top:40px;border-top:1px solid var(--rule);padding-top:16px;font-size:12.5px;color:var(--muted);display:grid;gap:6px;max-width:78ch}
 @media (prefers-reduced-motion: no-preference){ .dot{transition:opacity .2s, r .2s} .card{transition:border-color .15s} }
 </style>
 
 </head>
 <body>
+<details class="menu" id="menu">
+  <summary aria-label="Menu"><svg class="bars-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="x-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></summary>
+  <nav aria-label="Site">
+    <a href="index.html">Search</a>
+    <a href="about.html">About</a>
+    <a href="about.html#coverage">Coverage</a>
+    <a href="faq.html">FAQ</a>
+    <a href="mailto:hello@halfave.co?subject=Open%20Book%20error%20report">Report an error</a>
+    <hr>
+    <div class="fine"><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a><a href="disclaimers.html">Disclaimers</a></div>
+    <small>© 2026 Half Ave Company LLC</small>
+  </nav>
+</details>
 <div class="wrap">
   <section class="hero" id="hero">
     <div class="brand"><b>Open Book</b><span class="tag">NYC condo offering plans, made searchable.</span></div>
@@ -192,6 +196,11 @@ footer{margin-top:40px;border-top:1px solid var(--rule);padding-top:16px;font-si
         <button class="lucky" id="lucky" type="button">Show me an example</button>
       </div>
     </form>
+    <dl class="stats" id="stats" hidden aria-label="What you can search">
+      <div><dt>offering plans on file</dt><dd id="st-plans"></dd></div>
+      <div><dt>searchable in full text</dt><dd id="st-full"></dd></div>
+      <div><dt>pages indexed</dt><dd id="st-pages"></dd></div>
+    </dl>
     <div class="read" id="read" hidden></div>
     <div class="examples" id="examples">
       <h2>Example searches</h2>
@@ -203,22 +212,6 @@ footer{margin-top:40px;border-top:1px solid var(--rule);padding-top:16px;font-si
       </ul>
     </div>
     <div class="notice" id="notice" hidden></div>
-  </section>
-
-  <section class="intro" id="intro">
-    <h2>The answer is in the plan.</h2>
-    <p class="lead">Offering plans contain the details behind a development: what was offered, how the building was structured, and what changed along the way. Open Book helps you find those details across projects without opening every filing yourself.</p>
-    <h3 class="kicker">How it works</h3>
-    <ol class="steps">
-      <li><b>Search across projects</b><span>Ask a question or search by building, address, plan ID, or topic.</span></li>
-      <li><b>See the evidence</b><span>Results show the matching language, the document it came from, and the page where you can check it.</span></li>
-      <li><b>Follow the amendments</b><span>See when a later filing may have changed what the original plan said.</span></li>
-    </ol>
-    <div class="notes">
-      <p><b>Coverage.</b> Open Book searches the plans and amendments currently indexed here. The NY Attorney General has not posted documents for every filing, so a missing result does not mean a feature or project does not exist.</p>
-      <p><b>Source.</b> New York State Attorney General, Real Estate Finance Bureau offering plan database. Open Book is an independent research tool and is not affiliated with the Attorney General’s office.</p>
-      <p>Plans describe what was offered at the time of filing. They do not establish what is currently available for sale. Check the original filing, relevant amendments, and current project information before relying on a result.</p>
-    </div>
   </section>
 
   <div class="after" id="after" hidden>
@@ -257,12 +250,9 @@ footer{margin-top:40px;border-top:1px solid var(--rule);padding-top:16px;font-si
   </div>
 
   </div>
-  <footer id="foot">
-    <div class="searchnote">Source: NY Attorney General, Real Estate Finance Bureau offering plan database. Plans and amendments are public filings; download them from the AG record. Unit and parking counts come from AG metadata. A plan is only as current as its latest amendment. "Offered in the plan" does not mean "available for sale".</div>
-    <div class="searchnote">Building images are 3D massing drawings from NYC Building Footprints (NYC Open Data), with the plan's building in green. Locations from NYC Planning GeoSearch.</div>
-    <div><b>Open Book</b> · NYC condo offering plan search<br>Source: NY Attorney General offering plan database</div>
-    <nav class="flinks" aria-label="Footer"><a href="about.html">About</a><a href="about.html#coverage">Coverage</a><a href="faq.html">FAQ</a><a href="mailto:hello@halfave.co?subject=Open%20Book%20error%20report">Report an error</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a><a href="disclaimers.html">Disclaimers</a></nav>
-    <div>© 2026 Half Ave Company LLC. Open Book is a service of Half Ave Company LLC.</div>
+  <footer id="foot" hidden>
+    <div>Source: NY Attorney General, Real Estate Finance Bureau offering plan database. Plans and amendments are public filings; download them from the AG record. Unit and parking counts come from AG metadata. A plan is only as current as its latest amendment. "Offered in the plan" does not mean "available for sale".</div>
+    <div>Building images are 3D massing drawings from NYC Building Footprints (NYC Open Data), with the plan's building in green. Locations from NYC Planning GeoSearch.</div>
   </footer>
 </div>
 
@@ -574,7 +564,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule);padding-top:16px;font-si
     const P = parseQuestion(text);
     if (!P.q && !P.borough && P.minUnits == null && P.maxUnits == null && P.minParking == null) P.q = text;
     $("notice").hidden = true; $("go").disabled = true;
-    document.body.classList.add("searched"); $("after").hidden = false;
+    document.body.classList.add("searched"); $("after").hidden = false; $("foot").hidden = false;
     $("read").innerHTML = "Searching for " + P.read.map((r) => `<span>${esc(r)}</span>`).join(""); $("read").hidden = !P.read.length;
     $("status").textContent = "Searching…"; $("results").innerHTML = ""; $("detail").innerHTML = "";
     const args = { q: P.q || null, p_borough: P.borough, p_min_units: P.minUnits, p_max_units: P.maxUnits, p_min_parking: P.minParking, p_limit: 60 };
@@ -608,9 +598,31 @@ footer{margin-top:40px;border-top:1px solid var(--rule);padding-top:16px;font-si
 
   $("examples").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; $("q").value = b.textContent; run(); });
 
+  // ---------- coverage numbers ----------
+  async function countRows(path) {
+    const r = await fetch(SB + "/rest/v1/" + path, { method: "HEAD", headers: { apikey: KEY, Prefer: "count=exact" } });
+    const n = parseInt((r.headers.get("content-range") || "").split("/")[1], 10);
+    return Number.isFinite(n) ? n : null;
+  }
+  async function loadStats() {
+    try {
+      const [plans, full, pages] = await Promise.all([
+        countRows("plans?select=plan_id"),
+        rpc("map_points", {}, 600000).then((rows) => rows.filter((p) => p.indexed).length),
+        countRows("pages?select=plan_id"),
+      ]);
+      if (plans == null || pages == null) return;
+      const f = (n) => n.toLocaleString("en-US");
+      $("st-plans").textContent = f(plans); $("st-full").textContent = f(full); $("st-pages").textContent = f(pages);
+      $("stats").hidden = false;
+    } catch (e) { /* the numbers are optional */ }
+  }
+  loadStats();
+
   ensureMap().catch(() => {}); // warm the map quietly; it only shows after a search
   $("q").focus();
 })();
 </script>
+<script src="menu.js"></script>
 </body>
 </html>
