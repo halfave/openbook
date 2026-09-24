@@ -5,7 +5,7 @@
 //
 // Reads the public, read-only Supabase REST API (same key the site uses). Re-run it after new
 // plans are ingested; pages for plans added since the last build do not exist until then.
-import { mkdir, writeFile, rm } from "node:fs/promises";
+import { mkdir, writeFile, rm, readFile } from "node:fs/promises";
 import { join } from "node:path";
 
 const SB = "https://dvywgltjqpntldlztapu.supabase.co";
@@ -53,8 +53,14 @@ const usDate = (s) => { const m = String(s || "").match(/^(\d{2})\/(\d{2})\/(\d{
 const money = (s) => { const n = Number(String(s || "").replace(/[$,]/g, "")); return n > 0 ? n : null; };
 const fmtMoney = (n) => n >= 1e6 ? "$" + (n / 1e6).toFixed(n >= 1e7 ? 1 : 2).replace(/\.?0+$/, "") + " million" : "$" + Math.round(n).toLocaleString("en-US");
 const plural = (n, w) => `${n.toLocaleString("en-US")} ${w}${n === 1 ? "" : "s"}`;
-const BORO = { MANHATTAN: "Manhattan", BROOKLYN: "Brooklyn", QUEENS: "Queens", BRONX: "Bronx", "STATEN ISLAND": "Staten Island" };
-const boro = (b) => BORO[String(b || "").toUpperCase()] || tc(b);
+// AG records use boroughs, counties, towns and the odd typo in this field. Group them for display only
+// (file names still use the raw value so URLs stay stable).
+const BORO = {
+  MANHATTAN: "Manhattan", MANHTTAN: "Manhattan", "NEW YORK": "Manhattan", NY: "Manhattan",
+  BROOKLYN: "Brooklyn", KINGS: "Brooklyn", QUEENS: "Queens", FLUSHING: "Queens",
+  BRONX: "Bronx", "STATEN ISLAND": "Staten Island", RICHMOND: "Staten Island",
+};
+const boro = (b) => BORO[String(b || "").trim().toUpperCase()] || "Outside New York City";
 const docLabel = (d) => d.doc_kind === "amendment" ? `Amendment ${d.amendment_no ?? ""}`.trim() : "Offering Plan";
 const pagesLabel = (a, b) => (a === b ? `p. ${a}` : `pp. ${a}–${b}`);
 const miles = (a, b) => {
@@ -64,6 +70,9 @@ const miles = (a, b) => {
 };
 
 // ---------- shared chrome ----------
+// The masthead is copied from index.html into scripts/masthead.html; its links are made relative here.
+const MAST_HTML = await readFile(join(ROOT, "scripts", "masthead.html"), "utf8");
+const MAST = (p) => MAST_HTML.replace(/href="(?!https?:|mailto:|#)([^"]+)"/g, (_, h) => `href="${p}${h}"`);
 const HEAD = (p, { title, description, canonical, noindex }) => `<!doctype html>
 <html lang="en">
 <head>
@@ -76,17 +85,16 @@ ${noindex ? '<meta name="robots" content="noindex, follow">\n' : ""}<link rel="c
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="${esc(canonical)}">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230E6B5B'/%3E%3Cpath d='M9 23V9h8a5 5 0 0 1 0 10h-8' fill='none' stroke='white' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23879CB4'/%3E%3Crect y='26' width='32' height='6' fill='%2365153B'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='17' fill='%2365153B' stroke='white' stroke-width='.8' paint-order='stroke'%3EOB%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,500;1,6..72,400;1,6..72,500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap">
+<link rel="stylesheet" href="${p}bureau.css">
 <link rel="stylesheet" href="${p}pages.css">
 <link rel="stylesheet" href="${p}menu.css">
 </head>
 <body>
-<header class="top">
-  <a class="brand" href="${p}index.html">Open Book</a>
-</header>
+${MAST(p)}
 ${MENU(p)}`;
 const MENU = (p) => `<details class="menu" id="menu">
   <summary aria-label="Menu"><svg class="bars-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="x-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></summary>
@@ -131,7 +139,8 @@ const pending = (what) => `<p class="pending"><b>Not yet extracted.</b> ${what}<
 
 function buildingPage(p, ctx) {
   const P = "../";
-  const name = tc(p.name), addr = tc(p.address), b = boro(p.borough);
+  const name = tc(p.name), addr = tc(p.address), group = boro(p.borough);
+  const b = BORO[String(p.borough || "").trim().toUpperCase()] || tc(p.borough); // place name shown in the address
   const meta = p.meta || {}, mp = meta.plan || {};
   const docs = ctx.docs.get(p.plan_id) || [];
   const docsById = new Map(docs.map((d) => [d.file_id, d]));
@@ -207,7 +216,7 @@ function buildingPage(p, ctx) {
   if (p.lat) ldJson.geo = { "@type": "GeoCoordinates", latitude: p.lat, longitude: p.lng };
 
   return HEAD(P, { title, description, canonical, noindex: !searchable }) + `<main class="bldg">
-  <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Buildings</a> › <a href="index.html#${slug(b)}">${esc(b)}</a></nav>
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Buildings</a> › <a href="index.html#${slug(group)}">${esc(group)}</a></nav>
   <h1>${esc(name)} offering plan</h1>
   <p class="addr">${esc(addr)} · ${esc(b)}, New York${p.zip ? " " + esc(p.zip) : ""}</p>
   <p class="meta">AG plan ID ${esc(p.plan_id)}${p.accepted_date ? ` · Accepted ${esc(day(p.accepted_date))}` : ""}</p>
@@ -290,7 +299,7 @@ function directory(plans, ctx) {
   const P = "../";
   const by = new Map();
   for (const p of plans) { const b = boro(p.borough); if (!by.has(b)) by.set(b, []); by.get(b).push(p); }
-  const order = ["Manhattan", "Brooklyn", "Queens", "Bronx", "Staten Island"];
+  const order = ["Manhattan", "Brooklyn", "Queens", "Bronx", "Staten Island", "Outside New York City"];
   const boros = [...by.keys()].sort((a, b) => (order.indexOf(a) + 1 || 99) - (order.indexOf(b) + 1 || 99));
   const body = boros.map((b) => {
     const list = by.get(b).sort((x, y) => tc(x.name).localeCompare(tc(y.name)));
