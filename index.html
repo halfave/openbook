@@ -55,6 +55,13 @@ form.search{display:flex;flex-direction:column;gap:10px}
 .readline{display:flex;gap:8px 14px;flex-wrap:wrap;align-items:baseline}
 .readnotes{margin:0;padding-left:18px;font-size:13.5px;color:var(--ink)}
 .readnotes li{margin:2px 0}
+.aitag{font:500 10.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:0 5px;margin-left:8px}
+.aiwait{font-size:13px;color:var(--muted)}
+.xtab{border-collapse:collapse;width:100%;font-size:13.5px}
+.xtab th,.xtab td{border-top:1px solid var(--rule);padding:8px 8px 8px 0;text-align:left;vertical-align:top}
+.xtab thead th{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border-top:0}
+.xtab blockquote{margin:4px 0 0;padding-left:8px;border-left:2px solid var(--rule-strong);color:var(--muted);font-size:12.5px}
+.xtab .cite{font:11.5px var(--mono);color:var(--muted)}
 .why{font:500 12px var(--mono);letter-spacing:.02em;padding:3px 8px;border:1px solid var(--rule);align-self:flex-start;color:var(--muted)}
 .why.exact{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
 .why.loose{border-style:dashed}
@@ -790,6 +797,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
   }
   async function fetchRows(P) {
     P.matchNote = null;
+    if (P.ai) return aiRows(P);
     if (P.planId) return recordRows(`plan_id=eq.${encodeURIComponent(P.planId)}`);
     if (P.address) {
       // Match the number at the start or after another address ("108 Leonard St a/k/a 346 Broadway").
@@ -867,23 +875,34 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
     }
     P.text = text;
     try { history.replaceState(null, "", "?q=" + encodeURIComponent(text)); } catch (e) { /* file:// */ }
-    runP(P);
+    P.aiPending = wantsAI(P, text);
+    const t = Date.now();
+    runP(P).then(() => {
+      if (current !== P) return;
+      if (!P.aiPending && !lastRows.length && !P.planId && !P.address) P.aiPending = true; // nothing found: let the AI try
+      if (P.aiPending) { renderInterpretation(P); askAI(P); }
+      else logSearch(text, { results: lastRows.length, ms: Date.now() - t, parsed: { q: P.q, borough: P.borough, minUnits: P.minUnits, maxUnits: P.maxUnits, minParking: P.minParking } });
+    });
   }
 
   function renderInterpretation(P) {
     const notes = [...(P.notes || []), ...(P.matchNote ? [P.matchNote] : [])];
-    $("read").innerHTML = `<div class="readhead">How Open Book read your search</div>
+    $("read").innerHTML = `<div class="readhead">How Open Book read your search${P.ai ? `<span class="aitag">read with AI · check the filters</span>` : ""}</div>
       <div class="readline"><span class="qecho">“${esc(P.text)}”</span>` +
       (P.chips.length ? `<span class="chiprow">${P.chips.map((c) =>
         `<span class="fchip">${esc(c.label)}<button type="button" data-rm="${esc(c.k)}" aria-label="Remove ${esc(c.label)}">×</button></span>`).join("")}</span>` : "") +
-      `</div>` + (notes.length ? `<ul class="readnotes">${notes.map((n) => `<li>${esc(n)}</li>`).join("")}</ul>` : "");
+      `</div>` + (notes.length ? `<ul class="readnotes">${notes.map((n) => `<li>${esc(n)}</li>`).join("")}</ul>` : "") +
+      (P.aiPending ? `<div class="aiwait">Reading your question more closely…</div>` : "");
     $("read").hidden = false;
   }
   $("read").addEventListener("click", (e) => {
     const b = e.target.closest("[data-rm]"); if (!b || !current) return;
     const P = { ...current, chips: current.chips.filter((c) => c.k !== b.dataset.rm) };
     ({ q: () => { P.q = ""; }, area: () => { P.borough = null; P.zips = null; }, units: () => { P.minUnits = null; P.maxUnits = null; },
-      parking: () => { P.minParking = null; }, planId: () => { P.planId = null; }, address: () => { P.address = null; } })[b.dataset.rm]?.();
+      parking: () => { P.minParking = null; P.maxParking = null; }, planId: () => { P.planId = null; }, address: () => { P.address = null; },
+      dates: () => { P.from = null; P.to = null; }, construction: () => { P.construction = null; }, status: () => { P.status = null; },
+      sponsor: () => { P.sponsor = null; }, counsel: () => { P.counsel = null; }, commercial: () => { P.minCommercial = null; }, storage: () => { P.minStorage = null; } })[b.dataset.rm]?.();
+    P.aiAnswer = null; P.aiPending = false;
     runP(P);
   });
 
@@ -912,6 +931,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
       document.body.classList.toggle("answer", answer);
       $("answer").hidden = !answer; $("answer").innerHTML = "";
       if (answer) renderAnswer(rows[0], P);
+      else if (P.aiAnswer) renderExtract(P.aiAnswer);
       const noun = P.address || P.planId ? "building" : "matching building";
       $("rtitle").textContent = !rows.length ? (P.address ? "No matching record found here" : "No plans found") : rows.length === 60 ? (P.q ? `Top 60 ${noun}s` : "60 newest buildings") : `${rows.length} ${noun}${rows.length === 1 ? "" : "s"}`;
       $("status").textContent = rows.length ? (P.q ? "ranked by matching pages" : "newest first")
@@ -1057,6 +1077,114 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
         `</tbody></table></div>`;
     } catch (e) { if (tok === viewToken) box.innerHTML = `<p class="vnote">Couldn’t load the AG totals. Try again.</p>`; }
   }
+
+  // ---------- AI help (tiers 1 and 2, via /api/ask) ----------
+  // Tier 0 (the parser above) runs first and shows results at once. The AI is asked only when words are left over,
+  // nothing was found, or the question is analytic. The server holds every AI search under 5 cents.
+  const ANALYTIC = /\b(which|how many|average|avg|mean|largest|biggest|smallest|most|fewest|compare)\b/;
+  function wantsAI(P, text) {
+    if (P.planId || P.address) return false;
+    if (ANALYTIC.test(text.toLowerCase())) return true;
+    const left = (P.q || "").replace(/"[^"]*"/g, " ").split(/\s+/).filter((w) => w && w !== "OR");
+    return left.length >= 2;
+  }
+  const aiSeen = new Map();
+  async function callAsk(body) {
+    const r = await fetch("/api/ask", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body), keepalive: !!body.log });
+    return body.log ? null : r.json().catch(() => ({ fallback: true }));
+  }
+  function logSearch(q, log) { callAsk({ q, log }).catch(() => {}); }
+
+  async function askAI(P) {
+    let out = aiSeen.get(P.text);
+    if (!out) {
+      try { out = await callAsk({ q: P.text }); } catch (e) { out = { fallback: true }; }
+      if (!out.fallback) aiSeen.set(P.text, out);
+    }
+    if (current !== P) return;
+    P.aiPending = false;
+    if (out.fallback || !out.spec) {
+      const why = { rate_limited: "You’ve run many searches this hour, so this one used the plain search.",
+        daily_budget: "AI help is paused for today, so this used the plain search." }[out.reason];
+      P.notes = [...(P.notes || []), why || "AI help didn’t answer, so this is the plain search."];
+      renderInterpretation(P); return;
+    }
+    runP(fromSpec(P.text, out.spec, out.answer));
+  }
+
+  // Multi-word terms are not quoted: a phrase check re-reads every candidate page and times out on common words.
+  // Words of a term must all be on the page; ranking puts the closest matches first.
+  const TOPIC_Q = (topics) => topics.flatMap((t) => t.terms).join(" OR ");
+  const VIEW_OF = { passages: "passages", documents: "documents", prices: "compare", extract: "buildings", buildings: "buildings" };
+  function fromSpec(text, s, answer) {
+    const P = { text, ai: true, q: TOPIC_Q(s.topics), topics: s.topics, borough: s.borough, zips: s.zips.length ? s.zips : null,
+      minUnits: s.min_units, maxUnits: s.max_units, minParking: s.min_parking, maxParking: s.max_parking,
+      minCommercial: s.min_commercial, minStorage: s.min_storage, from: s.accepted_from, to: s.accepted_to,
+      construction: s.construction, status: s.status, sponsor: s.sponsor, counsel: s.counsel,
+      view: VIEW_OF[s.shape], focus: s.doc_focus, analytic: s.analytic_op !== "none" ? { op: s.analytic_op, field: s.analytic_field } : null,
+      aiAnswer: answer, planId: null, address: null, chips: [], notes: s.note ? [s.note] : [] };
+    // A question about something inside the plans lists only the plans whose pages mention it (the ones the AI read).
+    if (s.shape === "extract") { P.q = TOPIC_Q([{ terms: s.extract_terms }]); P.topics = [{ label: s.extract_terms.join(", ") }]; P.topicRequired = true; }
+    const chip = (k, label) => P.chips.push({ k, label });
+    if (P.topicRequired) chip("q", `Mentions: ${s.extract_terms.join(", ")}`);
+    else if (s.topics.length) chip("q", `About: ${s.topics.map((t) => t.label).join(", ")}`);
+    if (P.zips) chip("area", `${s.area_label ? titleCase(s.area_label) + " · " : ""}ZIP ${P.zips.join(", ")}`);
+    else if (s.borough) chip("area", titleCase(s.borough));
+    const range = (a, b, noun) => a != null && b != null ? (a === b ? `${a} ${noun}` : `${a}–${b} ${noun}`) : b != null ? `Up to ${b} ${noun}` : `${a}+ ${noun}`;
+    if (s.min_units != null || s.max_units != null) chip("units", range(s.min_units, s.max_units, "units"));
+    if (s.min_parking != null || s.max_parking != null) chip("parking", s.max_parking === 0 ? "No parking units" : range(s.min_parking, s.max_parking, "parking units"));
+    if (s.min_commercial != null) chip("commercial", `${s.min_commercial}+ commercial units`);
+    if (s.min_storage != null) chip("storage", `${s.min_storage}+ storage units`);
+    if (s.accepted_from || s.accepted_to) chip("dates", `Accepted ${[s.accepted_from && "from " + date(s.accepted_from), s.accepted_to && "to " + date(s.accepted_to)].filter(Boolean).join(" ")}`);
+    if (s.construction) chip("construction", titleCase(s.construction));
+    if (s.status) chip("status", titleCase(s.status));
+    if (s.sponsor) chip("sponsor", `Sponsor: ${s.sponsor}`);
+    if (s.counsel) chip("counsel", `Counsel: ${s.counsel}`);
+    if (P.zips) P.notes.push("Neighborhoods are approximated by ZIP code, so nearby blocks are included.");
+    return P;
+  }
+
+  async function aiRows(P) {
+    const args = { q: P.q || null, p_borough: P.borough, p_zips: P.zips, p_min_units: P.minUnits, p_max_units: P.maxUnits,
+      p_min_parking: P.minParking, p_max_parking: P.maxParking, p_min_commercial: P.minCommercial, p_min_storage: P.minStorage,
+      p_accepted_from: P.from, p_accepted_to: P.to, p_construction: P.construction, p_status: P.status,
+      p_sponsor: P.sponsor, p_counsel: P.counsel, p_limit: P.analytic ? 400 : 120 };
+    const hasFilter = [P.borough, P.zips, P.minUnits, P.maxUnits, P.minParking, P.maxParking, P.minCommercial, P.minStorage,
+      P.from, P.to, P.construction, P.status, P.sponsor, P.counsel].some((v) => v != null);
+    // With filters, topic words only rank: they must never remove a plan the filters match.
+    let rows = await rpc("search_plans_v3", { ...args, p_topic_required: !!P.topicRequired || !hasFilter });
+    const labels = (P.topics || []).map((t) => t.label).join(", ");
+    if (P.q && hasFilter && !P.topicRequired) {
+      const n = rows.filter((r) => r.hits > 0).length;
+      P.matchNote = n ? `${n} of these mention ${labels} or a related term and are listed first. The rest match the filters; most plans’ documents aren’t searchable in full text yet.`
+        : `No searchable plan among these mentions ${labels}, so these match the filters alone. Most plans’ documents aren’t searchable in full text yet.`;
+    } else if (P.q && rows.length) P.matchNote = `Ranked by pages that mention ${labels} or a related term. Only plans with searchable documents can match.`;
+    if (P.analytic) {
+      const { op, field } = P.analytic, noun = field === "units_parking" ? "parking units" : "residential units";
+      const vals = rows.map((r) => r[field]).filter((v) => Number.isFinite(v));
+      const capped = rows.length >= 400;
+      const line = op === "count" ? `${capped ? "At least " : ""}${rows.length.toLocaleString("en-US")} plan${rows.length === 1 ? "" : "s"} match.`
+        : !vals.length ? "" : op === "average" ? `Average: ${(vals.reduce((a, b) => a + b, 0) / vals.length).toFixed(1)} ${noun} across ${vals.length} plans${capped ? " (the first 400)" : ""}.`
+        : op === "max" ? `Most: ${Math.max(...vals)} ${noun}${capped ? " among the first 400" : ""}.` : `Fewest: ${Math.min(...vals)} ${noun}${capped ? " among the first 400" : ""}.`;
+      if (line) P.matchNote = [line, P.matchNote].filter(Boolean).join(" ");
+      rows = rows.slice(0, 120);
+    }
+    return rows;
+  }
+
+  // Tier 2: one line per building, with the quote and page it came from.
+  function renderExtract(a) {
+    const box = $("answer"), rows = a.rows || [];
+    box.hidden = false;
+    box.innerHTML = `<article class="ans"><p class="ans-kicker">Answer from the plan pages · read with AI</p>
+      <h2 style="font-size:22px">${esc(a.question)}</h2>
+      ${rows.length ? `<div class="tscroll"><table class="xtab"><thead><tr><th>Building</th><th>What the pages say</th></tr></thead><tbody>${rows.map((r) => `<tr>
+        <td><button type="button" class="plink" data-xopen="${esc(r.plan_id)}">${esc(tc(r.name))}</button><div class="cite">${esc(r.plan_id)} · ${esc(tc(r.borough))}</div></td>
+        <td>${r.stated ? `${esc(r.answer)}<blockquote>“${esc(r.quote)}”</blockquote><div class="cite">${esc(docLabel(r.doc))} · p. ${esc(r.page_no)}</div>`
+          : `<span class="faint">Not stated in the pages searched.</span>`}</td></tr>`).join("")}</tbody></table></div>` : ""}
+      <p class="vnote">${esc(a.note || "")} Check the quoted page before relying on an answer.</p></article>`;
+  }
+  $("answer").addEventListener("click", (e) => { const b = e.target.closest("[data-xopen]"); if (b) openDetail(b.dataset.xopen, false); });
 
   // ---------- coverage numbers ----------
   async function countRows(path) {
