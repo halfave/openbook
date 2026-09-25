@@ -898,6 +898,15 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
       const [rows] = await Promise.all([fetchRows(P), ensureMap()]);
       if (current !== P) return;
       lastRows = rows;
+      // A plan ID names one building, so a borough typed with it isn't a filter.
+      if (P.planId && P.borough) {
+        const actual = rows[0]?.borough;
+        P.notes = [...(P.notes || []), actual && actual.toUpperCase() !== P.borough.toUpperCase()
+          ? `Plan ${P.planId} is in ${titleCase(actual)}, not ${titleCase(P.borough)}. A plan ID points to one building, so the borough was ignored.`
+          : "A plan ID points to one building, so the borough was ignored."];
+        P.chips = P.chips.filter((c) => c.k !== "area");
+        P.borough = null; P.zips = null;
+      }
       renderInterpretation(P);
       const answer = !!(P.address || P.planId) && rows.length === 1;
       document.body.classList.toggle("answer", answer);
