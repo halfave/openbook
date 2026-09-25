@@ -8,7 +8,7 @@ Judge usefulness, factual precision, coverage transparency, navigation and visua
 - Address or plan ID searches reach the right building.
 - Natural-language searches (precedents, pricing, Schedule B budgets, managing agents, floor plans) return defensible matches with page references.
 - Text matches are clearly distinguished from verified facts.
-- Amendments, coverage gaps and source limits are stated plainly.
+- Coverage gaps and source limits are stated plainly. Only original offering plans are included (no amendments), and the site says so.
 - Works at 390px: no horizontal scroll, tap targets at least 40px.
 - Consistent spacing, type scale, colors and branding. The product name is The Condo Book Project.
 
