@@ -149,7 +149,8 @@ body.searched .go{padding:0 20px;font-size:13px}
 .maphead{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid var(--rule-strong);flex-wrap:wrap}
 .maphead h2{margin:0;font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .boros{display:flex;gap:4px;flex-wrap:wrap}
-.boros button{background:var(--chip);border:1px solid var(--rule);padding:3px 8px;font:500 12px var(--sans);color:var(--ink);cursor:pointer}
+.boros button{background:var(--chip);border:1px solid var(--rule);padding:3px 8px;font:500 12px var(--sans);color:var(--ink);cursor:pointer;white-space:nowrap;flex:0 0 auto}
+@media (max-width:560px){ .maphead{flex-direction:column;align-items:stretch} .boros{gap:6px} .boros button{min-height:40px;min-width:40px;padding:0 12px;flex:1 1 auto} }
 .boros button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 .mapbox{position:relative;aspect-ratio:1/1;max-height:72vh;width:100%;background:var(--water);touch-action:none;cursor:grab}
 .mapbox:active{cursor:grabbing}
@@ -349,7 +350,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
     <div class="mapcard" id="mapcard">
       <div class="maphead">
         <h2 id="maptitle">Every plan on file</h2>
-        <div class="boros" id="boros" role="group" aria-label="Zoom to borough">
+        <div class="boros" id="boros" role="group" aria-label="Filter results by borough">
           <button type="button" data-b="" aria-pressed="true">All</button>
           <button type="button" data-b="Manhattan" aria-pressed="false">Manhattan</button>
           <button type="button" data-b="Brooklyn" aria-pressed="false">Brooklyn</button>
@@ -483,11 +484,23 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
     vb = { x: nx - (nx - vb.x) * (w / vb.w), y: ny - (ny - vb.y) * (h / vb.h), w, h }; setVB();
   }
   $("zin").onclick = () => zoomBy(0.6); $("zout").onclick = () => zoomBy(1.6);
+  const pressBoro = (name) => $("boros").querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", String(x.dataset.b.toUpperCase() === (name || ""))));
+  function zoomBoro(name) {
+    if (!name) { vb = { ...full }; setVB(); return; }
+    const p = land.querySelector(`path[data-b="${titleCase(name)}"]`); if (p) { const bb = p.getBBox(); zoomTo({ x: bb.x, y: bb.y, w: bb.width, h: bb.height }, 0.05); }
+  }
+  // A borough button narrows the current search to that borough (a new query, not a filter on the rows already shown); All removes it.
   $("boros").addEventListener("click", (e) => {
     const b = e.target.closest("button"); if (!b) return;
-    $("boros").querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
-    if (!b.dataset.b) { vb = { ...full }; setVB(); return; }
-    const p = land.querySelector(`path[data-b="${b.dataset.b}"]`); if (p) { const bb = p.getBBox(); zoomTo({ x: bb.x, y: bb.y, w: bb.width, h: bb.height }, 0.05); }
+    const boro = b.dataset.b.toUpperCase() || null;
+    pressBoro(boro);
+    if (!current || current.planId) { zoomBoro(boro); return; }
+    // A neighborhood's ZIPs stay only while its own borough is picked.
+    const keepZips = boro && current.zips && current.borough === boro;
+    const chips = current.chips.filter((c) => c.k !== "area" || keepZips);
+    if (boro && !keepZips) chips.push({ k: "area", label: titleCase(boro) });
+    const notes = (current.notes || []).filter((n) => !/ZIP|can’t filter by/.test(n) || keepZips);
+    runP({ ...current, borough: boro, zips: keepZips ? current.zips : null, chips, notes, boroPick: true });
   });
   // pan + wheel
   (() => {
@@ -615,8 +628,48 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
     "upper east side": ["10021", "10028", "10065", "10075", "10128"], "ues": ["10021", "10028", "10065", "10075", "10128"],
     "upper west side": ["10023", "10024", "10025"], "uws": ["10023", "10024", "10025"],
   };
-  const SUFFIX = { st: "street", ave: "avenue", av: "avenue", rd: "road", pl: "place", blvd: "boulevard", dr: "drive", ln: "lane", ct: "court", pkwy: "parkway", ter: "terrace", sq: "square" };
-  const DIR = { n: "north", s: "south", e: "east", w: "west" };
+  // Street addresses. AG records spell the same street several ways (E 12th St, East 12th Street, 7th / Seventh Avenue),
+  // so an address becomes a list of spellings and the lookup matches any of them. Each slot lists the canonical form first.
+  const SUFFIX = { street: ["st"], avenue: ["ave", "av"], road: ["rd"], place: ["pl"], boulevard: ["blvd"], drive: ["dr"], lane: ["ln"],
+    court: ["ct"], parkway: ["pkwy"], terrace: ["ter"], square: ["sq"], plaza: ["plz"] };
+  const NOSFX = ["broadway", "bowery", "way", "row", "slip", "crescent", "walk", "loop", "circle", "oval", "alley"];
+  const DIRS = { north: ["n"], south: ["s"], east: ["e"], west: ["w"], southwest: ["sw", "south west"] };
+  const ORD = ["first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth"];
+  const nth = (k) => k + (k % 100 >= 11 && k % 100 <= 13 ? "th" : ["th", "st", "nd", "rd"][k % 10] || "th");
+  const alts = (map, w) => { const c = map[w] ? w : Object.keys(map).find((k) => map[k].includes(w)); return c ? [c, ...map[c]] : [w]; };
+  const nameAlts = (w) => {
+    const i = ORD.indexOf(w); if (i >= 0) return [w, nth(i + 1)];
+    const m = w.match(/^(\d+)(st|nd|rd|th)?$/); if (!m) return [w];
+    const k = +m[1]; return [nth(k), String(k), ...(k >= 1 && k <= 10 ? [ORD[k - 1]] : [])];
+  };
+  const ANUM = "\\b(\\d+[a-z]?(?:-\\d+[a-z]?)?)(?!\\s+(?:units?|apartments?|apts?|residences|homes|bedrooms?|br|beds?|parking|garage|stor(?:y|ies)|floors?|spaces?|spots?|buildings?|plans?|condos?|or|to|and)\\b)";
+  const ADIR = "north|south|east|west|n|s|e|w";
+  const NOT_AREA = "(?!\\s+(?:village|side|harlem|flatbush|new york|williamsburg|elmhurst|slope|tremont|end)\\b)";
+  const ADDR_RES = [
+    // 100 Avenue A, 134 Avenue of the Americas
+    [new RegExp(`${ANUM}\\s+(avenue|ave|av)\\.?\\s+(of the americas|[a-d])\\b`), (m) => [alts(SUFFIX, m[2]), [m[3]]]],
+    // 1 Prospect Park West, 15 Central Park West, 167 Prospect Park SW
+    [new RegExp(`${ANUM}\\s+((?:[a-z]+\\s+){1,2})park\\s+(south\\s*west|southwest|sw|north|south|east|west)\\b`),
+      (m) => [...m[2].trim().split(/\s+/).map((w) => [w]), ["park"], alts(DIRS, m[3].replace(/\s+/g, "") === "southwest" ? "southwest" : m[3])]],
+    // 701 Prospect Place, 220 E 12th St, 346 Broadway, 240 Park Avenue South
+    [new RegExp(`${ANUM}\\s+(?:(${ADIR})\\.?\\s+)?((?:(?:\\d+(?:st|nd|rd|th)?|[a-z]+)\\s+){0,2})(${Object.entries(SUFFIX).flat(2).join("|")}|${NOSFX.join("|")})\\b\\.?(?:\\s+(north|south|east|west)\\b${NOT_AREA})?`),
+      (m) => {
+        const name = m[3].trim() ? m[3].trim().split(/\s+/) : [];
+        // "701 st marks place" is not "701 Street", and "10 row houses" is not an address; Broadway and the Bowery stand alone.
+        if (!name.length && !m[2] && m[4] !== "broadway" && m[4] !== "bowery") return null;
+        return [...(m[2] ? [alts(DIRS, m[2])] : []), ...name.map(nameAlts), NOSFX.includes(m[4]) ? [m[4]] : alts(SUFFIX, m[4]), ...(m[5] ? [alts(DIRS, m[5])] : [])];
+      }],
+  ];
+  function parseAddress(s) {
+    for (const [re, slotsOf] of ADDR_RES) {
+      const m = s.match(re); if (!m) continue;
+      const slots = slotsOf(m); if (!slots) continue;
+      let spellings = [""];
+      for (const slot of slots) spellings = spellings.flatMap((a) => slot.map((b) => (a ? a + " " : "") + b)).slice(0, 36);
+      return { num: m[1], street: spellings[0], spellings, raw: m[0] };
+    }
+    return null;
+  }
 
   function parseQuestion(input) {
     let s = " " + String(input || "").toLowerCase().replace(/[’']/g, "'").replace(/\s+/g, " ") + " ";
@@ -642,13 +695,12 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
     let m = s.match(/\b([a-z]{2}\d{6})\b/);
     if (m) { out.planId = m[1].toUpperCase(); chip("planId", `Plan ${out.planId}`); cut(m[0]); }
 
-    // street address, e.g. "701 Prospect Place", "11-36 45th Rd", "220 E 12th St"
-    m = !out.planId && s.match(/\b(\d+(?:-\d+)?)\s+((?:(?:north|south|east|west|n|s|e|w)\.?\s+)?(?:\d+(?:st|nd|rd|th)?|[a-z]+)(?:\s+[a-z]+)?)\s+(street|st|avenue|ave|av|road|rd|place|pl|boulevard|blvd|drive|dr|lane|ln|court|ct|parkway|pkwy|terrace|ter|way|square|sq|plaza)\b\.?/);
-    if (m) {
-      const street = m[2].replace(/\./g, "").split(" ").map((w, i) => (i === 0 && DIR[w] ? DIR[w] : w)).join(" ");
-      out.address = { num: m[1], street: `${street} ${SUFFIX[m[3]] || m[3]}` };
-      chip("address", titleCase(`${out.address.num} ${out.address.street}`)); cut(m[0]);
-      out.notes.push("Found by street address in the AG record.");
+    // street address, e.g. "701 Prospect Place", "11-36 45th Rd", "220 E 12th St", "1 Prospect Park West", "346 Broadway", "100 Avenue A"
+    const addr = !out.planId && parseAddress(s);
+    if (addr) {
+      out.address = addr;
+      chip("address", titleCase(`${addr.num} ${addr.street}`)); cut(addr.raw);
+      out.notes.push("Looked up by street address in the AG record, including common spellings (St/Street, E/East, 7th/Seventh).");
     }
 
     // boroughs + common neighborhoods
@@ -724,7 +776,9 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
   function titleCase(s) { return String(s).toLowerCase().replace(/\b([a-z])/g, (c) => c.toUpperCase()); }
 
   // ---------- fetching ----------
-  const PLAN_COLS = "plan_id,name,address,borough,zip,units_residential,units_parking,accepted_date,docs_posted,amendments_listed,latest_amendment_no,ag_url";
+  const BORO_OF = { MANHATTAN: "MANHATTAN", MANHTTAN: "MANHATTAN", "NEW YORK": "MANHATTAN", NY: "MANHATTAN", BROOKLYN: "BROOKLYN", KINGS: "BROOKLYN",
+    QUEENS: "QUEENS", FLUSHING: "QUEENS", BRONX: "BRONX", "STATEN ISLAND": "STATEN ISLAND", RICHMOND: "STATEN ISLAND" };
+  const PLAN_COLS ="plan_id,name,address,borough,zip,units_residential,units_parking,accepted_date,docs_posted,amendments_listed,latest_amendment_no,ag_url";
   const inList = (ids) => `(${ids.map((id) => `"${id}"`).join(",")})`;
   // Plan records straight from the plans table, shaped like search results.
   async function recordRows(filter) {
@@ -735,8 +789,24 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
     return rows.map((r) => ({ ...r, docs_indexed: cnt.get(r.plan_id) || 0, hits: 0, snippets: [] }));
   }
   async function fetchRows(P) {
+    P.matchNote = null;
     if (P.planId) return recordRows(`plan_id=eq.${encodeURIComponent(P.planId)}`);
-    if (P.address) return recordRows(`address=ilike.${encodeURIComponent(`${P.address.num} ${P.address.street}*`)}${P.borough ? `&borough=eq.${encodeURIComponent(P.borough)}` : ""}`);
+    if (P.address) {
+      // Match the number at the start or after another address ("108 Leonard St a/k/a 346 Broadway").
+      const { num, spellings } = P.address;
+      // A one-letter ending ("Park W", "Avenue A") must end the word, or "Park S" would also match "Park Southwest".
+      const ends = (v) => (/ [a-z]$/.test(v) ? [v, `${v} *`] : [`${v}*`]);
+      const ors = spellings.flatMap(ends).flatMap((v) => [`${num} ${v}`, `* ${num} ${v}`]).map((v) => `address.ilike.${v}`);
+      const rows = await recordRows(`or=(${encodeURIComponent(ors.join(","))})`);
+      // AG records write boroughs several ways (KINGS, NEW YORK), so the borough narrows the list only when it matches something.
+      const inBoro = P.borough ? rows.filter((r) => BORO_OF[String(r.borough || "").trim().toUpperCase()] === P.borough) : [];
+      const hits = inBoro.length ? inBoro : rows;
+      const notes = [];
+      if (P.borough && rows.length && !inBoro.length) notes.push(`No record at this address lists ${titleCase(P.borough)}, so every borough is shown.`);
+      if (hits.length > 1) notes.push(`${hits.length} plan records match this address. Compare the building names and plan IDs.`);
+      P.matchNote = notes.join(" ") || null;
+      return hits;
+    }
     if (P.zips && !P.q) {
       const f = [`zip=in.(${P.zips.join(",")})`];
       if (P.minUnits != null) f.push(`units_residential=gte.${P.minUnits}`);
@@ -834,17 +904,20 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
       $("answer").hidden = !answer; $("answer").innerHTML = "";
       if (answer) renderAnswer(rows[0], P);
       const noun = P.address || P.planId ? "building" : "matching building";
-      $("rtitle").textContent = !rows.length ? "No plans found" : rows.length === 60 ? (P.q ? `Top 60 ${noun}s` : "60 newest buildings") : `${rows.length} ${noun}${rows.length === 1 ? "" : "s"}`;
+      $("rtitle").textContent = !rows.length ? (P.address ? "No matching record found here" : "No plans found") : rows.length === 60 ? (P.q ? `Top 60 ${noun}s` : "60 newest buildings") : `${rows.length} ${noun}${rows.length === 1 ? "" : "s"}`;
       $("status").textContent = rows.length ? (P.q ? "ranked by matching pages" : "newest first")
-        : P.address ? "No plan on file at that address. Check the spelling, or search the building name." : "Try fewer words, or remove a filter above.";
-      $("maptitle").textContent = `${rows.length} matching plan${rows.length === 1 ? "" : "s"}`;
+        : P.address ? "That doesn’t mean no plan was filed: this site may not list every plan, or the AG may spell the address differently. Try the building name or plan ID." : "Try fewer words, or remove a filter above.";
+      const where = P.borough && !P.zips && !P.address ? ` in ${titleCase(P.borough)}` : "";
+      if (where) $("rtitle").textContent += where;
+      $("maptitle").textContent = `${rows.length} matching plan${rows.length === 1 ? "" : "s"}${where}`;
       renderCards(rows);
       renderViews(P, rows);
       highlight(rows.map((r) => r.plan_id));
       const pts = points.filter((p) => rows.some((r) => r.plan_id === p.plan_id));
-      if (pts.length) { const xy = pts.map((p) => project(p.lat, p.lng)); const xs = xy.map((a) => a[0]), ys = xy.map((a) => a[1]); const bx = { x: Math.min(...xs), y: Math.min(...ys), w: Math.max(120, Math.max(...xs) - Math.min(...xs)), h: Math.max(120, Math.max(...ys) - Math.min(...ys)) }; bx.x -= Math.max(0, 120 - (Math.max(...xs) - Math.min(...xs))) / 2; bx.y -= Math.max(0, 120 - (Math.max(...ys) - Math.min(...ys))) / 2; zoomTo(bx, 0.15); }
+      if (P.boroPick && P.borough) zoomBoro(P.borough);
+      else if (pts.length) { const xy = pts.map((p) => project(p.lat, p.lng)); const xs = xy.map((a) => a[0]), ys = xy.map((a) => a[1]); const bx = { x: Math.min(...xs), y: Math.min(...ys), w: Math.max(120, Math.max(...xs) - Math.min(...xs)), h: Math.max(120, Math.max(...ys) - Math.min(...ys)) }; bx.x -= Math.max(0, 120 - (Math.max(...xs) - Math.min(...xs))) / 2; bx.y -= Math.max(0, 120 - (Math.max(...ys) - Math.min(...ys))) / 2; zoomTo(bx, 0.15); }
       else { vb = { ...full }; setVB(); }
-      $("boros").querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", "false"));
+      pressBoro(P.borough);
     } catch (e) { showError(e); $("status").textContent = ""; }
     finally { $("go").disabled = false; }
   }
