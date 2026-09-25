@@ -11,7 +11,7 @@ import { join } from "node:path";
 
 const SB = "https://dvywgltjqpntldlztapu.supabase.co";
 const KEY = "sb_publishable_At7fyv-9Vp7ByNP3AXHZ7g_qphsg6Rw";
-const SITE_URL = (process.env.SITE_URL || "https://openbook-weld.vercel.app").replace(/\/$/, "");
+const SITE_URL = (process.env.SITE_URL || "https://www.condobooknyc.com").replace(/\/$/, "");
 const AG = "https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=";
 const ROOT = new URL("..", import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1");
 const OUT = join(ROOT, "buildings");
