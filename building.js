@@ -42,7 +42,8 @@
     return (start > 0 ? "…" : "") + s + (end < text.length ? "…" : "");
   }
 
-  async function run(q) {
+  const track = (name, params) => window.obTrack?.(name, { plan_id: plan, ...params });
+  async function run(q, via) {
     q = q.trim(); if (!q) { input.focus(); return; }
     out.innerHTML = '<p class="faint">Searching…</p>';
     // Stems for highlighting: first 5 letters of each word, skipping OR and quotes.
@@ -52,13 +53,15 @@
         { headers: { apikey: KEY, Accept: "application/json" } });
       if (!r.ok) throw new Error(String(r.status));
       const rows = await r.json();
+      track("search_plan", { search_term: q, search_via: via, results: rows.length });
       if (!rows.length) { out.innerHTML = `<p class="faint">No pages in this plan match “${esc(q)}”. Try fewer or different words.</p>`; return; }
       out.innerHTML = `<p class="faint">${rows.length}${rows.length === 30 ? "+" : ""} matching page${rows.length === 1 ? "" : "s"}</p><ol class="hits">` +
         rows.map((x) => `<li><span class="cite">${esc(docs[x.file_id] || "Document")} · p. ${x.page_no}</span><p>${excerpt(x.body, terms)}</p></li>`).join("") + "</ol>";
     } catch (e) {
+      track("search_error", { search_term: q, description: String(e.message || e).slice(0, 150) });
       out.innerHTML = '<p class="faint">The search didn\'t run. Try again in a moment.</p>';
     }
   }
-  form.addEventListener("submit", (e) => { e.preventDefault(); run(input.value); });
-  form.querySelectorAll("[data-q]").forEach((b) => b.addEventListener("click", () => { input.value = b.dataset.q; run(b.dataset.q); }));
+  form.addEventListener("submit", (e) => { e.preventDefault(); run(input.value, "typed"); });
+  form.querySelectorAll("[data-q]").forEach((b) => b.addEventListener("click", () => { input.value = b.dataset.q; run(b.dataset.q, "chip"); }));
 })();
