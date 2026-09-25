@@ -1,4 +1,5 @@
-// Builds one static page per offering plan, plus a buildings directory, sitemap.xml and robots.txt.
+// Builds one static page per offering plan, plus a buildings directory, sitemap.xml and robots.txt,
+// and stamps canonical/social/analytics tags and structured data into the hand-written pages.
 //
 //   node scripts/build-buildings.mjs
 //   SITE_URL=https://example.com node scripts/build-buildings.mjs
@@ -73,18 +74,29 @@ const miles = (a, b) => {
 // The masthead is copied from index.html into scripts/masthead.html; its links are made relative here.
 const MAST_HTML = await readFile(join(ROOT, "scripts", "masthead.html"), "utf8");
 const MAST = (p) => MAST_HTML.replace(/href="(?!https?:|mailto:|#)([^"]+)"/g, (_, h) => `href="${p}${h}"`);
-const HEAD = (p, { title, description, canonical, noindex }) => `<!doctype html>
+const SITE_NAME = "Open Book";
+const ld = (obj) => `<script type="application/ld+json">${JSON.stringify(obj).replace(/</g, "\\u003c")}</script>`;
+// Tags every page shares: canonical, social cards, analytics. Also stamped into the hand-written pages (see stampStatic).
+const SEO = (p, { title, description, canonical, image, imageAlt }) => `<link rel="canonical" href="${esc(canonical)}">
+<meta property="og:site_name" content="${SITE_NAME}">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="website">
+<meta property="og:title" content="${esc(title)}">
+<meta property="og:description" content="${esc(description)}">
+<meta property="og:url" content="${esc(canonical)}">
+${image ? `<meta property="og:image" content="${esc(image)}">\n<meta property="og:image:alt" content="${esc(imageAlt || title)}">\n` : ""}<meta name="twitter:card" content="${image ? "summary_large_image" : "summary"}">
+<meta name="twitter:title" content="${esc(title)}">
+<meta name="twitter:description" content="${esc(description)}">
+<meta name="theme-color" content="#879CB4">
+<script src="${p}analytics.js"></script>`;
+const HEAD = (p, { title, description, canonical, noindex, image, imageAlt }) => `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
-${noindex ? '<meta name="robots" content="noindex, follow">\n' : ""}<link rel="canonical" href="${esc(canonical)}">
-<meta property="og:title" content="${esc(title)}">
-<meta property="og:description" content="${esc(description)}">
-<meta property="og:type" content="website">
-<meta property="og:url" content="${esc(canonical)}">
+${noindex ? '<meta name="robots" content="noindex, follow">\n' : ""}${SEO(p, { title, description, canonical, image, imageAlt })}
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23879CB4'/%3E%3Crect y='26' width='32' height='6' fill='%2365153B'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='17' fill='%2365153B' stroke='white' stroke-width='.8' paint-order='stroke'%3EOB%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -213,10 +225,26 @@ function buildingPage(p, ctx) {
   const docRows = docs.length ? docs.slice().sort((a, b) => (a.doc_kind === "amendment") - (b.doc_kind === "amendment") || (a.amendment_no ?? 0) - (b.amendment_no ?? 0))
     .map((d) => `<li><span>${esc(docLabel(d))}</span><span class="m">${d.num_pages ? d.num_pages + " pages" : ""}${d.size_mb ? ` · ${esc(d.size_mb)} MB` : ""} · ${d.status === "done" ? "searchable here" : "not searched yet"}</span></li>`).join("") : "";
 
-  const ldJson = { "@context": "https://schema.org", "@type": "Residence", name, address: { "@type": "PostalAddress", streetAddress: addr, addressLocality: b, addressRegion: "NY", postalCode: p.zip || undefined, addressCountry: "US" } };
+  const image = ctx.images.has(p.plan_id) ? `${SITE_URL}/buildings/img/${p.plan_id}.webp` : null;
+  // Only what the AG record states. ApartmentComplex is schema.org's residential-building type.
+  const ldJson = {
+    "@context": "https://schema.org", "@type": "ApartmentComplex", "@id": canonical + "#building", name, url: canonical, description,
+    identifier: { "@type": "PropertyValue", propertyID: "NY AG offering plan ID", value: p.plan_id },
+    address: { "@type": "PostalAddress", streetAddress: addr, addressLocality: b, addressRegion: "NY", postalCode: p.zip || undefined, addressCountry: "US" },
+  };
+  if (p.units_residential != null) ldJson.numberOfAccommodationUnits = p.units_residential;
   if (p.lat) ldJson.geo = { "@type": "GeoCoordinates", latitude: p.lat, longitude: p.lng };
+  if (image) ldJson.image = image;
+  if (group !== "Outside New York City") ldJson.containedInPlace = { "@type": "Place", name: `${group}, New York` };
+  const crumbs = {
+    "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Buildings", item: `${SITE_URL}/buildings/` },
+      { "@type": "ListItem", position: 2, name: group, item: `${SITE_URL}/buildings/#${slug(group)}` },
+      { "@type": "ListItem", position: 3, name, item: canonical },
+    ],
+  };
 
-  return HEAD(P, { title, description, canonical, noindex: !searchable }) + `<main class="bldg">
+  return HEAD(P, { title, description, canonical, noindex: !searchable, image, imageAlt: `3D massing drawing of ${name}` }) + `<main class="bldg" data-plan="${esc(p.plan_id)}" data-borough="${esc(group)}" data-searchable="${searchable}">
   <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Buildings</a> › <a href="index.html#${slug(group)}">${esc(group)}</a></nav>
   <h1>${esc(name)} offering plan</h1>
   <p class="addr">${esc(addr)} · ${esc(b)}, New York${p.zip ? " " + esc(p.zip) : ""}</p>
@@ -291,7 +319,8 @@ function buildingPage(p, ctx) {
     <p><a href="mailto:hello@halfave.co?subject=${encodeURIComponent(`Open Book error: ${p.plan_id}`)}">Found an error? Report it →</a></p>
   </section>
 </main>
-<script type="application/ld+json">${JSON.stringify(ldJson).replace(/</g, "\\u003c")}</script>
+${ld(ldJson)}
+${ld(crumbs)}
 ` + FOOT(P, `<script src="${P}building.js"></script>\n`);
 }
 
@@ -310,8 +339,12 @@ function directory(plans, ctx) {
   return HEAD(P, {
     title: "NYC Condo Offering Plans by Building | Open Book",
     description: `Every NYC condo offering plan on Open Book, by borough: ${plans.length.toLocaleString("en-US")} plans with units, parking, amendments and source links.`,
-    canonical: `${SITE_URL}/buildings/index.html`,
-  }) + `<main>
+    canonical: `${SITE_URL}/buildings/`,
+  }) + ld({
+    "@context": "https://schema.org", "@type": "CollectionPage", name: "NYC Condo Offering Plans by Building", url: `${SITE_URL}/buildings/`,
+    isPartOf: { "@type": "WebSite", name: SITE_NAME, url: `${SITE_URL}/` },
+  }) + `
+<main>
   <h1>Buildings</h1>
   <p class="lede">${plans.length.toLocaleString("en-US")} NYC condo offering plans on file. ${ctx.searchable.size.toLocaleString("en-US")} are searchable in full text.</p>
   <nav class="toc" aria-label="Boroughs">${boros.map((b) => `<a href="#${slug(b)}">${esc(b)}</a>`).join(" · ")}</nav>
@@ -360,12 +393,54 @@ const ctx = { plans, docs, sections, images, searchable };
 for (const p of plans) await writeFile(join(OUT, fileFor(p)), buildingPage(p, ctx));
 await writeFile(join(OUT, "index.html"), directory(plans, ctx));
 
+// ---------- hand-written pages: stamp the shared SEO tags and structured data between markers ----------
+// Title and description stay hand-written in each page; everything between <!-- seo --> and <!-- /seo --> is replaced.
+const STATIC = { "index.html": "", "about.html": "about.html", "faq.html": "faq.html", "terms.html": "terms.html", "privacy.html": "privacy.html", "disclaimers.html": "disclaimers.html" };
+const ORG = { "@type": "Organization", "@id": `${SITE_URL}/#org`, name: "Half Ave Company LLC", email: "hello@halfave.co" };
+const unhtml = (s) => String(s).replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/\s+/g, " ").trim();
+async function stampStatic(file, path) {
+  const html = await readFile(join(ROOT, file), "utf8");
+  if (!/<!-- seo -->[\s\S]*?<!-- \/seo -->/.test(html)) throw new Error(`${file}: missing <!-- seo --> markers`);
+  const title = unhtml(html.match(/<title>([\s\S]*?)<\/title>/)[1]);
+  const description = unhtml(html.match(/<meta name="description" content="([^"]*)"/)[1]);
+  const canonical = `${SITE_URL}/${path}`;
+  const blocks = [];
+  if (file === "index.html") {
+    blocks.push({
+      "@context": "https://schema.org", "@graph": [
+        { "@type": "WebSite", "@id": `${SITE_URL}/#site`, name: SITE_NAME, url: `${SITE_URL}/`, description, publisher: { "@id": ORG["@id"] },
+          potentialAction: { "@type": "SearchAction", target: { "@type": "EntryPoint", urlTemplate: `${SITE_URL}/?q={search_term_string}` }, "query-input": "required name=search_term_string" } },
+        ORG,
+        { "@type": "Dataset", name: "NYC condominium offering plans", description: "Condominium offering plans and amendments filed with the New York State Attorney General, searchable in full text with page citations.",
+          url: `${SITE_URL}/buildings/`, creator: { "@id": ORG["@id"] }, isAccessibleForFree: true, spatialCoverage: "New York City, NY",
+          isBasedOn: "https://offeringplandatasearch.ag.ny.gov/REF/" },
+      ],
+    });
+  }
+  if (file === "faq.html") {
+    // FAQ answers are the <details><summary>Q</summary><p>A</p>… blocks on the page, so the markup can't drift from the text.
+    const qa = [...html.matchAll(/<details[^>]*>\s*<summary>([\s\S]*?)<\/summary>([\s\S]*?)<\/details>/g)]
+      .map(([, q, a]) => ({ "@type": "Question", name: unhtml(q), acceptedAnswer: { "@type": "Answer", text: unhtml(a) } }));
+    if (qa.length) blocks.push({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: qa });
+  }
+  if (file !== "index.html") {
+    blocks.push({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+      { "@type": "ListItem", position: 1, name: SITE_NAME, item: `${SITE_URL}/` },
+      { "@type": "ListItem", position: 2, name: title.replace(/^Open Book /, "").replace(/ Open Book$/, ""), item: canonical },
+    ] });
+  }
+  const block = `<!-- seo -->\n${SEO("", { title, description, canonical })}\n${blocks.map(ld).join("\n")}${blocks.length ? "\n" : ""}<!-- /seo -->`;
+  await writeFile(join(ROOT, file), html.replace(/<!-- seo -->[\s\S]*?<!-- \/seo -->/, () => block));
+}
+for (const [file, path] of Object.entries(STATIC)) await stampStatic(file, path);
+
 // Sitemap lists only pages we want indexed: site pages, the directory, and searchable plans.
-const urls = ["index.html", "about.html", "faq.html", "buildings/index.html",
-  ...plans.filter((p) => searchable.has(p.plan_id)).map((p) => "buildings/" + fileFor(p))];
+// lastmod is when the plan record was last fetched, so it only moves when the page can have changed.
+const urls = [["", TODAY], ["about.html"], ["faq.html"], ["buildings/", TODAY],
+  ...plans.filter((p) => searchable.has(p.plan_id)).map((p) => ["buildings/" + fileFor(p), (p.fetched_at || "").slice(0, 10) || TODAY])];
 await writeFile(join(ROOT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map((u) => `  <url><loc>${SITE_URL}/${u}</loc><lastmod>${TODAY}</lastmod></url>`).join("\n")}
+${urls.map(([u, mod]) => `  <url><loc>${SITE_URL}/${u}</loc>${mod ? `<lastmod>${mod}</lastmod>` : ""}</url>`).join("\n")}
 </urlset>
 `);
 await writeFile(join(ROOT, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`);
