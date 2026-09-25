@@ -7,7 +7,7 @@
 
 param(
   [string]$Url = "http://localhost:3000",
-  [int]$Max = 5,
+  [int]$Max = 10,
   [string]$BuildingPath = "/buildings/1-prospect-park-west-brooklyn-cd180123.html"
 )
 
@@ -101,11 +101,12 @@ If no consequential, feasible improvement remains, reply exactly DONE.
   $editPrompt = @"
 Read the critique in .loop/feedback.txt, plus rubric.md, CLAUDE.md and .loop/history.md.
 
-Use your judgment. Implement only suggestions that are accurate, feasible and supported by the current data. You may reject a suggestion; say why in your final response. Prefer one complete, verifiable improvement over several partial ones.
+Use your judgment. Implement only suggestions that are accurate, feasible and supported by the current data. You may reject or defer a suggestion. Prefer one complete, verifiable improvement over several partial ones. End your final response with a section "Implemented:" listing exactly what you changed, and "Deferred or rejected:" with reasons.
 
 Stay inside the CLAUDE.md boundaries. Do not hand-edit generated building HTML; change its generator if needed. Do not invent prices, sales, professionals or document citations. Do not commit, push or deploy.
 "@
-  claude -p $editPrompt --permission-mode acceptEdits
+  $editFile = Join-Path $artifactDir "edit.txt"
+  claude -p $editPrompt --permission-mode acceptEdits --allowedTools "Bash(node scripts/build-buildings.mjs)" | Tee-Object -FilePath $editFile
   Assert-Exit "Claude edit"
 
   if (@(git status --porcelain).Count -eq 0) {
@@ -120,9 +121,11 @@ Stay inside the CLAUDE.md boundaries. Do not hand-edit generated building HTML; 
 
   $reviewFile = Join-Path $artifactDir "review.txt"
   $reviewPrompt = @"
-Review the uncommitted changes against commit $before, using .loop/feedback.txt, rubric.md and CLAUDE.md. Inspect git diff and the changed files.
+Review the uncommitted changes against commit $before, using .loop/edit.txt (Claude's account of what it implemented and what it deferred), .loop/feedback.txt, rubric.md and CLAUDE.md. Inspect git diff and the changed files.
 
-Check for regressions in search interpretation, results, source links, amendment and coverage language, the generated-page workflow, element ids, ?q= loading, themes, mobile layout and accessibility. Verify the edit actually addresses the accepted critique. Do not edit files.
+Judge only what .loop/edit.txt says was implemented. Deferred items are not defects; they return in a later round.
+
+Check for regressions in search interpretation, results, source links, amendment and coverage language, the generated-page workflow, element ids, ?q= loading, themes, mobile layout and accessibility. Verify each implemented item actually works as claimed. Do not edit files.
 
 Reply exactly PASS if it is safe to commit. Otherwise start with FAIL and list specific defects and how to reproduce them. Do not demand unrelated features.
 "@
@@ -132,7 +135,7 @@ Reply exactly PASS if it is safe to commit. Otherwise start with FAIL and list s
   $review = (Get-Content $reviewFile -Raw).Trim()
   Write-Host $review
   if ($review -notmatch '^PASS\b') {
-    Add-Content $historyFile "`n## Round $i - failed review`n$feedback`n`n$review"
+    Add-Content $historyFile "`n## Round $i - failed review`n$feedback`n`nClaude:`n$(Get-Content $editFile -Raw)`n`n$review"
     Write-Warning "Review failed. Changes left uncommitted for you to inspect (git diff). Nothing was pushed."
     break
   }
@@ -140,7 +143,7 @@ Reply exactly PASS if it is safe to commit. Otherwise start with FAIL and list s
   git add -A
   git commit -qm "site loop round $i"
   Assert-Exit "Commit"
-  Add-Content $historyFile "`n## Round $i - committed $((git rev-parse --short HEAD).Trim())`n$feedback"
+  Add-Content $historyFile "`n## Round $i - committed $((git rev-parse --short HEAD).Trim())`n$feedback`n`nClaude:`n$(Get-Content $editFile -Raw)"
 }
 
 Write-Host "Done. Review with: git log --oneline design-loop"
