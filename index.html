@@ -5,9 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Open Book — NYC condo offering plan search</title>
 <meta name="description" content="Search NYC condo offering plans, Schedule A and B, and amendments filed with the NY Attorney General. Find precedents, pricing, budgets, project teams and floor plans, with the page they came from.">
+<!-- seo -->
+<link rel="canonical" href="https://www.condobooknyc.com/">
+<meta property="og:site_name" content="Open Book">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="website">
 <meta property="og:title" content="Open Book — NYC condo offering plan search">
-<meta property="og:description" content="Find what’s in the filing. Search offering plans, schedules, and amendments across New York City.">
+<meta property="og:description" content="Search NYC condo offering plans, Schedule A and B, and amendments filed with the NY Attorney General. Find precedents, pricing, budgets, project teams and floor plans, with the page they came from.">
+<meta property="og:url" content="https://www.condobooknyc.com/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Open Book — NYC condo offering plan search">
+<meta name="twitter:description" content="Search NYC condo offering plans, Schedule A and B, and amendments filed with the NY Attorney General. Find precedents, pricing, budgets, project teams and floor plans, with the page they came from.">
 <meta name="theme-color" content="#879CB4">
+<script src="analytics.js"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.condobooknyc.com/#site","name":"Open Book","url":"https://www.condobooknyc.com/","description":"Search NYC condo offering plans, Schedule A and B, and amendments filed with the NY Attorney General. Find precedents, pricing, budgets, project teams and floor plans, with the page they came from.","publisher":{"@id":"https://www.condobooknyc.com/#org"},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.condobooknyc.com/?q={search_term_string}"},"query-input":"required name=search_term_string"}},{"@type":"Organization","@id":"https://www.condobooknyc.com/#org","name":"Half Ave Company LLC","email":"hello@halfave.co"},{"@type":"Dataset","name":"NYC condominium offering plans","description":"Condominium offering plans and amendments filed with the New York State Attorney General, searchable in full text with page citations.","url":"https://www.condobooknyc.com/buildings/","creator":{"@id":"https://www.condobooknyc.com/#org"},"isAccessibleForFree":true,"spatialCoverage":"New York City, NY","isBasedOn":"https://offeringplandatasearch.ag.ny.gov/REF/"}]}</script>
+<!-- /seo -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23879CB4'/%3E%3Crect y='26' width='32' height='6' fill='%2365153B'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='17' fill='%2365153B' stroke='white' stroke-width='.8' paint-order='stroke'%3EOB%3C/text%3E%3C/svg%3E">
 
 <link rel="stylesheet" href="menu.css">
@@ -438,6 +450,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
       tool_error: "That search couldn't run. Try different words.",
     }[e?.code] || ("Something went wrong: " + (e?.message || "unknown error"));
     $("notice").textContent = msg; $("notice").hidden = false;
+    obTrack("search_error", { error_code: e?.code || "unknown", description: String(e?.message || "").slice(0, 150) });
   }
 
   // ---------- map ----------
@@ -494,19 +507,22 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
     const b = e.target.closest("button"); if (!b) return;
     const boro = b.dataset.b.toUpperCase() || null;
     pressBoro(boro);
+    obTrack("map_borough", { borough: boro || "all", with_search: !!(current && !current.planId) });
     if (!current || current.planId) { zoomBoro(boro); return; }
     // A neighborhood's ZIPs stay only while its own borough is picked.
     const keepZips = boro && current.zips && current.borough === boro;
     const chips = current.chips.filter((c) => c.k !== "area" || keepZips);
     if (boro && !keepZips) chips.push({ k: "area", label: titleCase(boro) });
     const notes = (current.notes || []).filter((n) => !/ZIP|can’t filter by/.test(n) || keepZips);
-    runP({ ...current, borough: boro, zips: keepZips ? current.zips : null, chips, notes, boroPick: true });
+    runP({ ...current, borough: boro, zips: keepZips ? current.zips : null, chips, notes, boroPick: true, via: "map_borough" });
   });
   // pan + wheel
   (() => {
-    const box = $("mapbox"); let drag = null;
+    const box = $("mapbox"); let drag = null, used = false;
+    const mapUsed = (how) => { if (!used) { used = true; obTrack("map_interact", { interaction: how }); } };
+    $("zin").addEventListener("click", () => mapUsed("zoom_button")); $("zout").addEventListener("click", () => mapUsed("zoom_button"));
     const toSvg = (ev) => { const r = svg.getBoundingClientRect(); const s = Math.max(vb.w / r.width, vb.h / r.height); const ox = (r.width - vb.w / s) / 2, oy = (r.height - vb.h / s) / 2; return [vb.x + (ev.clientX - r.left - ox) * s, vb.y + (ev.clientY - r.top - oy) * s, s]; };
-    box.addEventListener("wheel", (ev) => { ev.preventDefault(); const [x, y] = toSvg(ev); zoomBy(ev.deltaY > 0 ? 1.18 : 0.85, x, y); }, { passive: false });
+    box.addEventListener("wheel", (ev) => { ev.preventDefault(); const [x, y] = toSvg(ev); zoomBy(ev.deltaY > 0 ? 1.18 : 0.85, x, y); mapUsed("wheel"); }, { passive: false });
     box.addEventListener("pointerdown", (ev) => { if (ev.target.closest(".zoom")) return; drag = { x: ev.clientX, y: ev.clientY, vb: { ...vb }, moved: false }; box.setPointerCapture(ev.pointerId); });
     box.addEventListener("pointermove", (ev) => {
       if (drag) { const [, , s] = toSvg(ev); const dx = (ev.clientX - drag.x) * s, dy = (ev.clientY - drag.y) * s; if (Math.abs(dx) + Math.abs(dy) > 2) drag.moved = true; vb = { ...drag.vb, x: drag.vb.x - dx, y: drag.vb.y - dy }; setVB(); $("tip").hidden = true; return; }
@@ -516,7 +532,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
       tip.innerHTML = `<b>${esc(tc(p.name))}</b><br>${esc(tc(p.address))} · ${p.units_residential ?? "?"} units${p.units_parking ? ` · ${p.units_parking} parking` : ""}`;
       tip.style.left = (ev.clientX - r.left) + "px"; tip.style.top = (ev.clientY - r.top) + "px"; tip.hidden = false;
     });
-    box.addEventListener("pointerup", (ev) => { const d = drag; drag = null; if (d && !d.moved) { const c = document.elementFromPoint(ev.clientX, ev.clientY)?.closest?.("circle.dot"); if (c) openDetail(c.dataset.id, true); } });
+    box.addEventListener("pointerup", (ev) => { const d = drag; drag = null; if (d?.moved) mapUsed("drag"); if (d && !d.moved) { const c = document.elementFromPoint(ev.clientX, ev.clientY)?.closest?.("circle.dot"); if (c) openDetail(c.dataset.id, true); } });
     box.addEventListener("pointerleave", () => { $("tip").hidden = true; });
     box.addEventListener("keydown", (ev) => { const c = ev.target.closest?.("circle.dot"); if (c && (ev.key === "Enter" || ev.key === " ")) { ev.preventDefault(); openDetail(c.dataset.id, true); } });
   })();
@@ -581,6 +597,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
   // ---------- detail ----------
   async function openDetail(id, fromMap) {
     selected = id;
+    obTrack("select_content", { content_type: "plan", item_id: id, open_from: fromMap ? "map" : view || "results", search_term: current?.text });
     points.forEach((p) => p.el.classList.toggle("sel", p.plan_id === id)); setVB();
     document.querySelectorAll("#results .card").forEach((li) => li.classList.toggle("sel", li.dataset.id === id));
     const box = $("detail"); box.innerHTML = `<div class="detail"><div class="dbody"><span class="status">Loading ${esc(id)}…</span></div></div>`;
@@ -858,14 +875,14 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
     return mapReady;
   }
 
-  function run() {
+  function run(via = "typed") {
     const text = $("q").value.trim();
     if (!text) { $("q").focus(); return; }
     const P = parseQuestion(text);
     if (!P.q && !P.borough && !P.zips && P.minUnits == null && P.maxUnits == null && P.minParking == null && !P.planId && !P.address) {
       P.q = text; P.chips.unshift({ k: "q", label: `Text: ${text}` });
     }
-    P.text = text;
+    P.text = text; P.via = via;
     try { history.replaceState(null, "", "?q=" + encodeURIComponent(text)); } catch (e) { /* file:// */ }
     runP(P);
   }
@@ -884,6 +901,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
     const P = { ...current, chips: current.chips.filter((c) => c.k !== b.dataset.rm) };
     ({ q: () => { P.q = ""; }, area: () => { P.borough = null; P.zips = null; }, units: () => { P.minUnits = null; P.maxUnits = null; },
       parking: () => { P.minParking = null; }, planId: () => { P.planId = null; }, address: () => { P.address = null; } })[b.dataset.rm]?.();
+    P.via = "remove_filter:" + b.dataset.rm;
     runP(P);
   });
 
@@ -921,6 +939,11 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
       $("maptitle").textContent = `${rows.length} matching plan${rows.length === 1 ? "" : "s"}${where}`;
       renderCards(rows);
       renderViews(P, rows);
+      const kind = P.planId ? "plan_id" : P.address ? "address" : P.q ? "text" : "filters";
+      const sp = { search_term: P.text, search_kind: kind, search_via: P.via || "borough", results: rows.length, answer_card: answer,
+        filters: P.chips.map((c) => c.k).join(",") || "none", borough: P.borough || "any" };
+      obTrack("search", sp);
+      if (!rows.length) obTrack("search_no_results", sp);
       highlight(rows.map((r) => r.plan_id));
       const pts = points.filter((p) => rows.some((r) => r.plan_id === p.plan_id));
       if (P.boroPick && P.borough) zoomBoro(P.borough);
@@ -931,7 +954,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
     finally { $("go").disabled = false; }
   }
   $("f").addEventListener("submit", (e) => { e.preventDefault(); run(); });
-  $("examples").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; $("q").value = b.dataset.q; run(); });
+  $("examples").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; $("q").value = b.dataset.q; run("example"); });
 
   // ---------- result views: one search, several ways to read it ----------
   const VIEWS = { buildings: "Buildings", passages: "Passages", documents: "Documents", compare: "Total offering prices" };
@@ -945,8 +968,9 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
     $("views").hidden = !rows.length || avail.length < 2;
     showView(start);
   }
-  $("views").addEventListener("click", (e) => { const b = e.target.closest("[data-v]"); if (b) showView(b.dataset.v); });
-  function showView(v) {
+  $("views").addEventListener("click", (e) => { const b = e.target.closest("[data-v]"); if (b) showView(b.dataset.v, true); });
+  function showView(v, user) {
+    if (user) obTrack("view_results", { view: v, search_term: current?.text });
     view = v; viewToken++;
     $("views").querySelectorAll("button").forEach((b) => b.setAttribute("aria-selected", String(b.dataset.v === v)));
     $("results").hidden = v !== "buildings"; $("rview").hidden = v === "buildings";
@@ -1080,7 +1104,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
 
   ensureMap().catch(() => {}); // warm the map quietly; it only shows after a search
   const startQ = new URLSearchParams(location.search).get("q");
-  if (startQ) { $("q").value = startQ; run(); }
+  if (startQ) { $("q").value = startQ; run("link"); }
   $("q").focus();
 })();
 </script>
