@@ -113,6 +113,7 @@ const MENU = (p) => `<details class="menu" id="menu">
 `;
 const FOOT = (p, extraScripts = "") => `<footer>
   <div>Open Book · NYC condo offering plan search · Source: NY Attorney General offering plan database</div>
+  <nav class="footnav" aria-label="More"><a href="${p}index.html">Search</a><a href="${p}buildings/index.html">Buildings</a><a href="${p}about.html">About</a><a href="${p}faq.html">FAQ</a><a href="mailto:hello@halfave.co?subject=Open%20Book%20error%20report">Report an error</a><a href="${p}terms.html">Terms</a><a href="${p}privacy.html">Privacy</a><a href="${p}disclaimers.html">Disclaimers</a></nav>
   <div>© 2026 Half Ave Company LLC. Open Book is a service of Half Ave Company LLC.</div>
 </footer>
 <script src="${p}menu.js"></script>
