@@ -74,7 +74,7 @@ const miles = (a, b) => {
 // The masthead is copied from index.html into scripts/masthead.html; its links are made relative here.
 const MAST_HTML = await readFile(join(ROOT, "scripts", "masthead.html"), "utf8");
 const MAST = (p) => MAST_HTML.replace(/href="(?!https?:|mailto:|#)([^"]+)"/g, (_, h) => `href="${p}${h}"`);
-const SITE_NAME = "Open Book";
+const SITE_NAME = "The Condo Book Project";
 const ld = (obj) => `<script type="application/ld+json">${JSON.stringify(obj).replace(/</g, "\\u003c")}</script>`;
 // Tags every page shares: canonical, social cards, analytics. Also stamped into the hand-written pages (see stampStatic).
 const SEO = (p, { title, description, canonical, image, imageAlt }) => `<link rel="canonical" href="${esc(canonical)}">
@@ -114,9 +114,8 @@ const MENU = (p) => `<details class="menu" id="menu">
     <a href="${p}index.html">Search</a>
     <a href="${p}buildings/index.html">Buildings</a>
     <a href="${p}about.html">About</a>
-    <a href="${p}about.html#coverage">Coverage</a>
     <a href="${p}faq.html">FAQ</a>
-    <a href="mailto:hello@halfave.co?subject=Open%20Book%20error%20report">Report an error</a>
+    <a href="mailto:hello@halfave.co?subject=The%20Condo%20Book%20Project%20error%20report">Report an error</a>
     <hr>
     <div class="fine"><a href="${p}terms.html">Terms</a><a href="${p}privacy.html">Privacy</a><a href="${p}disclaimers.html">Disclaimers</a></div>
     <small>© 2026 Half Ave Company LLC</small>
@@ -124,9 +123,9 @@ const MENU = (p) => `<details class="menu" id="menu">
 </details>
 `;
 const FOOT = (p, extraScripts = "") => `<footer>
-  <div>Open Book · NYC condo offering plan search · Source: NY Attorney General offering plan database</div>
-  <nav class="footnav" aria-label="More"><a href="${p}index.html">Search</a><a href="${p}buildings/index.html">Buildings</a><a href="${p}about.html">About</a><a href="${p}faq.html">FAQ</a><a href="mailto:hello@halfave.co?subject=Open%20Book%20error%20report">Report an error</a><a href="${p}terms.html">Terms</a><a href="${p}privacy.html">Privacy</a><a href="${p}disclaimers.html">Disclaimers</a></nav>
-  <div>© 2026 Half Ave Company LLC. Open Book is a service of Half Ave Company LLC.</div>
+  <div>The Condo Book Project · NYC condo offering plan search · Source: NY Attorney General offering plan database</div>
+  <nav class="footnav" aria-label="More"><a href="${p}index.html">Search</a><a href="${p}buildings/index.html">Buildings</a><a href="${p}about.html">About</a><a href="${p}faq.html">FAQ</a><a href="mailto:hello@halfave.co?subject=The%20Condo%20Book%20Project%20error%20report">Report an error</a><a href="${p}terms.html">Terms</a><a href="${p}privacy.html">Privacy</a><a href="${p}disclaimers.html">Disclaimers</a></nav>
+  <div>© 2026 Half Ave Company LLC. The Condo Book Project is a service of Half Ave Company LLC.</div>
 </footer>
 <script src="${p}menu.js"></script>
 ${extraScripts}</body>
@@ -167,7 +166,7 @@ function buildingPage(p, ctx) {
   const agRecord = AG + encodeURIComponent(p.plan_id), agDocs = agRecord + "#tabs-6";
   const canonical = `${SITE_URL}/buildings/${fileFor(p)}`;
 
-  const title = `${addr || name} Offering Plan: Units, Parking & Amendments | Open Book`;
+  const title = `${addr || name} Offering Plan: Units, Parking & Amendments | The Condo Book Project`;
   const bits = [];
   if (p.units_residential != null) bits.push(plural(p.units_residential, "residential unit"));
   if (p.units_parking) bits.push(plural(p.units_parking, "parking unit"));
@@ -308,15 +307,15 @@ function buildingPage(p, ctx) {
     ${whereToLook("bylaws", sections, docsById, 2)}
     <h3>Amendments</h3>
     ${amendRows ? `<p>The original plan may have changed. These are the amendments listed for this filing.</p>
-    <div class="tscroll"><table><thead><tr><th>No.</th><th>Submitted</th><th>Status</th><th>On Open Book</th></tr></thead><tbody>${amendRows}</tbody></table></div>` : `<p>No amendments are listed for this filing.</p>`}
+    <div class="tscroll"><table><thead><tr><th>No.</th><th>Submitted</th><th>Status</th><th>Searchable here</th></tr></thead><tbody>${amendRows}</tbody></table></div>` : `<p>No amendments are listed for this filing.</p>`}
     <div class="acts"><a class="btn" href="${esc(agDocs)}" rel="noopener">View all documents on the AG website ↗</a></div>
   </section>
 
   <section class="record">
     <h2>About this record</h2>
-    <p>Source: New York State Attorney General, Real Estate Finance Bureau. Open Book is an independent research tool and is not affiliated with the Attorney General's office. Plan record last checked ${esc(day((p.fetched_at || "").slice(0, 10)) || day(TODAY))}${effective ? `; plan effective ${esc(day(effective))}` : ""}. ${esc(coverage)}</p>
+    <p>Source: New York State Attorney General, Real Estate Finance Bureau. The Condo Book Project is an independent research tool and is not affiliated with the Attorney General's office. Plan record last checked ${esc(day((p.fetched_at || "").slice(0, 10)) || day(TODAY))}${effective ? `; plan effective ${esc(day(effective))}` : ""}. ${esc(coverage)}</p>
     <p>Offering plans describe what was offered when filed. They do not confirm current availability, pricing, or the building's present condition. Review the source documents and later amendments before relying on anything here.</p>
-    <p><a href="mailto:hello@halfave.co?subject=${encodeURIComponent(`Open Book error: ${p.plan_id}`)}">Found an error? Report it →</a></p>
+    <p><a href="mailto:hello@halfave.co?subject=${encodeURIComponent(`The Condo Book Project error: ${p.plan_id}`)}">Found an error? Report it →</a></p>
   </section>
 </main>
 ${ld(ldJson)}
@@ -337,8 +336,8 @@ function directory(plans, ctx) {
       `<li><a href="${esc(fileFor(p))}">${esc(tc(p.name))}</a><span>${esc(tc(p.address))} · ${p.units_residential ?? "?"} units${p.units_parking ? ` · ${p.units_parking} parking` : ""}${ctx.searchable.has(p.plan_id) ? " · <b>searchable</b>" : ""}</span></li>`).join("")}</ul>`;
   }).join("\n");
   return HEAD(P, {
-    title: "NYC Condo Offering Plans by Building | Open Book",
-    description: `Every NYC condo offering plan on Open Book, by borough: ${plans.length.toLocaleString("en-US")} plans with units, parking, amendments and source links.`,
+    title: "NYC Condo Offering Plans by Building | The Condo Book Project",
+    description: `Every NYC condo offering plan on The Condo Book Project, by borough: ${plans.length.toLocaleString("en-US")} plans with units, parking, amendments and source links.`,
     canonical: `${SITE_URL}/buildings/`,
   }) + ld({
     "@context": "https://schema.org", "@type": "CollectionPage", name: "NYC Condo Offering Plans by Building", url: `${SITE_URL}/buildings/`,
@@ -426,7 +425,7 @@ async function stampStatic(file, path) {
   if (file !== "index.html") {
     blocks.push({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
       { "@type": "ListItem", position: 1, name: SITE_NAME, item: `${SITE_URL}/` },
-      { "@type": "ListItem", position: 2, name: title.replace(/^Open Book /, "").replace(/ Open Book$/, ""), item: canonical },
+      { "@type": "ListItem", position: 2, name: title.replace(/^The Condo Book Project /, "").replace(/ The Condo Book Project$/, ""), item: canonical },
     ] });
   }
   const block = `<!-- seo -->\n${SEO("", { title, description, canonical })}\n${blocks.map(ld).join("\n")}${blocks.length ? "\n" : ""}<!-- /seo -->`;
