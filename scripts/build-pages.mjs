@@ -227,7 +227,7 @@ async function stampStatic(file, path) {
         ORG,
         { "@type": "Dataset", name: "NYC condominium offering plans", description: "Condominium offering plans and amendments filed with the New York State Attorney General, searchable in full text with page citations.",
           url: `${SITE_URL}/buildings/`, creator: { "@id": ORG["@id"] }, isAccessibleForFree: true, spatialCoverage: "New York City, NY",
-          isBasedOn: "https://offeringplandatasearch.ag.ny.gov/REF/" },
+          isBasedOn: "https://offeringplandatasearch.ag.ny.gov/REF/", license: `${SITE_URL}/terms.html` },
       ],
     });
   }
