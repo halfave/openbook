@@ -100,3 +100,19 @@ td:first-child{font:13.5px var(--mono)}
 .record h2{font-size:20px;color:var(--ink)}
 @media (max-width:560px){ .prow{flex-direction:column;border:0;background:none;gap:8px} .prow input{border:2px solid var(--ink);background:var(--panel)} .prow button{border:2px solid var(--ink);padding:11px} .prow:focus-within{outline:0} }
 .footnav{display:flex;flex-wrap:wrap;gap:4px 14px}
+
+/* blog posts, guides index and the new-filings page */
+main.post > *{max-width:780px}
+main.post article > *{max-width:68ch}
+main.post article > .tscroll,main.post article > ul,main.post article > ol{max-width:780px}
+.post .meta{margin:0 0 14px}
+.post article h3{font:700 17px/1.35 var(--display);margin:22px 0 6px}
+.cta{border:1px solid var(--rule-strong);background:var(--panel);padding:14px;margin:36px 0 8px;display:grid;gap:10px}
+.cta label{font:700 17px var(--display)}
+.filing{border-top:1px solid var(--rule);padding:6px 0 4px}
+.filing h3{font:700 19px/1.3 var(--display);margin:14px 0 2px}
+.filing .cd{display:inline-block;font:500 13px var(--mono);letter-spacing:.04em;background:var(--chip);border:1px solid var(--rule-strong);padding:1px 7px;margin-right:6px;vertical-align:2px}
+.filing .acts{margin:8px 0 10px}
+table.bars td.bar{width:55%;min-width:90px}
+table.bars td.bar span{display:block;height:10px;background:var(--accent);opacity:.75}
+table.bars td:nth-child(2){font-variant-numeric:tabular-nums;text-align:right;padding-right:14px}
