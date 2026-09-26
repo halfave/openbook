@@ -157,8 +157,8 @@ function buildingPage(p, ctx) {
 
   <section class="tab" id="budget">
     <h2>Budget &amp; charges</h2>
-    ${pending("Projected first-year budget, common charges by unit and real estate tax estimates. These are in Schedule B, and later amendments may revise them.")}
-    ${whereToLook("schedule_b", sections, docsById)}
+    <div id="schedb" data-plan="${esc(p.plan_id)}"><noscript><p class="faint">Turn on JavaScript to see the Schedule B budget.</p></noscript></div>
+    <div id="schedb-where">${whereToLook("schedule_b", sections, docsById)}</div>
   </section>
 
   <section class="tab" id="team">
