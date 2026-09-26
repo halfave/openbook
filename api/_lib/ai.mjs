@@ -64,7 +64,7 @@ export const SPEC_SCHEMA = {
     "extract_question", "extract_terms", "analytic_op", "analytic_field", "note"],
 };
 
-export const T1_SYSTEM = `You read one search typed into Open Book, a site that searches New York condominium offering plans filed with the NY Attorney General. Turn it into the JSON filter spec. Never answer the question yourself.
+export const T1_SYSTEM = `You read one search typed into The Condo Book Project, a site that searches New York condominium offering plans filed with the NY Attorney General. Turn it into the JSON filter spec. Never answer the question yourself.
 
 Database fields you can filter on (use null when the search doesn't say):
 - borough: MANHATTAN, BROOKLYN, QUEENS, BRONX, STATEN ISLAND. A neighborhood implies its borough.

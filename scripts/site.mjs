@@ -67,7 +67,7 @@ export const miles = (a, b) => {
 // The masthead is copied from index.html into scripts/masthead.html; its links are made relative here.
 export const MAST_HTML = await readFile(join(ROOT, "scripts", "masthead.html"), "utf8");
 export const MAST = (p) => MAST_HTML.replace(/href="(?!https?:|mailto:|#)([^"]+)"/g, (_, h) => `href="${p}${h}"`);
-export const SITE_NAME = "Open Book";
+export const SITE_NAME = "The Condo Book Project";
 export const ld = (obj) => `<script type="application/ld+json">${JSON.stringify(obj).replace(/</g, "\\u003c")}</script>`;
 // Tags every page shares: canonical, social cards, analytics. Also stamped into the hand-written pages (see stampStatic).
 export const SEO = (p, { title, description, canonical, image, imageAlt }) => `<link rel="canonical" href="${esc(canonical)}">
@@ -109,9 +109,8 @@ export const MENU = (p) => `<details class="menu" id="menu">
     <a href="${p}new-condo-filings.html">New filings</a>
     <a href="${p}blog/index.html">Guides</a>
     <a href="${p}about.html">About</a>
-    <a href="${p}about.html#coverage">Coverage</a>
     <a href="${p}faq.html">FAQ</a>
-    <a href="mailto:hello@halfave.co?subject=Open%20Book%20error%20report">Report an error</a>
+    <a href="mailto:hello@halfave.co?subject=The%20Condo%20Book%20Project%20error%20report">Report an error</a>
     <hr>
     <div class="fine"><a href="${p}terms.html">Terms</a><a href="${p}privacy.html">Privacy</a><a href="${p}disclaimers.html">Disclaimers</a></div>
     <small>© 2026 Half Ave Company LLC</small>
@@ -119,9 +118,9 @@ export const MENU = (p) => `<details class="menu" id="menu">
 </details>
 `;
 export const FOOT = (p, extraScripts = "") => `<footer>
-  <div>Open Book · NYC condo offering plan search · Source: NY Attorney General offering plan database</div>
-  <nav class="footnav" aria-label="More"><a href="${p}index.html">Search</a><a href="${p}buildings/index.html">Buildings</a><a href="${p}new-condo-filings.html">New condo filings</a><a href="${p}blog/index.html">Guides</a><a href="${p}about.html">About</a><a href="${p}faq.html">FAQ</a><a href="mailto:hello@halfave.co?subject=Open%20Book%20error%20report">Report an error</a><a href="${p}terms.html">Terms</a><a href="${p}privacy.html">Privacy</a><a href="${p}disclaimers.html">Disclaimers</a></nav>
-  <div>© 2026 Half Ave Company LLC. Open Book is a service of Half Ave Company LLC.</div>
+  <div>The Condo Book Project · NYC condo offering plan search · Source: NY Attorney General offering plan database</div>
+  <nav class="footnav" aria-label="More"><a href="${p}index.html">Search</a><a href="${p}buildings/index.html">Buildings</a><a href="${p}new-condo-filings.html">New condo filings</a><a href="${p}blog/index.html">Guides</a><a href="${p}about.html">About</a><a href="${p}faq.html">FAQ</a><a href="mailto:hello@halfave.co?subject=The%20Condo%20Book%20Project%20error%20report">Report an error</a><a href="${p}terms.html">Terms</a><a href="${p}privacy.html">Privacy</a><a href="${p}disclaimers.html">Disclaimers</a></nav>
+  <div>© 2026 Half Ave Company LLC. The Condo Book Project is a service of Half Ave Company LLC.</div>
 </footer>
 <script src="${p}menu.js"></script>
 ${extraScripts}</body>

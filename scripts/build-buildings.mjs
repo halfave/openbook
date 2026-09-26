@@ -45,7 +45,7 @@ function buildingPage(p, ctx) {
   const agRecord = AG + encodeURIComponent(p.plan_id), agDocs = agRecord + "#tabs-6";
   const canonical = `${SITE_URL}/buildings/${fileFor(p)}`;
 
-  const title = `${addr || name} Offering Plan: Units, Parking & Amendments | Open Book`;
+  const title = `${addr || name} Offering Plan: Units, Parking & Amendments | The Condo Book Project`;
   const bits = [];
   if (p.units_residential != null) bits.push(plural(p.units_residential, "residential unit"));
   if (p.units_parking) bits.push(plural(p.units_parking, "parking unit"));
@@ -186,15 +186,15 @@ function buildingPage(p, ctx) {
     ${whereToLook("bylaws", sections, docsById, 2)}
     <h3>Amendments</h3>
     ${amendRows ? `<p>The original plan may have changed. These are the amendments listed for this filing.</p>
-    <div class="tscroll"><table><thead><tr><th>No.</th><th>Submitted</th><th>Status</th><th>On Open Book</th></tr></thead><tbody>${amendRows}</tbody></table></div>` : `<p>No amendments are listed for this filing.</p>`}
+    <div class="tscroll"><table><thead><tr><th>No.</th><th>Submitted</th><th>Status</th><th>Searchable here</th></tr></thead><tbody>${amendRows}</tbody></table></div>` : `<p>No amendments are listed for this filing.</p>`}
     <div class="acts"><a class="btn" href="${esc(agDocs)}" rel="noopener">View all documents on the AG website ↗</a></div>
   </section>
 
   <section class="record">
     <h2>About this record</h2>
-    <p>Source: New York State Attorney General, Real Estate Finance Bureau. Open Book is an independent research tool and is not affiliated with the Attorney General's office. Plan record last checked ${esc(day((p.fetched_at || "").slice(0, 10)) || day(TODAY))}${effective ? `; plan effective ${esc(day(effective))}` : ""}. ${esc(coverage)}</p>
+    <p>Source: New York State Attorney General, Real Estate Finance Bureau. The Condo Book Project is an independent research tool and is not affiliated with the Attorney General's office. Plan record last checked ${esc(day((p.fetched_at || "").slice(0, 10)) || day(TODAY))}${effective ? `; plan effective ${esc(day(effective))}` : ""}. ${esc(coverage)}</p>
     <p>Offering plans describe what was offered when filed. They do not confirm current availability, pricing, or the building's present condition. Review the source documents and later amendments before relying on anything here.</p>
-    <p><a href="mailto:hello@halfave.co?subject=${encodeURIComponent(`Open Book error: ${p.plan_id}`)}">Found an error? Report it →</a></p>
+    <p><a href="mailto:hello@halfave.co?subject=${encodeURIComponent(`The Condo Book Project error: ${p.plan_id}`)}">Found an error? Report it →</a></p>
   </section>
 </main>
 ${ld(ldJson)}
@@ -215,8 +215,8 @@ function directory(plans, ctx) {
       `<li><a href="${esc(fileFor(p))}">${esc(tc(p.name))}</a><span>${esc(tc(p.address))} · ${p.units_residential ?? "?"} units${p.units_parking ? ` · ${p.units_parking} parking` : ""}${ctx.searchable.has(p.plan_id) ? " · <b>searchable</b>" : ""}</span></li>`).join("")}</ul>`;
   }).join("\n");
   return HEAD(P, {
-    title: "NYC Condo Offering Plans by Building | Open Book",
-    description: `Every NYC condo offering plan on Open Book, by borough: ${plans.length.toLocaleString("en-US")} plans with units, parking, amendments and source links.`,
+    title: "NYC Condo Offering Plans by Building | The Condo Book Project",
+    description: `Every NYC condo offering plan on The Condo Book Project, by borough: ${plans.length.toLocaleString("en-US")} plans with units, parking, amendments and source links.`,
     canonical: `${SITE_URL}/buildings/`,
   }) + ld({
     "@context": "https://schema.org", "@type": "CollectionPage", name: "NYC Condo Offering Plans by Building", url: `${SITE_URL}/buildings/`,

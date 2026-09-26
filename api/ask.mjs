@@ -1,7 +1,7 @@
 // POST /api/ask — AI help for searches the in-page parser can't fully read.
 //   { q }              -> tier 1 (filter spec) and, when the question asks for a fact inside the plans, tier 2 (answers with quotes)
 //   { q, log: {...} }  -> no AI; records a tier 0 search in search_log
-// Env: OPENAI_API_KEY (Open Book's own key, in a project with a monthly budget set in the OpenAI dashboard),
+// Env: OPENAI_API_KEY (The Condo Book Project's own key, in a project with a monthly budget set in the OpenAI dashboard),
 //      SUPABASE_SERVICE_ROLE_KEY, optional SUPABASE_URL, AI_DAILY_BUDGET_USD (default 2), AI_HOURLY_LIMIT (default 20).
 import OpenAI from "openai";
 import { createHash } from "node:crypto";

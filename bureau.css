@@ -1,4 +1,4 @@
-/* Bureau Modern: color tokens, type, masthead and menu shared by every Open Book page. */
+/* Bureau Modern: color tokens, type, masthead and menu shared by every The Condo Book Project page. */
 :root{
   --ground:#FAF8F2; --panel:#FFFFFF; --ink:#242828; --muted:#5C605D; --faint:#8C8F8A; --rule:#D6D3C9; --rule-strong:#242828;
   --accent:#65153B; --accent-hover:#4E0F2D; --accent-ink:#FFFFFF; --accent-soft:#F3E7EA;
@@ -36,7 +36,7 @@
 .mast{background:var(--mast);position:relative;overflow:hidden}
 .mast-in{max-width:1180px;margin:0 auto;padding:0 0 0 16px;height:clamp(92px,13vw,132px);display:flex;align-items:flex-end;justify-content:space-between;position:relative}
 .wordmark{position:relative;z-index:2;display:block;flex:none;text-decoration:none;color:var(--accent);
-  font:700 clamp(36px,7vw,84px)/.82 var(--display);letter-spacing:.015em;padding-bottom:clamp(10px,1.6vw,16px);
+  font:700 clamp(24px,4.3vw,58px)/.95 var(--display);letter-spacing:.015em;padding-bottom:clamp(10px,1.6vw,16px);white-space:nowrap;
   /* hand-set feel: white keyline plus a slightly off-register ink shadow, like an early-web GIF title */
   text-shadow:
     -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff,
@@ -63,8 +63,9 @@
 
 /* shorter masthead on inner pages */
 .mast.compact .mast-in{height:clamp(70px,9vw,100px)}
-.mast.compact .wordmark{font-size:clamp(32px,5.6vw,60px);padding-bottom:clamp(8px,1.2vw,12px)}
+.mast.compact .wordmark{font-size:clamp(22px,3.6vw,46px);padding-bottom:clamp(8px,1.2vw,12px)}
+/* the long name wraps to two lines on phones */
+@media (max-width:760px){ .wordmark{white-space:normal;max-width:58vw} }
 .mast.compact + .mast-rule{height:5px}
 
-/* About | Coverage sit in the masthead on wider screens; the menu is for phones. */
-@media (min-width:641px){ .menu{display:none} }
+/* About | FAQ sit in the masthead; everything else is in the menu, shown on every screen size. */

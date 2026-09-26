@@ -131,7 +131,7 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
 function blogIndex() {
   const P = "../";
   const url = `${SITE_URL}/blog/`;
-  const title = "NYC Condo Offering Plan Guides | Open Book";
+  const title = "NYC Condo Offering Plan Guides | The Condo Book Project";
   const description = "Plain-English guides to NYC condo offering plans: how to search the NY Attorney General's filings, read a CD number, find amendments, and read Schedule A and Schedule B.";
   return HEAD(P, { title, description, canonical: url }) + `
 ${ld({ "@context": "https://schema.org", "@type": "Blog", name: `${SITE_NAME} Guides`, description, url, publisher: ORG,
@@ -153,7 +153,7 @@ function filingsPage() {
   const P = "";
   const url = `${SITE_URL}/new-condo-filings.html`;
   const latest = accepted.filter(NYC).sort((a, b) => b.accepted_date.localeCompare(a.accepted_date) || b.plan_id.localeCompare(a.plan_id)).slice(0, 10);
-  const title = `New NYC Condo Filings: 10 Latest Offering Plans & CD Numbers | Open Book`;
+  const title = `New NYC Condo Filings: 10 Latest Offering Plans & CD Numbers | The Condo Book Project`;
   const units = latest.reduce((s, p) => s + (p.units_residential || 0), 0);
   const boros = count(latest, (p) => boro(p.borough));
   const boroText = [...boros].sort((a, b) => b[1] - a[1]).map(([b, c]) => `${c} in ${b}`).join(", ");
@@ -240,7 +240,7 @@ async function stampStatic(file, path) {
   if (file !== "index.html") {
     blocks.push({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
       { "@type": "ListItem", position: 1, name: SITE_NAME, item: `${SITE_URL}/` },
-      { "@type": "ListItem", position: 2, name: title.replace(/^Open Book /, "").replace(/ Open Book$/, ""), item: canonical },
+      { "@type": "ListItem", position: 2, name: title.replace(/^The Condo Book Project /, "").replace(/ The Condo Book Project$/, ""), item: canonical },
     ] });
   }
   const block = `<!-- seo -->\n${SEO("", { title, description, canonical })}\n${blocks.map(ld).join("\n")}${blocks.length ? "\n" : ""}<!-- /seo -->`;

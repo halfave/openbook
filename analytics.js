@@ -1,4 +1,4 @@
-// Google Analytics 4 for every Open Book page. Loaded in <head> on all pages.
+// Google Analytics 4 for every The Condo Book Project page. Loaded in <head> on all pages.
 //
 // Off until GA_ID is set to the site's measurement ID (Admin > Data streams > Web, "G-…").
 // Pages call window.obTrack(name, params) for events only they know about (searches, results);
