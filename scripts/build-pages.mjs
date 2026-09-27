@@ -15,7 +15,7 @@ import { join } from "node:path";
 import { SITE_URL, AG, ROOT, TODAY, all, esc, tc, fileFor, day, month, usDate, money, fmtMoney, plural, boro, SITE_NAME, ld, SEO, HEAD, FOOT, urlset } from "./site.mjs";
 
 // ---------- data ----------
-const plans = (await all("plans?select=plan_id,name,address,zip,borough,construction,accepted_date,units_residential,units_parking,units_commercial,sponsor,meta,fetched_at&order=plan_id"))
+const plans = (await all("plans?select=plan_id,name,address,zip,borough,construction,accepted_date,units_residential,units_parking,units_commercial,units_total,sponsor,meta,fetched_at&order=plan_id"))
   .filter((p) => p.address);
 const searchable = new Set((await all("documents?select=plan_id&status=eq.done")).map((d) => d.plan_id));
 const byId = new Map(plans.map((p) => [p.plan_id, p]));
@@ -152,7 +152,9 @@ const KIND = { NEW: "new construction", REHAB: "rehab", CONVERSION: "conversion"
 function filingsPage() {
   const P = "";
   const url = `${SITE_URL}/new-condo-filings.html`;
-  const latest = accepted.filter(NYC).sort((a, b) => b.accepted_date.localeCompare(a.accepted_date) || b.plan_id.localeCompare(a.plan_id)).slice(0, 10);
+  // Skip AG rows that aren't a real offering ("*Resubmit*", "(8/3/89 Filed)", no units).
+  const real = (p) => !/resubmit|withdrawn|\(\s*\d{1,2}\/\d{1,2}\/\d{2,4}|\bfiled\s*\)/i.test(p.name || "") && (p.units_residential || p.units_total);
+  const latest = accepted.filter(NYC).filter(real).sort((a, b) => b.accepted_date.localeCompare(a.accepted_date) || b.plan_id.localeCompare(a.plan_id)).slice(0, 10);
   const title = `New NYC Condo Filings: 10 Latest Offering Plans & CD Numbers | The Condo Book Project`;
   const units = latest.reduce((s, p) => s + (p.units_residential || 0), 0);
   const boros = count(latest, (p) => boro(p.borough));
@@ -192,7 +194,7 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
   <h1>New NYC Condo Offering Plans: The 10 Latest Filings</h1>
   <p class="meta">Updated <time datetime="${TODAY}">${esc(day(TODAY))}</time> · Source: NY Attorney General</p>
   <p class="lede">The ten newest New York City condominium offering plans accepted for filing by the New York State Attorney General, with each plan's CD number, address, sponsor and unit count.</p>
-  <p>These ${latest.length} plans were accepted between ${esc(day(latest[latest.length - 1].accepted_date))} and ${esc(day(latest[0].accepted_date))}: ${esc(boroText)}. Together they list ${plural(units, "residential unit")}. Each CD number is the Attorney General's plan ID; use it to pull up the filing, its documents and its amendments. <a href="blog/what-is-a-cd-number.html">What a CD number means →</a></p>
+  <p>These ${latest.length} plans were accepted between ${esc(day(latest[latest.length - 1].accepted_date))} and ${esc(day(latest[0].accepted_date))}: ${esc(boroText)}. Together they list ${plural(units, "residential unit")}. Each CD number is the Attorney General's plan ID; use it to pull up the filing and its documents. <a href="blog/what-is-a-cd-number.html">What a CD number means →</a></p>
 
   <h2>At a Glance</h2>
   <div class="tscroll"><table><thead><tr><th>CD number</th><th>Condominium</th><th>Address</th><th>Borough</th><th>Accepted</th><th>Units</th></tr></thead><tbody>${latest.map(row).join("")}</tbody></table></div>
@@ -210,7 +212,7 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
 
 // ---------- hand-written pages: stamp the shared SEO tags and structured data between markers ----------
 // Title and description stay hand-written in each page; everything between <!-- seo --> and <!-- /seo --> is replaced.
-const STATIC = { "index.html": "", "about.html": "about.html", "faq.html": "faq.html", "terms.html": "terms.html", "privacy.html": "privacy.html", "disclaimers.html": "disclaimers.html" };
+const STATIC = { "index.html": "", "about.html": "about.html", "faq.html": "faq.html", "terms.html": "terms.html", "privacy.html": "privacy.html", "disclaimers.html": "disclaimers.html", "coverage.html": "coverage.html" };
 const unhtml = (s) => String(s).replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/\s+/g, " ").trim();
 async function stampStatic(file, path) {
   const html = await readFile(join(ROOT, file), "utf8");
@@ -225,7 +227,7 @@ async function stampStatic(file, path) {
         { "@type": "WebSite", "@id": `${SITE_URL}/#site`, name: SITE_NAME, alternateName: ["Condo Book NYC", "condobooknyc.com"], url: `${SITE_URL}/`, description, publisher: { "@id": ORG["@id"] },
           potentialAction: { "@type": "SearchAction", target: { "@type": "EntryPoint", urlTemplate: `${SITE_URL}/?q={search_term_string}` }, "query-input": "required name=search_term_string" } },
         ORG,
-        { "@type": "Dataset", name: "NYC condominium offering plans", description: "Condominium offering plans and amendments filed with the New York State Attorney General, searchable in full text with page citations.",
+        { "@type": "Dataset", name: "NYC condominium offering plans", description: "Condominium offering plans filed with the New York State Attorney General, searchable in full text with page citations.",
           url: `${SITE_URL}/buildings/`, creator: { "@id": ORG["@id"] }, isAccessibleForFree: true, spatialCoverage: "New York City, NY",
           isBasedOn: "https://offeringplandatasearch.ag.ny.gov/REF/", license: `${SITE_URL}/terms.html` },
       ],
@@ -254,7 +256,7 @@ await writeFile(join(ROOT, "blog", "index.html"), blogIndex());
 await writeFile(join(ROOT, "new-condo-filings.html"), filingsPage());
 for (const [file, path] of Object.entries(STATIC)) await stampStatic(file, path);
 
-const pageUrls = [["", TODAY], ["about.html"], ["faq.html"], ["new-condo-filings.html", TODAY], ["blog/", TODAY],
+const pageUrls = [["", TODAY], ["about.html"], ["faq.html"], ["coverage.html", TODAY], ["new-condo-filings.html", TODAY], ["blog/", TODAY],
   ...posts.map((q) => [`blog/${q.slug}.html`, q.updated || q.published])];
 await writeFile(join(ROOT, "sitemap-pages.xml"), urlset(pageUrls));
 await writeFile(join(ROOT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>
