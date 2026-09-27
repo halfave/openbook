@@ -116,3 +116,21 @@ main.post article > .tscroll,main.post article > ul,main.post article > ol{max-w
 table.bars td.bar{width:55%;min-width:90px}
 table.bars td.bar span{display:block;height:10px;background:var(--accent);opacity:.75}
 table.bars td:nth-child(2){font-variant-numeric:tabular-nums;text-align:right;padding-right:14px}
+
+/* Budget & charges (Schedule B), rendered by building.js */
+.bperiod{font-size:15px;margin:0 0 4px}
+.bcaution{background:var(--warn-bg);color:var(--warn);border-left:3px solid var(--warn);padding:8px 12px;font-size:14px;margin:12px 0}
+.budget td{white-space:normal}
+.budget td:first-child{font:inherit}
+.budget td.amt{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;padding-right:0}
+.budget th.amt{text-align:right;padding-right:0}
+.budget tr.sec th{padding-top:16px;color:var(--ink)}
+.budget tr.total td{font-weight:700;border-bottom-color:var(--rule-strong)}
+.budget sup a{font:11px var(--mono);text-decoration:none;margin-left:3px}
+.budget td.pg{font:12px var(--mono);color:var(--muted);white-space:nowrap;padding-left:18px}
+.budget tr.total td.pg{font-weight:400}
+.bnotes{padding-left:0;list-style:none;font-size:14.5px}
+.bnotes li{border-top:1px solid var(--rule);padding:8px 0;max-width:none;scroll-margin-top:60px}
+.bnotes li:target{background:var(--mark)}
+.bnotes .n{font:12px var(--mono);color:var(--accent);margin-right:6px}
+.bnotes .pg{font:12px var(--mono);color:var(--muted)}
