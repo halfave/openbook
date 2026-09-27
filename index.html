@@ -279,6 +279,7 @@ table.cmp.units td,table.cmp.units th{padding:4px 10px 4px 0}
 .related p{margin:0 0 4px}
 .related .plink{font:500 13px var(--mono);color:var(--accent);text-decoration:underline;padding:10px 0;margin:-10px 0}
 .stats h3{margin:18px 0 2px;font:700 18px/1.2 var(--display)}
+.stats .basis{display:inline-block;margin:2px 0;font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
 .salesnote{margin:0 0 12px;padding:10px 14px;background:var(--warn-bg);color:var(--warn);border-left:3px solid var(--warn);font-size:14px}
 table.pivot td.n small{display:block;font:10.5px var(--mono);color:var(--muted)}
 table.pivot tfoot td,table.pivot tfoot th,table.pivot td.tot{font-weight:600}
@@ -540,7 +541,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
         <div class="ctop"><div><div class="cname">${esc(tc(r.name))}</div><div class="caddr">${esc(tc(r.address))}, ${esc(tc(r.borough))}</div></div><span class="pid">${esc(r.plan_id)}</span></div>
         <div class="chips">
           <span class="chip"><b>${r.units_residential ?? "?"}</b> units</span>
-          <span class="chip"><b>${r.units_parking ?? 0}</b> parking</span>
+          ${r.units_parking == null ? `<span class="chip pkchip" title="The AG record doesn’t give a parking-unit count">Parking units: not on record</span>` : `<span class="chip pkchip" title="Parking units in the AG record"><b>${r.units_parking}</b> parking unit${r.units_parking === 1 ? "" : "s"}</span>`}
           ${r.accepted_date ? `<span class="chip">Accepted ${esc(date(r.accepted_date))}</span>` : ""}
           ${idx ? `<span class="chip">Full text searchable</span>` : `<span class="chip">Record only</span>`}
           ${r.hits ? `<span class="chip">${r.hits} matching pages</span>` : ""}
@@ -1381,10 +1382,13 @@ table.pivot th[scope="row"]{white-space:nowrap}
     const w = r.why;
     let ev = "";
     if (spec.mih && w) ev = `<div class="ev"><div class="evhead">Affordable units in the building · ${esc(w.program === "MIH" ? "Mandatory Inclusionary Housing" : w.program === "Inclusionary Housing" ? "Inclusionary Housing" : "not MIH (another program)")}</div>` +
-      w.evidence.slice(0, 1).map((e) => `<blockquote>“${esc(e.text)}”</blockquote><div class="cite">${pageLink(e)}</div>`).join("") + `</div>`;
+      w.evidence.slice(0, 1).map((e) => `<blockquote>${quoteHtml(e)}</blockquote><div class="cite">${pageLink(e)}</div>`).join("") + `</div>`;
+    // The AG's parking-unit count says nothing about licensed spaces, so the card says what the count is and isn't.
+    const pk = r.units_parking == null ? "The AG record doesn’t give a parking-unit count" : `The AG record lists ${r.units_parking} parking unit${r.units_parking === 1 ? "" : "s"}`;
     if (spec.parking && w) ev = `<div class="ev"><div class="evhead">${w.parking === "fact" ? `Parking offered by license${w.fact === "sold_or_licensed" ? " (or sold)" : ""}` : "The plan’s pages offer a parking license"}</div>` +
-      w.evidence.slice(0, 1).map((e) => `<blockquote>“${esc(e.text)}”</blockquote><div class="cite">${pageLink(e)}</div>`).join("") +
-      (w.parking === "text" && w.fact ? `<div class="fhint">The extracted parking arrangement says “${esc(w.fact.replace(/_/g, " "))}”. Check the page.</div>` : "") + `</div>`;
+      w.evidence.slice(0, 1).map((e) => `<blockquote>${quoteHtml(e)}</blockquote><div class="cite">${pageLink(e)}</div>`).join("") +
+      (w.parking === "text" && w.fact ? `<div class="fhint">The extracted parking arrangement says “${esc(w.fact.replace(/_/g, " "))}”. Check the page.</div>` : "") +
+      (!r.units_parking ? `<div class="fhint pkhint">${pk}. That count covers parking sold as condo units; it doesn’t show whether spaces are offered by license.</div>` : "") + `</div>`;
     if ((spec.beds || spec.price) && r.units?.length) {
       const us = [...r.units].sort((a, b) => a.price - b.price), top = us.slice(0, 6);
       const row = (u) => `<tr><td>${esc(u.unit)}</td><td>${u.beds === 0 ? "Studio" : u.beds + " BR"}</td><td class="n">${esc("$" + u.price.toLocaleString("en-US"))}</td><td class="n">${u.sf ? esc(u.sf.toLocaleString("en-US")) : "—"}</td><td class="n">${u.sf ? "$" + Math.round(u.price / u.sf).toLocaleString("en-US") : "—"}</td>
@@ -1418,9 +1422,11 @@ table.pivot th[scope="row"]{white-space:nowrap}
     d.innerHTML = `<details class="excl"><summary>${list.length} more plan${list.length === 1 ? " mentions" : "s mention"} parking and a license, but the pages don’t show a license offered in the building</summary>
       <ul>${list.map((p) => { const e = p.why?.evidence?.[0]; return `<li data-id="${esc(p.plan_id)}"><button type="button" class="plink" data-open="${esc(p.plan_id)}">${esc(tc(p.name))}</button> <span class="pid">${esc(p.plan_id)}</span>` +
         (p.why?.fact ? ` <span class="why">extracted arrangement: ${esc(p.why.fact.replace(/_/g, " "))}</span>` : "") +
-        (e ? `<blockquote>“${esc(e.text)}”</blockquote><div class="cite">${pageLink(e)}</div>` : "") + `</li>`; }).join("")}</ul></details>`;
+        (e ? `<blockquote>${quoteHtml(e)}</blockquote><div class="cite">${pageLink(e)}</div>` : "") + `</li>`; }).join("")}</ul></details>`;
     return d;
   }
+  // A quoted passage; "…" marks words left out before or after it.
+  const quoteHtml = (e) => `“${e.cutBefore ? "… " : ""}${esc(e.text)}${e.cutAfter ? " …" : ""}”`;
 
   // A dashed circle for "within N miles", and a dot for the building it is measured from.
   function drawRing(a, miles) {
@@ -1450,7 +1456,8 @@ table.pivot th[scope="row"]{white-space:nowrap}
     $("status").textContent = `${res.rows.length} plans${res.saRead ? ` · Schedule A read for ${res.saRead}` : ""}`;
     const fmt = (t, v) => v == null ? "—" : t.unit === "ppsf" ? "$" + Math.round(v).toLocaleString("en-US") : moneyTxt(v);
     const cellHtml = (t, c) => c.n ? `${fmt(t, c.v)}<small>n=${c.n}</small>` : `<span class="faint">—</span>`;
-    const table = (t) => `<h3 id="t-${esc(t.id)}">${esc(t.title)}</h3><p class="vnote">${esc(t.note)}</p>
+    const basis = (t) => res.priceBasis?.[t.basis] ? `<span class="basis" data-basis="${esc(t.basis)}">Price basis: ${esc(res.priceBasis[t.basis])}</span>` : "";
+    const table = (t) => `<h3 id="t-${esc(t.id)}">${esc(t.title)}</h3>${basis(t)}<p class="vnote">${esc(t.note)}</p>
       <div class="tscroll"><table class="cmp pivot"><thead><tr><th></th>${t.cols.map((c) => `<th class="n">${esc(c)}</th>`).join("")}<th class="n">All</th></tr></thead>
       <tbody>${t.rows.map((r) => `<tr><th scope="row">${esc(r.key)}</th>${r.cells.map((c) => `<td class="n">${cellHtml(t, c)}</td>`).join("")}<td class="n tot">${cellHtml(t, r.total)}</td></tr>`).join("")}</tbody>
       <tfoot><tr><th scope="row">All</th>${t.totals.map((c) => `<td class="n">${cellHtml(t, c)}</td>`).join("")}<td class="n">${cellHtml(t, t.grand)}</td></tr></tfoot></table></div>`;
@@ -1465,10 +1472,11 @@ table.pivot th[scope="row"]{white-space:nowrap}
         ${sel("measure", "Measure", [["average", "Average"], ["median", "Median"]], spec.stats.measure)}
       </div>
       <p class="vnote">Jump to: ${res.tables.map((t) => `<a href="#t-${esc(t.id)}">${esc(t.title.replace(/^(Average|Median) /, ""))}</a>`).join(" · ")}</p>
+      ${res.priceBasis ? `<p class="vnote basisnote"><b>Two price bases.</b> The per-unit and per-plan tables use each plan’s <b>current total offering price in the AG record</b>, which can change when the plan is amended. The bedroom tables use <b>unit prices from the original plan’s Schedule A</b>, before any amendment. The two don’t reconcile${res.priceBasis.changed ? `: for ${res.priceBasis.changed} of ${res.rows.length} plans counted, the current total differs from the initial total on record` : ""}.</p>` : ""}
       ${res.tables.map(table).join("")}
       <details class="excl"><summary>The ${res.rows.length} plans counted</summary>
-        <div class="tscroll"><table class="cmp"><thead><tr><th>Building</th><th>Accepted</th><th class="n">Units</th><th class="n">Total offering</th><th class="n">Per unit</th></tr></thead><tbody>
-        ${res.rows.map((r) => `<tr><td><button type="button" class="plink" data-open="${esc(r.plan_id)}">${esc(tc(r.name))}</button><span class="pid">${esc(r.plan_id)} · ${esc(tc(r.borough))}</span></td><td class="m">${esc(date(r.accepted_date))}</td><td class="n">${r.units_residential ?? "—"}</td><td class="n">${moneyTxt(Number(r.price_current))}</td><td class="n">${moneyTxt(r.per_unit)}</td></tr>`).join("")}
+        <div class="tscroll"><table class="cmp"><thead><tr><th>Building</th><th>Accepted</th><th class="n">Units</th><th class="n">Initial total</th><th class="n">Current total (used)</th><th class="n">Per unit</th></tr></thead><tbody>
+        ${res.rows.map((r) => `<tr><td><button type="button" class="plink" data-open="${esc(r.plan_id)}">${esc(tc(r.name))}</button><span class="pid">${esc(r.plan_id)} · ${esc(tc(r.borough))}</span></td><td class="m">${esc(date(r.accepted_date))}</td><td class="n">${r.units_residential ?? "—"}</td><td class="n">${Number(r.price_initial) > 0 ? moneyTxt(Number(r.price_initial)) : "—"}</td><td class="n">${moneyTxt(Number(r.price_current))}</td><td class="n">${moneyTxt(r.per_unit)}</td></tr>`).join("")}
         </tbody></table></div></details>
     </div>`;
     highlight(res.rows.map((r) => r.plan_id)); drawRing(null); fitMap(res.rows, null);

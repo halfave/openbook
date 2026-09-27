@@ -81,6 +81,14 @@ async function evaluate(c) {
       if (!squash(page).includes(squash(e.text).slice(0, 100))) bad.push(`${r.plan_id}: quote not on p.${e.page_no}`);
     }
     ok("every listed plan quotes a page that says it", !bad.length, bad.join("; "));
+    if (E.spec?.mih) {
+      const weak = vis.filter((r) => !I.mihAssertion(r.why?.evidence?.[0]?.text));
+      ok("every MIH quote shown contains the words that qualify it", !weak.length, weak.map((r) => `${r.plan_id}: “${String(r.why?.evidence?.[0]?.text || "").slice(0, 80)}”`).join("; "));
+    }
+    for (const [id, re] of E.evidenceShows || []) {
+      const e = vis.find((r) => r.plan_id === id)?.why?.evidence?.[0];
+      ok(`${id}'s quote shows /${re}/`, e && new RegExp(re).test(e.text), e ? `“${e.text.slice(0, 160)}”` : "not listed");
+    }
   }
 
   if (E.anchorPlan) ok("measures from the named building", res.anchor?.plan_id === E.anchorPlan, `anchor ${res.anchor?.plan_id} ${res.anchor?.label}`);
@@ -229,12 +237,42 @@ function fixtures() {
   }
 
   ok("a “*SEE CD160304*” record points at CD160304", I.seeRef("CHARLIE WEST CONDOMINIUM (THE) - *SEE CD160304*") === "CD160304" && I.seeRef("CHARLIE WEST CONDOMINIUM (THE)") === null);
+
+  // MIH: a long cover-page sentence whose affordable-unit count comes after character 420 must be quoted around the count.
+  const cover = "CONDOMINIUM OFFERING PLAN 500 EXAMPLE CONDOMINIUM 500 EXAMPLE AVENUE BROOKLYN, NEW YORK 11238 48 Residential Units " + ".".repeat(260) +
+    " $45,273,195 31 Storage Lockers (licensed) " + ".".repeat(90) + " $528,750 Total Offering Amount " + ".".repeat(40) + " $45,801,945, consisting of 37 Market Rate Units and 11 Inclusionary Units.";
+  const mih = I.classifyMIH([{ file_id: 9, page_no: 1, body: cover }]), e0 = mih.evidence[0];
+  ok("MIH fixture: the qualifying words come after character 420", cover.indexOf("11 Inclusionary Units") > 420);
+  ok("MIH quote keeps an affordable-unit count found after character 420", mih.onsite && e0 && /11 Inclusionary Units/.test(e0.text) && e0.text.length <= 420 && I.mihAssertion(e0.text), JSON.stringify(e0));
+  ok("MIH quote is verbatim, marks the words left out, and keeps its page", e0 && cover.includes(e0.text) && e0.cutBefore === true && !e0.cutAfter && e0.page_no === 1 && e0.file_id === 9, JSON.stringify(e0));
+  const short = I.classifyMIH([{ file_id: 9, page_no: 2, body: "The Building contains 11 Inclusionary Units." }]).evidence[0];
+  ok("a short MIH sentence is quoted whole, with nothing marked left out", short && short.text === "The Building contains 11 Inclusionary Units." && !short.cutBefore && !short.cutAfter, JSON.stringify(short));
+  return { checks, ms: 0 };
+}
+
+// Averages on a fake data source: two plans whose current AG total differs from the initial total.
+async function statsFixture() {
+  const checks = [], ok = (name, pass, detail = "") => checks.push({ name, pass: !!pass, detail: pass ? "" : String(detail).slice(0, 600) });
+  const base = { plan_type: "CONDOMINIUM", status: "ACCEPTED", construction: "NEW", borough: "BROOKLYN", accepted_date: "2026-05-08", units_commercial: 0, units_parking: 0, units_storage: 0 };
+  const plans = [
+    { ...base, plan_id: "FX000001", units_residential: 20, price_initial: 18000000, price_current: 20000000 },
+    { ...base, plan_id: "FX000002", units_residential: 10, price_initial: 10000000, price_current: 10000000 },
+  ];
+  const fake = { today: "2026-09-27", rest: async (p) => (/^plans\?/.test(p) && !/offset=[1-9]/.test(p) ? plans : []), rpc: async () => [] };
+  const res = await I.run(I.parse("average price for new condos in last 2 years", "2026-09-27"), fake);
+  const t = new Map((res.tables || []).map((x) => [x.id, x]));
+  ok("averages use the current AG total, not the initial one", Math.abs(t.get("boro-year")?.grand.v - 1000000) < 1 && Math.abs(t.get("boro-year-total")?.grand.v - 15000000) < 1,
+    `per unit ${t.get("boro-year")?.grand.v}, per plan ${t.get("boro-year-total")?.grand.v}`);
+  ok("AG tables are labelled as current recorded offering totals", ["boro-year", "boro-size", "boro-year-total"].every((k) => t.get(k)?.basis === "current" && /current .*\(AG record\)/.test(t.get(k).title)), [...t.values()].map((x) => x.title).join(" | "));
+  ok("the plans whose current and initial totals differ are counted", res.priceBasis?.changed === 1 && res.notes.some((n) => /1 of 2 plans the AG’s current total differs from its initial total/.test(n)), JSON.stringify(res.priceBasis));
+  ok("each counted plan keeps both totals", res.rows.every((r) => "price_initial" in r && "price_current" in r));
   return { checks, ms: 0 };
 }
 
 const out = [];
 if (!only.length || only.includes("fixtures")) {
-  const r = fixtures(), fails = r.checks.filter((x) => !x.pass);
+  const f1 = fixtures(), f2 = await statsFixture().catch((e) => ({ checks: [{ name: "stats fixture", pass: false, detail: e.stack }] }));
+  const r = { checks: [...f1.checks, ...f2.checks], ms: 0 }, fails = r.checks.filter((x) => !x.pass);
   out.push({ id: "fixtures", q: "(offline parser fixtures)", pass: !fails.length, ...r });
   console.log(`${fails.length ? "FAIL" : "PASS"}  ${"fixtures".padEnd(14)} ${r.checks.length} parser fixture checks`);
   for (const f of fails) console.log(`      ✗ ${f.name}: ${f.detail}`);

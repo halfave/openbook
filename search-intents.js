@@ -372,6 +372,24 @@
   const NAMED_UNIT = /\bUnit\s+[0-9]{1,3}[A-Z]{0,2}\b[^.]{0,80}?\b(?:the|an?)\s+[“"]?(?:MIH|Inclusionary|Affordable)\s+(?:Housing\s+)?Unit\b/;
   const IH_TERM = /\b(?:MIH|Inclusionary)\s+(?:Housing\s+)?Units?\b/;
   const sentences = (body) => String(body).replace(/\s+/g, " ").split(/(?<=[.;:])\s+(?=[A-Z(“"])/);
+  // The part of a long sentence around the words that matched, cut at spaces, so the quote shows what qualified it.
+  // text stays a verbatim slice of the page; cutBefore / cutAfter say where words were left out.
+  const EXCERPT = 420;
+  function excerpt(snt, re, max = EXCERPT) {
+    const s = snt.trim();
+    if (s.length <= max) return { text: s };
+    const m = re ? s.match(re) : null;
+    const at = m ? m.index : 0, len = m ? m[0].length : 0;
+    let a = Math.max(0, Math.min(at - 120, s.length - max));
+    if (len > max - 20) a = at;
+    if (a > 0) { const sp = s.indexOf(" ", a); a = sp >= 0 && sp < at ? sp + 1 : at; }
+    let b = Math.min(s.length, a + max);
+    if (b < s.length) { const sp = s.lastIndexOf(" ", b); if (sp > at + len) b = sp; }
+    return { text: s.slice(a, b).trim(), ...(a > 0 && { cutBefore: true }), ...(b < s.length && { cutAfter: true }) };
+  }
+  // The assertion that puts affordable units in the building: a count, a named unit, rental IH units, or a defined term.
+  const MIH_ASSERT = [COUNT_UNITS, INCLUDING, NAMED_UNIT, RENTAL_IH, DEFINED];
+  const mihAssertion = (text) => MIH_ASSERT.some((re) => re.test(String(text || "")));
   // Scores one plan's matching pages. Returns { onsite, program, evidence, strong, denial }.
   // Listed when the pages count affordable units in the building, name one, or keep referring to "the MIH/Inclusionary Unit(s)".
   function classifyMIH(pages) {
@@ -392,7 +410,7 @@
         else if (RENTAL_IH.test(snt) && !pageOff) w = 3;
         else if (DEFINED.test(snt) && !pageOff && !neg) { w = 1; if (IH_TERM.test(snt)) ihTerms++; }
         if (w === 3) strong++;
-        if (w) { ev.push({ w, text: snt.trim().slice(0, 420), file_id: pg.file_id, page_no: pg.page_no }); progText.push(body); }
+        if (w) { ev.push({ w, ...excerpt(snt, MIH_ASSERT.find((re) => re.test(snt))), file_id: pg.file_id, page_no: pg.page_no }); progText.push(body); }
       }
     }
     ev.sort((a, b) => b.w - a.w || a.page_no - b.page_no);
@@ -645,20 +663,25 @@
       rows: rowKeys.map((rk) => ({ key: rk, cells: colKeys.map((ck) => cell(list.filter((p) => rowsBy(p) === rk && colBy(p) === ck), fn)), total: cell(list.filter((p) => rowsBy(p) === rk), fn) })),
       totals: colKeys.map((ck) => cell(list.filter((p) => colBy(p) === ck), fn)), grand: cell(list, fn), cols: colKeys,
     });
+    const M = measure === "median" ? "Median" : "Average";
+    // Two price bases: the AG record's current total offering (after any amendments), and the original plan's Schedule A unit prices.
+    const changed = priced.filter((p) => Number(p.price_initial) > 0 && Number(p.price_initial) !== Number(p.price_current)).length;
+    res.priceBasis = { current: "Current total offering (AG record)", scheduleA: "Original plan’s Schedule A", changed };
     res.tables = [];
-    res.tables.push({ id: "boro-year", title: `${measure === "median" ? "Median" : "Average"} offering price per unit, by borough and year accepted`, unit: "money",
-      note: "Each plan’s total offering price (AG record) ÷ every unit it offers, including parking, storage and commercial units. n = plans.",
+    res.tables.push({ id: "boro-year", basis: "current", title: `${M} current offering price per unit (AG record), by borough and year accepted`, unit: "money",
+      note: "Each plan’s current total offering price as recorded by the AG ÷ every unit it offers, including parking, storage and commercial units. n = plans.",
       ...pivot((p) => titleCase(p.borough), boros.map(titleCase), yearOf, years, priced, perUnit) });
     const bands = SIZE_BANDS.map(([l]) => l).filter((l) => priced.some((p) => sizeBand(p.units_residential) === l));
-    res.tables.push({ id: "boro-size", title: `${measure === "median" ? "Median" : "Average"} offering price per unit, by borough and building size`, unit: "money",
+    res.tables.push({ id: "boro-size", basis: "current", title: `${M} current offering price per unit (AG record), by borough and building size`, unit: "money",
       note: "Same measure, split by residential unit count.", ...pivot((p) => titleCase(p.borough), boros.map(titleCase), (p) => sizeBand(p.units_residential), bands, priced, perUnit) });
-    res.tables.push({ id: "boro-year-total", title: `${measure === "median" ? "Median" : "Average"} total offering price per plan, by borough and year accepted`, unit: "money",
-      note: "The whole plan’s offering price as recorded by the AG.", ...pivot((p) => titleCase(p.borough), boros.map(titleCase), yearOf, years, priced, (p) => Number(p.price_current)) });
+    res.tables.push({ id: "boro-year-total", basis: "current", title: `${M} current total offering price per plan (AG record), by borough and year accepted`, unit: "money",
+      note: "The whole plan’s current offering price as recorded by the AG.", ...pivot((p) => titleCase(p.borough), boros.map(titleCase), yearOf, years, priced, (p) => Number(p.price_current)) });
     res.pureCount = pure.length;
     res.rows = priced.map((p) => ({ ...p, per_unit: perUnit(p) })).sort((a, b) => String(b.accepted_date).localeCompare(String(a.accepted_date)));
     res.title = `${measure === "median" ? "Median" : "Average"} offering price, ${spec.construction === "NEW" ? "new construction " : ""}condos accepted ${spec.window ? `in the last ${spec.window.n} ${spec.window.unit}${spec.window.n === 1 ? "" : "s"}` : spec.since ? `since ${spec.since}` : ""}`.trim();
     if (spec.wantsSales) res.notes.unshift("The Condo Book Project has no closed-sale records, so sale prices can’t be averaged. These are the sponsors’ offering prices from the plans filed with the Attorney General.");
     res.notes.push(`${priced.length} of ${plans.length} plans are counted: accepted by the AG and with a total offering price on record.${spec.since ? ` Window: accepted ${spec.since} to ${spec.until || today}.` : ""}`);
+    res.notes.push(`The plan tables use each plan’s current total offering price in the AG record; the bedroom tables use unit prices from the original plan’s Schedule A. They are different price bases and don’t reconcile: for ${changed} of ${priced.length} plans the AG’s current total differs from its initial total.`);
     // Unit-level breakdown from Schedule A, when the pages can be read.
     step("Reading Schedule A unit prices…");
     const sa = await scheduleAUnits(io, priced.map((p) => p.plan_id), (fr) => step(`Reading Schedule A unit prices… ${Math.round(fr * 100)}%`));
@@ -668,15 +691,15 @@
     const bedKeys = ["Studio", "1 BR", "2 BR", "3 BR", "4+ BR"].filter((k) => units.some((u) => bedKey(u) === k));
     const ub = [...new Set(units.map((u) => u.borough))].sort();
     if (units.length) {
-      res.tables.push({ id: "beds-boro", title: `${measure === "median" ? "Median" : "Average"} Schedule A unit price, by bedrooms and borough`, unit: "money", countNoun: "units",
-        note: `Unit prices read from Schedule A in ${read} of ${priced.length} plans. n = units.`, ...pivot(bedKey, bedKeys, (u) => u.borough, ub, units, (u) => u.price) });
+      res.tables.push({ id: "beds-boro", basis: "scheduleA", title: `${M} original Schedule A unit price, by bedrooms and borough`, unit: "money", countNoun: "units",
+        note: `Unit prices from the original offering plan’s Schedule A, before any amendment, read in ${read} of ${priced.length} plans. n = units.`, ...pivot(bedKey, bedKeys, (u) => u.borough, ub, units, (u) => u.price) });
       const ppsf = units.filter((u) => u.sf);
-      if (ppsf.length) res.tables.push({ id: "ppsf-boro", title: `${measure === "median" ? "Median" : "Average"} Schedule A price per square foot, by bedrooms and borough`, unit: "ppsf", countNoun: "units",
+      if (ppsf.length) res.tables.push({ id: "ppsf-boro", basis: "scheduleA", title: `${M} original Schedule A price per square foot, by bedrooms and borough`, unit: "ppsf", countNoun: "units",
         note: "Only units whose square footage is read from the table’s area column; units with no area, or more than one area column that can’t be told apart, are left out. n = units.", ...pivot(bedKey, bedKeys, (u) => u.borough, ub, ppsf, (u) => u.price / u.sf) });
     }
     res.saRead = read;
     return res;
   }
 
-  return { cleanName, headerMode, areaMode, areaOf, parkingOffer, seeRef, parse, run, chipsOf, facetsOf, facetKey, fmtMiles, parseScheduleA, classifyMIH, milesBetween, resolveAnchor, addressPatterns, money, restAll, titleCase, sizeBand, LIVE };
+  return { cleanName, headerMode, areaMode, areaOf, parkingOffer, mihAssertion, excerpt, seeRef, parse, run, chipsOf, facetsOf, facetKey, fmtMiles, parseScheduleA, classifyMIH, milesBetween, resolveAnchor, addressPatterns, money, restAll, titleCase, sizeBand, LIVE };
 });

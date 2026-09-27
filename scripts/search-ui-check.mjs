@@ -77,6 +77,10 @@ async function checkCase(c) {
         ids: cards.map((x) => x.dataset.id), evheads: $$("#results .card .evhead").map((x) => x.textContent),
         related: Object.fromEntries(cards.filter((x) => x.querySelector(".related")).map((x) => [x.dataset.id, { text: x.querySelector(".related").textContent, opens: [...x.querySelectorAll(".related [data-open]")].map((b) => b.dataset.open) }])),
         mentions: $("#pmentions") ? $$("#pmentions li[data-id]").map((x) => x.dataset.id) : null,
+        quotes: Object.fromEntries(cards.map((x) => [x.dataset.id, x.querySelector(".ev blockquote")?.textContent || ""])),
+        pk: Object.fromEntries(cards.map((x) => [x.dataset.id, { chip: x.querySelector(".pkchip")?.textContent || "", hint: x.querySelector(".pkhint")?.textContent || "", ev: x.querySelector(".ev")?.textContent || "" }])),
+        basis: $$("#rview .stats h3").map((h) => [h.textContent, h.nextElementSibling?.classList.contains("basis") ? h.nextElementSibling.dataset.basis : null]),
+        basisnote: $("#rview .basisnote")?.textContent || "",
       };
     });
     ok("no errors in the page", !errors.length, errors.join(" | "));
@@ -104,9 +108,35 @@ async function checkCase(c) {
         ok("no card is listed on a mere mention of a parking license", !s.evheads.some((t) => /mention/i.test(t)), s.evheads.filter((t) => /mention/i.test(t)).join(" | "));
         ok("plans that only mention a parking license are kept apart from the cards", !(s.mentions || []).some((id) => s.ids.includes(id)), (s.mentions || []).filter((id) => s.ids.includes(id)).join(" "));
       }
+      for (const [id, re] of E.evidenceShows || []) ok(`${id}'s card quotes /${re}/`, new RegExp(re).test(s.quotes[id] || ""), `“${(s.quotes[id] || "no card").slice(0, 200)}”`);
+      // CD140317's qualifying words come late in a long cover-page sentence, so its quote must show that words were left out.
+      if (E.spec?.mih && s.quotes.CD140317 != null) ok("a shortened MIH quote marks the words left out with “…”", /^“… .*”$/.test(s.quotes.CD140317), s.quotes.CD140317.slice(0, 120));
+      if (E.parkingZero) {
+        // A zero count and a missing count must read differently, and neither may say there's no parking.
+        // The missing count is a fixture: one plan's parking count is blanked in the plans response.
+        const nullId = s.ids.find((id) => id !== E.parkingZero);
+        const fx = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+        await fx.route((u) => /\/rest\/v1\/plans\?/.test(u.href), async (route) => {
+          if (route.request().method() !== "GET") return route.continue();
+          const resp = await route.fetch(); let body = await resp.json();
+          if (Array.isArray(body)) body = body.map((p) => (p.plan_id === nullId ? { ...p, units_parking: null } : p));
+          await route.fulfill({ response: resp, json: body });
+        });
+        const f = await open(fx, c.q);
+        const pk = await f.page.evaluate(() => Object.fromEntries([...document.querySelectorAll("#results .card")].map((x) => [x.dataset.id, { chip: x.querySelector(".pkchip")?.textContent || "", hint: x.querySelector(".pkhint")?.textContent || "", ev: x.querySelector(".ev")?.textContent || "" }])));
+        await fx.close();
+        const z = pk[E.parkingZero], n = pk[nullId];
+        const NOPARK = /\bno parking\b|parking (?:is )?not (?:offered|available)|without parking|parking unavailable/i;
+        ok(`zero parking count (${E.parkingZero}) reads as a count of AG parking units`, z && /^0 parking units$/.test(z.chip.trim()) && /AG record lists 0 parking units/.test(z.hint) && /doesn’t show whether spaces are offered by license/.test(z.hint), JSON.stringify(z));
+        ok(`missing parking count (fixture on ${nullId}) reads as unknown, not zero`, n && /not on record/i.test(n.chip) && !/\b0\b/.test(n.chip) && /doesn’t give a parking-unit count/.test(n.hint) && /doesn’t show whether spaces are offered by license/.test(n.hint), JSON.stringify(n));
+        ok("neither parking label says parking is unavailable, and both keep the license evidence", z && n && ![z.chip, z.hint, n.chip, n.hint].some((t) => NOPARK.test(t)) && /licen/i.test(z.ev) && /licen/i.test(n.ev), JSON.stringify({ z, n }));
+      }
     } else {
       ok("renders breakdown tables, not a result list", s.rviewVisible && s.pivots >= (E.minTables || 1), `${s.pivots} tables`);
       if (E.salesDisclaimer) ok("says there is no sales data", s.salesnote);
+      const wrong = s.basis.filter(([t, b]) => !(b === "current" && /current .*\(AG record\)/i.test(t)) && !(b === "scheduleA" && /original Schedule A/i.test(t)));
+      ok("every table names its price basis: current AG total or original Schedule A", s.basis.length && !wrong.length && s.basis.some(([, b]) => b === "current") && s.basis.some(([, b]) => b === "scheduleA"), wrong.map(([t, b]) => `${b}: ${t}`).join(" | ") || JSON.stringify(s.basis));
+      ok("explains that the two price bases differ", /current total offering price in the AG record/.test(s.basisnote) && /original plan’s Schedule A/.test(s.basisnote) && /don’t reconcile/.test(s.basisnote), s.basisnote || "no note");
     }
     await page.screenshot({ path: join(shots, `${c.id}-desktop.png`), fullPage: true });
     // A closer look at the top of the results for reviewers.
