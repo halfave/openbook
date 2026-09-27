@@ -1,0 +1,87 @@
+[
+  {
+    "id": "mih",
+    "q": "show me all condos that have MIH units",
+    "why": "On-site MIH / Inclusionary Housing units only. Plans that just mention the program, bought bonus floor area from another site, or say the building has none must not be listed.",
+    "expect": {
+      "kind": "list",
+      "spec": { "mih": true },
+      "required": ["CD240314", "CD230207", "CD140317", "CD140259", "CD160304", "CD160170", "CD160352", "CD160351", "CD190084", "CD130089", "CD150185", "CD240178", "CD210266", "CD190135", "CD230081"],
+      "optional": ["CD160197", "CC200001", "CD150325", "CD150200", "CD070666"],
+      "forbidden": ["CD180010", "CD180040", "CD140149", "CD180149", "CD140358", "CD180061", "CD150263", "CD180052", "CD210271", "CD220251", "CD190013", "CD140005", "CD210103", "CD210304", "CD180038", "CD190275", "CD240279", "CD210258", "CD220018", "CD230158", "CD230137", "CD230340", "CD240029", "CD240042", "CD240208", "CD160240", "CD140253", "CD200205", "CD160391", "CD130172"],
+      "evidenceOnPage": true,
+      "images": true
+    }
+  },
+  {
+    "id": "near",
+    "q": "show me all condos within 1mi of 1 Prospect Park West",
+    "why": "Every condo plan within 1 mile of the named building, nearest first, with filters that fit a long list.",
+    "expect": {
+      "kind": "list",
+      "spec": { "near": { "miles": 1 } },
+      "anchorPlan": "CD180123",
+      "radiusComplete": true,
+      "facets": ["status", "construction", "size", "decade"],
+      "images": true
+    }
+  },
+  {
+    "id": "near-name",
+    "q": "condos within 1 mile of the Charlie West",
+    "why": "The same search by building name instead of address.",
+    "expect": {
+      "kind": "list",
+      "spec": { "near": { "miles": 1 } },
+      "anchorPlan": "CD160304",
+      "radiusComplete": true,
+      "images": true
+    }
+  },
+  {
+    "id": "near-price",
+    "q": "show me all condos within 1mi of 1 Prospect Park West that are priced with 1beds between $900,000 and $1,000,000",
+    "why": "Buildings within 1 mile that offer a one-bedroom priced $900K to $1M in Schedule A, each unit read from a quoted Schedule A line, with coverage stated.",
+    "expect": {
+      "kind": "list",
+      "spec": { "near": { "miles": 1 }, "beds": { "min": 1, "max": 1 }, "price": { "min": 900000, "max": 1000000 } },
+      "anchorPlan": "CD180123",
+      "unitsVerbatim": true,
+      "coverage": true,
+      "requiredUnits": [["CD230185", "101"], ["CD230185", "203"], ["CD240333", "102"], ["CD250079", "2A"], ["CD250079", "3A"], ["CD250079", "4A"], ["CD180405", "303"], ["CD180405", "403"], ["CD150007", "326"], ["CD150007", "421"], ["CD150007", "619"], ["CD170362", "302"], ["CD170362", "303"], ["CD240112", "3A"], ["CD200173", "8A"], ["CD220185", "457"], ["CD180281", "5B"], ["CD150253", "2E"], ["CD240043", "4H"]],
+      "forbiddenUnits": [["CD250079", "C1"]],
+      "images": true
+    }
+  },
+  {
+    "id": "small-parking",
+    "q": "show me condos below 10units, that sell parking licenses",
+    "why": "Condos with 1 to 9 residential units whose plan offers parking by license, each with the quoted line.",
+    "expect": {
+      "kind": "list",
+      "spec": { "parking": "licensed", "units": { "max": 9 } },
+      "unitRange": [1, 9],
+      "parkingFactsRequired": true,
+      "evidenceWords": ["park", "licen"],
+      "images": true
+    }
+  },
+  {
+    "id": "avg-new",
+    "q": "show me average sales price for new condos in last 2years",
+    "why": "A table, not a result list: average offering prices for new-construction condos accepted in the last two years, pivoted by borough, year, size and bedrooms, with a plain statement that there is no sales data.",
+    "expect": {
+      "kind": "table",
+      "spec": { "construction": "NEW", "stats": { "measure": "average" } },
+      "yearsBack": 2,
+      "salesDisclaimer": true,
+      "minTables": 3
+    }
+  },
+  {
+    "id": "near-typo",
+    "q": "condos within half a mile of 1 prospect park w",
+    "why": "Phrasing variant: words for the distance and an abbreviated street.",
+    "expect": { "kind": "list", "spec": { "near": { "miles": 0.5 } }, "anchorPlan": "CD180123", "radiusComplete": true }
+  }
+]
