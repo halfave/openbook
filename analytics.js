@@ -4,7 +4,7 @@
 // Pages call window.obTrack(name, params) for events only they know about (searches, results);
 // everything else (links, tabs, menu, scroll depth, copy, print, page speed) is tracked here.
 (() => {
-  const GA_ID = "G-Q70SZZCRFV";
+  const GA_ID = "G-ZL9YZEJSL8";
   const on = /^G-[A-Z0-9]{6,}$/.test(GA_ID) && GA_ID !== "G-XXXXXXXXXX" && location.protocol !== "file:";
 
   window.dataLayer = window.dataLayer || [];
