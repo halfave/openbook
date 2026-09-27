@@ -34,9 +34,10 @@
 
 /* ---------- masthead: a light header on the page's own paper ---------- */
 .mast{background:var(--ground);position:relative;overflow:hidden}
-.mast-in{max-width:1180px;margin:0 auto;padding:0 230px 0 16px;height:76px;display:flex;align-items:center;justify-content:space-between}
-.wordmark{position:relative;z-index:2;display:flex;align-items:center;gap:12px;flex:none;text-decoration:none;color:var(--accent);
-  font:700 clamp(20px,2.8vw,32px)/1 var(--display);letter-spacing:.03em;white-space:nowrap}
+.mast-in{margin:0;padding:0 230px 0 24px;height:76px;display:flex;align-items:center;justify-content:space-between}
+/* the name sits flush left in a tracked sans, no logo */
+.wordmark{position:relative;z-index:2;display:flex;align-items:center;flex:none;text-decoration:none;color:var(--accent);
+  font:600 clamp(16px,1.8vw,21px)/1.15 var(--sans);letter-spacing:.2em;white-space:nowrap}
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .wordmark{color:#C2698F} }
 :root[data-theme="dark"] .wordmark{color:#C2698F}
 /* the skyline is a quiet strip, centered vertically with the name */
@@ -60,14 +61,10 @@
 .mastnav span,.mastnav::after{color:var(--faint);font-weight:400}
 .mastnav::after{content:"|"}
 @media (max-width:640px){ .mastnav{display:none} }
-/* logo: two towers rising out of an open book, colored from the page tokens so it works in both themes */
-.logo{flex:none;width:40px;height:40px;display:block}
-.logo svg{display:block;width:100%;height:100%}
-.logo .tile{fill:var(--accent)}
-.logo .fg{fill:var(--ground)}
-.logo .cut{fill:var(--accent)}
-@media (max-width:640px){ .logo{width:34px;height:34px} }
+/* the logo is retired; hide it on pages generated before it was taken out of the masthead */
+.logo{display:none}
 /* the long name wraps to two lines on phones */
 @media (max-width:760px){ .wordmark{white-space:normal;max-width:58vw} }
+@media (max-width:640px){ .mast-in{padding-left:16px} }
 
 /* About | FAQ sit in the masthead; everything else is in the menu, shown on every screen size. */
