@@ -33,7 +33,7 @@
 }
 
 /* ---------- masthead: a light header on the page's own paper ---------- */
-.mast{background:var(--ground);position:relative;overflow:hidden}
+.mast{background:var(--ground);position:sticky;top:0;z-index:30;overflow:hidden;border-bottom:1px solid var(--rule)}
 .mast-in{margin:0;padding:0 230px 0 24px;height:76px;display:flex;align-items:center;justify-content:space-between}
 /* the name sits flush left in a tracked sans, no logo */
 .wordmark{position:relative;z-index:2;display:flex;align-items:center;flex:none;text-decoration:none;color:var(--accent);
@@ -46,7 +46,7 @@
 .skyline .near{fill:var(--sky)}
 .skyline .win{fill:var(--lit)}
 .skyline .wire{stroke:var(--sky);stroke-width:1.4;fill:none}
-.mast-rule{height:1px;background:var(--rule)}
+.mast-rule{display:none}
 .mast-rule + .hairline{display:none}
 @media (max-width:640px){ .skyline .opt{display:none} .mast-in{padding-right:66px} }
 @media (max-width:420px){ .skyline .far{display:none} }
@@ -68,3 +68,17 @@
 @media (max-width:640px){ .mast-in{padding-left:16px} }
 
 /* About | FAQ sit in the masthead; everything else is in the menu, shown on every screen size. */
+
+/* ---------- pinned header ----------
+   The header stays at the top (position:sticky); the menu button is fixed so it stays beside it.
+   Once the page scrolls (menu.js adds .scrolled) the header gets shorter. */
+.mast-in{transition:height .18s ease}
+.logo,.wordmark{transition:width .18s ease,height .18s ease,font-size .18s ease}
+.menu{transition:top .18s ease}
+.mastnav{transition:top .18s ease}
+.scrolled .mast-in{height:56px}
+.scrolled .wordmark{font-size:clamp(18px,2.2vw,24px)}
+.scrolled .logo{width:30px;height:30px}
+.scrolled .mastnav,.scrolled .menu{top:7px}
+[id]{scroll-margin-top:calc(var(--head-h,77px) + 16px)}
+@media (prefers-reduced-motion: reduce){ .mast-in,.logo,.wordmark,.menu,.mastnav{transition:none} }
