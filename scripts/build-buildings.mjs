@@ -22,7 +22,7 @@ function whereToLook(kind, sections, docsById, max = 4) {
   // Longest runs are the section itself; short ones are often a running mention. Show the longest, in page order.
   const shown = [...runs].sort((a, b) => (b.last_page - b.first_page) - (a.last_page - a.first_page) || a.first_page - b.first_page).slice(0, max)
     .sort((a, b) => a.file_id - b.file_id || a.first_page - b.first_page);
-  const items = shown.map((r) => `<li><b>${esc(docLabel(docsById.get(r.file_id) || {}))}</b>, ${pagesLabel(r.first_page, r.last_page)}</li>`).join("");
+  const items = shown.map((r) => { const d = docsById.get(r.file_id) || {}; const t = `<b>${esc(docLabel(d))}</b>, ${pagesLabel(r.first_page, r.last_page)}`; return `<li>${d.pdf_url ? `<a href="${esc(d.pdf_url)}#page=${r.first_page}" rel="noopener">${t}</a>` : t}</li>`; }).join("");
   const more = runs.length > shown.length ? `<li class="faint">and ${plural(runs.length - shown.length, "more place")}</li>` : "";
   return `<div class="where"><div class="where-h">Where to look: pages headed “${esc(SECTION_NAMES[kind])}”</div><ul>${items}${more}</ul></div>`;
 }
@@ -43,6 +43,8 @@ function buildingPage(p, ctx) {
   const amends = (meta.amends || []).map((a) => ({ no: a.no, action: a.action, submitted: usDate(a.submitted) })).sort((x, y) => y.no - x.no);
   const lastAmend = amends[0];
   const agRecord = AG + encodeURIComponent(p.plan_id), agDocs = agRecord + "#tabs-6";
+  const mainPdf = (docs.find((d) => d.pdf_url && d.doc_kind === "offering_plan") || docs.find((d) => d.pdf_url) || {}).pdf_url || null;
+  const planHref = mainPdf || agDocs, planLabel = mainPdf ? "Open the original offering plan (PDF) ↗" : "View the original offering plan ↗";
   const canonical = `${SITE_URL}/buildings/${fileFor(p)}`;
 
   const title = `${addr || name} Offering Plan: Units, Parking & Amendments | The Condo Book Project`;
@@ -101,7 +103,7 @@ function buildingPage(p, ctx) {
   }).join("") : "";
 
   const docRows = docs.length ? docs.slice().sort((a, b) => (a.doc_kind === "amendment") - (b.doc_kind === "amendment") || (a.amendment_no ?? 0) - (b.amendment_no ?? 0))
-    .map((d) => `<li><span>${esc(docLabel(d))}</span><span class="m">${d.num_pages ? d.num_pages + " pages" : ""}${d.size_mb ? ` · ${esc(d.size_mb)} MB` : ""} · ${d.status === "done" ? "searchable here" : "not searched yet"}</span></li>`).join("") : "";
+    .map((d) => `<li><span>${d.pdf_url ? `<a href="${esc(d.pdf_url)}" rel="noopener">${esc(docLabel(d))} ↗</a>` : esc(docLabel(d))}</span><span class="m">${d.num_pages ? d.num_pages + " pages" : ""}${d.size_mb ? ` · ${esc(d.size_mb)} MB` : ""} · ${d.status === "done" && !d.needs_ocr ? "searchable here" : d.needs_ocr ? "scanned, not text-searchable" : "not searched yet"}</span></li>`).join("") : "";
 
   const image = ctx.images.has(p.plan_id) ? `${SITE_URL}/buildings/img/${p.plan_id}.webp` : null;
   // Only what the AG record states. ApartmentComplex is schema.org's residential-building type.
@@ -136,7 +138,7 @@ function buildingPage(p, ctx) {
     <h2>Overview</h2>
     <p>${esc(summary)}</p>
     <dl class="glance">${glance.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
-    <div class="acts"><a class="btn primary" href="${esc(agDocs)}" rel="noopener">View the original offering plan ↗</a><a class="btn" href="${esc(agRecord)}" rel="noopener">View the AG filing record ↗</a></div>
+    <div class="acts"><a class="btn primary" href="${esc(planHref)}" rel="noopener">${planLabel}</a><a class="btn" href="${esc(agRecord)}" rel="noopener">View the AG filing record ↗</a></div>
     <p class="cov"><b>Coverage.</b> ${esc(coverage)}</p>
     ${search}
     ${img}
@@ -175,8 +177,8 @@ function buildingPage(p, ctx) {
   <section class="tab" id="floor-plans">
     <h2>Floor plans</h2>
     ${whereToLook("floor_plans", sections, docsById, 6) || `<p>${searchable ? "No pages headed “Floor plans” were found in the searched documents." : "The plan's documents are not searched yet."}</p>`}
-    <p class="src">Floor plans are drawings inside the plan PDF. Open the plan from the Attorney General's site and go to the pages listed.</p>
-    <div class="acts"><a class="btn" href="${esc(agDocs)}" rel="noopener">Open the plan documents ↗</a></div>
+    <p class="src">Floor plans are drawings inside the plan PDF. ${mainPdf ? "Linked page references open the PDF at that page." : "Open the plan from the Attorney General's site and go to the pages listed."}</p>
+    <div class="acts"><a class="btn" href="${esc(planHref)}" rel="noopener">Open the plan documents ↗</a></div>
   </section>
 
   <section class="tab" id="documents">
@@ -234,7 +236,7 @@ function directory(plans, ctx) {
 // ---------- main ----------
 const plans = (await all("plans?select=plan_id,name,address,zip,borough,construction,accepted_date,units_residential,units_commercial,units_parking,units_storage,units_other,units_total,sponsor,law_firm,amendments_listed,latest_amendment_no,latest_amendment_date,meta,fetched_at,lat,lng&order=plan_id"))
   .filter((p) => p.address);
-const docRows = await all("documents?select=file_id,plan_id,filename,doc_kind,amendment_no,size_mb,num_pages,status&order=file_id");
+const docRows = await all("documents?select=file_id,plan_id,filename,doc_kind,amendment_no,size_mb,num_pages,status,needs_ocr,pdf_url&order=file_id");
 const docs = new Map();
 for (const d of docRows) { if (!docs.has(d.plan_id)) docs.set(d.plan_id, []); docs.get(d.plan_id).push(d); }
 const searchable = new Set(docRows.filter((d) => d.status === "done").map((d) => d.plan_id));

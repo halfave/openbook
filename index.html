@@ -353,6 +353,8 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
   const docLabel = (f) => { const m = String(f || "").match(/_(Offering Plan|Amendment \d+)[^_]*\.pdf$/i); return m ? m[1] : (f || "Document"); };
   const date = (d) => d ? new Date(d + "T12:00:00").toLocaleDateString("en-US", { month: "short", year: "numeric" }) : "";
   const agDocs = (id) => AG + encodeURIComponent(id) + "#tabs-6";
+  // Snippet citation: links to the hosted PDF at that page when the file has been copied to this site.
+  const cite = (s) => { const txt = `${esc(docLabel(s.doc))} · p.${esc(s.page)}`; return s.pdf_url ? `<a class="cite" href="${esc(s.pdf_url)}#page=${esc(s.page)}" target="_blank" rel="noopener">${txt} ↗</a>` : `<span class="cite">${txt}</span>`; };
   // Must match fileFor() in scripts/build-buildings.mjs.
   const slug = (s) => String(s ?? "").toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
   const pageFor = (p) => p.address ? `buildings/${slug(p.address)}-${slug(p.borough)}-${String(p.plan_id).toLowerCase()}.html` : null;
@@ -473,7 +475,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
     const li = document.createElement("li"); li.className = "card"; li.dataset.id = r.plan_id;
     const idx = r.docs_indexed ?? 0, posted = r.docs_posted ?? 0;
     const amendGap = idx > 0 && (r.amendments_listed ?? 0) > Math.max(0, idx - 1);
-    const snips = (r.snippets || []).slice(0, 2).map((s) => `<div class="snip"><span class="cite">${esc(docLabel(s.doc))} · p.${esc(s.page)}</span><p>${snipHtml(s.text)}</p></div>`).join("");
+    const snips = (r.snippets || []).slice(0, 2).map((s) => `<div class="snip">${cite(s)}<p>${snipHtml(s.text)}</p></div>`).join("");
     const t = thumbs.get(r.plan_id);
     li.innerHTML = `
       ${t ? `<img class="ph" alt="" src="${esc(t)}">` : `<div class="ph blank">${esc(tc(r.borough))}</div>`}
@@ -552,13 +554,15 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
           </dl>
           <div class="caption">Sponsor: ${esc(p.sponsor || "—")}${p.law_firm ? ` · Sponsor's counsel: ${esc(p.law_firm)}` : ""}</div>
           <div class="acts">
-            <a class="btn primary" href="${esc(agDocs(p.plan_id))}" target="_blank" rel="noopener">Open plan documents ↗</a>
+            ${(() => { const main = docs.find((x) => x.pdf_url && x.kind === "offering_plan") || docs.find((x) => x.pdf_url); return main
+              ? `<a class="btn primary" href="${esc(main.pdf_url)}" target="_blank" rel="noopener">Open offering plan (PDF) ↗</a>`
+              : `<a class="btn primary" href="${esc(agDocs(p.plan_id))}" target="_blank" rel="noopener">Open plan documents ↗</a>`; })()}
             ${pageFor(p) ? `<a class="btn" href="${esc(pageFor(p))}">Building page</a>` : ""}
             ${street(p) ? `<a class="btn" href="${esc(street(p))}" target="_blank" rel="noopener">Street View ↗</a>` : ""}
             <a class="btn" href="${esc(AG + encodeURIComponent(p.plan_id))}" target="_blank" rel="noopener">AG record ↗</a>
           </div>
-          ${docs.length ? `<ul class="docs">${docs.map((x) => `<li><span>${esc(docLabel(x.filename))}</span><span class="meta">${x.size_mb ? esc(x.size_mb) + " MB" : ""}${x.pages ? " · " + x.pages + " pp" : ""}${x.status === "done" ? " · searchable" : ""}</span></li>`).join("")}</ul>
-            <div class="caption">Downloads open the plan's Documents tab on the Attorney General's site; tick the files and choose Download.</div>` : `<div class="caption">The AG hasn't posted documents for this plan yet. Copies can be requested through FOIL.</div>`}
+          ${docs.length ? `<ul class="docs">${docs.map((x) => `<li><span>${x.pdf_url ? `<a href="${esc(x.pdf_url)}" target="_blank" rel="noopener">${esc(docLabel(x.filename))} ↗</a>` : esc(docLabel(x.filename))}</span><span class="meta">${x.size_mb ? esc(x.size_mb) + " MB" : ""}${x.pages ? " · " + x.pages + " pp" : ""}${x.status === "done" && !x.needs_ocr ? " · searchable" : x.needs_ocr ? " · scanned" : ""}</span></li>`).join("")}</ul>
+            <div class="caption">${docs.some((x) => x.pdf_url) ? "PDFs open directly from this site. " : ""}${docs.some((x) => !x.pdf_url) ? "Files not yet copied here can be downloaded from the plan's Documents tab on the Attorney General's site." : ""}</div>` : `<div class="caption">The AG hasn't posted documents for this plan yet. Copies can be requested through FOIL.</div>`}
         </div></div>`;
       $("dclose").onclick = () => { box.innerHTML = ""; selected = null; points.forEach((q) => q.el.classList.remove("sel")); setVB(); document.querySelectorAll("#results .card").forEach((li) => li.classList.remove("sel")); };
       if (!fromMap && p.lat) { const [x, y] = project(p.lat, p.lng); if (x < vb.x || x > vb.x + vb.w || y < vb.y || y > vb.y + vb.h) zoomTo({ x: x - 40, y: y - 40, w: 80, h: 80 }, 0.5); }
@@ -972,7 +976,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
     const items = rows.flatMap((r) => (r.snippets || []).map((s) => ({ r, s })));
     $("rview").innerHTML = items.length
       ? `<p class="vnote">${items.length} passage${items.length === 1 ? "" : "s"} from ${new Set(items.map((i) => i.r.plan_id)).size} plans. Each cites the document and page.</p>
-        <ol class="passages">${items.map(({ r, s }) => `<li><div class="pmeta"><button type="button" class="plink" data-open="${esc(r.plan_id)}">${esc(tc(r.name))}</button><span class="cite">${esc(r.plan_id)} · ${esc(docLabel(s.doc))} · p. ${esc(s.page)}</span></div><p>${snipHtml(s.text)}</p></li>`).join("")}</ol>`
+        <ol class="passages">${items.map(({ r, s }) => `<li><div class="pmeta"><button type="button" class="plink" data-open="${esc(r.plan_id)}">${esc(tc(r.name))}</button><span class="cite">${esc(r.plan_id)} · </span>${cite(s)}</div><p>${snipHtml(s.text)}</p></li>`).join("")}</ol>`
       : `<p class="vnote">No passages for this search. Passages come from plans whose documents are searchable in full text.</p>`;
   }
 
@@ -980,14 +984,17 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
     ["declaration", "Declaration", "documents"], ["bylaws", "By-laws", "documents"], ["management_agreement", "Management agreement", "team"]];
   async function loadSections(ids) {
     const [docs, all] = await Promise.all([
-      ids.length ? rest(`documents?status=eq.done&plan_id=in.${inList(ids)}&select=file_id,plan_id,doc_kind,amendment_no`, null, 600000) : [],
+      ids.length ? rest(`documents?status=eq.done&plan_id=in.${inList(ids)}&select=file_id,plan_id,doc_kind,amendment_no,pdf_url`, null, 600000) : [],
       ids.length ? rpc("plan_sections", { p_ids: ids }, 600000) : [],
     ]);
     return {
       lab: new Map(docs.map((d) => [d.file_id, d.doc_kind === "amendment" ? `Amendment ${d.amendment_no ?? ""}`.trim() : "Offering Plan"])),
+      url: new Map(docs.filter((d) => d.pdf_url).map((d) => [d.file_id, d.pdf_url])),
       secBy: new Map(ids.map((id) => [id, all.filter((x) => x.plan_id === id)])),
     };
   }
+  // "Offering Plan, pp. 12–14" — a link straight to the page when the PDF is hosted here.
+  const runRef = (lab, url, x, pagesFn) => { const t = `${esc(lab.get(x.file_id) || "Document")}, ${pagesFn(x.first_page, x.last_page)}`; const u = url.get(x.file_id); return u ? `<a href="${esc(u)}#page=${x.first_page}" target="_blank" rel="noopener">${t}</a>` : t; };
   const topRuns = (runs, n) => [...runs].sort((a, b) => (b.last_page - b.first_page) - (a.last_page - a.first_page) || a.first_page - b.first_page).slice(0, n)
     .sort((a, b) => a.file_id - b.file_id || a.first_page - b.first_page);
   const pagesTxt = (a, b) => (a === b ? `p. ${a}` : `pp. ${a}–${b}`);
@@ -1006,17 +1013,19 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
     </article>`;
     if (!r.docs_indexed) { $("ansbody").innerHTML = `<p>This plan’s documents are not searchable here yet, so The Condo Book Project can’t point to pages. They are on the Attorney General’s site.</p>`; return; }
     try {
-      const { lab, secBy } = await loadSections([r.plan_id]);
+      const { lab, url, secBy } = await loadSections([r.plan_id]);
       if (!$("ansbody")) return;
       const sec = secBy.get(r.plan_id) || [];
       const order = focus ? [focus, ...KINDS.filter((k) => k !== focus)] : KINDS;
       const lines = order.map(([k, label]) => {
         const runs = sec.filter((x) => x.kind === k); if (!runs.length) return "";
-        return `<tr${focus && k === focus[0] ? ' class="focus"' : ""}><th scope="row">${label}</th><td>${topRuns(runs, 3).map((x) => `${esc(lab.get(x.file_id) || "Document")}, ${pagesTxt(x.first_page, x.last_page)}`).join("; ")}</td></tr>`;
+        return `<tr${focus && k === focus[0] ? ' class="focus"' : ""}><th scope="row">${label}</th><td>${topRuns(runs, 3).map((x) => runRef(lab, url, x, pagesTxt)).join("; ")}</td></tr>`;
       }).join("");
       const lead = focus && sec.some((x) => x.kind === focus[0]) ? topRuns(sec.filter((x) => x.kind === focus[0]), 1)[0] : null;
-      $("ansbody").innerHTML = (lead ? `<p class="ans-lead"><span>${esc(focus[1])}</span> ${esc(lab.get(lead.file_id) || "Document")}, ${pagesTxt(lead.first_page, lead.last_page)}</p>
-        <p class="vnote">Open plan documents, download the ${esc(lab.get(lead.file_id) || "document")}, and go to ${pagesTxt(lead.first_page, lead.last_page)}. Page numbers are the PDF’s own.</p>`
+      const mainUrl = [...url.values()][0];
+      if (mainUrl) { const b = box.querySelector(".acts .btn.primary"); if (b) { b.href = mainUrl; b.textContent = "Open offering plan (PDF) ↗"; } }
+      $("ansbody").innerHTML = (lead ? `<p class="ans-lead"><span>${esc(focus[1])}</span> ${runRef(lab, url, lead, pagesTxt)}</p>
+        <p class="vnote">${url.get(lead.file_id) ? "The link opens the PDF at that page." : `Open plan documents, download the ${esc(lab.get(lead.file_id) || "document")}, and go to ${pagesTxt(lead.first_page, lead.last_page)}.`} Page numbers are the PDF’s own.</p>`
         : focus ? `<p class="vnote">No pages headed “${esc(focus[1])}” were found in the searched documents.</p>` : "") +
         (lines ? `<div class="tscroll"><table class="sect"><tbody>${lines}</tbody></table></div>` : "");
     } catch (e) { if ($("ansbody")) $("ansbody").innerHTML = `<p class="vnote">Couldn’t load the page index. The documents are on the AG site.</p>`; }
@@ -1026,11 +1035,11 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
     const tok = viewToken, box = $("rview"), list = rows.slice(0, 15), ready = list.filter((r) => r.docs_indexed);
     box.innerHTML = `<p class="vnote">Finding the pages…</p>`;
     try {
-      const { lab, secBy } = await loadSections(ready.map((r) => r.plan_id));
+      const { lab, url, secBy } = await loadSections(ready.map((r) => r.plan_id));
       if (tok !== viewToken) return;
       const order = P.focus ? [KINDS.find((k) => k[0] === P.focus), ...KINDS.filter((k) => k[0] !== P.focus)] : KINDS;
       const pages = (a, b) => (a === b ? `p. ${a}` : `pp. ${a}–${b}`);
-      box.innerHTML = `<p class="vnote">Pages headed with each section’s name in the searched documents. Page numbers are the PDF’s own; open the plan documents on the AG site and go to the page.</p><ol class="doccards">` +
+      box.innerHTML = `<p class="vnote">Pages headed with each section’s name in the searched documents. Page numbers are the PDF’s own; linked references open the PDF at that page.</p><ol class="doccards">` +
         list.map((r) => {
           const sec = secBy.get(r.plan_id), page = pageFor(r);
           let body;
@@ -1041,7 +1050,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
               const runs = sec.filter((x) => x.kind === k); if (!runs.length) return "";
               const top = [...runs].sort((a, b) => (b.last_page - b.first_page) - (a.last_page - a.first_page) || a.first_page - b.first_page).slice(0, 3)
                 .sort((a, b) => a.file_id - b.file_id || a.first_page - b.first_page);
-              return `<tr${k === P.focus ? ' class="focus"' : ""}><th scope="row">${label}</th><td>${top.map((x) => `${esc(lab.get(x.file_id) || "Document")}, ${pages(x.first_page, x.last_page)}`).join("; ")}${runs.length > 3 ? ` <span class="faint">+${runs.length - 3} more</span>` : ""}</td><td>${page ? `<a href="${esc(page)}#${tab}">Building page</a>` : ""}</td></tr>`;
+              return `<tr${k === P.focus ? ' class="focus"' : ""}><th scope="row">${label}</th><td>${top.map((x) => runRef(lab, url, x, pages)).join("; ")}${runs.length > 3 ? ` <span class="faint">+${runs.length - 3} more</span>` : ""}</td><td>${page ? `<a href="${esc(page)}#${tab}">Building page</a>` : ""}</td></tr>`;
             }).join("");
             body = trs ? `<div class="tscroll"><table class="sect"><tbody>${trs}</tbody></table></div>` : `<p class="faint">No section headings found in the searched pages.</p>`;
           }
