@@ -38,6 +38,9 @@ function buildingPage(p, ctx) {
   const done = docs.filter((d) => d.status === "done");
   const searchable = done.length > 0;
   const sections = ctx.sections.get(p.plan_id) || [];
+  // Counsel's contact from the AG record (meta.stat): attorney of record, address, phone.
+  const st = meta.stat || {};
+  const counsel = [st.By && tc(st.By), st.Address && tc(st.Address), st.Phone].filter(Boolean);
   const initial = money(mp["Initial Price"]), current = money(mp["Current Price"]);
   const effective = usDate(mp["Effective Date"]);
   const amends = (meta.amends || []).map((a) => ({ no: a.no, action: a.action, submitted: usDate(a.submitted) })).sort((x, y) => y.no - x.no);
@@ -165,7 +168,7 @@ function buildingPage(p, ctx) {
     <h2>Team</h2>
     <dl class="glance">
       ${p.sponsor ? `<div><dt>Sponsor</dt><dd>${esc(tc(p.sponsor))}</dd></div>` : ""}
-      ${p.law_firm ? `<div><dt>Sponsor's counsel</dt><dd>${esc(tc(p.law_firm))}</dd></div>` : ""}
+      ${p.law_firm ? `<div><dt>Sponsor's counsel</dt><dd>${esc(tc(p.law_firm))}${counsel.map((x) => `<span class="sub">${esc(x)}</span>`).join("")}</dd></div>` : ""}
     </dl>
     <p class="src">As recorded by the Attorney General.</p>
     ${pending("Architect, managing agent, selling agent and other named professionals. They are named in the plan, and an amendment can replace them.")}
