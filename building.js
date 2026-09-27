@@ -1,25 +1,7 @@
-// Building pages: show one section at a time as tabs, and search inside this plan.
-// Without JS every section shows in order and the tab bar works as in-page links.
+// Building pages (fact sheet): load the Schedule B budget and facts extracted from the plan, and search inside this plan.
 (() => {
   const main = document.querySelector("main.bldg");
   if (!main) return;
-
-  // ---------- tabs ----------
-  const tabs = [...main.querySelectorAll("section.tab")];
-  const links = [...main.querySelectorAll("nav.tabs a")];
-  main.classList.add("js-tabs");
-  function show(id, scroll) {
-    if (!tabs.some((t) => t.id === id)) id = tabs[0].id;
-    tabs.forEach((t) => { t.hidden = t.id !== id; });
-    links.forEach((a) => a.setAttribute("aria-current", a.getAttribute("href") === "#" + id ? "true" : "false"));
-    if (scroll) main.querySelector("nav.tabs").scrollIntoView({ block: "nearest" });
-  }
-  links.forEach((a) => a.addEventListener("click", (e) => {
-    e.preventDefault(); const id = a.getAttribute("href").slice(1);
-    history.replaceState(null, "", "#" + id); show(id, true);
-  }));
-  window.addEventListener("hashchange", () => show(location.hash.slice(1), true));
-  show(location.hash.slice(1), false);
 
   const SB = "https://dvywgltjqpntldlztapu.supabase.co";
   const KEY = "sb_publishable_At7fyv-9Vp7ByNP3AXHZ7g_qphsg6Rw";
@@ -92,7 +74,7 @@
     box.innerHTML = `<p class="src">Schedule B of the offering plan: the sponsor's projected first-year budget. Extracted from the offering plan.</p>` +
       (head.length ? `<p class="bperiod">${head.join(" · ")}</p>` : "") + caution + tables + noteList;
 
-    // Footnote links stay inside this tab (the tab code treats any hash change as a tab switch).
+    // Footnote links scroll to the note without changing the address bar.
     box.addEventListener("click", (e) => {
       const a = e.target.closest("a[data-note]");
       if (!a) return;
@@ -127,26 +109,21 @@
         return `${f.value_text || ""}${f.value_text ? ", " : ""}fee $${Number(f.value_num).toLocaleString("en-US")} a year`;
       return f.value_text;
     };
+    // Each fact becomes a row in the fact table, with the plan page it came from.
     const row = (label, field) => {
       const list = (by.get(field) || []).filter((f) => f.value_text || f.value_num != null);
       if (!list.length) return "";
-      return `<div><dt>${esc(label)}</dt>${list.map((f) => `<dd>${esc(val(field, f))}` +
-        (f.page_no ? ` <span class="fcite"${f.quote ? ` title="${esc(f.quote)}"` : ""}>Offering Plan, p. ${esc(f.page_no)}</span>` : "") +
-        (f.quote ? `<details class="fq"><summary>Quote</summary><q>${esc(f.quote)}</q></details>` : "") + `</dd>`).join("")}</div>`;
+      return `<div><dt>${esc(label)}</dt><dd>${list.map((f) => `<span class="fv">${esc(val(field, f))}` +
+        (f.page_no ? ` <span class="fcite"${f.quote ? ` title="${esc(f.quote)}"` : ""}>p. ${esc(f.page_no)}</span>` : "") + `</span>`).join("")}</dd></div>`;
     };
-    const place = (tabId, fields) => {
-      const tab = document.getElementById(tabId);
-      const html = fields.map(([label, field]) => row(label, field)).join("");
-      if (!tab || !html) return;
-      const box = document.createElement("div");
-      box.className = "facts";
-      box.innerHTML = `<div class="facts-h">Extracted from the offering plan</div><dl class="glance">${html}</dl>`;
-      const after = tab.querySelector("dl.glance");
-      after ? after.after(box) : tab.querySelector("h2").after(box);
-    };
-    place("overview", [["Tax program", "tax_program"], ["Affordable housing", "affordable_housing"], ["Working capital", "working_capital"], ["Reserve fund", "reserve_fund"]]);
-    place("pricing", [["Parking arrangement", "parking_arrangement"]]);
-    place("team", [["Sponsor's address", "sponsor_address"], ["Selling agent", "selling_agent"], ["Managing agent", "managing_agent"], ["Architect", "architect"]]);
+    const sheet = document.getElementById("sheet");
+    if (!sheet) return;
+    const html = [["Parking", "parking_arrangement"], ["Tax program", "tax_program"], ["Affordable housing", "affordable_housing"],
+      ["Working capital", "working_capital"], ["Reserve fund", "reserve_fund"], ["Managing agent", "managing_agent"],
+      ["Selling agent", "selling_agent"], ["Architect", "architect"], ["Sponsor's address", "sponsor_address"]].map(([l, f]) => row(l, f)).join("");
+    // Plan ID stays last.
+    const last = sheet.lastElementChild;
+    if (html) last ? last.insertAdjacentHTML("beforebegin", html) : sheet.insertAdjacentHTML("beforeend", html);
   }
 
   // ---------- search inside this plan ----------
