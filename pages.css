@@ -146,3 +146,31 @@ table.bars td:nth-child(2){font-variant-numeric:tabular-nums;text-align:right;pa
 .fq summary::-webkit-details-marker{display:none}
 .fq q{display:block;margin:4px 0 2px}
 .glance .sub{display:block;font:400 14px/1.4 var(--sans);color:var(--muted)}
+
+/* ---------- building page: fact sheet ---------- */
+.sheet-page h1{font-size:clamp(26px,3.6vw,38px);line-height:1.12;margin:0}
+.sheet-page .addr{margin:6px 0 0;color:var(--muted);font-size:16px}
+.sheet-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:32px;align-items:start;margin:24px 0 8px}
+.sheet-grid.noimg{grid-template-columns:minmax(0,1fr)}
+@media (max-width:720px){ .sheet-grid{grid-template-columns:minmax(0,1fr)} }
+.sheet-side{display:grid;gap:12px}
+.sheet-side .massing{margin:0}
+.sheet-side .massing img{border-radius:10px}
+.sheet-side .acts,.sheet-grid .acts{margin:0}
+.sheet-grid.noimg .acts{margin-top:16px}
+.sheet-page .btn{border-radius:999px;padding:9px 16px}
+.sheet{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr)}
+.sheet > div{display:contents}
+.sheet dt,.sheet dd{margin:0;padding:10px 0;border-top:1px solid var(--rule)}
+.sheet dt{color:var(--muted);font-size:14px;padding-right:20px}
+.sheet dd{font-weight:500;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.sheet .sub{display:block;font-weight:400;font-size:13.5px;color:var(--muted)}
+.sheet .fv{display:block}
+.sheet .fcite{font:400 12px var(--mono);color:var(--muted)}
+.sheet-sec{margin-top:36px}
+.sheet-sec h2{font:700 21px/1.2 var(--display);margin:0 0 12px}
+.inplan{list-style:none;margin:0;padding:0}
+.inplan li{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;padding:10px 0;border-top:1px solid var(--rule);max-width:none}
+.inplan li:last-child{border-bottom:1px solid var(--rule)}
+.inplan .pl{color:var(--muted);font-variant-numeric:tabular-nums}
+.sheet-page .doclist{margin-top:14px}

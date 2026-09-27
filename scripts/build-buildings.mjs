@@ -18,21 +18,6 @@ const JUNK_NAME = /resubmit|withdrawn|\(\s*\d{1,2}\/\d{1,2}\/\d{2,4}|\bfiled\s*\
 const isJunk = (p, searchable) => JUNK_NAME.test(p.name || "") || (!searchable.has(p.plan_id) && !p.units_residential && !p.units_total);
 
 // ---------- building page ----------
-const SECTION_NAMES = {
-  schedule_a: "Schedule A", schedule_b: "Schedule B", floor_plans: "Floor plans",
-  declaration: "Declaration", bylaws: "By-laws", management_agreement: "Management agreement",
-};
-function whereToLook(kind, sections, docsById, max = 4) {
-  const runs = sections.filter((s) => s.kind === kind);
-  if (!runs.length) return "";
-  // Longest runs are the section itself; short ones are often a running mention. Show the longest, in page order.
-  const shown = [...runs].sort((a, b) => (b.last_page - b.first_page) - (a.last_page - a.first_page) || a.first_page - b.first_page).slice(0, max)
-    .sort((a, b) => a.file_id - b.file_id || a.first_page - b.first_page);
-  const items = shown.map((r) => { const d = docsById.get(r.file_id) || {}; const t = `<b>${esc(docLabel(d))}</b>, ${pagesLabel(r.first_page, r.last_page)}`; return `<li>${d.pdf_url ? `<a href="${esc(d.pdf_url)}#page=${r.first_page}" rel="noopener">${t}</a>` : t}</li>`; }).join("");
-  const more = runs.length > shown.length ? `<li class="faint">and ${plural(runs.length - shown.length, "more place")}</li>` : "";
-  return `<div class="where"><div class="where-h">Where to look: pages headed “${esc(SECTION_NAMES[kind])}”</div><ul>${items}${more}</ul></div>`;
-}
-
 function buildingPage(p, ctx) {
   const P = "../";
   const name = tc(p.name), addr = tc(p.address), group = boro(p.borough);
@@ -58,37 +43,9 @@ function buildingPage(p, ctx) {
   if (p.units_parking) bits.push(plural(p.units_parking, "parking unit"));
   const description = `${name}, ${addr}, ${b}. AG plan ${p.plan_id}${p.accepted_date ? `, accepted ${month(p.accepted_date)}` : ""}.${bits.length ? " " + bits.join(", ") + "." : ""} Budget, team, documents and source links.`;
 
-  // One sentence from the AG record. States only what the record says.
-  const kind = p.construction ? tc(p.construction).toLowerCase() + " construction " : "";
-  let summary = `The Attorney General's record lists ${name} at ${addr} as a ${kind}condominium`;
-  if (p.units_residential != null) summary += ` with ${plural(p.units_residential, "residential unit")}`;
-  const extras = [];
-  if (p.units_parking) extras.push(plural(p.units_parking, "parking unit"));
-  if (p.units_storage) extras.push(plural(p.units_storage, "storage unit"));
-  if (p.units_commercial) extras.push(plural(p.units_commercial, "commercial unit"));
-  if (extras.length) summary += `, plus ${extras.join(" and ")}`;
-  summary += ".";
-  if (p.sponsor) summary += ` The sponsor is ${tc(p.sponsor)}.`;
-  if (p.accepted_date) summary += ` The plan was accepted for filing in ${month(p.accepted_date)}.`;
-
-  const coverage = searchable
-    ? "The offering plan is searchable here."
-    : docs.length ? "The offering plan is posted by the AG but not searched yet." : "The AG has not posted the offering plan for this filing yet.";
-
-  const glance = [
-    ["Residential units", p.units_residential],
-    ["Parking units", p.units_parking],
-    ["Storage units", p.units_storage],
-    ["Commercial units", p.units_commercial],
-    ["Accepted", day(p.accepted_date)],
-  ].filter(([, v]) => v !== null && v !== undefined && v !== "");
-
   const near = ctx.plans.filter((q) => q.plan_id !== p.plan_id && q.lat && p.lat && !isJunk(q, ctx.searchable))
     .map((q) => ({ q, d: miles(p, q) })).sort((a, b) => a.d - b.d).slice(0, 6);
   const nearHtml = near.length ? `<h3>Compare Nearby Condo Plans</h3><ul class="near">${near.map(({ q, d }) => `<li><a href="${esc(fileFor(q))}">${esc(tc(q.name))}</a><span>${d < 0.1 ? "next door" : d.toFixed(1) + " mi"} · ${q.units_residential ?? "?"} units${q.units_parking ? ` · ${q.units_parking} parking` : ""}${q.accepted_date ? ` · ${new Date(q.accepted_date).getFullYear()}` : ""}</span></li>`).join("")}</ul>` : "";
-
-  const img = ctx.images.has(p.plan_id)
-    ? `<figure class="massing"><img src="img/${esc(p.plan_id)}.webp" alt="3D massing drawing of ${esc(name)} and neighboring buildings" loading="lazy"><figcaption>3D massing from NYC Building Footprints, not a photograph. The plan's building is in green.</figcaption></figure>` : "";
 
   const search = searchable ? `<form class="psearch" id="psearch" data-plan="${esc(p.plan_id)}">
       <label for="pq">Search This Offering Plan</label>
@@ -120,66 +77,69 @@ function buildingPage(p, ctx) {
     ],
   };
 
-  return HEAD(P, { title, description, canonical, noindex: !searchable || isJunk(p, ctx.searchable), image, imageAlt: `3D massing drawing of ${name}` }) + `<main class="bldg" data-plan="${esc(p.plan_id)}" data-borough="${esc(group)}" data-searchable="${searchable}">
+  // Fact sheet: picture and buttons on the left, one table of facts on the right, then what's in the plan.
+  const price = current || initial;
+  const unitsLine = [p.units_residential != null && `${p.units_residential} residential`, p.units_parking && `${p.units_parking} parking`,
+    p.units_storage && `${p.units_storage} storage`, p.units_commercial && `${p.units_commercial} commercial`].filter(Boolean).join(" · ");
+  const row = (k, v) => v ? `<div><dt>${esc(k)}</dt><dd>${v}</dd></div>` : "";
+  const sheet = [
+    row("Units", unitsLine && esc(unitsLine)),
+    row("Offering price", price && `${esc(fmtMoney(price))} total${initial && current && current !== initial ? ` <span class="sub">${esc(fmtMoney(initial))} when first offered</span>` : ""}`),
+    row("Construction", p.construction && esc(tc(p.construction))),
+    row("Accepted", p.accepted_date && esc(day(p.accepted_date))),
+    row("Sponsor", p.sponsor && esc(tc(p.sponsor))),
+    row("Counsel", p.law_firm && esc(tc(p.law_firm)) + (counsel.length ? `<span class="sub">${counsel.map(esc).join(" · ")}</span>` : "")),
+    row("Plan ID", esc(p.plan_id)),
+  ].join("");
+  // One row per kind of section, linking its main pages.
+  const KINDS = [["schedule_a", "Schedule A: unit prices", "pricing-pages"], ["schedule_b", "Schedule B: budget", ""], ["floor_plans", "Floor plans", "floor-plans"],
+    ["management_agreement", "Management agreement", ""], ["declaration", "Declaration", ""], ["bylaws", "By-laws", ""]];
+  const inPlan = KINDS.map(([k, label, id]) => {
+    const runs = sections.filter((x) => x.kind === k);
+    if (!runs.length) return "";
+    const top = [...runs].sort((a, b) => (b.last_page - b.first_page) - (a.last_page - a.first_page) || a.first_page - b.first_page).slice(0, 3)
+      .sort((a, b) => a.file_id - b.file_id || a.first_page - b.first_page);
+    const links = top.map((r) => { const d = docsById.get(r.file_id) || {}; const t = pagesLabel(r.first_page, r.last_page);
+      return d.pdf_url ? `<a href="${esc(d.pdf_url)}#page=${r.first_page}" rel="noopener">${t}</a>` : t; }).join(", ");
+    return `<li${id ? ` id="${id}"` : ""}><span>${esc(label)}</span><span class="pl">${links}</span></li>`;
+  }).join("");
+
+  // No plan button when the AG hasn't posted the plan: there is nothing to open.
+  const buttons = (docs.length ? `<a class="btn primary" href="${esc(planHref)}" rel="noopener">${mainPdf ? "Open the offering plan ↗" : "View the offering plan ↗"}</a>` : "")
+    + `<a class="btn${docs.length ? "" : " primary"}" href="${esc(agRecord)}" rel="noopener">AG filing record ↗</a>`;
+
+  return HEAD(P, { title, description, canonical, noindex: !searchable || isJunk(p, ctx.searchable), image, imageAlt: `3D massing drawing of ${name}` }) + `<main class="bldg sheet-page" data-plan="${esc(p.plan_id)}" data-borough="${esc(group)}" data-searchable="${searchable}">
   <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Buildings</a> › <a href="index.html#${slug(group)}">${esc(group)}</a></nav>
-  <h1>${esc(name)} Offering Plan</h1>
-  <p class="addr">${esc(addr)} · ${esc(b)}, New York${p.zip ? " " + esc(p.zip) : ""}</p>
-  <p class="meta">AG plan ID ${esc(p.plan_id)}${p.accepted_date ? ` · Accepted ${esc(day(p.accepted_date))}` : ""}</p>
+  <h1>${esc(name)}</h1>
+  <p class="addr">${esc(addr)}, ${esc(b)}, NY${p.zip ? " " + esc(p.zip) : ""}</p>
 
-  <nav class="tabs" aria-label="Sections">
-    <a href="#overview">Overview</a><a href="#pricing">Pricing &amp; Units</a><a href="#budget">Budget &amp; Charges</a><a href="#team">Team</a><a href="#floor-plans">Floor Plans</a><a href="#documents">Documents</a>
-  </nav>
+  <div class="sheet-grid${ctx.images.has(p.plan_id) ? "" : " noimg"}" id="overview">
+    ${ctx.images.has(p.plan_id) ? `<div class="sheet-side">
+      <figure class="massing"><img src="img/${esc(p.plan_id)}.webp" alt="3D massing drawing of ${esc(name)} and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <div class="acts">${buttons}</div>
+    </div>` : ""}
+    <div>
+      <span id="pricing"></span><span id="team"></span>
+      <dl class="sheet" id="sheet">${sheet}</dl>
+      ${ctx.images.has(p.plan_id) ? "" : `<div class="acts">${buttons}</div>`}
+    </div>
+  </div>
 
-  <section class="tab" id="overview">
-    <h2>Overview</h2>
-    <p>${esc(summary)}</p>
-    <dl class="glance">${glance.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
-    <div class="acts"><a class="btn primary" href="${esc(planHref)}" rel="noopener">${planLabel}</a><a class="btn" href="${esc(agRecord)}" rel="noopener">View the AG filing record ↗</a></div>
-    <p class="cov"><b>Coverage.</b> ${esc(coverage)} <a href="${P}coverage.html">What's covered</a></p>
-    ${search}
-    ${img}
-    ${nearHtml}
+  ${searchable ? `<section class="sheet-sec">${search}</section>` : ""}
+
+  <section class="sheet-sec" id="documents">
+    <h2>In the Plan</h2>
+    ${inPlan ? `<ul class="inplan">${inPlan}</ul>` : `<p class="faint">${docs.length ? "This plan's pages aren't searched yet, so there are no page links." : `The Attorney General hasn't posted this plan's documents yet. <a href="${esc(agDocs)}" rel="noopener">AG documents page ↗</a>`}</p>`}
+    ${docRows ? `<ul class="doclist">${docRows}</ul>` : ""}
   </section>
 
-  <section class="tab" id="pricing">
-    <h2>Pricing &amp; Units</h2>
-    <dl class="glance">
-      ${[["Residential", p.units_residential], ["Commercial", p.units_commercial], ["Parking", p.units_parking], ["Storage", p.units_storage], ["Other", p.units_other], ["Total units", p.units_total]].filter(([, v]) => v != null).map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join("")}
-      ${initial ? `<div><dt>Total offering price, initial</dt><dd>${fmtMoney(initial)}</dd></div>` : ""}
-      ${current && current !== initial ? `<div><dt>Total offering price, current</dt><dd>${fmtMoney(current)}</dd></div>` : ""}
-    </dl>
-    ${whereToLook("schedule_a", sections, docsById)}
-  </section>
-
-  <section class="tab" id="budget">
-    <h2>Budget &amp; Charges</h2>
+  ${searchable ? `<section class="sheet-sec" id="budget">
+    <h2>Budget</h2>
     <div id="schedb" data-plan="${esc(p.plan_id)}"><noscript><p class="faint">Turn on JavaScript to see the Schedule B budget.</p></noscript></div>
-    <div id="schedb-where">${whereToLook("schedule_b", sections, docsById)}</div>
-  </section>
+    <div id="schedb-where"></div>
+  </section>` : ""}
 
-  <section class="tab" id="team">
-    <h2>Team</h2>
-    <dl class="glance">
-      ${p.sponsor ? `<div><dt>Sponsor</dt><dd>${esc(tc(p.sponsor))}</dd></div>` : ""}
-      ${p.law_firm ? `<div><dt>Sponsor's counsel</dt><dd>${esc(tc(p.law_firm))}${counsel.map((x) => `<span class="sub">${esc(x)}</span>`).join("")}</dd></div>` : ""}
-    </dl>
-    ${whereToLook("management_agreement", sections, docsById)}
-  </section>
-
-  <section class="tab" id="floor-plans">
-    <h2>Floor Plans</h2>
-    ${whereToLook("floor_plans", sections, docsById, 6) || `<p>${searchable ? "No pages headed “Floor plans” were found in the searched documents." : "The plan's documents are not searched yet."}</p>`}
-    <p class="src">Floor plans are drawings inside the plan PDF. ${mainPdf ? "Linked page references open the PDF at that page." : "Open the plan from the Attorney General's site and go to the pages listed."}</p>
-    <div class="acts"><a class="btn" href="${esc(planHref)}" rel="noopener">Open the plan documents ↗</a></div>
-  </section>
-
-  <section class="tab" id="documents">
-    <h2>Documents</h2>
-    ${docRows ? `<ul class="doclist">${docRows}</ul>` : `<p>The Attorney General has not posted documents for this plan yet. Copies can be requested through a FOIL request.</p>`}
-    ${whereToLook("declaration", sections, docsById, 2)}
-    ${whereToLook("bylaws", sections, docsById, 2)}
-    <div class="acts"><a class="btn" href="${esc(agDocs)}" rel="noopener">View all documents on the AG website ↗</a></div>
-  </section>
+  ${near.length ? `<section class="sheet-sec" id="nearby">${nearHtml.replace("<h3>Compare Nearby Condo Plans</h3>", "<h2>Nearby Plans</h2>")}</section>` : ""}
 
 </main>
 ${ld(ldJson)}
