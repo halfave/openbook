@@ -170,7 +170,7 @@ body.searched .go{padding:0 20px;font-size:13px}
 /* ---------- map + results (unchanged behavior, restyled) ---------- */
 .split{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:20px;align-items:start;margin-top:12px}
 @media (max-width:900px){.split{grid-template-columns:1fr}}
-.mapcard{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);background:var(--panel);border:1px solid var(--rule-strong);overflow:hidden}
+.mapcard{position:sticky;top:calc(var(--head-h,64px) + 12px);background:var(--panel);border:1px solid var(--rule-strong);overflow:hidden}
 @media (max-width:900px){.mapcard{position:static;order:2}}
 .maphead{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid var(--rule-strong);flex-wrap:wrap}
 .maphead h2{margin:0;font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
