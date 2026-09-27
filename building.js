@@ -76,7 +76,7 @@
         const r = refs(it.note);
         return `<tr${isTotal(it) ? ' class="total"' : ""}><td>${esc(it.item)}${r ? `<sup>${r}</sup>` : ""}</td><td class="amt">${fmt(it.amount)}</td><td class="pg">${cite(it.page)}</td></tr>`;
       }).join("")).join("");
-      return (budgets.size > 1 ? `<h3>${esc(b)} budget</h3>` : "") +
+      return (budgets.size > 1 ? `<h3>${esc(b)} Budget</h3>` : "") +
         `<div class="tscroll"><table class="budget"><thead><tr><th>Item</th><th class="amt">Amount</th><th>Source</th></tr></thead><tbody>${rows}</tbody></table></div>`;
     }).join("");
 
@@ -86,7 +86,7 @@
     if (row.total_expenses != null) head.push(`<b>Total expenses:</b> ${fmt(row.total_expenses)}`);
     const caution = row.status === "partial"
       ? `<p class="bcaution"><b>Partly extracted.</b> ${esc(row.status_note || "Some of this budget could not be read. Check the plan pages cited.")}</p>` : "";
-    const noteList = notes.length ? `<h3>Notes to the budget</h3><ol class="bnotes">${notes.map((n, i) =>
+    const noteList = notes.length ? `<h3>Notes to the Budget</h3><ol class="bnotes">${notes.map((n, i) =>
       `<li id="bn-${i}"><span class="n">${esc(n.n)}</span><b>${esc(n.title || "")}</b>${n.title ? ". " : ""}${esc(n.summary || "")}${n.page ? ` <span class="pg">${cite(n.page)}</span>` : ""}</li>`).join("")}</ol>` : "";
 
     box.innerHTML = `<p class="src">Schedule B of the offering plan: the sponsor's projected first-year budget. Extracted from the offering plan.</p>` +

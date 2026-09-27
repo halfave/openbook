@@ -110,6 +110,7 @@ export const MENU = (p) => `<details class="menu" id="menu">
     <a href="${p}blog/index.html">Guides</a>
     <a href="${p}about.html">About</a>
     <a href="${p}faq.html">FAQ</a>
+    <a href="${p}coverage.html">Coverage</a>
     <a href="mailto:hello@halfave.co?subject=The%20Condo%20Book%20Project%20error%20report">Report an error</a>
     <hr>
     <div class="fine"><a href="${p}terms.html">Terms</a><a href="${p}privacy.html">Privacy</a><a href="${p}disclaimers.html">Disclaimers</a></div>
@@ -119,7 +120,7 @@ export const MENU = (p) => `<details class="menu" id="menu">
 `;
 export const FOOT = (p, extraScripts = "") => `<footer>
   <div>The Condo Book Project · NYC condo offering plan search · Source: NY Attorney General offering plan database</div>
-  <nav class="footnav" aria-label="More"><a href="${p}index.html">Search</a><a href="${p}buildings/index.html">Buildings</a><a href="${p}new-condo-filings.html">New condo filings</a><a href="${p}blog/index.html">Guides</a><a href="${p}about.html">About</a><a href="${p}faq.html">FAQ</a><a href="mailto:hello@halfave.co?subject=The%20Condo%20Book%20Project%20error%20report">Report an error</a><a href="${p}terms.html">Terms</a><a href="${p}privacy.html">Privacy</a><a href="${p}disclaimers.html">Disclaimers</a></nav>
+  <nav class="footnav" aria-label="More"><a href="${p}index.html">Search</a><a href="${p}buildings/index.html">Buildings</a><a href="${p}new-condo-filings.html">New condo filings</a><a href="${p}blog/index.html">Guides</a><a href="${p}about.html">About</a><a href="${p}faq.html">FAQ</a><a href="${p}coverage.html">Coverage</a><a href="mailto:hello@halfave.co?subject=The%20Condo%20Book%20Project%20error%20report">Report an error</a><a href="${p}terms.html">Terms</a><a href="${p}privacy.html">Privacy</a><a href="${p}disclaimers.html">Disclaimers</a></nav>
   <div>© 2026 Half Ave Company LLC. The Condo Book Project is a service of Half Ave Company LLC.</div>
 </footer>
 <script src="${p}menu.js"></script>
