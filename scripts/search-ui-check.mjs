@@ -137,6 +137,35 @@ async function checkCase(c) {
       const wrong = s.basis.filter(([t, b]) => !(b === "current" && /current .*\(AG record\)/i.test(t)) && !(b === "scheduleA" && /original Schedule A/i.test(t)));
       ok("every table names its price basis: current AG total or original Schedule A", s.basis.length && !wrong.length && s.basis.some(([, b]) => b === "current") && s.basis.some(([, b]) => b === "scheduleA"), wrong.map(([t, b]) => `${b}: ${t}`).join(" | ") || JSON.stringify(s.basis));
       ok("explains that the two price bases differ", /current total offering price in the AG record/.test(s.basisnote) && /original plan’s Schedule A/.test(s.basisnote) && /don’t reconcile/.test(s.basisnote), s.basisnote || "no note");
+      if (E.unitDenominator) {
+        // The counted-plan row shows residential units apart from the units the per-unit price is divided by, and the two agree with the figures.
+        const [id, u] = E.unitDenominator;
+        const row = await page.evaluate((id) => { const tr = document.querySelector(`#rview tr[data-id="${id}"]`); if (!tr) return null; const td = [...tr.cells].map((c) => c.textContent.trim());
+          return { head: [...tr.closest("table").querySelectorAll("thead th")].map((h) => h.textContent), res: tr.querySelector(".ures")?.textContent.trim(), used: tr.querySelector(".uused b")?.textContent.trim(), mix: tr.querySelector(".uused .sub2")?.textContent.trim(), cur: td.at(-2), per: td.at(-1) }; }, id);
+        const $n = (t) => { const m = String(t || "").match(/\$([\d.,]+)([MK])/); return m ? parseFloat(m[1].replace(/,/g, "")) * (m[2] === "M" ? 1e6 : 1e3) : NaN; };
+        ok(`${id}: residential units and the per-unit divisor are shown apart (${u.residential} residential + ${u.storage} storage = ${u.used})`,
+          row && row.head.includes("Residential units") && row.head.includes("Units divided by") && row.res === String(u.residential) && row.used === String(u.used) && row.mix === `${u.residential} residential + ${u.storage} storage`, JSON.stringify(row));
+        ok(`${id}: the per-unit figure is the current total ÷ ${u.used}`, row && Math.abs($n(row.cur) / u.used / $n(row.per) - 1) < 0.01, JSON.stringify(row));
+      }
+      if (E.yearsBack) {
+        // Removing the date chip leaves no date filter; the selector, title, notes and chips must all say so. Choosing 2 years brings it back.
+        const settle = () => page.waitForFunction(() => { const t = document.getElementById("rtitle")?.textContent || "", st = document.getElementById("status")?.textContent || ""; return !/^Searching/.test(t) && !/…/.test(st) && document.querySelector('#rview select[data-stat="years"]'); }, null, { timeout: 90000 })
+          .catch(async (e) => { throw new Error(`${e.message.split("\n")[0]} · page shows: ${await page.evaluate(() => ["rtitle", "status", "notice"].map((i) => document.getElementById(i)?.textContent.trim().slice(0, 200)).join(" | "))} · ${errors.join(" | ")}`); });
+        const dates = () => page.evaluate(() => { const sel = document.querySelector('#rview select[data-stat="years"]');
+          return { value: sel?.value, shown: sel?.selectedOptions[0]?.textContent, title: document.getElementById("rtitle").textContent, chips: [...document.querySelectorAll("#read .fchip")].map((x) => x.textContent), notes: [...document.querySelectorAll("#read .readnotes li")].map((x) => x.textContent).join(" | ") }; });
+        // With no date limit the page reads Schedule A for every plan ever accepted, which takes minutes; this step checks the date
+        // controls, so Schedule A page bodies answer empty while it runs. The 2-year run below uses the real data again.
+        const noPages = (r) => r.fulfill({ json: [] });
+        await page.route(/\/rest\/v1\/pages\?/, noPages);
+        await page.click('#read [data-rm="since"]'); await settle();
+        await page.unroute(/\/rest\/v1\/pages\?/, noPages);
+        const a = await dates();
+        ok("with the date chip removed, the selector shows “All dates” and the page says there is no date limit",
+          a.value === "all" && a.shown === "All dates" && /accepted at any date$/i.test(a.title) && !a.chips.some((t) => /Accepted/.test(t)) && /No date limit/.test(a.notes) && !/Window:/.test(a.notes), JSON.stringify(a));
+        await page.selectOption('#rview select[data-stat="years"]', "2"); await settle();
+        const b = await dates();
+        ok("choosing 2 years brings the date filter back", b.value === "2" && /in the last 2 years$/i.test(b.title) && b.chips.some((t) => /Accepted in the last 2 years/.test(t)) && /Window: accepted/.test(b.notes), JSON.stringify(b));
+      }
     }
     await page.screenshot({ path: join(shots, `${c.id}-desktop.png`), fullPage: true });
     // A closer look at the top of the results for reviewers.
@@ -146,12 +175,28 @@ async function checkCase(c) {
     const mob = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
     const m = await open(mob, c.q);
     const mm = await m.page.evaluate(() => {
-      const small = [...document.querySelectorAll("#facets .fbtn, #read .dist button, #boros button, .statctl select")].filter((b) => b.offsetParent && b.getBoundingClientRect().height < 39.5).map((b) => b.textContent.trim().slice(0, 20));
-      return { overflow: document.documentElement.scrollWidth - window.innerWidth, small };
+      // Open every evidence disclosure (Schedule A sources, "N more", excluded plans, plans counted) so what's inside is measured too.
+      document.querySelectorAll("#results details, #rview details").forEach((d) => { d.open = true; });
+      const tiny = (sel, w) => [...document.querySelectorAll(sel)].filter((b) => { const r = b.getBoundingClientRect(); return b.offsetParent && (r.height < 39.5 || (w && r.width < 39.5)); });
+      const name = (b) => (b.getAttribute("aria-label") || b.textContent).trim().slice(0, 30);
+      const small = tiny("#facets .fbtn, #read .dist button, #boros button, .statctl select").map(name);
+      const small2 = tiny("#read .fchip button, #results .card .acts .btn, #results .ev summary, #results .excl summary, #rview .excl summary, #results .ev .cite a, #results .ev details a", true).map(name);
+      return { overflow: document.documentElement.scrollWidth - window.innerWidth, small, small2,
+        measured: document.querySelectorAll("#read .fchip button, #results .card .acts .btn, #results .ev summary").length, opened: document.querySelectorAll("#results .ev details[open]").length };
     });
-    ok("no sideways scroll at 390px", mm.overflow <= 1, `${mm.overflow}px too wide`);
+    ok("no sideways scroll at 390px, with evidence opened", mm.overflow <= 1, `${mm.overflow}px too wide`);
     ok("tap targets at least 40px at 390px", !mm.small.length, mm.small.join(", "));
+    ok(`filter removal, card actions and evidence disclosures are 40px at 390px (${mm.measured} measured, ${mm.opened} evidence panels opened)`, mm.measured && !mm.small2.length, mm.small2.join(", "));
+    if (E.spec?.beds) ok("unit evidence can be opened at 390px", mm.opened > 0, "no Schedule A source panels");
     await m.page.screenshot({ path: join(shots, `${c.id}-mobile.png`), fullPage: true });
+    // A removal button still works on a phone: tapping it drops the filter.
+    const rm = await m.page.$("#read .fchip button");
+    if (rm) {
+      const k = await rm.getAttribute("data-rm"), before = await m.page.$$eval("#read .fchip", (x) => x.length);
+      await rm.tap();
+      await m.page.waitForFunction(([k, n]) => !document.querySelector(`#read [data-rm="${k}"]`) || document.querySelectorAll("#read .fchip").length < n, [k, before], { timeout: 90000 }).then(() => true, () => false)
+        .then((done) => ok("tapping a filter’s × on a phone removes it", done, `chip ${k} still there`));
+    }
     await mob.close();
 
     const dark = await browser.newContext({ viewport: { width: 1440, height: 900 }, colorScheme: "dark" });

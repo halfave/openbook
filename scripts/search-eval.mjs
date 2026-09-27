@@ -266,6 +266,19 @@ async function statsFixture() {
   ok("AG tables are labelled as current recorded offering totals", ["boro-year", "boro-size", "boro-year-total"].every((k) => t.get(k)?.basis === "current" && /current .*\(AG record\)/.test(t.get(k).title)), [...t.values()].map((x) => x.title).join(" | "));
   ok("the plans whose current and initial totals differ are counted", res.priceBasis?.changed === 1 && res.notes.some((n) => /1 of 2 plans the AG’s current total differs from its initial total/.test(n)), JSON.stringify(res.priceBasis));
   ok("each counted plan keeps both totals", res.rows.every((r) => "price_initial" in r && "price_current" in r));
+  // The per-unit divisor counts storage as well as homes, and each counted plan carries it (shaped like CD240209: 8 residential + 5 storage, $7,335,000).
+  const mixed = [{ ...base, plan_id: "FX000003", units_residential: 8, units_storage: 5, price_initial: 7335000, price_current: 7335000 }];
+  const r2 = await I.run(I.parse("average price for new condos in last 2 years", "2026-09-27"), { ...fake, rest: async (p) => (/^plans\?/.test(p) && !/offset=[1-9]/.test(p) ? mixed : []) });
+  const m = r2.rows[0];
+  ok("each counted plan carries the units its per-unit price is divided by", m?.units_used === 13 && m.units_residential === 8 && Math.abs(m.per_unit * m.units_used - 7335000) < 1, JSON.stringify(m && { units_used: m.units_used, per_unit: m.per_unit }));
+  // With the date filter removed (as the page does), the title and notes say there is no date limit.
+  const open = { ...I.parse("average price for new condos in last 2 years", "2026-09-27"), since: null, until: null, window: null };
+  // An accepted plan with no acceptance date on record (the live data has them) must not break the table.
+  const undated = [...plans, { ...base, plan_id: "FX000004", accepted_date: null, units_residential: 5, price_initial: 0, price_current: 5000000 }];
+  const r3 = await I.run(open, { ...fake, rest: async (p) => (/^plans\?/.test(p) && !/offset=[1-9]/.test(p) ? undated : []) });
+  ok("with no date filter the averages say “at any date”, not a stale window", /accepted at any date$/.test(r3.title) && r3.notes.some((n) => /No date limit/.test(n)) && !r3.notes.some((n) => /Window:/.test(n)) && r3.rows.length === 3, `${r3.title} | ${r3.notes.join(" | ")}`);
+  const by = new Map((r3.tables || []).map((x) => [x.id, x]));
+  ok("a plan with no acceptance date is counted in its own column and listed last", by.get("boro-year")?.cols.at(-1) === "Date not on record" && r3.rows.at(-1)?.plan_id === "FX000004", JSON.stringify({ cols: by.get("boro-year")?.cols, last: r3.rows.at(-1)?.plan_id }));
   return { checks, ms: 0 };
 }
 

@@ -652,10 +652,12 @@
     const accepted = plans.filter((p) => p.status === "ACCEPTED");
     const priced = accepted.filter((p) => Number(p.price_current) > 0 && p.units_residential > 0);
     // Per plan: total offering price ÷ units offered (residential + commercial + parking + storage), so a garage or shop doesn't inflate the per-home figure.
-    const perUnit = (p) => Number(p.price_current) / (p.units_residential + (p.units_commercial || 0) + (p.units_parking || 0) + (p.units_storage || 0));
+    const unitsUsed = (p) => p.units_residential + (p.units_commercial || 0) + (p.units_parking || 0) + (p.units_storage || 0);
+    const perUnit = (p) => Number(p.price_current) / unitsUsed(p);
     const pure = priced.filter((p) => !(p.units_commercial > 0));
     res.plansAll = plans.length; res.plansAccepted = accepted.length; res.plansPriced = priced.length;
-    const yearOf = (p) => p.accepted_date.slice(0, 4);
+    // Some accepted plans have no acceptance date on record; with no date filter they are counted in a column of their own.
+    const yearOf = (p) => p.accepted_date ? p.accepted_date.slice(0, 4) : "Date not on record";
     const years = [...new Set(priced.map(yearOf))].sort();
     const boros = [...new Set(priced.map((p) => p.borough))].sort();
     const cell = (list, fn) => { const v = list.map(fn).filter((x) => Number.isFinite(x)); return { v: agg(v), n: v.length }; };
@@ -677,10 +679,10 @@
     res.tables.push({ id: "boro-year-total", basis: "current", title: `${M} current total offering price per plan (AG record), by borough and year accepted`, unit: "money",
       note: "The whole plan’s current offering price as recorded by the AG.", ...pivot((p) => titleCase(p.borough), boros.map(titleCase), yearOf, years, priced, (p) => Number(p.price_current)) });
     res.pureCount = pure.length;
-    res.rows = priced.map((p) => ({ ...p, per_unit: perUnit(p) })).sort((a, b) => String(b.accepted_date).localeCompare(String(a.accepted_date)));
-    res.title = `${measure === "median" ? "Median" : "Average"} offering price, ${spec.construction === "NEW" ? "new construction " : ""}condos accepted ${spec.window ? `in the last ${spec.window.n} ${spec.window.unit}${spec.window.n === 1 ? "" : "s"}` : spec.since ? `since ${spec.since}` : ""}`.trim();
+    res.rows = priced.map((p) => ({ ...p, units_used: unitsUsed(p), per_unit: perUnit(p) })).sort((a, b) => (b.accepted_date || "").localeCompare(a.accepted_date || ""));
+    res.title = `${measure === "median" ? "Median" : "Average"} offering price, ${spec.construction === "NEW" ? "new construction " : ""}condos accepted ${spec.window ? `in the last ${spec.window.n} ${spec.window.unit}${spec.window.n === 1 ? "" : "s"}` : spec.since && spec.until ? `${spec.since} to ${spec.until}` : spec.since ? `since ${spec.since}` : spec.until ? `through ${spec.until}` : "at any date"}`;
     if (spec.wantsSales) res.notes.unshift("The Condo Book Project has no closed-sale records, so sale prices can’t be averaged. These are the sponsors’ offering prices from the plans filed with the Attorney General.");
-    res.notes.push(`${priced.length} of ${plans.length} plans are counted: accepted by the AG and with a total offering price on record.${spec.since ? ` Window: accepted ${spec.since} to ${spec.until || today}.` : ""}`);
+    res.notes.push(`${priced.length} of ${plans.length} plans are counted: accepted by the AG and with a total offering price on record.${spec.since ? ` Window: accepted ${spec.since} to ${spec.until || today}.` : spec.until ? ` Window: accepted through ${spec.until}.` : " No date limit: plans accepted at any date are counted."}`);
     res.notes.push(`The plan tables use each plan’s current total offering price in the AG record; the bedroom tables use unit prices from the original plan’s Schedule A. They are different price bases and don’t reconcile: for ${changed} of ${priced.length} plans the AG’s current total differs from its initial total.`);
     // Unit-level breakdown from Schedule A, when the pages can be read.
     step("Reading Schedule A unit prices…");

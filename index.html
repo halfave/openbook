@@ -288,6 +288,14 @@ table.pivot th[scope="row"]{white-space:nowrap}
 .statctl{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;margin:0 0 12px;font-size:13px}
 .statctl label{display:inline-flex;gap:6px;align-items:center;color:var(--muted)}
 .statctl select{font:13px var(--sans);padding:6px 8px;border:1px solid var(--rule-strong);background:var(--panel);color:var(--ink);min-height:40px}
+/* Phones: the controls for removing a filter, opening a plan and checking its evidence are 40px targets. */
+@media (max-width:560px){
+  .fchip{padding:0 0 0 8px}
+  .fchip button{display:inline-flex;align-items:center;justify-content:center;min-height:40px;min-width:40px;padding:0 8px}
+  .card .acts .btn{min-height:40px}
+  .ev summary,.excl summary{box-sizing:border-box;min-height:40px;min-width:48px;padding:10px 0}
+  .ev .cite a,.ev details a,.excl .cite a{display:inline-flex;align-items:center;min-height:40px;white-space:nowrap}
+}
 .ring{fill:var(--accent);fill-opacity:.06;stroke:var(--accent);stroke-width:1.5;stroke-dasharray:6 4;vector-effect:non-scaling-stroke;pointer-events:none}
 .anchor{fill:var(--ink);stroke:var(--panel);stroke-width:1.5;vector-effect:non-scaling-stroke;pointer-events:none}
 </style>
@@ -1447,6 +1455,10 @@ table.pivot th[scope="row"]{white-space:nowrap}
     zoomTo({ x: (Math.min(...xs) + Math.max(...xs)) / 2 - w / 2, y: (Math.min(...ys) + Math.max(...ys)) / 2 - h / 2, w, h }, 0.15);
   }
 
+  // The units a per-unit price is divided by, by kind: "8 residential + 5 storage".
+  const unitMix = (r) => [[r.units_residential, "residential"], [r.units_commercial, "commercial"], [r.units_parking, "parking"], [r.units_storage, "storage"]]
+    .filter(([n]) => n > 0).map(([n, k]) => `${n} ${k}`).join(" + ");
+
   // Averages: a table per breakdown, not a list of buildings.
   function renderStats(res, P) {
     const spec = res.spec;
@@ -1466,7 +1478,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
     $("rview").innerHTML = `<div class="stats">
       ${spec.wantsSales ? `<p class="salesnote"><b>No sale prices here.</b> The Condo Book Project has no closed-sale records. These tables average the sponsors’ offering prices from the plans filed with the Attorney General, which can differ from what buyers paid.</p>` : ""}
       <div class="statctl">
-        ${sel("years", "Accepted in the last", [["1", "1 year"], ["2", "2 years"], ["3", "3 years"], ["5", "5 years"], ["10", "10 years"], ...(years === "custom" ? [["custom", "custom"]] : [])], years)}
+        ${sel("years", "Accepted", [["1", "In the last year"], ["2", "In the last 2 years"], ["3", "In the last 3 years"], ["5", "In the last 5 years"], ["10", "In the last 10 years"], ["all", "All dates"], ...(years === "custom" ? [["custom", "custom"]] : [])], years)}
         ${sel("construction", "Construction", [["NEW", "New construction"], ["CONVERSION", "Conversion"], ["REHAB", "Rehab"], ["", "Any"]], spec.construction || "")}
         ${sel("borough", "Borough", [["", "All boroughs"], ["MANHATTAN", "Manhattan"], ["BROOKLYN", "Brooklyn"], ["QUEENS", "Queens"], ["BRONX", "Bronx"], ["STATEN ISLAND", "Staten Island"]], spec.borough || "")}
         ${sel("measure", "Measure", [["average", "Average"], ["median", "Median"]], spec.stats.measure)}
@@ -1475,8 +1487,9 @@ table.pivot th[scope="row"]{white-space:nowrap}
       ${res.priceBasis ? `<p class="vnote basisnote"><b>Two price bases.</b> The per-unit and per-plan tables use each plan’s <b>current total offering price in the AG record</b>, which can change when the plan is amended. The bedroom tables use <b>unit prices from the original plan’s Schedule A</b>, before any amendment. The two don’t reconcile${res.priceBasis.changed ? `: for ${res.priceBasis.changed} of ${res.rows.length} plans counted, the current total differs from the initial total on record` : ""}.</p>` : ""}
       ${res.tables.map(table).join("")}
       <details class="excl"><summary>The ${res.rows.length} plans counted</summary>
-        <div class="tscroll"><table class="cmp"><thead><tr><th>Building</th><th>Accepted</th><th class="n">Units</th><th class="n">Initial total</th><th class="n">Current total (used)</th><th class="n">Per unit</th></tr></thead><tbody>
-        ${res.rows.map((r) => `<tr><td><button type="button" class="plink" data-open="${esc(r.plan_id)}">${esc(tc(r.name))}</button><span class="pid">${esc(r.plan_id)} · ${esc(tc(r.borough))}</span></td><td class="m">${esc(date(r.accepted_date))}</td><td class="n">${r.units_residential ?? "—"}</td><td class="n">${Number(r.price_initial) > 0 ? moneyTxt(Number(r.price_initial)) : "—"}</td><td class="n">${moneyTxt(Number(r.price_current))}</td><td class="n">${moneyTxt(r.per_unit)}</td></tr>`).join("")}
+        <p class="vnote">Per unit = current total ÷ every unit the plan offers: residential, commercial, parking and storage, as counted in the AG record.</p>
+        <div class="tscroll"><table class="cmp"><thead><tr><th>Building</th><th>Accepted</th><th class="n">Residential units</th><th class="n">Units divided by</th><th class="n">Initial total</th><th class="n">Current total (used)</th><th class="n">Per unit</th></tr></thead><tbody>
+        ${res.rows.map((r) => `<tr data-id="${esc(r.plan_id)}"><td><button type="button" class="plink" data-open="${esc(r.plan_id)}">${esc(tc(r.name))}</button><span class="pid">${esc(r.plan_id)} · ${esc(tc(r.borough))}</span></td><td class="m">${esc(date(r.accepted_date))}</td><td class="n ures">${r.units_residential ?? "—"}</td><td class="n uused"><b>${r.units_used}</b><span class="sub2">${esc(unitMix(r))}</span></td><td class="n">${Number(r.price_initial) > 0 ? moneyTxt(Number(r.price_initial)) : "—"}</td><td class="n">${moneyTxt(Number(r.price_current))}</td><td class="n">${moneyTxt(r.per_unit)}</td></tr>`).join("")}
         </tbody></table></div></details>
     </div>`;
     highlight(res.rows.map((r) => r.plan_id)); drawRing(null); fitMap(res.rows, null);
@@ -1484,7 +1497,8 @@ table.pivot th[scope="row"]{white-space:nowrap}
   $("rview").addEventListener("change", (e) => {
     const s = e.target.closest("[data-stat]"); if (!s || !current?.intent) return;
     const spec = { ...current.intent, stats: { ...current.intent.stats } };
-    if (s.dataset.stat === "years" && s.value !== "custom") { const d = new Date(); d.setFullYear(d.getFullYear() - +s.value); spec.since = d.toISOString().slice(0, 10); spec.until = null; spec.window = { n: +s.value, unit: "year" }; }
+    if (s.dataset.stat === "years" && s.value === "all") { spec.since = null; spec.until = null; spec.window = null; }
+    else if (s.dataset.stat === "years" && s.value !== "custom") { const d = new Date(); d.setFullYear(d.getFullYear() - +s.value); spec.since = d.toISOString().slice(0, 10); spec.until = null; spec.window = { n: +s.value, unit: "year" }; }
     if (s.dataset.stat === "construction") spec.construction = s.value || null;
     if (s.dataset.stat === "borough") spec.borough = s.value || null;
     if (s.dataset.stat === "measure") spec.stats.measure = s.value;
