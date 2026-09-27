@@ -59,7 +59,7 @@ h1{font:700 clamp(36px,6vw,60px)/1.02 var(--display);letter-spacing:-.012em;marg
 @media (prefers-reduced-motion: reduce){ .lucky .die{animation:none !important} }
 .lucky:hover{color:var(--accent)}
 .lucky:focus-visible{outline:3px solid var(--mast);outline-offset:-3px}
-.disclaim{margin:64px 0 0;font-size:11.5px;line-height:1.5;color:var(--faint);text-align:left}
+.disclaim{max-width:720px;margin:0 auto 14px;width:100%;font-size:11.5px;line-height:1.5;color:var(--faint);text-align:left}
 .disclaim strong{font-weight:600;color:var(--muted)}
 .disclaim b{font-weight:500;color:var(--muted)}
 .disclaim a{color:var(--accent)}
@@ -72,7 +72,13 @@ form.search{display:flex;flex-direction:column;gap:10px}
 .qrow input:focus{outline:none}
 .qrow:focus-within{outline:3px solid var(--mast);outline-offset:0}
 .go{flex:none;border:0;border-left:2px solid var(--ink);background:var(--accent);color:var(--accent-ink);font:600 15px var(--sans);letter-spacing:.12em;padding:0 30px;cursor:pointer}
-.go:hover{background:var(--accent-hover)}
+.go{position:relative;overflow:hidden;transition:background .15s,letter-spacing .2s}
+.go:hover{background:var(--accent-hover);letter-spacing:.18em}
+/* a light sheen crosses the button every few seconds (offset from the die), and runs fast while a search loads */
+.go::after{content:"";position:absolute;inset:0 auto 0 -60%;width:45%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.28),transparent);transform:skewX(-18deg);animation:go-sheen 4.5s ease-in-out 2.2s infinite;pointer-events:none}
+.go:disabled::after{animation-duration:.9s;animation-delay:0s}
+@keyframes go-sheen{0%,70%{left:-60%}90%,100%{left:130%}}
+@media (prefers-reduced-motion: reduce){ .go::after{animation:none;display:none} .go{transition:none} .go:hover{letter-spacing:.12em} }
 .go:disabled{opacity:.7;cursor:progress}
 @media (max-width:560px){
   .qrow{flex-direction:column;border:0;background:none;gap:8px}
@@ -113,15 +119,6 @@ body.answer .mapbox{aspect-ratio:4/3}
 body.answer .rhead,body.answer #views,body.answer #results,body.answer #rview{display:none}
 .qecho{font:italic 400 18px/1.3 var(--display);color:var(--ink)}
 .chiprow{display:flex;gap:6px;flex-wrap:wrap}
-.xf{margin-top:10px;font-size:14px}
-.xf summary{cursor:pointer;font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);list-style-position:inside}
-.xf summary:hover{color:var(--accent)}
-.xfrow{display:flex;flex-wrap:wrap;gap:10px 16px;margin-top:8px;align-items:end}
-.xfrow label{display:grid;gap:3px;font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.xfrow select,.xfrow input[type=search]{font:14px var(--sans);padding:6px 8px;border:1px solid var(--rule-strong);background:var(--panel);color:var(--ink);min-width:150px}
-.xfrow .xfcheck{display:flex;align-items:center;gap:6px;font:14px var(--sans);text-transform:none;letter-spacing:0;color:var(--ink);padding-bottom:6px}
-.xfnote{margin:6px 0 0;font-size:12px;color:var(--faint)}
-body.searched .xfnote{display:none}
 .fchip{display:inline-flex;align-items:center;gap:4px;background:var(--panel);border:1px solid var(--rule-strong);padding:1px 2px 1px 8px;font:12px/1.6 var(--mono);color:var(--ink)}
 .fchip button{border:0;background:none;color:var(--muted);font:600 14px/1 var(--sans);padding:2px 6px;cursor:pointer}
 .fchip button:hover{color:var(--accent)}
@@ -161,8 +158,7 @@ table.cmp .sub2{display:block;font:11px var(--mono);color:var(--muted)}
 
 /* ---------- after a search: compact header ---------- */
 body.searched .mast-in{height:64px}
-body.searched .wordmark{font-size:24px}
-body.searched .logo{width:32px;height:32px}
+body.searched .wordmark{font-size:17px}
 body.searched .mastnav,body.searched .menu{top:11px}
 body.searched .hero{max-width:1180px;margin:0;padding:16px 0 4px}
 body.searched h1,body.searched .sub,body.searched .lucky,body.searched .disclaim{display:none}
@@ -251,7 +247,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
 <body>
 <header class="mast">
   <div class="mast-in">
-    <a class="wordmark" href="index.html" aria-label="The Condo Book Project, home"><span class="logo" aria-hidden="true"><svg viewBox="0 0 40 40" focusable="false"><rect class="tile" width="40" height="40" rx="9"/><rect class="fg" x="13.4" y="4.5" width="1.2" height="4.5"/><rect class="fg" x="9" y="9" width="10" height="22"/><path class="fg" d="M21 31V15h5v-3h5v19z"/><g class="cut"><rect x="11" y="12" width="2.4" height="2.4"/><rect x="14.6" y="12" width="2.4" height="2.4"/><rect x="11" y="16.2" width="2.4" height="2.4"/><rect x="14.6" y="16.2" width="2.4" height="2.4"/><rect x="11" y="20.4" width="2.4" height="2.4"/><rect x="14.6" y="20.4" width="2.4" height="2.4"/><rect x="27.3" y="15" width="2.2" height="2.4"/><rect x="23" y="18.6" width="2.2" height="2.4"/><rect x="27.3" y="18.6" width="2.2" height="2.4"/><rect x="23" y="22.4" width="2.2" height="2.4"/><rect x="27.3" y="22.4" width="2.2" height="2.4"/></g><path class="tile" d="M3 27.2C10 25 16 25.4 20 28.4 24 25.4 30 25 37 27.2V29C30 27 24 27.4 20 30.4 16 27.4 10 27 3 29z"/><path class="fg" d="M4 29.2C10 27.2 16 27.6 20 30.6 24 27.6 30 27.2 36 29.2V33.2C30 31.2 24 31.6 20 34.6 16 31.6 10 31.2 4 33.2z"/></svg></span>THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="About"><a href="about.html">About</a><span aria-hidden="true">|</span><a href="faq.html">FAQ</a></nav>
   </div>
 </header>
@@ -275,7 +271,6 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
     <a href="index.html?q=managing+agent">Project teams</a>
     <a href="index.html?q=floor+plans">Floor plans</a>
     <hr>
-    <div class="fine"><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a><a href="disclaimers.html">Disclaimers</a></div>
     <small>© 2026 Half Ave Company LLC</small>
   </nav>
 </details>
@@ -292,20 +287,9 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
         <button class="lucky" id="lucky" type="button" aria-label="I’m feeling lucky: run a random example search" title="I’m feeling lucky"><span class="die" aria-hidden="true">🎲</span></button>
       </div>
     </form>
-    <details class="xf" id="xf">
-      <summary>More filters</summary>
-      <div class="xfrow">
-        <label>Parking<select id="xf-park"><option value="">Any</option><option value="sold">Sold as units</option><option value="licensed">Licensed</option><option value="leased">Leased</option><option value="limited_common_element">Limited common element</option></select></label>
-        <label>Tax program<select id="xf-tax"><option value="">Any</option><option value="421-a">421-a</option><option value="ICAP">ICAP</option><option value="J-51">J-51</option><option value="ICIP">ICIP</option><option value="421-g">421-g</option></select></label>
-        <label>Managing agent<input id="xf-agent" type="search" placeholder="e.g. FirstService" enterkeyhint="search"></label>
-        <label class="xfcheck"><input id="xf-aff" type="checkbox">Has affordable units</label>
-      </div>
-      <p class="xfnote">These filters use details extracted from original offering plans. Plans that weren't read yet won't match.</p>
-    </details>
     <div class="read" id="read" hidden></div>
     <div class="notice" id="notice" hidden></div>
 
-    <p class="disclaim" id="stats"><strong>Disclaimer.</strong> The Condo Book Project is independent and not affiliated with the City of New York or the NY Attorney General. Plans and plan records come from the <a href="https://offeringplandatasearch.ag.ny.gov/" rel="noopener">Attorney General’s filing record</a>, which does not include documents for every filing, so information here may be incomplete.</p>
   </section>
 
   <div class="after" id="after" hidden>
@@ -347,6 +331,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
   </div>
 
   </div>
+  <p class="disclaim" id="stats"><strong>Disclaimer.</strong> The Condo Book Project is independent and not affiliated with the City of New York or the NY Attorney General. Plans and plan records come from the <a href="https://offeringplandatasearch.ag.ny.gov/" rel="noopener">Attorney General’s filing record</a>, which does not include documents for every filing, so information here may be incomplete. It includes only initial offering plans filed from 2000 on.</p>
   <nav class="sitefoot" aria-label="More">
     <a href="mailto:hello@halfave.co?subject=The%20Condo%20Book%20Project%20error%20report">Report an error</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a><a href="disclaimers.html">Disclaimers</a><span>© 2026 Half Ave Company LLC</span>
   </nav>
@@ -777,14 +762,14 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
       P.matchNote = notes.join(" ") || null;
       return hits;
     }
-    if (P.zips && !P.q && !hasFacts(P)) {
+    if (P.zips && !P.q) {
       const f = [`zip=in.(${P.zips.join(",")})`];
       if (P.minUnits != null) f.push(`units_residential=gte.${P.minUnits}`);
       if (P.maxUnits != null) f.push(`units_residential=lte.${P.maxUnits}`);
       if (P.minParking != null) f.push(`units_parking=gte.${P.minParking}`);
       return recordRows(f.join("&"));
     }
-    const args = { q: P.q || null, p_borough: P.borough, p_min_units: P.minUnits, p_max_units: P.maxUnits, p_min_parking: P.minParking, p_limit: P.zips ? 400 : 60, ...factArgs(P) };
+    const args = { q: P.q || null, p_borough: P.borough, p_min_units: P.minUnits, p_max_units: P.maxUnits, p_min_parking: P.minParking, p_limit: P.zips ? 400 : 60 };
     const words = (P.q || "").split(/\s+/).filter(Boolean);
     const quoted = /^"[^"]+"$/.test(P.q || "");
     const phraseable = words.length >= 2 && !/"|\bOR\b/.test(P.q);
@@ -817,47 +802,6 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
     return rows;
   }
 
-  // ---------- filters on extracted facts (More filters) ----------
-  // search_plans_v2 filters on facts: parking exact (sold/licensed include "sold or licensed"),
-  // tax program by prefix, managing agent by substring, affordable units as a yes.
-  const PARK_LABEL = { sold: "Parking sold as units", licensed: "Parking licensed", leased: "Parking leased", limited_common_element: "Parking: limited common element" };
-  const hasFacts = (P) => !!(P.parkArr || P.tax || P.agent || P.affordable);
-  function factArgs(P) {
-    const a = {};
-    if (P.parkArr) a.p_parking_arrangement = P.parkArr === "sold" || P.parkArr === "licensed" ? [P.parkArr, "sold_or_licensed"] : [P.parkArr];
-    if (P.tax) a.p_tax_program = [P.tax];
-    if (P.agent) a.p_managing_agent = P.agent;
-    if (P.affordable) a.p_has_affordable = true;
-    return a;
-  }
-  function readFacts(P) {
-    P.parkArr = $("xf-park").value || null;
-    P.tax = $("xf-tax").value || null;
-    P.agent = $("xf-agent").value.trim() || null;
-    P.affordable = $("xf-aff").checked || null;
-    P.chips = P.chips.filter((c) => !["parkArr", "tax", "agent", "affordable"].includes(c.k));
-    if (P.parkArr) P.chips.push({ k: "parkArr", label: PARK_LABEL[P.parkArr] });
-    if (P.tax) P.chips.push({ k: "tax", label: `Tax program: ${P.tax}` });
-    if (P.agent) P.chips.push({ k: "agent", label: `Managing agent: ${P.agent}` });
-    if (P.affordable) P.chips.push({ k: "affordable", label: "Has affordable units" });
-    return P;
-  }
-  function syncFacts(P) {
-    $("xf-park").value = P.parkArr || ""; $("xf-tax").value = P.tax || "";
-    $("xf-agent").value = P.agent || ""; $("xf-aff").checked = !!P.affordable;
-    if (hasFacts(P)) $("xf").open = true;
-  }
-  // Changing a filter re-runs the current search with it, or runs a filters-only search.
-  function applyFacts() {
-    const base = current && !current.planId && !current.address && !current.ai ? { ...current } : { q: "", borough: null, zips: null, minUnits: null, maxUnits: null, minParking: null, chips: [], notes: [], text: "" };
-    const P = readFacts({ ...base, aiAnswer: null, aiPending: false, via: "more_filters" });
-    if (!P.text || P.factsOnly) { P.factsOnly = true; P.text = P.chips.map((c) => c.label).join(", "); }
-    runP(P);
-  }
-  ["xf-park", "xf-tax", "xf-aff"].forEach((id) => $(id).addEventListener("change", applyFacts));
-  $("xf-agent").addEventListener("change", applyFacts);
-  $("xf-agent").addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); applyFacts(); } });
-
   // ---------- search ----------
   let mapReady = null, current = null, view = "buildings", viewToken = 0;
 
@@ -874,17 +818,17 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
   function run(via = "typed") {
     const text = $("q").value.trim() || typer.current(); // an empty search runs the example being typed
     $("q").value = text;
-    const P = readFacts(parseQuestion(text));
-    if (!hasFacts(P) && !P.q && !P.borough && !P.zips && P.minUnits == null && P.maxUnits == null && P.minParking == null && !P.planId && !P.address) {
+    const P = parseQuestion(text);
+    if (!P.q && !P.borough && !P.zips && P.minUnits == null && P.maxUnits == null && P.minParking == null && !P.planId && !P.address) {
       P.q = text; P.chips.unshift({ k: "q", label: `Text: ${text}` });
     }
     P.text = text; P.via = via;
     try { history.replaceState(null, "", "?q=" + encodeURIComponent(text)); } catch (e) { /* file:// */ }
-    P.aiPending = !hasFacts(P) && wantsAI(P, text); // the AI reads only the words, so it would drop More filters
+    P.aiPending = wantsAI(P, text);
     const t = Date.now();
     runP(P).then(() => {
       if (current !== P) return;
-      if (!P.aiPending && !lastRows.length && !P.planId && !P.address && !hasFacts(P)) P.aiPending = true; // nothing found: let the AI try
+      if (!P.aiPending && !lastRows.length && !P.planId && !P.address) P.aiPending = true; // nothing found: let the AI try
       if (P.aiPending) { renderInterpretation(P); askAI(P); }
       else logSearch(text, { results: lastRows.length, ms: Date.now() - t, parsed: { q: P.q, borough: P.borough, minUnits: P.minUnits, maxUnits: P.maxUnits, minParking: P.minParking } });
     });
@@ -906,17 +850,14 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
     ({ q: () => { P.q = ""; }, area: () => { P.borough = null; P.zips = null; }, units: () => { P.minUnits = null; P.maxUnits = null; },
       parking: () => { P.minParking = null; P.maxParking = null; }, planId: () => { P.planId = null; }, address: () => { P.address = null; },
       dates: () => { P.from = null; P.to = null; }, construction: () => { P.construction = null; }, status: () => { P.status = null; },
-      sponsor: () => { P.sponsor = null; }, counsel: () => { P.counsel = null; }, commercial: () => { P.minCommercial = null; }, storage: () => { P.minStorage = null; },
-      parkArr: () => { P.parkArr = null; }, tax: () => { P.tax = null; }, agent: () => { P.agent = null; }, affordable: () => { P.affordable = null; } })[b.dataset.rm]?.();
+      sponsor: () => { P.sponsor = null; }, counsel: () => { P.counsel = null; }, commercial: () => { P.minCommercial = null; }, storage: () => { P.minStorage = null; } })[b.dataset.rm]?.();
     P.aiAnswer = null; P.aiPending = false;
-    if (P.factsOnly) P.text = P.chips.map((c) => c.label).join(", ");
     P.via = "remove_filter:" + b.dataset.rm;
     runP(P);
   });
 
   async function runP(P) {
     current = P;
-    syncFacts(P);
     $("notice").hidden = true; $("go").disabled = true;
     document.body.classList.add("searched"); $("after").hidden = false; $("foot").hidden = false;
     renderInterpretation(P);

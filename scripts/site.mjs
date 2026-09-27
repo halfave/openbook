@@ -113,7 +113,6 @@ export const MENU = (p) => `<details class="menu" id="menu">
     <a href="${p}coverage.html">Coverage</a>
     <a href="mailto:hello@halfave.co?subject=The%20Condo%20Book%20Project%20error%20report">Report an error</a>
     <hr>
-    <div class="fine"><a href="${p}terms.html">Terms</a><a href="${p}privacy.html">Privacy</a><a href="${p}disclaimers.html">Disclaimers</a></div>
     <small>© 2026 Half Ave Company LLC</small>
   </nav>
 </details>
