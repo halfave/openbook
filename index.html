@@ -59,8 +59,8 @@ h1{font:700 clamp(36px,6vw,60px)/1.02 var(--display);letter-spacing:-.012em;marg
 @media (prefers-reduced-motion: reduce){ .lucky .die{animation:none !important} }
 .lucky:hover{color:var(--accent)}
 .lucky:focus-visible{outline:3px solid var(--mast);outline-offset:-3px}
-.disclaim{max-width:720px;margin:0 auto 14px;width:100%;font-size:11.5px;line-height:1.5;color:var(--faint);text-align:left}
-.disclaim strong{font-weight:600;color:var(--muted)}
+.disclaim{max-width:720px;margin:0 auto 14px;width:100%;font-size:11.5px;line-height:1.5;color:var(--muted);text-align:left}
+.disclaim strong{font-weight:600;color:var(--ink)}
 .disclaim b{font-weight:500;color:var(--muted)}
 .disclaim a{color:var(--accent)}
 /* Buildings, Browse by task and the guides live in the menu, so the homepage shows it on every screen size. */
@@ -331,7 +331,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
   </div>
 
   </div>
-  <p class="disclaim" id="stats"><strong>Disclaimer.</strong> The Condo Book Project is independent and not affiliated with the City of New York or the NY Attorney General. Plans and plan records come from the <a href="https://offeringplandatasearch.ag.ny.gov/" rel="noopener">Attorney General’s filing record</a>, which does not include documents for every filing, so information here may be incomplete. It includes only initial offering plans filed from 2000 on.</p>
+  <p class="disclaim" id="stats"><strong>Disclaimer.</strong> The Condo Book Project is an independent research tool, not affiliated with the NY Attorney General or any New York City agency. It is not legal or financial advice and not an offer to sell. It covers only initial offering plans filed from 2000 on<span id="counts"></span>, and coverage is incomplete: not every filing has posted documents, and automatically extracted text can contain errors. Check the original filing and consult a real estate attorney before relying on anything here.</p>
   <nav class="sitefoot" aria-label="More">
     <a href="mailto:hello@halfave.co?subject=The%20Condo%20Book%20Project%20error%20report">Report an error</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a><a href="disclaimers.html">Disclaimers</a><span>© 2026 Half Ave Company LLC</span>
   </nav>
@@ -1206,7 +1206,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
       ]);
       if (plans == null || full == null) return;
       const f = (n) => `<b>${n.toLocaleString("en-US")}</b>`;
-      $("stats").insertAdjacentHTML("beforeend", ` It holds ${f(plans)} plan records and ${f(full)} documents searchable in full text.`);
+      $("counts").innerHTML = ` (${f(plans)} plan records, ${f(full)} documents searchable in full text)`;
     } catch (e) { /* the numbers are optional */ }
   }
   loadStats();
