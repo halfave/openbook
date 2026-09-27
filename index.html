@@ -272,6 +272,12 @@ table.cmp.units td,table.cmp.units th{padding:4px 10px 4px 0}
 .excl ul{margin:8px 0 0;padding-left:18px;columns:2 260px;column-gap:24px}
 .excl li{break-inside:avoid;margin:2px 0}
 .excl .why{color:var(--muted);font-size:12.5px}
+.excl blockquote{margin:4px 0 0;padding-left:8px;border-left:2px solid var(--rule-strong);overflow-wrap:anywhere;font-size:12.5px}
+.excl .cite{font:11.5px var(--mono);color:var(--muted);margin-bottom:8px}
+.excl .cite a{color:var(--accent)}
+.related{border-top:1px solid var(--rule);padding-top:8px;font-size:13.5px;color:var(--muted)}
+.related p{margin:0 0 4px}
+.related .plink{font:500 13px var(--mono);color:var(--accent);text-decoration:underline;padding:10px 0;margin:-10px 0}
 .stats h3{margin:18px 0 2px;font:700 18px/1.2 var(--display)}
 .salesnote{margin:0 0 12px;padding:10px 14px;background:var(--warn-bg);color:var(--warn);border-left:3px solid var(--warn);font-size:14px}
 table.pivot td.n small{display:block;font:10.5px var(--mono);color:var(--muted)}
@@ -1339,6 +1345,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
       ol.appendChild(li);
     }
     if (spec.mih && res.excluded?.length) ol.appendChild(excludedList(res.excluded));
+    if (spec.parking && res.mentions?.length) ol.appendChild(mentionList(res.mentions));
     loadThumbs(rows.slice(0, ishown).map((r) => r.plan_id));
     highlight(rows.map((r) => r.plan_id));
     drawRing(spec.near ? res.anchor : null, spec.near?.miles);
@@ -1375,7 +1382,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
     let ev = "";
     if (spec.mih && w) ev = `<div class="ev"><div class="evhead">Affordable units in the building · ${esc(w.program === "MIH" ? "Mandatory Inclusionary Housing" : w.program === "Inclusionary Housing" ? "Inclusionary Housing" : "not MIH (another program)")}</div>` +
       w.evidence.slice(0, 1).map((e) => `<blockquote>“${esc(e.text)}”</blockquote><div class="cite">${pageLink(e)}</div>`).join("") + `</div>`;
-    if (spec.parking && w) ev = `<div class="ev"><div class="evhead">${w.parking === "fact" ? `Parking offered by license${w.fact === "sold_or_licensed" ? " (or sold)" : ""}` : "The plan’s pages mention a parking license"}</div>` +
+    if (spec.parking && w) ev = `<div class="ev"><div class="evhead">${w.parking === "fact" ? `Parking offered by license${w.fact === "sold_or_licensed" ? " (or sold)" : ""}` : "The plan’s pages offer a parking license"}</div>` +
       w.evidence.slice(0, 1).map((e) => `<blockquote>“${esc(e.text)}”</blockquote><div class="cite">${pageLink(e)}</div>`).join("") +
       (w.parking === "text" && w.fact ? `<div class="fhint">The extracted parking arrangement says “${esc(w.fact.replace(/_/g, " "))}”. Check the page.</div>` : "") + `</div>`;
     if ((spec.beds || spec.price) && r.units?.length) {
@@ -1388,6 +1395,11 @@ table.pivot th[scope="row"]{white-space:nowrap}
         ${us.length > top.length ? `<details><summary class="cite">${us.length - top.length} more</summary><div class="tscroll"><table class="cmp units"><tbody>${us.slice(top.length).map(row).join("")}</tbody></table></div></details>` : ""}</div>`;
     }
     if (ev) acts.insertAdjacentHTML("beforebegin", ev);
+    // Related filings: the same building filed under another plan ID. Both stay listed; each names the other.
+    const rel = [];
+    if (r.relatedTo) rel.push(`Related filing: this record refers to <button type="button" class="plink" data-open="${esc(r.relatedTo.plan_id)}">${esc(r.relatedTo.plan_id)}</button>${r.relatedTo.name ? ` (${esc(r.relatedTo.name)})` : ""}. Its unit count is for this filing, not a separate building.`);
+    if (r.relatedFrom?.length) rel.push(`Also filed as ${r.relatedFrom.map((x) => `<button type="button" class="plink" data-open="${esc(x.plan_id)}">${esc(x.plan_id)}</button>`).join(", ")}, which refer${r.relatedFrom.length === 1 ? "s" : ""} to this plan.`);
+    if (rel.length) acts.insertAdjacentHTML("beforebegin", `<div class="related">${rel.map((t) => `<p>${t}</p>`).join("")}</div>`);
     return li;
   }
   const res_anchor_is = (r) => ires?.anchor?.plan_id && ires.anchor.plan_id === r.plan_id;
@@ -1397,6 +1409,16 @@ table.pivot th[scope="row"]{white-space:nowrap}
     const reason = (w) => !w ? "" : w.denial && !w.strong ? "says the building has none" : w.offsite ? "bonus floor area or rights from another site" : "mentions the program, no units in this building";
     d.innerHTML = `<details class="excl"><summary>${list.length} more plan${list.length === 1 ? "" : "s"} mention MIH or Inclusionary Housing but don’t put affordable units in the building</summary>
       <ul>${list.map((p) => `<li><button type="button" class="plink" data-open="${esc(p.plan_id)}">${esc(tc(p.name))}</button> <span class="pid">${esc(p.plan_id)}</span> <span class="why">${esc(reason(p.why))}</span></li>`).join("")}</ul></details>`;
+    return d;
+  }
+
+  // Plans whose pages name parking and a license without saying one is offered in the building: shown apart, not counted.
+  function mentionList(list) {
+    const d = document.createElement("li"); d.id = "pmentions";
+    d.innerHTML = `<details class="excl"><summary>${list.length} more plan${list.length === 1 ? " mentions" : "s mention"} parking and a license, but the pages don’t show a license offered in the building</summary>
+      <ul>${list.map((p) => { const e = p.why?.evidence?.[0]; return `<li data-id="${esc(p.plan_id)}"><button type="button" class="plink" data-open="${esc(p.plan_id)}">${esc(tc(p.name))}</button> <span class="pid">${esc(p.plan_id)}</span>` +
+        (p.why?.fact ? ` <span class="why">extracted arrangement: ${esc(p.why.fact.replace(/_/g, " "))}</span>` : "") +
+        (e ? `<blockquote>“${esc(e.text)}”</blockquote><div class="cite">${pageLink(e)}</div>` : "") + `</li>`; }).join("")}</ul></details>`;
     return d;
   }
 

@@ -59,6 +59,9 @@ async function evaluate(c) {
   let res;
   try { res = await I.run(spec, io); } catch (e) { ok("search runs", false, e.message); return { checks, ms: Date.now() - t0 }; }
   const ms = Date.now() - t0;
+  // The whole result, for reviewers: .loop/results/<case>.json
+  mkdirSync(join(root, ".loop/results"), { recursive: true });
+  writeFileSync(join(root, `.loop/results/${c.id}.json`), JSON.stringify(res, null, 1));
   ok("search runs", !res.error, res.error);
   ok("finishes in under 25 s", ms < 25000, `${ms} ms`);
   ok(`result is a ${E.kind}`, res.kind === E.kind, res.kind);
@@ -115,6 +118,21 @@ async function evaluate(c) {
     ok(`finds the ${E.requiredUnits.length} verified units`, !miss.length, `missing ${miss.map((x) => x.join(" ")).join(", ")}`);
   }
   if (E.forbiddenUnits) { const have = new Set(res.rows.flatMap((r) => (r.units || []).map((u) => r.plan_id + ":" + u.unit))); const bad = E.forbiddenUnits.filter(([p, u]) => have.has(p + ":" + u)); ok("no misread units", !bad.length, bad.map((x) => x.join(" ")).join(", ")); }
+  if (E.unitsVerbatim) {
+    // A square footage must be a number in the row other than the unit's own identifier.
+    const bad = [];
+    for (const r of res.rows) for (const u of r.units || []) {
+      if (u.sf == null) continue;
+      const toks = norm(u.line).split(" ").slice(/^(unit|apt\.?|apartment)$/i.test(norm(u.line).split(" ")[0]) ? 2 : 1);
+      if (!toks.some((t) => !t.startsWith("$") && +t.replace(/,/g, "") === u.sf)) bad.push(`${r.plan_id} ${u.unit}: ${u.sf} sf not in its row apart from the unit number`);
+    }
+    ok("square footage comes from the row, never the unit number", !bad.length, bad.slice(0, 10).join("; "));
+  }
+  if (E.unitArea) {
+    const got = new Map(res.rows.flatMap((r) => (r.units || []).map((u) => [r.plan_id + ":" + u.unit, u.sf])));
+    const bad = E.unitArea.filter(([p, u, sf]) => got.get(p + ":" + u) !== sf).map(([p, u, sf]) => `${p} ${u}: want ${sf}, got ${got.get(p + ":" + u)}`);
+    ok(`verified square footages (${E.unitArea.length})`, !bad.length, bad.join("; "));
+  }
   if (E.coverage) ok("coverage accounts for every building checked", res.coverage?.length && res.coverage.reduce((s, x) => s + x.n, 0) === res.candidates, JSON.stringify(res.coverage));
 
   if (E.unitRange) ok(`every building has ${E.unitRange[0]}–${E.unitRange[1]} residential units`, vis.every((r) => r.units_residential >= E.unitRange[0] && r.units_residential <= E.unitRange[1]), vis.filter((r) => !(r.units_residential >= E.unitRange[0] && r.units_residential <= E.unitRange[1])).map((r) => `${r.plan_id}:${r.units_residential}`).join(" "));
@@ -134,6 +152,19 @@ async function evaluate(c) {
     }
     ok("every listed plan quotes the line that says it", !bad.length, bad.join("; "));
   }
+  if (E.spec?.parking) {
+    // Listed from the text only with a sentence that offers the license; mentions are kept apart and not counted.
+    const weak = vis.filter((r) => r.why?.parking !== "fact" && !(r.why?.parking === "text" && I.parkingOffer(r.why.evidence?.[0]?.text)));
+    ok("text-only matches quote a license offered in the building", !weak.length, weak.map((r) => `${r.plan_id}: “${String(r.why?.evidence?.[0]?.text || "").slice(0, 80)}”`).join("; "));
+    const both = (res.mentions || []).filter((m) => res.rows.some((r) => r.plan_id === m.plan_id));
+    ok("plans that only mention a parking license are listed apart, not counted", !both.length && new RegExp(`^${res.rows.length} `).test(res.title), `${both.map((m) => m.plan_id).join(" ")} · title “${res.title}” for ${res.rows.length} rows`);
+  }
+  if (E.relatedFilings) {
+    const by = new Map(res.rows.map((r) => [r.plan_id, r]));
+    const bad = E.relatedFilings.filter(([a, b]) => !by.has(a) || !by.has(b) || by.get(a).relatedTo?.plan_id !== b || !by.get(b).relatedFrom?.some((x) => x.plan_id === a)).map((x) => x.join("→"));
+    ok("related filings are both listed and name each other", !bad.length, bad.join(", "));
+  }
+  if (res.kind === "list") ok("the count is of condo plans, not buildings", /^\d+ condo plans?\b/.test(res.title), res.title);
 
   if (E.kind === "table") {
     ok(`at least ${E.minTables} breakdown tables`, (res.tables || []).length >= E.minTables, (res.tables || []).length);
@@ -159,7 +190,55 @@ async function evaluate(c) {
   return { checks, ms, count: vis.length, total: res.rows.length, title: res.title };
 }
 
+// Offline fixtures for the parsers: sentences and Schedule A rows whose right reading is known.
+function fixtures() {
+  const checks = [], ok = (name, pass, detail = "") => checks.push({ name, pass: !!pass, detail: pass ? "" : String(detail).slice(0, 600) });
+  const offers = [
+    ["No parking licenses are offered.", false],
+    ["The Sponsor will not offer parking licenses to Purchasers.", false],
+    ["Purchasers may obtain a parking license at the garage in the adjacent building at 12 Main Street.", false],
+    ["Parking licenses are sold for spaces in another building owned by an affiliate of Sponsor.", false],
+    ["Parking Space Licensee:", false],
+    ["Parking Spaces may be licensed to members of the public.", false],
+    ["The parking spaces shall be licensed to owners of residential units through a contract with the condominium Board of Managers.", true],
+    ["Any portion of Common Elements restricted in use and subject to exclusive license agreements such as (but not limited to) Parking Spaces and Storage Spaces.", false],
+    ["STORAGE BIN LICENSE AGREEMENT made by WRB 280 ATLANTIC AVE., LLC, having an office at 95 - 25 Queens Boulevard, Rego Park, NY 11374 (“Sponsor”).", false],
+    ["Each Purchaser of a Residential Unit may purchase a license to use one parking space in the Building’s garage for $75,000.", true],
+    ["If Purchaser is also obtaining a parking space, a License must also be executed to evidence the transfer of the space.", true],
+    ["Sponsor is offering purchasers of residential Units the opportunity to purchase the Parking Space License, at a rate of $50,000.00 on a first come first serve basis", true],
+  ];
+  const badOffer = offers.filter(([s, want]) => I.parkingOffer(s) !== want).map(([s, want]) => `${want ? "missed" : "accepted"}: “${s.slice(0, 70)}”`);
+  ok(`parking-license sentences read right (${offers.length} fixtures)`, !badOffer.length, badOffer.join("; "));
+
+  const page = (file_id, body) => ({ file_id, page_no: 1, body });
+  const rowsOf = (body) => Object.fromEntries(I.parseScheduleA([page(1, body)]).map((u) => [u.unit, u.sf]));
+  const sfCases = [
+    ["one area column; unit number 1201 is not its area",
+      "Unit Bedrooms Baths Unit Square Footage Offering Price % of Common Interest\n1201 1 1 750 $1,150,000.00 1.2345%\n1202 2 2 1,040 $1,650,000.00 1.7345%", { 1201: 750, 1202: 1040 }],
+    ["unit area first, then a terrace column",
+      "Unit Bdrms Baths Unit Square Footage (1) Limited Common Area Square Footage Offering Price (2) % of Residential Common Interest (3)\n1201 1 1 750 300 $1,150,000.00 1.2345%\n1202 2 2 1,040 0 $1,650,000.00 1.7345%", { 1201: 750, 1202: 1040 }],
+    ["terrace column first: two area-sized numbers can't be told apart",
+      "Unit# Bedrooms Bathrooms Terrace/Balcony Square Footage Unit Square Footage Offering Price Common Interest\n1201 1 1 300 750 $1,150,000 0.2811%\n1202 1 1 0 646 $905,000 0.2380%", { 1201: null, 1202: 646 }],
+    ["no area column: the unit number is never a square footage",
+      "Unit Bedrooms Baths Offering Price % of Common Interest\n1201 1 1 $1,150,000.00 1.2345%\n1502 2 2 $1,650,000.00 1.7345%", { 1201: null, 1502: null }],
+  ];
+  for (const [name, body, want] of sfCases) {
+    const got = rowsOf(body);
+    const bad = Object.entries(want).filter(([u, v]) => got[u] !== v).map(([u, v]) => `${u}: want ${v}, got ${got[u]}`);
+    ok(`square footage: ${name}`, !bad.length, bad.join("; ") || JSON.stringify(got));
+  }
+
+  ok("a “*SEE CD160304*” record points at CD160304", I.seeRef("CHARLIE WEST CONDOMINIUM (THE) - *SEE CD160304*") === "CD160304" && I.seeRef("CHARLIE WEST CONDOMINIUM (THE)") === null);
+  return { checks, ms: 0 };
+}
+
 const out = [];
+if (!only.length || only.includes("fixtures")) {
+  const r = fixtures(), fails = r.checks.filter((x) => !x.pass);
+  out.push({ id: "fixtures", q: "(offline parser fixtures)", pass: !fails.length, ...r });
+  console.log(`${fails.length ? "FAIL" : "PASS"}  ${"fixtures".padEnd(14)} ${r.checks.length} parser fixture checks`);
+  for (const f of fails) console.log(`      ✗ ${f.name}: ${f.detail}`);
+}
 for (const c of cases.filter((x) => !only.length || only.includes(x.id))) {
   const r = await evaluate(c).catch((e) => ({ checks: [{ name: "evaluation", pass: false, detail: e.stack }] }));
   const fails = r.checks.filter((x) => !x.pass);
@@ -167,7 +246,9 @@ for (const c of cases.filter((x) => !only.length || only.includes(x.id))) {
   console.log(`${fails.length ? "FAIL" : "PASS"}  ${c.id.padEnd(14)} ${String(r.ms ?? "").padStart(6)} ms  ${r.count ?? ""}${r.total != null && r.total !== r.count ? `/${r.total}` : ""}  ${r.title || ""}`);
   for (const f of fails) console.log(`      ✗ ${f.name}: ${f.detail}`);
 }
-mkdirSync(join(root, ".loop"), { recursive: true });
+mkdirSync(join(root, ".loop/results"), { recursive: true });
+// The top of each cited page the checks read (table headers), for reviewers.
+writeFileSync(join(root, ".loop/results/pages.json"), JSON.stringify(Object.fromEntries(await Promise.all([...pageCache].map(async ([k, v]) => [k, (await v).slice(0, 600)]))), null, 1));
 writeFileSync(join(root, ".loop/eval.json"), JSON.stringify({ at: new Date().toISOString(), cases: out }, null, 2));
 const failed = out.filter((x) => !x.pass).length;
 console.log(`\n${out.length - failed}/${out.length} cases pass · ${out.flatMap((x) => x.checks).filter((x) => x.pass).length}/${out.flatMap((x) => x.checks).length} checks`);

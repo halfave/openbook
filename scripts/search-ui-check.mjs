@@ -74,6 +74,9 @@ async function checkCase(c) {
         ev: cards.filter((x) => x.querySelector(".ev")).length, facets: $$("#facets .fgroup").length, facetKeys: [...new Set($$("#facets [data-fk]").map((b) => b.dataset.fk))],
         pivots: $$("#rview table.pivot").length, salesnote: !!$("#rview .salesnote"), more: !!$("#imore"), cover: !!$("#results .cover"),
         mapHits: $$("#dots circle.hit").length, ring: $$("#ring circle").length, rviewVisible: !$("#rview")?.hidden,
+        ids: cards.map((x) => x.dataset.id), evheads: $$("#results .card .evhead").map((x) => x.textContent),
+        related: Object.fromEntries(cards.filter((x) => x.querySelector(".related")).map((x) => [x.dataset.id, { text: x.querySelector(".related").textContent, opens: [...x.querySelectorAll(".related [data-open]")].map((b) => b.dataset.open) }])),
+        mentions: $("#pmentions") ? $$("#pmentions li[data-id]").map((x) => x.dataset.id) : null,
       };
     });
     ok("no errors in the page", !errors.length, errors.join(" | "));
@@ -91,6 +94,16 @@ async function checkCase(c) {
       if (E.spec?.mih || E.spec?.parking || E.spec?.beds) ok("every card shows its evidence", s.ev === s.cards, `${s.ev} of ${s.cards}`);
       if (E.coverage) ok("says how many buildings could be checked", s.cover);
       if (n > 60) ok("offers more results beyond the first 60", s.more);
+      ok("the count says condo plans, not buildings", /^\d+ condo plans?\b/i.test(s.title), s.title);
+      for (const [a, b] of E.relatedFilings || []) {
+        const ra = s.related[a], rb = s.related[b];
+        ok(`${a} and ${b} are both shown and marked as related filings`, s.ids.includes(a) && s.ids.includes(b) && ra?.opens.includes(b) && /related filing/i.test(ra.text) && rb?.opens.includes(a),
+          `cards ${[a, b].filter((x) => s.ids.includes(x)).join(" ")}; ${a}: “${ra?.text || "no note"}”; ${b}: “${rb?.text || "no note"}”`);
+      }
+      if (E.spec?.parking) {
+        ok("no card is listed on a mere mention of a parking license", !s.evheads.some((t) => /mention/i.test(t)), s.evheads.filter((t) => /mention/i.test(t)).join(" | "));
+        ok("plans that only mention a parking license are kept apart from the cards", !(s.mentions || []).some((id) => s.ids.includes(id)), (s.mentions || []).filter((id) => s.ids.includes(id)).join(" "));
+      }
     } else {
       ok("renders breakdown tables, not a result list", s.rviewVisible && s.pivots >= (E.minTables || 1), `${s.pivots} tables`);
       if (E.salesDisclaimer) ok("says there is no sales data", s.salesnote);

@@ -252,12 +252,41 @@
   }
   // Bed and bath words on the page and no separate rooms column: a pair like "2/2.5" is bedrooms/baths.
   const bedBathPage = (body) => { const h = String(body).toLowerCase().replace(/\s+/g, " ").replace(NARRATIVE, " "); return /\bbed/.test(h) && /\bbath/.test(h) && !/\brooms?\b/.test(h.replace(OTHER_ROOMS, " ")); };
+  // What the table header says about square footage: null (no area column), "one" (one area column), or with terrace,
+  // outdoor or limited-common columns too, "main" (the unit's own area comes first) or "mixed" (it can't be told apart).
+  const AREA_WORD = /\bsq\.?\s*f(?:ee)?t|\bsquare\s+f(?:ee|oo)t|\(sf\)|\bs\.f\.|\bsf\b|\bfloor area\b|\bhabitable area\b|\binterior area\b/i;
+  const AREA_OTHER = /\b(?:terrace|balcon(?:y|ies)|outdoor|exterior|limited common|l\.?c\.?e\.?|storage|cellar|uninhabitable|roof|garden|patio|yard)\b/i;
+  function areaMode(body) {
+    const h = String(body).replace(/\s+/g, " ").replace(NARRATIVE, " ").slice(0, 2500);
+    const a = h.search(AREA_WORD);
+    if (a < 0) return null;
+    const o = h.search(AREA_OTHER);
+    return o < 0 ? "one" : a < o ? "main" : "mixed";
+  }
+  // Square feet from the numbers between the unit and its price. Never the unit number, a dollar amount or a percentage;
+  // with more than one area-sized number, only when the header puts the unit's own area first. Otherwise null.
+  function areaOf(before, amode) {
+    if (!amode) return null;
+    const vals = [];
+    for (let i = 0; i < before.length; i++) {
+      const t = before[i];
+      if (/^\$/.test(t) || before[i - 1] === "$" || /%$/.test(t)) continue;
+      const m = t.match(/^(\d{1,2},\d{3}|\d{3,5})(\.\d+)?$/);
+      if (!m) continue;
+      const v = +(m[1].replace(/,/g, "") + (m[2] || ""));
+      if (v >= 250 && v <= 15000) vals.push(v);
+    }
+    if (vals.length === 1) return vals[0];
+    if (vals.length > 1 && amode === "main") return vals[0];
+    return null;
+  }
   function parseScheduleA(pages) {
     if (!pages.length) return [];
-    const out = []; let carry = null;
+    const out = []; let carry = null, carryArea = null;
     for (const pg of [...pages].sort((a, b) => a.file_id - b.file_id || a.page_no - b.page_no)) {
       const body = String(pg.body || "");
       let mode = headerMode(body) || carry;
+      const amode = areaMode(body) || carryArea;
       if ((mode == null || mode === "col") && bedBathPage(body)) mode = mode === "col" ? "col+bb" : "bb";
       const rows = [];
       for (const raw of body.split(/\n/)) {
@@ -289,13 +318,14 @@
           }
         }
         if (beds == null) continue;
-        const sf = (line.slice(0, pIdx).match(/\b(\d{1,2},\d{3}|\d{3,4})(?:\.\d+)?\b(?!\s*%)/g) || []).map((x) => +x.replace(/,/g, "")).filter((v) => v >= 250 && v <= 15000).reduce((a, b) => Math.max(a, b), 0) || null;
+        const sf = areaOf(before, amode);
         rows.push({ unit, beds, price, sf, how, line, file_id: pg.file_id, page_no: pg.page_no });
       }
       // A bare numeric column is trusted only when several rows on the page read the same way.
       const colRows = rows.filter((r) => r.how === "column");
       out.push(...(colRows.length >= 2 ? rows : rows.filter((r) => r.how !== "column")));
       carry = rows.length ? mode : null;
+      carryArea = rows.length ? amode : null;
     }
     // The same unit repeated on a later page (a second table) keeps its first reading.
     const seen = new Set();
@@ -375,6 +405,23 @@
   const MIH_Q = 'mih OR "mandatory inclusionary" OR inclusionary';
   const MIH_UNIT_Q = '"affordable rental apartments" OR "affordable apartments" OR "affordable housing units" OR "affordable housing unit" OR "affordable units" OR "affordable unit" OR "affordable condo units" OR "inclusionary housing unit" OR "inclusionary housing units" OR "inclusionary unit" OR "mih unit" OR "mih units" OR "low income units" OR "rental apartments"';
 
+  // ---------- parking licenses: an offering in this building, not a mention ----------
+  // True when one sentence ties a license to parking, says it is offered, sold, priced or granted, isn't negated,
+  // and isn't about another building or a blank form.
+  const PARK_LIC = /\bparking\b[^.]{0,60}\blicen[cs]|\blicen[cs]\w*\b[^.]{0,60}\bparking\b/i;
+  const PARK_OFFER = /\b(?:offer(?:s|ed|ing)?|available|purchas(?:e|es|ed|er|ers|ing)|acquir(?:e|es|ed|ing)|sell|sells|sold|sale|buy|price|priced|grant(?:s|ed)?|obtain(?:s|ed|ing)?|(?:be|are|is) licensed to (?:the )?(?:purchasers?|(?:residential )?unit owners?|owners?|residents?))\b|\$\s?\d/i;
+  const PARK_NEG = /\b(?:no|not|never|none|neither|nor|without|cannot|can't|won't)\b[^.]{0,50}?\b(?:parking|licen[cs]\w*|offer\w*|available|sold|sell|provided)\b/i;
+  const PARK_ELSEWHERE = /\b(?:adjacent|adjoining|neighbou?ring|nearby|another|other|separate|third[- ]party|unaffiliated|off[- ]?site)\s+(?:building|property|premises|garage|parcel|lot|site|owner|entity|condominium)s?\b|\bnot (?:located )?(?:in|at|on) the (?:building|property|premises)\b/i;
+  const PARK_OTHER_LIC = /\b(?:driver'?s|real estate|broker|salesperson|professional|architect|engineer)\b[^.]{0,20}licen/i;
+  function parkingOffer(snt) {
+    const s = String(snt || "").replace(/\s+/g, " ").replace(/\(?\bbut\s+not\s+limited\s+to\b\)?|\bnot\s+limited\s+to\b/gi, " ");
+    if (s.length > 600 || /_{3,}/.test(s) || !PARK_LIC.test(s) || PARK_OTHER_LIC.test(s)) return false;
+    return PARK_OFFER.test(s) && !PARK_NEG.test(s) && !PARK_ELSEWHERE.test(s);
+  }
+
+  // Filings whose record points at another plan: "CHARLIE WEST CONDOMINIUM (THE) - *SEE CD160304*".
+  const seeRef = (name) => (String(name || "").match(/\*?\bsee\s+([a-z]{2}\d{6})\b/i) || [])[1]?.toUpperCase() || null;
+
   // ---------- run ----------
   // io: { rest(path) -> json, rpc(fn, args) -> json, geocode?(text) -> {lat,lng,label}, today? }
   async function run(spec, io, onProgress) {
@@ -446,23 +493,30 @@
       if (plans) { const inSet = new Set(plans.map((p) => p.plan_id)); tids = tids.filter((id) => inSet.has(id)); }
       const PQ = '"parking license" OR "parking licenses" OR "license to use" OR "licensed parking" OR "parking space license" OR "parking licensee" OR "license agreement"';
       const tpages = tids.length ? (await Promise.all(chunk(tids, 60).map((c) => restAll(io, `pages?select=plan_id,file_id,page_no,body&plan_id=in.${inList(c)}&tsv=wfts(english).${encodeURIComponent(PQ)}`)))).flat() : [];
+      // Per plan: sentences that offer a parking license in the building, and sentences that only mention one.
       const textHit = new Map();
       for (const p of tpages) for (const snt of sentences(p.body)) {
-        if (snt.length < 600 && /\bpark/i.test(snt) && /\blicen[cs]/i.test(snt) && !/\b(driver'?s|real estate|broker|salesperson|professional|architect|engineer)\b[^.]{0,20}licen/i.test(snt)) {
-          if (!textHit.has(p.plan_id)) textHit.set(p.plan_id, []);
-          const ev = textHit.get(p.plan_id); if (ev.length < 2) ev.push({ text: snt.trim().slice(0, 420), file_id: p.file_id, page_no: p.page_no });
+        if (snt.length < 600 && /\bparking\b/i.test(snt) && /\blicen[cs]/i.test(snt) && !PARK_OTHER_LIC.test(snt)) {
+          if (!textHit.has(p.plan_id)) textHit.set(p.plan_id, { offer: [], mention: [] });
+          const h = textHit.get(p.plan_id), ev = parkingOffer(snt) ? h.offer : h.mention;
+          if (ev.length < 2) ev.push({ text: snt.trim().slice(0, 420), file_id: p.file_id, page_no: p.page_no });
         }
       }
       const docs = await byIds(io, "documents", "file_id,plan_id,doc_kind,amendment_no,pdf_url", [...lic.map((x) => x.plan_id), ...textHit.keys()]);
       const urlOf = new Map(docs.map((d) => [d.file_id, d.pdf_url]));
-      for (const x of lic) why.set(x.plan_id, { parking: "fact", fact: x.value_text, evidence: [{ text: x.quote, file_id: x.file_id, page_no: x.page_no, pdf_url: urlOf.get(x.file_id) || null, doc: "Offering Plan" }] });
-      for (const [id, ev] of textHit) if (!why.has(id)) {
-        const other = factOf.get(id);
-        why.set(id, { parking: "text", fact: other?.value_text || null, evidence: ev.map((e) => ({ ...e, pdf_url: urlOf.get(e.file_id) || null, doc: "Offering Plan" })) });
+      const cite = (e) => ({ ...e, pdf_url: urlOf.get(e.file_id) || null, doc: "Offering Plan" });
+      for (const x of lic) why.set(x.plan_id, { parking: "fact", fact: x.value_text, evidence: [cite({ text: x.quote, file_id: x.file_id, page_no: x.page_no })] });
+      // Listed from the text only when a sentence offers the license and the extracted arrangement doesn't say otherwise
+      // (sold, or a limited common element). Every other plan whose pages name parking and a license is shown apart, uncounted.
+      const offered = [], mentioned = [];
+      for (const [id, h] of textHit) if (!why.has(id)) {
+        const other = factOf.get(id)?.value_text || null;
+        if (h.offer.length && (!other || /licen/.test(other))) { offered.push(id); why.set(id, { parking: "text", fact: other, evidence: h.offer.map(cite) }); }
+        else { mentioned.push(id); why.set(id, { parking: "mention", fact: other, evidence: (h.offer.length ? h.offer : h.mention).map(cite) }); }
       }
-      // A plan whose extracted fact says parking is sold or a limited common element, and only mentions a license in passing, is left out.
-      sets.push(new Set([...lic.map((x) => x.plan_id), ...[...textHit.keys()].filter((id) => !factOf.has(id) || /licen/.test(factOf.get(id).value_text))]));
-      res.notes.push("“Licensed” parking comes from the parking arrangement extracted from each plan (checked against the quoted page), plus plans whose pages mention a parking license. Plans without searchable documents can’t be checked.");
+      sets.push(new Set([...lic.map((x) => x.plan_id), ...offered]));
+      res.mentionIds = mentioned;
+      res.notes.push("“Licensed” parking comes from the parking arrangement extracted from each plan (checked against the quoted page), plus plans whose pages say a parking license is offered, sold or priced in the building. Plans whose pages only mention parking and a license are listed separately below and not counted. Plans without searchable documents can’t be checked.");
     }
 
     // 4. Assemble candidates.
@@ -518,6 +572,22 @@
       res.excluded = ex.length ? (await byIds(io, "plans", "plan_id,name,address,borough,plan_type", ex)).map((p) => ({ ...p, why: why.get(p.plan_id) })) : [];
       res.excluded.sort((a, b) => String(a.name).localeCompare(String(b.name)));
     }
+    if (spec.parking && res.mentionIds?.length) {
+      res.mentions = (await byIds(io, "plans", "plan_id,name,address,borough,plan_type,units_residential", res.mentionIds)).filter(isCondo).map((p) => ({ ...p, why: why.get(p.plan_id) }));
+      res.mentions.sort((a, b) => String(a.name).localeCompare(String(b.name)));
+    }
+    // Related filings: a record that points at another plan ("*SEE CD160304*") is the same building filed again,
+    // so each side names the other and the unit counts aren't read as two buildings.
+    const byId = new Map(res.rows.map((r) => [r.plan_id, r]));
+    const refs = res.rows.filter((r) => seeRef(r.name) && seeRef(r.name) !== r.plan_id);
+    const missing = [...new Set(refs.map((r) => seeRef(r.name)).filter((id) => !byId.has(id)))];
+    const outside = new Map((missing.length ? await byIds(io, "plans", "plan_id,name", missing) : []).map((p) => [p.plan_id, p]));
+    for (const r of refs) {
+      const to = seeRef(r.name), t = byId.get(to) || outside.get(to);
+      r.relatedTo = { plan_id: to, name: t ? cleanName(t.name) : null, listed: byId.has(to) };
+      if (byId.has(to)) (byId.get(to).relatedFrom ||= []).push({ plan_id: r.plan_id, name: cleanName(r.name) });
+    }
+    res.relatedCount = refs.length;
     res.facets = facetsOf(res.rows, spec);
     res.title = titleOf(spec, res);
     return res;
@@ -538,7 +608,7 @@
     const dec = count((r) => (r.accepted_date ? r.accepted_date.slice(0, 3) + "0s" : "Not accepted"));
     if (dec.length > 1) f.push({ k: "decade", label: "Accepted", values: dec.sort((a, b) => b[0].localeCompare(a[0])).map(([v, n]) => ({ v, n, label: v === "Not accepted" ? "Not yet accepted" : v, on: true })) });
     if (spec.mih) { const p = count((r) => r.why?.program || "Inclusionary Housing"); if (p.length > 1) f.push({ k: "program", label: "Affordability program", values: ["MIH", "Inclusionary Housing", "Other program"].filter((v) => p.some(([x]) => x === v)).map((v) => ({ v, n: p.find(([x]) => x === v)[1], label: PROGRAM_LABEL[v], on: v !== "Other program" })) }); }
-    if (spec.parking) { const p = count((r) => (r.why?.parking === "fact" ? "fact" : "text")); if (p.length > 1) f.push({ k: "evidence", label: "Evidence", values: p.map(([v, n]) => ({ v, n, label: v === "fact" ? "Parking arrangement: licensed" : "Pages mention a parking license", on: true })) }); }
+    if (spec.parking) { const p = count((r) => (r.why?.parking === "fact" ? "fact" : "text")); if (p.length > 1) f.push({ k: "evidence", label: "Evidence", values: p.map(([v, n]) => ({ v, n, label: v === "fact" ? "Parking arrangement: licensed" : "Pages offer a parking license", on: true })) }); }
     if (spec.beds || spec.price) { const b = count((r) => Math.min(...r.units.map((u) => u.beds))); if (b.length > 1) f.push({ k: "beds", label: "Bedrooms", values: b.sort((x, y) => x[0] - y[0]).map(([v, n]) => ({ v, n, label: v === 0 ? "Studio" : `${v} BR`, on: true })) }); }
     return f;
   }
@@ -548,11 +618,13 @@
   }
   function titleOf(spec, res) {
     const n = res.rows.length;
+    // Counts are plan filings; a building filed twice counts twice, and its cards say so.
     const where = spec.near ? ` within ${fmtMiles(spec.near.miles)} of ${spec.near.label}` : spec.borough ? ` in ${titleCase(spec.borough)}` : "";
-    if (spec.beds || spec.price) return `${n} condo${n === 1 ? "" : "s"}${where} with matching units`;
-    if (spec.mih) return `${n} condo${n === 1 ? "" : "s"} with MIH / Inclusionary Housing units on site${where}`;
-    if (spec.parking) return `${n} condo${n === 1 ? "" : "s"}${spec.units?.max != null ? ` under ${spec.units.max + 1} units` : ""} offering parking by license${where}`;
-    return `${n} condo${n === 1 ? "" : "s"}${where}`;
+    const plans = `condo plan${n === 1 ? "" : "s"}`;
+    if (spec.beds || spec.price) return `${n} ${plans}${where} with matching units`;
+    if (spec.mih) return `${n} ${plans} with MIH / Inclusionary Housing units on site${where}`;
+    if (spec.parking) return `${n} ${plans}${spec.units?.max != null ? ` under ${spec.units.max + 1} units` : ""} offering parking by license${where}`;
+    return `${n} ${plans}${where}`;
   }
 
   // ---------- averages ----------
@@ -600,11 +672,11 @@
         note: `Unit prices read from Schedule A in ${read} of ${priced.length} plans. n = units.`, ...pivot(bedKey, bedKeys, (u) => u.borough, ub, units, (u) => u.price) });
       const ppsf = units.filter((u) => u.sf);
       if (ppsf.length) res.tables.push({ id: "ppsf-boro", title: `${measure === "median" ? "Median" : "Average"} Schedule A price per square foot, by bedrooms and borough`, unit: "ppsf", countNoun: "units",
-        note: "Only rows where a square footage could be read. n = units.", ...pivot(bedKey, bedKeys, (u) => u.borough, ub, ppsf, (u) => u.price / u.sf) });
+        note: "Only units whose square footage is read from the table’s area column; units with no area, or more than one area column that can’t be told apart, are left out. n = units.", ...pivot(bedKey, bedKeys, (u) => u.borough, ub, ppsf, (u) => u.price / u.sf) });
     }
     res.saRead = read;
     return res;
   }
 
-  return { cleanName, headerMode, parse, run, chipsOf, facetsOf, facetKey, fmtMiles, parseScheduleA, classifyMIH, milesBetween, resolveAnchor, addressPatterns, money, restAll, titleCase, sizeBand, LIVE };
+  return { cleanName, headerMode, areaMode, areaOf, parkingOffer, seeRef, parse, run, chipsOf, facetsOf, facetKey, fmtMiles, parseScheduleA, classifyMIH, milesBetween, resolveAnchor, addressPatterns, money, restAll, titleCase, sizeBand, LIVE };
 });
