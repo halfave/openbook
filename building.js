@@ -104,6 +104,51 @@
     });
   }
 
+  // ---------- facts extracted from the offering plan ----------
+  // Shown in the tab they belong to, each with its page. Only value_text is shown, except the managing
+  // agent's fee (value_num is the annual fee for that field; other fields use it inconsistently).
+  loadFacts(main.dataset.plan);
+  async function loadFacts(plan) {
+    if (!plan) return;
+    let rows;
+    try {
+      const r = await fetch(`${SB}/rest/v1/facts?plan_id=eq.${encodeURIComponent(plan)}&select=field,value_text,value_num,page_no,quote&order=field,page_no`,
+        { headers: { apikey: KEY, Accept: "application/json" } });
+      if (!r.ok) return;
+      rows = await r.json();
+    } catch { return; }
+    if (!rows.length) return;
+    const by = new Map();
+    for (const f of rows) { if (!by.has(f.field)) by.set(f.field, []); by.get(f.field).push(f); }
+    const PARKING = { sold: "Sold as separate units", licensed: "Licensed", leased: "Leased", sold_or_licensed: "Sold or licensed", limited_common_element: "Limited common element" };
+    const val = (field, f) => {
+      if (field === "parking_arrangement") return PARKING[f.value_text] || f.value_text;
+      if (field === "managing_agent" && f.value_num != null && !isNaN(Number(f.value_num)))
+        return `${f.value_text || ""}${f.value_text ? ", " : ""}fee $${Number(f.value_num).toLocaleString("en-US")} a year`;
+      return f.value_text;
+    };
+    const row = (label, field) => {
+      const list = (by.get(field) || []).filter((f) => f.value_text || f.value_num != null);
+      if (!list.length) return "";
+      return `<div><dt>${esc(label)}</dt>${list.map((f) => `<dd>${esc(val(field, f))}` +
+        (f.page_no ? ` <span class="fcite"${f.quote ? ` title="${esc(f.quote)}"` : ""}>Offering Plan, p. ${esc(f.page_no)}</span>` : "") +
+        (f.quote ? `<details class="fq"><summary>Quote</summary><q>${esc(f.quote)}</q></details>` : "") + `</dd>`).join("")}</div>`;
+    };
+    const place = (tabId, fields) => {
+      const tab = document.getElementById(tabId);
+      const html = fields.map(([label, field]) => row(label, field)).join("");
+      if (!tab || !html) return;
+      const box = document.createElement("div");
+      box.className = "facts";
+      box.innerHTML = `<div class="facts-h">Extracted from the offering plan</div><dl class="glance">${html}</dl>`;
+      const after = tab.querySelector("dl.glance");
+      after ? after.after(box) : tab.querySelector("h2").after(box);
+    };
+    place("overview", [["Tax program", "tax_program"], ["Affordable housing", "affordable_housing"], ["Working capital", "working_capital"], ["Reserve fund", "reserve_fund"]]);
+    place("pricing", [["Parking arrangement", "parking_arrangement"]]);
+    place("team", [["Sponsor's address", "sponsor_address"], ["Selling agent", "selling_agent"], ["Managing agent", "managing_agent"], ["Architect", "architect"]]);
+  }
+
   // ---------- search inside this plan ----------
   const form = document.getElementById("psearch");
   if (!form) return;
