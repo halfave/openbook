@@ -1163,14 +1163,23 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
   }
 
   async function aiRows(P) {
+    // search_plans_v2 matches words against one index row per plan, so it stays inside the public 3-second limit
+    // (search_plans_v3 read every page and timed out on common words).
+    const limit = P.analytic ? 400 : 120;
     const args = { q: P.q || null, p_borough: P.borough, p_zips: P.zips, p_min_units: P.minUnits, p_max_units: P.maxUnits,
       p_min_parking: P.minParking, p_max_parking: P.maxParking, p_min_commercial: P.minCommercial, p_min_storage: P.minStorage,
-      p_accepted_from: P.from, p_accepted_to: P.to, p_construction: P.construction, p_status: P.status,
-      p_sponsor: P.sponsor, p_counsel: P.counsel, p_limit: P.analytic ? 400 : 120 };
+      p_accepted_from: P.from, p_accepted_to: P.to, p_construction: P.construction ? [P.construction] : null, p_status: P.status ? [P.status] : null,
+      p_sponsor: P.sponsor, p_counsel: P.counsel, p_managing_agent: P.manager || null, p_limit: limit };
     const hasFilter = [P.borough, P.zips, P.minUnits, P.maxUnits, P.minParking, P.maxParking, P.minCommercial, P.minStorage,
-      P.from, P.to, P.construction, P.status, P.sponsor, P.counsel].some((v) => v != null);
-    // With filters, topic words only rank: they must never remove a plan the filters match.
-    let rows = await rpc("search_plans_v3", { ...args, p_topic_required: !!P.topicRequired || !hasFilter });
+      P.from, P.to, P.construction, P.status, P.sponsor, P.counsel, P.manager].some((v) => v != null);
+    // With filters, topic words only rank: they must never remove a plan the filters match. So fetch the plans that
+    // mention the topic and the plans that match the filters alone, and list the mentions first.
+    let rows;
+    if (P.q && hasFilter && !P.topicRequired) {
+      const [hit, all] = await Promise.all([rpc("search_plans_v2", args), rpc("search_plans_v2", { ...args, q: null })]);
+      const seen = new Set(hit.map((r) => r.plan_id));
+      rows = [...hit, ...all.filter((r) => !seen.has(r.plan_id)).map((r) => ({ ...r, hits: 0, snippets: [] }))].slice(0, limit);
+    } else rows = await rpc("search_plans_v2", args);
     const labels = (P.topics || []).map((t) => t.label).join(", ");
     if (P.q && hasFilter && !P.topicRequired) {
       const n = rows.filter((r) => r.hits > 0).length;
