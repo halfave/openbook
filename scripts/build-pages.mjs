@@ -15,7 +15,7 @@ import { join } from "node:path";
 import { SITE_URL, AG, ROOT, TODAY, all, esc, tc, fileFor, day, month, usDate, money, fmtMoney, plural, boro, SITE_NAME, ld, SEO, HEAD, FOOT, urlset } from "./site.mjs";
 
 // ---------- data ----------
-const plans = (await all("plans?select=plan_id,name,address,zip,borough,construction,accepted_date,units_residential,units_parking,units_commercial,units_total,sponsor,meta,fetched_at&order=plan_id"))
+const plans = (await all("plans?select=plan_id,name,address,zip,borough,construction,accepted_date,units_residential,units_parking,units_commercial,units_total,sponsor,law_firm,meta,fetched_at&order=plan_id"))
   .filter((p) => p.address);
 const searchable = new Set((await all("documents?select=plan_id&status=eq.done")).map((d) => d.plan_id));
 const byId = new Map(plans.map((p) => [p.plan_id, p]));
@@ -105,15 +105,15 @@ function postPage(post) {
 ${ld({
     "@context": "https://schema.org", "@type": "BlogPosting", headline: post.h1, description: post.description, url, mainEntityOfPage: url,
     datePublished: post.published, dateModified: updated, inLanguage: "en-US", keywords: (post.keywords || []).join(", "),
-    author: ORG, publisher: ORG, isPartOf: { "@type": "Blog", name: `${SITE_NAME} Guides`, url: `${SITE_URL}/blog/` },
+    author: ORG, publisher: ORG, isPartOf: { "@type": "Blog", name: `${SITE_NAME} Blog`, url: `${SITE_URL}/blog/` },
   })}
 ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
     { "@type": "ListItem", position: 1, name: SITE_NAME, item: `${SITE_URL}/` },
-    { "@type": "ListItem", position: 2, name: "Guides", item: `${SITE_URL}/blog/` },
+    { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog/` },
     { "@type": "ListItem", position: 3, name: post.h1, item: url },
   ] })}
 <main class="post">
-  <nav class="crumbs" aria-label="Breadcrumb"><a href="${P}index.html">${SITE_NAME}</a> › <a href="index.html">Guides</a></nav>
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="${P}index.html">${SITE_NAME}</a> › <a href="index.html">Blog</a></nav>
   <article>
     <h1>${esc(post.h1)}</h1>
     <p class="meta">Updated <time datetime="${esc(updated)}">${esc(day(updated))}</time> · ${mins} min read</p>
@@ -121,7 +121,7 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
     ${body}
   </article>
   ${cta(P)}
-  <h2>More Guides</h2>
+  <h2>More from the Blog</h2>
   <ul class="dir">${related.map((q) => `<li><a href="${esc(q.slug)}.html">${esc(q.h1)}</a><span>${esc(q.description)}</span></li>`).join("")}
     <li><a href="${P}new-condo-filings.html">New NYC Condo Offering Plans: The 10 Latest Filings</a><span>The newest plans accepted for filing by the Attorney General, with CD numbers.</span></li></ul>
 </main>
@@ -131,14 +131,14 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
 function blogIndex() {
   const P = "../";
   const url = `${SITE_URL}/blog/`;
-  const title = "NYC Condo Offering Plan Guides | The Condo Book Project";
+  const title = "Blog: NYC Condo Offering Plans Explained | The Condo Book Project";
   const description = "Plain-English guides to NYC condo offering plans: how to search the NY Attorney General's filings, read a CD number, find amendments, and read Schedule A and Schedule B.";
   return HEAD(P, { title, description, canonical: url }) + `
-${ld({ "@context": "https://schema.org", "@type": "Blog", name: `${SITE_NAME} Guides`, description, url, publisher: ORG,
+${ld({ "@context": "https://schema.org", "@type": "Blog", name: `${SITE_NAME} Blog`, description, url, publisher: ORG,
     blogPost: posts.map((q) => ({ "@type": "BlogPosting", headline: q.h1, url: `${SITE_URL}/blog/${q.slug}.html`, datePublished: q.published, dateModified: q.updated || q.published })) })}
 <main>
   <nav class="crumbs" aria-label="Breadcrumb"><a href="${P}index.html">${SITE_NAME}</a></nav>
-  <h1>Guides to NYC Condo Offering Plans</h1>
+  <h1>Blog</h1>
   <p class="lede">How to find, search and read the condo offering plans ("condo books") that sponsors file with the New York State Attorney General.</p>
   <ul class="dir">${posts.map((q) => `<li><a href="${esc(q.slug)}.html">${esc(q.h1)}</a><span>${esc(q.description)}</span></li>`).join("")}
     <li><a href="${P}new-condo-filings.html">New NYC Condo Offering Plans: The 10 Latest Filings</a><span>Updated with every rebuild from the Attorney General's records.</span></li></ul>
@@ -303,9 +303,102 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
 ` + FOOT(P);
 }
 
+// ---------- offering plan attorneys ----------
+// Sponsor's counsel from the AG plan record (plans.law_firm). Spellings vary ("Harold L. Gruber, P.C." / "Harold Gruber, P.C."),
+// so names are grouped by a key without initials, suffixes and "Law Office of".
+const FIRM_STOP = new Set(["the", "law", "office", "offices", "of", "esq", "esquire", "attorney", "attorneys", "at", "pc", "llp", "llc", "pllc", "lpa", "inc",
+  "and", "associates", "assoc", "group", "firm", "counselors", "counsel", "pa"]);
+const firmKey = (v) => String(v).toLowerCase().replace(/\([^)]*\)/g, " ").replace(/[^a-z0-9]+/g, " ")
+  .split(" ").filter((w) => w.length > 1 && !FIRM_STOP.has(w)).join(" ");
+const firmCore = (v) => String(v).trim().replace(/([,\s]+(p\.?\s?c|l\.?l\.?p|l\.?l\.?c|pllc|esq|inc|attorneys? at law)\.?)+$/i, "").trim();
+const TOP_FIRMS = 50, SHOWN = 25;
+function firmGroups() {
+  const groups = new Map();
+  for (const p of plans) {
+    if (!p.law_firm || !NYC(p)) continue;
+    const k = firmKey(p.law_firm);
+    if (!k) continue;
+    if (!groups.has(k)) groups.set(k, { key: k, names: new Map(), plans: [] });
+    const g = groups.get(k);
+    g.names.set(p.law_firm.trim(), (g.names.get(p.law_firm.trim()) || 0) + 1);
+    g.plans.push(p);
+  }
+  // The search box matches counsel by substring, so pick the spelling that finds the most of this firm's plans
+  // and the fewest of anyone else's.
+  const firms = plans.filter((p) => p.law_firm).map((p) => ({ lf: p.law_firm.toLowerCase(), k: firmKey(p.law_firm) }));
+  const bestQuery = (g) => {
+    const cands = new Set([...g.names.keys()].map(firmCore).filter((c) => c.length >= 3));
+    const last = g.key.split(" ").pop();
+    if (last.length >= 5) cands.add(last);
+    let best = null;
+    for (const c of cands) {
+      const lc = c.toLowerCase();
+      let hit = 0, miss = 0;
+      for (const f of firms) if (f.lf.includes(lc)) f.k === g.key ? hit++ : miss++;
+      const score = hit - 3 * miss;
+      if (!best || score > best.score || (score === best.score && c.length < best.c.length)) best = { c, score };
+    }
+    return best ? best.c : firmCore([...g.names][0][0]);
+  };
+  return [...groups.values()].map((g) => {
+    const name = [...g.names].sort((a, b) => b[1] - a[1] || a[0].length - b[0].length)[0][0];
+    const list = g.plans.sort((a, b) => (b.accepted_date || "").localeCompare(a.accepted_date || "") || b.plan_id.localeCompare(a.plan_id));
+    const years = g.plans.map((p) => p.accepted_date?.slice(0, 4)).filter(Boolean).sort();
+    return { name, plans: list, years, slug: g.key.replace(/ /g, "-"), group: g };
+  }).sort((a, b) => b.plans.length - a.plans.length || a.name.localeCompare(b.name))
+    .slice(0, TOP_FIRMS).map((f) => ({ ...f, query: tc(bestQuery(f.group)) }));
+}
+function attorneysPage() {
+  const P = "";
+  const url = `${SITE_URL}/offering-plan-attorneys.html`;
+  const top = firmGroups();
+  const withCounsel = plans.filter((p) => p.law_firm && NYC(p)).length;
+  const title = `Top NYC Condo Offering Plan Attorneys: Sponsor's Counsel by Plans Filed | The Condo Book Project`;
+  const description = `The ${top.length} law firms named most often as sponsor's counsel in NYC condominium offering plans, from the NY Attorney General's records. Top: ${top.slice(0, 3).map((f) => `${tc(f.name)} (${f.plans.length})`).join(", ")}.`;
+  const search = (f) => `${P}index.html?q=${encodeURIComponent("counsel " + f.query)}`;
+  const bldg = (p) => `<li><a href="buildings/${esc(fileFor(p))}">${esc(tc(p.name))}</a><span>${esc(tc(p.address))} · ${esc(boro(p.borough))}${p.units_residential != null ? ` · ${p.units_residential} units` : ""}${p.accepted_date ? ` · ${p.accepted_date.slice(0, 4)}` : ""}</span></li>`;
+  const span = (f) => f.years.length ? (f.years[0] === f.years.at(-1) ? f.years[0] : `${f.years[0]}–${f.years.at(-1)}`) : "";
+  const card = (f, i) => `<details class="agent" id="${esc(f.slug)}" data-name="${esc(tc(f.name).toLowerCase())}">
+    <summary><span class="an">${i + 1}. ${esc(tc(f.name))}</span><span class="ac">${plural(f.plans.length, "plan")}${span(f) ? ` · ${span(f)}` : ""}</span></summary>
+    ${f.plans.length > SHOWN ? `<p class="faint">The ${SHOWN} most recent of ${n(f.plans.length)}.</p>` : ""}
+    <ul class="dir">${f.plans.slice(0, SHOWN).map(bldg).join("")}</ul>
+    <p class="acts"><a class="btn" href="${esc(search(f))}">Search plans with counsel ${esc(f.query)}</a></p>
+  </details>`;
+  return HEAD(P, { title, description, canonical: url }) + `
+${ld({ "@context": "https://schema.org", "@type": "ItemList", name: "Law firms most often named as sponsor's counsel in NYC condominium offering plans", url, numberOfItems: top.length,
+    itemListOrder: "https://schema.org/ItemListOrderDescending",
+    itemListElement: top.map((f, i) => ({ "@type": "ListItem", position: i + 1, name: tc(f.name), url: `${url}#${f.slug}` })) })}
+${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+    { "@type": "ListItem", position: 1, name: SITE_NAME, item: `${SITE_URL}/` },
+    { "@type": "ListItem", position: 2, name: "Offering plan attorneys", item: url },
+  ] })}
+<main class="post agents">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">${SITE_NAME}</a> › <a href="buildings/index.html">Buildings</a></nav>
+  <h1>Top NYC Condo Offering Plan Attorneys</h1>
+  <p class="meta">Updated <time datetime="${TODAY}">${esc(day(TODAY))}</time> · Source: NY Attorney General</p>
+  <p class="lede">The ${top.length} law firms named most often as the sponsor's counsel on New York City condominium offering plans, from the Attorney General's plan records. ${n(withCounsel)} NYC plans name their counsel.</p>
+  <p>Ranked by the number of plans filed, which says how often a firm appears, not how good it is. Open a firm to see its most recent plans, or search the site for <em>counsel</em> and a name, for example <a href="${esc(search(top[0]))}">counsel ${esc(top[0].query)}</a>. It combines with other filters: <em>counsel ${esc(top[0].query)} in Brooklyn</em>.</p>
+  <label class="afind"><span>Find a firm</span><input id="afind" type="search" placeholder="Type a name" autocomplete="off"></label>
+  <div class="agents-list">${top.map(card).join("\n")}</div>
+  <p class="src">Counsel as recorded by the Attorney General when the plan was filed. Different spellings of one firm's name are counted together; a firm that changed its name may appear more than once.</p>
+  ${cta(P)}
+</main>
+<script>
+(() => {
+  const box = document.getElementById("afind"); if (!box) return;
+  const cards = [...document.querySelectorAll("details.agent")];
+  box.addEventListener("input", () => {
+    const q = box.value.trim().toLowerCase();
+    cards.forEach((c) => { c.hidden = !!q && !c.dataset.name.includes(q); });
+  });
+})();
+</script>
+` + FOOT(P);
+}
+
 // ---------- hand-written pages: stamp the shared SEO tags and structured data between markers ----------
 // Title and description stay hand-written in each page; everything between <!-- seo --> and <!-- /seo --> is replaced.
-const STATIC = { "index.html": "", "about.html": "about.html", "faq.html": "faq.html", "terms.html": "terms.html", "privacy.html": "privacy.html", "disclaimers.html": "disclaimers.html", "coverage.html": "coverage.html" };
+const STATIC = { "index.html": "", "about.html": "about.html", "faq.html": "faq.html", "terms.html": "terms.html", "privacy.html": "privacy.html", "disclaimers.html": "disclaimers.html" };
 const unhtml = (s) => String(s).replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/\s+/g, " ").trim();
 async function stampStatic(file, path) {
   const html = await readFile(join(ROOT, file), "utf8");
@@ -348,9 +441,10 @@ for (const post of posts) await writeFile(join(ROOT, "blog", post.slug + ".html"
 await writeFile(join(ROOT, "blog", "index.html"), blogIndex());
 await writeFile(join(ROOT, "new-condo-filings.html"), filingsPage());
 await writeFile(join(ROOT, "managing-agents.html"), agentsPage());
+await writeFile(join(ROOT, "offering-plan-attorneys.html"), attorneysPage());
 for (const [file, path] of Object.entries(STATIC)) await stampStatic(file, path);
 
-const pageUrls = [["", TODAY], ["about.html"], ["faq.html"], ["coverage.html", TODAY], ["new-condo-filings.html", TODAY], ["managing-agents.html", TODAY], ["blog/", TODAY],
+const pageUrls = [["", TODAY], ["about.html"], ["faq.html", TODAY], ["new-condo-filings.html", TODAY], ["managing-agents.html", TODAY], ["offering-plan-attorneys.html", TODAY], ["blog/", TODAY],
   ...posts.map((q) => [`blog/${q.slug}.html`, q.updated || q.published])];
 await writeFile(join(ROOT, "sitemap-pages.xml"), urlset(pageUrls));
 await writeFile(join(ROOT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>
@@ -360,4 +454,4 @@ await writeFile(join(ROOT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"
 </sitemapindex>
 `);
 await writeFile(join(ROOT, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`);
-console.log(`${posts.length} posts, blog index, new-condo-filings.html, managing-agents.html, ${Object.keys(STATIC).length} stamped pages, sitemap-pages.xml with ${pageUrls.length} URLs`);
+console.log(`${posts.length} posts, blog index, new-condo-filings.html, managing-agents.html, offering-plan-attorneys.html, ${Object.keys(STATIC).length} stamped pages, sitemap-pages.xml with ${pageUrls.length} URLs`);
