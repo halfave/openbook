@@ -186,7 +186,7 @@ body.searched .go{padding:0 20px;font-size:13px}
 .dot{cursor:pointer;vector-effect:non-scaling-stroke}
 .dot.meta{fill:var(--panel);stroke:var(--dot-meta);stroke-width:1.2}
 .dot.idx{fill:var(--accent);stroke:var(--panel);stroke-width:1}
-.dot.dim{opacity:.18}
+.dot.dim{display:none}
 .dot.hit{fill:var(--hit);stroke:var(--panel);stroke-width:1.2}
 .dot.sel{stroke:var(--ink);stroke-width:2.2}
 .legend{display:flex;gap:14px;flex-wrap:wrap;padding:9px 12px;border-top:1px solid var(--rule-strong);font-size:12px;color:var(--muted)}
@@ -822,7 +822,13 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
     if (!mapReady) mapReady = (async () => {
       const [g] = await rest("site_assets?key=eq.boroughs_svg&select=value", null, 3600000);
       geo = JSON.parse(g.value); drawLand();
-      points = (await rpc("map_points", {}, 600000)).filter((p) => p.lat);
+      // The API returns at most 1,000 rows per call, so page through all of them.
+      const all = [];
+      for (let i = 0; ; i += 8) {
+        const pages = await Promise.all([...Array(8)].map((_, j) => rpc(`map_points?order=plan_id&limit=1000&offset=${(i + j) * 1000}`, {}, 600000)));
+        all.push(...pages.flat()); if (pages[7].length < 1000) break;
+      }
+      points = all.filter((p) => p.lat);
       drawDots();
     })().catch((e) => { mapReady = null; throw e; });
     return mapReady;
@@ -912,7 +918,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
       highlight(rows.map((r) => r.plan_id));
       const pts = points.filter((p) => rows.some((r) => r.plan_id === p.plan_id));
       if (P.boroPick && P.borough) zoomBoro(P.borough);
-      else if (pts.length) { const xy = pts.map((p) => project(p.lat, p.lng)); const xs = xy.map((a) => a[0]), ys = xy.map((a) => a[1]); const bx = { x: Math.min(...xs), y: Math.min(...ys), w: Math.max(120, Math.max(...xs) - Math.min(...xs)), h: Math.max(120, Math.max(...ys) - Math.min(...ys)) }; bx.x -= Math.max(0, 120 - (Math.max(...xs) - Math.min(...xs))) / 2; bx.y -= Math.max(0, 120 - (Math.max(...ys) - Math.min(...ys))) / 2; zoomTo(bx, 0.15); }
+      else if (pts.length) { const M = pts.length === 1 ? 40 : 120, xy = pts.map((p) => project(p.lat, p.lng)); const xs = xy.map((a) => a[0]), ys = xy.map((a) => a[1]); const bx = { x: Math.min(...xs), y: Math.min(...ys), w: Math.max(M, Math.max(...xs) - Math.min(...xs)), h: Math.max(M, Math.max(...ys) - Math.min(...ys)) }; bx.x -= Math.max(0, M - (Math.max(...xs) - Math.min(...xs))) / 2; bx.y -= Math.max(0, M - (Math.max(...ys) - Math.min(...ys))) / 2; zoomTo(bx, 0.15); }
       else { vb = { ...full }; setVB(); }
       pressBoro(P.borough);
     } catch (e) { showError(e); $("status").textContent = ""; }
@@ -1016,36 +1022,23 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
     .sort((a, b) => a.file_id - b.file_id || a.first_page - b.first_page);
   const pagesTxt = (a, b) => (a === b ? `p. ${a}` : `pp. ${a}–${b}`);
 
-  // One building found by address or plan ID: lead with the document and pages, then the source.
+  // One building found by address or plan ID: name, address, and three links. No page references.
   async function renderAnswer(r, P) {
     const box = $("answer"), page = pageFor(r), focus = KINDS.find((k) => k[0] === P.focus);
     box.innerHTML = `<article class="ans">
-      <p class="ans-kicker">${focus ? `${esc(focus[1])} ·` : ""} Plan ${esc(r.plan_id)}</p>
+      <p class="ans-kicker">Plan ${esc(r.plan_id)}</p>
       <h2>${esc(tc(r.name))}</h2>
       <p class="caddr">${esc(tc(r.address))}, ${esc(tc(r.borough))}${r.accepted_date ? ` · accepted ${esc(date(r.accepted_date))}` : ""} · ${r.units_residential ?? "?"} units</p>
-      <div id="ansbody"><p class="vnote">Finding the pages…</p></div>
-      <div class="acts"><a class="btn primary" href="${esc(agDocs(r.plan_id))}" target="_blank" rel="noopener">Open plan documents ↗</a>
+      <div class="acts"><span id="ansdoc"></span>
         ${page ? `<a class="btn" href="${esc(page)}${focus ? "#" + focus[2] : ""}">Building page</a>` : ""}
-        <a class="btn" href="${esc(AG + encodeURIComponent(r.plan_id))}" target="_blank" rel="noopener">AG filing record ↗</a></div>
+        <a class="btn" href="${esc(agDocs(r.plan_id))}" target="_blank" rel="noopener">AG documents ↗</a></div>
     </article>`;
-    if (!r.docs_indexed) { $("ansbody").innerHTML = `<p>This plan’s documents are not searchable here yet, so The Condo Book Project can’t point to pages. They are on the Attorney General’s site.</p>`; return; }
+    if (!r.docs_indexed) return;
     try {
-      const { lab, url, secBy } = await loadSections([r.plan_id]);
-      if (!$("ansbody")) return;
-      const sec = secBy.get(r.plan_id) || [];
-      const order = focus ? [focus, ...KINDS.filter((k) => k !== focus)] : KINDS;
-      const lines = order.map(([k, label]) => {
-        const runs = sec.filter((x) => x.kind === k); if (!runs.length) return "";
-        return `<tr${focus && k === focus[0] ? ' class="focus"' : ""}><th scope="row">${label}</th><td>${topRuns(runs, 3).map((x) => runRef(lab, url, x, pagesTxt)).join("; ")}</td></tr>`;
-      }).join("");
-      const lead = focus && sec.some((x) => x.kind === focus[0]) ? topRuns(sec.filter((x) => x.kind === focus[0]), 1)[0] : null;
-      const mainUrl = [...url.values()][0];
-      if (mainUrl) { const b = box.querySelector(".acts .btn.primary"); if (b) { b.href = mainUrl; b.textContent = "Open offering plan (PDF) ↗"; } }
-      $("ansbody").innerHTML = (lead ? `<p class="ans-lead"><span>${esc(focus[1])}</span> ${runRef(lab, url, lead, pagesTxt)}</p>
-        <p class="vnote">${url.get(lead.file_id) ? "The link opens the PDF at that page." : `Open plan documents, download the ${esc(lab.get(lead.file_id) || "document")}, and go to ${pagesTxt(lead.first_page, lead.last_page)}.`} Page numbers are the PDF’s own.</p>`
-        : focus ? `<p class="vnote">No pages headed “${esc(focus[1])}” were found in the searched documents.</p>` : "") +
-        (lines ? `<div class="tscroll"><table class="sect"><tbody>${lines}</tbody></table></div>` : "");
-    } catch (e) { if ($("ansbody")) $("ansbody").innerHTML = `<p class="vnote">Couldn’t load the page index. The documents are on the AG site.</p>`; }
+      const docs = await rest(`documents?status=eq.done&plan_id=eq.${encodeURIComponent(r.plan_id)}&doc_kind=eq.offering_plan&pdf_url=not.is.null&select=pdf_url&limit=1`, null, 600000);
+      const slot = $("ansdoc");
+      if (slot && docs[0]) slot.outerHTML = `<a class="btn primary" href="${esc(docs[0].pdf_url)}" target="_blank" rel="noopener">Open offering plan ↗</a>`;
+    } catch (e) { /* no hosted PDF: the AG link covers it */ }
   }
 
   async function renderDocuments(rows, P) {
