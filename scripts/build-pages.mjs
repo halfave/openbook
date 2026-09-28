@@ -141,14 +141,14 @@ ${ld({ "@context": "https://schema.org", "@type": "Blog", name: `${SITE_NAME} Bl
   <h1>Blog</h1>
   <p class="lede">How to find, search and read the condo offering plans ("condo books") that sponsors file with the New York State Attorney General.</p>
   <ul class="dir">${posts.map((q) => `<li><a href="${esc(q.slug)}.html">${esc(q.h1)}</a><span>${esc(q.description)}</span></li>`).join("")}
-    <li><a href="${P}new-condo-filings.html">New NYC Condo Offering Plans: The Last 6 Months</a><span>Every plan accepted for filing in the last six months, with sellout, $/sf, manager and attorney.</span></li></ul>
+    <li><a href="${P}new-condo-filings.html">New NYC Condo Offering Plans: The Last 3 Months</a><span>Every plan accepted for filing in the last three months, with sellout, $/sf, manager and attorney.</span></li></ul>
   ${cta(P)}
 </main>
 ` + FOOT(P);
 }
 
 // ---------- new filings ----------
-// Plans accepted for filing in the last six months (the 10 newest if none), one row each.
+// Plans accepted for filing in the last three months (the 10 newest if none), one row each.
 const KIND = { NEW: "new construction", REHAB: "rehab", CONVERSION: "conversion" };
 // Price per square foot from the checked Schedule A tables (data/schedule-a, written by extract-schedule-a.mjs):
 // the sum of prices over the sum of square feet, when most units list both.
@@ -163,42 +163,40 @@ function filingsPage() {
   const url = `${SITE_URL}/new-condo-filings.html`;
   // Skip AG rows that aren't a real offering ("*Resubmit*", "(8/3/89 Filed)", no units).
   const real = (p) => !/resubmit|withdrawn|\(\s*\d{1,2}\/\d{1,2}\/\d{2,4}|\bfiled\s*\)/i.test(p.name || "") && (p.units_residential || p.units_total);
-  const since = new Date(TODAY + "T12:00:00Z"); since.setUTCMonth(since.getUTCMonth() - 6);
+  const since = new Date(TODAY + "T12:00:00Z"); since.setUTCMonth(since.getUTCMonth() - 3);
   const SINCE = since.toISOString().slice(0, 10);
   const newest = accepted.filter(NYC).filter(real).sort((a, b) => b.accepted_date.localeCompare(a.accepted_date) || b.plan_id.localeCompare(a.plan_id));
   const recent = newest.filter((p) => p.accepted_date >= SINCE);
   const latest = recent.length ? recent : newest.slice(0, 10);
-  const title = `New NYC Condo Offering Plans: Filings from the Last 6 Months | The Condo Book Project`;
+  const title = `New NYC Condo Offering Plans: Filings from the Last 3 Months | The Condo Book Project`;
   const units = latest.reduce((s, p) => s + (p.units_residential || 0), 0);
   const boros = count(latest, (p) => boro(p.borough));
   const boroText = [...boros].sort((a, b) => b[1] - a[1]).map(([b, c]) => `${c} in ${b}`).join(", ");
-  const description = `${latest.length} NYC condominium offering plans accepted for filing by the NY Attorney General in the last six months, with CD numbers, total sellout, price per square foot, property manager and sponsor's counsel. Latest: ${tc(latest[0].name)}, ${latest[0].plan_id}.`;
+  const description = `${latest.length} NYC condominium offering plans accepted for filing by the NY Attorney General in the last three months, with CD numbers, total sellout, price per square foot, property manager and sponsor's counsel. Latest: ${tc(latest[0].name)}, ${latest[0].plan_id}.`;
 
-  const firmSlug = new Map(FIRMS.map((f) => [f.group.key, f.slug]));
   const price = (p) => money(p.meta?.plan?.["Current Price"]) || money(p.meta?.plan?.["Initial Price"]);
   const dash = `<span class="faint">—</span>`;
   const manager = (p) => {
     const a = planAgent.get(p.plan_id);
     if (!a) return dash;
     if (a.self) return "Sponsor (self-managed)";
-    return `<a href="managing-agents.html#${esc(a.slug)}">${esc(a.name)}</a>`;
+    return esc(a.name);
   };
   const counsel = (p) => {
     if (!p.law_firm) return dash;
-    const slug = firmSlug.get(firmKey(p.law_firm));
-    return slug ? `<a href="offering-plan-attorneys.html#${esc(slug)}">${esc(tc(p.law_firm))}</a>` : esc(tc(p.law_firm));
+    return esc(tc(p.law_firm));
   };
   const row = (p) => {
     const pr = price(p), sf = psf.get(p.plan_id);
-    return `<tr id="${esc(p.plan_id.toLowerCase())}"><td><a href="${esc(AG + encodeURIComponent(p.plan_id))}" rel="noopener" title="AG filing record">${esc(p.plan_id)} ↗</a></td>` +
-      `<td><a href="buildings/${esc(fileFor(p))}">${esc(tc(p.name))}</a><span class="sub">${esc(tc(p.address))} · ${esc(boro(p.borough))}${KIND[p.construction] ? ` · ${KIND[p.construction]}` : ""}</span></td>` +
+    return `<tr id="${esc(p.plan_id.toLowerCase())}"><td><a href="${esc(AG + encodeURIComponent(p.plan_id))}" target="_blank" rel="noopener" title="AG filing record">${esc(p.plan_id)} ↗</a></td>` +
+      `<td><a href="buildings/${esc(fileFor(p))}" target="_blank" rel="noopener">${esc(tc(p.name))}</a><span class="sub">${esc(tc(p.address))} · ${esc(boro(p.borough))}${KIND[p.construction] ? ` · ${KIND[p.construction]}` : ""}</span></td>` +
       `<td class="nowrap">${esc(day(p.accepted_date))}</td><td class="num">${p.units_residential ?? dash}</td>` +
       `<td class="num">${pr ? esc(fmtMoney(pr)) : dash}</td><td class="num">${sf ? `$${Math.round(sf).toLocaleString("en-US")}` : dash}</td>` +
       `<td>${manager(p)}</td><td>${counsel(p)}</td></tr>`;
   };
 
   return HEAD(P, { title, description, canonical: url }) + `
-${ld({ "@context": "https://schema.org", "@type": "ItemList", name: "NYC condominium offering plans accepted for filing in the last six months", url, numberOfItems: latest.length,
+${ld({ "@context": "https://schema.org", "@type": "ItemList", name: "NYC condominium offering plans accepted for filing in the last three months", url, numberOfItems: latest.length,
     itemListOrder: "https://schema.org/ItemListOrderDescending",
     itemListElement: latest.map((p, i) => ({ "@type": "ListItem", position: i + 1, url: `${SITE_URL}/buildings/${fileFor(p)}`, name: `${tc(p.name)} (${p.plan_id})` })) })}
 ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
