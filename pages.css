@@ -53,8 +53,17 @@ h2 + details{border-top:0}
   .about .about-facts{order:2;margin-top:28px}
 }
 .profile .glance{grid-template-columns:1fr 1fr}
-.profile .sims{margin-top:28px}
-.profile .sims .anote{margin-top:0}
+/* A small locator map, so the building list starts near the top. */
+.profile .fmap{max-width:240px;margin:4px 0 18px}
+/* Similar firms: a tinted box with an accent rule, set smaller than the page. */
+.profile .sims{margin-top:28px;background:var(--chip);border-top:3px solid var(--accent);padding:14px 16px 6px}
+.profile .sims h2{font:500 11.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 4px;border:0;padding:0}
+.profile .sims .anote{font-size:12.5px;line-height:1.45;margin:0 0 6px}
+.profile .sims .dir{margin:0}
+.profile .sims .dir li{padding:7px 0;border-bottom-color:var(--rule)}
+.profile .sims .dir li:last-child{border-bottom:0}
+.profile .sims .dir a{font-size:14px}
+.profile .sims .dir span{font-size:12px}
 @media (max-width:999px){
   main.profile{display:flex;flex-direction:column}
   .profile > .aside{display:contents}
@@ -262,6 +271,11 @@ details.agent .an a{color:inherit;text-decoration:underline;text-decoration-colo
 details.agent .an a:hover{color:var(--accent);text-decoration-color:currentColor}
 details.agent .ac{font:12.5px var(--mono);color:var(--muted);white-space:nowrap}
 details.agent .dir{margin:0 0 6px 26px}
+/* The buildings inside an open card sit a step below the firm names. */
+details.agent .dir li{padding:6px 0}
+details.agent .dir a{font-size:14px}
+details.agent .dir span{font-size:12.5px}
+details.agent > p.faint{font-size:13px;margin:2px 0 4px 26px}
 details.agent .acts{margin:4px 0 14px 26px}
 details.agent .rank{flex:none;width:22px;margin-right:-4px;font:500 12.5px var(--mono);color:var(--muted);text-align:center;align-self:center;line-height:0}
 details.agent .rank svg{vertical-align:middle}

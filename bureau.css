@@ -72,6 +72,8 @@
 /* About | FAQ | Data sit in the masthead; everything else is in the menu, shown on every screen size. */
 /* Data: New Construction, Approval Times, Property Managers and OP Attorneys in a dropdown */
 .datamenu{position:relative}
+/* pages.css rules every <details> for the FAQ list; not this one. */
+.mastnav details.datamenu{border:0;padding:0}
 .datamenu summary{list-style:none;cursor:pointer;font:inherit;color:var(--ink);padding:4px 0;border-bottom:1.5px solid transparent;display:flex;align-items:center;gap:7px}
 .datamenu summary::-webkit-details-marker{display:none}
 .datamenu summary::after{content:"";width:5px;height:5px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg)}

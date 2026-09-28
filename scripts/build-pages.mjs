@@ -431,14 +431,13 @@ function attorneysPage() {
   const withCounsel = plans.filter((p) => p.law_firm && NYC(p)).length;
   const title = `Top NYC Condo Offering Plan Attorneys: Sponsor's Counsel by Plans Filed | The Condo Book Project`;
   const description = `The ${top.length} law firms named most often as sponsor's counsel in NYC condominium offering plans, from the NY Attorney General's records. Top: ${top.slice(0, 3).map((f) => `${tc(f.name)} (${f.plans.length})`).join(", ")}.`;
-  const search = (f) => `${P}index.html?q=${encodeURIComponent("counsel " + f.query)}`;
   const bldg = (p) => `<li><a href="buildings/${esc(fileFor(p))}">${esc(tc(p.name))}</a><span>${esc(tc(p.address))} · ${esc(boro(p.borough))}${p.units_residential != null ? ` · ${p.units_residential} units` : ""}${p.accepted_date ? ` · ${p.accepted_date.slice(0, 4)}` : ""}</span></li>`;
   const span = (f) => f.years.length ? (f.years[0] === f.years.at(-1) ? f.years[0] : `${f.years[0]}–${f.years.at(-1)}`) : "";
   const card = (f, i) => `<details class="agent" id="${esc(f.slug)}" data-name="${esc(tc(f.name).toLowerCase())}"${more(i)}>
     <summary>${rank(i)}<span class="an">${f.plans.length >= PROFILE_MIN ? `<a href="offering-plan-attorneys/${esc(f.slug)}.html">${esc(tc(f.name))}</a>` : esc(tc(f.name))}</span><span class="ac">${plural(f.plans.length, "plan")}${span(f) ? `<span class="yrs" title="Years the plans were accepted for filing">${span(f)}</span>` : `<span class="yrs" aria-hidden="true"></span>`}</span></summary>
     ${f.plans.length > SHOWN ? `<p class="faint">The ${SHOWN} most recent of ${n(f.plans.length)}.</p>` : ""}
     <ul class="dir">${f.plans.slice(0, SHOWN).map(bldg).join("")}</ul>
-    <p class="acts">${f.plans.length >= PROFILE_MIN ? `<a class="btn primary" href="offering-plan-attorneys/${esc(f.slug)}.html">${esc(tc(f.name))} profile</a>` : ""}<a class="btn" href="${esc(search(f))}">Search plans with counsel ${esc(f.query)}</a></p>
+    ${f.plans.length >= PROFILE_MIN ? `<p class="acts"><a class="btn primary" href="offering-plan-attorneys/${esc(f.slug)}.html">${esc(tc(f.name))} profile</a></p>` : ""}
   </details>`;
   return HEAD(P, { title, description, canonical: url }) + `
 ${ld({ "@context": "https://schema.org", "@type": "ItemList", name: "Law firms most often named as sponsor's counsel in NYC condominium offering plans", url, numberOfItems: top.length,
@@ -527,7 +526,6 @@ function profilePage(x, kind) {
   const description = mgr
     ? `${x.display} is named as the first-year managing agent in ${plural(nyc, "NYC condo offering plan")}${x.units ? ` covering ${plural(x.units, "residential unit")}` : ""}, including ${named.join(", ")}.${pricingText ? ` Median first-year management fee: ${pricingText}.` : ""}`
     : `${x.display} is named as sponsor's counsel on ${plural(nyc, "NYC condo offering plan")}${span ? ` accepted ${span.includes("–") ? "from " + span.replace("–", " to ") : "in " + span}` : ""}, including ${named.join(", ")}.`;
-  const search = mgr ? `${P}index.html?q=${encodeURIComponent("managed by " + x.query)}` : `${P}index.html?q=${encodeURIComponent("counsel " + x.query)}`;
   const dash = `<span class="faint">—</span>`;
 
   const row = (p) => {
@@ -564,10 +562,10 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
     <div><dt>${mgr ? "Median fee" : "Median $/unit"}</dt><dd>${pricingText ? esc(pricingText) : "—"}</dd></div>
     <div><dt>${span.includes("–") ? "Years" : "Year"}</dt><dd>${span || "—"}</dd></div>
   </dl>
-  <p class="acts">${x.site ? `<a class="btn primary" href="${esc(x.site)}" target="_blank" rel="noopener">${esc(hostOf(x.site))} ↗</a>` : ""}<a class="btn" href="${esc(search)}">Search ${mgr ? "its buildings" : "its plans"}</a></p>
-  ${sims.length ? `<div class="sims"><h2>Similar ${mgr ? "Managers" : "Firms"}</h2>
+  ${x.site ? `<p class="acts"><a class="btn primary" href="${esc(x.site)}" target="_blank" rel="noopener">${esc(hostOf(x.site))} ↗</a></p>` : ""}
+  ${sims.length ? `<aside class="sims" aria-label="Similar ${mgr ? "managers" : "firms"}"><h2>Similar ${mgr ? "Managers" : "Firms"}</h2>
   <p class="anote">Closest in ${mgr ? "buildings" : "plans"}, residential units and ${mgr ? "management fee per unit" : "offering price per unit"}.</p>
-  <ul class="dir">${sims.map(simRow).join("")}</ul></div>` : ""}
+  <ul class="dir">${sims.map(simRow).join("")}</ul></aside>` : ""}
   </div>
   <div class="amain">
   <h2>${mgr ? "Buildings Managed" : "Offering Plans"}</h2>
