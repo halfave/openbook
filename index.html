@@ -158,6 +158,17 @@ table.cmp .sub2{display:block;font:11px var(--mono);color:var(--muted)}
 
 .hero .notice{margin-top:12px}
 
+/* ---------- Top 10 box under the search bar (home only) ---------- */
+.top10{margin:28px auto 0;width:100%;max-width:560px;border:1px solid var(--rule);border-radius:10px;background:var(--panel);padding:14px 18px 6px}
+.top10 h2{margin:0 0 4px;font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.top10 a{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:9px 0;border-top:1px solid var(--rule);text-decoration:none;color:var(--ink)}
+.top10 a:first-of-type{border-top:0}
+.top10 a b{font:600 15px var(--sans)}
+.top10 a span{font-size:13px;color:var(--muted);text-align:right}
+.top10 a:hover b{color:var(--accent)}
+body.searched .top10{display:none}
+@media (max-width:560px){ .top10 a{flex-direction:column;gap:2px} .top10 a span{text-align:left} }
+
 /* ---------- after a search: compact header ---------- */
 body.searched .mast-in{height:64px}
 body.searched .wordmark{font-size:17px}
@@ -247,6 +258,63 @@ mark{background:var(--mark);color:var(--mark-ink);padding:0 2px}
 footer[hidden]{display:none}
 footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;font-size:12.5px;color:var(--muted);display:grid;gap:6px;max-width:78ch}
 @media (prefers-reduced-motion: no-preference){ .dot{transition:opacity .2s, r .2s} .card{transition:border-color .15s} }
+
+/* ---------- structured searches: filters, evidence, unit prices, averages ---------- */
+.facets{display:flex;flex-direction:column;gap:8px;margin:0 0 12px;padding:10px 12px;background:var(--panel);border:1px solid var(--rule)}
+.fgroup{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.fgroup>span{font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);min-width:13ch}
+.fbtn,.dist button{background:var(--chip);border:1px solid var(--rule);padding:3px 9px;font:500 12.5px var(--sans);color:var(--ink);cursor:pointer;white-space:nowrap}
+.fbtn b{font-weight:600;font-variant-numeric:tabular-nums;margin-left:4px;color:var(--muted)}
+.fbtn[aria-pressed="false"]{background:none;border-style:dashed;color:var(--muted);text-decoration:line-through;text-decoration-color:var(--faint)}
+.fbtn[aria-pressed="true"]{border-color:var(--rule-strong)}
+.fbtn[aria-pressed="true"]::before{content:"✓ ";color:var(--accent);font-weight:700}
+.dist button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.fhint{font-size:12.5px;color:var(--muted)}
+.dist{display:flex;gap:6px;align-items:center;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+@media (max-width:560px){ .fbtn,.dist button{min-height:40px;padding:0 12px} .fgroup>span{width:100%} }
+.cover{margin:0 0 12px;padding:10px 12px;border:1px solid var(--rule);border-left:4px solid var(--mast);background:var(--panel);font-size:13.5px}
+.cover ul{margin:4px 0 0;padding-left:18px}
+.cover b{font-variant-numeric:tabular-nums}
+.ev{border-top:1px solid var(--rule);padding-top:8px;font-size:13.5px;display:flex;flex-direction:column;gap:4px}
+.evhead{font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.ev blockquote{margin:0;padding-left:8px;border-left:2px solid var(--rule-strong);overflow-wrap:anywhere}
+.ev .cite,.units .cite{font:11.5px var(--mono);color:var(--muted)}
+.ev .cite a,.units .cite a{color:var(--accent)}
+table.cmp.units{font-size:13px}
+table.cmp.units td,table.cmp.units th{padding:4px 10px 4px 0}
+.units details summary{cursor:pointer;font:11.5px var(--mono);color:var(--muted)}
+.units details p{margin:4px 0 0;font:11.5px/1.4 var(--mono);overflow-wrap:anywhere}
+.excl{margin-top:14px;border:1px solid var(--rule);background:var(--panel);padding:10px 12px;font-size:13.5px}
+.excl summary{cursor:pointer;font-weight:600}
+.excl ul{margin:8px 0 0;padding-left:18px;columns:2 260px;column-gap:24px}
+.excl li{break-inside:avoid;margin:2px 0}
+.excl .why{color:var(--muted);font-size:12.5px}
+.excl blockquote{margin:4px 0 0;padding-left:8px;border-left:2px solid var(--rule-strong);overflow-wrap:anywhere;font-size:12.5px}
+.excl .cite{font:11.5px var(--mono);color:var(--muted);margin-bottom:8px}
+.excl .cite a{color:var(--accent)}
+.related{border-top:1px solid var(--rule);padding-top:8px;font-size:13.5px;color:var(--muted)}
+.related p{margin:0 0 4px}
+.related .plink{font:500 13px var(--mono);color:var(--accent);text-decoration:underline;padding:10px 0;margin:-10px 0}
+.stats h3{margin:18px 0 2px;font:700 18px/1.2 var(--display)}
+.stats .basis{display:inline-block;margin:2px 0;font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.salesnote{margin:0 0 12px;padding:10px 14px;background:var(--warn-bg);color:var(--warn);border-left:3px solid var(--warn);font-size:14px}
+table.pivot td.n small{display:block;font:10.5px var(--mono);color:var(--muted)}
+table.pivot tfoot td,table.pivot tfoot th,table.pivot td.tot{font-weight:600}
+table.pivot tfoot td,table.pivot tfoot th{border-top:1px solid var(--rule-strong);border-bottom:0}
+table.pivot th[scope="row"]{white-space:nowrap}
+.statctl{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;margin:0 0 12px;font-size:13px}
+.statctl label{display:inline-flex;gap:6px;align-items:center;color:var(--muted)}
+.statctl select{font:13px var(--sans);padding:6px 8px;border:1px solid var(--rule-strong);background:var(--panel);color:var(--ink);min-height:40px}
+/* Phones: the controls for removing a filter, opening a plan and checking its evidence are 40px targets. */
+@media (max-width:560px){
+  .fchip{padding:0 0 0 8px}
+  .fchip button{display:inline-flex;align-items:center;justify-content:center;min-height:40px;min-width:40px;padding:0 8px}
+  .card .acts .btn{min-height:40px}
+  .ev summary,.excl summary{box-sizing:border-box;min-height:40px;min-width:48px;padding:10px 0}
+  .ev .cite a,.ev details a,.excl .cite a{display:inline-flex;align-items:center;min-height:40px;white-space:nowrap}
+}
+.ring{fill:var(--accent);fill-opacity:.06;stroke:var(--accent);stroke-width:1.5;stroke-dasharray:6 4;vector-effect:non-scaling-stroke;pointer-events:none}
+.anchor{fill:var(--ink);stroke:var(--panel);stroke-width:1.5;vector-effect:non-scaling-stroke;pointer-events:none}
 </style>
 
 </head>
@@ -254,7 +322,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
 <header class="mast">
   <div class="mast-in">
     <a class="wordmark" href="index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
-    <nav class="mastnav" aria-label="Main"><a href="about.html">About</a><span aria-hidden="true">|</span><a href="faq.html">FAQ</a><span aria-hidden="true">|</span><a href="new-condo-filings.html">New filings</a><span aria-hidden="true">|</span><a href="time-to-approval.html">Approval times</a><span aria-hidden="true">|</span><a href="managing-agents.html">Managing agents</a><span aria-hidden="true">|</span><a href="offering-plan-attorneys.html">Attorneys</a></nav>
+    <nav class="mastnav" aria-label="Main"><a href="about.html">About</a><span aria-hidden="true">|</span><a href="faq.html">FAQ</a><span aria-hidden="true">|</span><a href="new-condo-filings.html">New Construction</a><span aria-hidden="true">|</span><a href="time-to-approval.html">Approval Times</a><span aria-hidden="true">|</span><a href="managing-agents.html">Property Managers</a><span aria-hidden="true">|</span><a href="offering-plan-attorneys.html">OP Attorneys</a></nav>
   </div>
 </header>
 <div class="mast-rule"></div><div class="hairline"></div>
@@ -266,18 +334,18 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
     <div class="barlinks"><hr>
       <a href="about.html">About</a>
       <a href="faq.html">FAQ</a>
-      <a href="new-condo-filings.html">New filings</a>
-      <a href="time-to-approval.html">Approval times</a>
-      <a href="managing-agents.html">Managing agents</a>
-      <a href="offering-plan-attorneys.html">Attorneys</a>
+      <a href="new-condo-filings.html">New Construction</a>
+      <a href="time-to-approval.html">Approval Times</a>
+      <a href="managing-agents.html">Property Managers</a>
+      <a href="offering-plan-attorneys.html">OP Attorneys</a>
     </div>
     <hr>
-    <small>Browse by task</small>
+    <small>Browse by Task</small>
     <a href="index.html?q=parking+sold+separately">Precedents</a>
     <a href="index.html?q=Compare+total+offering+prices+in+Brooklyn">Pricing</a>
     <a href="index.html?q=Schedule+B+budget">Budgets</a>
-    <a href="index.html?q=managing+agent">Project teams</a>
-    <a href="index.html?q=floor+plans">Floor plans</a>
+    <a href="index.html?q=managing+agent">Project Teams</a>
+    <a href="index.html?q=floor+plans">Floor Plans</a>
     <hr>
     <small>© 2026 Half Ave Company LLC</small>
   </nav>
@@ -297,6 +365,12 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
     </form>
     <div class="read" id="read" hidden></div>
     <div class="notice" id="notice" hidden></div>
+    <nav class="top10" aria-labelledby="top10h">
+      <h2 id="top10h">Top 10</h2>
+      <a href="new-condo-filings.html"><b>New Construction</b><span>Newest offering plans, with sellout and $/sf</span></a>
+      <a href="managing-agents.html"><b>Property Managers</b><span>Who manages the most buildings, and for what fee</span></a>
+      <a href="offering-plan-attorneys.html"><b>OP Attorneys</b><span>Sponsor's counsel ranked by plans filed</span></a>
+    </nav>
 
   </section>
 
@@ -332,6 +406,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
       <div id="answer" class="answer-box" hidden></div>
       <div id="detail"></div>
       <div class="rhead" style="margin-top:4px"><h2 id="rtitle">Latest Filings</h2><span class="status" id="status" role="status"></span></div>
+      <div class="facets" id="facets" hidden></div>
       <div class="views" id="views" role="tablist" aria-label="Result views" hidden></div>
       <ol class="results" id="results"></ol>
       <div class="rview" id="rview" hidden></div>
@@ -349,6 +424,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
   </footer>
 </div>
 
+<script src="search-intents.js"></script>
 <script>
 (() => {
   const SERVER = "Supabase", TOOL = "execute_sql", PROJECT = "dvywgltjqpntldlztapu";
@@ -409,7 +485,9 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
     svg.classList.toggle("near", vb.w < HOOD_ZOOM);
     const hl = $("hoodLabels"), sr = svg.getBoundingClientRect();
     if (hl && sr.width && sr.height) hl.setAttribute("font-size", (10.5 * Math.max(vb.w / sr.width, vb.h / sr.height)).toFixed(2));
-    const r = Math.max(2.2, 6 * vb.w / 1000); dotsG.querySelectorAll("circle").forEach((c) => c.setAttribute("r", c.classList.contains("hit") || c.classList.contains("sel") ? r * 1.35 : r)); };
+    // Dots keep about the same size on screen at every zoom (a fixed floor made them huge when zoomed to a few blocks).
+    const r = (vb.w < 400 ? 8 : 6) * vb.w / 1000; dotsG.querySelectorAll("circle").forEach((c) => c.setAttribute("r", c.classList.contains("hit") || c.classList.contains("sel") ? r * 1.35 : r));
+    document.querySelectorAll("#ring .anchor").forEach((c) => c.setAttribute("r", r * 1.6)); };
   const project = (lat, lng) => { const B = geo.B, k = geo.k, sx = geo.W / ((B.maxLng - B.minLng) * k); return [(lng - B.minLng) * k * sx, (B.maxLat - lat) * sx]; };
 
   function drawLand() {
@@ -476,6 +554,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
     const boro = b.dataset.b.toUpperCase() || null;
     pressBoro(boro);
     obTrack("map_borough", { borough: boro || "all", with_search: !!(current && !current.planId) });
+    if (current?.intent) { runIntent({ ...current.intent, borough: boro }, "borough"); return; }
     if (!current || current.planId) { zoomBoro(boro); return; }
     // A neighborhood's ZIPs stay only while its own borough is picked.
     const keepZips = boro && current.zips && current.borough === boro;
@@ -517,7 +596,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
         <div class="ctop"><div><div class="cname">${esc(tc(r.name))}</div><div class="caddr">${esc(tc(r.address))}, ${esc(tc(r.borough))}</div></div><span class="pid">${esc(r.plan_id)}</span></div>
         <div class="chips">
           <span class="chip"><b>${r.units_residential ?? "?"}</b> units</span>
-          <span class="chip"><b>${r.units_parking ?? 0}</b> parking</span>
+          ${r.units_parking == null ? `<span class="chip pkchip" title="The AG record doesn’t give a parking-unit count">Parking units: not on record</span>` : `<span class="chip pkchip" title="Parking units in the AG record"><b>${r.units_parking}</b> parking unit${r.units_parking === 1 ? "" : "s"}</span>`}
           ${r.accepted_date ? `<span class="chip">Accepted ${esc(date(r.accepted_date))}</span>` : ""}
           ${idx ? `<span class="chip">Full text searchable</span>` : `<span class="chip">Record only</span>`}
           ${r.hits ? `<span class="chip">${r.hits} matching pages</span>` : ""}
@@ -546,12 +625,14 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
     loadThumbs(rows.map((r) => r.plan_id));
   }
   async function loadThumbs(ids) {
-    const need = ids.filter((id) => !thumbs.has(id)).slice(0, 40);
+    const need = [...new Set(ids)].filter((id) => !thumbs.has(id));
     if (!need.length) return;
     try {
-      const rows = await rpc("plan_thumbs", { p_ids: need }, 300000);
-      rows.forEach((r) => thumbs.set(r.plan_id, r.thumb));
-      need.forEach((id) => { if (!thumbs.has(id)) thumbs.set(id, null); });
+      for (let i = 0; i < need.length; i += 100) {
+        const part = need.slice(i, i + 100);
+        (await rpc("plan_thumbs", { p_ids: part }, 300000)).forEach((r) => thumbs.set(r.plan_id, r.thumb));
+        part.forEach((id) => { if (!thumbs.has(id)) thumbs.set(id, null); });
+      }
       document.querySelectorAll("#results .card").forEach((li) => {
         const t = thumbs.get(li.dataset.id); const ph = li.querySelector(".ph.blank");
         if (t && ph) { const img = document.createElement("img"); img.className = "ph"; img.alt = ""; img.src = t; ph.replaceWith(img); }
@@ -876,6 +957,12 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
   function run(via = "typed") {
     const text = $("q").value.trim() || typer.current(); // an empty search runs the example being typed
     $("q").value = text;
+    // Distance, unit prices, MIH, parking licenses and averages are answered here from the data, never by the AI.
+    const spec = window.CondoIntents?.parse(text);
+    if (spec) {
+      try { history.replaceState(null, "", "?q=" + encodeURIComponent(text)); } catch (e) { /* file:// */ }
+      runIntent(spec, via); return;
+    }
     const P = parseQuestion(text);
     if (!P.q && !P.borough && !P.zips && P.minUnits == null && P.maxUnits == null && P.minParking == null && !P.planId && !P.address && !P.manager && !P.counsel) {
       P.q = text; P.chips.unshift({ k: "q", label: `Text: ${text}` });
@@ -899,10 +986,13 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
       (P.chips.length ? `<span class="chiprow">${P.chips.map((c) =>
         `<span class="fchip">${esc(c.label)}<button type="button" data-rm="${esc(c.k)}" aria-label="Remove ${esc(c.label)}">×</button></span>`).join("")}</span>` : "") +
       `</div>` + (notes.length ? `<ul class="readnotes">${notes.map((n) => `<li>${esc(n)}</li>`).join("")}</ul>` : "") +
-      (P.aiPending ? `<div class="aiwait">Reading your question more closely…</div>` : "");
+      (P.aiPending ? `<div class="aiwait">Reading your question more closely…</div>` : "") +
+      (P.intent?.near ? `<div class="dist" role="group" aria-label="Distance">Distance: ${[0.25, 0.5, 1, 2].map((mi) =>
+        `<button type="button" data-mi="${mi}" aria-pressed="${P.intent.near.miles === mi}">${esc(window.CondoIntents.fmtMiles(mi))}</button>`).join("")}</div>` : "");
     $("read").hidden = false;
   }
   $("read").addEventListener("click", (e) => {
+    if (current?.intent) return intentReadClick(e);
     const b = e.target.closest("[data-rm]"); if (!b || !current) return;
     const P = { ...current, chips: current.chips.filter((c) => c.k !== b.dataset.rm) };
     ({ q: () => { P.q = ""; }, area: () => { P.borough = null; P.zips = null; }, units: () => { P.minUnits = null; P.maxUnits = null; },
@@ -916,6 +1006,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
 
   async function runP(P) {
     current = P;
+    drawRing(null); $("facets").hidden = true; $("facets").innerHTML = "";
     $("notice").hidden = true; $("go").disabled = true;
     document.body.classList.add("searched"); $("after").hidden = false; $("foot").hidden = false;
     renderInterpretation(P);
@@ -1244,6 +1335,243 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
       <p class="vnote">${esc(a.note || "")} Check the quoted page before relying on an answer.</p></article>`;
   }
   $("answer").addEventListener("click", (e) => { const b = e.target.closest("[data-xopen]"); if (b) openDetail(b.dataset.xopen, false); });
+
+  // ---------- structured searches (search-intents.js) ----------
+  // Distance from a building, Schedule A unit prices by bedrooms, on-site MIH units, parking licenses and averages.
+  // Answered from the public tables; each finding shows the page it came from. current.intent holds the filters.
+  const INT = window.CondoIntents;
+  const intentIO = {
+    rest: (p) => rest(p, null, 600000),
+    rpc: (fn, args) => rpc(fn, args, 600000),
+    // Only for a place that isn't a plan on file: NYC Planning's public GeoSearch (no key), the same source as the plan locations.
+    geocode: async (text) => {
+      const r = await fetch("https://geosearch.planninglabs.nyc/v2/search?size=1&text=" + encodeURIComponent(text));
+      const f = r.ok ? (await r.json()).features?.[0] : null;
+      return f ? { lat: f.geometry.coordinates[1], lng: f.geometry.coordinates[0], label: f.properties.label } : null;
+    },
+  };
+  const PAGE = 60;
+  let ires = null, ioff = new Map(), ishown = PAGE;
+  const structured = (s) => !!(s.near || s.mih || s.parking || s.beds || s.price || s.stats || s.all);
+  const moneyTxt = (x) => x == null ? "—" : x >= 1e6 ? "$" + (x / 1e6).toFixed(2) + "M" : "$" + Math.round(x / 1000).toLocaleString("en-US") + "K";
+  const pageLink = (e) => `${esc(e.doc || "Offering Plan")} · p. ${esc(e.page_no)}${e.pdf_url ? ` <a href="${esc(e.pdf_url)}#page=${esc(e.page_no)}" target="_blank" rel="noopener">open page ↗</a>` : ""}`;
+
+  async function runIntent(spec, via) {
+    const P = { text: spec.text, intent: spec, via, chips: INT.chipsOf(spec), notes: [...(spec.notes || [])], q: "", borough: spec.borough };
+    current = P; ires = null; ioff = new Map(); ishown = PAGE;
+    $("notice").hidden = true; $("go").disabled = true;
+    document.body.classList.add("searched"); document.body.classList.remove("answer");
+    $("after").hidden = false; $("foot").hidden = false; $("answer").hidden = true; $("answer").innerHTML = "";
+    renderInterpretation(P);
+    $("rtitle").textContent = "Searching"; $("status").textContent = "Searching…";
+    $("results").innerHTML = ""; $("results").hidden = false; $("rview").innerHTML = ""; $("rview").hidden = true; $("detail").innerHTML = "";
+    $("views").hidden = true; $("facets").hidden = true; $("facets").innerHTML = "";
+    pressBoro(spec.borough);
+    const t0 = Date.now();
+    try {
+      const [res] = await Promise.all([INT.run(spec, intentIO, (msg) => { if (current === P) $("status").textContent = msg; }), ensureMap()]);
+      if (current !== P) return;
+      ires = res; P.chips = INT.chipsOf(spec); P.notes = res.notes; renderInterpretation(P);
+      if (res.error) { $("rtitle").textContent = "Building Not Found"; $("status").textContent = res.error; highlight([]); drawRing(null); return; }
+      if (res.kind === "table") renderStats(res, P); else renderIntentList();
+      obTrack("search", { search_term: P.text, search_kind: "structured", search_via: via || "typed", results: res.rows.length, filters: P.chips.map((c) => c.k).join(",") || "none", borough: spec.borough || "any" });
+      logSearch(P.text, { results: res.rows.length, ms: Date.now() - t0, parsed: { structured: P.chips.map((c) => c.label) } });
+    } catch (e) { if (current === P) { showError(e); $("status").textContent = ""; } }
+    finally { if (current === P) $("go").disabled = false; }
+  }
+
+  function intentReadClick(e) {
+    const spec = { ...current.intent };
+    const mi = e.target.closest("[data-mi]");
+    if (mi) { runIntent({ ...spec, near: { ...spec.near, miles: +mi.dataset.mi } }, "distance"); return; }
+    const b = e.target.closest("[data-rm]"); if (!b) return;
+    ({ stats: () => { spec.stats = null; }, near: () => { spec.near = null; }, mih: () => { spec.mih = false; }, beds: () => { spec.beds = null; }, price: () => { spec.price = null; },
+      units: () => { spec.units = null; }, parking: () => { spec.parking = null; }, construction: () => { spec.construction = null; }, borough: () => { spec.borough = null; },
+      since: () => { spec.since = null; spec.until = null; spec.window = null; } })[b.dataset.rm]?.();
+    spec.notes = [];
+    // With nothing structured left, list every condo that fits the remaining filters.
+    if (!structured(spec)) spec.all = true;
+    runIntent(spec, "remove_filter:" + b.dataset.rm);
+  }
+
+  // Rows that pass the filters beside the results.
+  const visibleRows = () => ires.rows.filter((r) => (ires.facets || []).every((f) => !ioff.get(f.k)?.has(String(INT.facetKey(f.k, r)))));
+  function renderIntentList() {
+    const res = ires, spec = res.spec;
+    // Defaults: plans that were withdrawn, abandoned or rejected, and affordable units under another program, start hidden.
+    if (!ioff.size) for (const f of res.facets || []) { const off = new Set(f.values.filter((v) => !v.on).map((v) => String(v.v))); if (off.size) ioff.set(f.k, off); }
+    renderFacets();
+    const rows = visibleRows(), total = res.rows.length;
+    $("rtitle").textContent = res.title.replace(/^\d+/, String(rows.length));
+    $("maptitle").textContent = `${rows.length} Matching Plan${rows.length === 1 ? "" : "s"}`;
+    const hidden = total - rows.length;
+    $("status").textContent = [spec.near ? "nearest first" : "newest first", hidden ? `${hidden} hidden by the filters above` : ""].filter(Boolean).join(" · ");
+    const ol = $("results"); ol.innerHTML = "";
+    if (res.coverage?.length) {
+      const li = document.createElement("li"); li.className = "cover";
+      li.innerHTML = `<b>${res.candidates}</b> condo${res.candidates === 1 ? "" : "s"}${spec.near ? ` within ${esc(INT.fmtMiles(spec.near.miles))}` : ""} were checked for ${esc(P_units(spec))}:
+        <ul>${res.coverage.map((c) => `<li><b>${c.n}</b> — ${esc(c.label)}</li>`).join("")}</ul>
+        <span class="fhint">Only the first group can match. A plan in the others may still have such units; open its documents to check.</span>`;
+      ol.appendChild(li);
+    }
+    rows.slice(0, ishown).forEach((r) => ol.appendChild(intentCard(r, spec)));
+    if (!rows.length) { const li = document.createElement("li"); li.className = "vnote"; li.textContent = total ? "Every result is hidden by the filters above." : "No plan matched. Try a wider distance or remove a filter above."; ol.appendChild(li); }
+    if (rows.length > ishown) {
+      const li = document.createElement("li"); li.className = "more";
+      li.innerHTML = `<button type="button" class="btn" id="imore">Show ${Math.min(PAGE, rows.length - ishown)} more of ${rows.length - ishown}</button>`;
+      ol.appendChild(li);
+    }
+    if (spec.mih && res.excluded?.length) ol.appendChild(excludedList(res.excluded));
+    if (spec.parking && res.mentions?.length) ol.appendChild(mentionList(res.mentions));
+    loadThumbs(rows.slice(0, ishown).map((r) => r.plan_id));
+    highlight(rows.map((r) => r.plan_id));
+    drawRing(spec.near ? res.anchor : null, spec.near?.miles);
+    fitMap(rows, spec.near ? res.anchor : null, spec.near?.miles);
+  }
+  const P_units = (spec) => [spec.beds ? (spec.beds.max === 0 ? "studios" : spec.beds.max == null ? `${spec.beds.min}+ bedroom units` : `${spec.beds.min}-bedroom units`) : "units",
+    spec.price ? (spec.price.min != null && spec.price.max != null ? `priced ${moneyTxt(spec.price.min)}–${moneyTxt(spec.price.max)}` : spec.price.max != null ? `priced up to ${moneyTxt(spec.price.max)}` : `priced from ${moneyTxt(spec.price.min)}`) : ""].join(" ").trim();
+  $("results").addEventListener("click", (e) => { if (e.target.closest("#imore")) { ishown += PAGE; renderIntentList(); } });
+
+  function renderFacets() {
+    const box = $("facets"), fs = ires.facets || [];
+    box.hidden = !fs.length;
+    box.innerHTML = fs.map((f) => `<div class="fgroup" role="group" aria-label="${esc(f.label)}"><span>${esc(f.label)}</span>${f.values.map((v) =>
+      `<button type="button" class="fbtn" data-fk="${esc(f.k)}" data-fv="${esc(String(v.v))}" aria-pressed="${!ioff.get(f.k)?.has(String(v.v))}">${esc(v.label)}<b>${v.n}</b></button>`).join("")}</div>`).join("") +
+      (fs.length ? `<div class="fhint">Tap a value to hide or show it.</div>` : "");
+  }
+  $("facets").addEventListener("click", (e) => {
+    const b = e.target.closest("[data-fk]"); if (!b || !ires) return;
+    const set = ioff.get(b.dataset.fk) || new Set(); ioff.set(b.dataset.fk, set);
+    set.has(b.dataset.fv) ? set.delete(b.dataset.fv) : set.add(b.dataset.fv);
+    ishown = PAGE; renderIntentList();
+  });
+
+  function intentCard(r, spec) {
+    const li = card(r);
+    const chips = li.querySelector(".chips"), acts = li.querySelector(".acts");
+    const extra = [];
+    if (r.distance != null) extra.push(`<span class="chip"><b>${r.distance < 0.1 ? "<0.1" : r.distance.toFixed(2)}</b> mi</span>`);
+    if (r.status && r.status !== "ACCEPTED") extra.push(`<span class="chip warn">${esc(tc(r.status))}</span>`);
+    if (r.construction) extra.push(`<span class="chip">${esc(r.construction === "NEW" ? "New construction" : tc(r.construction))}</span>`);
+    if (spec.near && res_anchor_is(r)) extra.unshift(`<span class="chip">The building you named</span>`);
+    chips.insertAdjacentHTML("afterbegin", extra.join(""));
+    const w = r.why;
+    let ev = "";
+    if (spec.mih && w) ev = `<div class="ev"><div class="evhead">Affordable units in the building · ${esc(w.program === "MIH" ? "Mandatory Inclusionary Housing" : w.program === "Inclusionary Housing" ? "Inclusionary Housing" : "not MIH (another program)")}</div>` +
+      w.evidence.slice(0, 1).map((e) => `<blockquote>${quoteHtml(e)}</blockquote><div class="cite">${pageLink(e)}</div>`).join("") + `</div>`;
+    // The AG's parking-unit count says nothing about licensed spaces, so the card says what the count is and isn't.
+    const pk = r.units_parking == null ? "The AG record doesn’t give a parking-unit count" : `The AG record lists ${r.units_parking} parking unit${r.units_parking === 1 ? "" : "s"}`;
+    if (spec.parking && w) ev = `<div class="ev"><div class="evhead">${w.parking === "fact" ? `Parking offered by license${w.fact === "sold_or_licensed" ? " (or sold)" : ""}` : "The plan’s pages offer a parking license"}</div>` +
+      w.evidence.slice(0, 1).map((e) => `<blockquote>${quoteHtml(e)}</blockquote><div class="cite">${pageLink(e)}</div>`).join("") +
+      (w.parking === "text" && w.fact ? `<div class="fhint">The extracted parking arrangement says “${esc(w.fact.replace(/_/g, " "))}”. Check the page.</div>` : "") +
+      (!r.units_parking ? `<div class="fhint pkhint">${pk}. That count covers parking sold as condo units; it doesn’t show whether spaces are offered by license.</div>` : "") + `</div>`;
+    if ((spec.beds || spec.price) && r.units?.length) {
+      const us = [...r.units].sort((a, b) => a.price - b.price), top = us.slice(0, 6);
+      const row = (u) => `<tr><td>${esc(u.unit)}</td><td>${u.beds === 0 ? "Studio" : u.beds + " BR"}</td><td class="n">${esc("$" + u.price.toLocaleString("en-US"))}</td><td class="n">${u.sf ? esc(u.sf.toLocaleString("en-US")) : "—"}</td><td class="n">${u.sf ? "$" + Math.round(u.price / u.sf).toLocaleString("en-US") : "—"}</td>
+        <td><details><summary>p. ${esc(u.page_no)}</summary><p>${esc(u.line)}</p>${u.pdf_url ? `<p><a href="${esc(u.pdf_url)}#page=${esc(u.page_no)}" target="_blank" rel="noopener">open page ↗</a></p>` : ""}</details></td></tr>`;
+      ev = `<div class="ev"><div class="evhead">${us.length} matching unit${us.length === 1 ? "" : "s"} in Schedule A · offering prices, not sales</div>
+        <div class="tscroll"><table class="cmp units"><thead><tr><th>Unit</th><th>Beds</th><th class="n">Price</th><th class="n">Sq ft</th><th class="n">$/sf</th><th>Source</th></tr></thead>
+        <tbody>${top.map(row).join("")}</tbody></table></div>
+        ${us.length > top.length ? `<details><summary class="cite">${us.length - top.length} more</summary><div class="tscroll"><table class="cmp units"><tbody>${us.slice(top.length).map(row).join("")}</tbody></table></div></details>` : ""}</div>`;
+    }
+    if (ev) acts.insertAdjacentHTML("beforebegin", ev);
+    // Related filings: the same building filed under another plan ID. Both stay listed; each names the other.
+    const rel = [];
+    if (r.relatedTo) rel.push(`Related filing: this record refers to <button type="button" class="plink" data-open="${esc(r.relatedTo.plan_id)}">${esc(r.relatedTo.plan_id)}</button>${r.relatedTo.name ? ` (${esc(r.relatedTo.name)})` : ""}. Its unit count is for this filing, not a separate building.`);
+    if (r.relatedFrom?.length) rel.push(`Also filed as ${r.relatedFrom.map((x) => `<button type="button" class="plink" data-open="${esc(x.plan_id)}">${esc(x.plan_id)}</button>`).join(", ")}, which refer${r.relatedFrom.length === 1 ? "s" : ""} to this plan.`);
+    if (rel.length) acts.insertAdjacentHTML("beforebegin", `<div class="related">${rel.map((t) => `<p>${t}</p>`).join("")}</div>`);
+    return li;
+  }
+  const res_anchor_is = (r) => ires?.anchor?.plan_id && ires.anchor.plan_id === r.plan_id;
+
+  function excludedList(list) {
+    const d = document.createElement("li");
+    const reason = (w) => !w ? "" : w.denial && !w.strong ? "says the building has none" : w.offsite ? "bonus floor area or rights from another site" : "mentions the program, no units in this building";
+    d.innerHTML = `<details class="excl"><summary>${list.length} more plan${list.length === 1 ? "" : "s"} mention MIH or Inclusionary Housing but don’t put affordable units in the building</summary>
+      <ul>${list.map((p) => `<li><button type="button" class="plink" data-open="${esc(p.plan_id)}">${esc(tc(p.name))}</button> <span class="pid">${esc(p.plan_id)}</span> <span class="why">${esc(reason(p.why))}</span></li>`).join("")}</ul></details>`;
+    return d;
+  }
+
+  // Plans whose pages name parking and a license without saying one is offered in the building: shown apart, not counted.
+  function mentionList(list) {
+    const d = document.createElement("li"); d.id = "pmentions";
+    d.innerHTML = `<details class="excl"><summary>${list.length} more plan${list.length === 1 ? " mentions" : "s mention"} parking and a license, but the pages don’t show a license offered in the building</summary>
+      <ul>${list.map((p) => { const e = p.why?.evidence?.[0]; return `<li data-id="${esc(p.plan_id)}"><button type="button" class="plink" data-open="${esc(p.plan_id)}">${esc(tc(p.name))}</button> <span class="pid">${esc(p.plan_id)}</span>` +
+        (p.why?.fact ? ` <span class="why">extracted arrangement: ${esc(p.why.fact.replace(/_/g, " "))}</span>` : "") +
+        (e ? `<blockquote>${quoteHtml(e)}</blockquote><div class="cite">${pageLink(e)}</div>` : "") + `</li>`; }).join("")}</ul></details>`;
+    return d;
+  }
+  // A quoted passage; "…" marks words left out before or after it.
+  const quoteHtml = (e) => `“${e.cutBefore ? "… " : ""}${esc(e.text)}${e.cutAfter ? " …" : ""}”`;
+
+  // A dashed circle for "within N miles", and a dot for the building it is measured from.
+  function drawRing(a, miles) {
+    let g = document.getElementById("ring");
+    if (!g) { g = document.createElementNS(NS, "g"); g.id = "ring"; svg.insertBefore(g, dotsG); }
+    g.innerHTML = "";
+    if (!a || !geo) return;
+    const [x, y] = project(a.lat, a.lng), [, y2] = project(a.lat + miles / 69, a.lng);
+    const c = document.createElementNS(NS, "circle"); c.setAttribute("cx", x); c.setAttribute("cy", y); c.setAttribute("r", Math.abs(y - y2)); c.setAttribute("class", "ring"); g.appendChild(c);
+    const m = document.createElementNS(NS, "circle"); m.setAttribute("cx", x); m.setAttribute("cy", y); m.setAttribute("r", 4); m.setAttribute("class", "anchor"); g.appendChild(m);
+  }
+  function fitMap(rows, a, miles) {
+    if (a && geo) { const [x, y] = project(a.lat, a.lng), [, y2] = project(a.lat + miles / 69, a.lng), r = Math.abs(y - y2); zoomTo({ x: x - r, y: y - r, w: 2 * r, h: 2 * r }, 0.08); return; }
+    const pts = points.filter((p) => rows.some((r) => r.plan_id === p.plan_id));
+    if (!pts.length) { vb = { ...full }; setVB(); return; }
+    const xy = pts.map((p) => project(p.lat, p.lng)), xs = xy.map((q) => q[0]), ys = xy.map((q) => q[1]);
+    const w = Math.max(120, Math.max(...xs) - Math.min(...xs)), h = Math.max(120, Math.max(...ys) - Math.min(...ys));
+    zoomTo({ x: (Math.min(...xs) + Math.max(...xs)) / 2 - w / 2, y: (Math.min(...ys) + Math.max(...ys)) / 2 - h / 2, w, h }, 0.15);
+  }
+
+  // The units a per-unit price is divided by, by kind: "8 residential + 5 storage".
+  const unitMix = (r) => [[r.units_residential, "residential"], [r.units_commercial, "commercial"], [r.units_parking, "parking"], [r.units_storage, "storage"]]
+    .filter(([n]) => n > 0).map(([n, k]) => `${n} ${k}`).join(" + ");
+
+  // Averages: a table per breakdown, not a list of buildings.
+  function renderStats(res, P) {
+    const spec = res.spec;
+    $("results").hidden = true; $("rview").hidden = false; $("views").hidden = true; $("facets").hidden = true;
+    $("rtitle").textContent = res.title.charAt(0).toUpperCase() + res.title.slice(1);
+    $("maptitle").textContent = `${res.rows.length} Plans Counted`;
+    $("status").textContent = `${res.rows.length} plans${res.saRead ? ` · Schedule A read for ${res.saRead}` : ""}`;
+    const fmt = (t, v) => v == null ? "—" : t.unit === "ppsf" ? "$" + Math.round(v).toLocaleString("en-US") : moneyTxt(v);
+    const cellHtml = (t, c) => c.n ? `${fmt(t, c.v)}<small>n=${c.n}</small>` : `<span class="faint">—</span>`;
+    const basis = (t) => res.priceBasis?.[t.basis] ? `<span class="basis" data-basis="${esc(t.basis)}">Price basis: ${esc(res.priceBasis[t.basis])}</span>` : "";
+    const table = (t) => `<h3 id="t-${esc(t.id)}">${esc(t.title)}</h3>${basis(t)}<p class="vnote">${esc(t.note)}</p>
+      <div class="tscroll"><table class="cmp pivot"><thead><tr><th></th>${t.cols.map((c) => `<th class="n">${esc(c)}</th>`).join("")}<th class="n">All</th></tr></thead>
+      <tbody>${t.rows.map((r) => `<tr><th scope="row">${esc(r.key)}</th>${r.cells.map((c) => `<td class="n">${cellHtml(t, c)}</td>`).join("")}<td class="n tot">${cellHtml(t, r.total)}</td></tr>`).join("")}</tbody>
+      <tfoot><tr><th scope="row">All</th>${t.totals.map((c) => `<td class="n">${cellHtml(t, c)}</td>`).join("")}<td class="n">${cellHtml(t, t.grand)}</td></tr></tfoot></table></div>`;
+    const sel = (name, label, opts, val) => `<label>${esc(label)} <select data-stat="${name}">${opts.map(([v, l]) => `<option value="${esc(v)}"${String(val) === String(v) ? " selected" : ""}>${esc(l)}</option>`).join("")}</select></label>`;
+    const years = spec.window?.unit === "year" ? spec.window.n : spec.window ? Math.round(spec.window.n / 12) || 1 : spec.since ? "custom" : "all";
+    $("rview").innerHTML = `<div class="stats">
+      ${spec.wantsSales ? `<p class="salesnote"><b>No sale prices here.</b> The Condo Book Project has no closed-sale records. These tables average the sponsors’ offering prices from the plans filed with the Attorney General, which can differ from what buyers paid.</p>` : ""}
+      <div class="statctl">
+        ${sel("years", "Accepted", [["1", "In the last year"], ["2", "In the last 2 years"], ["3", "In the last 3 years"], ["5", "In the last 5 years"], ["10", "In the last 10 years"], ["all", "All dates"], ...(years === "custom" ? [["custom", "custom"]] : [])], years)}
+        ${sel("construction", "Construction", [["NEW", "New construction"], ["CONVERSION", "Conversion"], ["REHAB", "Rehab"], ["", "Any"]], spec.construction || "")}
+        ${sel("borough", "Borough", [["", "All boroughs"], ["MANHATTAN", "Manhattan"], ["BROOKLYN", "Brooklyn"], ["QUEENS", "Queens"], ["BRONX", "Bronx"], ["STATEN ISLAND", "Staten Island"]], spec.borough || "")}
+        ${sel("measure", "Measure", [["average", "Average"], ["median", "Median"]], spec.stats.measure)}
+      </div>
+      <p class="vnote">Jump to: ${res.tables.map((t) => `<a href="#t-${esc(t.id)}">${esc(t.title.replace(/^(Average|Median) /, ""))}</a>`).join(" · ")}</p>
+      ${res.priceBasis ? `<p class="vnote basisnote"><b>Two price bases.</b> The per-unit and per-plan tables use each plan’s <b>current total offering price in the AG record</b>, which can change when the plan is amended. The bedroom tables use <b>unit prices from the original plan’s Schedule A</b>, before any amendment. The two don’t reconcile${res.priceBasis.changed ? `: for ${res.priceBasis.changed} of ${res.rows.length} plans counted, the current total differs from the initial total on record` : ""}.</p>` : ""}
+      ${res.tables.map(table).join("")}
+      <details class="excl"><summary>The ${res.rows.length} plans counted</summary>
+        <p class="vnote">Per unit = current total ÷ every unit the plan offers: residential, commercial, parking and storage, as counted in the AG record.</p>
+        <div class="tscroll"><table class="cmp"><thead><tr><th>Building</th><th>Accepted</th><th class="n">Residential units</th><th class="n">Units divided by</th><th class="n">Initial total</th><th class="n">Current total (used)</th><th class="n">Per unit</th></tr></thead><tbody>
+        ${res.rows.map((r) => `<tr data-id="${esc(r.plan_id)}"><td><button type="button" class="plink" data-open="${esc(r.plan_id)}">${esc(tc(r.name))}</button><span class="pid">${esc(r.plan_id)} · ${esc(tc(r.borough))}</span></td><td class="m">${esc(date(r.accepted_date))}</td><td class="n ures">${r.units_residential ?? "—"}</td><td class="n uused"><b>${r.units_used}</b><span class="sub2">${esc(unitMix(r))}</span></td><td class="n">${Number(r.price_initial) > 0 ? moneyTxt(Number(r.price_initial)) : "—"}</td><td class="n">${moneyTxt(Number(r.price_current))}</td><td class="n">${moneyTxt(r.per_unit)}</td></tr>`).join("")}
+        </tbody></table></div></details>
+    </div>`;
+    highlight(res.rows.map((r) => r.plan_id)); drawRing(null); fitMap(res.rows, null);
+  }
+  $("rview").addEventListener("change", (e) => {
+    const s = e.target.closest("[data-stat]"); if (!s || !current?.intent) return;
+    const spec = { ...current.intent, stats: { ...current.intent.stats } };
+    if (s.dataset.stat === "years" && s.value === "all") { spec.since = null; spec.until = null; spec.window = null; }
+    else if (s.dataset.stat === "years" && s.value !== "custom") { const d = new Date(); d.setFullYear(d.getFullYear() - +s.value); spec.since = d.toISOString().slice(0, 10); spec.until = null; spec.window = { n: +s.value, unit: "year" }; }
+    if (s.dataset.stat === "construction") spec.construction = s.value || null;
+    if (s.dataset.stat === "borough") spec.borough = s.value || null;
+    if (s.dataset.stat === "measure") spec.stats.measure = s.value;
+    runIntent(spec, "stats_filter");
+  });
 
   // ---------- coverage numbers ----------
   async function countRows(path) {
