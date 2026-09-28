@@ -300,9 +300,9 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
     { "@type": "ListItem", position: 1, name: SITE_NAME, item: `${SITE_URL}/` },
     { "@type": "ListItem", position: 2, name: "Time to approval", item: url },
   ] })}
-<main class="post">
+<main class="post approval split">
+  <div class="aside">
   <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">${SITE_NAME}</a> › <a href="new-condo-filings.html">New filings</a></nav>
-  <article>
   <h1>How Long Does It Take the Attorney General to Accept a Condo Offering Plan?</h1>
   <p class="meta">Updated <time datetime="${TODAY}">${esc(day(TODAY))}</time> · Source: NY Attorney General</p>
   <p class="lede">The time from when a sponsor submits a New York City condominium offering plan to when the Attorney General accepts it for filing, from the AG's own plan records.</p>
@@ -317,6 +317,9 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
     <div><dt>Fastest tenth</dt><dd>under ${dm(p10)}</dd></div>
     <div><dt>Slowest tenth</dt><dd>over ${dm(p90)}</dd></div>
   </dl>
+  </div>
+  <div class="amain">
+  <article>
   <p>Half of the ${n(timed.length)} plans measured here were accepted within ${months(med)} (${med} days) of submission.${mean > med && overTwoYears ? ` The average runs longer than the median because ${plural(overTwoYears, "plan")} took two years or more.` : ""}</p>
 
   <h2>By Building Size</h2>
@@ -340,6 +343,7 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
   <p>"Accepted for filing" is not an endorsement of the offering. See <a href="new-condo-filings.html">the newest plans accepted for filing</a> or <a href="blog/what-is-a-cd-number.html">what a CD number means</a>.</p>
   </article>
   ${cta(P)}
+  </div>
 </main>
 ` + FOOT(P);
 }
