@@ -15,7 +15,7 @@ import { join } from "node:path";
 import { SITE_URL, AG, ROOT, TODAY, all, esc, tc, fileFor, day, month, usDate, money, fmtMoney, plural, boro, SITE_NAME, ld, SEO, HEAD, FOOT, urlset } from "./site.mjs";
 
 // ---------- data ----------
-const plans = (await all("plans?select=plan_id,name,address,zip,borough,construction,accepted_date,units_residential,units_parking,units_commercial,units_total,sponsor,law_firm,meta,fetched_at&order=plan_id"))
+const plans = (await all("plans?select=plan_id,name,address,zip,borough,construction,submitted_date,accepted_date,units_residential,units_parking,units_commercial,units_total,sponsor,law_firm,meta,fetched_at&order=plan_id"))
   .filter((p) => p.address);
 const searchable = new Set((await all("documents?select=plan_id&status=eq.done")).map((d) => d.plan_id));
 const byId = new Map(plans.map((p) => [p.plan_id, p]));
@@ -215,7 +215,102 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
 
   <h2>About This List</h2>
   <p>"Accepted for filing" is the date the Attorney General's Real Estate Finance Bureau accepted the sponsor's offering plan. It is not an endorsement of the offering, and the plan's documents may not be posted on the AG's site yet. A sponsor generally can't sell units under a plan until it has been accepted for filing, and later changes arrive as numbered amendments.</p>
-  <p>The list is rebuilt from the Attorney General's plan records and shows plans in the five boroughs only. See <a href="blog/how-to-search-ny-attorney-general-offering-plans.html">how to search the Attorney General's offering plan database</a>, or browse <a href="buildings/index.html">every condo offering plan by borough</a>.</p>
+  <p>The list is rebuilt from the Attorney General's plan records and shows plans in the five boroughs only. See <a href="blog/how-to-search-ny-attorney-general-offering-plans.html">how to search the Attorney General's offering plan database</a>, or browse <a href="buildings/index.html">every condo offering plan by borough</a>. For how long review takes, see <a href="time-to-approval.html">time from submission to acceptance</a>.</p>
+  ${cta(P)}
+</main>
+` + FOOT(P);
+}
+
+// ---------- time to approval ----------
+// Days from submission to acceptance for filing. The AG's plan row carries "Submitted Date", but on any plan with
+// amendments that row is amendment 1's and the date is when amendment 1 was submitted, usually after acceptance.
+// Only rows with a blank "Amendment No" hold the original submission, so the page measures those plans alone.
+const DAY_MS = 864e5;
+const timed = accepted.filter(NYC)
+  .filter((p) => p.submitted_date && !String(p.meta?.plan?.["Amendment No"] ?? "").trim())
+  .map((p) => ({ ...p, days: Math.round((Date.parse(p.accepted_date) - Date.parse(p.submitted_date)) / DAY_MS) }))
+  .filter((p) => p.days >= 0);
+// Linear interpolation between ranks, the same as Postgres percentile_cont.
+const pct = (xs, q) => { const s = [...xs].sort((a, b) => a - b), i = (s.length - 1) * q, lo = Math.floor(i); return s[lo] + (s[Math.ceil(i)] - s[lo]) * (i - lo); };
+const mo = (d) => (d / (365.25 / 12)).toFixed(1).replace(/\.0$/, "");
+const BINS = [[0, 90, "Under 3 months"], [90, 180, "3–6 months"], [180, 270, "6–9 months"], [270, 365, "9–12 months"], [365, 548, "12–18 months"], [548, 730, "18–24 months"], [730, Infinity, "Over 2 years"]];
+const ERAS = [["2000", "2004"], ["2005", "2009"], ["2010", "2014"], ["2015", "2019"], ["2020", thisYear]];
+
+function approvalPage() {
+  const P = "";
+  const url = `${SITE_URL}/time-to-approval.html`;
+  const days = timed.map((p) => p.days);
+  const med = Math.round(pct(days, 0.5)), q1 = Math.round(pct(days, 0.25)), q3 = Math.round(pct(days, 0.75));
+  const p10 = Math.round(pct(days, 0.1)), p90 = Math.round(pct(days, 0.9));
+  const title = "How Long Does AG Approval Take for an NYC Condo Offering Plan? | The Condo Book Project";
+  const description = `Days from submission to acceptance for filing for NYC condo offering plans at the NY Attorney General. Median ${med} days (about ${mo(med)} months), measured on ${timed.length} plans.`;
+
+  // Distribution: one column per bin, height relative to the tallest.
+  const bins = BINS.map(([a, b, label]) => [label, days.filter((d) => d >= a && d < b).length]);
+  const binMax = Math.max(...bins.map((b) => b[1]));
+  const histogram = `<figure class="chart">
+    <figcaption>Plans by time from submission to acceptance</figcaption>
+    <div class="cols" role="img" aria-label="${esc(bins.map(([l, c]) => `${l}: ${c} plans`).join("; "))}">${bins.map(([label, c]) =>
+      `<div class="col" title="${esc(label)}: ${plural(c, "plan")} (${Math.round(100 * c / timed.length)}%)"><span class="v">${n(c)}</span><span class="b" style="height:${Math.max(1, Math.round(100 * c / binMax))}%"></span><span class="l">${esc(label)}</span></div>`).join("")}</div>
+  </figure>`;
+
+  // By era: median with the middle half (25th–75th percentile) as a range bar.
+  const eras = ERAS.map(([a, b]) => {
+    const ds = timed.filter((p) => p.accepted_date.slice(0, 4) >= a && p.accepted_date.slice(0, 4) <= b).map((p) => p.days);
+    return ds.length ? { label: `${a}–${b}`, n: ds.length, med: Math.round(pct(ds, 0.5)), q1: Math.round(pct(ds, 0.25)), q3: Math.round(pct(ds, 0.75)) } : null;
+  }).filter(Boolean);
+  const axisMax = Math.ceil(Math.max(...eras.map((e) => e.q3)) / 100) * 100;
+  const x = (d) => (100 * d / axisMax).toFixed(2);
+  const ticks = Array.from({ length: axisMax / 100 + 1 }, (_, i) => i * 100);
+  const rangeChart = `<figure class="chart">
+    <figcaption>Median days to acceptance, by year accepted <span class="key"><i class="k-mid"></i>median <i class="k-range"></i>middle half of plans</span></figcaption>
+    <div class="ranges">${eras.map((e) =>
+      `<div class="rrow" title="${esc(e.label)}: median ${e.med} days; middle half ${e.q1}–${e.q3} days; ${plural(e.n, "plan")}"><span class="rl">${esc(e.label)}<small>${plural(e.n, "plan")}</small></span><span class="rt"><span class="rr" style="left:${x(e.q1)}%;width:${(x(e.q3) - x(e.q1)).toFixed(2)}%"></span><span class="rm" style="left:${x(e.med)}%"></span><span class="rv" style="left:${x(e.med)}%">${e.med}</span></span></div>`).join("")}
+      <div class="rrow axis" aria-hidden="true"><span class="rl"></span><span class="rt">${ticks.map((t) => `<span style="left:${x(t)}%">${t}</span>`).join("")}</span></div>
+    </div>
+    <p class="src">Days. Each bar spans the 25th to 75th percentile; the mark is the median.</p>
+  </figure>`;
+  const eraTable = `<div class="tscroll"><table><thead><tr><th>Year accepted</th><th>Plans</th><th>Median days</th><th>Middle half (days)</th></tr></thead><tbody>${eras.map((e) =>
+    `<tr><td>${esc(e.label)}</td><td>${n(e.n)}</td><td>${e.med}</td><td>${e.q1}–${e.q3}</td></tr>`).join("")}</tbody></table></div>`;
+
+  const recent = [...timed].sort((a, b) => b.accepted_date.localeCompare(a.accepted_date) || b.plan_id.localeCompare(a.plan_id)).slice(0, 10);
+  const recentTable = `<div class="tscroll"><table><thead><tr><th>CD number</th><th>Condominium</th><th>Submitted</th><th>Accepted</th><th>Days</th></tr></thead><tbody>${recent.map((p) =>
+    `<tr><td>${esc(p.plan_id)}</td><td><a href="buildings/${esc(fileFor(p))}">${esc(tc(p.name))}</a></td><td>${esc(day(p.submitted_date))}</td><td>${esc(day(p.accepted_date))}</td><td>${n(p.days)}</td></tr>`).join("")}</tbody></table></div>`;
+
+  return HEAD(P, { title, description, canonical: url }) + `
+${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+    { "@type": "ListItem", position: 1, name: SITE_NAME, item: `${SITE_URL}/` },
+    { "@type": "ListItem", position: 2, name: "Time to approval", item: url },
+  ] })}
+<main class="post">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">${SITE_NAME}</a> › <a href="new-condo-filings.html">New filings</a></nav>
+  <article>
+  <h1>How Long Does It Take the Attorney General to Accept a Condo Offering Plan?</h1>
+  <p class="meta">Updated <time datetime="${TODAY}">${esc(day(TODAY))}</time> · Source: NY Attorney General</p>
+  <p class="lede">The time from when a sponsor submits a New York City condominium offering plan to when the Attorney General accepts it for filing, from the AG's own plan records.</p>
+  <dl class="glance">
+    <div><dt>Median</dt><dd>${med} days<span class="sub">about ${mo(med)} months</span></dd></div>
+    <div><dt>Middle half of plans</dt><dd>${q1}–${q3} days</dd></div>
+    <div><dt>Fastest tenth</dt><dd>under ${p10} days</dd></div>
+    <div><dt>Slowest tenth</dt><dd>over ${p90} days</dd></div>
+  </dl>
+  <p>Half of the ${n(timed.length)} plans measured here were accepted within ${med} days of submission. A quarter took ${q3} days or longer.</p>
+
+  <h2>How the Wait Is Spread</h2>
+  ${histogram}
+
+  <h2>By Year Accepted</h2>
+  ${rangeChart}
+  ${eraTable}
+
+  <h2>Most Recent Plans Measured</h2>
+  ${recentTable}
+
+  <h2>Which Plans Are Counted</h2>
+  <p>The Attorney General's record for a plan shows one "Submitted Date". For plans that have been amended, that record belongs to the first amendment, so its submitted date is when the amendment came in, usually after the plan was already accepted. Those plans can't be timed from the record and are left out.</p>
+  <p>This page counts only the ${n(timed.length)} New York City plans whose record has no amendment, where the submitted date is the original submission. That is a minority of all plans, and plans that were never amended may not move through review at the same pace as larger projects that were. Read the figures as a guide, not a promise for any one plan.</p>
+  <p>"Accepted for filing" is not an endorsement of the offering. See <a href="new-condo-filings.html">the newest plans accepted for filing</a> or <a href="blog/what-is-a-cd-number.html">what a CD number means</a>.</p>
+  </article>
   ${cta(P)}
 </main>
 ` + FOOT(P);
@@ -492,11 +587,12 @@ await mkdir(join(ROOT, "blog"), { recursive: true });
 for (const post of posts) await writeFile(join(ROOT, "blog", post.slug + ".html"), postPage(post));
 await writeFile(join(ROOT, "blog", "index.html"), blogIndex());
 await writeFile(join(ROOT, "new-condo-filings.html"), filingsPage());
+await writeFile(join(ROOT, "time-to-approval.html"), approvalPage());
 await writeFile(join(ROOT, "managing-agents.html"), agentsPage());
 await writeFile(join(ROOT, "offering-plan-attorneys.html"), attorneysPage());
 for (const [file, path] of Object.entries(STATIC)) await stampStatic(file, path);
 
-const pageUrls = [["", TODAY], ["about.html"], ["faq.html", TODAY], ["new-condo-filings.html", TODAY], ["managing-agents.html", TODAY], ["offering-plan-attorneys.html", TODAY], ["blog/", TODAY],
+const pageUrls = [["", TODAY], ["about.html"], ["faq.html", TODAY], ["new-condo-filings.html", TODAY], ["time-to-approval.html", TODAY], ["managing-agents.html", TODAY], ["offering-plan-attorneys.html", TODAY], ["blog/", TODAY],
   ...posts.map((q) => [`blog/${q.slug}.html`, q.updated || q.published])];
 await writeFile(join(ROOT, "sitemap-pages.xml"), urlset(pageUrls));
 await writeFile(join(ROOT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>
@@ -506,4 +602,4 @@ await writeFile(join(ROOT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"
 </sitemapindex>
 `);
 await writeFile(join(ROOT, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`);
-console.log(`${posts.length} posts, blog index, new-condo-filings.html, managing-agents.html, offering-plan-attorneys.html, ${Object.keys(STATIC).length} stamped pages, sitemap-pages.xml with ${pageUrls.length} URLs`);
+console.log(`${posts.length} posts, blog index, new-condo-filings.html, time-to-approval.html, managing-agents.html, offering-plan-attorneys.html, ${Object.keys(STATIC).length} stamped pages, sitemap-pages.xml with ${pageUrls.length} URLs`);
