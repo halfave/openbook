@@ -158,8 +158,13 @@
     for (const f of rows) { if (!by.has(f.field)) by.set(f.field, []); by.get(f.field).push(f); }
     const PARKING = { sold: "Sold as separate units", licensed: "Licensed", leased: "Leased", sold_or_licensed: "Sold or licensed", limited_common_element: "Limited common element" };
     const P = (document.querySelector(".wordmark")?.getAttribute("href") || "../index.html").replace(/index\.html$/, "");
-    // The agent's name links to a search for every building it manages (sponsor-managed plans aren't linked).
+    // The agent's name links to its profile page when it has one (data-managers, from build-buildings.mjs),
+    // otherwise to a search for every building it manages (sponsor-managed plans aren't linked).
+    let profiles = {};
+    try { profiles = JSON.parse(main.dataset.managers || "{}"); } catch {}
     const agentLink = (name) => {
+      const slug = profiles[String(name).trim()];
+      if (slug) return `<a href="${P}managing-agents/${encodeURIComponent(slug)}.html" title="Other buildings managed by ${esc(name)}">${esc(name)}</a>`;
       const q = String(name).replace(/\([^)]*\)/g, "").trim().replace(/[,\s]+(inc|llc|l\.l\.c|corp|corporation|co|company|ltd)\.?$/i, "").trim();
       return /\(\s*sponsor|affiliate/i.test(name) || !q ? esc(name) : `<a href="${P}index.html?q=${encodeURIComponent("managed by " + q)}" title="Other buildings managed by ${esc(q)}">${esc(name)}</a>`;
     };

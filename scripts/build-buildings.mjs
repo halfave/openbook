@@ -10,6 +10,7 @@ import { mkdir, writeFile, rm, readFile, readdir } from "node:fs/promises";
 import { join } from "node:path";
 
 import { SB, KEY, SITE_URL, AG, ROOT, OUT, TODAY, rest, all, rpc, esc, tc, slug, fileFor, month, day, usDate, money, fmtMoney, plural, BORO, boro, docLabel, pagesLabel, miles, MAST_HTML, MAST, SITE_NAME, ld, SEO, HEAD, MENU, FOOT, urlset } from "./site.mjs";
+import { groupAgents, groupFirms, profileLinks } from "./pros.mjs";
 
 // ---------- junk records ----------
 // AG rows that aren't a real offering: 0 units with nothing to read, or names like "*Resubmit*" or
@@ -88,7 +89,7 @@ function buildingPage(p, ctx) {
     row("Construction", p.construction && esc(tc(p.construction))),
     row("Accepted", p.accepted_date && esc(day(p.accepted_date))),
     row("Sponsor", p.sponsor && esc(tc(p.sponsor))),
-    row("Counsel", p.law_firm && esc(tc(p.law_firm)) + (counsel.length ? `<span class="sub">${counsel.map(esc).join(" · ")}</span>` : "")),
+    row("Counsel", p.law_firm && (ctx.links.counsel.has(p.plan_id) ? `<a href="${P}offering-plan-attorneys/${esc(ctx.links.counsel.get(p.plan_id))}.html" title="Other offering plans with this counsel">${esc(tc(p.law_firm))}</a>` : esc(tc(p.law_firm))) +(counsel.length ? `<span class="sub">${counsel.map(esc).join(" · ")}</span>` : "")),
     row("Plan ID", esc(p.plan_id)),
   ].join("");
   // One row per kind of section, linking its main pages.
@@ -108,7 +109,7 @@ function buildingPage(p, ctx) {
   const buttons = (docs.length ? `<a class="btn primary" href="${esc(planHref)}" rel="noopener">${mainPdf ? "Open the offering plan ↗" : "View the offering plan ↗"}</a>` : "")
     + `<a class="btn${docs.length ? "" : " primary"}" href="${esc(agRecord)}" rel="noopener">AG filing record ↗</a>`;
 
-  return HEAD(P, { title, description, canonical, noindex: !searchable || isJunk(p, ctx.searchable), image, imageAlt: `3D massing drawing of ${name}` }) + `<main class="bldg sheet-page" data-plan="${esc(p.plan_id)}" data-borough="${esc(group)}" data-searchable="${searchable}">
+  return HEAD(P, { title, description, canonical, noindex: !searchable || isJunk(p, ctx.searchable), image, imageAlt: `3D massing drawing of ${name}` }) + `<main class="bldg sheet-page" data-plan="${esc(p.plan_id)}" data-borough="${esc(group)}" data-searchable="${searchable}"${ctx.links.managers.has(p.plan_id) ? ` data-managers="${esc(JSON.stringify(ctx.links.managers.get(p.plan_id)))}"` : ""}>
   <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Buildings</a> › <a href="index.html#${slug(group)}">${esc(group)}</a></nav>
   <h1>${esc(name)}</h1>
   <p class="addr">${esc(addr)}, ${esc(b)}, NY${p.zip ? " " + esc(p.zip) : ""}</p>
@@ -219,7 +220,10 @@ for (const r of imgRows) {
 
 // Plans whose Schedule A table was read and checked (scripts/extract-schedule-a.mjs).
 const scheduleA = new Set(await readdir(join(ROOT, "data", "schedule-a")).then((f) => f.map((x) => x.replace(/\.json$/, "")), () => []));
-const ctx = { plans, docs, sections, images, searchable, scheduleA };
+// Manager and counsel profile pages (built by build-pages.mjs from the same groups), linked from the fact sheet.
+const agentFacts = await all("facts?select=plan_id,value_text&field=eq.managing_agent&value_text=not.is.null&order=plan_id");
+const links = profileLinks(groupAgents(agentFacts, new Map(plans.map((p) => [p.plan_id, p]))), groupFirms(plans));
+const ctx = { plans, docs, sections, images, searchable, scheduleA, links };
 for (const p of plans) await writeFile(join(OUT, fileFor(p)), buildingPage(p, ctx));
 await writeFile(join(OUT, "index.html"), directory(plans.filter((p) => !isJunk(p, searchable)), ctx));
 
