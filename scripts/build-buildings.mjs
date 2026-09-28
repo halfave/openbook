@@ -6,7 +6,7 @@
 //
 // Reads the public, read-only Supabase REST API (same key the site uses). Re-run it after new
 // plans are ingested; pages for plans added since the last build do not exist until then.
-import { mkdir, writeFile, rm, readFile } from "node:fs/promises";
+import { mkdir, writeFile, rm, readFile, readdir } from "node:fs/promises";
 import { join } from "node:path";
 
 import { SB, KEY, SITE_URL, AG, ROOT, OUT, TODAY, rest, all, rpc, esc, tc, slug, fileFor, month, day, usDate, money, fmtMoney, plural, BORO, boro, docLabel, pagesLabel, miles, MAST_HTML, MAST, SITE_NAME, ld, SEO, HEAD, MENU, FOOT, urlset } from "./site.mjs";
@@ -127,6 +127,11 @@ function buildingPage(p, ctx) {
 
   ${searchable ? `<section class="sheet-sec">${search}</section>` : ""}
 
+  ${ctx.scheduleA.has(p.plan_id) ? `<section class="sheet-sec" id="units" hidden>
+    <h2>Units &amp; Prices</h2>
+    <div id="scheda" data-src="${P}data/schedule-a/${esc(p.plan_id)}.json" data-pdf="${esc(mainPdf || "")}"></div>
+  </section>` : ""}
+
   <section class="sheet-sec" id="documents">
     <h2>In the Plan</h2>
     ${inPlan ? `<ul class="inplan">${inPlan}</ul>` : `<p class="faint">${docs.length ? "This plan's pages aren't searched yet, so there are no page links." : `The Attorney General hasn't posted this plan's documents yet. <a href="${esc(agDocs)}" rel="noopener">AG documents page ↗</a>`}</p>`}
@@ -212,7 +217,9 @@ for (const r of imgRows) {
   images.add(r.plan_id);
 }
 
-const ctx = { plans, docs, sections, images, searchable };
+// Plans whose Schedule A table was read and checked (scripts/extract-schedule-a.mjs).
+const scheduleA = new Set(await readdir(join(ROOT, "data", "schedule-a")).then((f) => f.map((x) => x.replace(/\.json$/, "")), () => []));
+const ctx = { plans, docs, sections, images, searchable, scheduleA };
 for (const p of plans) await writeFile(join(OUT, fileFor(p)), buildingPage(p, ctx));
 await writeFile(join(OUT, "index.html"), directory(plans.filter((p) => !isJunk(p, searchable)), ctx));
 

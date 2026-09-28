@@ -108,7 +108,7 @@ export default async function handler(req, res) {
     if (spec.shape === "extract") {
       tier = 2;
       const field = factField(spec.extract_question);
-      const cands = (await sb("rpc/search_plans_v3", { method: "POST", body: { ...rpcArgs(spec, { withTopics: false }), q: tsq(spec.extract_terms), p_limit: T2_MAX_PLANS } }))
+      const cands = (await sb("rpc/search_plans_v2", { method: "POST", body: { ...rpcArgs(spec, { withTopics: false }), q: tsq(spec.extract_terms), p_limit: T2_MAX_PLANS } }))
         .filter((r) => r.docs_indexed > 0);
       const plans = cands.map((r) => ({ plan_id: r.plan_id, name: r.name, address: r.address, borough: r.borough }));
       if (!plans.length) {

@@ -174,3 +174,27 @@ table.bars td:nth-child(2){font-variant-numeric:tabular-nums;text-align:right;pa
 .inplan li:last-child{border-bottom:1px solid var(--rule)}
 .inplan .pl{color:var(--muted);font-variant-numeric:tabular-nums}
 .sheet-page .doclist{margin-top:14px}
+
+/* ---------- managing agents directory ---------- */
+.agents .afind{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:18px 0 6px;font-size:14px;color:var(--muted)}
+.agents .afind input{flex:1 1 240px;max-width:360px;font:15px var(--sans);color:var(--ink);background:var(--panel);border:1px solid var(--rule-strong);border-radius:999px;padding:8px 14px}
+.agents-list{display:grid;gap:0}
+details.agent{border-top:1px solid var(--rule);padding:0}
+details.agent:last-child{border-bottom:1px solid var(--rule)}
+details.agent summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:10px 0}
+details.agent summary::-webkit-details-marker{display:none}
+details.agent summary::before{content:"+";font:400 18px/1 var(--sans);color:var(--muted);width:14px;flex:none}
+details.agent[open] summary::before{content:"–"}
+details.agent .an{flex:1;font:600 15.5px var(--sans)}
+details.agent .ac{font:12.5px var(--mono);color:var(--muted);white-space:nowrap}
+details.agent .dir{margin:0 0 6px 26px}
+details.agent .acts{margin:4px 0 14px 26px}
+
+/* ---------- units & prices (Schedule A) ---------- */
+.sa-sum,.sa-units{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+.sa-sum th,.sa-sum td,.sa-units th,.sa-units td{padding:8px 10px 8px 0;border-top:1px solid var(--rule);text-align:left;white-space:nowrap}
+.sa-sum thead th,.sa-units thead th{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border-top:0}
+.sa-sum .n,.sa-units .n{text-align:right}
+.sa-sum tbody th{font-weight:600}
+details.sa-all{margin-top:14px;border:0;padding:0}
+details.sa-all summary{cursor:pointer;font:600 14px var(--sans);color:var(--accent);padding:6px 0}

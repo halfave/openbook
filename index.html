@@ -186,7 +186,7 @@ body.searched .go{padding:0 20px;font-size:13px}
 .dot{cursor:pointer;vector-effect:non-scaling-stroke}
 .dot.meta{fill:var(--panel);stroke:var(--dot-meta);stroke-width:1.2}
 .dot.idx{fill:var(--accent);stroke:var(--panel);stroke-width:1}
-.dot.dim{opacity:.18}
+.dot.dim{display:none}
 .dot.hit{fill:var(--hit);stroke:var(--panel);stroke-width:1.2}
 .dot.sel{stroke:var(--ink);stroke-width:2.2}
 .legend{display:flex;gap:14px;flex-wrap:wrap;padding:9px 12px;border-top:1px solid var(--rule-strong);font-size:12px;color:var(--muted)}
@@ -314,6 +314,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
   <nav aria-label="Site">
     <a href="index.html">Search</a>
     <a href="buildings/index.html">Buildings</a>
+    <a href="managing-agents.html">Managing agents</a>
     <a href="new-condo-filings.html">New filings</a>
     <a href="blog/index.html">Guides</a>
     <a href="about.html">About</a>
@@ -699,6 +700,17 @@ table.pivot th[scope="row"]{white-space:nowrap}
     const NUM = "(\\d{1,4}|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|fifteen|twenty|thirty|forty|fifty|hundred)";
     const cut = (re) => { s = s.replace(re, " "); };
 
+    // managing agent: "managed by AKAM", "managing agent FirstService in Brooklyn", "which condos does MRE manage"
+    // (not "who is the managing agent for 701 Prospect Place", which asks about one building)
+    const mgr = s.match(/\b(?:managed by|managing agent(?: is)?|management company(?: is)?)\s+(?!(?:for|of|at|in|on|the building|is)\b)([a-z0-9&.,'\- ]+?)(?=\s+(?:in|with|and|that|which|under|over|since|from|near|condos?|buildings?)\b|[?!]|\s*$)/)
+      || s.match(/\b(?:which|what) (?:condos?|buildings?|plans?) (?:does|do) ([a-z0-9&.,'\- ]+?) manage\b/);
+    if (mgr && mgr[1].trim().replace(/[.,]+$/, "").length >= 2) {
+      out.manager = mgr[1].trim().replace(/[.,]+$/, "");
+      chip("manager", `Managing agent: ${titleCase(out.manager)}`);
+      out.notes.push("Managing agent as named in each plan's first-year management agreement. Only plans with searchable pages can match.");
+      cut(mgr[0]);
+    }
+
     // which result view fits the question, and which document section to put first
     if (/\bfloor ?plans?\b|\bdrawings?\b/.test(s)) { out.view = "documents"; out.focus = "floor_plans"; }
     else if (/\bschedule a\b/.test(s)) { out.view = "documents"; out.focus = "schedule_a"; }
@@ -707,7 +719,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
     else if (/\bdeclaration\b/.test(s)) { out.view = "documents"; out.focus = "declaration"; }
     else if (/\bmanagement agreement\b/.test(s)) { out.view = "documents"; out.focus = "management_agreement"; }
     if (/\b(pric(e|es|ing)|compare|comparison|comps?|sell-?out)\b/.test(s)) { out.view = "compare"; out.notes.push("Pricing shows the AG record’s total offering prices. Unit prices and $/sf from Schedule A are not extracted yet."); cut(/\b(pric(e|es|ing)|compare|comparison|comps?|sell-?out)\b/g); }
-    else if (!out.view && /\b(managing agent|architect|selling agent|attorneys?|counsel|engineer|contractor|project teams?|team)\b/.test(s)) out.view = "passages";
+    else if (!out.view && !out.manager && /\b(managing agent|architect|selling agent|attorneys?|counsel|engineer|contractor|project teams?|team)\b/.test(s)) out.view = "passages";
 
     // plan ID, e.g. CD240334
     let m = s.match(/\b([a-z]{2}\d{6})\b/);
@@ -826,7 +838,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
       P.matchNote = notes.join(" ") || null;
       return hits;
     }
-    if (P.zips && !P.q) {
+    if (P.zips && !P.q && !P.manager) {
       const f = [`zip=in.(${P.zips.join(",")})`];
       if (P.minUnits != null) f.push(`units_residential=gte.${P.minUnits}`);
       if (P.maxUnits != null) f.push(`units_residential=lte.${P.maxUnits}`);
@@ -834,6 +846,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
       return recordRows(f.join("&"));
     }
     const args = { q: P.q || null, p_borough: P.borough, p_min_units: P.minUnits, p_max_units: P.maxUnits, p_min_parking: P.minParking, p_limit: P.zips ? 400 : 60 };
+    if (P.manager) args.p_managing_agent = P.manager;
     const words = (P.q || "").split(/\s+/).filter(Boolean);
     const quoted = /^"[^"]+"$/.test(P.q || "");
     const phraseable = words.length >= 2 && !/"|\bOR\b/.test(P.q);
@@ -873,9 +886,12 @@ table.pivot th[scope="row"]{white-space:nowrap}
     if (!mapReady) mapReady = (async () => {
       const [g] = await rest("site_assets?key=eq.boroughs_svg&select=value", null, 3600000);
       geo = JSON.parse(g.value); drawLand();
-      // The API returns at most 1,000 rows per call, so the map pages through every plan.
+      // The API returns at most 1,000 rows per call, so page through all of them.
       const all = [];
-      for (let off = 0; ; off += 1000) { const b = await rest(`rpc/map_points?limit=1000&offset=${off}`, {}, 600000); all.push(...b); if (b.length < 1000) break; }
+      for (let i = 0; ; i += 8) {
+        const pages = await Promise.all([...Array(8)].map((_, j) => rpc(`map_points?order=plan_id&limit=1000&offset=${(i + j) * 1000}`, {}, 600000)));
+        all.push(...pages.flat()); if (pages[7].length < 1000) break;
+      }
       points = all.filter((p) => p.lat);
       drawDots();
     })().catch((e) => { mapReady = null; throw e; });
@@ -892,7 +908,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
       runIntent(spec, via); return;
     }
     const P = parseQuestion(text);
-    if (!P.q && !P.borough && !P.zips && P.minUnits == null && P.maxUnits == null && P.minParking == null && !P.planId && !P.address) {
+    if (!P.q && !P.borough && !P.zips && P.minUnits == null && P.maxUnits == null && P.minParking == null && !P.planId && !P.address && !P.manager) {
       P.q = text; P.chips.unshift({ k: "q", label: `Text: ${text}` });
     }
     P.text = text; P.via = via;
@@ -924,7 +940,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
     const b = e.target.closest("[data-rm]"); if (!b || !current) return;
     const P = { ...current, chips: current.chips.filter((c) => c.k !== b.dataset.rm) };
     ({ q: () => { P.q = ""; }, area: () => { P.borough = null; P.zips = null; }, units: () => { P.minUnits = null; P.maxUnits = null; },
-      parking: () => { P.minParking = null; P.maxParking = null; }, planId: () => { P.planId = null; }, address: () => { P.address = null; },
+      parking: () => { P.minParking = null; P.maxParking = null; }, planId: () => { P.planId = null; }, address: () => { P.address = null; }, manager: () => { P.manager = null; },
       dates: () => { P.from = null; P.to = null; }, construction: () => { P.construction = null; }, status: () => { P.status = null; },
       sponsor: () => { P.sponsor = null; }, counsel: () => { P.counsel = null; }, commercial: () => { P.minCommercial = null; }, storage: () => { P.minStorage = null; } })[b.dataset.rm]?.();
     P.aiAnswer = null; P.aiPending = false;
@@ -976,7 +992,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
       highlight(rows.map((r) => r.plan_id));
       const pts = points.filter((p) => rows.some((r) => r.plan_id === p.plan_id));
       if (P.boroPick && P.borough) zoomBoro(P.borough);
-      else if (pts.length) { const xy = pts.map((p) => project(p.lat, p.lng)); const xs = xy.map((a) => a[0]), ys = xy.map((a) => a[1]); const bx = { x: Math.min(...xs), y: Math.min(...ys), w: Math.max(120, Math.max(...xs) - Math.min(...xs)), h: Math.max(120, Math.max(...ys) - Math.min(...ys)) }; bx.x -= Math.max(0, 120 - (Math.max(...xs) - Math.min(...xs))) / 2; bx.y -= Math.max(0, 120 - (Math.max(...ys) - Math.min(...ys))) / 2; zoomTo(bx, 0.15); }
+      else if (pts.length) { const M = pts.length === 1 ? 40 : 120, xy = pts.map((p) => project(p.lat, p.lng)); const xs = xy.map((a) => a[0]), ys = xy.map((a) => a[1]); const bx = { x: Math.min(...xs), y: Math.min(...ys), w: Math.max(M, Math.max(...xs) - Math.min(...xs)), h: Math.max(M, Math.max(...ys) - Math.min(...ys)) }; bx.x -= Math.max(0, M - (Math.max(...xs) - Math.min(...xs))) / 2; bx.y -= Math.max(0, M - (Math.max(...ys) - Math.min(...ys))) / 2; zoomTo(bx, 0.15); }
       else { vb = { ...full }; setVB(); }
       pressBoro(P.borough);
     } catch (e) { showError(e); $("status").textContent = ""; }
@@ -1080,36 +1096,23 @@ table.pivot th[scope="row"]{white-space:nowrap}
     .sort((a, b) => a.file_id - b.file_id || a.first_page - b.first_page);
   const pagesTxt = (a, b) => (a === b ? `p. ${a}` : `pp. ${a}–${b}`);
 
-  // One building found by address or plan ID: lead with the document and pages, then the source.
+  // One building found by address or plan ID: name, address, and three links. No page references.
   async function renderAnswer(r, P) {
     const box = $("answer"), page = pageFor(r), focus = KINDS.find((k) => k[0] === P.focus);
     box.innerHTML = `<article class="ans">
-      <p class="ans-kicker">${focus ? `${esc(focus[1])} ·` : ""} Plan ${esc(r.plan_id)}</p>
+      <p class="ans-kicker">Plan ${esc(r.plan_id)}</p>
       <h2>${esc(tc(r.name))}</h2>
       <p class="caddr">${esc(tc(r.address))}, ${esc(tc(r.borough))}${r.accepted_date ? ` · accepted ${esc(date(r.accepted_date))}` : ""} · ${r.units_residential ?? "?"} units</p>
-      <div id="ansbody"><p class="vnote">Finding the pages…</p></div>
-      <div class="acts"><a class="btn primary" href="${esc(agDocs(r.plan_id))}" target="_blank" rel="noopener">Open plan documents ↗</a>
+      <div class="acts"><span id="ansdoc"></span>
         ${page ? `<a class="btn" href="${esc(page)}${focus ? "#" + focus[2] : ""}">Building page</a>` : ""}
-        <a class="btn" href="${esc(AG + encodeURIComponent(r.plan_id))}" target="_blank" rel="noopener">AG filing record ↗</a></div>
+        <a class="btn" href="${esc(agDocs(r.plan_id))}" target="_blank" rel="noopener">AG documents ↗</a></div>
     </article>`;
-    if (!r.docs_indexed) { $("ansbody").innerHTML = `<p>This plan’s documents are not searchable here yet, so The Condo Book Project can’t point to pages. They are on the Attorney General’s site.</p>`; return; }
+    if (!r.docs_indexed) return;
     try {
-      const { lab, url, secBy } = await loadSections([r.plan_id]);
-      if (!$("ansbody")) return;
-      const sec = secBy.get(r.plan_id) || [];
-      const order = focus ? [focus, ...KINDS.filter((k) => k !== focus)] : KINDS;
-      const lines = order.map(([k, label]) => {
-        const runs = sec.filter((x) => x.kind === k); if (!runs.length) return "";
-        return `<tr${focus && k === focus[0] ? ' class="focus"' : ""}><th scope="row">${label}</th><td>${topRuns(runs, 3).map((x) => runRef(lab, url, x, pagesTxt)).join("; ")}</td></tr>`;
-      }).join("");
-      const lead = focus && sec.some((x) => x.kind === focus[0]) ? topRuns(sec.filter((x) => x.kind === focus[0]), 1)[0] : null;
-      const mainUrl = [...url.values()][0];
-      if (mainUrl) { const b = box.querySelector(".acts .btn.primary"); if (b) { b.href = mainUrl; b.textContent = "Open offering plan (PDF) ↗"; } }
-      $("ansbody").innerHTML = (lead ? `<p class="ans-lead"><span>${esc(focus[1])}</span> ${runRef(lab, url, lead, pagesTxt)}</p>
-        <p class="vnote">${url.get(lead.file_id) ? "The link opens the PDF at that page." : `Open plan documents, download the ${esc(lab.get(lead.file_id) || "document")}, and go to ${pagesTxt(lead.first_page, lead.last_page)}.`} Page numbers are the PDF’s own.</p>`
-        : focus ? `<p class="vnote">No pages headed “${esc(focus[1])}” were found in the searched documents.</p>` : "") +
-        (lines ? `<div class="tscroll"><table class="sect"><tbody>${lines}</tbody></table></div>` : "");
-    } catch (e) { if ($("ansbody")) $("ansbody").innerHTML = `<p class="vnote">Couldn’t load the page index. The documents are on the AG site.</p>`; }
+      const docs = await rest(`documents?status=eq.done&plan_id=eq.${encodeURIComponent(r.plan_id)}&doc_kind=eq.offering_plan&pdf_url=not.is.null&select=pdf_url&limit=1`, null, 600000);
+      const slot = $("ansdoc");
+      if (slot && docs[0]) slot.outerHTML = `<a class="btn primary" href="${esc(docs[0].pdf_url)}" target="_blank" rel="noopener">Open offering plan ↗</a>`;
+    } catch (e) { /* no hosted PDF: the AG link covers it */ }
   }
 
   async function renderDocuments(rows, P) {
@@ -1165,7 +1168,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
   // nothing was found, or the question is analytic. The server holds every AI search under 5 cents.
   const ANALYTIC = /\b(which|how many|average|avg|mean|largest|biggest|smallest|most|fewest|compare)\b/;
   function wantsAI(P, text) {
-    if (P.planId || P.address) return false;
+    if (P.planId || P.address || P.manager) return false; // the managing-agent filter answers these without AI
     if (ANALYTIC.test(text.toLowerCase())) return true;
     const left = (P.q || "").replace(/"[^"]*"/g, " ").split(/\s+/).filter((w) => w && w !== "OR");
     return left.length >= 2;
@@ -1227,14 +1230,23 @@ table.pivot th[scope="row"]{white-space:nowrap}
   }
 
   async function aiRows(P) {
+    // search_plans_v2 matches words against one index row per plan, so it stays inside the public 3-second limit
+    // (search_plans_v3 read every page and timed out on common words).
+    const limit = P.analytic ? 400 : 120;
     const args = { q: P.q || null, p_borough: P.borough, p_zips: P.zips, p_min_units: P.minUnits, p_max_units: P.maxUnits,
       p_min_parking: P.minParking, p_max_parking: P.maxParking, p_min_commercial: P.minCommercial, p_min_storage: P.minStorage,
-      p_accepted_from: P.from, p_accepted_to: P.to, p_construction: P.construction, p_status: P.status,
-      p_sponsor: P.sponsor, p_counsel: P.counsel, p_limit: P.analytic ? 400 : 120 };
+      p_accepted_from: P.from, p_accepted_to: P.to, p_construction: P.construction ? [P.construction] : null, p_status: P.status ? [P.status] : null,
+      p_sponsor: P.sponsor, p_counsel: P.counsel, p_managing_agent: P.manager || null, p_limit: limit };
     const hasFilter = [P.borough, P.zips, P.minUnits, P.maxUnits, P.minParking, P.maxParking, P.minCommercial, P.minStorage,
-      P.from, P.to, P.construction, P.status, P.sponsor, P.counsel].some((v) => v != null);
-    // With filters, topic words only rank: they must never remove a plan the filters match.
-    let rows = await rpc("search_plans_v3", { ...args, p_topic_required: !!P.topicRequired || !hasFilter });
+      P.from, P.to, P.construction, P.status, P.sponsor, P.counsel, P.manager].some((v) => v != null);
+    // With filters, topic words only rank: they must never remove a plan the filters match. So fetch the plans that
+    // mention the topic and the plans that match the filters alone, and list the mentions first.
+    let rows;
+    if (P.q && hasFilter && !P.topicRequired) {
+      const [hit, all] = await Promise.all([rpc("search_plans_v2", args), rpc("search_plans_v2", { ...args, q: null })]);
+      const seen = new Set(hit.map((r) => r.plan_id));
+      rows = [...hit, ...all.filter((r) => !seen.has(r.plan_id)).map((r) => ({ ...r, hits: 0, snippets: [] }))].slice(0, limit);
+    } else rows = await rpc("search_plans_v2", args);
     const labels = (P.topics || []).map((t) => t.label).join(", ");
     if (P.q && hasFilter && !P.topicRequired) {
       const n = rows.filter((r) => r.hits > 0).length;

@@ -86,6 +86,60 @@
     });
   }
 
+
+  // ---------- Units & prices (Schedule A) ----------
+  // Read from the plan's Schedule A table by pattern matching (scripts/extract-schedule-a.mjs); a file exists
+  // only for plans whose unit prices add up to the AG record's total offering price.
+  const abox = document.getElementById("scheda");
+  if (abox) loadScheduleA(abox);
+  async function loadScheduleA(box) {
+    let row;
+    try {
+      const r = await fetch(`${box.dataset.src}`);
+      if (!r.ok) return;
+      row = await r.json();
+    } catch { return; }
+    const units = Array.isArray(row?.units) ? row.units : [];
+    if (!units.length) return;
+    const $ = (n) => n == null ? "—" : "$" + Math.round(n).toLocaleString("en-US");
+    const sf = (n) => n == null ? "—" : Math.round(n).toLocaleString("en-US");
+    const bedLabel = (b) => b === 0 ? "Studio" : b == null ? "Not stated" : `${b} bedroom${b === 1 ? "" : "s"}`;
+    // Parking, storage and commercial rows: no bedroom count and a P1 / S-2 / G3 / C1-style unit number,
+    // or too small or cheap to be a home. They're listed after the homes and left out of the summary.
+    const isOther = (u) => u.beds == null && (/^(p(?!h)|s|g|c|r|com|retail|stor|park)[\s-]?\d/i.test(u.unit) || /^(retail|commercial|storage|parking|garage)/i.test(u.unit)
+      || (u.sqft != null && u.sqft < 400) || u.price < 200000 || (u.sqft == null && u.beds == null));
+    const homes = units.filter((u) => !isOther(u));
+    const other = units.filter(isOther);
+    const psf = (u) => (u.sqft ? u.price / u.sqft : null);
+
+    // Summary by bedroom count.
+    const groups = new Map();
+    for (const u of homes) { const k = u.beds ?? -1; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(u); }
+    const range = (a) => { const lo = Math.min(...a), hi = Math.max(...a); return lo === hi ? lo : [lo, hi]; };
+    const fmtRange = (v, f) => Array.isArray(v) ? `${f(v[0])}–${f(v[1])}` : f(v);
+    const avg = (a) => a.length ? a.reduce((s, x) => s + x, 0) / a.length : null;
+    const summary = [...groups].sort((a, b) => (a[0] < 0) - (b[0] < 0) || a[0] - b[0]).map(([k, list]) => {
+      const sizes = list.map((u) => u.sqft).filter((x) => x != null);
+      const per = list.map(psf).filter((x) => x != null);
+      return `<tr><th scope="row">${esc(bedLabel(k < 0 ? null : k))}</th><td class="n">${list.length}</td>` +
+        `<td class="n">${sizes.length ? fmtRange(range(sizes), sf) + " sf" : "—"}</td>` +
+        `<td class="n">${fmtRange(range(list.map((u) => u.price)), $)}</td><td class="n">${per.length ? $(avg(per)) : "—"}</td></tr>`;
+    }).join("");
+
+    const pdf = box.dataset.pdf;
+    const cite = [...new Set(units.map((u) => u.page))].sort((a, b) => a - b)
+      .map((p) => pdf ? `<a href="${esc(pdf)}#page=${p}" rel="noopener">p. ${p}</a>` : `p. ${p}`).join(", ");
+    const unitRow = (u) => `<tr><th scope="row">${esc(u.unit)}</th><td>${u.beds == null ? "—" : u.beds === 0 ? "Studio" : u.beds}</td><td>${u.baths ?? "—"}</td>` +
+      `<td class="n">${sf(u.sqft)}</td><td class="n">${$(u.price)}</td><td class="n">${psf(u) ? $(psf(u)) : "—"}</td><td class="n">${u.pct != null ? u.pct + "%" : "—"}</td></tr>`;
+
+    box.innerHTML = `<p class="src">The sponsor's offering prices from Schedule A of the original plan (${cite}). Amendments can change prices; this is the plan as first offered. ${homes.length} homes${other.length ? `, ${other.length} other units (parking, storage)` : ""}, ${$(row.price_total)} in total.</p>` +
+      `<div class="tscroll"><table class="sa-sum"><thead><tr><th>Type</th><th class="n">Units</th><th class="n">Size</th><th class="n">Price</th><th class="n">Avg $/sf</th></tr></thead><tbody>${summary}</tbody></table></div>` +
+      `<details class="sa-all"${units.length <= 12 ? " open" : ""}><summary>All ${units.length} units</summary>` +
+      `<div class="tscroll"><table class="sa-units"><thead><tr><th>Unit</th><th>Beds</th><th>Baths</th><th class="n">Sq ft</th><th class="n">Price</th><th class="n">$/sf</th><th class="n">Common interest</th></tr></thead>` +
+      `<tbody>${[...homes, ...other].map(unitRow).join("")}</tbody></table></div></details>`;
+    box.closest("section").hidden = false;
+  }
+
   // ---------- facts extracted from the offering plan ----------
   // Shown in the tab they belong to, each with its page. Only value_text is shown, except the managing
   // agent's fee (value_num is the annual fee for that field; other fields use it inconsistently).
@@ -103,17 +157,26 @@
     const by = new Map();
     for (const f of rows) { if (!by.has(f.field)) by.set(f.field, []); by.get(f.field).push(f); }
     const PARKING = { sold: "Sold as separate units", licensed: "Licensed", leased: "Leased", sold_or_licensed: "Sold or licensed", limited_common_element: "Limited common element" };
+    const P = (document.querySelector(".wordmark")?.getAttribute("href") || "../index.html").replace(/index\.html$/, "");
+    // The agent's name links to a search for every building it manages (sponsor-managed plans aren't linked).
+    const agentLink = (name) => {
+      const q = String(name).replace(/\([^)]*\)/g, "").trim().replace(/[,\s]+(inc|llc|l\.l\.c|corp|corporation|co|company|ltd)\.?$/i, "").trim();
+      return /\(\s*sponsor|affiliate/i.test(name) || !q ? esc(name) : `<a href="${P}index.html?q=${encodeURIComponent("managed by " + q)}" title="Other buildings managed by ${esc(q)}">${esc(name)}</a>`;
+    };
+    // Returns HTML; every value is escaped here.
     const val = (field, f) => {
-      if (field === "parking_arrangement") return PARKING[f.value_text] || f.value_text;
-      if (field === "managing_agent" && f.value_num != null && !isNaN(Number(f.value_num)))
-        return `${f.value_text || ""}${f.value_text ? ", " : ""}fee $${Number(f.value_num).toLocaleString("en-US")} a year`;
-      return f.value_text;
+      if (field === "parking_arrangement") return esc(PARKING[f.value_text] || f.value_text);
+      if (field === "managing_agent") {
+        const fee = f.value_num != null && !isNaN(Number(f.value_num)) ? `${f.value_text ? ", " : ""}fee $${Number(f.value_num).toLocaleString("en-US")} a year` : "";
+        return (f.value_text ? agentLink(f.value_text) : "") + esc(fee);
+      }
+      return esc(f.value_text);
     };
     // Each fact becomes a row in the fact table, with the plan page it came from.
     const row = (label, field) => {
       const list = (by.get(field) || []).filter((f) => f.value_text || f.value_num != null);
       if (!list.length) return "";
-      return `<div><dt>${esc(label)}</dt><dd>${list.map((f) => `<span class="fv">${esc(val(field, f))}` +
+      return `<div><dt>${esc(label)}</dt><dd>${list.map((f) => `<span class="fv">${val(field, f)}` +
         (f.page_no ? ` <span class="fcite"${f.quote ? ` title="${esc(f.quote)}"` : ""}>p. ${esc(f.page_no)}</span>` : "") + `</span>`).join("")}</dd></div>`;
     };
     const sheet = document.getElementById("sheet");
