@@ -108,10 +108,15 @@ main.post article > .tscroll,main.post article > ul,main.post article > ol{max-w
 .post article h3{font:700 17px/1.35 var(--display);margin:22px 0 6px}
 .cta{border:1px solid var(--rule-strong);background:var(--panel);padding:14px;margin:36px 0 8px;display:grid;gap:10px}
 .cta label{font:700 17px var(--display)}
-.filing{border-top:1px solid var(--rule);padding:6px 0 4px}
-.filing h3{font:700 19px/1.3 var(--display);margin:14px 0 2px}
-.filing .cd{display:inline-block;font:500 13px var(--mono);letter-spacing:.04em;background:var(--chip);border:1px solid var(--rule-strong);padding:1px 7px;margin-right:6px;vertical-align:2px}
-.filing .acts{margin:8px 0 10px}
+/* new filings: one wide table, wider than the text column; names and sponsors wrap */
+main.post > .tscroll:has(table.filings){max-width:1180px}
+table.filings td{vertical-align:top;white-space:normal;padding-top:10px;padding-bottom:10px}
+table.filings td:nth-child(2){min-width:220px}
+table.filings td:nth-child(5){min-width:160px}
+table.filings .nw{white-space:nowrap}
+table.filings .n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;padding-right:18px}
+table.filings .sub{display:block;font-size:12.5px;color:var(--muted);margin-top:2px}
+table.filings td.n .sub{font-size:11.5px}
 table.bars td.bar{width:55%;min-width:90px}
 table.bars td.bar span{display:block;height:10px;background:var(--accent);opacity:.75}
 table.bars td:nth-child(2){font-variant-numeric:tabular-nums;text-align:right;padding-right:14px}

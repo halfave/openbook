@@ -90,6 +90,13 @@ form.search{display:flex;flex-direction:column;gap:10px}
   .go{border:2px solid var(--ink);padding:14px}
   .lucky{border:2px solid var(--ink);padding:10px}
 }
+/* the three list pages, as buttons under the search box (landing only) */
+.lists{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}
+.lists a{display:flex;align-items:center;justify-content:center;min-height:44px;padding:8px 12px;border:2px solid var(--ink);background:var(--panel);color:var(--ink);text-decoration:none;text-align:center;font:600 13px var(--sans);letter-spacing:.1em;text-transform:uppercase}
+.lists a:hover{background:var(--chip);color:var(--accent)}
+.lists a:focus-visible{outline:3px solid var(--mast);outline-offset:0}
+@media (max-width:560px){ .lists{gap:8px} .lists a{font-size:11.5px;letter-spacing:.06em;padding:8px 6px} }
+body.searched .lists{display:none}
 .read{margin-top:12px;border:1px solid var(--rule-strong);border-left:4px solid var(--mast);background:var(--panel);padding:10px 14px;display:grid;gap:6px}
 .readhead{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .readline{display:flex;gap:8px 14px;flex-wrap:wrap;align-items:baseline}
@@ -250,7 +257,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
 <header class="mast">
   <div class="mast-in">
     <a class="wordmark" href="index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
-    <nav class="mastnav" aria-label="Main"><a href="about.html">About</a><span aria-hidden="true">|</span><a href="faq.html">FAQ</a><span aria-hidden="true">|</span><a href="new-condo-filings.html">New filings</a><span aria-hidden="true">|</span><a href="managing-agents.html">Managing agents</a><span aria-hidden="true">|</span><a href="offering-plan-attorneys.html">Attorneys</a></nav>
+    <nav class="mastnav" aria-label="Main"><a href="about.html">About</a><span aria-hidden="true">|</span><a href="faq.html">FAQ</a><span aria-hidden="true">|</span><a href="new-condo-filings.html">New Construction</a><span aria-hidden="true">|</span><a href="managing-agents.html">Property Managers</a><span aria-hidden="true">|</span><a href="offering-plan-attorneys.html">OP Attorneys</a></nav>
   </div>
 </header>
 <div class="mast-rule"></div><div class="hairline"></div>
@@ -262,9 +269,9 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
     <div class="barlinks"><hr>
       <a href="about.html">About</a>
       <a href="faq.html">FAQ</a>
-      <a href="new-condo-filings.html">New filings</a>
-      <a href="managing-agents.html">Managing agents</a>
-      <a href="offering-plan-attorneys.html">Attorneys</a>
+      <a href="new-condo-filings.html">New Construction</a>
+      <a href="managing-agents.html">Property Managers</a>
+      <a href="offering-plan-attorneys.html">OP Attorneys</a>
     </div>
     <hr>
     <small>Browse by task</small>
@@ -290,6 +297,11 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
         <button class="lucky" id="lucky" type="button" aria-label="I’m feeling lucky: run a random example search" title="I’m feeling lucky"><span class="die" aria-hidden="true">🎲</span></button>
       </div>
     </form>
+    <nav class="lists" aria-label="Lists">
+      <a href="new-condo-filings.html">New Construction</a>
+      <a href="managing-agents.html">Property Managers</a>
+      <a href="offering-plan-attorneys.html">OP Attorneys</a>
+    </nav>
     <div class="read" id="read" hidden></div>
     <div class="notice" id="notice" hidden></div>
 
