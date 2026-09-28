@@ -13,6 +13,17 @@
   });
 })();
 
+// Data dropdown in the masthead: underline it on its own pages, close on outside click or Escape.
+(() => {
+  const data = document.querySelector(".datamenu");
+  if (!data) return;
+  if (data.querySelector('a[aria-current="page"]')) data.classList.add("current");
+  document.addEventListener("click", (e) => { if (data.open && !data.contains(e.target)) data.open = false; });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && data.open) { data.open = false; data.querySelector("summary").focus(); }
+  });
+})();
+
 // Pinned header: the masthead stays at the top at one height.
 // --head-h holds that height, for anything pinned under it and for anchor offsets.
 (() => {

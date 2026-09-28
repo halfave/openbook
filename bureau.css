@@ -33,7 +33,8 @@
 }
 
 /* ---------- masthead: a light header on the page's own paper ---------- */
-.mast{background:var(--ground);position:sticky;top:0;z-index:30;overflow:hidden;border-bottom:1px solid var(--rule)}
+/* clip sideways only, so the Data dropdown can hang below the header */
+.mast{background:var(--ground);position:sticky;top:0;z-index:30;overflow:hidden;overflow:clip visible;border-bottom:1px solid var(--rule)}
 .mast-in{margin:0;padding:0 580px 0 24px;height:76px;display:flex;align-items:center;justify-content:space-between}
 /* the name sits flush left in a tracked sans, no logo */
 .wordmark{position:relative;z-index:2;display:flex;align-items:center;flex:none;text-decoration:none;color:var(--accent);
@@ -68,7 +69,20 @@
 @media (max-width:760px){ .wordmark{white-space:normal;max-width:58vw} }
 @media (max-width:640px){ .mast-in{padding-left:16px} }
 
-/* About | FAQ | New Construction | Property Managers | OP Attorneys sit in the masthead; everything else is in the menu, shown on every screen size. */
+/* About | FAQ | Data sit in the masthead; everything else is in the menu, shown on every screen size. */
+/* Data: New Construction, Approval Times, Property Managers and OP Attorneys in a dropdown */
+.datamenu{position:relative}
+.datamenu summary{list-style:none;cursor:pointer;font:inherit;color:var(--ink);padding:4px 0;border-bottom:1.5px solid transparent;display:flex;align-items:center;gap:7px}
+.datamenu summary::-webkit-details-marker{display:none}
+.datamenu summary::after{content:"";width:5px;height:5px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg)}
+.datamenu[open] summary::after{transform:translateY(1px) rotate(225deg)}
+.datamenu summary:hover,.datamenu[open] summary{color:var(--accent)}
+.datamenu.current summary{color:var(--accent);border-bottom-color:currentColor}
+.datamenu summary:focus-visible{outline:3px solid var(--mast);outline-offset:3px}
+.datamenu > div{position:absolute;right:-12px;top:calc(100% + 10px);width:220px;background:var(--panel);border:1px solid var(--rule);border-radius:12px;box-shadow:0 1px 2px rgba(19,32,27,.06),0 8px 24px rgba(19,32,27,.12);padding:6px;display:flex;flex-direction:column}
+.mastnav .datamenu a{padding:9px 12px;border:0;border-radius:8px;font:15px/1.3 var(--sans);color:var(--ink)}
+.mastnav .datamenu a:hover{background:var(--chip);color:var(--ink)}
+.mastnav .datamenu a[aria-current="page"]{color:var(--accent);font-weight:600}
 
 /* ---------- pinned header ----------
    The header stays at the top (position:sticky) at one height; the menu button is fixed so it stays beside it. */

@@ -385,7 +385,7 @@ function agentsPage() {
   const search = (g) => `${P}index.html?q=${encodeURIComponent("managed by " + g.query)}`;
   const bldg = (p) => `<li><a href="buildings/${esc(fileFor(p))}">${esc(tc(p.name))}</a><span>${esc(tc(p.address))} · ${esc(boro(p.borough))}${p.units_residential != null ? ` · ${p.units_residential} units` : ""}${p.accepted_date ? ` · ${p.accepted_date.slice(0, 4)}` : ""}${feeText(p)}</span></li>`;
   const card = (g, i) => `<details class="agent" id="${esc(g.slug)}" data-name="${esc(g.name.toLowerCase())}"${more(i)}>
-    <summary>${rank(i)}<span class="an">${esc(g.name)}</span><span class="ac">${plural(g.plans.length, "building")}${g.fee != null ? `<span class="fee" title="Median first-year management fee per residential unit, from Schedule B">${perYear(g.fee)}/unit/yr</span>` : `<span class="fee" aria-hidden="true"></span>`}</span></summary>
+    <summary>${rank(i)}<span class="an">${g.plans.length >= PROFILE_MIN ? `<a href="managing-agents/${esc(g.slug)}.html">${esc(g.name)}</a>` : esc(g.name)}</span><span class="ac">${plural(g.plans.length, "building")}${g.fee != null ? `<span class="fee" title="Median first-year management fee per residential unit, from Schedule B">${perYear(g.fee)}/unit/yr</span>` : `<span class="fee" aria-hidden="true"></span>`}</span></summary>
     <ul class="dir">${g.plans.map(bldg).join("")}</ul>
     <p class="acts">${g.plans.length >= PROFILE_MIN ? `<a class="btn primary" href="managing-agents/${esc(g.slug)}.html">${esc(g.name)} profile</a>` : ""}<a class="btn" href="${esc(search(g))}">Search buildings managed by ${esc(g.query)}</a></p>
   </details>`;
@@ -435,7 +435,7 @@ function attorneysPage() {
   const bldg = (p) => `<li><a href="buildings/${esc(fileFor(p))}">${esc(tc(p.name))}</a><span>${esc(tc(p.address))} · ${esc(boro(p.borough))}${p.units_residential != null ? ` · ${p.units_residential} units` : ""}${p.accepted_date ? ` · ${p.accepted_date.slice(0, 4)}` : ""}</span></li>`;
   const span = (f) => f.years.length ? (f.years[0] === f.years.at(-1) ? f.years[0] : `${f.years[0]}–${f.years.at(-1)}`) : "";
   const card = (f, i) => `<details class="agent" id="${esc(f.slug)}" data-name="${esc(tc(f.name).toLowerCase())}"${more(i)}>
-    <summary>${rank(i)}<span class="an">${esc(tc(f.name))}</span><span class="ac">${plural(f.plans.length, "plan")}${span(f) ? `<span class="yrs" title="Years the plans were accepted for filing">${span(f)}</span>` : `<span class="yrs" aria-hidden="true"></span>`}</span></summary>
+    <summary>${rank(i)}<span class="an">${f.plans.length >= PROFILE_MIN ? `<a href="offering-plan-attorneys/${esc(f.slug)}.html">${esc(tc(f.name))}</a>` : esc(tc(f.name))}</span><span class="ac">${plural(f.plans.length, "plan")}${span(f) ? `<span class="yrs" title="Years the plans were accepted for filing">${span(f)}</span>` : `<span class="yrs" aria-hidden="true"></span>`}</span></summary>
     ${f.plans.length > SHOWN ? `<p class="faint">The ${SHOWN} most recent of ${n(f.plans.length)}.</p>` : ""}
     <ul class="dir">${f.plans.slice(0, SHOWN).map(bldg).join("")}</ul>
     <p class="acts">${f.plans.length >= PROFILE_MIN ? `<a class="btn primary" href="offering-plan-attorneys/${esc(f.slug)}.html">${esc(tc(f.name))} profile</a>` : ""}<a class="btn" href="${esc(search(f))}">Search plans with counsel ${esc(f.query)}</a></p>
@@ -608,8 +608,8 @@ async function stampStatic(file, path) {
     });
   }
   if (file === "faq.html") {
-    // FAQ answers are the <details><summary>Q</summary><p>A</p>… blocks on the page, so the markup can't drift from the text.
-    const qa = [...html.matchAll(/<details[^>]*>\s*<summary>([\s\S]*?)<\/summary>([\s\S]*?)<\/details>/g)]
+    // FAQ answers are the <details><summary>Q</summary><p>A</p>… blocks on the page, so the markup can't drift from the text. The masthead Data dropdown is also a <details>; skip it.
+    const qa = [...html.matchAll(/<details(?![^>]*datamenu)[^>]*>\s*<summary>([\s\S]*?)<\/summary>([\s\S]*?)<\/details>/g)]
       .map(([, q, a]) => ({ "@type": "Question", name: unhtml(q), acceptedAnswer: { "@type": "Answer", text: unhtml(a) } }));
     if (qa.length) blocks.push({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: qa });
   }
