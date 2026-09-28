@@ -152,6 +152,8 @@ ${ld({ "@context": "https://schema.org", "@type": "Blog", name: `${SITE_NAME} Bl
 // ---------- new filings ----------
 // Plans accepted for filing in the last three months (the 10 newest if none), one row each.
 const KIND = { NEW: "new construction", REHAB: "rehab", CONVERSION: "conversion" };
+// Skip AG rows that aren't a real offering ("*Resubmit*", "(8/3/89 Filed)", no units).
+const realPlan = (p) => !/resubmit|withdrawn|\(\s*\d{1,2}\/\d{1,2}\/\d{2,4}|\bfiled\s*\)/i.test(p.name || "") && (p.units_residential || p.units_total);
 // Borough outlines, the same projected paths the home page map draws (site_assets.boroughs_svg).
 const GEO = JSON.parse((await all("site_assets?key=eq.boroughs_svg&select=value"))[0].value);
 const BORO_LABELS = { Manhattan: [-73.972, 40.79], Brooklyn: [-73.95, 40.645], Queens: [-73.82, 40.705], Bronx: [-73.865, 40.85], "Staten Island": [-74.15, 40.585] };
@@ -171,8 +173,7 @@ function plansMap(list, label) {
 function filingsPage() {
   const P = "";
   const url = `${SITE_URL}/new-condo-filings.html`;
-  // Skip AG rows that aren't a real offering ("*Resubmit*", "(8/3/89 Filed)", no units).
-  const real = (p) => !/resubmit|withdrawn|\(\s*\d{1,2}\/\d{1,2}\/\d{2,4}|\bfiled\s*\)/i.test(p.name || "") && (p.units_residential || p.units_total);
+  const real = realPlan;
   const since = new Date(TODAY + "T12:00:00Z"); since.setUTCMonth(since.getUTCMonth() - 3);
   const SINCE = since.toISOString().slice(0, 10);
   const newest = accepted.filter(NYC).filter(real).sort((a, b) => b.accepted_date.localeCompare(a.accepted_date) || b.plan_id.localeCompare(a.plan_id));
@@ -219,19 +220,24 @@ ${hoverScript}
 // ---------- time to approval ----------
 // Days from submission to acceptance for filing. The AG's plan row carries "Submitted Date", but on any plan with
 // amendments that row is amendment 1's and the date is when amendment 1 was submitted, usually after acceptance.
-// Only rows with a blank "Amendment No" hold the original submission, so the page measures those plans alone.
-const DAY_MS = 864e5;
-const timed = accepted.filter(NYC)
+// Only rows with a blank "Amendment No" hold the original submission, so the page measures those plans alone,
+// and only the RECENT_N most recently accepted of them, since review times decades ago say little about today's.
+// Rows that aren't a real offering ("*Resubmit*") and plans with no residential units are skipped: CD160125, an
+// all-commercial plan submitted in 2016 and accepted in 2026, would otherwise add two months to the average.
+const DAY_MS = 864e5, RECENT_N = 50;
+const timed = accepted.filter(NYC).filter(realPlan).filter((p) => p.units_residential > 0)
   .filter((p) => p.submitted_date && !String(p.meta?.plan?.["Amendment No"] ?? "").trim())
   .map((p) => ({ ...p, days: Math.round((Date.parse(p.accepted_date) - Date.parse(p.submitted_date)) / DAY_MS) }))
-  .filter((p) => p.days >= 0);
+  .filter((p) => p.days >= 0)
+  .sort((a, b) => b.accepted_date.localeCompare(a.accepted_date) || b.plan_id.localeCompare(a.plan_id))
+  .slice(0, RECENT_N);
 const avgOf = (ds) => Math.round(ds.reduce((s, d) => s + d, 0) / ds.length);
+const medianOf = (ds) => { const s = [...ds].sort((a, b) => a - b), m = s.length >> 1; return s.length % 2 ? s[m] : Math.round((s[m - 1] + s[m]) / 2); };
 const mo = (d) => (d / (365.25 / 12)).toFixed(1).replace(/\.0$/, "");
 // Months past 30 days, days up to that.
 const dur = (d) => d > 30 ? `${mo(d)} month${mo(d) === "1" ? "" : "s"}` : plural(d, "day");
 const SIZES = [[1, 10, "1–10"], [11, 25, "11–25"], [26, 50, "26–50"], [51, Infinity, "51 or more"]];
 const BINS = [[0, 90, "Under 3 months"], [90, 180, "3–6 months"], [180, 270, "6–9 months"], [270, 365, "9–12 months"], [365, 548, "12–18 months"], [548, 730, "18–24 months"], [730, Infinity, "Over 2 years"]];
-const ERAS = [["2000", "2004"], ["2005", "2009"], ["2010", "2014"], ["2015", "2019"], ["2020", thisYear]];
 const FAST = `<svg class="ic" viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>`;
 const SLOW = `<svg class="ic" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2h12M6 22h12M7 2c0 6 10 6 10 10S7 16 7 22M17 2c0 6-10 6-10 10s10 4 10 10"/></svg>`;
 
@@ -239,11 +245,12 @@ function approvalPage() {
   const P = "";
   const url = `${SITE_URL}/time-to-approval.html`;
   const days = timed.map((p) => p.days);
-  const mean = avgOf(days), fastest = Math.min(...days), slowest = Math.max(...days);
+  const mean = avgOf(days), median = medianOf(days), fastest = Math.min(...days), slowest = Math.max(...days);
+  const oldest = timed.at(-1).accepted_date;
   const title = "How Long Does AG Approval Take for an NYC Condo Offering Plan? | The Condo Book Project";
-  const description = `How long the NY Attorney General takes to accept an NYC condo offering plan for filing: ${dur(mean)} on average, measured on ${timed.length} plans.`;
+  const description = `How long the NY Attorney General takes to accept an NYC condo offering plan for filing: ${dur(mean)} on average across the ${timed.length} most recent plans that can be timed.`;
 
-  // By building size (residential units on the AG record). Plans listing no residential units are left out.
+  // By building size (residential units on the AG record).
   const sizes = SIZES.map(([a, b, label]) => {
     const ds = timed.filter((p) => p.units_residential >= a && p.units_residential <= b).map((p) => p.days);
     return ds.length ? { label, n: ds.length, min: Math.min(...ds), mean: avgOf(ds), max: Math.max(...ds) } : null;
@@ -255,20 +262,20 @@ function approvalPage() {
   const bins = BINS.map(([a, b, label]) => [label, days.filter((d) => d >= a && d < b).length]);
   const binMax = Math.max(...bins.map((b) => b[1]));
   const histogram = `<figure class="chart">
-    <div class="cols" role="img" aria-label="${esc(bins.map(([l, c]) => `${l}: ${c} plans`).join("; "))}">${bins.map(([label, c]) =>
+    <div class="cols" role="img" aria-label="${esc(bins.map(([l, c]) => `${l}: ${plural(c, "plan")}`).join("; "))}">${bins.map(([label, c]) =>
       `<div class="col" title="${esc(label)}: ${plural(c, "plan")} (${Math.round(100 * c / timed.length)}%)"><span class="v">${n(c)}</span><span class="b" style="height:${Math.max(1, Math.round(100 * c / binMax))}%"></span><span class="l">${esc(label)}</span></div>`).join("")}</div>
   </figure>`;
 
-  // By era: the average, with a bar relative to the longest.
-  const eras = ERAS.map(([a, b]) => {
-    const ds = timed.filter((p) => p.accepted_date.slice(0, 4) >= a && p.accepted_date.slice(0, 4) <= b).map((p) => p.days);
-    return ds.length ? { label: `${a}–${b}`, n: ds.length, mean: avgOf(ds) } : null;
-  }).filter(Boolean);
-  const eraMax = Math.max(...eras.map((e) => e.mean));
-  const eraTable = `<div class="tscroll"><table class="bars"><thead><tr><th>Year accepted</th><th>Average</th><th aria-hidden="true"></th></tr></thead><tbody>${eras.map((e) =>
-    `<tr title="${plural(e.n, "plan")}"><td>${esc(e.label)}</td><td>${dur(e.mean)}</td><td class="bar" aria-hidden="true"><span style="width:${Math.max(1, Math.round(100 * e.mean / eraMax))}%"></span></td></tr>`).join("")}</tbody></table></div>`;
+  // By year accepted: the average, with a bar relative to the longest.
+  const years = [...new Set(timed.map((p) => p.accepted_date.slice(0, 4)))].sort().reverse().map((y) => {
+    const ds = timed.filter((p) => p.accepted_date.startsWith(y)).map((p) => p.days);
+    return { label: y === thisYear ? `${y} (to date)` : y, n: ds.length, mean: avgOf(ds) };
+  });
+  const yearMax = Math.max(...years.map((e) => e.mean));
+  const yearTable = `<div class="tscroll"><table class="bars"><thead><tr><th>Year accepted</th><th>Average</th><th aria-hidden="true"></th></tr></thead><tbody>${years.map((e) =>
+    `<tr title="${plural(e.n, "plan")}"><td>${esc(e.label)}</td><td>${dur(e.mean)}</td><td class="bar" aria-hidden="true"><span style="width:${Math.max(1, Math.round(100 * e.mean / yearMax))}%"></span></td></tr>`).join("")}</tbody></table></div>`;
 
-  const recent = [...timed].sort((a, b) => b.accepted_date.localeCompare(a.accepted_date) || b.plan_id.localeCompare(a.plan_id)).slice(0, 10);
+  const recent = timed;
   const recentTable = `<div class="tscroll"><table><thead><tr><th>CD number</th><th>Condominium</th><th>Submitted</th><th>Accepted</th><th>Time</th></tr></thead><tbody>${recent.map((p) =>
     `<tr><td>${esc(p.plan_id)}</td><td><a href="buildings/${esc(fileFor(p))}">${esc(tc(p.name))}</a></td><td>${esc(day(p.submitted_date))}</td><td>${esc(day(p.accepted_date))}</td><td>${dur(p.days)}</td></tr>`).join("")}</tbody></table></div>`;
 
@@ -280,10 +287,11 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
 <main class="post approval split">
   <div class="aside">
   <h1>How Long Does Condo Offering Plan Approval Take?</h1>
-  <p class="anote">The time from when a sponsor submits a New York City condominium offering plan to when the Attorney General accepts it for filing. Only the ${n(timed.length)} plans never amended can be timed from the AG's records, so read the figures as a guide.</p>
+  <p class="anote">The time from when a sponsor submits a New York City condominium offering plan to when the Attorney General accepts it for filing, across the ${n(timed.length)} most recent plans accepted since ${esc(day(oldest))}. Only plans not yet amended can be timed from the AG's records, so read the figures as a guide.</p>
   <div class="hero-stat">
     <p class="hs-k">Average time to approval</p>
     <p class="hs-v">${mo(mean)} <span>month${mo(mean) === "1" ? "" : "s"}</span></p>
+    <p class="hs-s">Median ${dur(median)}: half the plans were accepted faster.</p>
   </div>
   <dl class="glance">
     <div><dt>${FAST} Fastest</dt><dd>${dur(fastest)}</dd></div>
@@ -298,9 +306,9 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
   ${histogram}
 
   <h2>By Year Accepted</h2>
-  ${eraTable}
+  ${yearTable}
 
-  <h2>Most Recent Plans Measured</h2>
+  <h2>The ${n(timed.length)} Plans Measured</h2>
   ${recentTable}
 
   ${cta(P)}
