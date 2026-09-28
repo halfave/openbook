@@ -214,9 +214,11 @@ table.dm .sub{display:block;font-size:12.5px;color:var(--muted)}
 /* ---------- managing agents directory ---------- */
 .agents .afind{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:18px 0 6px;font-size:14px;color:var(--muted)}
 .agents .afind input{flex:1 1 240px;max-width:360px;font:15px var(--sans);color:var(--ink);background:var(--panel);border:1px solid var(--rule-strong);border-radius:999px;padding:8px 14px}
-.agents-list{display:grid;gap:0}
+.agents-list{display:grid;gap:0;border-bottom:1px solid var(--rule)}
 details.agent{border-top:1px solid var(--rule);padding:0}
-details.agent:last-child{border-bottom:1px solid var(--rule)}
+.split .anote{font-size:14px;line-height:1.55;color:var(--muted);margin:14px 0 0}
+.agents .amore{margin:16px 0 0}
+.agents .amore .btn{cursor:pointer;border-radius:999px;padding:8px 16px}
 details.agent summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:10px 0}
 details.agent summary::-webkit-details-marker{display:none}
 details.agent summary::before{content:"+";font:400 18px/1 var(--sans);color:var(--muted);width:14px;flex:none}
@@ -230,7 +232,9 @@ details.agent .rank svg{vertical-align:middle}
 details.agent .rank.r1{color:#C9A227}
 details.agent .rank.r2{color:#9AA3AD}
 details.agent .rank.r3{color:#B87333}
-details.agent .fee{display:inline-block;min-width:15ch;text-align:right;color:var(--ink)}
+details.agent .fee,details.agent .yrs{display:inline-block;margin-left:clamp(20px,4vw,48px);text-align:right;color:var(--ink)}
+details.agent .fee{min-width:14ch}
+details.agent .yrs{min-width:9ch}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* ---------- directory pages: intro and search in a sticky left column, list on the right ---------- */
@@ -246,20 +250,29 @@ main.post.split > *{max-width:none}
   .split > .amain{padding-top:8px}
   .split > .amain > h2:first-child{margin-top:0}
   main.post.filings.split{max-width:1520px;grid-template-columns:minmax(220px,270px) minmax(0,1fr)}
-  .filings.split .ftable td:nth-child(n+7){min-width:140px}
+  .filings.split .ftable td:nth-child(n+6){min-width:140px}
   .split > .aside .glance{grid-template-columns:1fr 1fr;margin-top:22px}
   .approval.split > .aside{position:static}
   .split > .amain > article > p:first-child{margin-top:0}
 }
 .split > .amain > .tscroll{max-width:none}
 
+/* ---------- new filings map ---------- */
+.fmap{margin:22px 0 0;max-width:420px}
+.fmap svg{display:block;width:100%;height:auto}
+.fmap .boro{fill:var(--land);stroke:var(--land-edge);stroke-width:1;vector-effect:non-scaling-stroke}
+.fmap .boro-label{font:italic 400 40px var(--display);fill:var(--faint);pointer-events:none}
+.fmap .dot{fill:var(--accent);stroke:var(--panel);stroke-width:1.5;vector-effect:non-scaling-stroke;cursor:pointer}
+.fmap a.on .dot,.fmap a:hover .dot,.fmap a:focus .dot{fill:var(--hit);r:21}
+.ftable tbody tr.on,.ftable tbody tr:target{background:var(--accent-soft)}
+
 /* ---------- new filings table ---------- */
 main.post.filings > .tscroll{max-width:1180px}
 .ftable{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
 .ftable thead th{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);vertical-align:bottom}
 .ftable td{vertical-align:top;white-space:normal;min-width:90px}
-.ftable td:nth-child(2){min-width:220px}
-.ftable td:first-child,.ftable td.nowrap,.ftable .num{white-space:nowrap;min-width:0}
+.ftable td:nth-child(1){min-width:220px}
+.ftable td.nowrap,.ftable .num{white-space:nowrap;min-width:0}
 .ftable .num{text-align:right;padding-right:16px}
 .ftable .sub{display:block;font-size:13px;color:var(--muted)}
 
