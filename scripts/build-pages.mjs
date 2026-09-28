@@ -1,6 +1,6 @@
 // Builds the pages that aren't one-per-plan, in a few seconds:
 //   - blog/*.html from content/blog/*.html (front matter + body), and blog/index.html
-//   - new-condo-filings.html, the 10 newest NYC plans accepted for filing
+//   - new-condo-filings.html, the 10 newest new construction NYC plans accepted for filing
 //   - the SEO block in the hand-written pages (index, about, faq, terms, privacy, disclaimers)
 //   - sitemap-pages.xml, sitemap.xml (an index of it and sitemap-buildings.xml) and robots.txt
 //
@@ -123,7 +123,7 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
   ${cta(P)}
   <h2>More from the Blog</h2>
   <ul class="dir">${related.map((q) => `<li><a href="${esc(q.slug)}.html">${esc(q.h1)}</a><span>${esc(q.description)}</span></li>`).join("")}
-    <li><a href="${P}new-condo-filings.html">New NYC Condo Offering Plans: The 10 Latest Filings</a><span>The newest plans accepted for filing by the Attorney General, with CD numbers.</span></li></ul>
+    <li><a href="${P}new-condo-filings.html">New Construction NYC Condos: The 10 Latest Offering Plans</a><span>The newest new construction plans accepted for filing by the Attorney General, with CD numbers.</span></li></ul>
 </main>
 ` + FOOT(P);
 }
@@ -141,7 +141,7 @@ ${ld({ "@context": "https://schema.org", "@type": "Blog", name: `${SITE_NAME} Bl
   <h1>Blog</h1>
   <p class="lede">How to find, search and read the condo offering plans ("condo books") that sponsors file with the New York State Attorney General.</p>
   <ul class="dir">${posts.map((q) => `<li><a href="${esc(q.slug)}.html">${esc(q.h1)}</a><span>${esc(q.description)}</span></li>`).join("")}
-    <li><a href="${P}new-condo-filings.html">New NYC Condo Offering Plans: The 10 Latest Filings</a><span>Updated with every rebuild from the Attorney General's records.</span></li></ul>
+    <li><a href="${P}new-condo-filings.html">New Construction NYC Condos: The 10 Latest Offering Plans</a><span>Updated with every rebuild from the Attorney General's records.</span></li></ul>
   ${cta(P)}
 </main>
 ` + FOOT(P);
@@ -154,57 +154,51 @@ function filingsPage() {
   const url = `${SITE_URL}/new-condo-filings.html`;
   // Skip AG rows that aren't a real offering ("*Resubmit*", "(8/3/89 Filed)", no units).
   const real = (p) => !/resubmit|withdrawn|\(\s*\d{1,2}\/\d{1,2}\/\d{2,4}|\bfiled\s*\)/i.test(p.name || "") && (p.units_residential || p.units_total);
-  const latest = accepted.filter(NYC).filter(real).sort((a, b) => b.accepted_date.localeCompare(a.accepted_date) || b.plan_id.localeCompare(a.plan_id)).slice(0, 10);
-  const title = `New NYC Condo Filings: 10 Latest Offering Plans & CD Numbers | The Condo Book Project`;
+  // New construction only (the AG record's construction type); rehabs and conversions are left out.
+  const latest = accepted.filter(NYC).filter(real).filter((p) => p.construction === "NEW")
+    .sort((a, b) => b.accepted_date.localeCompare(a.accepted_date) || b.plan_id.localeCompare(a.plan_id)).slice(0, 10);
+  const title = `New Construction NYC Condos: 10 Latest Offering Plans & CD Numbers | The Condo Book Project`;
   const units = latest.reduce((s, p) => s + (p.units_residential || 0), 0);
   const boros = count(latest, (p) => boro(p.borough));
   const boroText = [...boros].sort((a, b) => b[1] - a[1]).map(([b, c]) => `${c} in ${b}`).join(", ");
-  const description = `The 10 newest NYC condominium offering plans accepted for filing by the NY Attorney General, with CD plan numbers, addresses, sponsors, unit counts and total offering prices. Latest: ${tc(latest[0].name)}, ${latest[0].plan_id}.`;
+  const description = `The 10 newest new construction NYC condominium offering plans accepted for filing by the NY Attorney General, with CD plan numbers, addresses, sponsors, unit counts and total offering prices. Latest: ${tc(latest[0].name)}, ${latest[0].plan_id}.`;
 
   const price = (p) => money(p.meta?.plan?.["Current Price"]) || money(p.meta?.plan?.["Initial Price"]);
-  const row = (p) => `<tr><td>${esc(p.plan_id)}</td><td><a href="buildings/${esc(fileFor(p))}">${esc(tc(p.name))}</a></td><td>${esc(tc(p.address))}</td><td>${esc(boro(p.borough))}</td><td>${esc(day(p.accepted_date))}</td><td>${p.units_residential ?? "—"}</td></tr>`;
-  const entry = (p, i) => {
-    const name = tc(p.name), addr = tc(p.address), b = boro(p.borough), pr = price(p);
-    const bits = [];
-    if (p.units_residential != null) bits.push(plural(p.units_residential, "residential unit"));
-    if (p.units_parking) bits.push(plural(p.units_parking, "parking unit"));
-    if (p.units_commercial) bits.push(plural(p.units_commercial, "commercial unit"));
-    let s = `${name} is a ${KIND[p.construction] ? KIND[p.construction] + " " : ""}condominium at ${addr}, ${b}. The Attorney General accepted its offering plan, ${p.plan_id}, for filing on ${day(p.accepted_date)}.`;
-    if (bits.length) s += ` The AG record lists ${bits.join(", ")}.`;
-    if (p.sponsor) s += ` The sponsor is ${tc(p.sponsor)}.`;
-    if (pr) s += ` The total offering price on the record is ${fmtMoney(pr)}, the sum of all units at the plan's prices.`;
-    return `<section class="filing" id="${esc(p.plan_id.toLowerCase())}">
-    <h3><span class="cd">${esc(p.plan_id)}</span> ${i + 1}. ${esc(name)}</h3>
-    <p class="addr">${esc(addr)} · ${esc(b)}, NY${p.zip ? " " + esc(p.zip) : ""}</p>
-    <p>${esc(s)}</p>
-    <p class="acts"><a class="btn" href="buildings/${esc(fileFor(p))}">${esc(name)} on ${SITE_NAME}</a><a class="btn" href="${esc(AG + encodeURIComponent(p.plan_id))}" rel="noopener">AG filing record for ${esc(p.plan_id)} ↗</a></p>
-  </section>`;
+  // One row per plan with everything the AG record says about it (this used to be a table plus a section per plan).
+  const row = (p) => {
+    const pr = price(p);
+    const other = [p.units_commercial && `${p.units_commercial} commercial`, p.units_parking && `${p.units_parking} parking`].filter(Boolean).join(" · ");
+    return `<tr id="${esc(p.plan_id.toLowerCase())}"><td class="m">${esc(p.plan_id)}</td>` +
+      `<td><a href="buildings/${esc(fileFor(p))}">${esc(tc(p.name))}</a><span class="sub">${esc(tc(p.address))} · ${esc(boro(p.borough))}, NY${p.zip ? " " + esc(p.zip) : ""}</span></td>` +
+      `<td class="nw">${esc(day(p.accepted_date))}</td>` +
+      `<td class="n">${p.units_residential ?? "—"}${other ? `<span class="sub">${esc(other)}</span>` : ""}</td>` +
+      `<td>${p.sponsor ? esc(tc(p.sponsor)) : "—"}</td>` +
+      `<td class="n">${pr ? esc(fmtMoney(pr)) : "—"}</td>` +
+      `<td class="nw"><a href="${esc(AG + encodeURIComponent(p.plan_id))}" rel="noopener" aria-label="AG filing record for ${esc(p.plan_id)}">AG record ↗</a></td></tr>`;
   };
 
   return HEAD(P, { title, description, canonical: url }) + `
-${ld({ "@context": "https://schema.org", "@type": "ItemList", name: "Newest NYC condominium offering plans accepted for filing", url, numberOfItems: latest.length,
+${ld({ "@context": "https://schema.org", "@type": "ItemList", name: "Newest new construction NYC condominium offering plans accepted for filing", url, numberOfItems: latest.length,
     itemListOrder: "https://schema.org/ItemListOrderDescending",
     itemListElement: latest.map((p, i) => ({ "@type": "ListItem", position: i + 1, url: `${SITE_URL}/buildings/${fileFor(p)}`, name: `${tc(p.name)} (${p.plan_id})` })) })}
 ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
     { "@type": "ListItem", position: 1, name: SITE_NAME, item: `${SITE_URL}/` },
-    { "@type": "ListItem", position: 2, name: "New condo filings", item: url },
+    { "@type": "ListItem", position: 2, name: "New construction", item: url },
   ] })}
 <main class="post">
   <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">${SITE_NAME}</a> › <a href="buildings/index.html">Buildings</a></nav>
-  <h1>New NYC Condo Offering Plans: The 10 Latest Filings</h1>
+  <h1>New Construction NYC Condos: The 10 Latest Offering Plans</h1>
   <p class="meta">Updated <time datetime="${TODAY}">${esc(day(TODAY))}</time> · Source: NY Attorney General</p>
-  <p class="lede">The ten newest New York City condominium offering plans accepted for filing by the New York State Attorney General, with each plan's CD number, address, sponsor and unit count.</p>
+  <p class="lede">The ten newest New York City new construction condominium offering plans accepted for filing by the New York State Attorney General, with each plan's CD number, address, sponsor and unit count.</p>
   <p>These ${latest.length} plans were accepted between ${esc(day(latest[latest.length - 1].accepted_date))} and ${esc(day(latest[0].accepted_date))}: ${esc(boroText)}. Together they list ${plural(units, "residential unit")}. Each CD number is the Attorney General's plan ID; use it to pull up the filing and its documents. <a href="blog/what-is-a-cd-number.html">What a CD number means →</a></p>
 
-  <h2>At a Glance</h2>
-  <div class="tscroll"><table><thead><tr><th>CD number</th><th>Condominium</th><th>Address</th><th>Borough</th><th>Accepted</th><th>Units</th></tr></thead><tbody>${latest.map(row).join("")}</tbody></table></div>
-
   <h2>The Filings</h2>
-  ${latest.map(entry).join("\n  ")}
+  <div class="tscroll"><table class="filings"><thead><tr><th>CD number</th><th>Condominium</th><th>Accepted</th><th class="n">Units</th><th>Sponsor</th><th class="n">Total offering price</th><th>Filing</th></tr></thead><tbody>${latest.map(row).join("")}</tbody></table></div>
+  <p class="src">Units are residential; commercial and parking units are listed under them. The total offering price is the sum of every unit at the plan's prices as recorded by the AG, not a sale price.</p>
 
   <h2>About This List</h2>
   <p>"Accepted for filing" is the date the Attorney General's Real Estate Finance Bureau accepted the sponsor's offering plan. It is not an endorsement of the offering, and the plan's documents may not be posted on the AG's site yet. A sponsor generally can't sell units under a plan until it has been accepted for filing, and later changes arrive as numbered amendments.</p>
-  <p>The list is rebuilt from the Attorney General's plan records and shows plans in the five boroughs only. Unit counts, sponsors and total offering prices are as recorded by the AG. See <a href="blog/how-to-search-ny-attorney-general-offering-plans.html">how to search the Attorney General's offering plan database</a>, or browse <a href="buildings/index.html">every condo offering plan by borough</a>.</p>
+  <p>The list is rebuilt from the Attorney General's plan records and shows new construction plans in the five boroughs only; rehabs and conversions are left out. Unit counts, sponsors and total offering prices are as recorded by the AG. See <a href="blog/how-to-search-ny-attorney-general-offering-plans.html">how to search the Attorney General's offering plan database</a>, or browse <a href="buildings/index.html">every condo offering plan by borough</a>.</p>
   ${cta(P)}
 </main>
 ` + FOOT(P);
