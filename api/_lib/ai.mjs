@@ -141,7 +141,7 @@ export function validateSpec(raw) {
 export const tsq = (terms) => terms.join(" OR ");
 export const topicQuery = (spec) => tsq(spec.topics.flatMap((t) => t.terms)) || null;
 
-// Arguments for search_plans_v3 (the same RPC the browser calls).
+// Arguments for search_plans_v2 (the same RPC the browser calls).
 export function rpcArgs(spec, { withTopics = true, limit = 60 } = {}) {
   return {
     q: withTopics ? topicQuery(spec) : null,
@@ -150,7 +150,7 @@ export function rpcArgs(spec, { withTopics = true, limit = 60 } = {}) {
     p_min_parking: spec.min_parking, p_max_parking: spec.max_parking,
     p_min_commercial: spec.min_commercial, p_min_storage: spec.min_storage,
     p_accepted_from: spec.accepted_from, p_accepted_to: spec.accepted_to,
-    p_construction: spec.construction, p_status: spec.status,
+    p_construction: spec.construction ? [spec.construction] : null, p_status: spec.status ? [spec.status] : null,
     p_sponsor: spec.sponsor, p_counsel: spec.counsel, p_limit: limit,
   };
 }
