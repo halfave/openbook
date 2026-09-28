@@ -257,6 +257,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
   <nav aria-label="Site">
     <a href="index.html">Search</a>
     <a href="buildings/index.html">Buildings</a>
+    <a href="managing-agents.html">Managing agents</a>
     <a href="new-condo-filings.html">New filings</a>
     <a href="blog/index.html">Guides</a>
     <a href="about.html">About</a>
@@ -635,6 +636,17 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
     const NUM = "(\\d{1,4}|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|fifteen|twenty|thirty|forty|fifty|hundred)";
     const cut = (re) => { s = s.replace(re, " "); };
 
+    // managing agent: "managed by AKAM", "managing agent FirstService in Brooklyn", "which condos does MRE manage"
+    // (not "who is the managing agent for 701 Prospect Place", which asks about one building)
+    const mgr = s.match(/\b(?:managed by|managing agent(?: is)?|management company(?: is)?)\s+(?!(?:for|of|at|in|on|the building|is)\b)([a-z0-9&.,'\- ]+?)(?=\s+(?:in|with|and|that|which|under|over|since|from|near|condos?|buildings?)\b|[?!]|\s*$)/)
+      || s.match(/\b(?:which|what) (?:condos?|buildings?|plans?) (?:does|do) ([a-z0-9&.,'\- ]+?) manage\b/);
+    if (mgr && mgr[1].trim().replace(/[.,]+$/, "").length >= 2) {
+      out.manager = mgr[1].trim().replace(/[.,]+$/, "");
+      chip("manager", `Managing agent: ${titleCase(out.manager)}`);
+      out.notes.push("Managing agent as named in each plan's first-year management agreement. Only plans with searchable pages can match.");
+      cut(mgr[0]);
+    }
+
     // which result view fits the question, and which document section to put first
     if (/\bfloor ?plans?\b|\bdrawings?\b/.test(s)) { out.view = "documents"; out.focus = "floor_plans"; }
     else if (/\bschedule a\b/.test(s)) { out.view = "documents"; out.focus = "schedule_a"; }
@@ -643,7 +655,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
     else if (/\bdeclaration\b/.test(s)) { out.view = "documents"; out.focus = "declaration"; }
     else if (/\bmanagement agreement\b/.test(s)) { out.view = "documents"; out.focus = "management_agreement"; }
     if (/\b(pric(e|es|ing)|compare|comparison|comps?|sell-?out)\b/.test(s)) { out.view = "compare"; out.notes.push("Pricing shows the AG record’s total offering prices. Unit prices and $/sf from Schedule A are not extracted yet."); cut(/\b(pric(e|es|ing)|compare|comparison|comps?|sell-?out)\b/g); }
-    else if (!out.view && /\b(managing agent|architect|selling agent|attorneys?|counsel|engineer|contractor|project teams?|team)\b/.test(s)) out.view = "passages";
+    else if (!out.view && !out.manager && /\b(managing agent|architect|selling agent|attorneys?|counsel|engineer|contractor|project teams?|team)\b/.test(s)) out.view = "passages";
 
     // plan ID, e.g. CD240334
     let m = s.match(/\b([a-z]{2}\d{6})\b/);
@@ -762,7 +774,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
       P.matchNote = notes.join(" ") || null;
       return hits;
     }
-    if (P.zips && !P.q) {
+    if (P.zips && !P.q && !P.manager) {
       const f = [`zip=in.(${P.zips.join(",")})`];
       if (P.minUnits != null) f.push(`units_residential=gte.${P.minUnits}`);
       if (P.maxUnits != null) f.push(`units_residential=lte.${P.maxUnits}`);
@@ -770,6 +782,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
       return recordRows(f.join("&"));
     }
     const args = { q: P.q || null, p_borough: P.borough, p_min_units: P.minUnits, p_max_units: P.maxUnits, p_min_parking: P.minParking, p_limit: P.zips ? 400 : 60 };
+    if (P.manager) args.p_managing_agent = P.manager;
     const words = (P.q || "").split(/\s+/).filter(Boolean);
     const quoted = /^"[^"]+"$/.test(P.q || "");
     const phraseable = words.length >= 2 && !/"|\bOR\b/.test(P.q);
@@ -819,7 +832,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
     const text = $("q").value.trim() || typer.current(); // an empty search runs the example being typed
     $("q").value = text;
     const P = parseQuestion(text);
-    if (!P.q && !P.borough && !P.zips && P.minUnits == null && P.maxUnits == null && P.minParking == null && !P.planId && !P.address) {
+    if (!P.q && !P.borough && !P.zips && P.minUnits == null && P.maxUnits == null && P.minParking == null && !P.planId && !P.address && !P.manager) {
       P.q = text; P.chips.unshift({ k: "q", label: `Text: ${text}` });
     }
     P.text = text; P.via = via;
@@ -848,7 +861,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
     const b = e.target.closest("[data-rm]"); if (!b || !current) return;
     const P = { ...current, chips: current.chips.filter((c) => c.k !== b.dataset.rm) };
     ({ q: () => { P.q = ""; }, area: () => { P.borough = null; P.zips = null; }, units: () => { P.minUnits = null; P.maxUnits = null; },
-      parking: () => { P.minParking = null; P.maxParking = null; }, planId: () => { P.planId = null; }, address: () => { P.address = null; },
+      parking: () => { P.minParking = null; P.maxParking = null; }, planId: () => { P.planId = null; }, address: () => { P.address = null; }, manager: () => { P.manager = null; },
       dates: () => { P.from = null; P.to = null; }, construction: () => { P.construction = null; }, status: () => { P.status = null; },
       sponsor: () => { P.sponsor = null; }, counsel: () => { P.counsel = null; }, commercial: () => { P.minCommercial = null; }, storage: () => { P.minStorage = null; } })[b.dataset.rm]?.();
     P.aiAnswer = null; P.aiPending = false;
@@ -1088,7 +1101,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
   // nothing was found, or the question is analytic. The server holds every AI search under 5 cents.
   const ANALYTIC = /\b(which|how many|average|avg|mean|largest|biggest|smallest|most|fewest|compare)\b/;
   function wantsAI(P, text) {
-    if (P.planId || P.address) return false;
+    if (P.planId || P.address || P.manager) return false; // the managing-agent filter answers these without AI
     if (ANALYTIC.test(text.toLowerCase())) return true;
     const left = (P.q || "").replace(/"[^"]*"/g, " ").split(/\s+/).filter((w) => w && w !== "OR");
     return left.length >= 2;

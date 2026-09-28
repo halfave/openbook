@@ -106,6 +106,7 @@ export const MENU = (p) => `<details class="menu" id="menu">
   <nav aria-label="Site">
     <a href="${p}index.html">Search</a>
     <a href="${p}buildings/index.html">Buildings</a>
+    <a href="${p}managing-agents.html">Managing agents</a>
     <a href="${p}new-condo-filings.html">New filings</a>
     <a href="${p}blog/index.html">Guides</a>
     <a href="${p}about.html">About</a>
