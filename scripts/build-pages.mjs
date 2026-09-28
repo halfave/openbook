@@ -382,12 +382,11 @@ function agentsPage() {
   const namedPlans = groups.reduce((s, g) => s + g.plans.length, 0);
   const title = `NYC Condo Property Managers: Who Manages Which Buildings | The Condo Book Project`;
   const description = `${n(groups.length)} property managers named in ${n(namedPlans)} NYC condominium offering plans, with the buildings each one manages and the first-year management fee per unit. Top: ${groups.slice(0, 3).map((g) => `${g.name} (${g.plans.length})`).join(", ")}.`;
-  const search = (g) => `${P}index.html?q=${encodeURIComponent("managed by " + g.query)}`;
   const bldg = (p) => `<li><a href="buildings/${esc(fileFor(p))}">${esc(tc(p.name))}</a><span>${esc(tc(p.address))} · ${esc(boro(p.borough))}${p.units_residential != null ? ` · ${p.units_residential} units` : ""}${p.accepted_date ? ` · ${p.accepted_date.slice(0, 4)}` : ""}${feeText(p)}</span></li>`;
   const card = (g, i) => `<details class="agent" id="${esc(g.slug)}" data-name="${esc(g.name.toLowerCase())}"${more(i)}>
     <summary>${rank(i)}<span class="an">${g.plans.length >= PROFILE_MIN ? `<a href="managing-agents/${esc(g.slug)}.html">${esc(g.name)}</a>` : esc(g.name)}</span><span class="ac">${plural(g.plans.length, "building")}${g.fee != null ? `<span class="fee" title="Median first-year management fee per residential unit, from Schedule B">${perYear(g.fee)}/unit/yr</span>` : `<span class="fee" aria-hidden="true"></span>`}</span></summary>
     <ul class="dir">${g.plans.map(bldg).join("")}</ul>
-    <p class="acts">${g.plans.length >= PROFILE_MIN ? `<a class="btn primary" href="managing-agents/${esc(g.slug)}.html">${esc(g.name)} profile</a>` : ""}<a class="btn" href="${esc(search(g))}">Search buildings managed by ${esc(g.query)}</a></p>
+    ${g.plans.length >= PROFILE_MIN ? `<p class="acts"><a class="btn primary" href="managing-agents/${esc(g.slug)}.html">${esc(g.name)} profile</a></p>` : ""}
   </details>`;
   selfPlans.sort((a, b) => (b.p.accepted_date || "").localeCompare(a.p.accepted_date || ""));
   const selfRow = ({ p, as }) => `<li><a href="buildings/${esc(fileFor(p))}">${esc(tc(p.name))}</a><span>${esc(as)} · ${esc(boro(p.borough))}${p.units_residential != null ? ` · ${p.units_residential} units` : ""}${p.accepted_date ? ` · ${p.accepted_date.slice(0, 4)}` : ""}</span></li>`;
