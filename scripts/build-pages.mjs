@@ -203,11 +203,13 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
     { "@type": "ListItem", position: 1, name: SITE_NAME, item: `${SITE_URL}/` },
     { "@type": "ListItem", position: 2, name: "New construction", item: url },
   ] })}
-<main class="post filings">
+<main class="post filings split">
+  <div class="aside">
   <h1>New NYC Condo Offering Plans</h1>
   <p class="meta">Updated <time datetime="${TODAY}">${esc(day(TODAY))}</time> · Source: NY Attorney General</p>
   <p class="lede">Every New York City condominium offering plan the Attorney General accepted for filing ${recent.length ? `since ${esc(day(SINCE))}` : "most recently"}: ${plural(latest.length, "plan")} and ${plural(units, "residential unit")}, ${esc(boroText)}.</p>
-
+  </div>
+  <div class="amain">
   <div class="tscroll"><table class="ftable"><thead><tr><th>CD number</th><th>Condominium</th><th>Accepted</th><th class="num">Units</th><th class="num">Total sellout</th><th class="num">$/sf</th><th>Property manager</th><th>Attorney</th></tr></thead><tbody>${latest.map(row).join("")}</tbody></table></div>
   <p class="src">CD numbers link to the Attorney General's filing record. Total sellout is the offering price on the AG record, the sum of all units at the plan's prices. $/sf is from the plan's Schedule A where it has been read and checked against that total. Manager and attorney are as named in the plan; — means the plan's documents aren't searchable yet or don't say. <a href="blog/what-is-a-cd-number.html">What a CD number means →</a></p>
 
@@ -215,6 +217,7 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
   <p>"Accepted for filing" is the date the Attorney General's Real Estate Finance Bureau accepted the sponsor's offering plan. It is not an endorsement of the offering, and the plan's documents may not be posted on the AG's site yet. A sponsor generally can't sell units under a plan until it has been accepted for filing, and later changes arrive as numbered amendments.</p>
   <p>The list is rebuilt from the Attorney General's plan records and shows plans in the five boroughs only. See <a href="blog/how-to-search-ny-attorney-general-offering-plans.html">how to search the Attorney General's offering plan database</a>, or browse <a href="buildings/index.html">every condo offering plan by borough</a>. For how long review takes, see <a href="time-to-approval.html">time from submission to acceptance</a>.</p>
   ${cta(P)}
+  </div>
 </main>
 ` + FOOT(P);
 }
@@ -446,10 +449,13 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
     { "@type": "ListItem", position: 1, name: SITE_NAME, item: `${SITE_URL}/` },
     { "@type": "ListItem", position: 2, name: "Property managers", item: url },
   ] })}
-<main class="post agents">
+<main class="post agents split">
+  <div class="aside">
   <h1>NYC Condo Property Managers</h1>
   <p class="lede">The managing agent each offering plan names for the condominium's first year, and the management fee its Schedule B budget sets per unit. ${n(groups.length)} managers across ${n(namedPlans)} buildings.</p>
   <label class="afind"><span>Find a manager</span><input id="afind" type="search" placeholder="Type a name" autocomplete="off"></label>
+  </div>
+  <div class="amain">
   <h2>Most Buildings</h2>
   <div class="agents-list">${multi.map((g, i) => card(g, i)).join("\n")}</div>
   <h2>One Building Each</h2>
@@ -462,6 +468,7 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
   </details>` : ""}
   <p class="src">Named in the offering plan as filed; the board can change managers after the first year. The fee is the management line of the plan's Schedule B first-year budget divided by its residential units; a manager's figure is the median across its buildings with a readable budget. Plans whose pages aren't searchable yet, or that don't name a manager, aren't included.</p>
   ${cta(P)}
+  </div>
 </main>
 <script>
 (() => {
@@ -546,14 +553,18 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
     { "@type": "ListItem", position: 1, name: SITE_NAME, item: `${SITE_URL}/` },
     { "@type": "ListItem", position: 2, name: "Offering plan attorneys", item: url },
   ] })}
-<main class="post agents">
+<main class="post agents split">
+  <div class="aside">
   <h1>Top NYC Condo Offering Plan Attorneys</h1>
   <p class="meta">Updated <time datetime="${TODAY}">${esc(day(TODAY))}</time> · Source: NY Attorney General</p>
   <p class="lede">The ${top.length} law firms named most often as the sponsor's counsel on New York City condominium offering plans, ranked by plans filed, not by quality. ${n(withCounsel)} NYC plans name their counsel.</p>
   <label class="afind"><span>Find a firm</span><input id="afind" type="search" placeholder="Type a name" autocomplete="off"></label>
+  </div>
+  <div class="amain">
   <div class="agents-list">${top.map(card).join("\n")}</div>
   <p class="src">Counsel as recorded by the Attorney General when the plan was filed. Different spellings of one firm's name are counted together; a firm that changed its name may appear more than once.</p>
   ${cta(P)}
+  </div>
 </main>
 <script>
 (() => {

@@ -233,6 +233,23 @@ details.agent .rank.r3{color:#B87333}
 details.agent .fee{display:inline-block;min-width:15ch;text-align:right;color:var(--ink)}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
+/* ---------- directory pages: intro and search in a sticky left column, list on the right ---------- */
+main.post.split{max-width:1320px;padding-left:clamp(16px,3vw,40px);padding-right:clamp(16px,3vw,40px)}
+main.post.split > *{max-width:none}
+@media (min-width:1000px){
+  main.post.split{display:grid;grid-template-columns:minmax(260px,330px) minmax(0,1fr);gap:0 clamp(32px,4vw,64px);align-items:start}
+  .split > .aside{position:sticky;top:100px;padding-bottom:24px}
+  .split > .aside h1{font-size:clamp(32px,3vw,42px)}
+  .split > .aside .lede{font-size:16px;margin-bottom:0}
+  .split > .aside .afind{flex-direction:column;align-items:stretch;margin-top:22px}
+  .split > .aside .afind input{max-width:none;flex:none}
+  .split > .amain{padding-top:8px}
+  .split > .amain > h2:first-child{margin-top:0}
+  main.post.filings.split{max-width:1520px;grid-template-columns:minmax(220px,270px) minmax(0,1fr)}
+  .filings.split .ftable td:nth-child(n+7){min-width:140px}
+}
+.split > .amain > .tscroll{max-width:none}
+
 /* ---------- new filings table ---------- */
 main.post.filings > .tscroll{max-width:1180px}
 .ftable{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
