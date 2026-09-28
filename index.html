@@ -158,6 +158,17 @@ table.cmp .sub2{display:block;font:11px var(--mono);color:var(--muted)}
 
 .hero .notice{margin-top:12px}
 
+/* ---------- Top 10 box under the search bar (home only) ---------- */
+.top10{margin:28px auto 0;width:100%;max-width:560px;border:1px solid var(--rule);border-radius:10px;background:var(--panel);padding:14px 18px 6px}
+.top10 h2{margin:0 0 4px;font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.top10 a{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:9px 0;border-top:1px solid var(--rule);text-decoration:none;color:var(--ink)}
+.top10 a:first-of-type{border-top:0}
+.top10 a b{font:600 15px var(--sans)}
+.top10 a span{font-size:13px;color:var(--muted);text-align:right}
+.top10 a:hover b{color:var(--accent)}
+body.searched .top10{display:none}
+@media (max-width:560px){ .top10 a{flex-direction:column;gap:2px} .top10 a span{text-align:left} }
+
 /* ---------- after a search: compact header ---------- */
 body.searched .mast-in{height:64px}
 body.searched .wordmark{font-size:17px}
@@ -311,7 +322,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
 <header class="mast">
   <div class="mast-in">
     <a class="wordmark" href="index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
-    <nav class="mastnav" aria-label="Main"><a href="about.html">About</a><span aria-hidden="true">|</span><a href="faq.html">FAQ</a><span aria-hidden="true">|</span><a href="new-condo-filings.html">New filings</a><span aria-hidden="true">|</span><a href="managing-agents.html">Managing agents</a><span aria-hidden="true">|</span><a href="offering-plan-attorneys.html">Attorneys</a></nav>
+    <nav class="mastnav" aria-label="Main"><a href="about.html">About</a><span aria-hidden="true">|</span><a href="faq.html">FAQ</a><span aria-hidden="true">|</span><a href="new-condo-filings.html">New Construction</a><span aria-hidden="true">|</span><a href="managing-agents.html">Property Managers</a><span aria-hidden="true">|</span><a href="offering-plan-attorneys.html">OP Attorneys</a></nav>
   </div>
 </header>
 <div class="mast-rule"></div><div class="hairline"></div>
@@ -323,17 +334,17 @@ table.pivot th[scope="row"]{white-space:nowrap}
     <div class="barlinks"><hr>
       <a href="about.html">About</a>
       <a href="faq.html">FAQ</a>
-      <a href="new-condo-filings.html">New filings</a>
-      <a href="managing-agents.html">Managing agents</a>
-      <a href="offering-plan-attorneys.html">Attorneys</a>
+      <a href="new-condo-filings.html">New Construction</a>
+      <a href="managing-agents.html">Property Managers</a>
+      <a href="offering-plan-attorneys.html">OP Attorneys</a>
     </div>
     <hr>
-    <small>Browse by task</small>
+    <small>Browse by Task</small>
     <a href="index.html?q=parking+sold+separately">Precedents</a>
     <a href="index.html?q=Compare+total+offering+prices+in+Brooklyn">Pricing</a>
     <a href="index.html?q=Schedule+B+budget">Budgets</a>
-    <a href="index.html?q=managing+agent">Project teams</a>
-    <a href="index.html?q=floor+plans">Floor plans</a>
+    <a href="index.html?q=managing+agent">Project Teams</a>
+    <a href="index.html?q=floor+plans">Floor Plans</a>
     <hr>
     <small>© 2026 Half Ave Company LLC</small>
   </nav>
@@ -353,6 +364,12 @@ table.pivot th[scope="row"]{white-space:nowrap}
     </form>
     <div class="read" id="read" hidden></div>
     <div class="notice" id="notice" hidden></div>
+    <nav class="top10" aria-labelledby="top10h">
+      <h2 id="top10h">Top 10</h2>
+      <a href="new-condo-filings.html"><b>New Construction</b><span>Newest offering plans, with sellout and $/sf</span></a>
+      <a href="managing-agents.html"><b>Property Managers</b><span>Who manages the most buildings, and for what fee</span></a>
+      <a href="offering-plan-attorneys.html"><b>OP Attorneys</b><span>Sponsor's counsel ranked by plans filed</span></a>
+    </nav>
 
   </section>
 
