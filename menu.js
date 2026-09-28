@@ -19,8 +19,11 @@
   if (!mast) return;
   const root = document.documentElement;
   let on = null;
+  // Shrinking the header takes 20px out of the page, which can pull scrollY back under the
+  // threshold and grow it again, over and over. Separate on/off points (gap > 20px) stop that.
   const update = () => {
-    const now = window.scrollY > 24;
+    const y = window.scrollY;
+    const now = on ? y > 4 : y > 40;
     if (now !== on) { on = now; root.classList.toggle("scrolled", now); }
     root.style.setProperty("--head-h", mast.offsetHeight + "px");
   };
