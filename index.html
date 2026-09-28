@@ -33,10 +33,12 @@
 html{color-scheme:light}
 body{margin:0;background:var(--ground);color:var(--ink);font:15px/1.5 var(--sans);padding-block:0 56px}
 .wrap{max-width:1180px;margin:0 auto;padding-inline:16px}
-/* Before a search, the search block sits in the middle of the screen and the footer at the bottom. */
-body:not(.searched) .wrap{min-height:calc(100vh - 77px);min-height:calc(100dvh - 77px);display:flex;flex-direction:column}
-body:not(.searched) .hero{margin-block:auto;padding-block:40px 96px}
-body:not(.searched) .sitefoot{margin-top:0;margin-bottom:24px}
+/* Before a search, the page is exactly one screen tall (no scrolling): the search block sits in the middle
+   and the footer at the bottom. It only scrolls if the screen is too short to hold it all. */
+body:not(.searched){padding-bottom:0}
+body:not(.searched) .wrap{min-height:calc(100vh - var(--head-h,77px));min-height:calc(100dvh - var(--head-h,77px));display:flex;flex-direction:column}
+body:not(.searched) .hero{margin-block:auto;padding-block:24px 64px}
+body:not(.searched) .sitefoot{margin-top:0;margin-bottom:16px}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -63,7 +65,7 @@ h1{font:700 clamp(36px,6vw,60px)/1.02 var(--display);letter-spacing:-.012em;marg
 .disclaim strong{font-weight:600;color:var(--muted)}
 .disclaim b{font-weight:500;color:var(--muted)}
 .disclaim a{color:var(--accent)}
-/* Buildings, Browse by task and the guides live in the menu, so the homepage shows it on every screen size. */
+/* Buildings, the blog and Browse by task live in the menu, so the homepage shows it on every screen size. */
 @media (min-width:641px){ .menu{display:block} }
 form.search{display:flex;flex-direction:column;gap:10px}
 .qrow{display:flex;gap:0;align-items:stretch;border:2px solid var(--ink);background:var(--panel)}
@@ -248,22 +250,22 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
 <header class="mast">
   <div class="mast-in">
     <a class="wordmark" href="index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
-    <nav class="mastnav" aria-label="About"><a href="about.html">About</a><span aria-hidden="true">|</span><a href="faq.html">FAQ</a></nav>
+    <nav class="mastnav" aria-label="Main"><a href="about.html">About</a><span aria-hidden="true">|</span><a href="faq.html">FAQ</a><span aria-hidden="true">|</span><a href="new-condo-filings.html">New filings</a><span aria-hidden="true">|</span><a href="managing-agents.html">Managing agents</a><span aria-hidden="true">|</span><a href="offering-plan-attorneys.html">Attorneys</a></nav>
   </div>
 </header>
 <div class="mast-rule"></div><div class="hairline"></div>
 <details class="menu" id="menu">
   <summary aria-label="Menu"><svg class="bars-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="x-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></summary>
   <nav aria-label="Site">
-    <a href="index.html">Search</a>
     <a href="buildings/index.html">Buildings</a>
-    <a href="managing-agents.html">Managing agents</a>
-    <a href="new-condo-filings.html">New filings</a>
-    <a href="blog/index.html">Guides</a>
-    <a href="about.html">About</a>
-    <a href="faq.html">FAQ</a>
-    <a href="coverage.html">Coverage</a>
-    <a href="mailto:hello@halfave.co?subject=The%20Condo%20Book%20Project%20error%20report">Report an error</a>
+    <a href="blog/index.html">Blog</a>
+    <div class="barlinks"><hr>
+      <a href="about.html">About</a>
+      <a href="faq.html">FAQ</a>
+      <a href="new-condo-filings.html">New filings</a>
+      <a href="managing-agents.html">Managing agents</a>
+      <a href="offering-plan-attorneys.html">Attorneys</a>
+    </div>
     <hr>
     <small>Browse by task</small>
     <a href="index.html?q=parking+sold+separately">Precedents</a>
@@ -646,6 +648,14 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
       out.notes.push("Managing agent as named in each plan's first-year management agreement. Only plans with searchable pages can match.");
       cut(mgr[0]);
     }
+    // sponsor's counsel: "counsel Harold L. Gruber", "law firm Starr Associates in Queens" (links from the attorneys page)
+    const cns = s.match(/\b(?:sponsor's counsel|counsel|law firm|represented by)(?: is| was)?\s+(?!(?:for|of|at|in|on|the building|is|was|represented|who|that)\b)([a-z0-9&.,'\- ]+?)(?=\s+(?:in|with|that|which|under|over|since|from|near|condos?|buildings?|plans?)\b|[?!]|\s*$)/);
+    if (cns && cns[1].trim().replace(/[.,]+$/, "").length >= 2) {
+      out.counsel = cns[1].trim().replace(/[.,]+$/, "");
+      chip("counsel", `Counsel: ${titleCase(out.counsel)}`);
+      out.notes.push("Sponsor's counsel as named in the Attorney General's plan record.");
+      cut(cns[0]);
+    }
 
     // which result view fits the question, and which document section to put first
     if (/\bfloor ?plans?\b|\bdrawings?\b/.test(s)) { out.view = "documents"; out.focus = "floor_plans"; }
@@ -655,7 +665,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
     else if (/\bdeclaration\b/.test(s)) { out.view = "documents"; out.focus = "declaration"; }
     else if (/\bmanagement agreement\b/.test(s)) { out.view = "documents"; out.focus = "management_agreement"; }
     if (/\b(pric(e|es|ing)|compare|comparison|comps?|sell-?out)\b/.test(s)) { out.view = "compare"; out.notes.push("Pricing shows the AG record’s total offering prices. Unit prices and $/sf from Schedule A are not extracted yet."); cut(/\b(pric(e|es|ing)|compare|comparison|comps?|sell-?out)\b/g); }
-    else if (!out.view && !out.manager && /\b(managing agent|architect|selling agent|attorneys?|counsel|engineer|contractor|project teams?|team)\b/.test(s)) out.view = "passages";
+    else if (!out.view && !out.manager && !out.counsel && /\b(managing agent|architect|selling agent|attorneys?|counsel|engineer|contractor|project teams?|team)\b/.test(s)) out.view = "passages";
 
     // plan ID, e.g. CD240334
     let m = s.match(/\b([a-z]{2}\d{6})\b/);
@@ -774,7 +784,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
       P.matchNote = notes.join(" ") || null;
       return hits;
     }
-    if (P.zips && !P.q && !P.manager) {
+    if (P.zips && !P.q && !P.manager && !P.counsel) {
       const f = [`zip=in.(${P.zips.join(",")})`];
       if (P.minUnits != null) f.push(`units_residential=gte.${P.minUnits}`);
       if (P.maxUnits != null) f.push(`units_residential=lte.${P.maxUnits}`);
@@ -783,6 +793,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
     }
     const args = { q: P.q || null, p_borough: P.borough, p_min_units: P.minUnits, p_max_units: P.maxUnits, p_min_parking: P.minParking, p_limit: P.zips ? 400 : 60 };
     if (P.manager) args.p_managing_agent = P.manager;
+    if (P.counsel) args.p_counsel = P.counsel;
     const words = (P.q || "").split(/\s+/).filter(Boolean);
     const quoted = /^"[^"]+"$/.test(P.q || "");
     const phraseable = words.length >= 2 && !/"|\bOR\b/.test(P.q);
@@ -838,7 +849,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
     const text = $("q").value.trim() || typer.current(); // an empty search runs the example being typed
     $("q").value = text;
     const P = parseQuestion(text);
-    if (!P.q && !P.borough && !P.zips && P.minUnits == null && P.maxUnits == null && P.minParking == null && !P.planId && !P.address && !P.manager) {
+    if (!P.q && !P.borough && !P.zips && P.minUnits == null && P.maxUnits == null && P.minParking == null && !P.planId && !P.address && !P.manager && !P.counsel) {
       P.q = text; P.chips.unshift({ k: "q", label: `Text: ${text}` });
     }
     P.text = text; P.via = via;
@@ -1094,7 +1105,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
   // nothing was found, or the question is analytic. The server holds every AI search under 5 cents.
   const ANALYTIC = /\b(which|how many|average|avg|mean|largest|biggest|smallest|most|fewest|compare)\b/;
   function wantsAI(P, text) {
-    if (P.planId || P.address || P.manager) return false; // the managing-agent filter answers these without AI
+    if (P.planId || P.address || P.manager || P.counsel) return false; // the managing-agent and counsel filters answer these without AI
     if (ANALYTIC.test(text.toLowerCase())) return true;
     const left = (P.q || "").replace(/"[^"]*"/g, " ").split(/\s+/).filter((w) => w && w !== "OR");
     return left.length >= 2;
