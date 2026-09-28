@@ -231,6 +231,10 @@ const timed = accepted.filter(NYC)
 // Linear interpolation between ranks, the same as Postgres percentile_cont.
 const pct = (xs, q) => { const s = [...xs].sort((a, b) => a - b), i = (s.length - 1) * q, lo = Math.floor(i); return s[lo] + (s[Math.ceil(i)] - s[lo]) * (i - lo); };
 const mo = (d) => (d / (365.25 / 12)).toFixed(1).replace(/\.0$/, "");
+const months = (d) => `${mo(d)} month${mo(d) === "1" ? "" : "s"}`;
+// Months first with the days underneath, for table cells and glance figures.
+const dm = (d) => `${months(d)}<span class="sub">${n(d)} days</span>`;
+const SIZES = [[1, 10, "1–10"], [11, 25, "11–25"], [26, 50, "26–50"], [51, Infinity, "51 or more"]];
 const BINS = [[0, 90, "Under 3 months"], [90, 180, "3–6 months"], [180, 270, "6–9 months"], [270, 365, "9–12 months"], [365, 548, "12–18 months"], [548, 730, "18–24 months"], [730, Infinity, "Over 2 years"]];
 const ERAS = [["2000", "2004"], ["2005", "2009"], ["2010", "2014"], ["2015", "2019"], ["2020", thisYear]];
 
@@ -240,8 +244,21 @@ function approvalPage() {
   const days = timed.map((p) => p.days);
   const med = Math.round(pct(days, 0.5)), q1 = Math.round(pct(days, 0.25)), q3 = Math.round(pct(days, 0.75));
   const p10 = Math.round(pct(days, 0.1)), p90 = Math.round(pct(days, 0.9));
+  const mean = Math.round(days.reduce((s, d) => s + d, 0) / days.length);
   const title = "How Long Does AG Approval Take for an NYC Condo Offering Plan? | The Condo Book Project";
-  const description = `Days from submission to acceptance for filing for NYC condo offering plans at the NY Attorney General. Median ${med} days (about ${mo(med)} months), measured on ${timed.length} plans.`;
+  const description = `How long the NY Attorney General takes to accept an NYC condo offering plan for filing: ${months(mean)} (${mean} days) on average, median ${months(med)}, measured on ${timed.length} plans.`;
+
+  // By building size (residential units on the AG record). Plans listing no residential units are left out.
+  const sizes = SIZES.map(([a, b, label]) => {
+    const ds = timed.filter((p) => p.units_residential >= a && p.units_residential <= b).map((p) => p.days);
+    return ds.length ? { label, n: ds.length, min: Math.min(...ds), med: Math.round(pct(ds, 0.5)), mean: Math.round(ds.reduce((s, d) => s + d, 0) / ds.length), max: Math.max(...ds) } : null;
+  }).filter(Boolean);
+  const sizeTable = `<div class="tscroll"><table class="dm"><thead><tr><th>Residential units</th><th>Plans</th><th>Fastest</th><th>Median</th><th>Average</th><th>Slowest</th></tr></thead><tbody>${sizes.map((s) =>
+    `<tr><td>${esc(s.label)}</td><td>${n(s.n)}</td><td>${dm(s.min)}</td><td>${dm(s.med)}</td><td>${dm(s.mean)}</td><td>${dm(s.max)}</td></tr>`).join("")}</tbody></table></div>`;
+  const big = sizes.find((s) => s.label === "51 or more");
+  const bigAll = accepted.filter(NYC).filter((p) => p.units_residential >= 51);
+  const bigAmended = bigAll.length ? Math.round(100 * bigAll.filter((p) => String(p.meta?.plan?.["Amendment No"] ?? "").trim()).length / bigAll.length) : 0;
+  const overTwoYears = days.filter((d) => d >= 730).length;
 
   // Distribution: one column per bin, height relative to the tallest.
   const bins = BINS.map(([a, b, label]) => [label, days.filter((d) => d >= a && d < b).length]);
@@ -268,12 +285,12 @@ function approvalPage() {
     </div>
     <p class="src">Days. Each bar spans the 25th to 75th percentile; the mark is the median.</p>
   </figure>`;
-  const eraTable = `<div class="tscroll"><table><thead><tr><th>Year accepted</th><th>Plans</th><th>Median days</th><th>Middle half (days)</th></tr></thead><tbody>${eras.map((e) =>
-    `<tr><td>${esc(e.label)}</td><td>${n(e.n)}</td><td>${e.med}</td><td>${e.q1}–${e.q3}</td></tr>`).join("")}</tbody></table></div>`;
+  const eraTable = `<div class="tscroll"><table class="dm"><thead><tr><th>Year accepted</th><th>Plans</th><th>Median</th><th>Middle half</th></tr></thead><tbody>${eras.map((e) =>
+    `<tr><td>${esc(e.label)}</td><td>${n(e.n)}</td><td>${dm(e.med)}</td><td>${mo(e.q1)}–${months(e.q3)}<span class="sub">${e.q1}–${e.q3} days</span></td></tr>`).join("")}</tbody></table></div>`;
 
   const recent = [...timed].sort((a, b) => b.accepted_date.localeCompare(a.accepted_date) || b.plan_id.localeCompare(a.plan_id)).slice(0, 10);
-  const recentTable = `<div class="tscroll"><table><thead><tr><th>CD number</th><th>Condominium</th><th>Submitted</th><th>Accepted</th><th>Days</th></tr></thead><tbody>${recent.map((p) =>
-    `<tr><td>${esc(p.plan_id)}</td><td><a href="buildings/${esc(fileFor(p))}">${esc(tc(p.name))}</a></td><td>${esc(day(p.submitted_date))}</td><td>${esc(day(p.accepted_date))}</td><td>${n(p.days)}</td></tr>`).join("")}</tbody></table></div>`;
+  const recentTable = `<div class="tscroll"><table><thead><tr><th>CD number</th><th>Condominium</th><th>Submitted</th><th>Accepted</th><th>Time</th></tr></thead><tbody>${recent.map((p) =>
+    `<tr><td>${esc(p.plan_id)}</td><td><a href="buildings/${esc(fileFor(p))}">${esc(tc(p.name))}</a></td><td>${esc(day(p.submitted_date))}</td><td>${esc(day(p.accepted_date))}</td><td>${dm(p.days)}</td></tr>`).join("")}</tbody></table></div>`;
 
   return HEAD(P, { title, description, canonical: url }) + `
 ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
@@ -286,13 +303,23 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
   <h1>How Long Does It Take the Attorney General to Accept a Condo Offering Plan?</h1>
   <p class="meta">Updated <time datetime="${TODAY}">${esc(day(TODAY))}</time> · Source: NY Attorney General</p>
   <p class="lede">The time from when a sponsor submits a New York City condominium offering plan to when the Attorney General accepts it for filing, from the AG's own plan records.</p>
+  <div class="hero-stat">
+    <p class="hs-k">Average time to approval</p>
+    <p class="hs-v">${mo(mean)} <span>month${mo(mean) === "1" ? "" : "s"}</span></p>
+    <p class="hs-s">${n(mean)} days from submission to acceptance for filing, averaged over ${n(timed.length)} plans</p>
+  </div>
   <dl class="glance">
-    <div><dt>Median</dt><dd>${med} days<span class="sub">about ${mo(med)} months</span></dd></div>
-    <div><dt>Middle half of plans</dt><dd>${q1}–${q3} days</dd></div>
-    <div><dt>Fastest tenth</dt><dd>under ${p10} days</dd></div>
-    <div><dt>Slowest tenth</dt><dd>over ${p90} days</dd></div>
+    <div><dt>Median</dt><dd>${dm(med)}</dd></div>
+    <div><dt>Middle half of plans</dt><dd>${mo(q1)}–${months(q3)}<span class="sub">${q1}–${q3} days</span></dd></div>
+    <div><dt>Fastest tenth</dt><dd>under ${dm(p10)}</dd></div>
+    <div><dt>Slowest tenth</dt><dd>over ${dm(p90)}</dd></div>
   </dl>
-  <p>Half of the ${n(timed.length)} plans measured here were accepted within ${med} days of submission. A quarter took ${q3} days or longer.</p>
+  <p>Half of the ${n(timed.length)} plans measured here were accepted within ${months(med)} (${med} days) of submission.${mean > med && overTwoYears ? ` The average runs longer than the median because ${plural(overTwoYears, "plan")} took two years or more.` : ""}</p>
+
+  <h2>By Building Size</h2>
+  <p>Does a bigger building take longer? Plans grouped by the residential units on the Attorney General's record.</p>
+  ${sizeTable}
+  <p class="src">${big ? `Only ${plural(big.n, "plan")} with 51 or more units are in this sample: ${bigAmended}% of accepted plans that size were later amended, and amended plans can't be timed. ` : ""}Plans listing no residential units are left out.</p>
 
   <h2>How the Wait Is Spread</h2>
   ${histogram}

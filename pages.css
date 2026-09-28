@@ -116,7 +116,15 @@ table.bars td.bar{width:55%;min-width:90px}
 table.bars td.bar span{display:block;height:10px;background:var(--accent);opacity:.75}
 table.bars td:nth-child(2){font-variant-numeric:tabular-nums;text-align:right;padding-right:14px}
 
-/* Time to approval charts, plain HTML so they follow the theme tokens */
+/* Time to approval: hero figure, month/day table cells, charts in plain HTML so they follow the theme tokens */
+.hero-stat{border-top:3px double var(--rule-strong);padding:14px 0 6px;margin:6px 0 4px}
+.hs-k{font:500 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0}
+.hs-v{font:700 64px/1.05 var(--display);color:var(--ink);margin:6px 0 4px;font-variant-numeric:tabular-nums}
+.hs-v span{font-size:28px;font-weight:400;margin-left:4px}
+.hs-s{color:var(--muted);font-size:15px;margin:0}
+table.dm td{vertical-align:top;font-variant-numeric:tabular-nums}
+table.dm .sub{display:block;font-size:12.5px;color:var(--muted)}
+@media (max-width:520px){.hs-v{font-size:48px}.hs-v span{font-size:22px}}
 .chart{margin:14px 0 18px;padding:0}
 .chart figcaption{font:600 14px var(--sans);margin:0 0 12px;display:flex;flex-wrap:wrap;gap:4px 16px;align-items:baseline}
 .chart .key{font:400 12.5px var(--sans);color:var(--muted);display:inline-flex;gap:6px;align-items:center}
