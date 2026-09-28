@@ -1,6 +1,7 @@
 // Builds the pages that aren't one-per-plan, in a few seconds:
 //   - blog/*.html from content/blog/*.html (front matter + body), and blog/index.html
 //   - new-condo-filings.html, the 10 newest NYC plans accepted for filing
+//   - managing-agents/*.html and offering-plan-attorneys/*.html, a profile per manager and law firm
 //   - the SEO block in the hand-written pages (index, about, faq, terms, privacy, disclaimers)
 //   - sitemap-pages.xml, sitemap.xml (an index of it and sitemap-buildings.xml) and robots.txt
 //
@@ -10,9 +11,10 @@
 // Every number and plan named here comes from the plan records; posts insert them with tokens:
 //   {{stat:NAME}}  a count (see STATS below)      {{bldg:CD250420}}  link to that plan's building page
 //   {{table:NAME}} a generated table (see TABLES)
-import { mkdir, writeFile, readFile, readdir } from "node:fs/promises";
+import { mkdir, writeFile, readFile, readdir, rm } from "node:fs/promises";
 import { join } from "node:path";
 import { SITE_URL, AG, ROOT, TODAY, all, esc, tc, fileFor, day, month, usDate, money, fmtMoney, plural, boro, SITE_NAME, ld, SEO, HEAD, FOOT, urlset } from "./site.mjs";
+import { PROFILE_MIN, isSelf, groupAgents, groupFirms } from "./pros.mjs";
 
 // ---------- data ----------
 const plans = (await all("plans?select=plan_id,name,address,zip,borough,construction,submitted_date,accepted_date,units_residential,units_parking,units_commercial,units_total,sponsor,law_firm,meta,fetched_at,lat,lng&order=plan_id"))
@@ -181,11 +183,12 @@ function filingsPage() {
 
   const price = (p) => money(p.meta?.plan?.["Current Price"]) || money(p.meta?.plan?.["Initial Price"]);
   const dash = `<span class="faint">—</span>`;
+  const fmtM = (n) => fmtMoney(n).replace(" million", "M");
   const row = (p) => {
     const pr = price(p), u = p.units_residential;
     return `<tr id="${esc(p.plan_id.toLowerCase())}"><td><a href="buildings/${esc(fileFor(p))}" target="_blank" rel="noopener">${esc(tc(p.name))}</a><span class="sub">${esc(tc(p.address))} · ${esc(boro(p.borough))}${KIND[p.construction] ? ` · ${KIND[p.construction]}` : ""}</span></td>` +
       `<td class="nowrap">${esc(day(p.accepted_date))}</td><td class="num">${u ?? dash}</td>` +
-      `<td class="num">${pr ? esc(fmtMoney(pr)) : dash}</td><td class="num">${pr && u ? esc(fmtMoney(pr / u)) : dash}</td></tr>`;
+      `<td class="num">${pr ? esc(fmtM(pr)) : dash}</td><td class="num">${pr && u ? esc(fmtM(pr / u)) : dash}</td></tr>`;
   };
 
   return HEAD(P, { title, description, canonical: url }) + `
@@ -209,21 +212,7 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
   ${cta(P)}
   </div>
 </main>
-<script>
-(() => {
-  // Hovering a dot marks its row, and hovering a row marks its dot.
-  const pair = (id) => [document.getElementById(id), document.querySelector('.fmap a[data-id="' + id + '"]')];
-  const on = (id, v) => pair(id).forEach((el) => el && el.classList.toggle("on", v));
-  document.querySelectorAll(".fmap a[data-id]").forEach((a) => {
-    a.addEventListener("mouseenter", () => on(a.dataset.id, true));
-    a.addEventListener("mouseleave", () => on(a.dataset.id, false));
-  });
-  document.querySelectorAll(".ftable tbody tr[id]").forEach((tr) => {
-    tr.addEventListener("mouseenter", () => on(tr.id, true));
-    tr.addEventListener("mouseleave", () => on(tr.id, false));
-  });
-})();
-</script>
+${hoverScript}
 ` + FOOT(P);
 }
 
@@ -290,7 +279,7 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
   ] })}
 <main class="post approval split">
   <div class="aside">
-  <h1>How Long Does It Take the Attorney General to Accept a Condo Offering Plan?</h1>
+  <h1>How Long Does Condo Offering Plan Approval Take?</h1>
   <p class="anote">The time from when a sponsor submits a New York City condominium offering plan to when the Attorney General accepts it for filing. Only the ${n(timed.length)} plans never amended can be timed from the AG's records, so read the figures as a guide.</p>
   <div class="hero-stat">
     <p class="hs-k">Average time to approval</p>
@@ -321,16 +310,8 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
 }
 
 // ---------- managing agents ----------
-// From the first-year management agreement in each offering plan (facts.managing_agent). Spellings vary
-// ("FirstService Residential New York, Inc." / "FirstService Residential"), so names are grouped by a key.
+// From the first-year management agreement in each offering plan (facts.managing_agent), grouped in pros.mjs.
 const agentFacts = await all("facts?select=plan_id,value_text&field=eq.managing_agent&value_text=not.is.null&order=plan_id");
-const SUFFIX_WORDS = new Set(["inc", "llc", "l", "c", "corp", "corporation", "co", "company", "ltd", "the", "pc"]);
-const agentKey = (v) => String(v).toLowerCase().replace(/\([^)]*\)/g, " ").replace(/&/g, " and ").replace(/[^a-z0-9 ]+/g, " ")
-  .split(/\s+/).filter((w) => w && !SUFFIX_WORDS.has(w)).join(" ");
-// What to type in the search box: the name without "(Sponsor)" notes and company suffixes, so every spelling matches.
-const agentQuery = (v) => String(v).replace(/\([^)]*\)/g, "").trim().replace(/[,\s]+(inc|llc|l\.l\.c|corp|corporation|co|company|ltd)\.?$/i, "").replace(/[,\s]+(inc|llc|corp)\.?$/i, "").trim();
-// The sponsor, its affiliate or principal, or the board manages the building instead of an outside company.
-const selfManaged = (v) => /^\s*sponsor\b|\(\s*sponsor|affiliate of (the )?sponsor|sponsor affiliate|principal of (the )?sponsor|self-managed/i.test(v);
 
 // Management fee per residential unit per year, from the management line of the plan's Schedule B first-year budget
 // (schedule_b, status ok). Skipped when the budget has several management lines and none is clearly the total or residential one.
@@ -373,46 +354,8 @@ const listScript = `<script>
   if (hit && hit.hasAttribute("data-more")) { all = true; show(); hit.scrollIntoView(); }
 })();
 </script>`;
-// Also when the manager named is the sponsor itself ("82 Sterling Place, LLC" managing 82 Sterling Place).
-const isSelf = (v, p) => selfManaged(v) || (!!p.sponsor && agentKey(v) === agentKey(p.sponsor));
-function agentGroups() {
-  const groups = new Map();
-  for (const f of agentFacts) {
-    const p = byId.get(f.plan_id);
-    if (!p || !NYC(p) || isSelf(f.value_text, p)) continue;
-    const k = agentKey(f.value_text);
-    if (!k) continue;
-    if (!groups.has(k)) groups.set(k, { key: k, names: new Map(), plans: new Map() });
-    const g = groups.get(k);
-    g.names.set(f.value_text.trim(), (g.names.get(f.value_text.trim()) || 0) + 1);
-    g.plans.set(p.plan_id, p);
-  }
-  // "firstservice residential" absorbs "firstservice residential new york", and "akam" absorbs "akam associates":
-  // a key that starts another key, unless it's a single generic word ("management", "realty").
-  const GENERIC = new Set(["management", "property", "properties", "realty", "real", "estate", "residential", "group", "services", "service",
-    "new", "york", "ny", "nyc", "city", "brooklyn", "manhattan", "queens", "bronx", "first", "best", "prime", "park", "east", "west", "north", "south", "american", "global"]);
-  const keys = [...groups.keys()].sort((a, b) => a.split(" ").length - b.split(" ").length);
-  for (const short of keys) {
-    if (!groups.has(short)) continue;
-    if (short.split(" ").length < 2 && (short.length < 4 || GENERIC.has(short))) continue;
-    for (const long of keys) {
-      if (long === short || !groups.has(long) || !long.startsWith(short + " ")) continue;
-      const a = groups.get(short), b = groups.get(long);
-      for (const [n, c] of b.names) a.names.set(n, (a.names.get(n) || 0) + c);
-      for (const [id, p] of b.plans) a.plans.set(id, p);
-      groups.delete(long);
-    }
-  }
-  return [...groups.values()].map((g) => {
-    const name = [...g.names].sort((a, b) => b[1] - a[1] || a[0].length - b[0].length)[0][0];
-    const plansList = [...g.plans.values()].sort((a, b) => (b.accepted_date || "").localeCompare(a.accepted_date || ""));
-    // Search with the shortest spelling, so the search matches every variant in the group.
-    const query = [...g.names.keys()].map(agentQuery).filter(Boolean).sort((a, b) => a.length - b.length)[0] || agentQuery(name);
-    const fee = median(plansList.map((p) => mgmtFee.get(p.plan_id)?.perUnit).filter((v) => v != null));
-    return { name, query, plans: plansList, slug: g.key.replace(/ /g, "-"), fee };
-  }).sort((a, b) => b.plans.length - a.plans.length || a.name.localeCompare(b.name));
-}
-const AGENTS = agentGroups();
+const AGENTS = groupAgents(agentFacts, byId)
+  .map((g) => ({ ...g, fee: median(g.plans.map((p) => mgmtFee.get(p.plan_id)?.perUnit).filter((v) => v != null)) }));
 // plan_id -> its agent group, or the manager as filed when the sponsor or board manages it.
 const planAgent = new Map();
 for (const g of AGENTS) for (const p of g.plans) planAgent.set(p.plan_id, g);
@@ -436,7 +379,7 @@ function agentsPage() {
   const card = (g, i) => `<details class="agent" id="${esc(g.slug)}" data-name="${esc(g.name.toLowerCase())}"${more(i)}>
     <summary>${rank(i)}<span class="an">${esc(g.name)}</span><span class="ac">${plural(g.plans.length, "building")}${g.fee != null ? `<span class="fee" title="Median first-year management fee per residential unit, from Schedule B">${perYear(g.fee)}/unit/yr</span>` : `<span class="fee" aria-hidden="true"></span>`}</span></summary>
     <ul class="dir">${g.plans.map(bldg).join("")}</ul>
-    <p class="acts"><a class="btn" href="${esc(search(g))}">Search buildings managed by ${esc(g.query)}</a></p>
+    <p class="acts">${g.plans.length >= PROFILE_MIN ? `<a class="btn primary" href="managing-agents/${esc(g.slug)}.html">${esc(g.name)} profile</a>` : ""}<a class="btn" href="${esc(search(g))}">Search buildings managed by ${esc(g.query)}</a></p>
   </details>`;
   selfPlans.sort((a, b) => (b.p.accepted_date || "").localeCompare(a.p.accepted_date || ""));
   const selfRow = ({ p, as }) => `<li><a href="buildings/${esc(fileFor(p))}">${esc(tc(p.name))}</a><span>${esc(as)} · ${esc(boro(p.borough))}${p.units_residential != null ? ` · ${p.units_residential} units` : ""}${p.accepted_date ? ` · ${p.accepted_date.slice(0, 4)}` : ""}</span></li>`;
@@ -470,51 +413,9 @@ ${listScript}
 }
 
 // ---------- offering plan attorneys ----------
-// Sponsor's counsel from the AG plan record (plans.law_firm). Spellings vary ("Harold L. Gruber, P.C." / "Harold Gruber, P.C."),
-// so names are grouped by a key without initials, suffixes and "Law Office of".
-const FIRM_STOP = new Set(["the", "law", "office", "offices", "of", "esq", "esquire", "attorney", "attorneys", "at", "pc", "llp", "llc", "pllc", "lpa", "inc",
-  "and", "associates", "assoc", "group", "firm", "counselors", "counsel", "pa"]);
-const firmKey = (v) => String(v).toLowerCase().replace(/\([^)]*\)/g, " ").replace(/[^a-z0-9]+/g, " ")
-  .split(" ").filter((w) => w.length > 1 && !FIRM_STOP.has(w)).join(" ");
-const firmCore = (v) => String(v).trim().replace(/([,\s]+(p\.?\s?c|l\.?l\.?p|l\.?l\.?c|pllc|esq|inc|attorneys? at law)\.?)+$/i, "").trim();
+// Sponsor's counsel from the AG plan record (plans.law_firm), grouped in pros.mjs.
 const SHOWN = 25;
-function firmGroups() {
-  const groups = new Map();
-  for (const p of plans) {
-    if (!p.law_firm || !NYC(p)) continue;
-    const k = firmKey(p.law_firm);
-    if (!k) continue;
-    if (!groups.has(k)) groups.set(k, { key: k, names: new Map(), plans: [] });
-    const g = groups.get(k);
-    g.names.set(p.law_firm.trim(), (g.names.get(p.law_firm.trim()) || 0) + 1);
-    g.plans.push(p);
-  }
-  // The search box matches counsel by substring, so pick the spelling that finds the most of this firm's plans
-  // and the fewest of anyone else's.
-  const firms = plans.filter((p) => p.law_firm).map((p) => ({ lf: p.law_firm.toLowerCase(), k: firmKey(p.law_firm) }));
-  const bestQuery = (g) => {
-    const cands = new Set([...g.names.keys()].map(firmCore).filter((c) => c.length >= 3));
-    const last = g.key.split(" ").pop();
-    if (last.length >= 5) cands.add(last);
-    let best = null;
-    for (const c of cands) {
-      const lc = c.toLowerCase();
-      let hit = 0, miss = 0;
-      for (const f of firms) if (f.lf.includes(lc)) f.k === g.key ? hit++ : miss++;
-      const score = hit - 3 * miss;
-      if (!best || score > best.score || (score === best.score && c.length < best.c.length)) best = { c, score };
-    }
-    return best ? best.c : firmCore([...g.names][0][0]);
-  };
-  return [...groups.values()].map((g) => {
-    const name = [...g.names].sort((a, b) => b[1] - a[1] || a[0].length - b[0].length)[0][0];
-    const list = g.plans.sort((a, b) => (b.accepted_date || "").localeCompare(a.accepted_date || "") || b.plan_id.localeCompare(a.plan_id));
-    const years = g.plans.map((p) => p.accepted_date?.slice(0, 4)).filter(Boolean).sort();
-    return { name, plans: list, years, slug: g.key.replace(/ /g, "-"), group: g };
-  }).sort((a, b) => b.plans.length - a.plans.length || a.name.localeCompare(b.name))
-    .map((f) => ({ ...f, query: tc(bestQuery(f.group)) }));
-}
-const FIRMS = firmGroups();
+const FIRMS = groupFirms(plans);
 function attorneysPage() {
   const P = "";
   const url = `${SITE_URL}/offering-plan-attorneys.html`;
@@ -529,12 +430,12 @@ function attorneysPage() {
     <summary>${rank(i)}<span class="an">${esc(tc(f.name))}</span><span class="ac">${plural(f.plans.length, "plan")}${span(f) ? `<span class="yrs" title="Years the plans were accepted for filing">${span(f)}</span>` : `<span class="yrs" aria-hidden="true"></span>`}</span></summary>
     ${f.plans.length > SHOWN ? `<p class="faint">The ${SHOWN} most recent of ${n(f.plans.length)}.</p>` : ""}
     <ul class="dir">${f.plans.slice(0, SHOWN).map(bldg).join("")}</ul>
-    <p class="acts"><a class="btn" href="${esc(search(f))}">Search plans with counsel ${esc(f.query)}</a></p>
+    <p class="acts">${f.plans.length >= PROFILE_MIN ? `<a class="btn primary" href="offering-plan-attorneys/${esc(f.slug)}.html">${esc(tc(f.name))} profile</a>` : ""}<a class="btn" href="${esc(search(f))}">Search plans with counsel ${esc(f.query)}</a></p>
   </details>`;
   return HEAD(P, { title, description, canonical: url }) + `
 ${ld({ "@context": "https://schema.org", "@type": "ItemList", name: "Law firms most often named as sponsor's counsel in NYC condominium offering plans", url, numberOfItems: top.length,
     itemListOrder: "https://schema.org/ItemListOrderDescending",
-    itemListElement: top.map((f, i) => ({ "@type": "ListItem", position: i + 1, name: tc(f.name), url: `${url}#${f.slug}` })) })}
+    itemListElement: top.map((f, i) => ({ "@type": "ListItem", position: i + 1, name: tc(f.name), url: f.plans.length >= PROFILE_MIN ? `${SITE_URL}/offering-plan-attorneys/${f.slug}.html` : `${url}#${f.slug}` })) })}
 ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
     { "@type": "ListItem", position: 1, name: SITE_NAME, item: `${SITE_URL}/` },
     { "@type": "ListItem", position: 2, name: "Offering plan attorneys", item: url },
@@ -554,6 +455,124 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
   </div>
 </main>
 ${listScript}
+` + FOOT(P);
+}
+
+// ---------- manager and attorney profile pages ----------
+// One page per property manager (managing-agents/<slug>.html) and per law firm (offering-plan-attorneys/<slug>.html)
+// named in at least PROFILE_MIN NYC plans: the buildings, a few key numbers, and a sidebar of the most similar firms.
+// Websites come only from data/websites.json ({"managers": {slug: url}, "attorneys": {slug: url}}), checked by hand;
+// a firm without an entry gets no website link.
+const SITES = JSON.parse(await readFile(join(ROOT, "data", "websites.json"), "utf8").catch(() => "{}"));
+const offerPrice = (p) => money(p.meta?.plan?.["Current Price"]) || money(p.meta?.plan?.["Initial Price"]);
+const sumUnits = (list) => list.reduce((s, p) => s + (p.units_residential || 0), 0);
+const yearSpan = (list) => { const ys = list.map((p) => p.accepted_date?.slice(0, 4)).filter(Boolean).sort(); return ys.length ? (ys[0] === ys.at(-1) ? ys[0] : `${ys[0]}–${ys.at(-1)}`) : ""; };
+const boroList = (list) => [...count(list, (p) => boro(p.borough))].sort((a, b) => b[1] - a[1]).map(([b]) => b);
+
+// Similarity on log scales, so 3 vs 6 buildings is as far apart as 30 vs 60. A dimension either side lacks costs a flat 1.
+const lg = (v) => Math.log1p(v);
+const distance = (a, b) => a.dims.reduce((s, v, i) => s + (v != null && b.dims[i] != null ? Math.abs(lg(v) - lg(b.dims[i])) : 1), 0);
+const similarTo = (x, pool, k = 6) => pool.filter((y) => y !== x).map((y) => [y, distance(x, y)]).sort((a, b) => a[1] - b[1] || b[0].plans.length - a[0].plans.length).slice(0, k).map(([y]) => y);
+
+// Managers: buildings, residential units, median first-year fee per unit. Attorneys: plans, units, median offering $/unit.
+const MGR = AGENTS.filter((g) => g.plans.length >= PROFILE_MIN).map((g) => {
+  const units = sumUnits(g.plans);
+  return { ...g, display: g.name, units, dims: [g.plans.length, units, g.fee], dir: "managing-agents", site: SITES.managers?.[g.slug] };
+});
+const ATT = FIRMS.filter((f) => f.plans.length >= PROFILE_MIN).map((f) => {
+  const units = sumUnits(f.plans);
+  const perUnit = median(f.plans.map((p) => offerPrice(p) && p.units_residential ? offerPrice(p) / p.units_residential : null).filter((v) => v != null));
+  return { ...f, display: tc(f.name), units, perUnit, dims: [f.plans.length, units, perUnit], dir: "offering-plan-attorneys", site: SITES.attorneys?.[f.slug] };
+});
+const profileHref = (x, P) => `${P}${x.dir}/${x.slug}.html`;
+const hoverScript = `<script>
+(() => {
+  // Hovering a dot marks its row, and hovering a row marks its dot.
+  const pair = (id) => [document.getElementById(id), document.querySelector('.fmap a[data-id="' + id + '"]')];
+  const on = (id, v) => pair(id).forEach((el) => el && el.classList.toggle("on", v));
+  document.querySelectorAll(".fmap a[data-id]").forEach((a) => {
+    a.addEventListener("mouseenter", () => on(a.dataset.id, true));
+    a.addEventListener("mouseleave", () => on(a.dataset.id, false));
+  });
+  document.querySelectorAll(".ftable tbody tr[id]").forEach((tr) => {
+    tr.addEventListener("mouseenter", () => on(tr.id, true));
+    tr.addEventListener("mouseleave", () => on(tr.id, false));
+  });
+})();
+</script>`;
+const hostOf = (u) => { try { return new URL(u).hostname.replace(/^www\./, ""); } catch { return u; } };
+
+function profilePage(x, kind) {
+  const P = "../";
+  const mgr = kind === "manager";
+  const url = `${SITE_URL}/${x.dir}/${x.slug}.html`;
+  const listUrl = `${SITE_URL}/${x.dir}.html`;
+  const listName = mgr ? "Property managers" : "Offering plan attorneys";
+  const nyc = x.plans.length;
+  const boros = boroList(x.plans);
+  const span = yearSpan(x.plans);
+  const named = x.plans.slice(0, 3).map((p) => tc(p.name));
+  const pricing = mgr ? x.fee : x.perUnit;
+  const pricingText = pricing == null ? null : mgr ? `${perYear(pricing)}/unit/yr` : fmtMoney(pricing);
+  const title = mgr ? `${x.display}: NYC Condo Buildings Managed | The Condo Book Project`
+    : `${x.display}: NYC Condo Offering Plans as Sponsor's Counsel | The Condo Book Project`;
+  const description = mgr
+    ? `${x.display} is named as the first-year managing agent in ${plural(nyc, "NYC condo offering plan")}${x.units ? ` covering ${plural(x.units, "residential unit")}` : ""}, including ${named.join(", ")}.${pricingText ? ` Median first-year management fee: ${pricingText}.` : ""}`
+    : `${x.display} is named as sponsor's counsel on ${plural(nyc, "NYC condo offering plan")}${span ? ` accepted ${span.includes("–") ? "from " + span.replace("–", " to ") : "in " + span}` : ""}, including ${named.join(", ")}.`;
+  const search = mgr ? `${P}index.html?q=${encodeURIComponent("managed by " + x.query)}` : `${P}index.html?q=${encodeURIComponent("counsel " + x.query)}`;
+  const dash = `<span class="faint">—</span>`;
+
+  const row = (p) => {
+    const u = p.units_residential, pr = offerPrice(p), fee = mgmtFee.get(p.plan_id)?.perUnit;
+    const last = mgr ? (fee != null ? perYear(fee) : dash) : (pr && u ? esc(fmtMoney(pr / u)) : dash);
+    return `<tr id="${esc(p.plan_id.toLowerCase())}"><td><a href="${P}buildings/${esc(fileFor(p))}">${esc(tc(p.name))}</a><span class="sub">${esc(tc(p.address))} · ${esc(boro(p.borough))}${KIND[p.construction] ? ` · ${KIND[p.construction]}` : ""}</span></td>` +
+      `<td class="nowrap">${p.accepted_date ? esc(p.accepted_date.slice(0, 4)) : dash}</td><td class="num">${u ?? dash}</td><td class="num">${last}</td></tr>`;
+  };
+  const pool = mgr ? MGR : ATT;
+  const sims = similarTo(x, pool);
+  const simRow = (y) => {
+    const pv = mgr ? (y.fee != null ? `${perYear(y.fee)}/unit/yr` : "") : (y.perUnit != null ? `${fmtMoney(y.perUnit)}/unit` : "");
+    return `<li><a href="${esc(y.slug)}.html">${esc(y.display)}</a><span>${plural(y.plans.length, mgr ? "building" : "plan")} · ${plural(y.units, "unit")}${pv ? ` · ${esc(pv)}` : ""}</span></li>`;
+  };
+  const org = { "@type": mgr ? "Organization" : "LegalService", name: x.display, ...(x.site ? { url: x.site, sameAs: [x.site] } : {}), areaServed: "New York City" };
+
+  return HEAD(P, { title, description, canonical: url }) + `
+${ld({ "@context": "https://schema.org", "@type": "ProfilePage", name: title.replace(/ \| .*$/, ""), url, description, mainEntity: org })}
+${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+    { "@type": "ListItem", position: 1, name: SITE_NAME, item: `${SITE_URL}/` },
+    { "@type": "ListItem", position: 2, name: listName, item: listUrl },
+    { "@type": "ListItem", position: 3, name: x.display, item: url },
+  ] })}
+<main class="post agents profile split">
+  <div class="aside">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="${P}index.html">${SITE_NAME}</a> › <a href="${P}${x.dir}.html">${listName}</a></nav>
+  <h1>${esc(x.display)}</h1>
+  <p class="anote">${mgr
+    ? `Named as the first-year managing agent in ${plural(nyc, "New York City condominium offering plan")}. The board can change managers after the first year, so this may not reflect who manages each building today.`
+    : `Named as the sponsor's counsel on ${plural(nyc, "New York City condominium offering plan")}, as recorded by the Attorney General. This may not reflect current representation.`}</p>
+  <dl class="glance">
+    <div><dt>${mgr ? "Buildings" : "Plans"}</dt><dd>${n(nyc)}</dd></div>
+    <div><dt>Residential units</dt><dd>${x.units ? n(x.units) : "—"}</dd></div>
+    <div><dt>${mgr ? "Median fee" : "Median $/unit"}</dt><dd>${pricingText ? esc(pricingText) : "—"}</dd></div>
+    <div><dt>${span.includes("–") ? "Years" : "Year"}</dt><dd>${span || "—"}</dd></div>
+  </dl>
+  <p class="acts">${x.site ? `<a class="btn primary" href="${esc(x.site)}" target="_blank" rel="noopener">${esc(hostOf(x.site))} ↗</a>` : ""}<a class="btn" href="${esc(search)}">Search ${mgr ? "its buildings" : "its plans"}</a></p>
+  ${sims.length ? `<div class="sims"><h2>Similar ${mgr ? "Managers" : "Firms"}</h2>
+  <p class="anote">Closest in ${mgr ? "buildings" : "plans"}, residential units and ${mgr ? "management fee per unit" : "offering price per unit"}.</p>
+  <ul class="dir">${sims.map(simRow).join("")}</ul></div>` : ""}
+  </div>
+  <div class="amain">
+  <h2>${mgr ? "Buildings Managed" : "Offering Plans"}</h2>
+  <p>${esc(x.display)} ${mgr ? "is named as managing agent" : "is named as sponsor's counsel"} in ${plural(nyc, "plan")}${boros.length ? ` in ${boros.length > 1 ? boros.slice(0, -1).join(", ") + " and " + boros.at(-1) : boros[0]}` : ""}${span ? `, accepted for filing ${span.includes("–") ? "from " + span.replace("–", " to ") : "in " + span}` : ""}.</p>
+  ${plansMap(x.plans, `Map of the NYC condo buildings in plans naming ${x.display}`)}
+  <div class="tscroll"><table class="ftable"><thead><tr><th>Condominium</th><th>Accepted</th><th class="num">Units</th><th class="num">${mgr ? "Fee/unit/yr" : "$/unit"}</th></tr></thead><tbody>${x.plans.map(row).join("")}</tbody></table></div>
+  <p class="src">${mgr
+    ? "The fee is the management line of each plan's Schedule B first-year budget divided by its residential units; — means the budget hasn't been read or doesn't break it out. The median fee is across the buildings with a figure."
+    : "$/unit is the offering price on the AG record divided by the residential units; the median is across the plans with both."} Different spellings of one ${mgr ? "company" : "firm"}'s name are counted together.</p>
+  ${cta(P)}
+  </div>
+</main>
+${hoverScript}
 ` + FOOT(P);
 }
 
@@ -604,9 +623,17 @@ await writeFile(join(ROOT, "new-condo-filings.html"), filingsPage());
 await writeFile(join(ROOT, "time-to-approval.html"), approvalPage());
 await writeFile(join(ROOT, "managing-agents.html"), agentsPage());
 await writeFile(join(ROOT, "offering-plan-attorneys.html"), attorneysPage());
+for (const dir of ["managing-agents", "offering-plan-attorneys"]) {
+  // Start clean so a firm that drops below PROFILE_MIN or is regrouped doesn't leave a stale page behind.
+  await rm(join(ROOT, dir), { recursive: true, force: true });
+  await mkdir(join(ROOT, dir), { recursive: true });
+}
+for (const x of MGR) await writeFile(join(ROOT, "managing-agents", x.slug + ".html"), profilePage(x, "manager"));
+for (const x of ATT) await writeFile(join(ROOT, "offering-plan-attorneys", x.slug + ".html"), profilePage(x, "attorney"));
 for (const [file, path] of Object.entries(STATIC)) await stampStatic(file, path);
 
 const pageUrls = [["", TODAY], ["about.html"], ["faq.html", TODAY], ["new-condo-filings.html", TODAY], ["time-to-approval.html", TODAY], ["managing-agents.html", TODAY], ["offering-plan-attorneys.html", TODAY], ["blog/", TODAY],
+  ...MGR.map((x) => [`managing-agents/${x.slug}.html`, TODAY]), ...ATT.map((x) => [`offering-plan-attorneys/${x.slug}.html`, TODAY]),
   ...posts.map((q) => [`blog/${q.slug}.html`, q.updated || q.published])];
 await writeFile(join(ROOT, "sitemap-pages.xml"), urlset(pageUrls));
 await writeFile(join(ROOT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>
@@ -616,4 +643,4 @@ await writeFile(join(ROOT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"
 </sitemapindex>
 `);
 await writeFile(join(ROOT, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`);
-console.log(`${posts.length} posts, blog index, new-condo-filings.html, time-to-approval.html, managing-agents.html, offering-plan-attorneys.html, ${Object.keys(STATIC).length} stamped pages, sitemap-pages.xml with ${pageUrls.length} URLs`);
+console.log(`${posts.length} posts, blog index, new-condo-filings.html, time-to-approval.html, managing-agents.html, offering-plan-attorneys.html, ${MGR.length} manager and ${ATT.length} attorney profiles, ${Object.keys(STATIC).length} stamped pages, sitemap-pages.xml with ${pageUrls.length} URLs`);

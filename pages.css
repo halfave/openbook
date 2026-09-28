@@ -46,12 +46,20 @@ h2 + details{border-top:0}
 .about .about-facts dt{font:11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .about .about-facts dd{margin:2px 0 0}
 .about .amain p{max-width:720px;margin:0 0 18px}
-.about .amain p.anote{margin-top:26px}
 @media (max-width:999px){
   main.about{display:flex;flex-direction:column}
   .about > .aside{display:contents}
   .about > .amain{order:1}
   .about .about-facts{order:2;margin-top:28px}
+}
+.profile .glance{grid-template-columns:1fr 1fr}
+.profile .sims{margin-top:28px}
+.profile .sims .anote{margin-top:0}
+@media (max-width:999px){
+  main.profile{display:flex;flex-direction:column}
+  .profile > .aside{display:contents}
+  .profile > .amain{order:1}
+  .profile .sims{order:2}
 }
 code{font:14px var(--mono);background:var(--chip);border:1px solid var(--rule);padding:0 5px}
 footer{max-width:1180px;margin:40px auto 0;padding:14px 16px 0;font-size:13px;color:var(--muted);display:grid;gap:6px}
@@ -274,9 +282,9 @@ main.post.split > *{max-width:none}
   .split > .aside .afind{flex-direction:column;align-items:stretch;margin-top:22px}
   .split > .aside .afind input{max-width:none;flex:none}
   .split > .amain{padding-top:8px}
-  .split > .amain > h2:first-child{margin-top:0}
+  .split > .amain > h2:first-child{margin-top:0;border-top:0;padding-top:0}
   .split > .aside .glance{grid-template-columns:1fr 1fr;margin-top:22px}
-  .approval.split > .aside{position:static}
+  .approval.split > .aside,.profile.split > .aside{position:static}
   .split > .amain > article > p:first-child{margin-top:0}
 }
 .split > .amain > .tscroll{max-width:none}
