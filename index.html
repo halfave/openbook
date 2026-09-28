@@ -159,15 +159,11 @@ table.cmp .sub2{display:block;font:11px var(--mono);color:var(--muted)}
 .hero .notice{margin-top:12px}
 
 /* ---------- Top 10 box under the search bar (home only) ---------- */
-.top10{margin:28px auto 0;width:100%;max-width:560px;border:1px solid var(--rule);border-radius:10px;background:var(--panel);padding:14px 18px 6px}
-.top10 h2{margin:0 0 4px;font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.top10 a{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:9px 0;border-top:1px solid var(--rule);text-decoration:none;color:var(--ink)}
-.top10 a:first-of-type{border-top:0}
-.top10 a b{font:600 15px var(--sans)}
-.top10 a span{font-size:13px;color:var(--muted);text-align:right}
-.top10 a:hover b{color:var(--accent)}
+.top10{margin:28px auto 0;width:100%;max-width:640px;text-align:center}
+.top10 p{margin:0;font:400 17px/1.6 var(--display);color:var(--ink);text-wrap:balance}
+.top10 a{color:var(--accent);text-decoration:none;border-bottom:1px solid currentColor}
+.top10 a:hover{color:var(--accent-hover)}
 body.searched .top10{display:none}
-@media (max-width:560px){ .top10 a{flex-direction:column;gap:2px} .top10 a span{text-align:left} }
 
 /* ---------- after a search: compact header ---------- */
 body.searched .mast-in{height:64px}
@@ -365,11 +361,8 @@ table.pivot th[scope="row"]{white-space:nowrap}
     </form>
     <div class="read" id="read" hidden></div>
     <div class="notice" id="notice" hidden></div>
-    <nav class="top10" aria-labelledby="top10h">
-      <h2 id="top10h">Top 10</h2>
-      <a href="new-condo-filings.html"><b>New Construction</b><span>Newest offering plans, with sellout and $/sf</span></a>
-      <a href="managing-agents.html"><b>Property Managers</b><span>Who manages the most buildings, and for what fee</span></a>
-      <a href="offering-plan-attorneys.html"><b>OP Attorneys</b><span>Sponsor's counsel ranked by plans filed</span></a>
+    <nav class="top10" aria-label="Top lists">
+      <p>Or browse the top <a href="new-condo-filings.html">new construction</a>, <a href="managing-agents.html">property managers</a>, and <a href="offering-plan-attorneys.html">offering plan attorneys</a>.</p>
     </nav>
 
   </section>
@@ -414,7 +407,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
   </div>
 
   </div>
-  <p class="disclaim" id="stats"><strong>Disclaimer.</strong> The Condo Book Project is independent and not affiliated with the City of New York or the NY Attorney General. Plans and plan records come from the <a href="https://offeringplandatasearch.ag.ny.gov/" rel="noopener">Attorney General’s filing record</a>, which does not include documents for every filing, so information here may be incomplete. It includes only initial offering plans filed from 2000 on.</p>
+  <p class="disclaim" id="stats"><strong>Disclaimer.</strong> Independent; not affiliated with NYC or the NY Attorney General. Data comes from AG filings, which lack some documents, so details may be incomplete. Initial offering plans filed since 2000.</p>
   <nav class="sitefoot" aria-label="More">
     <a href="mailto:hello@halfave.co?subject=The%20Condo%20Book%20Project%20error%20report">Report an error</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a><a href="disclaimers.html">Disclaimers</a><span>© 2026 Half Ave Company LLC</span>
   </nav>
@@ -1588,7 +1581,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
       ]);
       if (plans == null || full == null) return;
       const f = (n) => `<b>${n.toLocaleString("en-US")}</b>`;
-      $("stats").insertAdjacentHTML("beforeend", ` It holds ${f(plans)} plan records and ${f(full)} documents searchable in full text.`);
+      $("stats").insertAdjacentHTML("beforeend", ` ${f(plans)} plans, ${f(full)} full-text documents.`);
     } catch (e) { /* the numbers are optional */ }
   }
   loadStats();
