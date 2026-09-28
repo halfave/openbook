@@ -102,7 +102,7 @@ ${noindex ? '<meta name="robots" content="noindex, follow">\n' : ""}${SEO(p, { t
 ${MAST(p)}
 ${MENU(p)}`;
 // The masthead links (scripts/masthead.html and index.html), repeated in the menu on narrow screens.
-export const BAR = [["about.html", "About"], ["faq.html", "FAQ"], ["new-condo-filings.html", "New filings"], ["managing-agents.html", "Managing agents"], ["offering-plan-attorneys.html", "Attorneys"]];
+export const BAR = [["about.html", "About"], ["faq.html", "FAQ"], ["new-condo-filings.html", "New filings"], ["time-to-approval.html", "Approval times"], ["managing-agents.html", "Managing agents"], ["offering-plan-attorneys.html", "Attorneys"]];
 export const MENU = (p, extra = "") => `<details class="menu" id="menu">
   <summary aria-label="Menu"><svg class="bars-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="x-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></summary>
   <nav aria-label="Site">
