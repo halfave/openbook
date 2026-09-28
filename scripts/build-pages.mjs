@@ -210,6 +210,99 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
 ` + FOOT(P);
 }
 
+// ---------- managing agents ----------
+// From the first-year management agreement in each offering plan (facts.managing_agent). Spellings vary
+// ("FirstService Residential New York, Inc." / "FirstService Residential"), so names are grouped by a key.
+const agentFacts = await all("facts?select=plan_id,value_text&field=eq.managing_agent&value_text=not.is.null&order=plan_id");
+const SUFFIX_WORDS = new Set(["inc", "llc", "l", "c", "corp", "corporation", "co", "company", "ltd", "the", "pc"]);
+const agentKey = (v) => String(v).toLowerCase().replace(/\([^)]*\)/g, " ").replace(/&/g, " and ").replace(/[^a-z0-9 ]+/g, " ")
+  .split(/\s+/).filter((w) => w && !SUFFIX_WORDS.has(w)).join(" ");
+// What to type in the search box: the name without "(Sponsor)" notes and company suffixes, so every spelling matches.
+const agentQuery = (v) => String(v).replace(/\([^)]*\)/g, "").trim().replace(/[,\s]+(inc|llc|l\.l\.c|corp|corporation|co|company|ltd)\.?$/i, "").replace(/[,\s]+(inc|llc|corp)\.?$/i, "").trim();
+const selfManaged = (v) => /\(\s*sponsor|affiliate of the sponsor|sponsor affiliate/i.test(v);
+function agentGroups() {
+  const groups = new Map();
+  for (const f of agentFacts) {
+    const p = byId.get(f.plan_id);
+    if (!p || !NYC(p) || selfManaged(f.value_text)) continue;
+    const k = agentKey(f.value_text);
+    if (!k) continue;
+    if (!groups.has(k)) groups.set(k, { key: k, names: new Map(), plans: new Map() });
+    const g = groups.get(k);
+    g.names.set(f.value_text.trim(), (g.names.get(f.value_text.trim()) || 0) + 1);
+    g.plans.set(p.plan_id, p);
+  }
+  // "firstservice residential" absorbs "firstservice residential new york", and "akam" absorbs "akam associates":
+  // a key that starts another key, unless it's a single generic word ("management", "realty").
+  const GENERIC = new Set(["management", "property", "properties", "realty", "real", "estate", "residential", "group", "services", "service",
+    "new", "york", "ny", "nyc", "city", "brooklyn", "manhattan", "queens", "bronx", "first", "best", "prime", "park", "east", "west", "north", "south", "american", "global"]);
+  const keys = [...groups.keys()].sort((a, b) => a.split(" ").length - b.split(" ").length);
+  for (const short of keys) {
+    if (!groups.has(short)) continue;
+    if (short.split(" ").length < 2 && (short.length < 4 || GENERIC.has(short))) continue;
+    for (const long of keys) {
+      if (long === short || !groups.has(long) || !long.startsWith(short + " ")) continue;
+      const a = groups.get(short), b = groups.get(long);
+      for (const [n, c] of b.names) a.names.set(n, (a.names.get(n) || 0) + c);
+      for (const [id, p] of b.plans) a.plans.set(id, p);
+      groups.delete(long);
+    }
+  }
+  return [...groups.values()].map((g) => {
+    const name = [...g.names].sort((a, b) => b[1] - a[1] || a[0].length - b[0].length)[0][0];
+    const plansList = [...g.plans.values()].sort((a, b) => (b.accepted_date || "").localeCompare(a.accepted_date || ""));
+    // Search with the shortest spelling, so the search matches every variant in the group.
+    const query = [...g.names.keys()].map(agentQuery).filter(Boolean).sort((a, b) => a.length - b.length)[0] || agentQuery(name);
+    return { name, query, plans: plansList, slug: g.key.replace(/ /g, "-") };
+  }).sort((a, b) => b.plans.length - a.plans.length || a.name.localeCompare(b.name));
+}
+function agentsPage() {
+  const P = "";
+  const url = `${SITE_URL}/managing-agents.html`;
+  const groups = agentGroups();
+  const multi = groups.filter((g) => g.plans.length > 1), single = groups.filter((g) => g.plans.length === 1);
+  const namedPlans = groups.reduce((s, g) => s + g.plans.length, 0);
+  const selfCount = agentFacts.filter((f) => selfManaged(f.value_text) && byId.has(f.plan_id) && NYC(byId.get(f.plan_id))).length;
+  const title = `NYC Condo Managing Agents: Who Manages Which Buildings | The Condo Book Project`;
+  const description = `${n(groups.length)} managing agents named in ${n(namedPlans)} NYC condominium offering plans, with the buildings each one manages. Top: ${multi.slice(0, 3).map((g) => `${g.name} (${g.plans.length})`).join(", ")}.`;
+  const search = (g) => `${P}index.html?q=${encodeURIComponent("managed by " + g.query)}`;
+  const bldg = (p) => `<li><a href="buildings/${esc(fileFor(p))}">${esc(tc(p.name))}</a><span>${esc(tc(p.address))} · ${esc(boro(p.borough))}${p.units_residential != null ? ` · ${p.units_residential} units` : ""}${p.accepted_date ? ` · ${p.accepted_date.slice(0, 4)}` : ""}</span></li>`;
+  const card = (g) => `<details class="agent" id="${esc(g.slug)}" data-name="${esc(g.name.toLowerCase())}">
+    <summary><span class="an">${esc(g.name)}</span><span class="ac">${plural(g.plans.length, "building")}</span></summary>
+    <ul class="dir">${g.plans.map(bldg).join("")}</ul>
+    <p class="acts"><a class="btn" href="${esc(search(g))}">Search buildings managed by ${esc(g.query)}</a></p>
+  </details>`;
+  return HEAD(P, { title, description, canonical: url }) + `
+${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+    { "@type": "ListItem", position: 1, name: SITE_NAME, item: `${SITE_URL}/` },
+    { "@type": "ListItem", position: 2, name: "Managing agents", item: url },
+  ] })}
+<main class="post agents">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">${SITE_NAME}</a> › <a href="buildings/index.html">Buildings</a></nav>
+  <h1>NYC Condo Managing Agents</h1>
+  <p class="lede">The managing agent each offering plan names for the condominium's first year, from the plan's management agreement. ${n(groups.length)} agents across ${n(namedPlans)} buildings.</p>
+  <p>Open an agent to see its buildings, or search the site for <em>managed by</em> and a name, for example <a href="${esc(search(multi[0] || groups[0]))}">managed by ${esc((multi[0] || groups[0]).query)}</a>. It combines with other filters: <em>managed by ${esc((multi[0] || groups[0]).query)} in Brooklyn</em>.</p>
+  <label class="afind"><span>Find an agent</span><input id="afind" type="search" placeholder="Type a name" autocomplete="off"></label>
+  <h2>Agents with More Than One Building</h2>
+  <div class="agents-list">${multi.map(card).join("\n")}</div>
+  <h2>Agents with One Building</h2>
+  <div class="agents-list">${single.sort((a, b) => a.name.localeCompare(b.name)).map(card).join("\n")}</div>
+  <p class="src">Named in the offering plan as filed; the board can change managing agents after the first year. ${selfCount ? `${n(selfCount)} more plans have the sponsor or its affiliate managing the building and aren't listed. ` : ""}Plans whose pages aren't searchable yet, or that don't name an agent, aren't included.</p>
+  ${cta(P)}
+</main>
+<script>
+(() => {
+  const box = document.getElementById("afind"); if (!box) return;
+  const cards = [...document.querySelectorAll("details.agent")];
+  box.addEventListener("input", () => {
+    const q = box.value.trim().toLowerCase();
+    cards.forEach((c) => { c.hidden = !!q && !c.dataset.name.includes(q); });
+  });
+})();
+</script>
+` + FOOT(P);
+}
+
 // ---------- hand-written pages: stamp the shared SEO tags and structured data between markers ----------
 // Title and description stay hand-written in each page; everything between <!-- seo --> and <!-- /seo --> is replaced.
 const STATIC = { "index.html": "", "about.html": "about.html", "faq.html": "faq.html", "terms.html": "terms.html", "privacy.html": "privacy.html", "disclaimers.html": "disclaimers.html", "coverage.html": "coverage.html" };
@@ -254,9 +347,10 @@ await mkdir(join(ROOT, "blog"), { recursive: true });
 for (const post of posts) await writeFile(join(ROOT, "blog", post.slug + ".html"), postPage(post));
 await writeFile(join(ROOT, "blog", "index.html"), blogIndex());
 await writeFile(join(ROOT, "new-condo-filings.html"), filingsPage());
+await writeFile(join(ROOT, "managing-agents.html"), agentsPage());
 for (const [file, path] of Object.entries(STATIC)) await stampStatic(file, path);
 
-const pageUrls = [["", TODAY], ["about.html"], ["faq.html"], ["coverage.html", TODAY], ["new-condo-filings.html", TODAY], ["blog/", TODAY],
+const pageUrls = [["", TODAY], ["about.html"], ["faq.html"], ["coverage.html", TODAY], ["new-condo-filings.html", TODAY], ["managing-agents.html", TODAY], ["blog/", TODAY],
   ...posts.map((q) => [`blog/${q.slug}.html`, q.updated || q.published])];
 await writeFile(join(ROOT, "sitemap-pages.xml"), urlset(pageUrls));
 await writeFile(join(ROOT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>
@@ -266,4 +360,4 @@ await writeFile(join(ROOT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"
 </sitemapindex>
 `);
 await writeFile(join(ROOT, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`);
-console.log(`${posts.length} posts, blog index, new-condo-filings.html, ${Object.keys(STATIC).length} stamped pages, sitemap-pages.xml with ${pageUrls.length} URLs`);
+console.log(`${posts.length} posts, blog index, new-condo-filings.html, managing-agents.html, ${Object.keys(STATIC).length} stamped pages, sitemap-pages.xml with ${pageUrls.length} URLs`);

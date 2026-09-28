@@ -103,17 +103,26 @@
     const by = new Map();
     for (const f of rows) { if (!by.has(f.field)) by.set(f.field, []); by.get(f.field).push(f); }
     const PARKING = { sold: "Sold as separate units", licensed: "Licensed", leased: "Leased", sold_or_licensed: "Sold or licensed", limited_common_element: "Limited common element" };
+    const P = (document.querySelector(".wordmark")?.getAttribute("href") || "../index.html").replace(/index\.html$/, "");
+    // The agent's name links to a search for every building it manages (sponsor-managed plans aren't linked).
+    const agentLink = (name) => {
+      const q = String(name).replace(/\([^)]*\)/g, "").trim().replace(/[,\s]+(inc|llc|l\.l\.c|corp|corporation|co|company|ltd)\.?$/i, "").trim();
+      return /\(\s*sponsor|affiliate/i.test(name) || !q ? esc(name) : `<a href="${P}index.html?q=${encodeURIComponent("managed by " + q)}" title="Other buildings managed by ${esc(q)}">${esc(name)}</a>`;
+    };
+    // Returns HTML; every value is escaped here.
     const val = (field, f) => {
-      if (field === "parking_arrangement") return PARKING[f.value_text] || f.value_text;
-      if (field === "managing_agent" && f.value_num != null && !isNaN(Number(f.value_num)))
-        return `${f.value_text || ""}${f.value_text ? ", " : ""}fee $${Number(f.value_num).toLocaleString("en-US")} a year`;
-      return f.value_text;
+      if (field === "parking_arrangement") return esc(PARKING[f.value_text] || f.value_text);
+      if (field === "managing_agent") {
+        const fee = f.value_num != null && !isNaN(Number(f.value_num)) ? `${f.value_text ? ", " : ""}fee $${Number(f.value_num).toLocaleString("en-US")} a year` : "";
+        return (f.value_text ? agentLink(f.value_text) : "") + esc(fee);
+      }
+      return esc(f.value_text);
     };
     // Each fact becomes a row in the fact table, with the plan page it came from.
     const row = (label, field) => {
       const list = (by.get(field) || []).filter((f) => f.value_text || f.value_num != null);
       if (!list.length) return "";
-      return `<div><dt>${esc(label)}</dt><dd>${list.map((f) => `<span class="fv">${esc(val(field, f))}` +
+      return `<div><dt>${esc(label)}</dt><dd>${list.map((f) => `<span class="fv">${val(field, f)}` +
         (f.page_no ? ` <span class="fcite"${f.quote ? ` title="${esc(f.quote)}"` : ""}>p. ${esc(f.page_no)}</span>` : "") + `</span>`).join("")}</dd></div>`;
     };
     const sheet = document.getElementById("sheet");
