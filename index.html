@@ -185,6 +185,10 @@ body.searched .go{padding:0 20px;font-size:13px}
 .mapbox svg{width:100%;height:100%;display:block}
 .boro{fill:var(--land);stroke:var(--land-edge);stroke-width:1;vector-effect:non-scaling-stroke}
 .boro-label{font:italic 400 22px var(--display);fill:var(--faint);pointer-events:none}
+.hood{fill:none;stroke:var(--land-edge);stroke-width:.6;stroke-opacity:.75;stroke-linejoin:round;vector-effect:non-scaling-stroke;pointer-events:none}
+.hood-label{font-family:var(--sans);font-weight:500;fill:var(--faint);text-anchor:middle;pointer-events:none;paint-order:stroke;stroke:var(--land);stroke-width:.25em;stroke-linejoin:round}
+#hoodLabels{display:none}
+#map.near #hoodLabels{display:inline}
 .dot{cursor:pointer;vector-effect:non-scaling-stroke}
 .dot.meta{fill:var(--panel);stroke:var(--dot-meta);stroke-width:1.2}
 .dot.idx{fill:var(--accent);stroke:var(--panel);stroke-width:1}
@@ -397,7 +401,14 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
   // ---------- map ----------
   const svg = $("map"), land = $("land"), dotsG = $("dots");
   let vb = { x: 0, y: 0, w: 1000, h: 1039 }, full = { ...vb };
-  const setVB = () => { svg.setAttribute("viewBox", `${vb.x} ${vb.y} ${vb.w} ${vb.h}`); const r = Math.max(2.2, 6 * vb.w / 1000); dotsG.querySelectorAll("circle").forEach((c) => c.setAttribute("r", c.classList.contains("hit") || c.classList.contains("sel") ? r * 1.35 : r)); };
+  // Neighborhood names show once zoomed in far enough to read them; the font is sized to stay constant on screen.
+  const HOOD_ZOOM = 420;
+  const setVB = () => {
+    svg.setAttribute("viewBox", `${vb.x} ${vb.y} ${vb.w} ${vb.h}`);
+    svg.classList.toggle("near", vb.w < HOOD_ZOOM);
+    const hl = $("hoodLabels"), sr = svg.getBoundingClientRect();
+    if (hl && sr.width && sr.height) hl.setAttribute("font-size", (10.5 * Math.max(vb.w / sr.width, vb.h / sr.height)).toFixed(2));
+    const r = Math.max(2.2, 6 * vb.w / 1000); dotsG.querySelectorAll("circle").forEach((c) => c.setAttribute("r", c.classList.contains("hit") || c.classList.contains("sel") ? r * 1.35 : r)); };
   const project = (lat, lng) => { const B = geo.B, k = geo.k, sx = geo.W / ((B.maxLng - B.minLng) * k); return [(lng - B.minLng) * k * sx, (B.maxLat - lat) * sx]; };
 
   function drawLand() {
@@ -406,9 +417,24 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
     for (const [name, d] of Object.entries(geo.paths)) {
       const p = document.createElementNS(NS, "path"); p.setAttribute("d", d); p.setAttribute("class", "boro"); p.dataset.b = name; land.appendChild(p);
     }
+    const hoods = document.createElementNS(NS, "g"); hoods.id = "hoods"; land.appendChild(hoods);
     for (const [name, [lng, lat]] of Object.entries(labels)) {
       const [x, y] = project(lat, lng); const t = document.createElementNS(NS, "text"); t.setAttribute("x", x); t.setAttribute("y", y); t.setAttribute("text-anchor", "middle"); t.setAttribute("class", "boro-label"); t.textContent = name; land.appendChild(t);
     }
+    const hl = document.createElementNS(NS, "g"); hl.id = "hoodLabels"; land.appendChild(hl);
+  }
+  // Neighborhood lines (NYC 2020 NTAs, built by scripts/build-neighborhoods.mjs). Decoration only, so a failed load just leaves them off.
+  function drawHoods(list) {
+    const g = $("hoods"), hl = $("hoodLabels"); if (!g) return;
+    const pt = ([lng, lat]) => project(lat, lng).map((v) => v.toFixed(1)).join(",");
+    const path = document.createElementNS(NS, "path"); path.setAttribute("class", "hood");
+    path.setAttribute("d", list.flatMap((h) => h.g.map((ring) => "M" + ring.map(pt).join("L") + "Z")).join(""));
+    g.appendChild(path);
+    for (const h of list.filter((h) => h.r)) {
+      const [x, y] = project(h.l[1], h.l[0]); const t = document.createElementNS(NS, "text");
+      t.setAttribute("x", x.toFixed(1)); t.setAttribute("y", y.toFixed(1)); t.setAttribute("class", "hood-label"); t.textContent = h.n; hl.appendChild(t);
+    }
+    setVB();
   }
   function drawDots() {
     dotsG.innerHTML = "";
@@ -833,6 +859,7 @@ footer{margin-top:40px;border-top:1px solid var(--rule-strong);padding-top:14px;
     if (!mapReady) mapReady = (async () => {
       const [g] = await rest("site_assets?key=eq.boroughs_svg&select=value", null, 3600000);
       geo = JSON.parse(g.value); drawLand();
+      fetch("neighborhoods.json").then((r) => r.ok ? r.json() : null).then((h) => h && drawHoods(h)).catch(() => {});
       // The API returns at most 1,000 rows per call, so page through all of them.
       const all = [];
       for (let i = 0; ; i += 8) {
