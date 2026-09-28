@@ -141,7 +141,7 @@ ${ld({ "@context": "https://schema.org", "@type": "Blog", name: `${SITE_NAME} Bl
   <h1>Blog</h1>
   <p class="lede">How to find, search and read the condo offering plans ("condo books") that sponsors file with the New York State Attorney General.</p>
   <ul class="dir">${posts.map((q) => `<li><a href="${esc(q.slug)}.html">${esc(q.h1)}</a><span>${esc(q.description)}</span></li>`).join("")}
-    <li><a href="${P}new-condo-filings.html">New NYC Condo Offering Plans: The Last 3 Months</a><span>Every plan accepted for filing in the last three months, with sellout, $/sf, manager and attorney.</span></li></ul>
+    <li><a href="${P}new-condo-filings.html">New NYC Condo Offering Plans: The Last 3 Months</a><span>Every plan accepted for filing in the last three months, with total sellout and $/unit.</span></li></ul>
   ${cta(P)}
 </main>
 ` + FOOT(P);
@@ -150,14 +150,6 @@ ${ld({ "@context": "https://schema.org", "@type": "Blog", name: `${SITE_NAME} Bl
 // ---------- new filings ----------
 // Plans accepted for filing in the last three months (the 10 newest if none), one row each.
 const KIND = { NEW: "new construction", REHAB: "rehab", CONVERSION: "conversion" };
-// Price per square foot from the checked Schedule A tables (data/schedule-a, written by extract-schedule-a.mjs):
-// the sum of prices over the sum of square feet, when most units list both.
-const psf = new Map();
-for (const f of (await readdir(join(ROOT, "data", "schedule-a")).catch(() => [])).filter((f) => f.endsWith(".json"))) {
-  const d = JSON.parse(await readFile(join(ROOT, "data", "schedule-a", f), "utf8"));
-  const us = (d.units || []).filter((u) => u.price > 0 && u.sqft > 0);
-  if (us.length && us.length >= 0.8 * (d.units || []).length) psf.set(f.replace(/\.json$/, ""), us.reduce((s, u) => s + u.price, 0) / us.reduce((s, u) => s + u.sqft, 0));
-}
 // Borough outlines, the same projected paths the home page map draws (site_assets.boroughs_svg).
 const GEO = JSON.parse((await all("site_assets?key=eq.boroughs_svg&select=value"))[0].value);
 const BORO_LABELS = { Manhattan: [-73.972, 40.79], Brooklyn: [-73.95, 40.645], Queens: [-73.82, 40.705], Bronx: [-73.865, 40.85], "Staten Island": [-74.15, 40.585] };
@@ -185,26 +177,15 @@ function filingsPage() {
   const recent = newest.filter((p) => p.accepted_date >= SINCE);
   const latest = recent.length ? recent : newest.slice(0, 10);
   const title = `New NYC Condo Offering Plans: Filings from the Last 3 Months | The Condo Book Project`;
-  const description = `${latest.length} NYC condominium offering plans accepted for filing by the NY Attorney General in the last three months, with total sellout, price per square foot, property manager and sponsor's counsel. Latest: ${tc(latest[0].name)}, ${latest[0].plan_id}.`;
+  const description = `${latest.length} NYC condominium offering plans accepted for filing by the NY Attorney General in the last three months, with total sellout and price per unit. Latest: ${tc(latest[0].name)}, ${latest[0].plan_id}.`;
 
   const price = (p) => money(p.meta?.plan?.["Current Price"]) || money(p.meta?.plan?.["Initial Price"]);
   const dash = `<span class="faint">—</span>`;
-  const manager = (p) => {
-    const a = planAgent.get(p.plan_id);
-    if (!a) return dash;
-    if (a.self) return "Sponsor (self-managed)";
-    return esc(a.name);
-  };
-  const counsel = (p) => {
-    if (!p.law_firm) return dash;
-    return esc(tc(p.law_firm));
-  };
   const row = (p) => {
-    const pr = price(p), sf = psf.get(p.plan_id);
+    const pr = price(p), u = p.units_residential;
     return `<tr id="${esc(p.plan_id.toLowerCase())}"><td><a href="buildings/${esc(fileFor(p))}" target="_blank" rel="noopener">${esc(tc(p.name))}</a><span class="sub">${esc(tc(p.address))} · ${esc(boro(p.borough))}${KIND[p.construction] ? ` · ${KIND[p.construction]}` : ""}</span></td>` +
-      `<td class="nowrap">${esc(day(p.accepted_date))}</td><td class="num">${p.units_residential ?? dash}</td>` +
-      `<td class="num">${pr ? esc(fmtMoney(pr)) : dash}</td><td class="num">${sf ? `$${Math.round(sf).toLocaleString("en-US")}` : dash}</td>` +
-      `<td>${manager(p)}</td><td>${counsel(p)}</td></tr>`;
+      `<td class="nowrap">${esc(day(p.accepted_date))}</td><td class="num">${u ?? dash}</td>` +
+      `<td class="num">${pr ? esc(fmtMoney(pr)) : dash}</td><td class="num">${pr && u ? esc(fmtMoney(pr / u)) : dash}</td></tr>`;
   };
 
   return HEAD(P, { title, description, canonical: url }) + `
@@ -218,13 +199,12 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
 <main class="post filings split">
   <div class="aside">
   <h1>New NYC Condo Offering Plans</h1>
-  <p class="lede">Every New York City condominium offering plan the Attorney General accepted for filing ${recent.length ? "in the last three months" : "most recently"}.</p>
-  <p class="anote">"Accepted for filing" means the Attorney General accepted the sponsor's offering plan. It is not an endorsement of the offering, and a sponsor generally can't sell units until then. Five boroughs only.</p>
+  <p class="anote">Every New York City condominium offering plan the Attorney General accepted for filing ${recent.length ? "in the last three months" : "most recently"}. "Accepted for filing" is not an endorsement of the offering, and a sponsor generally can't sell units until then. Five boroughs only.</p>
   ${plansMap(latest, `Map of the ${latest.length} NYC condo offering plans accepted for filing most recently`)}
   </div>
   <div class="amain">
-  <div class="tscroll"><table class="ftable"><thead><tr><th>Condominium</th><th>Accepted</th><th class="num">Units</th><th class="num">Total sellout</th><th class="num">$/sf</th><th>Property manager</th><th>Attorney</th></tr></thead><tbody>${latest.map(row).join("")}</tbody></table></div>
-  <p class="src">Total sellout is the offering price on the AG record, the sum of all units at the plan's prices. $/sf is from the plan's Schedule A where it has been read and checked against that total. Manager and attorney are as named in the plan; — means the plan's documents aren't searchable yet or don't say.</p>
+  <div class="tscroll"><table class="ftable"><thead><tr><th>Condominium</th><th>Accepted</th><th class="num">Units</th><th class="num">Total sellout</th><th class="num">$/unit</th></tr></thead><tbody>${latest.map(row).join("")}</tbody></table></div>
+  <p class="src">Total sellout is the offering price on the AG record. $/unit is that total divided by the residential units.</p>
 
   ${cta(P)}
   </div>
@@ -256,69 +236,52 @@ const timed = accepted.filter(NYC)
   .filter((p) => p.submitted_date && !String(p.meta?.plan?.["Amendment No"] ?? "").trim())
   .map((p) => ({ ...p, days: Math.round((Date.parse(p.accepted_date) - Date.parse(p.submitted_date)) / DAY_MS) }))
   .filter((p) => p.days >= 0);
-// Linear interpolation between ranks, the same as Postgres percentile_cont.
-const pct = (xs, q) => { const s = [...xs].sort((a, b) => a - b), i = (s.length - 1) * q, lo = Math.floor(i); return s[lo] + (s[Math.ceil(i)] - s[lo]) * (i - lo); };
+const avgOf = (ds) => Math.round(ds.reduce((s, d) => s + d, 0) / ds.length);
 const mo = (d) => (d / (365.25 / 12)).toFixed(1).replace(/\.0$/, "");
-const months = (d) => `${mo(d)} month${mo(d) === "1" ? "" : "s"}`;
-// Months first with the days underneath, for table cells and glance figures.
-const dm = (d) => `${months(d)}<span class="sub">${n(d)} days</span>`;
+// Months past 30 days, days up to that.
+const dur = (d) => d > 30 ? `${mo(d)} month${mo(d) === "1" ? "" : "s"}` : plural(d, "day");
 const SIZES = [[1, 10, "1–10"], [11, 25, "11–25"], [26, 50, "26–50"], [51, Infinity, "51 or more"]];
 const BINS = [[0, 90, "Under 3 months"], [90, 180, "3–6 months"], [180, 270, "6–9 months"], [270, 365, "9–12 months"], [365, 548, "12–18 months"], [548, 730, "18–24 months"], [730, Infinity, "Over 2 years"]];
 const ERAS = [["2000", "2004"], ["2005", "2009"], ["2010", "2014"], ["2015", "2019"], ["2020", thisYear]];
+const FAST = `<svg class="ic" viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>`;
+const SLOW = `<svg class="ic" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2h12M6 22h12M7 2c0 6 10 6 10 10S7 16 7 22M17 2c0 6-10 6-10 10s10 4 10 10"/></svg>`;
 
 function approvalPage() {
   const P = "";
   const url = `${SITE_URL}/time-to-approval.html`;
   const days = timed.map((p) => p.days);
-  const med = Math.round(pct(days, 0.5)), q1 = Math.round(pct(days, 0.25)), q3 = Math.round(pct(days, 0.75));
-  const p10 = Math.round(pct(days, 0.1)), p90 = Math.round(pct(days, 0.9));
-  const mean = Math.round(days.reduce((s, d) => s + d, 0) / days.length);
+  const mean = avgOf(days), fastest = Math.min(...days), slowest = Math.max(...days);
   const title = "How Long Does AG Approval Take for an NYC Condo Offering Plan? | The Condo Book Project";
-  const description = `How long the NY Attorney General takes to accept an NYC condo offering plan for filing: ${months(mean)} (${mean} days) on average, median ${months(med)}, measured on ${timed.length} plans.`;
+  const description = `How long the NY Attorney General takes to accept an NYC condo offering plan for filing: ${dur(mean)} on average, measured on ${timed.length} plans.`;
 
   // By building size (residential units on the AG record). Plans listing no residential units are left out.
   const sizes = SIZES.map(([a, b, label]) => {
     const ds = timed.filter((p) => p.units_residential >= a && p.units_residential <= b).map((p) => p.days);
-    return ds.length ? { label, n: ds.length, min: Math.min(...ds), med: Math.round(pct(ds, 0.5)), mean: Math.round(ds.reduce((s, d) => s + d, 0) / ds.length), max: Math.max(...ds) } : null;
+    return ds.length ? { label, n: ds.length, min: Math.min(...ds), mean: avgOf(ds), max: Math.max(...ds) } : null;
   }).filter(Boolean);
-  const sizeTable = `<div class="tscroll"><table class="dm"><thead><tr><th>Residential units</th><th>Plans</th><th>Fastest</th><th>Median</th><th>Average</th><th>Slowest</th></tr></thead><tbody>${sizes.map((s) =>
-    `<tr><td>${esc(s.label)}</td><td>${n(s.n)}</td><td>${dm(s.min)}</td><td>${dm(s.med)}</td><td>${dm(s.mean)}</td><td>${dm(s.max)}</td></tr>`).join("")}</tbody></table></div>`;
-  const big = sizes.find((s) => s.label === "51 or more");
-  const bigAll = accepted.filter(NYC).filter((p) => p.units_residential >= 51);
-  const bigAmended = bigAll.length ? Math.round(100 * bigAll.filter((p) => String(p.meta?.plan?.["Amendment No"] ?? "").trim()).length / bigAll.length) : 0;
-  const overTwoYears = days.filter((d) => d >= 730).length;
+  const sizeTable = `<div class="tscroll"><table class="dm"><thead><tr><th>Residential units</th><th>Plans</th><th>Average</th><th>${FAST} Fastest</th><th>${SLOW} Slowest</th></tr></thead><tbody>${sizes.map((s) =>
+    `<tr><td>${esc(s.label)}</td><td>${n(s.n)}</td><td><strong>${dur(s.mean)}</strong></td><td>${dur(s.min)}</td><td>${dur(s.max)}</td></tr>`).join("")}</tbody></table></div>`;
 
   // Distribution: one column per bin, height relative to the tallest.
   const bins = BINS.map(([a, b, label]) => [label, days.filter((d) => d >= a && d < b).length]);
   const binMax = Math.max(...bins.map((b) => b[1]));
   const histogram = `<figure class="chart">
-    <figcaption>Plans by time from submission to acceptance</figcaption>
     <div class="cols" role="img" aria-label="${esc(bins.map(([l, c]) => `${l}: ${c} plans`).join("; "))}">${bins.map(([label, c]) =>
       `<div class="col" title="${esc(label)}: ${plural(c, "plan")} (${Math.round(100 * c / timed.length)}%)"><span class="v">${n(c)}</span><span class="b" style="height:${Math.max(1, Math.round(100 * c / binMax))}%"></span><span class="l">${esc(label)}</span></div>`).join("")}</div>
   </figure>`;
 
-  // By era: median with the middle half (25th–75th percentile) as a range bar.
+  // By era: the average, with a bar relative to the longest.
   const eras = ERAS.map(([a, b]) => {
     const ds = timed.filter((p) => p.accepted_date.slice(0, 4) >= a && p.accepted_date.slice(0, 4) <= b).map((p) => p.days);
-    return ds.length ? { label: `${a}–${b}`, n: ds.length, med: Math.round(pct(ds, 0.5)), q1: Math.round(pct(ds, 0.25)), q3: Math.round(pct(ds, 0.75)) } : null;
+    return ds.length ? { label: `${a}–${b}`, n: ds.length, mean: avgOf(ds) } : null;
   }).filter(Boolean);
-  const axisMax = Math.ceil(Math.max(...eras.map((e) => e.q3)) / 100) * 100;
-  const x = (d) => (100 * d / axisMax).toFixed(2);
-  const ticks = Array.from({ length: axisMax / 100 + 1 }, (_, i) => i * 100);
-  const rangeChart = `<figure class="chart">
-    <figcaption>Median days to acceptance, by year accepted <span class="key"><i class="k-mid"></i>median <i class="k-range"></i>middle half of plans</span></figcaption>
-    <div class="ranges">${eras.map((e) =>
-      `<div class="rrow" title="${esc(e.label)}: median ${e.med} days; middle half ${e.q1}–${e.q3} days; ${plural(e.n, "plan")}"><span class="rl">${esc(e.label)}<small>${plural(e.n, "plan")}</small></span><span class="rt"><span class="rr" style="left:${x(e.q1)}%;width:${(x(e.q3) - x(e.q1)).toFixed(2)}%"></span><span class="rm" style="left:${x(e.med)}%"></span><span class="rv" style="left:${x(e.med)}%">${e.med}</span></span></div>`).join("")}
-      <div class="rrow axis" aria-hidden="true"><span class="rl"></span><span class="rt">${ticks.map((t) => `<span style="left:${x(t)}%">${t}</span>`).join("")}</span></div>
-    </div>
-    <p class="src">Days. Each bar spans the 25th to 75th percentile; the mark is the median.</p>
-  </figure>`;
-  const eraTable = `<div class="tscroll"><table class="dm"><thead><tr><th>Year accepted</th><th>Plans</th><th>Median</th><th>Middle half</th></tr></thead><tbody>${eras.map((e) =>
-    `<tr><td>${esc(e.label)}</td><td>${n(e.n)}</td><td>${dm(e.med)}</td><td>${mo(e.q1)}–${months(e.q3)}<span class="sub">${e.q1}–${e.q3} days</span></td></tr>`).join("")}</tbody></table></div>`;
+  const eraMax = Math.max(...eras.map((e) => e.mean));
+  const eraTable = `<div class="tscroll"><table class="bars"><thead><tr><th>Year accepted</th><th>Average</th><th aria-hidden="true"></th></tr></thead><tbody>${eras.map((e) =>
+    `<tr title="${plural(e.n, "plan")}"><td>${esc(e.label)}</td><td>${dur(e.mean)}</td><td class="bar" aria-hidden="true"><span style="width:${Math.max(1, Math.round(100 * e.mean / eraMax))}%"></span></td></tr>`).join("")}</tbody></table></div>`;
 
   const recent = [...timed].sort((a, b) => b.accepted_date.localeCompare(a.accepted_date) || b.plan_id.localeCompare(a.plan_id)).slice(0, 10);
   const recentTable = `<div class="tscroll"><table><thead><tr><th>CD number</th><th>Condominium</th><th>Submitted</th><th>Accepted</th><th>Time</th></tr></thead><tbody>${recent.map((p) =>
-    `<tr><td>${esc(p.plan_id)}</td><td><a href="buildings/${esc(fileFor(p))}">${esc(tc(p.name))}</a></td><td>${esc(day(p.submitted_date))}</td><td>${esc(day(p.accepted_date))}</td><td>${dm(p.days)}</td></tr>`).join("")}</tbody></table></div>`;
+    `<tr><td>${esc(p.plan_id)}</td><td><a href="buildings/${esc(fileFor(p))}">${esc(tc(p.name))}</a></td><td>${esc(day(p.submitted_date))}</td><td>${esc(day(p.accepted_date))}</td><td>${dur(p.days)}</td></tr>`).join("")}</tbody></table></div>`;
 
   return HEAD(P, { title, description, canonical: url }) + `
 ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
@@ -327,46 +290,30 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
   ] })}
 <main class="post approval split">
   <div class="aside">
-  <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">${SITE_NAME}</a> › <a href="new-condo-filings.html">New filings</a></nav>
   <h1>How Long Does It Take the Attorney General to Accept a Condo Offering Plan?</h1>
-  <p class="meta">Updated <time datetime="${TODAY}">${esc(day(TODAY))}</time> · Source: NY Attorney General</p>
-  <p class="lede">The time from when a sponsor submits a New York City condominium offering plan to when the Attorney General accepts it for filing, from the AG's own plan records.</p>
+  <p class="anote">The time from when a sponsor submits a New York City condominium offering plan to when the Attorney General accepts it for filing. Only the ${n(timed.length)} plans never amended can be timed from the AG's records, so read the figures as a guide.</p>
   <div class="hero-stat">
     <p class="hs-k">Average time to approval</p>
     <p class="hs-v">${mo(mean)} <span>month${mo(mean) === "1" ? "" : "s"}</span></p>
-    <p class="hs-s">${n(mean)} days from submission to acceptance for filing, averaged over ${n(timed.length)} plans</p>
   </div>
   <dl class="glance">
-    <div><dt>Median</dt><dd>${dm(med)}</dd></div>
-    <div><dt>Middle half of plans</dt><dd>${mo(q1)}–${months(q3)}<span class="sub">${q1}–${q3} days</span></dd></div>
-    <div><dt>Fastest tenth</dt><dd>under ${dm(p10)}</dd></div>
-    <div><dt>Slowest tenth</dt><dd>over ${dm(p90)}</dd></div>
+    <div><dt>${FAST} Fastest</dt><dd>${dur(fastest)}</dd></div>
+    <div><dt>${SLOW} Slowest</dt><dd>${dur(slowest)}</dd></div>
   </dl>
   </div>
   <div class="amain">
-  <article>
-  <p>Half of the ${n(timed.length)} plans measured here were accepted within ${months(med)} (${med} days) of submission.${mean > med && overTwoYears ? ` The average runs longer than the median because ${plural(overTwoYears, "plan")} took two years or more.` : ""}</p>
-
   <h2>By Building Size</h2>
-  <p>Does a bigger building take longer? Plans grouped by the residential units on the Attorney General's record.</p>
   ${sizeTable}
-  <p class="src">${big ? `Only ${plural(big.n, "plan")} with 51 or more units are in this sample: ${bigAmended}% of accepted plans that size were later amended, and amended plans can't be timed. ` : ""}Plans listing no residential units are left out.</p>
 
   <h2>How the Wait Is Spread</h2>
   ${histogram}
 
   <h2>By Year Accepted</h2>
-  ${rangeChart}
   ${eraTable}
 
   <h2>Most Recent Plans Measured</h2>
   ${recentTable}
 
-  <h2>Which Plans Are Counted</h2>
-  <p>The Attorney General's record for a plan shows one "Submitted Date". For plans that have been amended, that record belongs to the first amendment, so its submitted date is when the amendment came in, usually after the plan was already accepted. Those plans can't be timed from the record and are left out.</p>
-  <p>This page counts only the ${n(timed.length)} New York City plans whose record has no amendment, where the submitted date is the original submission. That is a minority of all plans, and plans that were never amended may not move through review at the same pace as larger projects that were. Read the figures as a guide, not a promise for any one plan.</p>
-  <p>"Accepted for filing" is not an endorsement of the offering. See <a href="new-condo-filings.html">the newest plans accepted for filing</a> or <a href="blog/what-is-a-cd-number.html">what a CD number means</a>.</p>
-  </article>
   ${cta(P)}
   </div>
 </main>
@@ -501,8 +448,7 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
 <main class="post agents split">
   <div class="aside">
   <h1>NYC Condo Property Managers</h1>
-  <p class="lede">The managing agent each offering plan names for the condominium's first year, and the management fee its Schedule B budget sets per unit. ${n(groups.length)} managers across ${n(namedPlans)} buildings.</p>
-  <p class="anote">Ranked by the number of offering plans naming each firm as the first-year managing agent. May not reflect current management or pricing.</p>
+  <p class="anote">The managing agent each offering plan names for the condominium's first year, and the management fee its Schedule B budget sets per unit. ${n(groups.length)} managers across ${n(namedPlans)} buildings. Ranked by the number of offering plans naming each firm as the first-year managing agent. May not reflect current management or pricing.</p>
   <label class="afind"><span>Find a manager</span><input id="afind" type="search" placeholder="Type a name" autocomplete="off"></label>
   </div>
   <div class="amain">
@@ -596,9 +542,7 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
 <main class="post agents split">
   <div class="aside">
   <h1>Top NYC Condo Offering Plan Attorneys</h1>
-  <p class="meta">Updated <time datetime="${TODAY}">${esc(day(TODAY))}</time> · Source: NY Attorney General</p>
-  <p class="lede">The law firms named as the sponsor's counsel on New York City condominium offering plans. ${n(all.length)} firms across the ${n(withCounsel)} NYC plans that name their counsel.</p>
-  <p class="anote">Ranked by the number of offering plans naming each firm as sponsor's counsel, not by quality. May not reflect current representation.</p>
+  <p class="anote">The law firms named as the sponsor's counsel on New York City condominium offering plans. ${n(all.length)} firms across the ${n(withCounsel)} NYC plans that name their counsel. Ranked by the number of offering plans naming each firm as sponsor's counsel, not by quality. May not reflect current representation.</p>
   <label class="afind"><span>Find a firm</span><input id="afind" type="search" placeholder="Type a name" autocomplete="off"></label>
   </div>
   <div class="amain">

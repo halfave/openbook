@@ -45,8 +45,8 @@ h2 + details{border-top:0}
 .about .about-facts div{border-top:1px solid var(--rule);padding:9px 0}
 .about .about-facts dt{font:11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .about .about-facts dd{margin:2px 0 0}
-.about .amain p{max-width:66ch}
-.about .amain p:first-child{margin-top:0}
+.about .amain p{max-width:720px;margin:0 0 18px}
+.about .amain p.anote{margin-top:26px}
 @media (max-width:999px){
   main.about{display:flex;flex-direction:column}
   .about > .aside{display:contents}
@@ -149,6 +149,7 @@ table.bars td:nth-child(2){font-variant-numeric:tabular-nums;text-align:right;pa
 .hs-s{color:var(--muted);font-size:15px;margin:0}
 table.dm td{vertical-align:top;font-variant-numeric:tabular-nums}
 table.dm .sub{display:block;font-size:12.5px;color:var(--muted)}
+.approval .ic{vertical-align:-2px;margin-right:3px;color:var(--accent)}
 @media (max-width:520px){.hs-v{font-size:48px}.hs-v span{font-size:22px}}
 .chart{margin:14px 0 18px;padding:0}
 .chart figcaption{font:600 14px var(--sans);margin:0 0 12px;display:flex;flex-wrap:wrap;gap:4px 16px;align-items:baseline}
@@ -274,8 +275,6 @@ main.post.split > *{max-width:none}
   .split > .aside .afind input{max-width:none;flex:none}
   .split > .amain{padding-top:8px}
   .split > .amain > h2:first-child{margin-top:0}
-  main.post.filings.split{max-width:1520px;grid-template-columns:minmax(220px,270px) minmax(0,1fr)}
-  .filings.split .ftable td:nth-child(n+6){min-width:140px}
   .split > .aside .glance{grid-template-columns:1fr 1fr;margin-top:22px}
   .approval.split > .aside{position:static}
   .split > .amain > article > p:first-child{margin-top:0}
