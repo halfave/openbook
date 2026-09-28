@@ -151,10 +151,39 @@ table.sect tr.focus td{font-weight:600}
 table.cmp thead th{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--rule-strong);white-space:nowrap}
 table.cmp .n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 table.cmp .m{font:12.5px var(--mono);white-space:nowrap}
-table.cmp td .pid{display:block;font-size:11px}
+table.cmp td .pid,table.cmp th .pid{display:block;font-size:11px}
 table.cmp td:first-child{min-width:12ch}
 table.cmp .plink{font-size:14px}
 table.cmp .sub2{display:block;font:11px var(--mono);color:var(--muted)}
+a.plink{text-decoration:none}
+/* answer card: a number, what it covers, a breakdown whose rows open to the buildings behind them */
+.stat-num{margin:0;font:700 clamp(30px,5vw,44px)/1.05 var(--display);font-variant-numeric:tabular-nums}
+.stat-num small{display:block;margin-top:4px;font:400 14px/1.4 var(--sans);color:var(--muted)}
+.stat-gap{margin:0;padding:8px 12px;background:var(--warn-bg);color:var(--warn);border-left:3px solid var(--warn);font-size:13.5px}
+table.cmp tr.grp td{cursor:pointer}
+table.cmp tr.grp:hover td{background:var(--chip)}
+.grp-t{background:none;border:0;padding:0;font:600 14px/1.3 var(--sans);color:var(--ink);cursor:pointer;text-align:left}
+.grp-t::before{content:"▸";display:inline-block;width:1.1em;color:var(--accent);transition:transform .15s}
+.grp-t[aria-expanded="true"]::before{transform:rotate(90deg)}
+tr.grp-list td{padding:4px 0 10px 1.1em;background:var(--chip)}
+.blist{list-style:none;margin:0;padding:0;display:grid;gap:2px;font-size:13.5px}
+.blist li{display:flex;flex-wrap:wrap;gap:0 10px;align-items:baseline;padding:3px 0;border-bottom:1px solid var(--rule)}
+.blist li:last-child{border-bottom:0}
+.blist .plink{font-size:14px}
+.blist .meta{font:11.5px var(--mono);color:var(--muted)}
+.bars{display:flex;align-items:flex-end;gap:2px;height:96px;padding-top:14px;border-bottom:1px solid var(--rule-strong);position:relative}
+.bars button{flex:1 1 0;min-width:0;height:100%;display:flex;align-items:flex-end;background:none;border:0;padding:0;cursor:pointer;position:relative}
+.bars i{display:block;width:100%;background:var(--accent);border-radius:4px 4px 0 0;min-height:2px}
+.bars button:hover i,.bars button:focus-visible i{background:var(--accent-hover)}
+.bars button:hover::after,.bars button:focus-visible::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 2px);left:50%;transform:translateX(-50%);background:var(--ink);color:var(--ground);font:11.5px/1.3 var(--mono);padding:3px 6px;white-space:nowrap;z-index:2;pointer-events:none}
+.bar-axis{display:flex;justify-content:space-between;font:11px var(--mono);color:var(--muted)}
+/* building-to-building comparison */
+table.side th[scope="row"]{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+table.side thead th{vertical-align:bottom}
+table.side td,table.side thead th{min-width:15ch;font-variant-numeric:tabular-nums}
+table.side tr.faint td{color:var(--muted)}
+.pgroup{border-top:1px solid var(--rule-strong);padding:10px 0}
+.pgroup .passages li{padding:6px 0 6px 12px;border-top:1px solid var(--rule)}
 
 .hero .notice{margin-top:12px}
 
@@ -440,6 +469,8 @@ table.pivot th[scope="row"]{white-space:nowrap}
   // Must match fileFor() in scripts/build-buildings.mjs.
   const slug = (s) => String(s ?? "").toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
   const pageFor = (p) => p.address ? `buildings/${slug(p.address)}-${slug(p.borough)}-${String(p.plan_id).toLowerCase()}.html` : null;
+  // Every result template names buildings the same way: a click opens the detail panel, a new-tab click opens the building page.
+  const bLink = (r, cls = "plink") => `<a class="${cls}" href="${esc(pageFor(r) || AG + encodeURIComponent(r.plan_id))}" data-open="${esc(r.plan_id)}">${esc(tc(r.name))}</a>`;
   const street = (p) => p.lat ? `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${p.lat},${p.lng}` : null;
 
   // ---------- data (Supabase REST, public read-only) ----------
@@ -586,7 +617,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
     li.innerHTML = `
       ${t ? `<img class="ph" alt="" src="${esc(t)}">` : `<div class="ph blank">${esc(tc(r.borough))}</div>`}
       <div class="cbody">
-        <div class="ctop"><div><div class="cname">${esc(tc(r.name))}</div><div class="caddr">${esc(tc(r.address))}, ${esc(tc(r.borough))}</div></div><span class="pid">${esc(r.plan_id)}</span></div>
+        <div class="ctop"><div>${bLink(r, "cname plink")}<div class="caddr">${esc(tc(r.address))}, ${esc(tc(r.borough))}</div></div><span class="pid">${esc(r.plan_id)}</span></div>
         <div class="chips">
           <span class="chip"><b>${r.units_residential ?? "?"}</b> units</span>
           ${r.units_parking == null ? `<span class="chip pkchip" title="The AG record doesn’t give a parking-unit count">Parking units: not on record</span>` : `<span class="chip pkchip" title="Parking units in the AG record"><b>${r.units_parking}</b> parking unit${r.units_parking === 1 ? "" : "s"}</span>`}
@@ -632,7 +663,12 @@ table.pivot th[scope="row"]{white-space:nowrap}
       });
     } catch (e) { /* images are optional */ }
   }
-  $("results").addEventListener("click", (e) => { const b = e.target.closest("[data-open]"); if (b) openDetail(b.dataset.open, false); });
+  // One handler for every building name and Details button on the page. Ctrl/Cmd/Shift/middle click keeps the link's own behavior.
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-open]"); if (!b || e.button || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+    e.preventDefault(); openDetail(b.dataset.open, false);
+    if (!b.closest("#results")) $("detail").scrollIntoView({ behavior: "smooth", block: "nearest" });
+  });
 
   // ---------- detail ----------
   async function openDetail(id, fromMap) {
@@ -729,6 +765,43 @@ table.pivot th[scope="row"]{white-space:nowrap}
     return null;
   }
 
+  // ---------- which result template fits the question ----------
+  // A question for a number ("average", "how many", "per year", "Brooklyn vs Queens") gets the answer card:
+  // the figure, what it covers, and a breakdown whose rows open to the buildings behind it.
+  const BORO_WORDS = [["MANHATTAN", /\bmanhattan\b/], ["BROOKLYN", /\bbrooklyn\b/], ["QUEENS", /\bqueens\b/], ["BRONX", /\bbronx\b/], ["STATEN ISLAND", /\bstaten island\b/]];
+  const STAT_CUE = /\b(average|avg|mean|median|typical|how many|number of|count of|per year|by year|each year|every year|a year|over time|trends?|annual(ly)?|yearly|by borough|per borough|each borough|across boroughs|breakdown|statistics|stats)\b/;
+  const VERSUS = /\b(vs\.?|versus|compared (to|with)|against)\b/;
+  function parseStat(t) {
+    t = " " + t.toLowerCase().replace(/[’']/g, "'") + " ";
+    const boros = BORO_WORDS.filter(([, re]) => re.test(t)).map(([b]) => b);
+    const byWho = t.match(/\b(sponsors?|developers?|law firms?|counsel|attorneys?|lawyers?)\b/) && /\b(most|top|busiest|biggest|largest|which|who)\b/.test(t) && /\b(most|top|busiest)\b/.test(t);
+    const kinds = /\bconver(sion|sions|ted)\b/.test(t) && /\bnew( construction| development|ly built)?\b/.test(t) && (VERSUS.test(t) || /\b(and|or)\b/.test(t));
+    const vsBoros = boros.length >= 2 && (VERSUS.test(t) || /\b(compare|and)\b/.test(t));
+    if (!STAT_CUE.test(t) && !byWho && !kinds && !vsBoros) return null;
+    const gap = /\b(sales?|sold|selling|closing|closed|resale)( prices?| for)?\b|\bsold\b/.test(t) && /\bpric|\bsold for|\bsales?\b/.test(t) ? "sale"
+      : /\b(\$ ?\/ ?(sf|sq ?ft)|psf|ppsf|per (square )?(foot|feet|sq ?ft|sf))\b/.test(t) ? "psf"
+      : /\b(common charges?|hoa|maintenance|monthly charges?|carrying costs?)\b/.test(t) ? "charges" : null;
+    const metric = gap === "charges" ? "count" : gap || /\b(pric(e|es|ing|ed)|costs?|expensive|cheap|offering totals?|dollars?)\b/.test(t) ? "price"
+      : /\bparking\b/.test(t) && /\b(average|avg|mean|median|typical)\b/.test(t) ? "parking"
+      : /\b(average|avg|mean|median|typical)\b/.test(t) && /\b(size|units?|apartments?|big|large)\b/.test(t) ? "units" : "count";
+    // An explicit split wins; "since 2015" alone suggests a year-by-year view.
+    const group = vsBoros || /\b(by|per|each|across) borough/.test(t) ? "borough"
+      : kinds ? "construction"
+      : byWho ? (/\b(law firms?|counsel|attorneys?|lawyers?)\b/.test(t) ? "law_firm" : "sponsor")
+      : /\b(per|by|each|every|a) year\b|\bover time\b|\btrends?\b|\bannual(ly)?\b|\byearly\b|\bsince (19|20)\d\d\b/.test(t) ? "year" : null;
+    return { metric, group, gap, boros: vsBoros ? boros : null, avg: /\b(average|avg|mean)\b/.test(t) };
+  }
+  const STAT_CUT = /\b(average|avg|mean|median|typical|how many|number of|count of|count|per year|by year|each year|every year|a year|over time|trends?|annual(ly)?|yearly|by borough|per borough|each borough|across boroughs|breakdown|statistics|stats|sales?|sold|selling|closing|resale|pric(e|es|ing|ed)|costs?|expensive|cheap|per unit|size|big|large|vs\.?|versus|compared|against|compare|sponsors?|developers?|law firms?|counsel|attorneys?|lawyers?|most|top|busiest|who|filed|file|were|was|did|do|does|there|been|conver(sion|sions|ted)|new construction|built|common charges?|hoa|maintenance|monthly charges?|carrying costs?|psf|ppsf|per (square )?(foot|feet)|square f(oo|ee)t)\b/g;
+  // Two or more buildings named with "compare", "vs" or "and": plan IDs or street addresses.
+  function parseCompare(s) {
+    const ids = [...new Set((s.match(/\b[a-z]{2}\d{6}\b/g) || []).map((x) => x.toUpperCase()))];
+    if (ids.length >= 2) return { ids: ids.slice(0, 4) };
+    if (!/\b(compare|comparison|vs\.?|versus|difference between)\b/.test(s)) return null;
+    const parts = s.replace(/\b(compare|comparison of|comparison|difference between|the)\b/g, " ").split(/\s+(?:vs\.?|versus|and|&|with|to)\s+|,|;/);
+    const addrs = parts.map((p) => parseAddress(" " + p.trim() + " ")).filter(Boolean);
+    return addrs.length >= 2 ? { addresses: addrs.slice(0, 4) } : null;
+  }
+
   function parseQuestion(input) {
     let s = " " + String(input || "").toLowerCase().replace(/[’']/g, "'").replace(/\s+/g, " ") + " ";
     const out = { q: "", borough: null, zips: null, minUnits: null, maxUnits: null, minParking: null, planId: null, address: null, view: null, focus: null, chips: [], notes: [] };
@@ -738,6 +811,15 @@ table.pivot th[scope="row"]{white-space:nowrap}
     const n = (t) => (t in W ? W[t] : parseInt(t, 10));
     const NUM = "(\\d{1,4}|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|fifteen|twenty|thirty|forty|fifty|hundred)";
     const cut = (re) => { s = s.replace(re, " "); };
+
+    // two or more buildings side by side
+    const cmp = parseCompare(s);
+    if (cmp) {
+      out.compare = cmp;
+      chip("compare", `Compare: ${cmp.ids ? cmp.ids.join(" · ") : cmp.addresses.map((a) => titleCase(`${a.num} ${a.street}`)).join(" · ")}`);
+      return out;
+    }
+    out.stat = parseStat(s);
 
     // managing agent: "managed by AKAM", "managing agent FirstService in Brooklyn", "which condos does MRE manage"
     // (not "who is the managing agent for 701 Prospect Place", which asks about one building)
@@ -751,7 +833,8 @@ table.pivot th[scope="row"]{white-space:nowrap}
     }
     // sponsor's counsel: "counsel Harold L. Gruber", "law firm Starr Associates in Queens" (links from the attorneys page)
     const cns = s.match(/\b(?:sponsor's counsel|counsel|law firm|represented by)(?: is| was)?\s+(?!(?:for|of|at|in|on|the building|is|was|represented|who|that)\b)([a-z0-9&.,'\- ]+?)(?=\s+(?:in|with|that|which|under|over|since|from|near|condos?|buildings?|plans?)\b|[?!]|\s*$)/);
-    if (cns && cns[1].trim().replace(/[.,]+$/, "").length >= 2) {
+    // (not "which counsel filed the most plans", which asks for a ranking of firms)
+    if (cns && out.stat?.group !== "law_firm" && cns[1].trim().replace(/[.,]+$/, "").length >= 2) {
       out.counsel = cns[1].trim().replace(/[.,]+$/, "");
       chip("counsel", `Counsel: ${titleCase(out.counsel)}`);
       out.notes.push("Sponsor's counsel as named in the Attorney General's plan record.");
@@ -765,7 +848,9 @@ table.pivot th[scope="row"]{white-space:nowrap}
     else if (/\bby-?laws\b/.test(s)) { out.view = "documents"; out.focus = "bylaws"; }
     else if (/\bdeclaration\b/.test(s)) { out.view = "documents"; out.focus = "declaration"; }
     else if (/\bmanagement agreement\b/.test(s)) { out.view = "documents"; out.focus = "management_agreement"; }
-    if (/\b(pric(e|es|ing)|compare|comparison|comps?|sell-?out)\b/.test(s)) { out.view = "compare"; out.notes.push("Pricing shows the AG record’s total offering prices. Unit prices and $/sf from Schedule A are not extracted yet."); cut(/\b(pric(e|es|ing)|compare|comparison|comps?|sell-?out)\b/g); }
+    // A number question: its question words aren't search terms.
+    if (out.stat) cut(/\b(accepted|approved)\b/g), cut(STAT_CUT);
+    if (!out.stat && /\b(pric(e|es|ing)|compare|comparison|comps?|sell-?out)\b/.test(s)) { out.view = "compare"; out.notes.push("Pricing shows the AG record’s total offering prices. Unit prices and $/sf from Schedule A are not extracted yet."); cut(/\b(pric(e|es|ing)|compare|comparison|comps?|sell-?out)\b/g); }
     else if (!out.view && !out.manager && !out.counsel && /\b(managing agent|architect|selling agent|attorneys?|counsel|engineer|contractor|project teams?|team)\b/.test(s)) out.view = "passages";
 
     // plan ID, e.g. CD240334
@@ -780,6 +865,28 @@ table.pivot th[scope="row"]{white-space:nowrap}
       out.notes.push("Looked up by street address in the AG record, including common spellings (St/Street, E/East, 7th/Seventh).");
     }
 
+    // acceptance dates: "last 2 years", "past 6 months", "since 2020", "in 2024", "2019 to 2021", "this year"
+    const now = new Date(), iso = (d) => d.toISOString().slice(0, 10), Y = now.getFullYear();
+    const back = (k, unit) => { const d = new Date(now); if (unit.startsWith("month")) d.setMonth(d.getMonth() - k); else d.setFullYear(d.getFullYear() - k); return iso(d); };
+    const DN = "(\\d{1,2}|a|one|two|three|four|five|six|seven|eight|nine|ten|twelve|fifteen|twenty)";
+    const DATES = [
+      [new RegExp(`\\b(?:in |over |during |within )?(?:the )?(?:last|past) ${DN} ?(years?|yrs?|months?)\\b`), (x) => [back(x[1] === "a" ? 1 : n(x[1]), x[2]), null]],
+      [/\b(?:in |over |during )?(?:the )?past (year|month)\b/, (x) => [back(1, x[1]), null]],
+      [/\blast year\b/, () => [`${Y - 1}-01-01`, `${Y - 1}-12-31`]],
+      [/\bthis year\b/, () => [`${Y}-01-01`, null]],
+      [/\b(?:from |between )?((?:19|20)\d\d) ?(?:-|–|to|through|and) ?((?:19|20)\d\d)\b/, (x) => [`${x[1]}-01-01`, `${x[2]}-12-31`]],
+      [/\b(?:since|from) ((?:19|20)\d\d)\b/, (x) => [`${x[1]}-01-01`, null]],
+      [/\bafter ((?:19|20)\d\d)\b/, (x) => [`${+x[1] + 1}-01-01`, null]],
+      [/\bbefore ((?:19|20)\d\d)\b/, (x) => [null, `${+x[1] - 1}-12-31`]],
+      [/\b(?:in|during) ((?:19|20)\d\d)\b/, (x) => [`${x[1]}-01-01`, `${x[1]}-12-31`]],
+    ];
+    for (const [re, f] of DATES) {
+      const x = s.match(re); if (!x) continue;
+      [out.from, out.to] = f(x); cut(x[0]);
+      chip("dates", `Accepted ${[out.from && "from " + date(out.from), out.to && "to " + date(out.to)].filter(Boolean).join(" ")}`);
+      break;
+    }
+
     // boroughs + common neighborhoods
     const B = [
       ["MANHATTAN", /\b(manhattan|harlem|soho|tribeca|chelsea|midtown|upper (east|west) side|ues|uws|lower east side|les|east village|west village|financial district|fidi|nomad|inwood|washington heights)\b/],
@@ -788,7 +895,12 @@ table.pivot th[scope="row"]{white-space:nowrap}
       ["BRONX", /\b(the bronx|bronx|riverdale|mott haven|fordham)\b/],
       ["STATEN ISLAND", /\b(staten island|s\.i\.)\b/],
     ];
-    for (const [boro, re] of B) {
+    // "Brooklyn vs Queens": both boroughs are the filter, one row each in the answer card.
+    if (out.stat?.boros) {
+      out.boroughs = out.stat.boros; chip("area", out.boroughs.map(titleCase).join(" or "));
+      BORO_WORDS.forEach(([, re]) => cut(new RegExp(re.source, "g")));
+    }
+    for (const [boro, re] of out.boroughs ? [] : B) {
       const mm = s.match(re);
       if (!mm) continue;
       const name = mm[0].trim();
@@ -828,15 +940,27 @@ table.pivot th[scope="row"]{white-space:nowrap}
       const nums = mm.slice(1).filter((x) => x && x in W || /^\d+$/.test(x || "")).map(n);
       fn(...nums); cut(mm[0]); break;
     }
-    if (/\b(small|boutique)\b/.test(s) && out.maxUnits == null) { out.maxUnits = 10; cut(/\b(small|boutique)\b/); }
+    if (/\b(small|boutique)\b/.test(s)) { if (out.maxUnits == null) out.maxUnits = 10; cut(/\b(small|boutique)\b/); }
+    // rankings are the list, sorted
+    const rank = !out.stat && s.match(/\b(largest|biggest|smallest)\b/);
+    if (rank) { out.sort = rank[1] === "smallest" ? "units_asc" : "units_desc"; chip("sort", rank[1] === "smallest" ? "Fewest units first" : "Most units first"); cut(rank[0]); }
     if (out.minUnits != null && out.maxUnits != null && out.minUnits === out.maxUnits) chip("units", `${out.maxUnits} units`);
     else if (out.minUnits != null && out.maxUnits != null) chip("units", `${out.minUnits}–${out.maxUnits} units`);
     else if (out.maxUnits != null) chip("units", `Under ${out.maxUnits + 1} units`);
     else if (out.minUnits != null) chip("units", `${out.minUnits}+ units`);
 
     // A building lookup (address or plan ID) shows that building; the rest of the words pick the view.
-    if (out.planId || out.address) return out;
+    // Words left over ("pet policy at 80 Vernon Avenue") become passages inside the dossier.
+    if (out.planId || out.address) {
+      out.stat = null;
+      if (/\bamendments?\b/.test(s)) out.amendments = true;
+      const rest = s.replace(/[^a-z0-9\-\s]/g, " ").split(/\s+/).filter((w) => w.length > 2 && !DOSSIER_STOP.has(w));
+      if (rest.length && !out.focus) { out.topic = dedupe(rest).join(" "); chip("topic", `Passages: ${out.topic}`); }
+      return out;
+    }
 
+    // "Which plans mention X" reads best as the passages themselves, grouped by building.
+    if (!out.view && !out.stat && /\b(mention(s|ing)?|allows?|permits?|clauses?|provisions?|language|says?)\b|^\s*(which|what) (offering )?(plans|condos|buildings)\b/.test(s)) out.view = "passages";
     // keep quoted phrases, drop filler
     const quoted = []; s = s.replace(/"([^"]+)"/g, (_, p) => { quoted.push(`"${p.trim()}"`); return " "; });
     const STOP = new Set(("a an the and of in on at to for from by with without that which who whose where what show me see find list any all some " +
@@ -849,6 +973,10 @@ table.pivot th[scope="row"]{white-space:nowrap}
     if (out.q) out.chips.unshift({ k: "q", label: `Text: ${out.q}` });
     return out;
   }
+  const DOSSIER_STOP = new Set(("the and for from with that which who whose where what when how does did has have had are was were there this these those " +
+    "show see find list tell give get about info information details detail policy policies rules rule allowed allow allows permitted any all its " +
+    "condo condos condominium building buildings plan plans offering amendment amendments changed change changes new york city nyc brooklyn manhattan queens bronx staten island " +
+    "who's what's can could should would will say says said mention mentions").split(" "));
   function dedupe(a) { const seen = new Set(); return a.filter((w) => (seen.has(w) ? false : (seen.add(w), true))); }
   function titleCase(s) { return String(s).toLowerCase().replace(/\b([a-z])/g, (c) => c.toUpperCase()); }
 
@@ -865,17 +993,41 @@ table.pivot th[scope="row"]{white-space:nowrap}
     const cnt = new Map(); done.forEach((d) => cnt.set(d.plan_id, (cnt.get(d.plan_id) || 0) + 1));
     return rows.map((r) => ({ ...r, docs_indexed: cnt.get(r.plan_id) || 0, hits: 0, snippets: [] }));
   }
+  function addressRows({ num, spellings }) {
+    // Match the number at the start or after another address ("108 Leonard St a/k/a 346 Broadway").
+    // A one-letter ending ("Park W", "Avenue A") must end the word, or "Park S" would also match "Park Southwest".
+    const ends = (v) => (/ [a-z]$/.test(v) ? [v, `${v} *`] : [`${v}*`]);
+    const ors = spellings.flatMap(ends).flatMap((v) => [`${num} ${v}`, `* ${num} ${v}`]).map((v) => `address.ilike.${v}`);
+    return recordRows(`or=(${encodeURIComponent(ors.join(","))})`);
+  }
+  // Buildings named for a side-by-side comparison, in the order they were typed.
+  async function compareRows(P) {
+    const { ids, addresses } = P.compare, notes = [];
+    let rows;
+    if (ids) {
+      const got = await recordRows(`plan_id=in.${inList(ids)}`);
+      rows = ids.map((id) => got.find((r) => r.plan_id === id)).filter(Boolean);
+      const miss = ids.filter((id) => !got.some((r) => r.plan_id === id));
+      if (miss.length) notes.push(`No plan record for ${miss.join(", ")}.`);
+    } else {
+      const found = await Promise.all(addresses.map(addressRows));
+      rows = [];
+      found.forEach((list, i) => {
+        const a = titleCase(`${addresses[i].num} ${addresses[i].street}`);
+        if (!list.length) notes.push(`No plan record found at ${a}.`);
+        else { if (list.length > 1) notes.push(`${list.length} plan records match ${a}; the newest is compared. Type its plan ID to pick another.`); if (!rows.some((r) => r.plan_id === list[0].plan_id)) rows.push(list[0]); }
+      });
+    }
+    P.matchNote = notes.join(" ") || null;
+    return rows;
+  }
   async function fetchRows(P) {
     P.matchNote = null;
+    if (P.compare) return compareRows(P);
     if (P.ai) return aiRows(P);
     if (P.planId) return recordRows(`plan_id=eq.${encodeURIComponent(P.planId)}`);
     if (P.address) {
-      // Match the number at the start or after another address ("108 Leonard St a/k/a 346 Broadway").
-      const { num, spellings } = P.address;
-      // A one-letter ending ("Park W", "Avenue A") must end the word, or "Park S" would also match "Park Southwest".
-      const ends = (v) => (/ [a-z]$/.test(v) ? [v, `${v} *`] : [`${v}*`]);
-      const ors = spellings.flatMap(ends).flatMap((v) => [`${num} ${v}`, `* ${num} ${v}`]).map((v) => `address.ilike.${v}`);
-      const rows = await recordRows(`or=(${encodeURIComponent(ors.join(","))})`);
+      const rows = await addressRows(P.address);
       // AG records write boroughs several ways (KINGS, NEW YORK), so the borough narrows the list only when it matches something.
       const inBoro = P.borough ? rows.filter((r) => BORO_OF[String(r.borough || "").trim().toUpperCase()] === P.borough) : [];
       const hits = inBoro.length ? inBoro : rows;
@@ -890,9 +1042,12 @@ table.pivot th[scope="row"]{white-space:nowrap}
       if (P.minUnits != null) f.push(`units_residential=gte.${P.minUnits}`);
       if (P.maxUnits != null) f.push(`units_residential=lte.${P.maxUnits}`);
       if (P.minParking != null) f.push(`units_parking=gte.${P.minParking}`);
+      if (P.from) f.push(`accepted_date=gte.${P.from}`);
+      if (P.to) f.push(`accepted_date=lte.${P.to}`);
       return recordRows(f.join("&"));
     }
-    const args = { q: P.q || null, p_borough: P.borough, p_min_units: P.minUnits, p_max_units: P.maxUnits, p_min_parking: P.minParking, p_limit: P.zips ? 400 : 60 };
+    const args = { q: P.q || null, p_borough: P.borough, ...(P.boroughs ? { p_boroughs: P.boroughs } : {}), p_min_units: P.minUnits, p_max_units: P.maxUnits, p_min_parking: P.minParking, p_accepted_from: P.from || null, p_accepted_to: P.to || null, p_limit: P.zips ? 400 : 60 };
+    if (P.sort) args.p_sort = P.sort;
     if (P.manager) args.p_managing_agent = P.manager;
     if (P.counsel) args.p_counsel = P.counsel;
     const words = (P.q || "").split(/\s+/).filter(Boolean);
@@ -957,7 +1112,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
       runIntent(spec, via); return;
     }
     const P = parseQuestion(text);
-    if (!P.q && !P.borough && !P.zips && P.minUnits == null && P.maxUnits == null && P.minParking == null && !P.planId && !P.address && !P.manager && !P.counsel) {
+    if (!P.q && !P.borough && !P.zips && P.minUnits == null && P.maxUnits == null && P.minParking == null && !P.planId && !P.address && !P.manager && !P.counsel && !P.compare && !P.stat && !P.from && !P.to) {
       P.q = text; P.chips.unshift({ k: "q", label: `Text: ${text}` });
     }
     P.text = text; P.via = via;
@@ -988,8 +1143,8 @@ table.pivot th[scope="row"]{white-space:nowrap}
     if (current?.intent) return intentReadClick(e);
     const b = e.target.closest("[data-rm]"); if (!b || !current) return;
     const P = { ...current, chips: current.chips.filter((c) => c.k !== b.dataset.rm) };
-    ({ q: () => { P.q = ""; }, area: () => { P.borough = null; P.zips = null; }, units: () => { P.minUnits = null; P.maxUnits = null; },
-      parking: () => { P.minParking = null; P.maxParking = null; }, planId: () => { P.planId = null; }, address: () => { P.address = null; }, manager: () => { P.manager = null; },
+    ({ q: () => { P.q = ""; }, area: () => { P.borough = null; P.zips = null; P.boroughs = null; if (P.stat?.boros) P.stat = { ...P.stat, boros: null, group: null }; }, units: () => { P.minUnits = null; P.maxUnits = null; },
+      parking: () => { P.minParking = null; P.maxParking = null; }, planId: () => { P.planId = null; }, address: () => { P.address = null; }, topic: () => { P.topic = null; }, sort: () => { P.sort = null; }, compare: () => { P.compare = null; }, manager: () => { P.manager = null; },
       dates: () => { P.from = null; P.to = null; }, construction: () => { P.construction = null; }, status: () => { P.status = null; },
       sponsor: () => { P.sponsor = null; }, counsel: () => { P.counsel = null; }, commercial: () => { P.minCommercial = null; }, storage: () => { P.minStorage = null; } })[b.dataset.rm]?.();
     P.aiAnswer = null; P.aiPending = false;
@@ -1019,14 +1174,17 @@ table.pivot th[scope="row"]{white-space:nowrap}
         P.borough = null; P.zips = null;
       }
       renderInterpretation(P);
-      const answer = !!(P.address || P.planId) && rows.length === 1;
-      document.body.classList.toggle("answer", answer);
-      $("answer").hidden = !answer; $("answer").innerHTML = "";
+      // Result template: one building → dossier; buildings side by side → comparison; a number → answer card; otherwise the list.
+      const answer = !!(P.address || P.planId) && rows.length === 1, side = !!P.compare && rows.length >= 2;
+      document.body.classList.toggle("answer", answer || side);
+      $("answer").hidden = !(answer || side); $("answer").innerHTML = "";
       if (answer) renderAnswer(rows[0], P);
+      else if (side) renderSide(rows);
+      else if (P.stat) renderStat(P);
       else if (P.aiAnswer) renderExtract(P.aiAnswer);
-      const noun = P.address || P.planId ? "Building" : "Matching Building";
-      $("rtitle").textContent = !rows.length ? (P.address ? "No Matching Record Found Here" : "No Plans Found") : rows.length === 60 ? (P.q ? `Top 60 ${noun}s` : "60 Newest Buildings") : `${rows.length} ${noun}${rows.length === 1 ? "" : "s"}`;
-      $("status").textContent = rows.length ? (P.q ? "ranked by matching pages" : "newest first")
+      const noun = P.address || P.planId || P.compare ? "Building" : "Matching Building";
+      $("rtitle").textContent = !rows.length ? (P.address ? "No Matching Record Found Here" : "No Plans Found") : rows.length === 60 ? (P.sort ? `60 ${P.sort === "units_asc" ? "Smallest" : "Largest"} Buildings` : P.q ? `Top 60 ${noun}s` : "60 Newest Buildings") : `${rows.length} ${noun}${rows.length === 1 ? "" : "s"}`;
+      $("status").textContent = rows.length ? (P.sort ? (P.sort === "units_asc" ? "fewest units first" : "most units first") : P.q ? "ranked by matching pages" : "newest first")
         : P.address ? "That doesn’t mean no plan was filed: this site may not list every plan, or the AG may spell the address differently. Try the building name or plan ID." : "Try fewer words, or remove a filter above.";
       const where = P.borough && !P.zips && !P.address ? ` in ${titleCase(P.borough)}` : "";
       if (where) $("rtitle").textContent += where;
@@ -1116,13 +1274,14 @@ table.pivot th[scope="row"]{white-space:nowrap}
     if (v === "documents") renderDocuments(lastRows, current);
     if (v === "compare") renderCompare(lastRows);
   }
-  $("rview").addEventListener("click", (e) => { const b = e.target.closest("[data-open]"); if (b) openDetail(b.dataset.open, false); });
 
   function renderPassages(rows) {
-    const items = rows.flatMap((r) => (r.snippets || []).map((s) => ({ r, s })));
-    $("rview").innerHTML = items.length
-      ? `<p class="vnote">${items.length} passage${items.length === 1 ? "" : "s"} from ${new Set(items.map((i) => i.r.plan_id)).size} plans. Each cites the document and page.</p>
-        <ol class="passages">${items.map(({ r, s }) => `<li><div class="pmeta"><button type="button" class="plink" data-open="${esc(r.plan_id)}">${esc(tc(r.name))}</button><span class="cite">${esc(r.plan_id)} · </span>${cite(s)}</div><p>${snipHtml(s.text)}</p></li>`).join("")}</ol>`
+    // Grouped by building: the name once, then each passage with its document and page.
+    const withText = rows.filter((r) => (r.snippets || []).length), n = withText.reduce((a, r) => a + r.snippets.length, 0);
+    $("rview").innerHTML = withText.length
+      ? `<p class="vnote">${n} passage${n === 1 ? "" : "s"} from ${withText.length} of the ${rows.length} plans found. Each cites the document and page. Plans whose documents aren’t searchable in full text can’t appear here.</p>` +
+        withText.map((r) => `<section class="pgroup"><div class="pmeta">${bLink(r)}<span class="cite">${esc(r.plan_id)} · ${esc(tc(r.borough))}${r.hits ? ` · ${r.hits} matching page${r.hits === 1 ? "" : "s"}` : ""}</span></div>
+          <ol class="passages">${r.snippets.map((s) => `<li><div class="pmeta">${cite(s)}</div><p>${snipHtml(s.text)}</p></li>`).join("")}</ol></section>`).join("")
       : `<p class="vnote">No passages for this search. Passages come from plans whose documents are searchable in full text.</p>`;
   }
 
@@ -1150,18 +1309,41 @@ table.pivot th[scope="row"]{white-space:nowrap}
     const box = $("answer"), page = pageFor(r), focus = KINDS.find((k) => k[0] === P.focus);
     box.innerHTML = `<article class="ans">
       <p class="ans-kicker">Plan ${esc(r.plan_id)}</p>
-      <h2>${esc(tc(r.name))}</h2>
+      <h2>${page ? `<a href="${esc(page)}" class="plink" style="font:inherit">${esc(tc(r.name))}</a>` : esc(tc(r.name))}</h2>
       <p class="caddr">${esc(tc(r.address))}, ${esc(tc(r.borough))}${r.accepted_date ? ` · accepted ${esc(date(r.accepted_date))}` : ""} · ${r.units_residential ?? "?"} units</p>
+      ${P.topic || P.amendments ? `<div id="ansextra"><p class="vnote">${P.topic ? "Finding passages…" : "Loading the amendments…"}</p></div>` : ""}
       <div class="acts"><span id="ansdoc"></span>
         ${page ? `<a class="btn" href="${esc(page)}${focus ? "#" + focus[2] : ""}">Building page</a>` : ""}
         <a class="btn" href="${esc(agDocs(r.plan_id))}" target="_blank" rel="noopener">AG documents ↗</a></div>
     </article>`;
+    if (P.topic || P.amendments) dossierExtra(r, P);
     if (!r.docs_indexed) return;
     try {
       const docs = await rest(`documents?status=eq.done&plan_id=eq.${encodeURIComponent(r.plan_id)}&doc_kind=eq.offering_plan&pdf_url=not.is.null&select=pdf_url&limit=1`, null, 600000);
       const slot = $("ansdoc");
       if (slot && docs[0]) slot.outerHTML = `<a class="btn primary" href="${esc(docs[0].pdf_url)}" target="_blank" rel="noopener">Open offering plan ↗</a>`;
     } catch (e) { /* no hosted PDF: the AG link covers it */ }
+  }
+
+  // A dossier asked about something: the passages that mention it, or the amendments on file. Only what the documents say.
+  async function dossierExtra(r, P) {
+    const put = (html) => { const el = $("ansextra"); if (el && current === P) el.innerHTML = html; };
+    try {
+      if (P.topic) {
+        if (!r.docs_indexed) return put(`<p class="vnote">This plan’s documents aren’t searchable in full text yet, so passages about “${esc(P.topic)}” can’t be shown.</p>`);
+        const [hit] = await rpc("search_plans_v2", { q: P.topic, p_plan_ids: [r.plan_id], p_limit: 1 }, 300000);
+        const sn = hit?.snippets || [];
+        put(sn.length ? `<p class="ans-lead"><span>Passages mentioning “${esc(P.topic)}”${hit.hits ? ` · ${hit.hits} page${hit.hits === 1 ? "" : "s"}` : ""}</span></p>
+          <ol class="passages">${sn.map((s) => `<li><div class="pmeta">${cite(s)}</div><p>${snipHtml(s.text)}</p></li>`).join("")}</ol>`
+          : `<p class="vnote">No searched page of this plan mentions “${esc(P.topic)}”. Pages that aren’t searchable (scans, later amendments) may still cover it.</p>`);
+      } else {
+        const d = await rpc("plan_detail", { p_id: r.plan_id }, 300000);
+        const am = (d.docs || []).filter((x) => /amendment/i.test(x.filename || "") || x.kind === "amendment");
+        put(am.length ? `<p class="ans-lead"><span>Amendments on file · ${am.length}</span></p><ul class="docs">${am.map((x) => `<li><span>${x.pdf_url ? `<a href="${esc(x.pdf_url)}" target="_blank" rel="noopener">${esc(docLabel(x.filename))} ↗</a>` : esc(docLabel(x.filename))}</span><span class="meta">${x.pages ? x.pages + " pp" : ""}</span></li>`).join("")}</ul>
+          <p class="vnote">Each amendment states its own changes; open it to read them.${am.some((x) => !x.pdf_url) ? ` Files without a link are on the <a href="${esc(agDocs(r.plan_id))}" target="_blank" rel="noopener">AG’s Documents tab</a>.` : ""} ${d.plan?.amendments_listed ? `The AG record lists ${d.plan.amendments_listed}.` : ""}</p>`
+          : `<p class="vnote">No amendment documents are posted for this plan${d.plan?.amendments_listed ? `, though the AG record lists ${d.plan.amendments_listed}` : ""}.</p>`);
+      }
+    } catch (e) { put(`<p class="vnote">Couldn’t load that part. The documents are on the AG site.</p>`); }
   }
 
   async function renderDocuments(rows, P) {
@@ -1187,14 +1369,14 @@ table.pivot th[scope="row"]{white-space:nowrap}
             }).join("");
             body = trs ? `<div class="tscroll"><table class="sect"><tbody>${trs}</tbody></table></div>` : `<p class="faint">No section headings found in the searched pages.</p>`;
           }
-          return `<li><div class="ctop"><div><a class="cname" href="${esc(page || agDocs(r.plan_id))}">${esc(tc(r.name))}</a><div class="caddr">${esc(tc(r.address))}, ${esc(tc(r.borough))}</div></div><span class="pid">${esc(r.plan_id)}</span></div>${body}
+          return `<li><div class="ctop"><div>${bLink(r, "cname")}<div class="caddr">${esc(tc(r.address))}, ${esc(tc(r.borough))}</div></div><span class="pid">${esc(r.plan_id)}</span></div>${body}
             <div class="acts"><a class="btn" href="${esc(agDocs(r.plan_id))}" target="_blank" rel="noopener">Open plan documents ↗</a></div></li>`;
         }).join("") + `</ol>` + (rows.length > 15 ? `<p class="vnote">Showing the first 15 of ${rows.length} plans.</p>` : "");
     } catch (e) { if (tok === viewToken) box.innerHTML = `<p class="vnote">Couldn’t load the page index. Try again.</p>`; }
   }
 
   const money = (v) => { const x = Number(String(v || "").replace(/[$,]/g, "")); return x > 0 ? x : null; };
-  const fmtMoney = (x) => x == null ? "—" : x >= 1e6 ? "$" + (x / 1e6).toFixed(2) + "M" : "$" + Math.round(x / 1000).toLocaleString("en-US") + "K";
+  const fmtMoney = (x) => x == null ? "—" : x >= 1e9 ? "$" + (x / 1e9).toFixed(2) + "B" : x >= 1e6 ? "$" + (x / 1e6).toFixed(2) + "M" : "$" + Math.round(x / 1000).toLocaleString("en-US") + "K";
   async function renderCompare(rows) {
     const tok = viewToken, box = $("rview");
     box.innerHTML = `<p class="vnote">Loading the AG totals…</p>`;
@@ -1207,9 +1389,202 @@ table.pivot th[scope="row"]{white-space:nowrap}
       box.innerHTML = `<p class="vnote">Total offering prices as recorded by the NY Attorney General: the sum of every unit at the plan’s prices, not sale prices. Unit-by-unit Schedule A prices and $/sf are not extracted yet.</p>
         <div class="tscroll"><table class="cmp"><thead><tr><th>Building</th><th>Accepted</th><th class="n">Units</th><th class="n">Initial total</th><th class="n">Current</th></tr></thead><tbody>` +
         list.map((r) => { const d = by.get(r.plan_id) || {}; const i = money(d.init), c = money(d.cur);
-          return `<tr><td><button type="button" class="plink" data-open="${esc(r.plan_id)}">${esc(tc(r.name))}</button><span class="pid">${esc(r.plan_id)}${d.zip ? ` · ${esc(d.zip)}` : ""}</span></td><td class="m">${esc(date(r.accepted_date))}</td><td class="n">${r.units_residential ?? "—"}<span class="sub2">${r.units_parking ? `+${r.units_parking} pkg` : ""}</span></td><td class="n">${fmtMoney(i)}</td><td class="n">${c && c !== i ? fmtMoney(c) : "—"}</td></tr>`; }).join("") +
+          return `<tr><td>${bLink(r)}<span class="pid">${esc(r.plan_id)}${d.zip ? ` · ${esc(d.zip)}` : ""}</span></td><td class="m">${esc(date(r.accepted_date))}</td><td class="n">${r.units_residential ?? "—"}<span class="sub2">${r.units_parking ? `+${r.units_parking} pkg` : ""}</span></td><td class="n">${fmtMoney(i)}</td><td class="n">${c && c !== i ? fmtMoney(c) : "—"}</td></tr>`; }).join("") +
         `</tbody></table></div>`;
     } catch (e) { if (tok === viewToken) box.innerHTML = `<p class="vnote">Couldn’t load the AG totals. Try again.</p>`; }
+  }
+
+  // ---------- answer card: a number question ----------
+  const STAT_COLS = "plan_id,name,address,borough,zip,units_residential,units_parking,units_commercial,accepted_date,construction,sponsor,law_firm,price_current,docs_indexed,total_count";
+  const STAT_CAP = 10000, THIS_YEAR = String(new Date().getFullYear());
+  const median = (a) => { if (!a.length) return null; const s = [...a].sort((x, y) => x - y), m = s.length >> 1; return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
+  const mean = (a) => (a.length ? a.reduce((x, y) => x + y, 0) / a.length : null);
+  // The AG record also holds a few plans outside the city (Nassau, Westchester...); they group together.
+  const boroName = (b) => { const k = BORO_OF[String(b || "").trim().toUpperCase()]; return k ? titleCase(k) : b ? "Outside NYC" : "Not listed"; };
+  // A recorded total under $50K a unit isn't the whole plan's total (some AG rows carry a partial or amended figure), so it isn't used.
+  const PER_UNIT_MIN = 50000;
+  const rawPerUnit = (price, units) => (price > 0 && units > 0 ? price / units : null);
+  const perUnit = (r) => { const v = rawPerUnit(r.price_current, r.units_residential); return v != null && v >= PER_UNIT_MIN ? v : null; };
+  const junk = (r) => /resubmit|withdrawn|\(\s*\d{1,2}\/\d{1,2}\/\d{2,4}|\bfiled\s*\)/i.test(r.name || "") || !(r.units_residential || r.docs_indexed);
+  // Every plan the filters match, not just the page of results shown: search_plans_v2 returns 1,000 rows per request, so page through.
+  async function statRows(P) {
+    const st = P.stat, filters = [P.borough, P.zips, P.minUnits, P.maxUnits, P.minParking, P.maxParking, P.minCommercial, P.minStorage,
+      P.from, P.to, P.construction, P.status, P.sponsor, P.counsel, P.manager];
+    // As in the AI list: with filters, topic words only rank, so they don't narrow the count.
+    // A parking filter already counts parking; the word itself shouldn't also have to be on a page.
+    const q = P.ai && filters.some((v) => v != null) && !P.topicRequired ? null
+      : (P.minParking != null ? String(P.q || "").replace(/\b(parking|garage)\b/gi, " ").replace(/\s+/g, " ").trim() : P.q) || null;
+    const all = { q, p_borough: st.boros ? null : P.borough, p_boroughs: st.boros, p_zips: P.zips, p_min_units: P.minUnits, p_max_units: P.maxUnits,
+      p_min_parking: P.minParking, p_max_parking: P.maxParking, p_min_commercial: P.minCommercial, p_min_storage: P.minStorage,
+      p_accepted_from: P.from, p_accepted_to: P.to, p_construction: P.construction ? [P.construction] : null, p_status: P.status ? [P.status] : null,
+      p_sponsor: P.sponsor, p_counsel: P.counsel, p_managing_agent: P.manager, p_sort: "accepted_desc", p_limit: STAT_CAP };
+    const args = Object.fromEntries(Object.entries(all).filter(([, v]) => v != null));
+    const page = (o) => rest(`rpc/search_plans_v2?select=${STAT_COLS}&offset=${o}`, args, 600000);
+    const first = await page(0), total = first[0]?.total_count ?? first.length;
+    const offs = []; for (let o = 1000; o < Math.min(total, STAT_CAP); o += 1000) offs.push(o);
+    const rows = [first, ...(await Promise.all(offs.map(page)))].flat();
+    return { rows: rows.filter((r) => !junk(r)), total, fetched: rows.length, dropped: rows.filter(junk).length };
+  }
+
+  const STAT_GROUPS = {
+    year: ["Year accepted", (r) => (r.accepted_date ? r.accepted_date.slice(0, 4) : "Not dated")],
+    borough: ["Borough", (r) => boroName(r.borough)],
+    sponsor: ["Sponsor", (r) => (r.sponsor ? tc(r.sponsor) : "Not listed")],
+    law_firm: ["Sponsor’s counsel", (r) => (r.law_firm ? tc(r.law_firm) : "Not listed")],
+    construction: ["Construction", (r) => (r.construction ? titleCase(r.construction) : "Not listed")],
+  };
+  const BORO_ORDER = ["Manhattan", "Brooklyn", "Queens", "Bronx", "Staten Island"];
+  const GAPS = {
+    sale: "Sale prices aren’t in offering plans or the AG record, so they can’t be averaged here. Shown instead: each plan’s total offering price divided by its residential units. That is the sponsor’s asking figure when the plan was filed, not what buyers paid.",
+    psf: "Price per square foot isn’t tracked: unit sizes from Schedule A aren’t extracted for most plans. Shown instead: total offering price per residential unit.",
+    charges: "Common charges aren’t tracked as numbers. Each plan’s Schedule B budget projects them; the Documents tab below points to those pages.",
+  };
+  let statGroups = [], statToken = 0, statMetric = null;
+  const fmtN = (x, d = 0) => (x == null ? "—" : x.toLocaleString("en-US", { maximumFractionDigits: d, minimumFractionDigits: d }));
+
+  async function renderStat(P) {
+    const box = $("answer"), tok = ++statToken, st = P.stat;
+    box.hidden = false;
+    if (P.aiPending) { box.innerHTML = `<article class="ans"><p class="ans-kicker">Answer</p><p class="vnote">Reading the question’s dates and filters before counting…</p></article>`; return; }
+    box.innerHTML = `<article class="ans"><p class="ans-kicker">Answer</p><p class="vnote">Counting every matching plan…</p></article>`;
+    let data;
+    try { data = await statRows(P); } catch (e) { if (tok === statToken) box.innerHTML = `<article class="ans"><p class="ans-kicker">Answer</p><p class="vnote">Couldn’t count the matching plans. Try again.</p></article>`; return; }
+    if (tok !== statToken || current !== P) return;
+    const { rows } = data;
+    const metric = st.metric === "sale" || st.metric === "psf" ? "price" : st.metric;
+    const group = st.group || (P.borough || P.zips ? "year" : "borough");
+    const [gLabel, keyOf] = STAT_GROUPS[group];
+    const val = { price: perUnit, units: (r) => (r.units_residential > 0 ? r.units_residential : null), parking: (r) => (Number.isFinite(r.units_parking) ? r.units_parking : null), count: () => null }[metric];
+    const agg = (list) => { const vals = list.map(val).filter((v) => v != null); return { vals, avg: mean(vals), med: median(vals) }; };
+
+    // groups, in an order that reads naturally for each kind
+    const by = new Map(); rows.forEach((r) => { const k = keyOf(r); if (!by.has(k)) by.set(k, []); by.get(k).push(r); });
+    let groups = [...by].map(([key, list]) => ({ key, rows: list, units: list.reduce((a, r) => a + (r.units_residential || 0), 0), ...agg(list) }));
+    if (group === "year") groups.sort((a, b) => (a.key === "Not dated") - (b.key === "Not dated") || b.key.localeCompare(a.key));
+    else if (group === "borough") groups.sort((a, b) => (BORO_ORDER.indexOf(a.key) + 1 || 9) - (BORO_ORDER.indexOf(b.key) + 1 || 9));
+    else groups.sort((a, b) => b.rows.length - a.rows.length || a.key.localeCompare(b.key));
+    if ((group === "sponsor" || group === "law_firm") && groups.length > 15) {
+      const rest = groups.slice(15), list = rest.flatMap((g) => g.rows);
+      groups = [...groups.slice(0, 15), { key: `All others (${rest.length})`, rows: list, units: list.reduce((a, r) => a + (r.units_residential || 0), 0), ...agg(list) }];
+    }
+    statGroups = groups; statMetric = metric;
+
+    // the headline
+    const whole = agg(rows), useAvg = st.avg || metric === "parking";
+    const head = whole[useAvg ? "avg" : "med"], stat = useAvg ? "Average" : "Median";
+    const totalUnits = rows.reduce((a, r) => a + (r.units_residential || 0), 0);
+    const dated = rows.map((r) => r.accepted_date).filter(Boolean).sort();
+    const span = dated.length ? ` accepted ${date(dated[0])}–${date(dated[dated.length - 1])}` : "";
+    const cover = `${fmtN(rows.length)} plan${rows.length === 1 ? "" : "s"}${span}`;
+    let kicker, big, sub;
+    if (st.gap === "charges") { kicker = "Common charges"; big = "Not tracked"; sub = `${cover} match the filters above.`; }
+    else if (metric === "count") { kicker = "How many"; big = `${fmtN(rows.length)} plan${rows.length === 1 ? "" : "s"}`; sub = `${fmtN(totalUnits)} residential units in all${span ? ` ·${span}` : ""}.`; }
+    else if (metric === "price") { kicker = `${stat} total offering price per residential unit`; big = head == null ? "No recorded prices" : fmtMoney(head); sub = `Across ${fmtN(whole.vals.length)} of ${cover} with a recorded total offering price.`; }
+    else if (metric === "units") { kicker = `${stat} building size`; big = head == null ? "—" : `${fmtN(head, useAvg ? 1 : 0)} units`; sub = `Residential units per plan, across ${cover}.`; }
+    else { kicker = "Average parking"; big = head == null ? "—" : `${fmtN(head, 1)} parking units`; sub = `Per plan, across ${cover}. ${fmtN(rows.filter((r) => r.units_parking > 0).length)} of them offer any parking.`; }
+
+    const notes = [];
+    if (st.boros) notes.push(`Compares ${st.boros.map(titleCase).join(" and ")}.`);
+    if (data.total > data.fetched) notes.push(`${fmtN(data.total)} plans match; these figures cover the ${fmtN(data.fetched)} most recently accepted.`);
+    if (data.dropped) notes.push(`${fmtN(data.dropped)} AG ${data.dropped === 1 ? "row that isn’t" : "rows that aren’t"} a real offering (resubmissions, zero-unit records) ${data.dropped === 1 ? "is" : "are"} left out.`);
+    if (metric === "price") {
+      const low = rows.filter((r) => { const v = rawPerUnit(r.price_current, r.units_residential); return v != null && v < PER_UNIT_MIN; }).length;
+      const unpriced = rows.length - whole.vals.length - low;
+      notes.push(`Totals come from the NY Attorney General’s record and include any commercial, parking and storage units, so per-unit figures run high for plans that have them.${unpriced ? ` ${fmtN(unpriced)} matching plan${unpriced === 1 ? " has" : "s have"} no recorded price and ${unpriced === 1 ? "is" : "are"} left out.` : ""}${low ? ` ${fmtN(low)} more ${low === 1 ? "is" : "are"} left out because the recorded total works out under $50K a unit, so it isn’t the whole plan’s.` : ""}`);
+    }
+
+    // breakdown columns per metric
+    const cols = metric === "price" ? [["Priced plans", (g) => fmtN(g.vals.length)], ["Median / unit", (g) => fmtMoney(g.med)], ["Average / unit", (g) => fmtMoney(g.avg)]]
+      : metric === "units" ? [["Plans", (g) => fmtN(g.rows.length)], ["Average units", (g) => fmtN(g.avg, 1)], ["Median units", (g) => fmtN(g.med)]]
+      : metric === "parking" ? [["Plans", (g) => fmtN(g.rows.length)], ["Average parking", (g) => fmtN(g.avg, 1)], ["With parking", (g) => fmtN(g.rows.filter((r) => r.units_parking > 0).length)]]
+      : [["Plans", (g) => fmtN(g.rows.length)], ["Residential units", (g) => fmtN(g.units)]];
+    const table = groups.length && !(groups.length === 1 && metric === "count") ? `<div class="tscroll"><table class="cmp"><thead><tr><th>${esc(gLabel)}</th>${cols.map(([h]) => `<th class="n">${h}</th>`).join("")}</tr></thead><tbody>` +
+      groups.map((g, i) => `<tr class="grp" data-g="${i}"><td><button type="button" class="grp-t" data-g="${i}" aria-expanded="false" aria-controls="gl-${i}">${esc(g.key)}${group === "year" && g.key === THIS_YEAR ? " (so far)" : ""}</button></td>${cols.map(([, f]) => `<td class="n">${f(g)}</td>`).join("")}</tr>
+        <tr class="grp-list" id="gl-${i}" hidden><td colspan="${cols.length + 1}"></td></tr>`).join("") +
+      `</tbody></table></div><p class="vnote">Open a row to see the buildings behind it; a building’s name opens its details.</p>` : "";
+
+    box.innerHTML = `<article class="ans">
+      <p class="ans-kicker">${esc(kicker)}</p>
+      ${st.gap ? `<p class="stat-gap">${esc(GAPS[st.gap])}</p>` : ""}
+      <p class="stat-num">${esc(big)}<small>${esc(sub)}</small></p>
+      ${group === "year" && groups.length >= 3 ? barsHtml(groups, metric, useAvg) : ""}
+      ${table}
+      ${!table && rows.length ? `<ul class="blist">${buildingItems(rows.slice(0, 50))}</ul>${rows.length > 50 ? `<p class="vnote">The ${fmtN(Math.min(rows.length, 120))} newest are in the list below.</p>` : ""}` : ""}
+      ${notes.length ? `<ul class="readnotes">${notes.map((n) => `<li>${esc(n)}</li>`).join("")}</ul>` : ""}
+    </article>`;
+    obTrack("answer_card", { search_term: P.text, metric: st.metric, group, plans: rows.length });
+  }
+  // One bar per year, oldest first, the metric the card is about. Hover or focus shows the value; a click opens that year's row.
+  function barsHtml(groups, metric, useAvg) {
+    const years = groups.filter((g) => /^\d{4}$/.test(g.key)).map((g) => +g.key);
+    if (years.length < 3) return "";
+    const byYear = new Map(groups.map((g) => [g.key, g]));
+    const v = (g) => (!g ? 0 : metric === "count" ? g.rows.length : (useAvg ? g.avg : g.med) || 0);
+    const lo = Math.min(...years), hi = Math.max(...years), list = [];
+    for (let y = lo; y <= hi; y++) list.push([String(y), byYear.get(String(y))]);
+    const max = Math.max(...list.map(([, g]) => v(g))) || 1;
+    const show = (g) => metric === "count" ? `${g ? g.rows.length : 0} plans` : metric === "price" ? `${fmtMoney(v(g) || null)} / unit` : `${fmtN(v(g) || null, 1)} ${metric === "parking" ? "parking" : "units"}`;
+    return `<div class="bars" role="group" aria-label="By year">${list.map(([y, g]) =>
+      `<button type="button" ${g ? `data-g="${groups.indexOf(g)}"` : "disabled"} data-tip="${y}${y === THIS_YEAR ? " so far" : ""}: ${esc(show(g))}" aria-label="${y}${y === THIS_YEAR ? " so far" : ""}: ${esc(show(g))}"><i style="height:${(v(g) / max * 100).toFixed(1)}%"></i></button>`).join("")}</div>
+      <div class="bar-axis"><span>${lo}</span><span>${hi}</span></div>`;
+  }
+  function buildingItems(list) {
+    return list.map((r) => { const pu = statMetric === "price" ? perUnit(r) : null;
+      return `<li>${bLink(r)}<span class="meta">${esc(r.plan_id)} · ${esc(boroName(r.borough))}${r.accepted_date ? ` · ${esc(date(r.accepted_date))}` : ""} · ${r.units_residential ?? "?"} units${pu ? ` · ${fmtMoney(pu)} / unit` : ""}</span></li>`; }).join("");
+  }
+  function openGroup(i, all) {
+    const g = statGroups[i], row = $("gl-" + i); if (!g || !row) return;
+    const btn = $("answer").querySelector(`.grp-t[data-g="${i}"]`), open = all || row.hidden;
+    row.hidden = !open; btn?.setAttribute("aria-expanded", String(open));
+    if (!open) return;
+    const list = [...g.rows].sort((a, b) => String(b.accepted_date || "").localeCompare(String(a.accepted_date || "")));
+    const n = all ? list.length : 40;
+    row.firstElementChild.innerHTML = `<ul class="blist">${buildingItems(list.slice(0, n))}</ul>` +
+      (list.length > n ? `<button type="button" class="btn more" data-gall="${i}">Show all ${fmtN(list.length)}</button>` : "");
+  }
+  $("answer").addEventListener("click", (e) => {
+    const all = e.target.closest("[data-gall]"); if (all) { openGroup(+all.dataset.gall, true); return; }
+    if (e.target.closest("[data-open]")) return;
+    const g = e.target.closest("[data-g]"); if (!g) return;
+    const i = +g.dataset.g;
+    if (g.closest(".bars")) { const row = $("gl-" + i); if (row?.hidden) openGroup(i); row?.previousElementSibling?.scrollIntoView({ behavior: "smooth", block: "nearest" }); return; }
+    openGroup(i);
+  });
+
+  // ---------- comparison: named buildings side by side ----------
+  async function renderSide(rows) {
+    const box = $("answer"), ids = rows.map((r) => r.plan_id);
+    box.innerHTML = `<article class="ans"><p class="ans-kicker">Side by side</p><p class="vnote">Loading the plan records…</p></article>`;
+    try {
+      const sel = encodeURIComponent('plan_id,zip,construction,plan_type,sponsor,law_firm,units_commercial,units_storage,init:meta->plan->>"Initial Price",cur:meta->plan->>"Current Price"');
+      const [meta, secs] = await Promise.all([rest(`plans?select=${sel}&plan_id=in.${inList(ids)}`, null, 600000),
+        loadSections(rows.filter((r) => r.docs_indexed).map((r) => r.plan_id)).catch(() => null)]);
+      if (!box.querySelector(".ans") || current?.compare == null) return;
+      const m = new Map(meta.map((d) => [d.plan_id, d]));
+      const cur = (r) => money(m.get(r.plan_id)?.cur) || money(m.get(r.plan_id)?.init);
+      const line = (label, f, num) => {
+        const vals = rows.map(f), same = vals.every((v) => v === vals[0]);
+        return `<tr${same ? ' class="faint"' : ""}><th scope="row">${label}</th>${vals.map((v) => `<td${num ? ' class="n"' : ""}>${v}</td>`).join("")}</tr>`;
+      };
+      const pages = (r, k) => { if (!r.docs_indexed) return `<span class="faint">Not searchable</span>`; const runs = secs?.secBy.get(r.plan_id)?.filter((x) => x.kind === k) || [];
+        return runs.length ? topRuns(runs, 1).map((x) => runRef(secs.lab, secs.url, x, pagesTxt)).join("") : "—"; };
+      box.innerHTML = `<article class="ans"><p class="ans-kicker">Side by side · ${rows.length} buildings</p>
+        <div class="tscroll"><table class="cmp side"><thead><tr><th></th>${rows.map((r) => `<th>${bLink(r)}<span class="pid">${esc(r.plan_id)}</span></th>`).join("")}</tr></thead><tbody>
+        ${line("Address", (r) => esc(tc(r.address)))}
+        ${line("Borough · ZIP", (r) => `${esc(boroName(r.borough))}${r.zip ? ` · ${esc(r.zip)}` : ""}`)}
+        ${line("Accepted", (r) => esc(date(r.accepted_date) || "—"))}
+        ${line("Construction", (r) => esc(tc(m.get(r.plan_id)?.construction) || "—"))}
+        ${line("Residential units", (r) => r.units_residential ?? "—")}
+        ${line("Parking", (r) => r.units_parking ?? "—")}
+        ${line("Commercial", (r) => m.get(r.plan_id)?.units_commercial ?? "—")}
+        ${line("Total offering price", (r) => fmtMoney(cur(r)))}
+        ${line("Per residential unit", (r) => { const v = rawPerUnit(cur(r), r.units_residential); return v == null ? "—" : v < PER_UNIT_MIN ? `<span class="faint">Not a whole-plan total</span>` : fmtMoney(v); })}
+        ${line("Sponsor", (r) => esc(tc(m.get(r.plan_id)?.sponsor) || "—"))}
+        ${line("Sponsor’s counsel", (r) => esc(tc(m.get(r.plan_id)?.law_firm) || "—"))}
+        ${KINDS.map(([k, label]) => line(label, (r) => pages(r, k))).join("")}
+        </tbody></table></div>
+        <p class="vnote">Grayed rows are the same for every building. Prices are the AG record’s total offering prices (latest amendment where recorded), not sale prices; per-unit figures include any commercial, parking and storage units in the total.</p></article>`;
+    } catch (e) { box.innerHTML = `<article class="ans"><p class="ans-kicker">Side by side</p><p class="vnote">Couldn’t load the plan records. Try again.</p></article>`; }
   }
 
   // ---------- AI help (tiers 1 and 2, via /api/ask) ----------
@@ -1217,7 +1592,8 @@ table.pivot th[scope="row"]{white-space:nowrap}
   // nothing was found, or the question is analytic. The server holds every AI search under 5 cents.
   const ANALYTIC = /\b(which|how many|average|avg|mean|largest|biggest|smallest|most|fewest|compare)\b/;
   function wantsAI(P, text) {
-    if (P.planId || P.address || P.manager || P.counsel) return false; // the managing-agent and counsel filters answer these without AI
+    if (P.planId || P.address || P.manager || P.counsel || P.compare) return false; // the managing-agent and counsel filters answer these without AI
+    if (P.stat) return true; // dates, construction and sponsors in a number question need the closer reading
     if (ANALYTIC.test(text.toLowerCase())) return true;
     const left = (P.q || "").replace(/"[^"]*"/g, " ").split(/\s+/).filter((w) => w && w !== "OR");
     return left.length >= 2;
@@ -1241,9 +1617,15 @@ table.pivot th[scope="row"]{white-space:nowrap}
       const why = { rate_limited: "You’ve run many searches this hour, so this one used the plain search.",
         daily_budget: "AI help is paused for today, so this used the plain search." }[out.reason];
       P.notes = [...(P.notes || []), why || "AI help didn’t answer, so this is the plain search."];
-      renderInterpretation(P); return;
+      renderInterpretation(P);
+      if (P.stat) renderStat(P);
+      return;
     }
-    runP({ ...fromSpec(P.text, out.spec, out.answer), via: "ai" });
+    const next = fromSpec(P.text, out.spec, out.answer);
+    // The answer card keeps the question's shape; the AI supplies only the filters.
+    if (P.stat) Object.assign(next, { stat: P.stat, analytic: null, aiAnswer: null, view: next.view === "compare" ? null : next.view });
+    if (P.stat && next.topicRequired) Object.assign(next, { topicRequired: false, q: "", topics: [], chips: next.chips.filter((c) => c.k !== "q") });
+    runP({ ...next, via: "ai" });
   }
 
   // Multi-word terms are not quoted: a phrase check re-reads every candidate page and times out on common words.
@@ -1322,12 +1704,11 @@ table.pivot th[scope="row"]{white-space:nowrap}
     box.innerHTML = `<article class="ans"><p class="ans-kicker">Answer from the plan pages · read with AI</p>
       <h2 style="font-size:22px">${esc(a.question)}</h2>
       ${rows.length ? `<div class="tscroll"><table class="xtab"><thead><tr><th>Building</th><th>What the pages say</th></tr></thead><tbody>${rows.map((r) => `<tr>
-        <td><button type="button" class="plink" data-xopen="${esc(r.plan_id)}">${esc(tc(r.name))}</button><div class="cite">${esc(r.plan_id)} · ${esc(tc(r.borough))}</div></td>
+        <td>${bLink(r)}<div class="cite">${esc(r.plan_id)} · ${esc(tc(r.borough))}</div></td>
         <td>${r.stated ? `${esc(r.answer)}<blockquote>“${esc(r.quote)}”</blockquote><div class="cite">${esc(docLabel(r.doc))} · p. ${esc(r.page_no)}</div>`
           : `<span class="faint">Not stated in the pages searched.</span>`}</td></tr>`).join("")}</tbody></table></div>` : ""}
       <p class="vnote">${esc(a.note || "")} Check the quoted page before relying on an answer.</p></article>`;
   }
-  $("answer").addEventListener("click", (e) => { const b = e.target.closest("[data-xopen]"); if (b) openDetail(b.dataset.xopen, false); });
 
   // ---------- structured searches (search-intents.js) ----------
   // Distance from a building, Schedule A unit prices by bedrooms, on-site MIH units, parking licenses and averages.
