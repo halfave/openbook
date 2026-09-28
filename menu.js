@@ -2,9 +2,10 @@
 (() => {
   const menu = document.getElementById("menu");
   if (!menu) return;
-  const here = location.pathname.split("/").pop() || "index.html";
-  menu.querySelectorAll("nav a").forEach((a) => {
-    if (a.getAttribute("href") === here) a.setAttribute("aria-current", "page");
+  const norm = (p) => p.replace(/\/index\.html$/, "/").replace(/\.html$/, "");
+  const here = norm(location.pathname);
+  document.querySelectorAll("#menu nav a, .mastnav a").forEach((a) => {
+    if (a.protocol === location.protocol && !a.search && norm(a.pathname) === here) a.setAttribute("aria-current", "page");
   });
   document.addEventListener("click", (e) => { if (menu.open && !menu.contains(e.target)) menu.open = false; });
   document.addEventListener("keydown", (e) => {
@@ -12,23 +13,12 @@
   });
 })();
 
-// Pinned header: the masthead stays at the top and gets shorter once the page scrolls.
-// --head-h holds its current height, for anything pinned under it and for anchor offsets.
+// Pinned header: the masthead stays at the top at one height.
+// --head-h holds that height, for anything pinned under it and for anchor offsets.
 (() => {
   const mast = document.querySelector("header.mast");
   if (!mast) return;
-  const root = document.documentElement;
-  let on = null;
-  // Shrinking the header takes 20px out of the page, which can pull scrollY back under the
-  // threshold and grow it again, over and over. Separate on/off points (gap > 20px) stop that.
-  const update = () => {
-    const y = window.scrollY;
-    const now = on ? y > 4 : y > 40;
-    if (now !== on) { on = now; root.classList.toggle("scrolled", now); }
-    root.style.setProperty("--head-h", mast.offsetHeight + "px");
-  };
-  window.addEventListener("scroll", update, { passive: true });
-  window.addEventListener("resize", update);
-  mast.addEventListener("transitionend", update);
+  const update = () => document.documentElement.style.setProperty("--head-h", mast.offsetHeight + "px");
+  new ResizeObserver(update).observe(mast);
   update();
 })();
