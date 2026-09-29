@@ -268,6 +268,8 @@ const dur = (d) => d > 30 ? `${mo(d)} month${mo(d) === "1" ? "" : "s"}` : plural
 }
 const SIZES = [[1, 10, "1–10"], [11, 25, "11–25"], [26, 50, "26–50"], [51, Infinity, "51 or more"]];
 const BINS = [[0, 90, "Under 3 months"], [90, 180, "3–6 months"], [180, 270, "6–9 months"], [270, 365, "9–12 months"], [365, 548, "12–18 months"], [548, 730, "18–24 months"], [730, Infinity, "Over 2 years"]];
+// The homepage stat strip: each data page leaves its headline figure here, so the strip quotes the page it links to.
+const HOME = {};
 const FAST = `<svg class="ic" viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>`;
 const SLOW = `<svg class="ic" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2h12M6 22h12M7 2c0 6 10 6 10 10S7 16 7 22M17 2c0 6-10 6-10 10s10 4 10 10"/></svg>`;
 
@@ -279,6 +281,7 @@ function approvalPage() {
   const oldest = timed.at(-1).accepted_date;
   const title = "How Long Does AG Approval Take for NYC Condos?";
   const description = `How long the NY Attorney General takes to accept an NYC condo offering plan: ${dur(mean)} on average across the ${timed.length} most recent plans that can be timed.`;
+  HOME.approval = { href: "time-to-approval.html", k: "Avg. time to AG approval", v: mo(mean), u: `month${mo(mean) === "1" ? "" : "s"}`, s: `Median ${dur(median)} · ${plural(timed.length, "recent plan")}` };
 
   // By building size (residential units on the AG record).
   const sizes = SIZES.map(([a, b, label]) => {
@@ -383,6 +386,7 @@ function commonChargesPage() {
   const title = "What Are Common Charges in a New NYC Condo?";
   const description = fitDesc(`Median monthly common charges in new NYC condos: ${usd(mid)} per unit${sfMid != null ? ` and ${usdSf(sfMid)} per square foot` : ""}`,
     [`, from first-year budgets in ${n(charged.length)} plans accepted since ${day(ccSince)}`], ".");
+  HOME.charges = { href: "common-charges.html", k: "Median common charges", v: usd(mid), u: "a month", s: `Per unit${sfMid != null ? ` · ${usdSf(sfMid)} per SF` : ""}` };
 
   // By building size (residential units on the AG record).
   const sizes = SIZES.map(([a, b, label]) => {
@@ -480,6 +484,7 @@ function propertyTaxesPage() {
   const title = "Property Taxes per Square Foot in New NYC Condos";
   const description = fitDesc(`Projected first-year real estate taxes in new NYC condos: a median ${usdSf(mid)} per square foot a month`,
     [` and ${usd(unitMid)} per unit, from the Schedule A tables in ${n(reTax.length)} offering plans`], ".");
+  HOME.taxes = { href: "property-taxes.html", k: "Median property taxes", v: usdSf(mid), u: "per SF a month", s: "Projected first year" };
 
   // By building size, by year accepted and by borough: the median per square foot, with how many plans it rests on.
   const group = (key, order) => [...new Set(sfPlans.map(key))].map((k) => {
@@ -952,7 +957,14 @@ async function stampStatic(file, path) {
     ] });
   }
   const block = `<!-- seo -->\n${SEO("", { title, description, canonical, image: OG_SITE })}\n${blocks.map(ld).join("\n")}${blocks.length ? "\n" : ""}<!-- /seo -->`;
-  await writeFile(join(ROOT, file), html.replace(/<!-- seo -->[\s\S]*?<!-- \/seo -->/, () => block));
+  let out = html.replace(/<!-- seo -->[\s\S]*?<!-- \/seo -->/, () => block);
+  if (file === "index.html") {
+    if (!/<!-- stats -->[\s\S]*?<!-- \/stats -->/.test(out)) throw new Error("index.html: missing <!-- stats --> markers");
+    const cells = [HOME.approval, HOME.charges, HOME.taxes].map((c, i) =>
+      `<a class="stat${i ? "" : " lead"}" href="${c.href}"><span class="k">${esc(c.k)}</span><span class="v">${esc(c.v)} <small>${esc(c.u)}</small></span><span class="s">${esc(c.s)}</span></a>`);
+    out = out.replace(/<!-- stats -->[\s\S]*?<!-- \/stats -->/, () => `<!-- stats -->\n      ${cells.join("\n      ")}\n      <!-- /stats -->`);
+  }
+  await writeFile(join(ROOT, file), out);
 }
 
 // ---------- write ----------

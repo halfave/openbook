@@ -194,7 +194,21 @@ table.side tr.faint td{color:var(--muted)}
 .hero .notice{margin-top:12px}
 
 /* ---------- Top 10 box under the search bar (home only) ---------- */
-.top10{margin:44px auto 0;width:100%}
+/* stat strip: headline figures from the data pages, stamped by scripts/build-pages.mjs between the stats markers */
+.stats{margin:36px auto 0;width:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--rule-strong);background:var(--panel)}
+.stat{display:flex;flex-direction:column;gap:2px;padding:12px 16px;color:var(--ink);text-decoration:none}
+.stat+.stat{border-left:1px solid var(--rule)}
+.stat .k{font:500 11px/1.4 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.stat .v{font:700 26px/1.15 var(--display);font-variant-numeric:tabular-nums}
+.stat .v small{font:400 13px var(--sans);color:var(--muted)}
+.stat .s{font-size:12px;line-height:1.4;color:var(--faint)}
+.stat.lead{background:var(--accent-soft)}
+.stat.lead .v{color:var(--accent)}
+.stat:hover .v{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+.stat:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+@media (max-width:560px){ .stats{grid-template-columns:1fr} .stat+.stat{border-left:0;border-top:1px solid var(--rule)} }
+body.searched .stats{display:none}
+.top10{margin:28px auto 0;width:100%}
 .top10 h2{margin:0;padding-bottom:8px;border-bottom:1px solid var(--rule-strong);font:400 17px/1.4 var(--display);color:var(--ink)}
 .top10 ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:24px}
 .top10 li{border-bottom:1px solid var(--rule)}
@@ -402,13 +416,19 @@ table.pivot th[scope="row"]{white-space:nowrap}
     </form>
     <div class="read" id="read" hidden></div>
     <div class="notice" id="notice" hidden></div>
-    <nav class="top10" aria-label="Top lists">
-      <h2>Or Browse the Top</h2>
+    <nav class="stats" aria-label="Key figures">
+      <!-- stats -->
+      <a class="stat lead" href="time-to-approval.html"><span class="k">Avg. time to AG approval</span><span class="v">8 <small>months</small></span><span class="s">Median 7.1 months · 50 recent plans</span></a>
+      <a class="stat" href="common-charges.html"><span class="k">Median common charges</span><span class="v">$535 <small>a month</small></span><span class="s">Per unit · $0.50 per SF</span></a>
+      <a class="stat" href="property-taxes.html"><span class="k">Median property taxes</span><span class="v">$0.69 <small>per SF a month</small></span><span class="s">Projected first year</span></a>
+      <!-- /stats -->
+    </nav>
+    <nav class="top10" aria-label="Directory">
+      <h2>Or Browse the Directory</h2>
       <ul>
         <li><a href="new-condo-filings.html"><span aria-hidden="true">🏗️</span>New Construction</a></li>
-        <li><a href="time-to-approval.html"><span aria-hidden="true">⏱️</span>Approval Times</a></li>
-        <li><a href="managing-agents.html"><span aria-hidden="true">🏢</span>Property Managers</a></li>
         <li><a href="offering-plan-attorneys.html"><span aria-hidden="true">⚖️</span>Offering Plan Attorneys</a></li>
+        <li><a href="managing-agents.html"><span aria-hidden="true">🏢</span>Property Managers</a></li>
         <li><a href="architects.html"><span aria-hidden="true">📐</span>Architects</a></li>
         <li><a href="selling-agents.html"><span aria-hidden="true">🔑</span>Selling Agents</a></li>
         <li><a href="tax-consultants.html"><span aria-hidden="true">🧾</span>Tax Consultants</a></li>
