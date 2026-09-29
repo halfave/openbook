@@ -2,65 +2,52 @@
   "order": 9,
   "title": "How Long Does AG Approval of a Condo Plan Take? | The Condo Book Project",
   "h1": "How Long Does the NY Attorney General Take to Approve a Condo Offering Plan?",
-  "description": "How long the NY Attorney General takes to accept a NYC condo offering plan: median days from submission to acceptance by year, and what makes a plan slow.",
-  "summary": "Short answer: about six to nine months. Here is the time from submission to acceptance for filing across NYC condo offering plans on the Attorney General's record, how it has changed by year, and where the time actually goes.",
+  "description": "How long the NY Attorney General takes to accept a NYC condo offering plan, from the most recent plans: median time, the slow quarter, and what makes a plan slow.",
+  "summary": "How long the Attorney General has taken to accept the most recent NYC condo offering plans for filing, measured from submission to acceptance on the AG's record, and where the time actually goes.",
   "keywords": ["condo offering plan approval time", "how long does AG approval take condo", "NY Attorney General offering plan review", "accepted for filing Martin Act", "condo offering plan timeline NYC", "new construction condo approval"],
   "published": "2026-09-29"
 }-->
-<p>Short answer: <strong>about six to nine months</strong>. Across NYC condo offering plans where the Attorney General recorded both a submission date and an acceptance date, the median time from submission to "accepted for filing" is <strong>193 days</strong>. A quarter of plans cleared in under 4.5 months; a quarter took more than 9.5 months.</p>
-<p>For plans accepted since 2020, the middle is closer to <strong>eight months</strong>, and the slow tail is longer. For the most recent plans, one by one, see the <a href="../time-to-approval.html">condo offering plan approval times data page</a>.</p>
+<p>Short answer: <strong>about {{stat:appr_median}}</strong>. Across the {{stat:appr_n}} most recent NYC condo offering plans that can be timed, accepted since {{stat:appr_since}}, the median time from submission to "accepted for filing" was <strong>{{stat:appr_median_days}} days</strong>. A quarter of plans cleared in under {{stat:appr_q1}}; a quarter took more than {{stat:appr_q3}}. The average, pulled up by the slow tail, was {{stat:appr_mean}}.</p>
+<p>These figures update with the site. Each of the plans, with its dates, is listed on the <a href="../time-to-approval.html">condo offering plan approval times data page</a>.</p>
 
 <h2>What "Approval" Means</h2>
-<p>The AG doesn't approve a condo. It accepts the offering plan for filing under the Martin Act, meaning the disclosure is complete enough to be shown to buyers. Until then, a sponsor can't take a binding contract or a deposit. The clock starts when the plan is submitted and ends on the acceptance date printed on the AG's record. (More on what the filing contains: <a href="what-is-a-condo-offering-plan.html">what is a condo offering plan</a>.)</p>
+<p>The AG doesn't approve a condo. It accepts the offering plan for filing under the Martin Act, meaning the disclosure is complete enough to be shown to buyers. Until then, a sponsor can't take a binding contract or a deposit. The clock starts when the plan is submitted and ends on the acceptance date on the AG's record. (More on what the filing contains: <a href="what-is-a-condo-offering-plan.html">what is a condo offering plan</a>.)</p>
 
-<h2>Median Days from Submission to Acceptance, by Year</h2>
-<div class="tscroll"><table>
-  <thead><tr><th>Year accepted</th><th>Median days</th><th>Plans in sample</th></tr></thead>
-  <tbody>
-    <tr><td>2016</td><td>203</td><td>23</td></tr>
-    <tr><td>2017</td><td>314</td><td>15</td></tr>
-    <tr><td>2018</td><td>266</td><td>16</td></tr>
-    <tr><td>2019</td><td>324</td><td>15</td></tr>
-    <tr><td>2020</td><td>337</td><td>13</td></tr>
-    <tr><td>2021</td><td>234</td><td>14</td></tr>
-    <tr><td>2022</td><td>289</td><td>16</td></tr>
-    <tr><td>2023</td><td>237</td><td>12</td></tr>
-    <tr><td>2024</td><td>194</td><td>23</td></tr>
-    <tr><td>2025</td><td>243</td><td>14</td></tr>
-    <tr><td>2026 (to date)</td><td>252</td><td>20</td></tr>
-  </tbody>
-</table></div>
-<p>Samples per year are small, so read the trend, not the exact figure: review times peaked around 2017–2020, improved in 2024, and are running around eight months now.</p>
+<h2>Why Only Some Plans Can Be Timed</h2>
+<p>Most plans on the AG's record can't be measured. Once a plan is amended, the submission date on its record is the amendment's, which usually falls after the plan was accepted. Only plans with no amendment yet still carry their original submission date, so these figures use those plans alone, and only the most recent of them, since review times years ago say little about today's.</p>
+
+<h2>Time to Acceptance by Year</h2>
+{{table:appr_by_year}}
+<p>Samples per year are small, so read the figures as a guide rather than a trend.</p>
 
 <h2>What Makes an Offering Plan Slower</h2>
-<p>From plans accepted since 2020:</p>
 <ul>
-  <li><strong>New construction takes longer than conversions.</strong> Median 272 days for new buildings vs. 225 for rehabs. New construction plans carry more open items: certificates of occupancy, tax abatement applications, construction budgets.</li>
-  <li><strong>Small buildings aren't faster.</strong> Plans with 10 or fewer residential units had a median of 248 days. A 6-unit plan gets the same deficiency letters as a 60-unit plan, and small sponsors often respond more slowly.</li>
-  <li><strong>Borough matters less than the sponsor's counsel.</strong> Brooklyn plans (the largest group) ran a median of 230 days. The spread within any borough is far wider than the difference between boroughs. See which firms file NYC condo plans in the <a href="../offering-plan-attorneys.html">offering plan attorneys directory</a>.</li>
+  <li><strong>Construction type.</strong> Among these plans, the median was {{stat:appr_new_median}} for the {{stat:appr_new_n}} new buildings and {{stat:appr_rehab_median}} for the {{stat:appr_rehab_n}} rehabs and conversions. New construction plans carry more open items: certificates of occupancy, tax abatement applications, construction budgets.</li>
+  <li><strong>Small buildings aren't exempt.</strong> {{stat:appr_small_n}} of the {{stat:appr_n}} plans had ten or fewer residential units, with a median of {{stat:appr_small_median}}. A small plan gets the same deficiency letters as a large one, and small sponsors often respond more slowly.</li>
+  <li><strong>Borough and counsel.</strong> {{stat:appr_top_boro}} had the most plans ({{stat:appr_top_boro_n}}), with a median of {{stat:appr_top_boro_median}}. Across all the plans, times ranged from {{stat:appr_fastest}} to {{stat:appr_slowest}}. See which firms file NYC condo plans in the <a href="../offering-plan-attorneys.html">offering plan attorneys directory</a>.</li>
 </ul>
 
 <h2>Where the Time Actually Goes</h2>
-<p>The AG's first review typically comes back with a deficiency letter within a few months. Most of the calendar is spent on the sponsor's side: revising the plan, waiting on the architect's description of property, updating the budget, and re-submitting. Two or three rounds is normal. A plan that answers the first letter completely and quickly can close the gap by months.</p>
+<p>The AG's first review typically comes back with a deficiency letter. Most of the calendar is spent on the sponsor's side: revising the plan, waiting on the architect's description of property, updating the budget, and re-submitting. Several rounds are common. A plan that answers the first letter completely and quickly can close the gap by months.</p>
 
 <h2>What to Plan For</h2>
 <ul>
-  <li>Budget <strong>eight months</strong> from submission to first contract.</li>
-  <li>Add time if the building isn't topped out, if a 421-a or other tax program is pending, or if the sponsor hasn't done a plan before.</li>
+  <li>Budget about <strong>{{stat:appr_median}}</strong> from submission to first contract, and allow for the slow quarter: more than {{stat:appr_q3}}.</li>
+  <li>Add time if the building isn't topped out, if a tax program application is pending, or if the sponsor hasn't done a plan before.</li>
   <li>Once accepted, the plan must be declared effective within a set period, or the sponsor files an amendment to extend it. See <a href="how-to-find-offering-plan-amendments.html">how to find offering plan amendments</a>.</li>
 </ul>
 
 <h2>Look Up Any Plan's Timeline</h2>
-<p>Every plan on The Condo Book Project shows its submission date, acceptance date, and effective date from the AG record. <a href="../index.html">Search a building or a sponsor</a> to see how long comparable plans took, browse the <a href="../new-condo-filings.html">newest NYC condo filings</a>, or look a plan up yourself with <a href="how-to-search-ny-attorney-general-offering-plans.html">how to search the NY Attorney General's offering plans</a>.</p>
+<p>Every plan on The Condo Book Project shows its dates from the AG record. <a href="../index.html">Search a building or a sponsor</a>, browse the <a href="../new-condo-filings.html">newest NYC condo filings</a>, or look a plan up yourself with <a href="how-to-search-ny-attorney-general-offering-plans.html">how to search the NY Attorney General's offering plans</a>.</p>
 
 <h2>Common Questions</h2>
 <h3>How long does the NY Attorney General take to accept a condo offering plan?</h3>
-<p>The median is 193 days from submission to acceptance for filing, a little over six months. For plans accepted since 2020 it is closer to eight months.</p>
+<p>Across the {{stat:appr_n}} most recent NYC plans that can be timed, the median was {{stat:appr_median_days}} days, about {{stat:appr_median}}, from submission to acceptance for filing. A quarter took more than {{stat:appr_q3}}.</p>
 <h3>Can a sponsor sell condo units before the plan is accepted?</h3>
 <p>No. Until the Attorney General accepts the offering plan for filing, a sponsor can't take a binding contract or a deposit.</p>
-<h3>Does new construction take longer to approve than a conversion?</h3>
-<p>Yes. For plans accepted since 2020, new construction plans had a median of 272 days against 225 for rehabs, because they carry more open items such as certificates of occupancy and tax abatement applications.</p>
+<h3>Does new construction take longer to approve than a rehab?</h3>
+<p>Among the most recent plans, new construction had a median of {{stat:appr_new_median}} against {{stat:appr_rehab_median}} for rehabs and conversions. New buildings carry more open items, such as certificates of occupancy and tax abatement applications.</p>
 <h3>Does "accepted for filing" mean the Attorney General approved the building?</h3>
 <p>No. It means the plan's disclosure is complete enough to be shown to buyers under the Martin Act. It is not an endorsement of the building, the price or the sponsor.</p>
 
-<p class="src">Figures are from the NY Attorney General's offering plan records for NYC condominiums, limited to the 542 plans with both dates recorded. Small yearly samples; medians reported.</p>
+<p class="src">Figures are from the NY Attorney General's offering plan records for the {{stat:appr_n}} most recent New York City condominium plans with no amendment yet and residential units, accepted since {{stat:appr_since}}. Medians reported; updated as of {{stat:today}}.</p>

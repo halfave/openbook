@@ -244,6 +244,27 @@ const medianOf = (ds) => { const s = [...ds].sort((a, b) => a - b), m = s.length
 const mo = (d) => (d / (365.25 / 12)).toFixed(1).replace(/\.0$/, "");
 // Months past 30 days, days up to that.
 const dur = (d) => d > 30 ? `${mo(d)} month${mo(d) === "1" ? "" : "s"}` : plural(d, "day");
+// The approval-times blog post quotes the same plans, so the post and this page can't disagree.
+{
+  const quart = (ds, f) => [...ds].sort((a, b) => a - b)[Math.round(f * (ds.length - 1))];
+  const ds = timed.map((p) => p.days), by = (f) => timed.filter(f).map((p) => p.days);
+  const mid = (xs) => xs.length ? dur(medianOf(xs)) : "none";
+  const neu = by((p) => p.construction === "NEW"), old = by((p) => p.construction !== "NEW"), small = by((p) => p.units_residential <= 10);
+  const topBoro = [...count(timed, (p) => boro(p.borough))].sort((a, b) => b[1] - a[1])[0];
+  Object.assign(STATS, {
+    appr_n: n(timed.length), appr_since: day(timed.at(-1).accepted_date),
+    appr_median_days: n(medianOf(ds)), appr_median: dur(medianOf(ds)), appr_mean: dur(avgOf(ds)),
+    appr_q1: dur(quart(ds, 0.25)), appr_q3: dur(quart(ds, 0.75)), appr_fastest: dur(Math.min(...ds)), appr_slowest: dur(Math.max(...ds)),
+    appr_new_n: n(neu.length), appr_new_median: mid(neu), appr_rehab_n: n(old.length), appr_rehab_median: mid(old),
+    appr_small_n: n(small.length), appr_small_median: mid(small),
+    appr_top_boro: topBoro[0], appr_top_boro_n: n(topBoro[1]), appr_top_boro_median: mid(by((p) => boro(p.borough) === topBoro[0])),
+  });
+  TABLES.appr_by_year = () => `<div class="tscroll"><table><thead><tr><th>Year accepted</th><th>Median time</th><th>Plans</th></tr></thead><tbody>${
+    [...new Set(timed.map((p) => p.accepted_date.slice(0, 4)))].sort().reverse().map((y) => {
+      const xs = by((p) => p.accepted_date.startsWith(y));
+      return `<tr><td>${y === thisYear ? `${y} (to date)` : y}</td><td>${dur(medianOf(xs))}</td><td>${n(xs.length)}</td></tr>`;
+    }).join("")}</tbody></table></div>`;
+}
 const SIZES = [[1, 10, "1–10"], [11, 25, "11–25"], [26, 50, "26–50"], [51, Infinity, "51 or more"]];
 const BINS = [[0, 90, "Under 3 months"], [90, 180, "3–6 months"], [180, 270, "6–9 months"], [270, 365, "9–12 months"], [365, 548, "12–18 months"], [548, 730, "18–24 months"], [730, Infinity, "Over 2 years"]];
 const FAST = `<svg class="ic" viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>`;
