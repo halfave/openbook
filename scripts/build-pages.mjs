@@ -1,7 +1,8 @@
 // Builds the pages that aren't one-per-plan, in a few seconds:
 //   - blog/*.html from content/blog/*.html (front matter + body), and blog/index.html
 //   - new-condo-filings.html, the 10 newest NYC plans accepted for filing
-//   - time-to-approval.html and common-charges.html, from the AG dates and the Schedule B budgets
+//   - time-to-approval.html, common-charges.html and property-taxes.html, from the AG dates, the Schedule B budgets
+//     and the Schedule A tax columns
 //   - managing-agents/*.html, offering-plan-attorneys/*.html, architects/*.html, selling-agents/*.html and tax-consultants/*.html, a profile per firm
 //   - the SEO block in the hand-written pages (index, about, faq, terms, privacy, disclaimers)
 //   - sitemap-pages.xml, sitemap.xml (an index of it and sitemap-buildings.xml) and robots.txt
@@ -421,7 +422,7 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
 <main class="post approval split">
   <div class="aside">
   <h1>What Are Common Charges in a New NYC Condo?</h1>
-  <p class="anote">The monthly common charges set by the first-year budget (Schedule B) in ${n(charged.length)} New York City condominium offering plans accepted since ${esc(day(ccSince))}. Buildings with commercial units are left out, so the budget falls on the homes (and any parking or storage units). Budgets are the sponsor's projections for the first year, not what owners pay today; real estate taxes are not included.</p>
+  <p class="anote">The monthly common charges set by the first-year budget (Schedule B) in ${n(charged.length)} New York City condominium offering plans accepted since ${esc(day(ccSince))}. Buildings with commercial units are left out, so the budget falls on the homes (and any parking or storage units). Budgets are the sponsor's projections for the first year, not what owners pay today; real estate taxes are not included (see <a href="property-taxes.html">property taxes</a>).</p>
   <div class="hero-stat">
     <p class="hs-k">Median common charges per unit</p>
     <p class="hs-v">${usd(mid)} <span>a month</span></p>
@@ -446,6 +447,103 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
   ${recentTable}
 
   <p class="src">Per unit: the budget's estimated total expenses divided by 12 and by the residential units on the AG record, an average across the building's homes; larger homes pay more by their common interest. Per square foot: the same monthly total divided by the unit sizes listed in the plan's Schedule A, used only when the building has no parking or storage units and the price table lists every unit with a size. Medians are shown because a few budgets are far above the rest.</p>
+  ${cta(P)}
+  </div>
+</main>
+` + FOOT(P);
+}
+
+// ---------- property taxes ----------
+// Projected first-year real estate taxes from each plan's Schedule A table (data/re-taxes, from extract-re-taxes.mjs,
+// which keeps only tables whose monthly and annual tax columns agree). Only plans whose table lists exactly the
+// residential units count, so every row is a home. Per square foot comes from the units with a size (per_sf).
+// All years are kept: few tables carry both tax columns and unit sizes, and the page shows the year range.
+const reTax = [];
+for (const f of await readdir(join(ROOT, "data", "re-taxes")).catch(() => [])) {
+  const p = byId.get(f.replace(/\.json$/, ""));
+  if (!p || !NYC(p) || !realPlan(p) || !p.accepted_date || !(p.units_residential > 0)) continue;
+  const t = JSON.parse(await readFile(join(ROOT, "data", "re-taxes", f), "utf8"));
+  if (t.units.length !== p.units_residential) continue;
+  reTax.push({ ...p, perUnit: t.monthly_total / t.units.length, perSf: t.per_sf || null, ccSf: charged.find((c) => c.plan_id === p.plan_id)?.perSf || null });
+}
+reTax.sort((a, b) => b.accepted_date.localeCompare(a.accepted_date) || b.plan_id.localeCompare(a.plan_id));
+const TAX_BINS = [[0, 0.25, "Under $0.25"], [0.25, 0.5, "$0.25–0.49"], [0.5, 0.75, "$0.50–0.74"], [0.75, 1, "$0.75–0.99"], [1, 1.25, "$1.00–1.24"], [1.25, Infinity, "$1.25 or more"]];
+const quart = (vs, q) => { const s = [...vs].sort((a, b) => a - b), i = (s.length - 1) * q, lo = Math.floor(i); return s[lo] + (s[Math.ceil(i)] - s[lo]) * (i - lo); };
+
+function propertyTaxesPage() {
+  const P = "";
+  const url = `${SITE_URL}/property-taxes.html`;
+  const sfPlans = reTax.filter((p) => p.perSf), sfs = sfPlans.map((p) => p.perSf);
+  const mid = median(sfs), mean = sfs.reduce((s, v) => s + v, 0) / sfs.length, unitMid = median(reTax.map((p) => p.perUnit));
+  const since = reTax.at(-1).accepted_date;
+  const both = sfPlans.filter((p) => p.ccSf);
+  const title = "Property Taxes per Square Foot in New NYC Condos";
+  const description = fitDesc(`Projected first-year real estate taxes in new NYC condos: a median ${usdSf(mid)} per square foot a month`,
+    [` and ${usd(unitMid)} per unit, from the Schedule A tables in ${n(reTax.length)} offering plans`], ".");
+
+  // By building size, by year accepted and by borough: the median per square foot, with how many plans it rests on.
+  const group = (key, order) => [...new Set(sfPlans.map(key))].map((k) => {
+    const ps = sfPlans.filter((p) => key(p) === k);
+    return { label: k, n: ps.length, v: median(ps.map((p) => p.perSf)) };
+  }).sort(order);
+  const sizes = SIZES.map(([a, b, label]) => {
+    const all = reTax.filter((p) => p.units_residential >= a && p.units_residential <= b), sf = all.filter((p) => p.perSf).map((p) => p.perSf);
+    return all.length ? { label, n: all.length, unit: median(all.map((p) => p.perUnit)), sf: median(sf), sfN: sf.length, lo: sf.length ? Math.min(...sf) : null, hi: sf.length ? Math.max(...sf) : null } : null;
+  }).filter(Boolean);
+  const sizeTable = `<div class="tscroll"><table class="dm"><thead><tr><th>Residential units</th><th>Plans</th><th>Per SF / month</th><th>Per unit / month</th><th>Lowest–highest per SF</th></tr></thead><tbody>${sizes.map((s) =>
+    `<tr><td>${esc(s.label)}</td><td>${n(s.n)}</td><td>${s.sf != null ? `<strong>${usdSf(s.sf)}</strong><span class="sub">${plural(s.sfN, "plan")} with unit sizes</span>` : "—"}</td><td>${usd(s.unit)}</td><td>${s.sfN > 1 ? `${usdSf(s.lo)}–${usdSf(s.hi)}` : "—"}</td></tr>`).join("")}</tbody></table></div>`;
+  const barRows = (rows, head) => { const max = Math.max(...rows.map((e) => e.v)); return `<div class="tscroll"><table class="bars"><thead><tr><th>${head}</th><th>Per SF / month</th><th aria-hidden="true"></th></tr></thead><tbody>${rows.map((e) =>
+    `<tr title="${plural(e.n, "plan")}"><td>${esc(e.label)} (${plural(e.n, "plan")})</td><td>${usdSf(e.v)}</td><td class="bar" aria-hidden="true"><span style="width:${Math.max(1, Math.round(100 * e.v / max))}%"></span></td></tr>`).join("")}</tbody></table></div>`; };
+  const yearTable = barRows(group((p) => p.accepted_date.slice(0, 4), (a, b) => b.label.localeCompare(a.label)).map((e) => ({ ...e, label: e.label === thisYear ? `${e.label} (to date)` : e.label })), "Year accepted");
+  const boroTable = barRows(group((p) => boro(p.borough), (a, b) => b.v - a.v), "Borough");
+
+  const bins = TAX_BINS.map(([a, b, label]) => [label, sfs.filter((v) => v >= a && v < b).length]);
+  const binMax = Math.max(...bins.map((b) => b[1]));
+  const histogram = `<figure class="chart">
+    <div class="cols" role="img" aria-label="${esc(bins.map(([l, c]) => `${l}: ${plural(c, "plan")}`).join("; "))}">${bins.map(([label, c]) =>
+      `<div class="col" title="${esc(label)}: ${plural(c, "plan")} (${Math.round(100 * c / sfs.length)}%)"><span class="v">${n(c)}</span><span class="b" style="height:${Math.max(1, Math.round(100 * c / binMax))}%"></span><span class="l">${esc(label)}</span></div>`).join("")}</div>
+  </figure>`;
+
+  const planTable = `<div class="tscroll"><table><thead><tr><th>Condominium</th><th>Units</th><th>Accepted</th><th>Taxes per SF / month</th><th>Taxes per unit / month</th><th>Common charges per SF / month</th></tr></thead><tbody>${reTax.map((p) =>
+    `<tr><td><a href="buildings/${esc(fileFor(p))}">${esc(tc(p.name))}</a></td><td>${n(p.units_residential)}</td><td>${esc(day(p.accepted_date))}</td><td>${p.perSf ? `<strong>${usdSf(p.perSf)}</strong>` : "—"}</td><td>${usd(p.perUnit)}</td><td>${p.ccSf ? usdSf(p.ccSf) : "—"}</td></tr>`).join("")}</tbody></table></div>`;
+
+  return HEAD(P, { image: OG_SITE, title, description, canonical: url }) + `
+${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+    { "@type": "ListItem", position: 1, name: SITE_NAME, item: `${SITE_URL}/` },
+    { "@type": "ListItem", position: 2, name: "Property taxes", item: url },
+  ] })}
+<main class="post approval split">
+  <div class="aside">
+  <h1>Property Taxes per Square Foot in New NYC Condos</h1>
+  <p class="anote">The projected first-year real estate taxes in the Schedule A price table of ${n(reTax.length)} New York City condominium offering plans accepted since ${esc(day(since))}, ${n(sfPlans.length)} of them with unit sizes. These are the sponsor's projections, often based on an assessment made before construction is finished or with a tax abatement in place, so taxes can rise materially once the building is reassessed or the benefit phases out.</p>
+  <div class="hero-stat">
+    <p class="hs-k">Median property taxes per square foot</p>
+    <p class="hs-v">${usdSf(mid)} <span>a month</span></p>
+    <p class="hs-s">Average ${usdSf(mean)}; the middle half of plans fall between ${usdSf(quart(sfs, 0.25))} and ${usdSf(quart(sfs, 0.75))}.</p>
+  </div>
+  <dl class="glance">
+    <div><dt>Per unit</dt><dd>${usd(unitMid)} a month<span class="sub">median, ${plural(reTax.length, "plan")}</span></dd></div>
+    ${both.length >= 5 ? `<div><dt>Common charges, same buildings</dt><dd>${usdSf(median(both.map((p) => p.ccSf)))} a month<span class="sub">median per SF, ${plural(both.length, "plan")} with both; taxes ${usdSf(median(both.map((p) => p.perSf)))}</span></dd></div>` : ""}
+    <div><dt>Plans with unit sizes</dt><dd>${n(sfPlans.length)}</dd></div>
+  </dl>
+  </div>
+  <div class="amain">
+  <h2>By Building Size</h2>
+  ${sizeTable}
+
+  <h2>How Taxes per Square Foot Are Spread</h2>
+  ${histogram}
+
+  <h2>By Year Accepted</h2>
+  ${yearTable}
+
+  <h2>By Borough</h2>
+  ${boroTable}
+
+  <h2>The ${n(reTax.length)} Plans Read</h2>
+  ${planTable}
+
+  <p class="src">Taxes are read from the plan's Schedule A only when the table gives each unit's projected real estate taxes both monthly and annually and the two agree, and the tax column can be told apart from the common charges using the Schedule B budget; tables that show abated and unabated taxes side by side are left out. Per square foot: the units' monthly taxes divided by their sizes in the same table, leaving out any unit whose size looks misread (a rate more than 2.5 times off the building's median). Per unit: the building's monthly total divided by its residential units. Common charges per square foot are from the <a href="common-charges.html">common charges</a> page, for plans accepted since ${esc(day(ccSince))}. Medians are shown because a few plans are far from the rest.</p>
   ${cta(P)}
   </div>
 </main>
@@ -864,6 +962,7 @@ await writeFile(join(ROOT, "blog", "index.html"), blogIndex());
 await writeFile(join(ROOT, "new-condo-filings.html"), filingsPage());
 await writeFile(join(ROOT, "time-to-approval.html"), approvalPage());
 await writeFile(join(ROOT, "common-charges.html"), commonChargesPage());
+await writeFile(join(ROOT, "property-taxes.html"), propertyTaxesPage());
 await writeFile(join(ROOT, "managing-agents.html"), agentsPage());
 await writeFile(join(ROOT, "offering-plan-attorneys.html"), attorneysPage());
 await writeFile(join(ROOT, "architects.html"), proDirPage("architect"));
@@ -881,7 +980,7 @@ for (const x of SELL) await writeFile(join(ROOT, "selling-agents", x.slug + ".ht
 for (const x of TAX) await writeFile(join(ROOT, "tax-consultants", x.slug + ".html"), profilePage(x, "taxer"));
 for (const [file, path] of Object.entries(STATIC)) await stampStatic(file, path);
 
-const pageUrls = [["", TODAY], ["about.html"], ["faq.html", TODAY], ["new-condo-filings.html", TODAY], ["time-to-approval.html", TODAY], ["common-charges.html", TODAY], ["managing-agents.html", TODAY], ["offering-plan-attorneys.html", TODAY], ["architects.html", TODAY], ["selling-agents.html", TODAY], ["tax-consultants.html", TODAY], ["blog/", TODAY], ["terms.html"], ["privacy.html"], ["disclaimers.html"],
+const pageUrls = [["", TODAY], ["about.html"], ["faq.html", TODAY], ["new-condo-filings.html", TODAY], ["time-to-approval.html", TODAY], ["common-charges.html", TODAY], ["property-taxes.html", TODAY], ["managing-agents.html", TODAY], ["offering-plan-attorneys.html", TODAY], ["architects.html", TODAY], ["selling-agents.html", TODAY], ["tax-consultants.html", TODAY], ["blog/", TODAY], ["terms.html"], ["privacy.html"], ["disclaimers.html"],
   ...[...MGR, ...ATT, ...ARCH, ...SELL, ...TAX].map((x) => [`${x.dir}/${x.slug}.html`, TODAY]),
   ...posts.map((q) => [`blog/${q.slug}.html`, q.updated || q.published])];
 await writeFile(join(ROOT, "sitemap-pages.xml"), urlset(pageUrls));
@@ -892,4 +991,4 @@ await writeFile(join(ROOT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"
 </sitemapindex>
 `);
 await writeFile(join(ROOT, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`);
-console.log(`${posts.length} posts, blog index, new-condo-filings.html, time-to-approval.html, common-charges.html, managing-agents.html, offering-plan-attorneys.html, architects.html, selling-agents.html, tax-consultants.html, ${MGR.length} manager, ${ATT.length} attorney, ${ARCH.length} architect, ${SELL.length} selling agent and ${TAX.length} tax consultant profiles, ${Object.keys(STATIC).length} stamped pages, sitemap-pages.xml with ${pageUrls.length} URLs`);
+console.log(`${posts.length} posts, blog index, new-condo-filings.html, time-to-approval.html, common-charges.html, property-taxes.html, managing-agents.html, offering-plan-attorneys.html, architects.html, selling-agents.html, tax-consultants.html, ${MGR.length} manager, ${ATT.length} attorney, ${ARCH.length} architect, ${SELL.length} selling agent and ${TAX.length} tax consultant profiles, ${Object.keys(STATIC).length} stamped pages, sitemap-pages.xml with ${pageUrls.length} URLs`);
