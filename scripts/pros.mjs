@@ -118,7 +118,7 @@ const PRO_STOP = new Set(["the", "and", "of", "inc", "llc", "llp", "pllc", "pc",
 // Hand-checked against the filings: keys that name the same firm (PRO_ALIAS before grouping, PRO_JOIN after, for a person
 // filed both alone and with the firm, "Chang Hwa Tan, R.A., Tan Architect P.C."), and keys that stay apart though a shorter
 // key's words are all in them (Corcoran Sunshine isn't The Corcoran Group; Kane Architecture and Urban Design isn't Urban Architectural Design).
-const PRO_ALIAS = { "issac stern": "isaac stern", sunshine: "corcoran sunshine" };
+const PRO_ALIAS = { "issac stern": "isaac stern", sunshine: "corcoran sunshine", "highpoint incentives": "highpoint incentive" };
 const PRO_JOIN = { "chang tan": "tan", "oscar walters": "demerara", "shiming tam": "tam" };
 const PRO_KEEP = new Set(["corcoran sunshine", "mcclellan sotheby", "daniel gale sotheby", "theodore kane kane urban", "jorge mastropietro jma workshop", "marren newman", "meltzer costa"]);
 // Not a firm: "Sponsor (no separate selling agent)", "None".
@@ -227,8 +227,8 @@ const nameLinks = (groups) => {
 
 // For building pages: plan_id -> {name as filed: slug} for managers, architects and selling agents, and plan_id -> counsel slug,
 // only for firms with a profile.
-export function profileLinks(agents, firms, architects = [], sellers = []) {
+export function profileLinks(agents, firms, architects = [], sellers = [], taxers = []) {
   const counsel = new Map();
   for (const f of firms) if (f.plans.length >= PROFILE_MIN) for (const p of f.plans) counsel.set(p.plan_id, f.slug);
-  return { managers: nameLinks(agents), counsel, architects: nameLinks(architects), sellers: nameLinks(sellers) };
+  return { managers: nameLinks(agents), counsel, architects: nameLinks(architects), sellers: nameLinks(sellers), taxers: nameLinks(taxers) };
 }

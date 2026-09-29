@@ -2,7 +2,7 @@
 //   - blog/*.html from content/blog/*.html (front matter + body), and blog/index.html
 //   - new-condo-filings.html, the 10 newest NYC plans accepted for filing
 //   - time-to-approval.html and common-charges.html, from the AG dates and the Schedule B budgets
-//   - managing-agents/*.html, offering-plan-attorneys/*.html, architects/*.html and selling-agents/*.html, a profile per firm
+//   - managing-agents/*.html, offering-plan-attorneys/*.html, architects/*.html, selling-agents/*.html and tax-consultants/*.html, a profile per firm
 //   - the SEO block in the hand-written pages (index, about, faq, terms, privacy, disclaimers)
 //   - sitemap-pages.xml, sitemap.xml (an index of it and sitemap-buildings.xml) and robots.txt
 //
@@ -583,6 +583,9 @@ ${listScript}
 // where the sponsor or an affiliate sells its own units.
 const ARCHITECTS = groupPros(await all("facts?select=plan_id,value_text&field=eq.architect&value_text=not.is.null&order=plan_id"), byId, "architect");
 const SELLERS = groupPros(await all("facts?select=plan_id,value_text&field=eq.selling_agent&value_text=not.is.null&order=plan_id"), byId, "selling_agent");
+// Who prepared each plan's first-year real estate tax estimate, read from the plan text by extract-tax-preparers.mjs.
+const TAX_PREP = JSON.parse(await readFile(join(ROOT, "data", "tax-preparers.json"), "utf8").catch(() => "{}"));
+const TAXERS = groupPros(Object.entries(TAX_PREP).map(([plan_id, t]) => ({ plan_id, value_text: t.name })), byId, "tax_preparer");
 const PRO_DIRS = {
   architect: {
     groups: ARCHITECTS, dir: "architects", crumb: "Architects", noun: "architects", find: "Find an architect",
@@ -601,6 +604,15 @@ const PRO_DIRS = {
     description: (g, planCount) => withTop(`${n(g.length)} brokerages named as selling agent in ${n(planCount)} NYC condo offering plans, with the new developments each was hired to sell.`, g.slice(0, 3).map((x) => `${x.name} (${x.plans.length})`)),
     note: (g, planCount) => `The selling agent each New York City condominium offering plan names to market and sell the units for the sponsor. ${n(g.length)} brokerages across ${n(planCount)} buildings. Ranked by the number of offering plans naming each firm, not by sales or quality.`,
     src: "Named in the offering plan as filed; a sponsor can change selling agents later, so this may not reflect who is selling a building today. Plans where the sponsor or an affiliate sells its own units aren't counted. Different spellings of one brokerage's name are counted together. Plans whose pages aren't searchable yet, or that don't name a selling agent, aren't included.",
+  },
+  taxer: {
+    groups: TAXERS, dir: "tax-consultants", crumb: "Tax consultants", noun: "firms", find: "Find a firm",
+    title: "Top NYC Condo Real Estate Tax Consultants",
+    h1: "Top NYC Condo Real Estate Tax Consultants",
+    listName: "Firms most often named as preparing the real estate tax estimate in NYC condominium offering plans",
+    description: (g, planCount) => withTop(`${n(g.length)} firms that prepared the real estate tax estimate in ${n(planCount)} NYC condo offering plans, with the buildings for each.`, g.slice(0, 3).map((x) => `${x.name} (${x.plans.length})`)),
+    note: (g, planCount) => `The firm each New York City condominium offering plan names as preparing its estimate of the building's first-year real estate taxes, usually the sponsor's tax certiorari counsel or a property tax consultant. The estimate sets the taxes shown for each unit in Schedule A. ${n(g.length)} firms across ${n(planCount)} buildings. Ranked by the number of offering plans naming each firm, not by accuracy or quality.`,
+    src: "Read from the offering plan's text, where the plan names who prepared its real estate tax projection (the letter is usually in Part II). The New York City Department of Finance sets the actual assessment, which can differ from the estimate. Plans where the estimate is prepared by the sponsor or sponsor's counsel without naming a tax firm, or whose pages aren't searchable yet, aren't included. Different spellings of one firm's name are counted together; a firm that changed its name may appear more than once.",
   },
 };
 function proDirPage(kind) {
@@ -632,7 +644,7 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
   <label class="afind"><span>${esc(c.find)}</span><input id="afind" type="search" placeholder="Type a name" autocomplete="off"></label>
   </div>
   <div class="amain">
-  <h2>${esc(c.h1.replace(/^Top /, `Top ${TOP} `))}</h2>
+  <h2>${esc(c.h1.replace(/^Top /, `Top ${Math.min(TOP, all.length)} `))}</h2>
   <div class="agents-list">${all.map(card).join("\n")}</div>
   ${moreButton(all.length, c.noun)}
   <p class="src">${esc(c.src)}</p>
@@ -651,7 +663,7 @@ ${listScript}
 const SITES = JSON.parse(await readFile(join(ROOT, "data", "websites.json"), "utf8").catch(() => "{}"));
 // Firm logos (data/logos.json, from those websites) have share cards in img/og/<dir>/, made by build-og-images.mjs.
 const LOGOS = JSON.parse(await readFile(join(ROOT, "data", "logos.json"), "utf8").catch(() => "{}"));
-const LOGO_KIND = { manager: "managers", attorney: "attorneys", architect: "architects", seller: "sellers" };
+const LOGO_KIND = { manager: "managers", attorney: "attorneys", architect: "architects", seller: "sellers", taxer: "taxers" };
 const offerPrice = (p) => money(p.meta?.plan?.["Current Price"]) || money(p.meta?.plan?.["Initial Price"]);
 const sumUnits = (list) => list.reduce((s, p) => s + (p.units_residential || 0), 0);
 const yearSpan = (list) => { const ys = list.map((p) => p.accepted_date?.slice(0, 4)).filter(Boolean).sort(); return ys.length ? (ys[0] === ys.at(-1) ? ys[0] : `${ys[0]}–${ys.at(-1)}`) : ""; };
@@ -675,7 +687,8 @@ const byPrice = (list, dir, sites, display = (x) => x.name) => list.filter((f) =
 const ATT = byPrice(FIRMS, "offering-plan-attorneys", SITES.attorneys, (f) => tc(f.name));
 const ARCH = byPrice(ARCHITECTS, "architects", SITES.architects);
 const SELL = byPrice(SELLERS, "selling-agents", SITES.sellers);
-// What differs between the three $/unit profile kinds.
+const TAX = byPrice(TAXERS, "tax-consultants", SITES.taxers);
+// What differs between the four $/unit profile kinds.
 const ROLE = {
   attorney: { pool: ATT, list: "Offering plan attorneys", as: "sponsor's counsel", on: "on", other: "firm", Other: "Firms", count: "plan", type: "LegalService",
     title: "NYC Condo Sponsor's Counsel", short: "Sponsor's Counsel", source: "as recorded by the Attorney General. This may not reflect current representation." },
@@ -683,6 +696,8 @@ const ROLE = {
     title: "NYC Condo Buildings Designed", short: "Condo Architect", source: "in the plan's text. For conversions this is often the architect who certified the existing building." },
   seller: { pool: SELL, list: "Selling agents", as: "selling agent", on: "in", other: "brokerage", Other: "Brokerages", count: "building", type: "RealEstateAgent",
     title: "NYC Condo Selling Agent", short: "Selling Agent", source: "in the plan's text. A sponsor can change selling agents, so this may not reflect who is selling each building today." },
+  taxer: { pool: TAX, list: "Tax consultants", as: "preparing the real estate tax estimate", on: "in", other: "firm", Other: "Firms", count: "plan", type: "ProfessionalService",
+    title: "NYC Condo Real Estate Tax Estimates", short: "Tax Consultant", source: "in the plan's text. The estimate projects the building's first-year real estate taxes; the Department of Finance sets the actual assessment." },
 };
 const profileHref = (x, P) => `${P}${x.dir}/${x.slug}.html`;
 const hoverScript = `<script>
@@ -832,7 +847,8 @@ await writeFile(join(ROOT, "managing-agents.html"), agentsPage());
 await writeFile(join(ROOT, "offering-plan-attorneys.html"), attorneysPage());
 await writeFile(join(ROOT, "architects.html"), proDirPage("architect"));
 await writeFile(join(ROOT, "selling-agents.html"), proDirPage("seller"));
-for (const dir of ["managing-agents", "offering-plan-attorneys", "architects", "selling-agents"]) {
+await writeFile(join(ROOT, "tax-consultants.html"), proDirPage("taxer"));
+for (const dir of ["managing-agents", "offering-plan-attorneys", "architects", "selling-agents", "tax-consultants"]) {
   // Start clean so a firm that drops below PROFILE_MIN or is regrouped doesn't leave a stale page behind.
   await rm(join(ROOT, dir), { recursive: true, force: true });
   await mkdir(join(ROOT, dir), { recursive: true });
@@ -841,10 +857,11 @@ for (const x of MGR) await writeFile(join(ROOT, "managing-agents", x.slug + ".ht
 for (const x of ATT) await writeFile(join(ROOT, "offering-plan-attorneys", x.slug + ".html"), profilePage(x, "attorney"));
 for (const x of ARCH) await writeFile(join(ROOT, "architects", x.slug + ".html"), profilePage(x, "architect"));
 for (const x of SELL) await writeFile(join(ROOT, "selling-agents", x.slug + ".html"), profilePage(x, "seller"));
+for (const x of TAX) await writeFile(join(ROOT, "tax-consultants", x.slug + ".html"), profilePage(x, "taxer"));
 for (const [file, path] of Object.entries(STATIC)) await stampStatic(file, path);
 
-const pageUrls = [["", TODAY], ["about.html"], ["faq.html", TODAY], ["new-condo-filings.html", TODAY], ["time-to-approval.html", TODAY], ["common-charges.html", TODAY], ["managing-agents.html", TODAY], ["offering-plan-attorneys.html", TODAY], ["architects.html", TODAY], ["selling-agents.html", TODAY], ["blog/", TODAY], ["terms.html"], ["privacy.html"], ["disclaimers.html"],
-  ...[...MGR, ...ATT, ...ARCH, ...SELL].map((x) => [`${x.dir}/${x.slug}.html`, TODAY]),
+const pageUrls = [["", TODAY], ["about.html"], ["faq.html", TODAY], ["new-condo-filings.html", TODAY], ["time-to-approval.html", TODAY], ["common-charges.html", TODAY], ["managing-agents.html", TODAY], ["offering-plan-attorneys.html", TODAY], ["architects.html", TODAY], ["selling-agents.html", TODAY], ["tax-consultants.html", TODAY], ["blog/", TODAY], ["terms.html"], ["privacy.html"], ["disclaimers.html"],
+  ...[...MGR, ...ATT, ...ARCH, ...SELL, ...TAX].map((x) => [`${x.dir}/${x.slug}.html`, TODAY]),
   ...posts.map((q) => [`blog/${q.slug}.html`, q.updated || q.published])];
 await writeFile(join(ROOT, "sitemap-pages.xml"), urlset(pageUrls));
 await writeFile(join(ROOT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>
@@ -854,4 +871,4 @@ await writeFile(join(ROOT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"
 </sitemapindex>
 `);
 await writeFile(join(ROOT, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`);
-console.log(`${posts.length} posts, blog index, new-condo-filings.html, time-to-approval.html, common-charges.html, managing-agents.html, offering-plan-attorneys.html, architects.html, selling-agents.html, ${MGR.length} manager, ${ATT.length} attorney, ${ARCH.length} architect and ${SELL.length} selling agent profiles, ${Object.keys(STATIC).length} stamped pages, sitemap-pages.xml with ${pageUrls.length} URLs`);
+console.log(`${posts.length} posts, blog index, new-condo-filings.html, time-to-approval.html, common-charges.html, managing-agents.html, offering-plan-attorneys.html, architects.html, selling-agents.html, tax-consultants.html, ${MGR.length} manager, ${ATT.length} attorney, ${ARCH.length} architect, ${SELL.length} selling agent and ${TAX.length} tax consultant profiles, ${Object.keys(STATIC).length} stamped pages, sitemap-pages.xml with ${pageUrls.length} URLs`);

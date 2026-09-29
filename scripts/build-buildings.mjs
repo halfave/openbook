@@ -85,6 +85,7 @@ function buildingPage(p, ctx) {
   const unitsLine = [p.units_residential != null && `${p.units_residential} residential`, p.units_parking && `${p.units_parking} parking`,
     p.units_storage && `${p.units_storage} storage`, p.units_commercial && `${p.units_commercial} commercial`].filter(Boolean).join(" · ");
   const row = (k, v) => v ? `<div><dt>${esc(k)}</dt><dd>${v}</dd></div>` : "";
+  const taxBy = ctx.taxPrep.get(p.plan_id)?.name, taxSlug = taxBy && ctx.links.taxers.get(p.plan_id)?.[taxBy];
   const sheet = [
     row("Units", unitsLine && esc(unitsLine)),
     row("Offering price", price && `${esc(fmtMoney(price))} total${initial && current && current !== initial ? ` <span class="sub">${esc(fmtMoney(initial))} when first offered</span>` : ""}`),
@@ -92,6 +93,8 @@ function buildingPage(p, ctx) {
     row("Accepted", p.accepted_date && esc(day(p.accepted_date))),
     row("Sponsor", p.sponsor && esc(tc(p.sponsor))),
     row("Counsel", p.law_firm && (ctx.links.counsel.has(p.plan_id) ? `<a href="${P}offering-plan-attorneys/${esc(ctx.links.counsel.get(p.plan_id))}.html" title="Other offering plans with this counsel">${esc(tc(p.law_firm))}</a>` : esc(tc(p.law_firm))) +(counsel.length ? `<span class="sub">${counsel.map(esc).join(" · ")}</span>` : "")),
+    row("Tax estimate", taxBy && (taxSlug ? `<a href="${P}tax-consultants/${esc(taxSlug)}.html" title="Other offering plans with this tax consultant">${esc(taxBy)}</a>` : esc(taxBy))
+      + `<span class="sub">Prepared the first-year real estate tax projection</span>`),
     row("Plan ID", esc(p.plan_id)),
   ].join("");
   // One pictogram per kind of section; the tile opens the plan at that section's longest run.
@@ -229,12 +232,15 @@ for (const r of imgRows) {
 
 // Plans whose Schedule A table was read and checked (scripts/extract-schedule-a.mjs).
 const scheduleA = new Set(await readdir(join(ROOT, "data", "schedule-a")).then((f) => f.map((x) => x.replace(/\.json$/, "")), () => []));
-// Manager, counsel, architect and selling agent profile pages (built by build-pages.mjs from the same groups), linked from the fact sheet.
+// Manager, counsel, architect, selling agent and tax consultant profile pages (built by build-pages.mjs from the same groups), linked from the fact sheet.
 const factsOf = (field) => all(`facts?select=plan_id,value_text&field=eq.${field}&value_text=not.is.null&order=plan_id`);
 const planById = new Map(plans.map((p) => [p.plan_id, p]));
+// Who prepared each plan's real estate tax estimate, read from the plan text by extract-tax-preparers.mjs.
+const taxPrep = new Map(Object.entries(JSON.parse(await readFile(join(ROOT, "data", "tax-preparers.json"), "utf8").catch(() => "{}"))));
 const links = profileLinks(groupAgents(await factsOf("managing_agent"), planById), groupFirms(plans),
-  groupPros(await factsOf("architect"), planById, "architect"), groupPros(await factsOf("selling_agent"), planById, "selling_agent"));
-const ctx = { plans, docs, sections, images, searchable, scheduleA, links };
+  groupPros(await factsOf("architect"), planById, "architect"), groupPros(await factsOf("selling_agent"), planById, "selling_agent"),
+  groupPros([...taxPrep].map(([plan_id, t]) => ({ plan_id, value_text: t.name })), planById, "tax_preparer"));
+const ctx = { plans, docs, sections, images, searchable, scheduleA, links, taxPrep };
 for (const p of plans) await writeFile(join(OUT, fileFor(p)), buildingPage(p, ctx));
 await writeFile(join(OUT, "index.html"), directory(plans.filter((p) => !isJunk(p, searchable)), ctx));
 
