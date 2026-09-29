@@ -189,10 +189,15 @@ table.side tr.faint td{color:var(--muted)}
 .hero .notice{margin-top:12px}
 
 /* ---------- Top 10 box under the search bar (home only) ---------- */
-.top10{margin:28px auto 0;width:100%;max-width:640px;text-align:center}
-.top10 p{margin:0;font:400 17px/1.6 var(--display);color:var(--ink);text-wrap:balance}
-.top10 a{color:var(--accent);text-decoration:none;border-bottom:1px solid currentColor}
-.top10 a:hover{color:var(--accent-hover)}
+.top10{margin:44px auto 0;width:100%}
+.top10 h2{margin:0;padding-bottom:8px;border-bottom:1px solid var(--rule-strong);font:400 17px/1.4 var(--display);color:var(--ink)}
+.top10 ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:24px}
+.top10 li{border-bottom:1px solid var(--rule)}
+.top10 a{display:flex;align-items:center;gap:10px;padding:12px 0;color:var(--ink);text-decoration:none;font:400 15px/1.3 var(--sans)}
+.top10 a span{font-size:17px;line-height:1}
+.top10 a:hover{color:var(--accent)}
+.top10 a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (max-width:560px){ .top10 ul{grid-template-columns:repeat(2,minmax(0,1fr))} }
 body.searched .top10{display:none}
 
 /* ---------- after a search: compact header ---------- */
@@ -391,7 +396,15 @@ table.pivot th[scope="row"]{white-space:nowrap}
     <div class="read" id="read" hidden></div>
     <div class="notice" id="notice" hidden></div>
     <nav class="top10" aria-label="Top lists">
-      <p>Or browse the top <span aria-hidden="true">🏗️</span>&nbsp;<a href="new-condo-filings.html">new construction</a>, <span aria-hidden="true">⏱️</span>&nbsp;<a href="time-to-approval.html">approval times</a>, <span aria-hidden="true">🏢</span>&nbsp;<a href="managing-agents.html">property managers</a>, <span aria-hidden="true">⚖️</span>&nbsp;<a href="offering-plan-attorneys.html">offering plan attorneys</a>, <span aria-hidden="true">📐</span>&nbsp;<a href="architects.html">architects</a>, and <span aria-hidden="true">🔑</span>&nbsp;<a href="selling-agents.html">selling agents</a>.</p>
+      <h2>Or Browse the Top</h2>
+      <ul>
+        <li><a href="new-condo-filings.html"><span aria-hidden="true">🏗️</span>New Construction</a></li>
+        <li><a href="time-to-approval.html"><span aria-hidden="true">⏱️</span>Approval Times</a></li>
+        <li><a href="managing-agents.html"><span aria-hidden="true">🏢</span>Property Managers</a></li>
+        <li><a href="offering-plan-attorneys.html"><span aria-hidden="true">⚖️</span>Offering Plan Attorneys</a></li>
+        <li><a href="architects.html"><span aria-hidden="true">📐</span>Architects</a></li>
+        <li><a href="selling-agents.html"><span aria-hidden="true">🔑</span>Selling Agents</a></li>
+      </ul>
     </nav>
 
   </section>
