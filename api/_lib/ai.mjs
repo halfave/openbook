@@ -141,9 +141,23 @@ export function validateSpec(raw) {
 export const tsq = (terms) => terms.join(" OR ");
 export const topicQuery = (spec) => tsq(spec.topics.flatMap((t) => t.terms)) || null;
 
+// Residential plans unless the question asks for commercial or parking-garage plans themselves.
+// Same rule as categoriesOf in index.html; keep the two in step.
+const NOT_AFTER = "(?<!\\b(?:with|has|have|and|plus|include|including|includes|offers?)\\s(?:an?\\s)?)";
+const CATEGORY_RE = {
+  commercial: new RegExp(`\\b${NOT_AFTER}(?:commercial|retail|office)(?:[- ]only)? (?:condos?|condominiums?|plans?|buildings?|properties)\\b|\\bnon-?residential\\b`),
+  parking: new RegExp(`\\b${NOT_AFTER}(?:parking|garage)(?:[- ]only)? (?:condos?|condominiums?|plans?)\\b|\\b${NOT_AFTER}parking garages?\\b`),
+};
+export function categoriesOf(text) {
+  const t = " " + String(text || "").toLowerCase().replace(/\s+/g, " ") + " ";
+  const want = Object.keys(CATEGORY_RE).filter((k) => CATEGORY_RE[k].test(t));
+  return want.length ? want : ["residential"];
+}
+
 // Arguments for search_plans_v2 (the same RPC the browser calls).
-export function rpcArgs(spec, { withTopics = true, limit = 60 } = {}) {
+export function rpcArgs(spec, { withTopics = true, limit = 60, categories = null } = {}) {
   return {
+    p_categories: categories,
     q: withTopics ? topicQuery(spec) : null,
     p_borough: spec.borough, p_zips: spec.zips.length ? spec.zips : null,
     p_min_units: spec.min_units, p_max_units: spec.max_units,

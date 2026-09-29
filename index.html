@@ -876,6 +876,23 @@ table.pivot th[scope="row"]{white-space:nowrap}
     return addrs.length >= 2 ? { addresses: addrs.slice(0, 4) } : null;
   }
 
+  // Plans are residential, commercial or parking (plans.category). Searches cover residential plans unless the question
+  // asks for the others themselves ("commercial condos", "parking garage condos"). A building with parking or shops
+  // ("condos with parking", "with a parking garage") is still residential. Plan ID and address lookups cover every plan.
+  const NOT_AFTER = "(?<!\\b(?:with|has|have|and|plus|include|including|includes|offers?)\\s(?:an?\\s)?)";
+  const CATEGORY_RE = {
+    commercial: new RegExp(`\\b${NOT_AFTER}(?:commercial|retail|office)(?:[- ]only)? (?:condos?|condominiums?|plans?|buildings?|properties)\\b|\\bnon-?residential\\b`),
+    parking: new RegExp(`\\b${NOT_AFTER}(?:parking|garage)(?:[- ]only)? (?:condos?|condominiums?|plans?)\\b|\\b${NOT_AFTER}parking garages?\\b`),
+  };
+  const CATEGORY_LABEL = { commercial: "Commercial plans", parking: "Parking garage plans" };
+  const categoriesOf = (text) => {
+    const t = " " + String(text || "").toLowerCase().replace(/\s+/g, " ") + " ";
+    const want = Object.keys(CATEGORY_RE).filter((k) => CATEGORY_RE[k].test(t));
+    return want.length ? want : ["residential"];
+  };
+  // Commercial and garage plans have no apartments and rarely readable pages, so the junk-row check can't apply to them.
+  const nonResidential = (P) => !!P.categories && !P.categories.includes("residential");
+
   function parseQuestion(input) {
     let s = " " + String(input || "").toLowerCase().replace(/[’']/g, "'").replace(/\s+/g, " ") + " ";
     const said = s;
@@ -914,6 +931,12 @@ table.pivot th[scope="row"]{white-space:nowrap}
       chip("counsel", `Counsel: ${titleCase(out.counsel)}`);
       out.notes.push("Sponsor's counsel as named in the Attorney General's plan record.");
       cut(cns[0]);
+    }
+
+    out.categories = categoriesOf(s);
+    if (out.categories[0] !== "residential") {
+      chip("category", out.categories.map((c) => CATEGORY_LABEL[c]).join(" + "));
+      Object.values(CATEGORY_RE).forEach((re) => cut(new RegExp(re.source, "g")));
     }
 
     // which result view fits the question, and which document section to put first
@@ -1228,9 +1251,10 @@ table.pivot th[scope="row"]{white-space:nowrap}
       if (P.from) f.push(`accepted_date=gte.${P.from}`);
       if (P.to) f.push(`accepted_date=lte.${P.to}`);
       if (P.construction) f.push(`construction=eq.${P.construction}`);
+      if (P.categories) f.push(`category=in.(${P.categories.join(",")})`);
       return recordRows(f.join("&"));
     }
-    const args = { q: P.q || null, p_borough: P.borough, ...(P.boroughs ? { p_boroughs: P.boroughs } : {}), p_min_units: P.minUnits, p_max_units: P.maxUnits, p_min_parking: P.minParking, p_accepted_from: P.from || null, p_accepted_to: P.to || null, p_limit: P.zips ? 400 : 60 };
+    const args = { q: P.q || null, p_borough: P.borough, ...(P.boroughs ? { p_boroughs: P.boroughs } : {}), p_min_units: P.minUnits, p_max_units: P.maxUnits, p_min_parking: P.minParking, p_accepted_from: P.from || null, p_accepted_to: P.to || null, p_categories: P.categories || null, p_limit: P.zips ? 400 : 60 };
     if (P.zips && filedToo(P)) args.p_zips = P.zips;
     if (P.construction) args.p_construction = [P.construction];
     if (P.sort) args.p_sort = P.sort;
@@ -1258,7 +1282,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
       rows = rows.filter((r) => P.zips.includes(zm.get(r.plan_id)));
     }
     // Hide AG rows that aren't a real offering: "*Resubmit*" / "(8/3/89 Filed)" names, or 0 units and nothing to read.
-    rows = rows.filter((r) => !/resubmit|withdrawn|\(\s*\d{1,2}\/\d{1,2}\/\d{2,4}|\bfiled\s*\)/i.test(r.name || "") && (r.units_residential || r.docs_indexed));
+    rows = rows.filter((r) => !/resubmit|withdrawn|\(\s*\d{1,2}\/\d{1,2}\/\d{2,4}|\bfiled\s*\)/i.test(r.name || "") && (r.units_residential || r.docs_indexed || nonResidential(P)));
     rows = rows.slice(0, 60);
     if (phrase) {
       const n = rows.filter((r) => r.match === "phrase").length, m = rows.length - n;
@@ -1298,7 +1322,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
       runIntent(spec, via); return;
     }
     const P = parseQuestion(text);
-    if (!P.q && !P.borough && !P.zips && P.minUnits == null && P.maxUnits == null && P.minParking == null && !P.planId && !P.address && !P.manager && !P.counsel && !P.compare && !P.stat && !P.from && !P.to) {
+    if (!P.q && !P.borough && !P.zips && P.minUnits == null && P.maxUnits == null && P.minParking == null && !P.planId && !P.address && !P.manager && !P.counsel && !P.compare && !P.stat && !P.from && !P.to && !P.chips.some((c) => c.k === "category")) {
       P.q = text; P.chips.unshift({ k: "q", label: `Text: ${text}` });
     }
     P.text = text; P.via = via;
@@ -1329,7 +1353,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
     ({ q: () => { P.q = ""; }, area: () => { P.borough = null; P.zips = null; P.boroughs = null; if (P.stat?.boros) P.stat = { ...P.stat, boros: null, group: null }; }, units: () => { P.minUnits = null; P.maxUnits = null; },
       parking: () => { P.minParking = null; P.maxParking = null; }, planId: () => { P.planId = null; }, address: () => { P.address = null; }, topic: () => { P.topic = null; }, sort: () => { P.sort = null; }, compare: () => { P.compare = null; }, manager: () => { P.manager = null; },
       dates: () => { P.from = null; P.to = null; P.sameYear = null; }, construction: () => { P.construction = null; }, status: () => { P.status = null; },
-      sponsor: () => { P.sponsor = null; }, counsel: () => { P.counsel = null; }, commercial: () => { P.minCommercial = null; }, storage: () => { P.minStorage = null; } })[b.dataset.rm]?.();
+      sponsor: () => { P.sponsor = null; }, counsel: () => { P.counsel = null; }, commercial: () => { P.minCommercial = null; }, storage: () => { P.minStorage = null; }, category: () => { P.categories = null; } })[b.dataset.rm]?.();
     P.aiAnswer = null; P.aiPending = false;
     P.via = "remove_filter:" + b.dataset.rm;
     runP(P);
@@ -1343,7 +1367,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
   }
   async function filedRows(P) {
     const rows = await rpc("search_plans_v2", { q: null, p_borough: P.borough, p_zips: P.zips, p_min_units: P.minUnits, p_max_units: P.maxUnits,
-      p_min_parking: P.minParking, p_construction: P.construction ? [P.construction] : null, p_status: ["PENDING"], p_limit: 400 });
+      p_min_parking: P.minParking, p_construction: P.construction ? [P.construction] : null, p_status: ["PENDING"], p_categories: P.categories || null, p_limit: 400 });
     return rows.filter((r) => r.submitted_date && (!P.from || r.submitted_date >= P.from) && (!P.to || r.submitted_date <= P.to))
       .sort((a, b) => b.submitted_date.localeCompare(a.submitted_date)).slice(0, 60);
   }
@@ -1623,7 +1647,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
   const PER_UNIT_MIN = 50000;
   const rawPerUnit = (price, units) => (price > 0 && units > 0 ? price / units : null);
   const perUnit = (r) => { const v = rawPerUnit(r.price_current, r.units_residential); return v != null && v >= PER_UNIT_MIN ? v : null; };
-  const junk = (r) => /resubmit|withdrawn|\(\s*\d{1,2}\/\d{1,2}\/\d{2,4}|\bfiled\s*\)/i.test(r.name || "") || !(r.units_residential || r.docs_indexed);
+  const junk = (r, P) => /resubmit|withdrawn|\(\s*\d{1,2}\/\d{1,2}\/\d{2,4}|\bfiled\s*\)/i.test(r.name || "") || !(r.units_residential || r.docs_indexed || nonResidential(P));
   // Every plan the filters match, not just the page of results shown: search_plans_v2 returns 1,000 rows per request, so page through.
   async function statRows(P) {
     const st = P.stat, filters = [P.borough, P.zips, P.minUnits, P.maxUnits, P.minParking, P.maxParking, P.minCommercial, P.minStorage,
@@ -1635,17 +1659,17 @@ table.pivot th[scope="row"]{white-space:nowrap}
     const all = { q, p_borough: st.boros ? null : P.borough, p_boroughs: st.boros, p_zips: P.zips, p_min_units: P.minUnits, p_max_units: P.maxUnits,
       p_min_parking: P.minParking, p_max_parking: P.maxParking, p_min_commercial: P.minCommercial, p_min_storage: P.minStorage,
       p_accepted_from: P.from, p_accepted_to: P.to, p_construction: P.construction ? [P.construction] : null, p_status: P.status ? [P.status] : null,
-      p_sponsor: P.sponsor, p_counsel: P.counsel, p_managing_agent: P.manager, p_sort: "accepted_desc", p_limit: STAT_CAP };
+      p_sponsor: P.sponsor, p_counsel: P.counsel, p_managing_agent: P.manager, p_categories: P.categories, p_sort: "accepted_desc", p_limit: STAT_CAP };
     const args = Object.fromEntries(Object.entries(all).filter(([, v]) => v != null));
     if (filedToo(P)) {
       const rows = await searchPlans(args, P, { all: true, select: STAT_COLS });
-      return { rows: rows.filter((r) => !junk(r)), total: rows.length, fetched: rows.length, dropped: rows.filter(junk).length };
+      return { rows: rows.filter((r) => !junk(r, P)), total: rows.length, fetched: rows.length, dropped: rows.filter((r) => junk(r, P)).length };
     }
     const page = (o) => rest(`rpc/search_plans_v2?select=${STAT_COLS}&offset=${o}`, args, 600000);
     const first = await page(0), total = first[0]?.total_count ?? first.length;
     const offs = []; for (let o = 1000; o < Math.min(total, STAT_CAP); o += 1000) offs.push(o);
     const rows = [first, ...(await Promise.all(offs.map(page)))].flat();
-    return { rows: rows.filter((r) => !junk(r)), total, fetched: rows.length, dropped: rows.filter(junk).length };
+    return { rows: rows.filter((r) => !junk(r, P)), total, fetched: rows.length, dropped: rows.filter((r) => junk(r, P)).length };
   }
 
   const STAT_GROUPS = {
@@ -1861,7 +1885,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
       minCommercial: s.min_commercial, minStorage: s.min_storage, from: s.accepted_from, to: s.accepted_to,
       construction: s.construction, status: s.status, sponsor: s.sponsor, counsel: s.counsel, dateOn: dateOnOf(text),
       view: VIEW_OF[s.shape], focus: s.doc_focus, analytic: s.analytic_op !== "none" ? { op: s.analytic_op, field: s.analytic_field } : null,
-      aiAnswer: answer, planId: null, address: null, chips: [], notes: s.note ? [s.note] : [] };
+      categories: categoriesOf(text), aiAnswer: answer, planId: null, address: null, chips: [], notes: s.note ? [s.note] : [] };
     // A question about something inside the plans lists only the plans whose pages mention it (the ones the AI read).
     if (s.shape === "extract") { P.q = TOPIC_Q([{ terms: s.extract_terms }]); P.topics = [{ label: s.extract_terms.join(", ") }]; P.topicRequired = true; }
     const chip = (k, label) => P.chips.push({ k, label });
@@ -1890,7 +1914,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
     const args = { q: P.q || null, p_borough: P.borough, p_zips: P.zips, p_min_units: P.minUnits, p_max_units: P.maxUnits,
       p_min_parking: P.minParking, p_max_parking: P.maxParking, p_min_commercial: P.minCommercial, p_min_storage: P.minStorage,
       p_accepted_from: P.from, p_accepted_to: P.to, p_construction: P.construction ? [P.construction] : null, p_status: P.status ? [P.status] : null,
-      p_sponsor: P.sponsor, p_counsel: P.counsel, p_managing_agent: P.manager || null, p_limit: limit };
+      p_sponsor: P.sponsor, p_counsel: P.counsel, p_managing_agent: P.manager || null, p_categories: P.categories || null, p_limit: limit };
     const hasFilter = [P.borough, P.zips, P.minUnits, P.maxUnits, P.minParking, P.maxParking, P.minCommercial, P.minStorage,
       P.from, P.to, P.construction, P.status, P.sponsor, P.counsel, P.manager].some((v) => v != null);
     // With filters, topic words only rank: they must never remove a plan the filters match. So fetch the plans that

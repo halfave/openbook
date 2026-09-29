@@ -7,7 +7,7 @@ import OpenAI from "openai";
 import { createHash } from "node:crypto";
 import {
   MODEL, MAX_COST_USD, T1_MAX_OUT, T2_MAX_OUT, T2_MAX_PLANS, T2_PAGES_PER_PLAN, SPEC_SCHEMA, T1_SYSTEM, T2_SCHEMA, T2_SYSTEM,
-  costOf, worstCase, normalize, validateSpec, rpcArgs, tsq, fitPages, t2UserMessage, checkAnswers, factField,
+  costOf, worstCase, normalize, validateSpec, rpcArgs, categoriesOf, tsq, fitPages, t2UserMessage, checkAnswers, factField,
 } from "./_lib/ai.mjs";
 
 const SB = process.env.SUPABASE_URL || "https://dvywgltjqpntldlztapu.supabase.co";
@@ -108,7 +108,7 @@ export default async function handler(req, res) {
     if (spec.shape === "extract") {
       tier = 2;
       const field = factField(spec.extract_question);
-      const cands = (await sb("rpc/search_plans_v2", { method: "POST", body: { ...rpcArgs(spec, { withTopics: false }), q: tsq(spec.extract_terms), p_limit: T2_MAX_PLANS } }))
+      const cands = (await sb("rpc/search_plans_v2", { method: "POST", body: { ...rpcArgs(spec, { withTopics: false, categories: categoriesOf(raw) }), q: tsq(spec.extract_terms), p_limit: T2_MAX_PLANS } }))
         .filter((r) => r.docs_indexed > 0);
       const plans = cands.map((r) => ({ plan_id: r.plan_id, name: r.name, address: r.address, borough: r.borough }));
       if (!plans.length) {

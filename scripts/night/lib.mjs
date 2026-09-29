@@ -98,14 +98,14 @@ export function report(name, checks) {
 
 // Which plans are searchable, which are junk: same rules as scripts/build-buildings.mjs.
 export const JUNK_NAME = /resubmit|withdrawn|\(\s*\d{1,2}\/\d{1,2}\/\d{2,4}|\bfiled\s*\)/i;
-export const isJunk = (p, searchable) => JUNK_NAME.test(p.name || "") || (!searchable.has(p.plan_id) && !p.units_residential && !p.units_total);
+export const isJunk = (p, searchable) => JUNK_NAME.test(p.name || "") || (!searchable.has(p.plan_id) && !p.units_residential && p.category === "residential");
 export const slug = (s) => String(s ?? "").toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 export const fileFor = (p) => `${slug(p.address)}-${slug(p.borough)}-${p.plan_id.toLowerCase()}.html`;
 export const BORO = { MANHATTAN: 1, MANHTTAN: 1, "NEW YORK": 1, NY: 1, BROOKLYN: 1, KINGS: 1, QUEENS: 1, FLUSHING: 1, BRONX: 1, "STATEN ISLAND": 1, RICHMOND: 1 };
 export const isNYC = (p) => !!BORO[String(p.borough || "").trim().toUpperCase()];
 
 export async function loadPlans() {
-  const plans = (await all("plans?select=plan_id,name,address,zip,borough,accepted_date,units_residential,units_total,units_parking,sponsor,law_firm&order=plan_id")).filter((p) => p.address);
+  const plans = (await all("plans?select=plan_id,name,address,zip,borough,accepted_date,units_residential,category,units_parking,sponsor,law_firm&order=plan_id")).filter((p) => p.address);
   const docs = await all("documents?select=plan_id,doc_kind,status,pdf_url&order=file_id");
   // searchableAny feeds isJunk (as ctx.searchable does); searchable (original plan read) decides indexing today.
   const searchableAny = new Set(docs.filter((d) => d.status === "done").map((d) => d.plan_id));

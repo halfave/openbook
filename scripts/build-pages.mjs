@@ -19,7 +19,7 @@ import { SITE_URL, AG, ROOT, TODAY, all, esc, tc, fileFor, day, month, usDate, m
 import { PROFILE_MIN, isSelf, groupAgents, groupFirms, groupPros } from "./pros.mjs";
 
 // ---------- data ----------
-const plans = (await all("plans?select=plan_id,name,address,zip,borough,construction,submitted_date,accepted_date,units_residential,units_parking,units_commercial,units_total,sponsor,law_firm,meta,fetched_at,lat,lng&order=plan_id"))
+const plans = (await all("plans?select=plan_id,name,address,zip,borough,construction,submitted_date,accepted_date,units_residential,units_parking,units_commercial,units_storage,units_other,category,sponsor,law_firm,meta,fetched_at,lat,lng&order=plan_id"))
   .filter((p) => p.address);
 const searchable = new Set((await all("documents?select=plan_id&status=eq.done")).map((d) => d.plan_id));
 const byId = new Map(plans.map((p) => [p.plan_id, p]));
@@ -161,7 +161,7 @@ ${ld({ "@context": "https://schema.org", "@type": "Blog", name: `${SITE_NAME} Bl
 // Plans accepted for filing in the last three months (the 10 newest if none), one row each.
 const KIND = { NEW: "new construction", REHAB: "rehab", CONVERSION: "conversion" };
 // Skip AG rows that aren't a real offering ("*Resubmit*", "(8/3/89 Filed)", no units).
-const realPlan = (p) => !/resubmit|withdrawn|\(\s*\d{1,2}\/\d{1,2}\/\d{2,4}|\bfiled\s*\)/i.test(p.name || "") && (p.units_residential || p.units_total);
+const realPlan = (p) => !/resubmit|withdrawn|\(\s*\d{1,2}\/\d{1,2}\/\d{2,4}|\bfiled\s*\)/i.test(p.name || "") && (p.units_residential || p.category !== "residential");
 // Borough outlines, the same projected paths the home page map draws (site_assets.boroughs_svg).
 const GEO = JSON.parse((await all("site_assets?key=eq.boroughs_svg&select=value"))[0].value);
 const BORO_LABELS = { Manhattan: [-73.972, 40.79], Brooklyn: [-73.95, 40.645], Queens: [-73.82, 40.705], Bronx: [-73.865, 40.85], "Staten Island": [-74.15, 40.585] };
@@ -370,7 +370,7 @@ const charged = (await all("schedule_b?select=plan_id,budget_period,total_expens
   if (!(Number(r.total_expenses) > 0) || new Set((r.line_items || []).map((it) => it.budget)).size > 1) return null;
   const monthly = Number(r.total_expenses) / 12;
   const a = schedA.get(p.plan_id);
-  const sf = a && (!p.units_total || p.units_total === p.units_residential) && a.units.length === p.units_residential && a.units.every((u) => u.sqft > 0) ? a.units.reduce((s, u) => s + u.sqft, 0) : null;
+  const sf = a && !(p.units_commercial || p.units_parking || p.units_storage || p.units_other) && a.units.length === p.units_residential && a.units.every((u) => u.sqft > 0) ? a.units.reduce((s, u) => s + u.sqft, 0) : null;
   return { ...p, annual: Number(r.total_expenses), period: r.budget_period, perUnit: monthly / p.units_residential, perSf: sf ? monthly / sf : null };
 }).filter(Boolean).sort((a, b) => b.accepted_date.localeCompare(a.accepted_date) || b.plan_id.localeCompare(a.plan_id));
 const usd = (v) => `$${Math.round(v).toLocaleString("en-US")}`;

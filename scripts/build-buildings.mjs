@@ -16,7 +16,7 @@ import { groupAgents, groupFirms, groupPros, profileLinks } from "./pros.mjs";
 // AG rows that aren't a real offering: 0 units with nothing to read, or names like "*Resubmit*" or
 // "(8/3/89 Rs-3 Filed)". Their pages still build (links may exist) but stay out of lists and the sitemap.
 const JUNK_NAME = /resubmit|withdrawn|\(\s*\d{1,2}\/\d{1,2}\/\d{2,4}|\bfiled\s*\)/i;
-const isJunk = (p, searchable) => JUNK_NAME.test(p.name || "") || (!searchable.has(p.plan_id) && !p.units_residential && !p.units_total);
+const isJunk = (p, searchable) => JUNK_NAME.test(p.name || "") || (!searchable.has(p.plan_id) && !p.units_residential && p.category === "residential");
 
 // ---------- building page ----------
 function buildingPage(p, ctx) {
@@ -195,7 +195,7 @@ function directory(plans, ctx) {
 }
 
 // ---------- main ----------
-const plans = (await all("plans?select=plan_id,name,address,zip,borough,construction,accepted_date,units_residential,units_commercial,units_parking,units_storage,units_other,units_total,sponsor,law_firm,amendments_listed,latest_amendment_no,latest_amendment_date,meta,fetched_at,lat,lng&order=plan_id"))
+const plans = (await all("plans?select=plan_id,name,address,zip,borough,construction,accepted_date,units_residential,units_commercial,units_parking,units_storage,units_other,category,sponsor,law_firm,amendments_listed,latest_amendment_no,latest_amendment_date,meta,fetched_at,lat,lng&order=plan_id"))
   .filter((p) => p.address);
 const docRows = await all("documents?select=file_id,plan_id,filename,doc_kind,amendment_no,size_mb,num_pages,status,needs_ocr,pdf_url&order=file_id");
 const docs = new Map();
