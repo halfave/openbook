@@ -12,7 +12,6 @@
   if (bbox) loadBudget(bbox);
   async function loadBudget(box) {
     const where = document.getElementById("schedb-where");
-    const cite = (pg) => pg ? `Offering Plan, p. ${esc(pg)}` : "";
     const fmt = (n) => {
       if (n === null || n === undefined || n === "" || isNaN(Number(n))) return "—";
       const v = Number(n), s = "$" + Math.abs(v).toLocaleString("en-US", { maximumFractionDigits: 2 });
@@ -40,8 +39,13 @@
     const notes = Array.isArray(row.notes) ? row.notes : [];
     const noteId = new Map();
     notes.forEach((n, i) => { const k = String(n.n ?? "").trim(); if (k && !noteId.has(k)) noteId.set(k, "bn-" + i); });
-    const refs = (note) => String(note ?? "").split(/[,;\s]+/).filter(Boolean)
-      .map((k) => noteId.has(k) ? `<a href="#${noteId.get(k)}" data-note>${esc(k)}</a>` : `<span>${esc(k)}</span>`).join(",");
+    // Each line shows its own notes beside it; notes no line refers to stay in a list below.
+    const used = new Set();
+    const noteText = (note) => String(note ?? "").split(/[,;\s]+/).filter((k) => noteId.has(k)).map((k) => {
+      used.add(k);
+      const n = notes[Number(noteId.get(k).slice(3))];
+      return `<span class="bnote">${n.title ? `<b>${esc(n.title)}.</b> ` : ""}${esc(n.summary || "")}</span>`;
+    }).join("");
 
     // Group by budget, then section, in the order they appear in the plan.
     const budgets = new Map();
@@ -55,11 +59,10 @@
     const isTotal = (it) => /\btotal\b/i.test(it.item || "");
     const tables = [...budgets].map(([b, secs]) => {
       const rows = [...secs].map(([sec, list]) => `<tr class="sec"><th colspan="3">${esc(sec)}</th></tr>` + list.map((it) => {
-        const r = refs(it.note);
-        return `<tr${isTotal(it) ? ' class="total"' : ""}><td>${esc(it.item)}${r ? `<sup>${r}</sup>` : ""}</td><td class="amt">${fmt(it.amount)}</td><td class="pg">${cite(it.page)}</td></tr>`;
+        return `<tr${isTotal(it) ? ' class="total"' : ""}><td>${esc(it.item)}</td><td class="amt">${fmt(it.amount)}</td><td class="bnotes-cell">${noteText(it.note)}</td></tr>`;
       }).join("")).join("");
       return (budgets.size > 1 ? `<h3>${esc(b)} Budget</h3>` : "") +
-        `<div class="tscroll"><table class="budget"><thead><tr><th>Item</th><th class="amt">Amount</th><th>Source</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+        `<div class="tscroll"><table class="budget"><thead><tr><th>Item</th><th class="amt">Amount</th><th>Notes</th></tr></thead><tbody>${rows}</tbody></table></div>`;
     }).join("");
 
     const head = [];
@@ -67,23 +70,13 @@
     if (row.total_income != null) head.push(`<b>Total income:</b> ${fmt(row.total_income)}`);
     if (row.total_expenses != null) head.push(`<b>Total expenses:</b> ${fmt(row.total_expenses)}`);
     const caution = row.status === "partial"
-      ? `<p class="bcaution"><b>Partly extracted.</b> ${esc(row.status_note || "Some of this budget could not be read. Check the plan pages cited.")}</p>` : "";
-    const noteList = notes.length ? `<h3>Notes to the Budget</h3><ol class="bnotes">${notes.map((n, i) =>
-      `<li id="bn-${i}"><span class="n">${esc(n.n)}</span><b>${esc(n.title || "")}</b>${n.title ? ". " : ""}${esc(n.summary || "")}${n.page ? ` <span class="pg">${cite(n.page)}</span>` : ""}</li>`).join("")}</ol>` : "";
+      ? `<p class="bcaution"><b>Partly extracted.</b> ${esc(row.status_note || "Some of this budget could not be read. Check the offering plan.")}</p>` : "";
+    const rest = notes.filter((n) => !used.has(String(n.n ?? "").trim()));
+    const noteList = rest.length ? `<h3>Other Notes to the Budget</h3><ol class="bnotes">${rest.map((n) =>
+      `<li><span class="n">${esc(n.n)}</span><b>${esc(n.title || "")}</b>${n.title ? ". " : ""}${esc(n.summary || "")}</li>`).join("")}</ol>` : "";
 
     box.innerHTML = `<p class="src">Schedule B of the offering plan: the sponsor's projected first-year budget. Extracted from the offering plan.</p>` +
       (head.length ? `<p class="bperiod">${head.join(" · ")}</p>` : "") + caution + tables + noteList;
-
-    // Footnote links scroll to the note without changing the address bar.
-    box.addEventListener("click", (e) => {
-      const a = e.target.closest("a[data-note]");
-      if (!a) return;
-      e.preventDefault();
-      const li = document.getElementById(a.getAttribute("href").slice(1));
-      if (!li) return;
-      li.scrollIntoView({ block: "center" });
-      li.animate?.([{ backgroundColor: "var(--mark)" }, { backgroundColor: "transparent" }], { duration: 1600 });
-    });
   }
 
 
@@ -168,12 +161,30 @@
       const q = String(name).replace(/\([^)]*\)/g, "").trim().replace(/[,\s]+(inc|llc|l\.l\.c|corp|corporation|co|company|ltd)\.?$/i, "").trim();
       return /\(\s*sponsor|affiliate/i.test(name) || !q ? esc(name) : `<a href="${P}index.html?q=${encodeURIComponent("managed by " + q)}" title="Other buildings managed by ${esc(q)}">${esc(name)}</a>`;
     };
+    // Architect and selling agent names link to their profile pages (data-architects, data-sellers). A value can name
+    // several firms ("Related Sales LLC and Corcoran Sunshine Marketing Group"), split as scripts/pros.mjs splits it.
+    const proMaps = {};
+    for (const [field, attr] of [["architect", "architects"], ["selling_agent", "sellers"]]) {
+      try { proMaps[field] = JSON.parse(main.dataset[attr] || "{}"); } catch { proMaps[field] = {}; }
+    }
+    const PRO_DIR = { architect: "architects", selling_agent: "selling-agents" };
+    const proLink = (field, value) => {
+      const map = proMaps[field], link = (nm) => map[nm.trim()]
+        ? `<a href="${P}${PRO_DIR[field]}/${encodeURIComponent(map[nm.trim()])}.html" title="Other buildings naming ${esc(nm.trim())}">${esc(nm)}</a>` : esc(nm);
+      if (map[String(value).trim()]) return link(String(value));
+      const sep = field === "selling_agent" ? /(\s*;\s*|\s+\/\s+|\s+and\s+(?![^(]*\)))/ : /(\s*;\s*)/;
+      return String(value).split(sep).map((part, i) => i % 2 ? esc(part) : link(part)).join("");
+    };
     // Returns HTML; every value is escaped here.
     const val = (field, f) => {
       if (field === "parking_arrangement") return esc(PARKING[f.value_text] || f.value_text);
+      if (PRO_DIR[field] && f.value_text) return proLink(field, f.value_text);
       if (field === "managing_agent") {
-        const fee = f.value_num != null && !isNaN(Number(f.value_num)) ? `${f.value_text ? ", " : ""}fee $${Number(f.value_num).toLocaleString("en-US")} a year` : "";
-        return (f.value_text ? agentLink(f.value_text) : "") + esc(fee);
+        // Fee (and fee per residential unit) sits under the name in small type, like counsel's contact.
+        const n = Number(f.value_num), units = Number(main.dataset.units);
+        const fee = f.value_num != null && !isNaN(n) ? [`Fee $${n.toLocaleString("en-US")} a year`,
+          units > 0 && `$${Math.round(n / units).toLocaleString("en-US")} per residential unit a year`].filter(Boolean).join(" · ") : "";
+        return (f.value_text ? agentLink(f.value_text) : "") + (fee ? `<span class="sub">${esc(fee)}</span>` : "");
       }
       return esc(f.value_text);
     };
@@ -181,14 +192,12 @@
     const row = (label, field) => {
       const list = (by.get(field) || []).filter((f) => f.value_text || f.value_num != null);
       if (!list.length) return "";
-      return `<div><dt>${esc(label)}</dt><dd>${list.map((f) => `<span class="fv">${val(field, f)}` +
-        (f.page_no ? ` <span class="fcite"${f.quote ? ` title="${esc(f.quote)}"` : ""}>p. ${esc(f.page_no)}</span>` : "") + `</span>`).join("")}</dd></div>`;
+      return `<div><dt>${esc(label)}</dt><dd>${list.map((f) => `<span class="fv">${val(field, f)}</span>`).join("")}</dd></div>`;
     };
     const sheet = document.getElementById("sheet");
     if (!sheet) return;
     const html = [["Parking", "parking_arrangement"], ["Tax program", "tax_program"], ["Affordable housing", "affordable_housing"],
-      ["Working capital", "working_capital"], ["Reserve fund", "reserve_fund"], ["Managing agent", "managing_agent"],
-      ["Selling agent", "selling_agent"], ["Architect", "architect"], ["Sponsor's address", "sponsor_address"]].map(([l, f]) => row(l, f)).join("");
+      ["Managing agent", "managing_agent"], ["Selling agent", "selling_agent"], ["Architect", "architect"]].map(([l, f]) => row(l, f)).join("");
     // Plan ID stays last.
     const last = sheet.lastElementChild;
     if (html) last ? last.insertAdjacentHTML("beforebegin", html) : sheet.insertAdjacentHTML("beforeend", html);

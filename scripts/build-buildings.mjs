@@ -10,7 +10,7 @@ import { mkdir, writeFile, rm, readFile, readdir } from "node:fs/promises";
 import { join } from "node:path";
 
 import { SB, KEY, SITE_URL, AG, ROOT, OUT, TODAY, rest, all, rpc, esc, tc, slug, fileFor, month, day, usDate, money, fmtMoney, plural, BORO, boro, docLabel, pagesLabel, miles, MAST_HTML, MAST, SITE_NAME, ld, SEO, HEAD, MENU, FOOT, urlset } from "./site.mjs";
-import { groupAgents, groupFirms, profileLinks } from "./pros.mjs";
+import { groupAgents, groupFirms, groupPros, profileLinks } from "./pros.mjs";
 
 // ---------- junk records ----------
 // AG rows that aren't a real offering: 0 units with nothing to read, or names like "*Resubmit*" or
@@ -56,9 +56,6 @@ function buildingPage(p, ctx) {
     </form>
     <script type="application/json" id="pdocs">${JSON.stringify(Object.fromEntries(done.map((d) => [d.file_id, docLabel(d)]))).replace(/</g, "\\u003c")}</script>` : "";
 
-  const docRows = docs.length ? docs
-    .map((d) => `<li><span>${d.pdf_url ? `<a href="${esc(d.pdf_url)}" rel="noopener">${esc(docLabel(d))} ↗</a>` : esc(docLabel(d))}</span><span class="m">${d.num_pages ? d.num_pages + " pages" : ""}${d.size_mb ? ` · ${esc(d.size_mb)} MB` : ""} · ${d.status === "done" && !d.needs_ocr ? "searchable here" : d.needs_ocr ? "scanned, not text-searchable" : "not searched yet"}</span></li>`).join("") : "";
-
   const image = ctx.images.has(p.plan_id) ? `${SITE_URL}/buildings/img/${p.plan_id}.webp` : null;
   // Only what the AG record states. ApartmentComplex is schema.org's residential-building type.
   const ldJson = {
@@ -92,24 +89,32 @@ function buildingPage(p, ctx) {
     row("Counsel", p.law_firm && (ctx.links.counsel.has(p.plan_id) ? `<a href="${P}offering-plan-attorneys/${esc(ctx.links.counsel.get(p.plan_id))}.html" title="Other offering plans with this counsel">${esc(tc(p.law_firm))}</a>` : esc(tc(p.law_firm))) +(counsel.length ? `<span class="sub">${counsel.map(esc).join(" · ")}</span>` : "")),
     row("Plan ID", esc(p.plan_id)),
   ].join("");
-  // One row per kind of section, linking its main pages.
+  // One pictogram per kind of section; the tile opens the plan at that section's longest run.
+  const ICON = {
+    schedule_a: '<path d="M4 12.5V5a1 1 0 0 1 1-1h7.5L21 12.5 12.5 21z"/><circle cx="8.5" cy="8.5" r="1.5"/>',
+    schedule_b: '<rect x="4" y="3" width="16" height="18" rx="1"/><path d="M8 17v-4M12 17V8M16 17v-6"/>',
+    floor_plans: '<rect x="3" y="3" width="18" height="18"/><path d="M3 11h8v10M11 3v5M15 11h6M15 11v4"/>',
+    management_agreement: '<circle cx="8" cy="8" r="4"/><path d="M11 11l9 9M16 16l2-2M18.5 18.5l2-2"/>',
+    declaration: '<path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h5"/>',
+    bylaws: '<path d="M4 5.5C4 4.7 4.7 4 5.5 4H11v16H5.5c-.8 0-1.5-.7-1.5-1.5zM20 5.5c0-.8-.7-1.5-1.5-1.5H13v16h5.5c.8 0 1.5-.7 1.5-1.5z"/>',
+  };
   const KINDS = [["schedule_a", "Schedule A: unit prices", "pricing-pages"], ["schedule_b", "Schedule B: budget", ""], ["floor_plans", "Floor plans", "floor-plans"],
     ["management_agreement", "Management agreement", ""], ["declaration", "Declaration", ""], ["bylaws", "By-laws", ""]];
   const inPlan = KINDS.map(([k, label, id]) => {
     const runs = sections.filter((x) => x.kind === k);
     if (!runs.length) return "";
-    const top = [...runs].sort((a, b) => (b.last_page - b.first_page) - (a.last_page - a.first_page) || a.first_page - b.first_page).slice(0, 3)
-      .sort((a, b) => a.file_id - b.file_id || a.first_page - b.first_page);
-    const links = top.map((r) => { const d = docsById.get(r.file_id) || {}; const t = pagesLabel(r.first_page, r.last_page);
-      return d.pdf_url ? `<a href="${esc(d.pdf_url)}#page=${r.first_page}" rel="noopener">${t}</a>` : t; }).join(", ");
-    return `<li${id ? ` id="${id}"` : ""}><span>${esc(label)}</span><span class="pl">${links}</span></li>`;
+    const r = [...runs].sort((a, b) => (b.last_page - b.first_page) - (a.last_page - a.first_page) || a.first_page - b.first_page)[0];
+    const d = docsById.get(r.file_id) || {};
+    const inner = `<svg viewBox="0 0 24 24" aria-hidden="true">${ICON[k]}</svg><span>${esc(label)}</span>`;
+    const at = id ? ` id="${id}"` : "";
+    return d.pdf_url ? `<a class="pic"${at} href="${esc(d.pdf_url)}#page=${r.first_page}" rel="noopener">${inner}</a>` : `<div class="pic"${at}>${inner}</div>`;
   }).join("");
 
   // No plan button when the AG hasn't posted the plan: there is nothing to open.
   const buttons = (docs.length ? `<a class="btn primary" href="${esc(planHref)}" rel="noopener">${mainPdf ? "Open the offering plan ↗" : "View the offering plan ↗"}</a>` : "")
     + `<a class="btn${docs.length ? "" : " primary"}" href="${esc(agRecord)}" rel="noopener">AG filing record ↗</a>`;
 
-  return HEAD(P, { title, description, canonical, noindex: !searchable || isJunk(p, ctx.searchable), image, imageAlt: `3D massing drawing of ${name}` }) + `<main class="bldg sheet-page" data-plan="${esc(p.plan_id)}" data-borough="${esc(group)}" data-searchable="${searchable}"${ctx.links.managers.has(p.plan_id) ? ` data-managers="${esc(JSON.stringify(ctx.links.managers.get(p.plan_id)))}"` : ""}>
+  return HEAD(P, { title, description, canonical, noindex: !searchable || isJunk(p, ctx.searchable), image, imageAlt: `3D massing drawing of ${name}`, newTab: true }) + `<main class="bldg sheet-page" data-plan="${esc(p.plan_id)}" data-borough="${esc(group)}" data-searchable="${searchable}"${p.units_residential ? ` data-units="${p.units_residential}"` : ""}${["managers", "architects", "sellers"].map((k) => ctx.links[k].has(p.plan_id) ? ` data-${k}="${esc(JSON.stringify(ctx.links[k].get(p.plan_id)))}"` : "").join("")}>
   <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Buildings</a> › <a href="index.html#${slug(group)}">${esc(group)}</a></nav>
   <h1>${esc(name)}</h1>
   <p class="addr">${esc(addr)}, ${esc(b)}, NY${p.zip ? " " + esc(p.zip) : ""}</p>
@@ -135,8 +140,7 @@ function buildingPage(p, ctx) {
 
   <section class="sheet-sec" id="documents">
     <h2>In the Plan</h2>
-    ${inPlan ? `<ul class="inplan">${inPlan}</ul>` : `<p class="faint">${docs.length ? "This plan's pages aren't searched yet, so there are no page links." : `The Attorney General hasn't posted this plan's documents yet. <a href="${esc(agDocs)}" rel="noopener">AG documents page ↗</a>`}</p>`}
-    ${docRows ? `<ul class="doclist">${docRows}</ul>` : ""}
+    ${inPlan ? `<div class="pics">${inPlan}</div>` : `<p class="faint">${docs.length ? "This plan's pages aren't searched yet, so there are no section links." : `The Attorney General hasn't posted this plan's documents yet. <a href="${esc(agDocs)}" rel="noopener">AG documents page ↗</a>`}</p>`}
   </section>
 
   ${searchable ? `<section class="sheet-sec" id="budget">
@@ -220,9 +224,11 @@ for (const r of imgRows) {
 
 // Plans whose Schedule A table was read and checked (scripts/extract-schedule-a.mjs).
 const scheduleA = new Set(await readdir(join(ROOT, "data", "schedule-a")).then((f) => f.map((x) => x.replace(/\.json$/, "")), () => []));
-// Manager and counsel profile pages (built by build-pages.mjs from the same groups), linked from the fact sheet.
-const agentFacts = await all("facts?select=plan_id,value_text&field=eq.managing_agent&value_text=not.is.null&order=plan_id");
-const links = profileLinks(groupAgents(agentFacts, new Map(plans.map((p) => [p.plan_id, p]))), groupFirms(plans));
+// Manager, counsel, architect and selling agent profile pages (built by build-pages.mjs from the same groups), linked from the fact sheet.
+const factsOf = (field) => all(`facts?select=plan_id,value_text&field=eq.${field}&value_text=not.is.null&order=plan_id`);
+const planById = new Map(plans.map((p) => [p.plan_id, p]));
+const links = profileLinks(groupAgents(await factsOf("managing_agent"), planById), groupFirms(plans),
+  groupPros(await factsOf("architect"), planById, "architect"), groupPros(await factsOf("selling_agent"), planById, "selling_agent"));
 const ctx = { plans, docs, sections, images, searchable, scheduleA, links };
 for (const p of plans) await writeFile(join(OUT, fileFor(p)), buildingPage(p, ctx));
 await writeFile(join(OUT, "index.html"), directory(plans.filter((p) => !isJunk(p, searchable)), ctx));

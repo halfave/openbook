@@ -82,12 +82,13 @@ ${image ? `<meta property="og:image" content="${esc(image)}">\n<meta property="o
 <meta name="twitter:description" content="${esc(description)}">
 <meta name="theme-color" content="#879CB4">
 <script src="${p}analytics.js"></script>`;
-export const HEAD = (p, { title, description, canonical, noindex, image, imageAlt }) => `<!doctype html>
+// newTab: every link on the page opens in a new tab (building pages).
+export const HEAD = (p, { title, description, canonical, noindex, image, imageAlt, newTab }) => `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>${esc(title)}</title>
+${newTab ? '<base target="_blank">\n' : ""}<title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
 ${noindex ? '<meta name="robots" content="noindex, follow">\n' : ""}${SEO(p, { title, description, canonical, image, imageAlt })}
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2040%2040'%3E%3Crect%20width='40'%20height='40'%20rx='9'%20fill='%2365153B'/%3E%3Cg%20fill='%23FAF8F2'%3E%3Crect%20x='13.4'%20y='4.5'%20width='1.2'%20height='4.5'/%3E%3Crect%20x='9'%20y='9'%20width='10'%20height='22'/%3E%3Cpath%20d='M21%2031V15h5v-3h5v19z'/%3E%3C/g%3E%3Cg%20fill='%2365153B'%3E%3Crect%20x='11'%20y='12'%20width='2.4'%20height='2.4'/%3E%3Crect%20x='14.6'%20y='12'%20width='2.4'%20height='2.4'/%3E%3Crect%20x='11'%20y='16.2'%20width='2.4'%20height='2.4'/%3E%3Crect%20x='14.6'%20y='16.2'%20width='2.4'%20height='2.4'/%3E%3Crect%20x='11'%20y='20.4'%20width='2.4'%20height='2.4'/%3E%3Crect%20x='14.6'%20y='20.4'%20width='2.4'%20height='2.4'/%3E%3Crect%20x='27.3'%20y='15'%20width='2.2'%20height='2.4'/%3E%3Crect%20x='23'%20y='18.6'%20width='2.2'%20height='2.4'/%3E%3Crect%20x='27.3'%20y='18.6'%20width='2.2'%20height='2.4'/%3E%3Crect%20x='23'%20y='22.4'%20width='2.2'%20height='2.4'/%3E%3Crect%20x='27.3'%20y='22.4'%20width='2.2'%20height='2.4'/%3E%3Cpath%20d='M3%2027.2C10%2025%2016%2025.4%2020%2028.4%2024%2025.4%2030%2025%2037%2027.2V29C30%2027%2024%2027.4%2020%2030.4%2016%2027.4%2010%2027%203%2029z'/%3E%3C/g%3E%3Cpath%20fill='%23FAF8F2'%20d='M4%2029.2C10%2027.2%2016%2027.6%2020%2030.6%2024%2027.6%2030%2027.2%2036%2029.2V33.2C30%2031.2%2024%2031.6%2020%2034.6%2016%2031.6%2010%2031.2%204%2033.2z'/%3E%3C/svg%3E">
@@ -102,7 +103,7 @@ ${noindex ? '<meta name="robots" content="noindex, follow">\n' : ""}${SEO(p, { t
 ${MAST(p)}
 ${MENU(p)}`;
 // The masthead links (scripts/masthead.html and index.html), repeated in the menu on narrow screens.
-export const BAR = [["about.html", "About"], ["faq.html", "FAQ"], ["new-condo-filings.html", "New Construction"], ["time-to-approval.html", "Approval Times"], ["managing-agents.html", "Property Managers"], ["offering-plan-attorneys.html", "OP Attorneys"]];
+export const BAR = [["about.html", "About"], ["faq.html", "FAQ"], ["new-condo-filings.html", "New Construction"], ["time-to-approval.html", "Approval Times"], ["managing-agents.html", "Property Managers"], ["offering-plan-attorneys.html", "OP Attorneys"], ["architects.html", "Architects"], ["selling-agents.html", "Selling Agents"]];
 export const MENU = (p, extra = "") => `<details class="menu" id="menu">
   <summary aria-label="Menu"><svg class="bars-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="x-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></summary>
   <nav aria-label="Site">
