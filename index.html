@@ -782,7 +782,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
     // 53 West 53rd, 220 E 12th: a direction and a numbered street with no suffix is a Street
     [new RegExp(`${ANUM}\\s+(${ADIR})\\.?\\s+(\\d+(?:st|nd|rd|th))\\b`), (m) => [alts(DIRS, m[2]), nameAlts(m[3]), alts(SUFFIX, "street")]],
   ];
-  function parseAddress(s) {
+  function parseOneAddress(s) {
     for (const [re, slotsOf] of ADDR_RES) {
       const m = s.match(re); if (!m) continue;
       const slots = slotsOf(m); if (!slots) continue;
@@ -791,6 +791,29 @@ table.pivot th[scope="row"]{white-space:nowrap}
       return { num: m[1], street: spellings[0], spellings, raw: m[0] };
     }
     return null;
+  }
+  // "5019th ave": the house number typed into a numbered street. Every split whose ending fits ("501 9th", "50 19th") is looked up;
+  // the longest house number is named first, and the lookup settles on the one with a record.
+  const GLUED = new RegExp(`\\b(\\d{2,6})(st|nd|rd|th)\\s+(?=(?:${Object.entries(SUFFIX).flat(2).join("|")})\\b)`);
+  function parseAddress(s) {
+    const one = parseOneAddress(s); if (one) return one;
+    const g = s.match(GLUED); if (!g) return null;
+    const variants = [];
+    for (let i = g[1].length - 1; i >= 1; i--) {
+      const num = g[1].slice(0, i), k = g[1].slice(i);
+      if (k[0] === "0" || nth(+k) !== k + g[2]) continue;
+      const a = parseOneAddress(s.replace(g[0], `${num} ${k}${g[2]} `));
+      if (a) variants.push({ ...a, raw: a.raw.replace(`${num} `, num) });
+    }
+    return variants.length ? { ...variants[0], variants } : null;
+  }
+  // After a lookup of a glued address: name the split that has a record.
+  function settleAddress(P, rows) {
+    const a = P.address; if (!a?.variants || !rows.length) return;
+    const v = a.variants.find((x) => rows.some((r) => new RegExp(`(^|[\\s/&])${x.num} `).test(String(r.address || "").toLowerCase())));
+    if (!v) return;
+    P.address = { ...v, variants: a.variants };
+    P.chips = P.chips.map((c) => (c.k === "address" ? { ...c, label: titleCase(`${v.num} ${v.street}`) } : c));
   }
 
   // ---------- which result template fits the question ----------
@@ -1087,12 +1110,14 @@ table.pivot th[scope="row"]{white-space:nowrap}
     const cnt = new Map(); done.forEach((d) => cnt.set(d.plan_id, (cnt.get(d.plan_id) || 0) + 1));
     return rows.map((r) => ({ ...r, docs_indexed: cnt.get(r.plan_id) || 0, hits: 0, snippets: [] }));
   }
-  function addressRows({ num, spellings }) {
+  function addressRows(addr) {
+    return recordRows(`or=(${encodeURIComponent((addr.variants || [addr]).flatMap(addressOrs).join(","))})`);
+  }
+  function addressOrs({ num, spellings }) {
     // Match the number at the start or after another address ("108 Leonard St a/k/a 346 Broadway").
     // A one-letter ending ("Park W", "Avenue A") must end the word, or "Park S" would also match "Park Southwest".
     const ends = (v) => (/ [a-z]$/.test(v) ? [v, `${v} *`] : [`${v}*`]);
-    const ors = spellings.flatMap(ends).flatMap((v) => [`${num} ${v}`, `* ${num} ${v}`]).map((v) => `address.ilike.${v}`);
-    return recordRows(`or=(${encodeURIComponent(ors.join(","))})`);
+    return spellings.flatMap(ends).flatMap((v) => [`${num} ${v}`, `* ${num} ${v}`]).map((v) => `address.ilike.${v}`);
   }
   // Buildings named for a side-by-side comparison, in the order they were typed.
   async function compareRows(P) {
@@ -1121,6 +1146,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
     const [mine, group] = await Promise.all([P.planId ? recordRows(`plan_id=eq.${encodeURIComponent(P.planId)}`) : addressRows(P.address), fetchRows(G)]);
     const inBoro = P.borough ? mine.filter((r) => BORO_OF[String(r.borough || "").trim().toUpperCase()] === P.borough) : [];
     const self = (inBoro.length ? inBoro : mine)[0];
+    if (self && !P.planId) settleAddress(P, [self]);
     const named = P.planId || titleCase(`${P.address.num} ${P.address.street}`);
     const others = self ? group.filter((r) => r.plan_id !== self.plan_id) : group;
     const notes = [];
@@ -1145,6 +1171,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
       // AG records write boroughs several ways (KINGS, NEW YORK), so the borough narrows the list only when it matches something.
       const inBoro = P.borough ? rows.filter((r) => BORO_OF[String(r.borough || "").trim().toUpperCase()] === P.borough) : [];
       const hits = inBoro.length ? inBoro : rows;
+      settleAddress(P, hits);
       const notes = [];
       if (P.borough && rows.length && !inBoro.length) notes.push(`No record at this address lists ${titleCase(P.borough)}, so every borough is shown.`);
       if (hits.length > 1) notes.push(`${hits.length} plan records match this address. Compare the building names and plan IDs.`);
