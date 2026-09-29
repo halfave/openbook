@@ -68,6 +68,23 @@ export const miles = (a, b) => {
 export const MAST_HTML = await readFile(join(ROOT, "scripts", "masthead.html"), "utf8");
 export const MAST = (p) => MAST_HTML.replace(/href="(?!https?:|mailto:|#)([^"]+)"/g, (_, h) => `href="${p}${h}"`);
 export const SITE_NAME = "The Condo Book Project";
+// Search results show about 60 characters of a title and 160 of a description; past that they're cut off.
+export const TITLE_MAX = 65, DESC_MAX = 160;
+// The site name goes after a page's own title only when both fit.
+export const pageTitle = (t) => {
+  const own = String(t).replace(/ \| The Condo Book Project$/, "");
+  return own.length + SITE_NAME.length + 3 <= TITLE_MAX ? `${own} | ${SITE_NAME}` : own;
+};
+// The first of several wordings (longest first) that fits in a title, or the last one.
+export const firstFit = (...ts) => ts.find((t) => t.length <= TITLE_MAX) ?? ts.at(-1);
+// base, then as many of the optional pieces (in order) as fit, then tail. Stops at the first piece that doesn't fit.
+export const fitDesc = (base, pieces = [], tail = "") => {
+  let s = base;
+  for (const x of pieces) { if (!x) continue; if ((s + x + tail).length > DESC_MAX) break; s += x; }
+  return s + tail;
+};
+// Last resort for a description that is too long even without its optional pieces: cut at a word.
+const clipDesc = (d) => d.length <= DESC_MAX ? d : d.slice(0, DESC_MAX - 1).replace(/[\s,;:.–—-]+\S*$/, "") + "…";
 export const ld = (obj) => `<script type="application/ld+json">${JSON.stringify(obj).replace(/</g, "\\u003c")}</script>`;
 // Tags every page shares: canonical, social cards, analytics. Also stamped into the hand-written pages (see stampStatic).
 export const SEO = (p, { title, description, canonical, image, imageAlt }) => `<link rel="canonical" href="${esc(canonical)}">
@@ -83,7 +100,9 @@ ${image ? `<meta property="og:image" content="${esc(image)}">\n<meta property="o
 <meta name="theme-color" content="#879CB4">
 <script src="${p}analytics.js"></script>`;
 // newTab: every link on the page opens in a new tab (building pages).
-export const HEAD = (p, { title, description, canonical, noindex, image, imageAlt, newTab }) => `<!doctype html>
+export const HEAD = (p, { title: t, description: d, canonical, noindex, image, imageAlt, newTab }) => {
+  const title = pageTitle(t), description = clipDesc(d);
+  return `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -102,6 +121,7 @@ ${noindex ? '<meta name="robots" content="noindex, follow">\n' : ""}${SEO(p, { t
 <body>
 ${MAST(p)}
 ${MENU(p)}`;
+};
 // The masthead links (scripts/masthead.html and index.html), repeated in the menu on narrow screens.
 export const BAR = [["about.html", "About"], ["faq.html", "FAQ"], ["new-condo-filings.html", "New Construction"], ["time-to-approval.html", "Approval Times"], ["common-charges.html", "Common Charges"], ["managing-agents.html", "Property Managers"], ["offering-plan-attorneys.html", "OP Attorneys"], ["architects.html", "Architects"], ["selling-agents.html", "Selling Agents"]];
 export const MENU = (p, extra = "") => `<details class="menu" id="menu">

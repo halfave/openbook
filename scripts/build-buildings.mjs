@@ -9,7 +9,7 @@
 import { mkdir, writeFile, rm, readFile, readdir } from "node:fs/promises";
 import { join } from "node:path";
 
-import { SB, KEY, SITE_URL, AG, ROOT, OUT, TODAY, rest, all, rpc, esc, tc, slug, fileFor, month, day, usDate, money, fmtMoney, plural, BORO, boro, docLabel, pagesLabel, miles, MAST_HTML, MAST, SITE_NAME, ld, SEO, HEAD, MENU, FOOT, urlset } from "./site.mjs";
+import { SB, KEY, SITE_URL, AG, ROOT, OUT, TODAY, rest, all, rpc, esc, tc, slug, fileFor, month, day, usDate, money, fmtMoney, plural, BORO, boro, docLabel, pagesLabel, miles, MAST_HTML, MAST, SITE_NAME, ld, SEO, HEAD, fitDesc, firstFit, MENU, FOOT, urlset } from "./site.mjs";
 import { groupAgents, groupFirms, groupPros, profileLinks } from "./pros.mjs";
 
 // ---------- junk records ----------
@@ -38,11 +38,16 @@ function buildingPage(p, ctx) {
   const planHref = mainPdf || agDocs, planLabel = mainPdf ? "Open the original offering plan (PDF) ↗" : "View the original offering plan ↗";
   const canonical = `${SITE_URL}/buildings/${fileFor(p)}`;
 
-  const title = `${addr || name} Offering Plan: Units, Parking, Budget & Team | The Condo Book Project`;
+  // The plan ID keeps two plans at one address apart, and is what people search the AG site by.
+  // Titles use the first address of an "A/K/A" pair; the description keeps the full one.
+  const tAddr = (addr || name).replace(/\s*[(,]?\s*\b(a\/k\/a|aka)\b.*$/i, "") || addr || name;
+  const title = firstFit(`${tAddr} Condo Offering Plan (${p.plan_id})`, `${tAddr} Offering Plan (${p.plan_id})`, `${tAddr} (${p.plan_id})`);
   const bits = [];
   if (p.units_residential != null) bits.push(plural(p.units_residential, "residential unit"));
   if (p.units_parking) bits.push(plural(p.units_parking, "parking unit"));
-  const description = `${name}, ${addr}, ${b}. AG plan ${p.plan_id}${p.accepted_date ? `, accepted ${month(p.accepted_date)}` : ""}.${bits.length ? " " + bits.join(", ") + "." : ""} Budget, team, documents and source links.`;
+  const where = [name.toLowerCase() === addr.toLowerCase() ? "" : name, addr, b].filter(Boolean).join(", ");
+  const description = fitDesc(`${where}. AG plan ${p.plan_id}${p.accepted_date ? `, accepted ${month(p.accepted_date)}` : ""}.`,
+    [bits.length ? " " + bits.join(", ") + "." : "", " Budget, team, documents and source links."]);
 
   const near = ctx.plans.filter((q) => q.plan_id !== p.plan_id && q.lat && p.lat && !isJunk(q, ctx.searchable))
     .map((q) => ({ q, d: miles(p, q) })).sort((a, b) => a.d - b.d).slice(0, 6);

@@ -14,7 +14,7 @@
 //   {{table:NAME}} a generated table (see TABLES)
 import { mkdir, writeFile, readFile, readdir, rm } from "node:fs/promises";
 import { join } from "node:path";
-import { SITE_URL, AG, ROOT, TODAY, all, esc, tc, fileFor, day, month, usDate, money, fmtMoney, plural, boro, SITE_NAME, ld, SEO, HEAD, FOOT, urlset } from "./site.mjs";
+import { SITE_URL, AG, ROOT, TODAY, all, esc, tc, fileFor, day, month, usDate, money, fmtMoney, plural, boro, SITE_NAME, ld, SEO, HEAD, FOOT, urlset, fitDesc, firstFit } from "./site.mjs";
 import { PROFILE_MIN, isSelf, groupAgents, groupFirms, groupPros } from "./pros.mjs";
 
 // ---------- data ----------
@@ -91,6 +91,8 @@ for (const f of (await readdir(SRC)).filter((f) => f.endsWith(".html")).sort()) 
   posts.push({ ...JSON.parse(m[1]), slug: f.replace(/\.html$/, ""), body: raw.slice(m[0].length) });
 }
 posts.sort((a, b) => (a.order ?? 99) - (b.order ?? 99));
+// A directory description: the sentence, then " Top: A (5), B (4)." with as many names as fit.
+const withTop = (base, names) => fitDesc(base, names.map((s, i) => (i ? ", " : " Top: ") + s), ".").replace(/\.\.$/, ".");
 const words = (html) => html.replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length;
 const cta = (P) => `<form class="cta" action="${P}index.html" method="get" role="search">
     <label for="ctaq">Search NYC condo offering plans on ${SITE_NAME}</label>
@@ -180,8 +182,9 @@ function filingsPage() {
   const newest = accepted.filter(NYC).filter(real).sort((a, b) => b.accepted_date.localeCompare(a.accepted_date) || b.plan_id.localeCompare(a.plan_id));
   const recent = newest.filter((p) => p.accepted_date >= SINCE);
   const latest = recent.length ? recent : newest.slice(0, 10);
-  const title = `New NYC Condo Offering Plans: Filings from the Last 3 Months | The Condo Book Project`;
-  const description = `${latest.length} NYC condominium offering plans accepted for filing by the NY Attorney General in the last three months, with total sellout and price per unit. Latest: ${tc(latest[0].name)}, ${latest[0].plan_id}.`;
+  const title = `New NYC Condo Offering Plans: Last 3 Months`;
+  const description = fitDesc(`${latest.length} NYC condo offering plans accepted by the NY Attorney General in the last three months, with total sellout and price per unit.`,
+    [` Latest: ${tc(latest[0].name)}, ${latest[0].plan_id}.`]);
 
   const price = (p) => money(p.meta?.plan?.["Current Price"]) || money(p.meta?.plan?.["Initial Price"]);
   const dash = `<span class="faint">—</span>`;
@@ -248,8 +251,8 @@ function approvalPage() {
   const days = timed.map((p) => p.days);
   const mean = avgOf(days), median = medianOf(days), fastest = Math.min(...days), slowest = Math.max(...days);
   const oldest = timed.at(-1).accepted_date;
-  const title = "How Long Does AG Approval Take for an NYC Condo Offering Plan? | The Condo Book Project";
-  const description = `How long the NY Attorney General takes to accept an NYC condo offering plan for filing: ${dur(mean)} on average across the ${timed.length} most recent plans that can be timed.`;
+  const title = "How Long Does AG Approval Take for NYC Condos?";
+  const description = `How long the NY Attorney General takes to accept an NYC condo offering plan: ${dur(mean)} on average across the ${timed.length} most recent plans that can be timed.`;
 
   // By building size (residential units on the AG record).
   const sizes = SIZES.map(([a, b, label]) => {
@@ -351,8 +354,9 @@ function commonChargesPage() {
   const url = `${SITE_URL}/common-charges.html`;
   const per = charged.map((p) => p.perUnit), perSf = charged.filter((p) => p.perSf).map((p) => p.perSf);
   const mid = median(per), mean = per.reduce((s, v) => s + v, 0) / per.length, sfMid = median(perSf);
-  const title = "What Are Common Charges in a New NYC Condo? | The Condo Book Project";
-  const description = `Monthly common charges in new NYC condominiums, from the first-year budgets in ${n(charged.length)} offering plans accepted since ${day(ccSince)}: ${usd(mid)} per unit${sfMid != null ? ` and ${usdSf(sfMid)} per square foot` : ""} at the median, by building size.`;
+  const title = "What Are Common Charges in a New NYC Condo?";
+  const description = fitDesc(`Median monthly common charges in new NYC condos: ${usd(mid)} per unit${sfMid != null ? ` and ${usdSf(sfMid)} per square foot` : ""}`,
+    [`, from first-year budgets in ${n(charged.length)} plans accepted since ${day(ccSince)}`], ".");
 
   // By building size (residential units on the AG record).
   const sizes = SIZES.map(([a, b, label]) => {
@@ -486,8 +490,8 @@ function agentsPage() {
   const url = `${SITE_URL}/managing-agents.html`;
   const groups = AGENTS;
   const namedPlans = groups.reduce((s, g) => s + g.plans.length, 0);
-  const title = `NYC Condo Property Managers: Who Manages Which Buildings | The Condo Book Project`;
-  const description = `${n(groups.length)} property managers named in ${n(namedPlans)} NYC condominium offering plans, with the buildings each one manages and the first-year management fee per unit. Top: ${groups.slice(0, 3).map((g) => `${g.name} (${g.plans.length})`).join(", ")}.`;
+  const title = `NYC Condo Property Managers by Building`;
+  const description = withTop(`${n(groups.length)} property managers named in ${n(namedPlans)} NYC condo offering plans, with the buildings each manages and the first-year fee per unit.`, groups.slice(0, 3).map((g) => `${g.name} (${g.plans.length})`));
   const bldg = (p) => `<li><a href="buildings/${esc(fileFor(p))}">${esc(tc(p.name))}</a><span>${esc(tc(p.address))} · ${esc(boro(p.borough))}${p.units_residential != null ? ` · ${p.units_residential} units` : ""}${p.accepted_date ? ` · ${p.accepted_date.slice(0, 4)}` : ""}${feeText(p)}</span></li>`;
   const card = (g, i) => `<details class="agent" id="${esc(g.slug)}" data-name="${esc(g.name.toLowerCase())}"${more(i)}>
     <summary>${rank(i)}<span class="an">${g.plans.length >= PROFILE_MIN ? `<a href="managing-agents/${esc(g.slug)}.html">${esc(g.name)}</a>` : esc(g.name)}</span><span class="ac">${plural(g.plans.length, "building")}${g.fee != null ? `<span class="fee" title="Median first-year management fee per residential unit, from Schedule B">${perYear(g.fee)}/unit/yr</span>` : `<span class="fee" aria-hidden="true"></span>`}</span></summary>
@@ -534,8 +538,8 @@ function attorneysPage() {
   const url = `${SITE_URL}/offering-plan-attorneys.html`;
   const all = FIRMS, top = FIRMS.slice(0, TOP);
   const withCounsel = plans.filter((p) => p.law_firm && NYC(p)).length;
-  const title = `Top NYC Condo Offering Plan Attorneys: Sponsor's Counsel by Plans Filed | The Condo Book Project`;
-  const description = `The ${top.length} law firms named most often as sponsor's counsel in NYC condominium offering plans, from the NY Attorney General's records. Top: ${top.slice(0, 3).map((f) => `${tc(f.name)} (${f.plans.length})`).join(", ")}.`;
+  const title = `Top NYC Condo Offering Plan Attorneys`;
+  const description = withTop(`The ${top.length} law firms named most often as sponsor's counsel in NYC condo offering plans, from the NY Attorney General's records.`, top.slice(0, 3).map((f) => `${tc(f.name)} (${f.plans.length})`));
   const bldg = (p) => `<li><a href="buildings/${esc(fileFor(p))}">${esc(tc(p.name))}</a><span>${esc(tc(p.address))} · ${esc(boro(p.borough))}${p.units_residential != null ? ` · ${p.units_residential} units` : ""}${p.accepted_date ? ` · ${p.accepted_date.slice(0, 4)}` : ""}</span></li>`;
   const span = (f) => f.years.length ? (f.years[0] === f.years.at(-1) ? f.years[0] : `${f.years[0]}–${f.years.at(-1)}`) : "";
   const card = (f, i) => `<details class="agent" id="${esc(f.slug)}" data-name="${esc(tc(f.name).toLowerCase())}"${more(i)}>
@@ -578,19 +582,19 @@ const SELLERS = groupPros(await all("facts?select=plan_id,value_text&field=eq.se
 const PRO_DIRS = {
   architect: {
     groups: ARCHITECTS, dir: "architects", crumb: "Architects", noun: "architects", find: "Find an architect",
-    title: "Top NYC Condo Architects: Who Designed Which Buildings | The Condo Book Project",
+    title: "Top NYC Condo Architects by Building",
     h1: "Top NYC Condo Architects",
     listName: "Architects most often named in NYC condominium offering plans",
-    description: (g, planCount) => `${n(g.length)} architects named in ${n(planCount)} NYC condominium offering plans, with the buildings each one designed. Top: ${g.slice(0, 3).map((x) => `${x.name} (${x.plans.length})`).join(", ")}.`,
+    description: (g, planCount) => withTop(`${n(g.length)} architects named in ${n(planCount)} NYC condominium offering plans, with the buildings each one designed.`, g.slice(0, 3).map((x) => `${x.name} (${x.plans.length})`)),
     note: (g, planCount) => `The architect each New York City condominium offering plan names for the building. ${n(g.length)} architects across ${n(planCount)} buildings. Ranked by the number of offering plans naming each architect, not by quality.`,
     src: "Named in the offering plan as filed; for conversions and rehabs this is often the architect who certified the building's condition rather than its designer. Different spellings of one firm's name are counted together, and a person named alone is counted apart from their firm unless the plans name them together. Plans whose pages aren't searchable yet, or that don't name an architect, aren't included.",
   },
   seller: {
     groups: SELLERS, dir: "selling-agents", crumb: "Selling agents", noun: "selling agents", find: "Find a brokerage",
-    title: "Top NYC Condo Selling Agents: New Development Sales by Plans Filed | The Condo Book Project",
+    title: "Top NYC New Development Condo Selling Agents",
     h1: "Top NYC Condo Selling Agents",
     listName: "Selling agents most often named in NYC condominium offering plans",
-    description: (g, planCount) => `${n(g.length)} brokerages named as selling agent in ${n(planCount)} NYC condominium offering plans, with the new development buildings each one was hired to sell. Top: ${g.slice(0, 3).map((x) => `${x.name} (${x.plans.length})`).join(", ")}.`,
+    description: (g, planCount) => withTop(`${n(g.length)} brokerages named as selling agent in ${n(planCount)} NYC condo offering plans, with the new developments each was hired to sell.`, g.slice(0, 3).map((x) => `${x.name} (${x.plans.length})`)),
     note: (g, planCount) => `The selling agent each New York City condominium offering plan names to market and sell the units for the sponsor. ${n(g.length)} brokerages across ${n(planCount)} buildings. Ranked by the number of offering plans naming each firm, not by sales or quality.`,
     src: "Named in the offering plan as filed; a sponsor can change selling agents later, so this may not reflect who is selling a building today. Plans where the sponsor or an affiliate sells its own units aren't counted. Different spellings of one brokerage's name are counted together. Plans whose pages aren't searchable yet, or that don't name a selling agent, aren't included.",
   },
@@ -668,11 +672,11 @@ const SELL = byPrice(SELLERS, "selling-agents", SITES.sellers);
 // What differs between the three $/unit profile kinds.
 const ROLE = {
   attorney: { pool: ATT, list: "Offering plan attorneys", as: "sponsor's counsel", on: "on", other: "firm", Other: "Firms", count: "plan", h2: "Offering Plans", type: "LegalService",
-    title: "NYC Condo Offering Plans as Sponsor's Counsel", source: "as recorded by the Attorney General. This may not reflect current representation." },
+    title: "NYC Condo Sponsor's Counsel", short: "Sponsor's Counsel", source: "as recorded by the Attorney General. This may not reflect current representation." },
   architect: { pool: ARCH, list: "Architects", as: "the architect", on: "in", other: "architect", Other: "Architects", count: "building", h2: "Buildings", type: "ProfessionalService",
-    title: "NYC Condo Buildings Designed", source: "in the plan's text. For conversions this is often the architect who certified the existing building." },
+    title: "NYC Condo Buildings Designed", short: "Condo Architect", source: "in the plan's text. For conversions this is often the architect who certified the existing building." },
   seller: { pool: SELL, list: "Selling agents", as: "selling agent", on: "in", other: "brokerage", Other: "Brokerages", count: "building", h2: "Buildings Sold", type: "RealEstateAgent",
-    title: "NYC Condo Buildings as Selling Agent", source: "in the plan's text. A sponsor can change selling agents, so this may not reflect who is selling each building today." },
+    title: "NYC Condo Selling Agent", short: "Selling Agent", source: "in the plan's text. A sponsor can change selling agents, so this may not reflect who is selling each building today." },
 };
 const profileHref = (x, P) => `${P}${x.dir}/${x.slug}.html`;
 const hoverScript = `<script>
@@ -704,11 +708,13 @@ function profilePage(x, kind) {
   const named = x.plans.slice(0, 3).map((p) => tc(p.name));
   const pricing = mgr ? x.fee : x.perUnit;
   const pricingText = pricing == null ? null : mgr ? `${perYear(pricing)}/unit/yr` : fmtMoney(pricing);
-  const title = mgr ? `${x.display}: NYC Condo Buildings Managed | The Condo Book Project`
-    : `${x.display}: ${r.title} | The Condo Book Project`;
+  const title = firstFit(`${x.display}: ${mgr ? "NYC Condo Buildings Managed" : r.title}`, `${x.display}: ${mgr ? "Condo Manager" : r.short}`, x.display);
+  // As many of the first three building names as fit, then (managers) the fee if there's room.
+  const including = named.map((s, i) => (i ? ", " : ", including ") + s);
   const description = mgr
-    ? `${x.display} is named as the first-year managing agent in ${plural(nyc, "NYC condo offering plan")}${x.units ? ` covering ${plural(x.units, "residential unit")}` : ""}, including ${named.join(", ")}.${pricingText ? ` Median first-year management fee: ${pricingText}.` : ""}`
-    : `${x.display} is named as ${r.as} ${r.on} ${plural(nyc, "NYC condo offering plan")}${span ? ` accepted ${span.includes("–") ? "from " + span.replace("–", " to ") : "in " + span}` : ""}, including ${named.join(", ")}.`;
+    ? fitDesc(fitDesc(`${x.display} is named as first-year managing agent in ${plural(nyc, "NYC condo offering plan")}${x.units ? ` (${plural(x.units, "unit")})` : ""}`, including, "."),
+      [pricingText ? ` Median fee: ${pricingText}.` : ""])
+    : fitDesc(`${x.display} is named as ${r.as} ${r.on} ${plural(nyc, "NYC condo offering plan")}${span ? ` (${span})` : ""}`, including, ".");
   const dash = `<span class="faint">—</span>`;
 
   const row = (p) => {
@@ -826,7 +832,7 @@ for (const x of ARCH) await writeFile(join(ROOT, "architects", x.slug + ".html")
 for (const x of SELL) await writeFile(join(ROOT, "selling-agents", x.slug + ".html"), profilePage(x, "seller"));
 for (const [file, path] of Object.entries(STATIC)) await stampStatic(file, path);
 
-const pageUrls = [["", TODAY], ["about.html"], ["faq.html", TODAY], ["new-condo-filings.html", TODAY], ["time-to-approval.html", TODAY], ["common-charges.html", TODAY], ["managing-agents.html", TODAY], ["offering-plan-attorneys.html", TODAY], ["architects.html", TODAY], ["selling-agents.html", TODAY], ["blog/", TODAY],
+const pageUrls = [["", TODAY], ["about.html"], ["faq.html", TODAY], ["new-condo-filings.html", TODAY], ["time-to-approval.html", TODAY], ["common-charges.html", TODAY], ["managing-agents.html", TODAY], ["offering-plan-attorneys.html", TODAY], ["architects.html", TODAY], ["selling-agents.html", TODAY], ["blog/", TODAY], ["terms.html"], ["privacy.html"], ["disclaimers.html"],
   ...[...MGR, ...ATT, ...ARCH, ...SELL].map((x) => [`${x.dir}/${x.slug}.html`, TODAY]),
   ...posts.map((q) => [`blog/${q.slug}.html`, q.updated || q.published])];
 await writeFile(join(ROOT, "sitemap-pages.xml"), urlset(pageUrls));
