@@ -1,6 +1,7 @@
 // Builds the pages that aren't one-per-plan, in a few seconds:
 //   - blog/*.html from content/blog/*.html (front matter + body), and blog/index.html
 //   - new-condo-filings.html, the 10 newest NYC plans accepted for filing
+//   - time-to-approval.html and common-charges.html, from the AG dates and the Schedule B budgets
 //   - managing-agents/*.html, offering-plan-attorneys/*.html, architects/*.html and selling-agents/*.html, a profile per firm
 //   - the SEO block in the hand-written pages (index, about, faq, terms, privacy, disclaimers)
 //   - sitemap-pages.xml, sitemap.xml (an index of it and sitemap-buildings.xml) and robots.txt
@@ -311,6 +312,111 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
   <h2>The ${n(timed.length)} Plans Measured</h2>
   ${recentTable}
 
+  ${cta(P)}
+  </div>
+</main>
+` + FOOT(P);
+}
+
+// ---------- common charges ----------
+// Monthly common charges from each plan's Schedule B first-year budget (schedule_b, status ok): estimated total
+// expenses / 12, per residential unit and per square foot. Only plans with no commercial units and a single budget
+// count, so nearly all the budget is carried by the homes (any parking or storage units' small share stays in).
+// Only plans accepted in the last CC_YEARS years, since older budgets say little about today's.
+// Square feet are the sum of the unit sizes in the plan's checked Schedule A table (data/schedule-a), used only
+// when the plan has only residential units and the table lists every one with a size.
+const CC_YEARS = 5;
+const ccSince = `${Number(TODAY.slice(0, 4)) - CC_YEARS}${TODAY.slice(4)}`;
+const schedA = new Map();
+for (const f of await readdir(join(ROOT, "data", "schedule-a")).catch(() => [])) {
+  schedA.set(f.replace(/\.json$/, ""), JSON.parse(await readFile(join(ROOT, "data", "schedule-a", f), "utf8")));
+}
+const charged = (await all("schedule_b?select=plan_id,budget_period,total_expenses,line_items&status=eq.ok")).map((r) => {
+  const p = byId.get(r.plan_id);
+  if (!p || !NYC(p) || !realPlan(p) || !p.accepted_date || p.accepted_date < ccSince) return null;
+  if (!(p.units_residential > 0) || p.units_commercial > 0) return null;
+  if (!(Number(r.total_expenses) > 0) || new Set((r.line_items || []).map((it) => it.budget)).size > 1) return null;
+  const monthly = Number(r.total_expenses) / 12;
+  const a = schedA.get(p.plan_id);
+  const sf = a && (!p.units_total || p.units_total === p.units_residential) && a.units.length === p.units_residential && a.units.every((u) => u.sqft > 0) ? a.units.reduce((s, u) => s + u.sqft, 0) : null;
+  return { ...p, annual: Number(r.total_expenses), period: r.budget_period, perUnit: monthly / p.units_residential, perSf: sf ? monthly / sf : null };
+}).filter(Boolean).sort((a, b) => b.accepted_date.localeCompare(a.accepted_date) || b.plan_id.localeCompare(a.plan_id));
+const usd = (v) => `$${Math.round(v).toLocaleString("en-US")}`;
+const usdSf = (v) => `$${v.toFixed(2)}`;
+const CC_BINS = [[0, 300, "Under $300"], [300, 500, "$300–499"], [500, 750, "$500–749"], [750, 1000, "$750–999"], [1000, 1500, "$1,000–1,499"], [1500, 2500, "$1,500–2,499"], [2500, Infinity, "$2,500 or more"]];
+const CC_RECENT = 50;
+
+function commonChargesPage() {
+  const P = "";
+  const url = `${SITE_URL}/common-charges.html`;
+  const per = charged.map((p) => p.perUnit), perSf = charged.filter((p) => p.perSf).map((p) => p.perSf);
+  const mid = median(per), mean = per.reduce((s, v) => s + v, 0) / per.length, sfMid = median(perSf);
+  const title = "What Are Common Charges in a New NYC Condo? | The Condo Book Project";
+  const description = `Monthly common charges in new NYC condominiums, from the first-year budgets in ${n(charged.length)} offering plans accepted since ${day(ccSince)}: ${usd(mid)} per unit${sfMid != null ? ` and ${usdSf(sfMid)} per square foot` : ""} at the median, by building size.`;
+
+  // By building size (residential units on the AG record).
+  const sizes = SIZES.map(([a, b, label]) => {
+    const ps = charged.filter((p) => p.units_residential >= a && p.units_residential <= b);
+    const sf = ps.filter((p) => p.perSf).map((p) => p.perSf);
+    return ps.length ? { label, n: ps.length, unit: median(ps.map((p) => p.perUnit)), lo: Math.min(...ps.map((p) => p.perUnit)), hi: Math.max(...ps.map((p) => p.perUnit)), sf: median(sf), sfN: sf.length } : null;
+  }).filter(Boolean);
+  const sizeTable = `<div class="tscroll"><table class="dm"><thead><tr><th>Residential units</th><th>Plans</th><th>Per unit / month</th><th>Per SF / month</th><th>Lowest–highest per unit</th></tr></thead><tbody>${sizes.map((s) =>
+    `<tr><td>${esc(s.label)}</td><td>${n(s.n)}</td><td><strong>${usd(s.unit)}</strong></td><td>${s.sf != null ? `<strong>${usdSf(s.sf)}</strong><span class="sub">${plural(s.sfN, "plan")} with unit sizes</span>` : "—"}</td><td>${usd(s.lo)}–${usd(s.hi)}</td></tr>`).join("")}</tbody></table></div>`;
+
+  // Distribution of per-unit charges.
+  const bins = CC_BINS.map(([a, b, label]) => [label, per.filter((v) => v >= a && v < b).length]);
+  const binMax = Math.max(...bins.map((b) => b[1]));
+  const histogram = `<figure class="chart">
+    <div class="cols" role="img" aria-label="${esc(bins.map(([l, c]) => `${l}: ${plural(c, "plan")}`).join("; "))}">${bins.map(([label, c]) =>
+      `<div class="col" title="${esc(label)}: ${plural(c, "plan")} (${Math.round(100 * c / charged.length)}%)"><span class="v">${n(c)}</span><span class="b" style="height:${Math.max(1, Math.round(100 * c / binMax))}%"></span><span class="l">${esc(label)}</span></div>`).join("")}</div>
+  </figure>`;
+
+  // By borough: the median per unit, with a bar relative to the highest.
+  const boros = [...new Set(charged.map((p) => boro(p.borough)))].map((b) => {
+    const ps = charged.filter((p) => boro(p.borough) === b);
+    return { label: b, n: ps.length, v: median(ps.map((p) => p.perUnit)) };
+  }).sort((a, b) => b.v - a.v);
+  const boroMax = Math.max(...boros.map((e) => e.v));
+  const boroTable = `<div class="tscroll"><table class="bars"><thead><tr><th>Borough</th><th>Per unit / month</th><th aria-hidden="true"></th></tr></thead><tbody>${boros.map((e) =>
+    `<tr title="${plural(e.n, "plan")}"><td>${esc(e.label)} (${plural(e.n, "plan")})</td><td>${usd(e.v)}</td><td class="bar" aria-hidden="true"><span style="width:${Math.max(1, Math.round(100 * e.v / boroMax))}%"></span></td></tr>`).join("")}</tbody></table></div>`;
+
+  const recent = charged.slice(0, CC_RECENT);
+  const recentTable = `<div class="tscroll"><table><thead><tr><th>Condominium</th><th>Units</th><th>Accepted</th><th>Per unit / month</th><th>Per SF / month</th></tr></thead><tbody>${recent.map((p) =>
+    `<tr><td><a href="buildings/${esc(fileFor(p))}">${esc(tc(p.name))}</a></td><td>${n(p.units_residential)}</td><td>${esc(day(p.accepted_date))}</td><td>${usd(p.perUnit)}</td><td>${p.perSf ? usdSf(p.perSf) : "—"}</td></tr>`).join("")}</tbody></table></div>`;
+
+  return HEAD(P, { title, description, canonical: url }) + `
+${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+    { "@type": "ListItem", position: 1, name: SITE_NAME, item: `${SITE_URL}/` },
+    { "@type": "ListItem", position: 2, name: "Common charges", item: url },
+  ] })}
+<main class="post approval split">
+  <div class="aside">
+  <h1>What Are Common Charges in a New NYC Condo?</h1>
+  <p class="anote">The monthly common charges set by the first-year budget (Schedule B) in ${n(charged.length)} New York City condominium offering plans accepted since ${esc(day(ccSince))}. Buildings with commercial units are left out, so the budget falls on the homes (and any parking or storage units). Budgets are the sponsor's projections for the first year, not what owners pay today; real estate taxes are not included.</p>
+  <div class="hero-stat">
+    <p class="hs-k">Median common charges per unit</p>
+    <p class="hs-v">${usd(mid)} <span>a month</span></p>
+    <p class="hs-s">Average ${usd(mean)}: a few large luxury buildings pull it up.</p>
+  </div>
+  <dl class="glance">
+    ${sfMid != null ? `<div><dt>Per square foot</dt><dd>${usdSf(sfMid)} a month<span class="sub">median, ${plural(perSf.length, "plan")} with unit sizes</span></dd></div>` : ""}
+    <div><dt>Budgets read</dt><dd>${n(charged.length)}</dd></div>
+  </dl>
+  </div>
+  <div class="amain">
+  <h2>By Building Size</h2>
+  ${sizeTable}
+
+  <h2>How Charges Are Spread</h2>
+  ${histogram}
+
+  <h2>By Borough</h2>
+  ${boroTable}
+
+  <h2>The ${n(recent.length)} Most Recent Plans</h2>
+  ${recentTable}
+
+  <p class="src">Per unit: the budget's estimated total expenses divided by 12 and by the residential units on the AG record, an average across the building's homes; larger homes pay more by their common interest. Per square foot: the same monthly total divided by the unit sizes listed in the plan's Schedule A, used only when the building has no parking or storage units and the price table lists every unit with a size. Medians are shown because a few budgets are far above the rest.</p>
   ${cta(P)}
   </div>
 </main>
@@ -704,6 +810,7 @@ for (const post of posts) await writeFile(join(ROOT, "blog", post.slug + ".html"
 await writeFile(join(ROOT, "blog", "index.html"), blogIndex());
 await writeFile(join(ROOT, "new-condo-filings.html"), filingsPage());
 await writeFile(join(ROOT, "time-to-approval.html"), approvalPage());
+await writeFile(join(ROOT, "common-charges.html"), commonChargesPage());
 await writeFile(join(ROOT, "managing-agents.html"), agentsPage());
 await writeFile(join(ROOT, "offering-plan-attorneys.html"), attorneysPage());
 await writeFile(join(ROOT, "architects.html"), proDirPage("architect"));
@@ -719,7 +826,7 @@ for (const x of ARCH) await writeFile(join(ROOT, "architects", x.slug + ".html")
 for (const x of SELL) await writeFile(join(ROOT, "selling-agents", x.slug + ".html"), profilePage(x, "seller"));
 for (const [file, path] of Object.entries(STATIC)) await stampStatic(file, path);
 
-const pageUrls = [["", TODAY], ["about.html"], ["faq.html", TODAY], ["new-condo-filings.html", TODAY], ["time-to-approval.html", TODAY], ["managing-agents.html", TODAY], ["offering-plan-attorneys.html", TODAY], ["architects.html", TODAY], ["selling-agents.html", TODAY], ["blog/", TODAY],
+const pageUrls = [["", TODAY], ["about.html"], ["faq.html", TODAY], ["new-condo-filings.html", TODAY], ["time-to-approval.html", TODAY], ["common-charges.html", TODAY], ["managing-agents.html", TODAY], ["offering-plan-attorneys.html", TODAY], ["architects.html", TODAY], ["selling-agents.html", TODAY], ["blog/", TODAY],
   ...[...MGR, ...ATT, ...ARCH, ...SELL].map((x) => [`${x.dir}/${x.slug}.html`, TODAY]),
   ...posts.map((q) => [`blog/${q.slug}.html`, q.updated || q.published])];
 await writeFile(join(ROOT, "sitemap-pages.xml"), urlset(pageUrls));
@@ -730,4 +837,4 @@ await writeFile(join(ROOT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"
 </sitemapindex>
 `);
 await writeFile(join(ROOT, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`);
-console.log(`${posts.length} posts, blog index, new-condo-filings.html, time-to-approval.html, managing-agents.html, offering-plan-attorneys.html, architects.html, selling-agents.html, ${MGR.length} manager, ${ATT.length} attorney, ${ARCH.length} architect and ${SELL.length} selling agent profiles, ${Object.keys(STATIC).length} stamped pages, sitemap-pages.xml with ${pageUrls.length} URLs`);
+console.log(`${posts.length} posts, blog index, new-condo-filings.html, time-to-approval.html, common-charges.html, managing-agents.html, offering-plan-attorneys.html, architects.html, selling-agents.html, ${MGR.length} manager, ${ATT.length} attorney, ${ARCH.length} architect and ${SELL.length} selling agent profiles, ${Object.keys(STATIC).length} stamped pages, sitemap-pages.xml with ${pageUrls.length} URLs`);
