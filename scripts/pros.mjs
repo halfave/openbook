@@ -16,6 +16,10 @@ const AGENT_ALIAS = {
   "choice new york management": "choice ny property management", "choice ny management": "choice ny property management",
   "choice new york property management": "choice ny property management",
   "nyret services and property management": "nyret property management",
+  "camelot realty group": "camelot property management services", "camelot realty management services": "camelot property management services",
+  "penmark management": "penmark realty",
+  "emerson property management": "emerson management",
+  "redmane realty management": "redmane management",
 };
 export const agentKey = (v) => {
   const k = String(v).toLowerCase().replace(/\([^)]*\)/g, " ").replace(/&/g, " and ").replace(/[^a-z0-9 ]+/g, " ")
