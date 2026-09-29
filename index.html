@@ -90,12 +90,10 @@ form.search{display:flex;flex-direction:column;gap:10px}
   .go{border:2px solid var(--ink);padding:14px}
   .lucky{border:2px solid var(--ink);padding:10px}
 }
-.read{margin-top:12px;border:1px solid var(--rule-strong);border-left:4px solid var(--mast);background:var(--panel);padding:10px 14px;display:grid;gap:6px}
-.readhead{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.read{margin-top:12px;display:grid;gap:6px}
 .readline{display:flex;gap:8px 14px;flex-wrap:wrap;align-items:baseline}
 .readnotes{margin:0;padding-left:18px;font-size:13.5px;color:var(--ink)}
 .readnotes li{margin:2px 0}
-.aitag{font:500 10.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:0 5px;margin-left:8px}
 .aiwait{font-size:13px;color:var(--muted)}
 .xtab{border-collapse:collapse;width:100%;font-size:13.5px}
 .xtab th,.xtab td{border-top:1px solid var(--rule);padding:8px 8px 8px 0;text-align:left;vertical-align:top}
@@ -119,7 +117,10 @@ body.answer .split{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}
 body.answer .mapcard{order:2}
 body.answer .mapbox{aspect-ratio:4/3}
 body.answer .rhead,body.answer #views,body.answer #results,body.answer #rview{display:none}
-.qecho{font:italic 400 18px/1.3 var(--display);color:var(--ink)}
+body.stat .rhead,body.stat #facets,body.stat #views,body.stat #results,body.stat #rview{display:none}
+/* "which plans mention": buildings only, a smaller map, bigger cards without IDs or buttons */
+body.mention .split{grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr)}
+body.mention #results .pid,body.mention #results .acts{display:none}
 .chiprow{display:flex;gap:6px;flex-wrap:wrap}
 .fchip{display:inline-flex;align-items:center;gap:4px;background:var(--panel);border:1px solid var(--rule-strong);padding:1px 2px 1px 8px;font:12px/1.6 var(--mono);color:var(--ink)}
 .fchip button{border:0;background:none;color:var(--muted);font:600 14px/1 var(--sans);padding:2px 6px;cursor:pointer}
@@ -231,8 +232,7 @@ body.searched .go{padding:0 20px;font-size:13px}
 .dot.dim{display:none}
 .dot.hit{fill:var(--hit);stroke:var(--panel);stroke-width:1.2}
 .dot.sel{stroke:var(--ink);stroke-width:2.2}
-.legend{display:flex;gap:14px;flex-wrap:wrap;padding:9px 12px;border-top:1px solid var(--rule-strong);font-size:12px;color:var(--muted)}
-.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+.dot.hot{display:inline;fill:var(--hit);stroke:var(--ink);stroke-width:2.5;r:10}
 .zoom{position:absolute;right:10px;bottom:10px;display:flex;flex-direction:column;gap:4px}
 .zoom button{width:32px;height:32px;border:1px solid var(--rule-strong);background:var(--panel);color:var(--ink);font:600 16px var(--sans);cursor:pointer}
 .tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--ground);font:12px/1.35 var(--sans);padding:6px 8px;max-width:220px;transform:translate(-50%,calc(-100% - 10px))}
@@ -257,6 +257,10 @@ ol.results{list-style:none;margin:0;padding:0;display:flex;flex-direction:column
 .chip.warn{background:var(--warn-bg);border-color:transparent;color:var(--warn)}
 .snips{display:flex;flex-direction:column;gap:6px;border-top:1px solid var(--rule);padding-top:8px}
 .snip{font-size:13.5px;line-height:1.45}
+.qfacts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 14px;margin:0;border-top:1px solid var(--rule);padding-top:8px;font-size:13.5px}
+.qfacts dt{font:500 10.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.qfacts dd{margin:0;overflow-wrap:anywhere}
+@media (max-width:520px){.qfacts{grid-template-columns:1fr}}
 .snip .cite{display:block;font:11.5px var(--mono);color:var(--muted)}
 .snip p{margin:0;overflow-wrap:anywhere}
 mark{background:var(--mark);color:var(--mark-ink);padding:0 2px}
@@ -416,11 +420,6 @@ table.pivot th[scope="row"]{white-space:nowrap}
         </svg>
         <div class="zoom"><button type="button" id="zin" aria-label="Zoom in">+</button><button type="button" id="zout" aria-label="Zoom out">−</button></div>
         <div class="tip" id="tip" hidden></div>
-      </div>
-      <div class="legend">
-        <span><i style="background:var(--accent)"></i>Full text searchable</span>
-        <span><i style="background:var(--panel);border:1.2px solid var(--dot-meta)"></i>Plan record only</span>
-        <span><i style="background:#E8A33B"></i>Matches your search</span>
       </div>
     </div>
 
@@ -626,7 +625,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
           ${r.hits ? `<span class="chip">${r.hits} matching pages</span>` : ""}
         </div>
         ${whyHtml(r)}
-        ${snips ? `<div class="snips">${snips}</div>` : ""}
+        ${snips ? `<div class="snips">${snips}</div>` : factsHtml(r)}
         <div class="acts">
           <a class="btn primary" href="${esc(agDocs(r.plan_id))}" target="_blank" rel="noopener">Open plan documents ↗</a>
           <button class="btn" type="button" data-open="${esc(r.plan_id)}">Details</button>
@@ -634,6 +633,14 @@ table.pivot th[scope="row"]{white-space:nowrap}
         </div>
       </div>`;
     return li;
+  }
+  // Quick facts from the AG record, for cards without passages (a plain filter search).
+  function factsHtml(r) {
+    const price = money(r.price_current);
+    const f = [["Construction", tc(r.construction)], ["Sponsor", tc(r.sponsor)], ["Sponsor’s counsel", tc(r.law_firm)], ["Managing agent", r.managing_agent],
+      ["Offering price", price ? `${fmtMoney(price)} total` : ""], ["Commercial units", r.units_commercial > 0 ? String(r.units_commercial) : ""],
+      ["Amendments", r.amendments_listed > 0 ? String(r.amendments_listed) : ""]].filter(([, v]) => v);
+    return f.length ? `<dl class="qfacts">${f.map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>` : "";
   }
   function whyHtml(r) {
     const q = String(current?.q || "").replace(/"/g, "");
@@ -918,9 +925,8 @@ table.pivot th[scope="row"]{white-space:nowrap}
     if (m) {
       let k = n(m[2]); if (m[1] && /over|more than/.test(m[1])) k += 1;
       out.minParking = k; chip("parking", `${k}+ parking units`); cut(m[0]);
-      s += " parking ";
     } else if (/\b(with|has|have|offers?|include|including|and)\s+(a\s+)?(parking|garage)\b/.test(s) || /\bparking (units?|spaces?)\b/.test(s)) {
-      out.minParking = 1; chip("parking", "Has parking units");
+      out.minParking = 1; chip("parking", "Has parking units"); cut(/\b(parking|garage)(\s+(units?|spaces?|spots?))?\b/g);
     }
 
     // unit counts (avoid "storage unit", "parking unit")
@@ -1128,16 +1134,13 @@ table.pivot th[scope="row"]{white-space:nowrap}
   }
 
   function renderInterpretation(P) {
-    const notes = [...(P.notes || []), ...(P.matchNote ? [P.matchNote] : [])];
-    $("read").innerHTML = `<div class="readhead">How The Condo Book Project read your search${P.ai ? `<span class="aitag">read with AI · check the filters</span>` : ""}</div>
-      <div class="readline"><span class="qecho">“${esc(P.text)}”</span>` +
-      (P.chips.length ? `<span class="chiprow">${P.chips.map((c) =>
-        `<span class="fchip">${esc(c.label)}<button type="button" data-rm="${esc(c.k)}" aria-label="Remove ${esc(c.label)}">×</button></span>`).join("")}</span>` : "") +
-      `</div>` + (notes.length ? `<ul class="readnotes">${notes.map((n) => `<li>${esc(n)}</li>`).join("")}</ul>` : "") +
+    // Just the filters the search picked up, each removable; no explanation.
+    $("read").innerHTML = (P.chips.length ? `<div class="readline"><span class="chiprow">${P.chips.map((c) =>
+        `<span class="fchip">${esc(c.label)}<button type="button" data-rm="${esc(c.k)}" aria-label="Remove ${esc(c.label)}">×</button></span>`).join("")}</span></div>` : "") +
       (P.aiPending ? `<div class="aiwait">Reading your question more closely…</div>` : "") +
       (P.intent?.near ? `<div class="dist" role="group" aria-label="Distance">Distance: ${[0.25, 0.5, 1, 2].map((mi) =>
         `<button type="button" data-mi="${mi}" aria-pressed="${P.intent.near.miles === mi}">${esc(window.CondoIntents.fmtMiles(mi))}</button>`).join("")}</div>` : "");
-    $("read").hidden = false;
+    $("read").hidden = !$("read").innerHTML;
   }
   $("read").addEventListener("click", (e) => {
     if (current?.intent) return intentReadClick(e);
@@ -1158,7 +1161,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
     $("notice").hidden = true; $("go").disabled = true;
     document.body.classList.add("searched"); $("after").hidden = false; $("foot").hidden = false;
     renderInterpretation(P);
-    document.body.classList.remove("answer"); $("answer").hidden = true;
+    document.body.classList.remove("answer", "stat", "mention", "plain"); $("answer").hidden = true;
     $("status").textContent = "Searching…"; $("results").innerHTML = ""; $("rview").innerHTML = ""; $("detail").innerHTML = ""; $("views").hidden = true;
     try {
       const [rows] = await Promise.all([fetchRows(P), ensureMap()]);
@@ -1177,6 +1180,9 @@ table.pivot th[scope="row"]{white-space:nowrap}
       // Result template: one building → dossier; buildings side by side → comparison; a number → answer card; otherwise the list.
       const answer = !!(P.address || P.planId) && rows.length === 1, side = !!P.compare && rows.length >= 2;
       document.body.classList.toggle("answer", answer || side);
+      document.body.classList.toggle("stat", !answer && !side && !!P.stat);
+      document.body.classList.toggle("mention", !answer && !side && !P.stat && P.view === "passages");
+      document.body.classList.toggle("plain", !answer && !side && !P.stat && !P.view && !P.q);
       $("answer").hidden = !(answer || side); $("answer").innerHTML = "";
       if (answer) renderAnswer(rows[0], P);
       else if (side) renderSide(rows);
@@ -1256,6 +1262,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
   const VIEWS = { buildings: "Buildings", passages: "Passages", documents: "Documents", compare: "Total offering prices" };
   function renderViews(P, rows) {
     const avail = ["buildings"];
+    if (document.body.classList.contains("mention") || document.body.classList.contains("plain")) { $("views").hidden = true; showView("buildings"); return; }
     if (rows.some((r) => (r.snippets || []).length)) avail.push("passages");
     if (P.view === "documents" || rows.some((r) => r.docs_indexed)) avail.push("documents");
     if (P.view === "compare") avail.push("compare");
@@ -1483,15 +1490,8 @@ table.pivot th[scope="row"]{white-space:nowrap}
     else if (metric === "units") { kicker = `${stat} building size`; big = head == null ? "—" : `${fmtN(head, useAvg ? 1 : 0)} units`; sub = `Residential units per plan, across ${cover}.`; }
     else { kicker = "Average parking"; big = head == null ? "—" : `${fmtN(head, 1)} parking units`; sub = `Per plan, across ${cover}. ${fmtN(rows.filter((r) => r.units_parking > 0).length)} of them offer any parking.`; }
 
-    const notes = [];
-    if (st.boros) notes.push(`Compares ${st.boros.map(titleCase).join(" and ")}.`);
-    if (data.total > data.fetched) notes.push(`${fmtN(data.total)} plans match; these figures cover the ${fmtN(data.fetched)} most recently accepted.`);
-    if (data.dropped) notes.push(`${fmtN(data.dropped)} AG ${data.dropped === 1 ? "row that isn’t" : "rows that aren’t"} a real offering (resubmissions, zero-unit records) ${data.dropped === 1 ? "is" : "are"} left out.`);
-    if (metric === "price") {
-      const low = rows.filter((r) => { const v = rawPerUnit(r.price_current, r.units_residential); return v != null && v < PER_UNIT_MIN; }).length;
-      const unpriced = rows.length - whole.vals.length - low;
-      notes.push(`Totals come from the NY Attorney General’s record and include any commercial, parking and storage units, so per-unit figures run high for plans that have them.${unpriced ? ` ${fmtN(unpriced)} matching plan${unpriced === 1 ? " has" : "s have"} no recorded price and ${unpriced === 1 ? "is" : "are"} left out.` : ""}${low ? ` ${fmtN(low)} more ${low === 1 ? "is" : "are"} left out because the recorded total works out under $50K a unit, so it isn’t the whole plan’s.` : ""}`);
-    }
+    // Only the caveat that changes what the number means: the count stopped short of every match.
+    const notes = data.total > data.fetched ? [`${fmtN(data.total)} plans match; these figures cover the ${fmtN(data.fetched)} most recently accepted.`] : [];
 
     // breakdown columns per metric
     const cols = metric === "price" ? [["Priced plans", (g) => fmtN(g.vals.length)], ["Median / unit", (g) => fmtMoney(g.med)], ["Average / unit", (g) => fmtMoney(g.avg)]]
@@ -1501,7 +1501,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
     const table = groups.length && !(groups.length === 1 && metric === "count") ? `<div class="tscroll"><table class="cmp"><thead><tr><th>${esc(gLabel)}</th>${cols.map(([h]) => `<th class="n">${h}</th>`).join("")}</tr></thead><tbody>` +
       groups.map((g, i) => `<tr class="grp" data-g="${i}"><td><button type="button" class="grp-t" data-g="${i}" aria-expanded="false" aria-controls="gl-${i}">${esc(g.key)}${group === "year" && g.key === THIS_YEAR ? " (so far)" : ""}</button></td>${cols.map(([, f]) => `<td class="n">${f(g)}</td>`).join("")}</tr>
         <tr class="grp-list" id="gl-${i}" hidden><td colspan="${cols.length + 1}"></td></tr>`).join("") +
-      `</tbody></table></div><p class="vnote">Open a row to see the buildings behind it; a building’s name opens its details.</p>` : "";
+      `</tbody></table></div>` : "";
 
     box.innerHTML = `<article class="ans">
       <p class="ans-kicker">${esc(kicker)}</p>
@@ -1509,7 +1509,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
       <p class="stat-num">${esc(big)}<small>${esc(sub)}</small></p>
       ${group === "year" && groups.length >= 3 ? barsHtml(groups, metric, useAvg) : ""}
       ${table}
-      ${!table && rows.length ? `<ul class="blist">${buildingItems(rows.slice(0, 50))}</ul>${rows.length > 50 ? `<p class="vnote">The ${fmtN(Math.min(rows.length, 120))} newest are in the list below.</p>` : ""}` : ""}
+      ${!table && rows.length ? `<ul class="blist">${buildingItems(rows.slice(0, 50))}</ul>` : ""}
       ${notes.length ? `<ul class="readnotes">${notes.map((n) => `<li>${esc(n)}</li>`).join("")}</ul>` : ""}
     </article>`;
     obTrack("answer_card", { search_term: P.text, metric: st.metric, group, plans: rows.length });
@@ -1550,6 +1550,15 @@ table.pivot th[scope="row"]{white-space:nowrap}
     if (g.closest(".bars")) { const row = $("gl-" + i); if (row?.hidden) openGroup(i); row?.previousElementSibling?.scrollIntoView({ behavior: "smooth", block: "nearest" }); return; }
     openGroup(i);
   });
+  // Hovering a building in an opened row marks it on the map, even if it's outside the dots already shown.
+  const hotDot = (id) => { points.forEach((p) => p.el?.classList.toggle("hot", p.plan_id === id)); const p = id && points.find((q) => q.plan_id === id); if (p?.el) dotsG.appendChild(p.el); };
+  const hotFrom = (e) => hotDot(e.target.closest(".blist li")?.querySelector("[data-open]")?.dataset.open || null);
+  $("answer").addEventListener("pointerover", hotFrom);
+  $("answer").addEventListener("focusin", hotFrom);
+  $("answer").addEventListener("pointerleave", () => hotDot(null));
+  $("results").addEventListener("pointerover", (e) => hotDot(e.target.closest(".card")?.dataset.id || null));
+  $("results").addEventListener("focusin", (e) => hotDot(e.target.closest(".card")?.dataset.id || null));
+  $("results").addEventListener("pointerleave", () => hotDot(null));
 
   // ---------- comparison: named buildings side by side ----------
   async function renderSide(rows) {
@@ -1582,8 +1591,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
         ${line("Sponsor", (r) => esc(tc(m.get(r.plan_id)?.sponsor) || "—"))}
         ${line("Sponsor’s counsel", (r) => esc(tc(m.get(r.plan_id)?.law_firm) || "—"))}
         ${KINDS.map(([k, label]) => line(label, (r) => pages(r, k))).join("")}
-        </tbody></table></div>
-        <p class="vnote">Grayed rows are the same for every building. Prices are the AG record’s total offering prices (latest amendment where recorded), not sale prices; per-unit figures include any commercial, parking and storage units in the total.</p></article>`;
+        </tbody></table></div></article>`;
     } catch (e) { box.innerHTML = `<article class="ans"><p class="ans-kicker">Side by side</p><p class="vnote">Couldn’t load the plan records. Try again.</p></article>`; }
   }
 
@@ -1734,7 +1742,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
     const P = { text: spec.text, intent: spec, via, chips: INT.chipsOf(spec), notes: [...(spec.notes || [])], q: "", borough: spec.borough };
     current = P; ires = null; ioff = new Map(); ishown = PAGE;
     $("notice").hidden = true; $("go").disabled = true;
-    document.body.classList.add("searched"); document.body.classList.remove("answer");
+    document.body.classList.add("searched"); document.body.classList.remove("answer", "stat", "mention", "plain");
     $("after").hidden = false; $("foot").hidden = false; $("answer").hidden = true; $("answer").innerHTML = "";
     renderInterpretation(P);
     $("rtitle").textContent = "Searching"; $("status").textContent = "Searching…";
