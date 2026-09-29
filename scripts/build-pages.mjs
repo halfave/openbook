@@ -14,7 +14,7 @@
 //   {{table:NAME}} a generated table (see TABLES)
 import { mkdir, writeFile, readFile, readdir, rm } from "node:fs/promises";
 import { join } from "node:path";
-import { SITE_URL, AG, ROOT, TODAY, all, esc, tc, fileFor, day, month, usDate, money, fmtMoney, plural, boro, SITE_NAME, ld, SEO, HEAD, FOOT, urlset, fitDesc, firstFit } from "./site.mjs";
+import { SITE_URL, AG, ROOT, TODAY, all, esc, tc, fileFor, day, month, usDate, money, fmtMoney, plural, boro, SITE_NAME, ld, SEO, HEAD, FOOT, urlset, fitDesc, firstFit, OG_SITE } from "./site.mjs";
 import { PROFILE_MIN, isSelf, groupAgents, groupFirms, groupPros } from "./pros.mjs";
 
 // ---------- data ----------
@@ -106,7 +106,7 @@ function postPage(post) {
   const mins = Math.max(2, Math.round(words(body) / 230));
   const updated = post.updated || post.published;
   const related = posts.filter((q) => q.slug !== post.slug).slice(0, 4);
-  return HEAD(P, { title: post.title, description: post.description, canonical: url }) + `
+  return HEAD(P, { image: OG_SITE, title: post.title, description: post.description, canonical: url }) + `
 ${ld({
     "@context": "https://schema.org", "@type": "BlogPosting", headline: post.h1, description: post.description, url, mainEntityOfPage: url,
     datePublished: post.published, dateModified: updated, inLanguage: "en-US", keywords: (post.keywords || []).join(", "),
@@ -138,7 +138,7 @@ function blogIndex() {
   const url = `${SITE_URL}/blog/`;
   const title = "Blog: NYC Condo Offering Plans Explained | The Condo Book Project";
   const description = "Plain-English guides to NYC condo offering plans: how to search the NY Attorney General's filings, read a CD number, find amendments, and read Schedule A and Schedule B.";
-  return HEAD(P, { title, description, canonical: url }) + `
+  return HEAD(P, { image: OG_SITE, title, description, canonical: url }) + `
 ${ld({ "@context": "https://schema.org", "@type": "Blog", name: `${SITE_NAME} Blog`, description, url, publisher: ORG,
     blogPost: posts.map((q) => ({ "@type": "BlogPosting", headline: q.h1, url: `${SITE_URL}/blog/${q.slug}.html`, datePublished: q.published, dateModified: q.updated || q.published })) })}
 <main>
@@ -196,7 +196,7 @@ function filingsPage() {
       `<td class="num">${pr ? esc(fmtM(pr)) : dash}</td><td class="num">${pr && u ? esc(fmtM(pr / u)) : dash}</td></tr>`;
   };
 
-  return HEAD(P, { title, description, canonical: url }) + `
+  return HEAD(P, { image: OG_SITE, title, description, canonical: url }) + `
 ${ld({ "@context": "https://schema.org", "@type": "ItemList", name: "NYC condominium offering plans accepted for filing in the last three months", url, numberOfItems: latest.length,
     itemListOrder: "https://schema.org/ItemListOrderDescending",
     itemListElement: latest.map((p, i) => ({ "@type": "ListItem", position: i + 1, url: `${SITE_URL}/buildings/${fileFor(p)}`, name: `${tc(p.name)} (${p.plan_id})` })) })}
@@ -283,7 +283,7 @@ function approvalPage() {
   const recentTable = `<div class="tscroll"><table><thead><tr><th>CD number</th><th>Condominium</th><th>Submitted</th><th>Accepted</th><th>Time</th></tr></thead><tbody>${recent.map((p) =>
     `<tr><td>${esc(p.plan_id)}</td><td><a href="buildings/${esc(fileFor(p))}">${esc(tc(p.name))}</a></td><td>${esc(day(p.submitted_date))}</td><td>${esc(day(p.accepted_date))}</td><td>${dur(p.days)}</td></tr>`).join("")}</tbody></table></div>`;
 
-  return HEAD(P, { title, description, canonical: url }) + `
+  return HEAD(P, { image: OG_SITE, title, description, canonical: url }) + `
 ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
     { "@type": "ListItem", position: 1, name: SITE_NAME, item: `${SITE_URL}/` },
     { "@type": "ListItem", position: 2, name: "Time to approval", item: url },
@@ -388,7 +388,7 @@ function commonChargesPage() {
   const recentTable = `<div class="tscroll"><table><thead><tr><th>Condominium</th><th>Units</th><th>Accepted</th><th>Per unit / month</th><th>Per SF / month</th></tr></thead><tbody>${recent.map((p) =>
     `<tr><td><a href="buildings/${esc(fileFor(p))}">${esc(tc(p.name))}</a></td><td>${n(p.units_residential)}</td><td>${esc(day(p.accepted_date))}</td><td>${usd(p.perUnit)}</td><td>${p.perSf ? usdSf(p.perSf) : "—"}</td></tr>`).join("")}</tbody></table></div>`;
 
-  return HEAD(P, { title, description, canonical: url }) + `
+  return HEAD(P, { image: OG_SITE, title, description, canonical: url }) + `
 ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
     { "@type": "ListItem", position: 1, name: SITE_NAME, item: `${SITE_URL}/` },
     { "@type": "ListItem", position: 2, name: "Common charges", item: url },
@@ -500,7 +500,7 @@ function agentsPage() {
   </details>`;
   selfPlans.sort((a, b) => (b.p.accepted_date || "").localeCompare(a.p.accepted_date || ""));
   const selfRow = ({ p, as }) => `<li><a href="buildings/${esc(fileFor(p))}">${esc(tc(p.name))}</a><span>${esc(as)} · ${esc(boro(p.borough))}${p.units_residential != null ? ` · ${p.units_residential} units` : ""}${p.accepted_date ? ` · ${p.accepted_date.slice(0, 4)}` : ""}</span></li>`;
-  return HEAD(P, { title, description, canonical: url }) + `
+  return HEAD(P, { image: OG_SITE, title, description, canonical: url }) + `
 ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
     { "@type": "ListItem", position: 1, name: SITE_NAME, item: `${SITE_URL}/` },
     { "@type": "ListItem", position: 2, name: "Property managers", item: url },
@@ -548,7 +548,7 @@ function attorneysPage() {
     <ul class="dir">${f.plans.slice(0, SHOWN).map(bldg).join("")}</ul>
     ${f.plans.length >= PROFILE_MIN ? `<p class="acts"><a class="btn primary" href="offering-plan-attorneys/${esc(f.slug)}.html">${esc(tc(f.name))} profile</a></p>` : ""}
   </details>`;
-  return HEAD(P, { title, description, canonical: url }) + `
+  return HEAD(P, { image: OG_SITE, title, description, canonical: url }) + `
 ${ld({ "@context": "https://schema.org", "@type": "ItemList", name: "Law firms most often named as sponsor's counsel in NYC condominium offering plans", url, numberOfItems: top.length,
     itemListOrder: "https://schema.org/ItemListOrderDescending",
     itemListElement: top.map((f, i) => ({ "@type": "ListItem", position: i + 1, name: tc(f.name), url: f.plans.length >= PROFILE_MIN ? `${SITE_URL}/offering-plan-attorneys/${f.slug}.html` : `${url}#${f.slug}` })) })}
@@ -613,7 +613,7 @@ function proDirPage(kind) {
     <ul class="dir">${g.plans.slice(0, SHOWN).map(bldg).join("")}</ul>
     ${g.plans.length >= PROFILE_MIN ? `<p class="acts"><a class="btn primary" href="${c.dir}/${esc(g.slug)}.html">${esc(g.name)} profile</a></p>` : ""}
   </details>`;
-  return HEAD(P, { title: c.title, description, canonical: url }) + `
+  return HEAD(P, { image: OG_SITE, title: c.title, description, canonical: url }) + `
 ${ld({ "@context": "https://schema.org", "@type": "ItemList", name: c.listName, url, numberOfItems: top.length,
     itemListOrder: "https://schema.org/ItemListOrderDescending",
     itemListElement: top.map((g, i) => ({ "@type": "ListItem", position: i + 1, name: g.name, url: g.plans.length >= PROFILE_MIN ? `${SITE_URL}/${c.dir}/${g.slug}.html` : `${url}#${g.slug}` })) })}
@@ -645,6 +645,9 @@ ${listScript}
 // Websites come only from data/websites.json ({"managers": {slug: url}, "attorneys": {slug: url}}), checked by hand;
 // a firm without an entry gets no website link.
 const SITES = JSON.parse(await readFile(join(ROOT, "data", "websites.json"), "utf8").catch(() => "{}"));
+// Firm logos (data/logos.json, from those websites) have share cards in img/og/<dir>/, made by build-og-images.mjs.
+const LOGOS = JSON.parse(await readFile(join(ROOT, "data", "logos.json"), "utf8").catch(() => "{}"));
+const LOGO_KIND = { manager: "managers", attorney: "attorneys", architect: "architects", seller: "sellers" };
 const offerPrice = (p) => money(p.meta?.plan?.["Current Price"]) || money(p.meta?.plan?.["Initial Price"]);
 const sumUnits = (list) => list.reduce((s, p) => s + (p.units_residential || 0), 0);
 const yearSpan = (list) => { const ys = list.map((p) => p.accepted_date?.slice(0, 4)).filter(Boolean).sort(); return ys.length ? (ys[0] === ys.at(-1) ? ys[0] : `${ys[0]}–${ys.at(-1)}`) : ""; };
@@ -731,7 +734,9 @@ function profilePage(x, kind) {
   };
   const org = { "@type": mgr ? "Organization" : r.type, name: x.display, ...(x.site ? { url: x.site, sameAs: [x.site] } : {}), areaServed: "New York City" };
 
-  return HEAD(P, { title, description, canonical: url }) + `
+  const logo = LOGOS[LOGO_KIND[kind]]?.[x.slug];
+  const image = logo ? `${SITE_URL}/img/og/${x.dir}/${x.slug}.png` : OG_SITE;
+  return HEAD(P, { image, imageAlt: logo ? `${x.display} logo` : undefined, title, description, canonical: url }) + `
 ${ld({ "@context": "https://schema.org", "@type": "ProfilePage", name: title.replace(/ \| .*$/, ""), url, description, mainEntity: org })}
 ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
     { "@type": "ListItem", position: 1, name: SITE_NAME, item: `${SITE_URL}/` },
@@ -806,7 +811,7 @@ async function stampStatic(file, path) {
       { "@type": "ListItem", position: 2, name: title.replace(/^The Condo Book Project /, "").replace(/ The Condo Book Project$/, ""), item: canonical },
     ] });
   }
-  const block = `<!-- seo -->\n${SEO("", { title, description, canonical })}\n${blocks.map(ld).join("\n")}${blocks.length ? "\n" : ""}<!-- /seo -->`;
+  const block = `<!-- seo -->\n${SEO("", { title, description, canonical, image: OG_SITE })}\n${blocks.map(ld).join("\n")}${blocks.length ? "\n" : ""}<!-- /seo -->`;
   await writeFile(join(ROOT, file), html.replace(/<!-- seo -->[\s\S]*?<!-- \/seo -->/, () => block));
 }
 

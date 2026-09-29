@@ -9,7 +9,7 @@
 import { mkdir, writeFile, rm, readFile, readdir } from "node:fs/promises";
 import { join } from "node:path";
 
-import { SB, KEY, SITE_URL, AG, ROOT, OUT, TODAY, rest, all, rpc, esc, tc, slug, fileFor, month, day, usDate, money, fmtMoney, plural, BORO, boro, docLabel, pagesLabel, miles, MAST_HTML, MAST, SITE_NAME, ld, SEO, HEAD, fitDesc, firstFit, MENU, FOOT, urlset } from "./site.mjs";
+import { SB, KEY, SITE_URL, AG, ROOT, OUT, TODAY, rest, all, rpc, esc, tc, slug, fileFor, month, day, usDate, money, fmtMoney, plural, BORO, boro, docLabel, pagesLabel, miles, MAST_HTML, MAST, SITE_NAME, ld, SEO, HEAD, fitDesc, firstFit, OG_SITE, MENU, FOOT, urlset } from "./site.mjs";
 import { groupAgents, groupFirms, groupPros, profileLinks } from "./pros.mjs";
 
 // ---------- junk records ----------
@@ -175,7 +175,7 @@ function directory(plans, ctx) {
       `<li><a href="${esc(fileFor(p))}">${esc(tc(p.name))}</a><span>${esc(tc(p.address))} · ${p.units_residential ?? "?"} units${p.units_parking ? ` · ${p.units_parking} parking` : ""}${ctx.searchable.has(p.plan_id) ? " · <b>searchable</b>" : ""}</span></li>`).join("")}</ul>`;
   }).join("\n");
   return HEAD(P, {
-    title: "NYC Condo Offering Plans by Building | The Condo Book Project",
+    title: "NYC Condo Offering Plans by Building | The Condo Book Project", image: OG_SITE,
     description: `Every NYC condo offering plan on The Condo Book Project, by borough: ${plans.length.toLocaleString("en-US")} plans with units, parking, budgets and source links.`,
     canonical: `${SITE_URL}/buildings/`,
   }) + ld({

@@ -87,6 +87,8 @@ export const fitDesc = (base, pieces = [], tail = "") => {
 const clipDesc = (d) => d.length <= DESC_MAX ? d : d.slice(0, DESC_MAX - 1).replace(/[\s,;:.–—-]+\S*$/, "") + "…";
 export const ld = (obj) => `<script type="application/ld+json">${JSON.stringify(obj).replace(/</g, "\\u003c")}</script>`;
 // Tags every page shares: canonical, social cards, analytics. Also stamped into the hand-written pages (see stampStatic).
+// The site card from scripts/build-og-images.mjs: the share image for pages without their own.
+export const OG_SITE = `${SITE_URL}/img/og/site.png`;
 export const SEO = (p, { title, description, canonical, image, imageAlt }) => `<link rel="canonical" href="${esc(canonical)}">
 <meta property="og:site_name" content="${SITE_NAME}">
 <meta property="og:locale" content="en_US">
@@ -94,7 +96,7 @@ export const SEO = (p, { title, description, canonical, image, imageAlt }) => `<
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${esc(canonical)}">
-${image ? `<meta property="og:image" content="${esc(image)}">\n<meta property="og:image:alt" content="${esc(imageAlt || title)}">\n` : ""}<meta name="twitter:card" content="${image ? "summary_large_image" : "summary"}">
+${image ? `<meta property="og:image" content="${esc(image)}">\n${image.includes("/img/og/") ? '<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n' : ""}<meta property="og:image:alt" content="${esc(imageAlt || title)}">\n` : ""}<meta name="twitter:card" content="${image ? "summary_large_image" : "summary"}">
 <meta name="twitter:title" content="${esc(title)}">
 <meta name="twitter:description" content="${esc(description)}">
 <meta name="theme-color" content="#879CB4">
