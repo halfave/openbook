@@ -106,12 +106,16 @@ function postPage(post) {
   const mins = Math.max(2, Math.round(words(body) / 230));
   const updated = post.updated || post.published;
   const related = posts.filter((q) => q.slug !== post.slug).slice(0, 4);
+  // FAQ structured data from the post's "Common Questions" section (<h3>question</h3><p>answer</p>), so the markup can't drift from the text.
+  const faqSection = body.split(/<h2>Common Questions<\/h2>/)[1]?.split(/<h2>/)[0] || "";
+  const faq = [...faqSection.matchAll(/<h3>([\s\S]*?)<\/h3>\s*<p>([\s\S]*?)<\/p>/g)]
+    .map(([, q, a]) => ({ "@type": "Question", name: unhtml(q), acceptedAnswer: { "@type": "Answer", text: unhtml(a) } }));
   return HEAD(P, { image: OG_SITE, title: post.title, description: post.description, canonical: url }) + `
 ${ld({
     "@context": "https://schema.org", "@type": "BlogPosting", headline: post.h1, description: post.description, url, mainEntityOfPage: url,
-    datePublished: post.published, dateModified: updated, inLanguage: "en-US", keywords: (post.keywords || []).join(", "),
+    datePublished: post.published, dateModified: updated, inLanguage: "en-US", keywords: (post.keywords || []).join(", "), wordCount: words(body),
     author: ORG, publisher: ORG, isPartOf: { "@type": "Blog", name: `${SITE_NAME} Blog`, url: `${SITE_URL}/blog/` },
-  })}
+  })}${faq.length ? "\n" + ld({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq }) : ""}
 ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
     { "@type": "ListItem", position: 1, name: SITE_NAME, item: `${SITE_URL}/` },
     { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog/` },
@@ -137,7 +141,7 @@ function blogIndex() {
   const P = "../";
   const url = `${SITE_URL}/blog/`;
   const title = "Blog: NYC Condo Offering Plans Explained | The Condo Book Project";
-  const description = "Plain-English guides to NYC condo offering plans: how to search the NY Attorney General's filings, read a CD number, find amendments, and read Schedule A and Schedule B.";
+  const description = "Plain-English guides to NYC condo offering plans: AG searches, CD numbers, amendments, Schedule A and B, common charges, first-year budgets and approval times.";
   return HEAD(P, { image: OG_SITE, title, description, canonical: url }) + `
 ${ld({ "@context": "https://schema.org", "@type": "Blog", name: `${SITE_NAME} Blog`, description, url, publisher: ORG,
     blogPost: posts.map((q) => ({ "@type": "BlogPosting", headline: q.h1, url: `${SITE_URL}/blog/${q.slug}.html`, datePublished: q.published, dateModified: q.updated || q.published })) })}
