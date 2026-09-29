@@ -52,15 +52,33 @@ h2 + details{border-top:0}
   .about > .amain{order:1}
   .about .about-facts{order:2;margin-top:28px}
 }
-.profile .glance{grid-template-columns:1fr 1fr}
-/* A small locator map, so the building list starts near the top. */
-/* A firm's logo, on the background it was made for in either theme. */
-.profile .flogo{display:inline-flex;align-self:flex-start;align-items:center;height:84px;max-width:100%;padding:14px 18px;margin:14px 0 16px;background:#FFFFFF;border:1px solid var(--rule)}
+/* ---------- profile pages: the firm and its map side by side, then its buildings and similar firms ---------- */
+main.post.profile{max-width:1320px;padding-left:clamp(16px,3vw,40px);padding-right:clamp(16px,3vw,40px)}
+main.post.profile > *,.profile .ptop > *,.profile .pbottom > *{max-width:none;min-width:0}
+.profile .ptop{display:grid;gap:8px clamp(32px,5vw,80px);align-items:center}
+.profile .pbottom{display:grid;gap:28px clamp(32px,4vw,64px);align-items:start;margin-top:28px}
+@media (min-width:1000px){
+  .profile .ptop{grid-template-columns:minmax(0,5fr) minmax(0,6fr)}
+  .profile .pbottom{grid-template-columns:minmax(0,1fr) minmax(260px,330px);margin-top:36px}
+}
+.profile h1{font-size:clamp(32px,4vw,48px)}
+.profile .anote{font-size:14px;line-height:1.55;color:var(--muted);margin:14px 0 0;max-width:52ch}
+.profile .glance{grid-template-columns:1fr 1fr;max-width:460px;margin-top:22px}
+/* The firm's website: a small link beside its name. */
+.profile .fsite{font-size:.45em;vertical-align:.35em;margin-left:.15em;line-height:1;text-decoration:none;padding:4px;border-radius:4px;opacity:.75;transition:opacity .15s}
+.profile .fsite:hover,.profile .fsite:focus-visible{opacity:1;background:var(--chip)}
+/* A firm's logo, on the background it was made for in either theme, about half as wide as the name under it. */
+.profile .pname{display:inline-grid;justify-items:start;max-width:100%;margin-top:14px}
+/* The wrapper is half the name's width and adds nothing to it (contain), so the name alone sets the size. */
+.profile .flogo-w{width:50%;contain:inline-size;margin:0 0 10px}
+.profile .flogo{display:inline-block;box-sizing:border-box;max-width:100%;padding:8px 10px;background:#FFFFFF;border:1px solid var(--rule)}
 .profile .flogo.dark{background:#1E1E20;border-color:#1E1E20}
-.profile .flogo img{display:block;height:100%;width:auto;max-width:260px;object-fit:contain}
-.profile .fmap{max-width:240px;margin:4px 0 18px}
+.profile .flogo img{display:block;width:auto;height:auto;max-width:100%;max-height:52px}
+.profile .pname h1{margin-top:0}
+.profile .fmap{width:100%;max-width:440px;margin:0;justify-self:center}
+.profile .tscroll{max-width:none}
 /* Similar firms: a tinted box with an accent rule, set smaller than the page. */
-.profile .sims{margin-top:28px;background:var(--chip);border-top:3px solid var(--accent);padding:14px 16px 6px}
+.profile .sims{background:var(--chip);border-top:3px solid var(--accent);padding:14px 16px 6px}
 .profile .sims h2{font:500 11.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 4px;border:0;padding:0}
 .profile .sims .anote{font-size:12.5px;line-height:1.45;margin:0 0 6px}
 .profile .sims .dir{margin:0}
@@ -68,12 +86,6 @@ h2 + details{border-top:0}
 .profile .sims .dir li:last-child{border-bottom:0}
 .profile .sims .dir a{font-size:14px}
 .profile .sims .dir span{font-size:12px}
-@media (max-width:999px){
-  main.profile{display:flex;flex-direction:column}
-  .profile > .aside{display:contents}
-  .profile > .amain{order:1}
-  .profile .sims{order:2}
-}
 code{font:14px var(--mono);background:var(--chip);border:1px solid var(--rule);padding:0 5px}
 footer{max-width:1180px;margin:40px auto 0;padding:14px 16px 0;font-size:13px;color:var(--muted);display:grid;gap:6px}
 footer > div{max-width:880px}
@@ -305,7 +317,7 @@ main.post.split > *{max-width:none}
   .split > .amain{padding-top:8px}
   .split > .amain > h2:first-child{margin-top:0;border-top:0;padding-top:0}
   .split > .aside .glance{grid-template-columns:1fr 1fr;margin-top:22px}
-  .approval.split > .aside,.profile.split > .aside{position:static}
+  .approval.split > .aside{position:static}
   .split > .amain > article > p:first-child{margin-top:0}
 }
 .split > .amain > .tscroll{max-width:none}

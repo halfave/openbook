@@ -18,6 +18,8 @@ export const agentQuery = (v) => String(v).replace(/\([^)]*\)/g, "").trim().repl
 const selfManaged = (v) => /^\s*sponsor\b|\(\s*sponsor|affiliate of (the )?sponsor|sponsor affiliate|principal of (the )?sponsor|self-managed/i.test(v);
 // Also when the manager named is the sponsor itself ("82 Sterling Place, LLC" managing 82 Sterling Place).
 export const isSelf = (v, p) => selfManaged(v) || (!!p.sponsor && agentKey(v) === agentKey(p.sponsor));
+// No manager named yet ("Management company (unnamed, to be engaged by Sponsor)"): not a firm, so no profile.
+const unnamed = (v) => /\bunnamed\b|\bto be (engaged|determined|selected|named|retained|chosen)\b|\bTBD\b/i.test(v);
 
 // agentFacts: facts rows {plan_id, value_text} for field managing_agent. byId: plan_id -> plan.
 // Returns [{name, query, plans, slug, names}], most plans first; names is every spelling filed.
@@ -25,7 +27,7 @@ export function groupAgents(agentFacts, byId) {
   const groups = new Map();
   for (const f of agentFacts) {
     const p = byId.get(f.plan_id);
-    if (!p || !NYC(p) || isSelf(f.value_text, p)) continue;
+    if (!p || !NYC(p) || isSelf(f.value_text, p) || unnamed(f.value_text)) continue;
     const k = agentKey(f.value_text);
     if (!k) continue;
     if (!groups.has(k)) groups.set(k, { key: k, names: new Map(), plans: new Map() });

@@ -655,7 +655,6 @@ const LOGO_KIND = { manager: "managers", attorney: "attorneys", architect: "arch
 const offerPrice = (p) => money(p.meta?.plan?.["Current Price"]) || money(p.meta?.plan?.["Initial Price"]);
 const sumUnits = (list) => list.reduce((s, p) => s + (p.units_residential || 0), 0);
 const yearSpan = (list) => { const ys = list.map((p) => p.accepted_date?.slice(0, 4)).filter(Boolean).sort(); return ys.length ? (ys[0] === ys.at(-1) ? ys[0] : `${ys[0]}–${ys.at(-1)}`) : ""; };
-const boroList = (list) => [...count(list, (p) => boro(p.borough))].sort((a, b) => b[1] - a[1]).map(([b]) => b);
 
 // Similarity on log scales, so 3 vs 6 buildings is as far apart as 30 vs 60. A dimension either side lacks costs a flat 1.
 const lg = (v) => Math.log1p(v);
@@ -678,11 +677,11 @@ const ARCH = byPrice(ARCHITECTS, "architects", SITES.architects);
 const SELL = byPrice(SELLERS, "selling-agents", SITES.sellers);
 // What differs between the three $/unit profile kinds.
 const ROLE = {
-  attorney: { pool: ATT, list: "Offering plan attorneys", as: "sponsor's counsel", on: "on", other: "firm", Other: "Firms", count: "plan", h2: "Offering Plans", type: "LegalService",
+  attorney: { pool: ATT, list: "Offering plan attorneys", as: "sponsor's counsel", on: "on", other: "firm", Other: "Firms", count: "plan", type: "LegalService",
     title: "NYC Condo Sponsor's Counsel", short: "Sponsor's Counsel", source: "as recorded by the Attorney General. This may not reflect current representation." },
-  architect: { pool: ARCH, list: "Architects", as: "the architect", on: "in", other: "architect", Other: "Architects", count: "building", h2: "Buildings", type: "ProfessionalService",
+  architect: { pool: ARCH, list: "Architects", as: "the architect", on: "in", other: "architect", Other: "Architects", count: "building", type: "ProfessionalService",
     title: "NYC Condo Buildings Designed", short: "Condo Architect", source: "in the plan's text. For conversions this is often the architect who certified the existing building." },
-  seller: { pool: SELL, list: "Selling agents", as: "selling agent", on: "in", other: "brokerage", Other: "Brokerages", count: "building", h2: "Buildings Sold", type: "RealEstateAgent",
+  seller: { pool: SELL, list: "Selling agents", as: "selling agent", on: "in", other: "brokerage", Other: "Brokerages", count: "building", type: "RealEstateAgent",
     title: "NYC Condo Selling Agent", short: "Selling Agent", source: "in the plan's text. A sponsor can change selling agents, so this may not reflect who is selling each building today." },
 };
 const profileHref = (x, P) => `${P}${x.dir}/${x.slug}.html`;
@@ -710,7 +709,6 @@ function profilePage(x, kind) {
   const listUrl = `${SITE_URL}/${x.dir}.html`;
   const listName = mgr ? "Property managers" : r.list;
   const nyc = x.plans.length;
-  const boros = boroList(x.plans);
   const span = yearSpan(x.plans);
   const named = x.plans.slice(0, 3).map((p) => tc(p.name));
   const pricing = mgr ? x.fee : x.perUnit;
@@ -747,11 +745,14 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
     { "@type": "ListItem", position: 2, name: listName, item: listUrl },
     { "@type": "ListItem", position: 3, name: x.display, item: url },
   ] })}
-<main class="post agents profile split">
-  <div class="aside">
+<main class="post agents profile">
   <nav class="crumbs" aria-label="Breadcrumb"><a href="${P}index.html">${SITE_NAME}</a> › <a href="${P}${x.dir}.html">${listName}</a></nav>
-  ${logo ? `<div class="flogo${logo.bg === "dark" ? " dark" : ""}"><img src="${P}img/logos/${x.dir}/${x.slug}.png" alt="${esc(x.display)} logo"></div>` : ""}
-  <h1>${esc(x.display)}</h1>
+  <div class="ptop">
+  <div class="pinfo">
+  <div class="pname">
+  ${logo ? `<div class="flogo-w"><div class="flogo${logo.bg === "dark" ? " dark" : ""}"><img src="${P}img/logos/${x.dir}/${x.slug}.png" alt="${esc(x.display)} logo"></div></div>` : ""}
+  <h1>${esc(x.display)}${x.site ? `&nbsp;<a class="fsite" href="${esc(x.site)}" target="_blank" rel="noopener" title="${esc(hostOf(x.site))}" aria-label="${esc(x.display)} website (${esc(hostOf(x.site))})">🔗</a>` : ""}</h1>
+  </div>
   <p class="anote">${mgr
     ? `Named as the first-year managing agent in ${plural(nyc, "New York City condominium offering plan")}. The board can change managers after the first year, so this may not reflect who manages each building today.`
     : `Named as ${r.as} ${r.on} ${plural(nyc, "New York City condominium offering plan")}, ${r.source}`}</p>
@@ -761,20 +762,20 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
     <div><dt>${mgr ? "Median fee" : "Median $/unit"}</dt><dd>${pricingText ? esc(pricingText) : "—"}</dd></div>
     <div><dt>${span.includes("–") ? "Years" : "Year"}</dt><dd>${span || "—"}</dd></div>
   </dl>
-  ${x.site ? `<p class="acts"><a class="btn primary" href="${esc(x.site)}" target="_blank" rel="noopener">${esc(hostOf(x.site))} ↗</a></p>` : ""}
-  ${sims.length ? `<aside class="sims" aria-label="Similar ${mgr ? "managers" : r.other + "s"}"><h2>Similar ${mgr ? "Managers" : r.Other}</h2>
-  <p class="anote">Closest in ${mgr ? "buildings" : r.count + "s"}, residential units and ${mgr ? "management fee per unit" : "offering price per unit"}.</p>
-  <ul class="dir">${sims.map(simRow).join("")}</ul></aside>` : ""}
   </div>
-  <div class="amain">
-  <h2>${mgr ? "Buildings Managed" : r.h2}</h2>
-  <p>${esc(x.display)} ${mgr ? "is named as managing agent" : `is named as ${r.as}`} in ${plural(nyc, "plan")}${boros.length ? ` in ${boros.length > 1 ? boros.slice(0, -1).join(", ") + " and " + boros.at(-1) : boros[0]}` : ""}${span ? `, accepted for filing ${span.includes("–") ? "from " + span.replace("–", " to ") : "in " + span}` : ""}.</p>
   ${plansMap(x.plans, `Map of the NYC condo buildings in plans naming ${x.display}`)}
+  </div>
+  <div class="pbottom">
+  <div class="amain">
   <div class="tscroll"><table class="ftable"><thead><tr><th>Condominium</th><th>Accepted</th><th class="num">Units</th><th class="num">${mgr ? "Fee/unit/yr" : "$/unit"}</th></tr></thead><tbody>${x.plans.map(row).join("")}</tbody></table></div>
   <p class="src">${mgr
     ? "The fee is the management line of each plan's Schedule B first-year budget divided by its residential units; — means the budget hasn't been read or doesn't break it out. The median fee is across the buildings with a figure."
     : "$/unit is the offering price on the AG record divided by the residential units; the median is across the plans with both."} Different spellings of one ${mgr ? "company" : r.other}'s name are counted together.</p>
   ${cta(P)}
+  </div>
+  ${sims.length ? `<aside class="sims" aria-label="Similar ${mgr ? "managers" : r.other + "s"}"><h2>Similar ${mgr ? "Managers" : r.Other}</h2>
+  <p class="anote">Closest in ${mgr ? "buildings" : r.count + "s"}, residential units and ${mgr ? "management fee per unit" : "offering price per unit"}.</p>
+  <ul class="dir">${sims.map(simRow).join("")}</ul></aside>` : ""}
   </div>
 </main>
 ${hoverScript}
