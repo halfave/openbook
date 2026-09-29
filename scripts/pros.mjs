@@ -10,8 +10,18 @@ const NYC = (p) => boro(p.borough) !== "Outside New York City";
 // From the first-year management agreement in each offering plan (facts.managing_agent). Spellings vary
 // ("FirstService Residential New York, Inc." / "FirstService Residential"), so names are grouped by a key.
 const SUFFIX_WORDS = new Set(["inc", "llc", "l", "c", "corp", "corporation", "co", "company", "ltd", "the", "pc"]);
-export const agentKey = (v) => String(v).toLowerCase().replace(/\([^)]*\)/g, " ").replace(/&/g, " and ").replace(/[^a-z0-9 ]+/g, " ")
-  .split(/\s+/).filter((w) => w && !SUFFIX_WORDS.has(w)).join(" ");
+// Hand-checked: keys that name the same firm, mapped to the key whose profile page already exists.
+const AGENT_ALIAS = {
+  wayfinder: "wayfinderpm",
+  "choice new york management": "choice ny property management", "choice ny management": "choice ny property management",
+  "choice new york property management": "choice ny property management",
+  "nyret services and property management": "nyret property management",
+};
+export const agentKey = (v) => {
+  const k = String(v).toLowerCase().replace(/\([^)]*\)/g, " ").replace(/&/g, " and ").replace(/[^a-z0-9 ]+/g, " ")
+    .split(/\s+/).filter((w) => w && !SUFFIX_WORDS.has(w)).join(" ");
+  return AGENT_ALIAS[k] || k;
+};
 // What to type in the search box: the name without "(Sponsor)" notes and company suffixes, so every spelling matches.
 export const agentQuery = (v) => String(v).replace(/\([^)]*\)/g, "").trim().replace(/[,\s]+(inc|llc|l\.l\.c|corp|corporation|co|company|ltd)\.?$/i, "").replace(/[,\s]+(inc|llc|corp)\.?$/i, "").trim();
 // The sponsor, its affiliate or principal, or the board manages the building instead of an outside company.
@@ -54,8 +64,10 @@ export function groupAgents(agentFacts, byId) {
   return [...groups.values()].map((g) => {
     const name = [...g.names].sort((a, b) => b[1] - a[1] || a[0].length - b[0].length)[0][0];
     const plansList = [...g.plans.values()].sort((a, b) => (b.accepted_date || "").localeCompare(a.accepted_date || ""));
-    // Search with the shortest spelling, so the search matches every variant in the group.
-    const query = [...g.names.keys()].map(agentQuery).filter(Boolean).sort((a, b) => a.length - b.length)[0] || agentQuery(name);
+    // Search with the spelling found in the most filings ("WayFinder" is in "WayfinderPM, LLC" too), the shortest on a tie.
+    const covers = (q) => { let c = 0; for (const [nm, n] of g.names) if (nm.toLowerCase().includes(q.toLowerCase())) c += n; return c; };
+    const query = [...new Set([...g.names.keys()].map(agentQuery).filter(Boolean))]
+      .map((q) => [q, covers(q)]).sort((a, b) => b[1] - a[1] || a[0].length - b[0].length)[0]?.[0] || agentQuery(name);
     return { name, query, plans: plansList, slug: g.key.replace(/ /g, "-"), names: new Set(g.names.keys()) };
   }).sort((a, b) => b.plans.length - a.plans.length || a.name.localeCompare(b.name));
 }
@@ -65,8 +77,34 @@ export function groupAgents(agentFacts, byId) {
 // so names are grouped by a key without initials, suffixes and "Law Office of".
 const FIRM_STOP = new Set(["the", "law", "office", "offices", "of", "esq", "esquire", "attorney", "attorneys", "at", "pc", "llp", "llc", "pllc", "lpa", "inc",
   "and", "associates", "assoc", "group", "firm", "counselors", "counsel", "pa"]);
-export const firmKey = (v) => String(v).toLowerCase().replace(/\([^)]*\)/g, " ").replace(/[^a-z0-9]+/g, " ")
-  .split(" ").filter((w) => w.length > 1 && !FIRM_STOP.has(w)).join(" ");
+// Hand-checked: typos, "et al" and "Esqs." spellings, and a firm's former or short name (before or after a partner joined
+// the name), mapped to the key with the profile.
+const FIRM_ALIAS = {
+  "agostino levine landesman": "agostino levine landesman lederman",
+  "agostino levine landesman et al": "agostino levine landesman lederman", "agostino levine landesman etal": "agostino levine landesman lederman",
+  "marans weisz": "marans weisz newman",
+  "allen morris troisi": "allen morris troisi simon",
+  "ganfer shore": "ganfer shore leeds zauderer",
+  "stein farkas schwartz": "stein farkas",
+  "rothkrug rothkrug": "rothkrug rothkrug spector", "rothkrug rothkrug weinberg spector": "rothkrug rothkrug spector",
+  "silverman shin byrne": "silverman shin byrne gilchrest",
+  "menicucci villa": "menicucci villa cilmi", "menicucci villa panzella calcagno": "menicucci villa cilmi",
+  "drohan lee kelley": "drohan lee",
+  "decker decker dito internicola": "decker decker",
+  "berger sklaw esqs": "berger sklaw",
+  "schwartz sladkus greenberg atlans": "schwartz sladkus reich greenberg atlas",
+  "ganfer shore leads zauderer": "ganfer shore leeds zauderer",
+  "steven ebbin atty": "steven ebbin",
+  "pryor cashman sherman flynn": "pryor cashman",
+  "bryan cave leighton paisner": "bryan cave",
+  herrick: "herrick feinstein",
+  "abrams fensterman": "abrams fensterman fensterman et al",
+};
+export const firmKey = (v) => {
+  const k = String(v).toLowerCase().replace(/\([^)]*\)/g, " ").replace(/[^a-z0-9]+/g, " ")
+    .split(" ").filter((w) => w.length > 1 && !FIRM_STOP.has(w)).join(" ");
+  return FIRM_ALIAS[k] || k;
+};
 const firmCore = (v) => String(v).trim().replace(/([,\s]+(p\.?\s?c|l\.?l\.?p|l\.?l\.?c|pllc|esq|inc|attorneys? at law)\.?)+$/i, "").trim();
 
 // Returns [{name, plans, years, slug, query}], most plans first.
@@ -86,8 +124,8 @@ export function groupFirms(plans) {
   const firms = plans.filter((p) => p.law_firm).map((p) => ({ lf: p.law_firm.toLowerCase(), k: firmKey(p.law_firm) }));
   const bestQuery = (g) => {
     const cands = new Set([...g.names.keys()].map(firmCore).filter((c) => c.length >= 3));
-    const last = g.key.split(" ").pop();
-    if (last.length >= 5) cands.add(last);
+    // First and last name in the key too: a renamed firm's spellings share those ("Marans & Weisz" / "Marans Weisz & Newman").
+    for (const w of [g.key.split(" ")[0], g.key.split(" ").pop()]) if (w.length >= 5) cands.add(w);
     let best = null;
     for (const c of cands) {
       const lc = c.toLowerCase();
@@ -111,15 +149,19 @@ export function groupFirms(plans) {
 // From the offering plan text (facts.architect, facts.selling_agent). Spellings vary more than managers' do:
 // "Karim Ahmed, R.A., Reform Architecture PLLC" / "Reform Architecture PLLC", "Urban Compass, Inc. d/b/a Compass" / "Compass",
 // so the key drops suffixes, credentials and trade words, and a key whose words are all in a longer key absorbs it.
-const PRO_STOP = new Set(["the", "and", "of", "inc", "llc", "llp", "pllc", "pc", "lp", "corp", "corporation", "co", "company", "ltd", "limited", "dba",
+const PRO_STOP = new Set(["the", "and", "of", "inc", "llc", "llp", "pllc", "pc", "dpc", "lp", "corp", "corporation", "incorporated", "co", "company", "ltd", "limited", "dba",
   "ra", "aia", "pe", "jr", "esq", "registered", "licensed", "nys", "ny", "nyc", "new", "york",
   "architect", "architects", "architecture", "architectural", "engineer", "engineers", "engineering", "associates", "assoc", "design", "designs", "studio", "planning", "pa",
   "real", "estate", "realty", "marketing", "group", "development", "sales", "properties", "property", "residential", "brokerage", "re", "services", "international", "partners"]);
 // Hand-checked against the filings: keys that name the same firm (PRO_ALIAS before grouping, PRO_JOIN after, for a person
 // filed both alone and with the firm, "Chang Hwa Tan, R.A., Tan Architect P.C."), and keys that stay apart though a shorter
 // key's words are all in them (Corcoran Sunshine isn't The Corcoran Group; Kane Architecture and Urban Design isn't Urban Architectural Design).
-const PRO_ALIAS = { "issac stern": "isaac stern", sunshine: "corcoran sunshine", "highpoint incentives": "highpoint incentive" };
-const PRO_JOIN = { "chang tan": "tan", "oscar walters": "demerara", "shiming tam": "tam" };
+// Keys that differ only by spaces ("Hill West" / "Hillwest", "Cook+Fox" / "CookFox") are merged in groupPros; letters split
+// apart in the plan text ("C ook F ox", "Kutnicki Ber n stein") are aliased here.
+const PRO_ALIAS = { "issac stern": "isaac stern", sunshine: "corcoran sunshine", "highpoint incentives": "highpoint incentive",
+  "hpl ngineer ing": "hpl", "ook ox": "cookfox", "kutnicki ber stein": "kutnicki bernstein", "urat mutlu": "murat mutlu",
+  "hi lau": "chi lau", scaranoarchitect: "scarano", architectsalliance: "alliance", "sm tam": "tam" };
+const PRO_JOIN = { "chang tan": "tan", "oscar walters": "demerara", "shiming tam": "tam", "wu chen": "infocus", "igor zaslavskiy": "zproekt" };
 const PRO_KEEP = new Set(["corcoran sunshine", "mcclellan sotheby", "daniel gale sotheby", "theodore kane kane urban", "jorge mastropietro jma workshop", "marren newman", "meltzer costa"]);
 // Not a firm: "Sponsor (no separate selling agent)", "None".
 const notFirm = (v) => /^\s*(none|n\/?a|tbd|not (stated|named|applicable))\b|\bno (separate )?(selling|managing) agent|\bno .*agent used\b/i.test(v);
@@ -171,6 +213,16 @@ export function groupPros(facts, byId, field) {
       g.plans.set(p.plan_id, p);
     }
   }
+  // "hill west" and "hillwest" are one firm: keys equal without spaces merge into the one with more plans.
+  const compact = new Map();
+  for (const k of [...groups.keys()].sort((a, b) => groups.get(b).plans.size - groups.get(a).plans.size)) {
+    const c = k.replace(/ /g, ""), to = compact.get(c);
+    if (!to) { compact.set(c, k); continue; }
+    const a = groups.get(to), b = groups.get(k);
+    for (const [nm, n] of b.names) a.names.set(nm, (a.names.get(nm) || 0) + n);
+    for (const [id, p] of b.plans) a.plans.set(id, p);
+    groups.delete(k);
+  }
   // "reform" absorbs "karim ahmed reform", "compass" absorbs "urban compass": all of the shorter key's words are in the longer one.
   // A single short word ("tan", "one") can't absorb anything.
   const words = (k) => k.split(" ");
@@ -198,6 +250,14 @@ export function groupPros(facts, byId, field) {
   return [...groups.values()].map((g) => {
     const shown = new Map();
     for (const [nm, c] of g.names) { const s = cleanName(nm); if (s) shown.set(s, (shown.get(s) || 0) + c); }
+    // A spelling run together ("Scaranoarchitect", "CitiHabitats") counts toward the spaced one, unless that one is letters
+    // split apart in the plan text ("HPL E NGINEER ING").
+    const flat = (s) => s.toLowerCase().replace(/ /g, "");
+    for (const [s, c] of [...shown]) {
+      const spaced = [...shown.keys()].find((t) => t !== s && flat(t) === flat(s) && t.split(" ").length > s.split(" ").length
+        && t.split(" ").every((w) => w.length >= 3));
+      if (spaced) { shown.set(spaced, shown.get(spaced) + c); shown.delete(s); }
+    }
     const name = [...shown].sort((a, b) => b[1] - a[1] || a[0].length - b[0].length)[0]?.[0] || g.key;
     const plansList = [...g.plans.values()].sort((a, b) => (b.accepted_date || "").localeCompare(a.accepted_date || "") || b.plan_id.localeCompare(a.plan_id));
     return { name, plans: plansList, key: g.key, names: new Set(g.names.keys()) };

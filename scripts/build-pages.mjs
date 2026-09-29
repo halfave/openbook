@@ -6,6 +6,7 @@
 //   - managing-agents/*.html, offering-plan-attorneys/*.html, architects/*.html, selling-agents/*.html and tax-consultants/*.html, a profile per firm
 //   - the SEO block in the hand-written pages (index, about, faq, terms, privacy, disclaimers)
 //   - sitemap-pages.xml, sitemap.xml (an index of it and sitemap-buildings.xml) and robots.txt
+//   - the redirects in vercel.json, for profile URLs that went away (see "redirects" below)
 //
 //   node scripts/build-pages.mjs
 //
@@ -1039,7 +1040,49 @@ await writeFile(join(ROOT, "offering-plan-attorneys.html"), attorneysPage());
 await writeFile(join(ROOT, "architects.html"), proDirPage("architect"));
 await writeFile(join(ROOT, "selling-agents.html"), proDirPage("seller"));
 await writeFile(join(ROOT, "tax-consultants.html"), proDirPage("taxer"));
-for (const dir of ["managing-agents", "offering-plan-attorneys", "architects", "selling-agents", "tax-consultants"]) {
+const PROFILE_DIRS = ["managing-agents", "offering-plan-attorneys", "architects", "selling-agents", "tax-consultants"];
+// The last build's profiles and the buildings each linked to, so a page that goes away (firms merged, or a new filing
+// changes the name shown) can redirect to the profile that has its buildings now.
+const oldProfiles = [];
+for (const dir of PROFILE_DIRS) for (const f of (await readdir(join(ROOT, dir)).catch(() => [])).filter((f) => f.endsWith(".html"))) {
+  const html = await readFile(join(ROOT, dir, f), "utf8");
+  oldProfiles.push({ path: `/${dir}/${f}`, dir, plans: new Set([...html.matchAll(/buildings\/[^"]*-(c[dc]\d+)\.html/g)].map((m) => m[1].toUpperCase())) });
+}
+
+// ---------- redirects ----------
+// Written before the profile directories are cleared, so a build that fails partway still has them.
+// vercel.json keeps a permanent redirect for every profile URL that ever went away: to the profile sharing the most of
+// its buildings, or to the directory when no profile has any. Older redirects follow their destination if it moved,
+// and are dropped once their URL is a page again. Redirects outside the profile directories are left as they are.
+const live = new Map([...MGR, ...ATT, ...ARCH, ...SELL, ...TAX].map((x) => [`/${x.dir}/${x.slug}.html`, x]));
+const moved = new Map();
+for (const o of oldProfiles) {
+  if (live.has(o.path)) continue;
+  let best = null, shared = 0;
+  for (const [path, x] of live) {
+    if (x.dir !== o.dir) continue;
+    const n = x.plans.filter((p) => o.plans.has(p.plan_id)).length;
+    if (n > shared) { best = path; shared = n; }
+  }
+  moved.set(o.path, best || `/${o.dir}.html`);
+}
+const VERCEL = join(ROOT, "vercel.json");
+const vercel = JSON.parse(await readFile(VERCEL, "utf8").catch(() => "{}"));
+const isPro = (path) => PROFILE_DIRS.some((d) => path.startsWith(`/${d}/`));
+const redirects = new Map();
+for (const r of vercel.redirects || []) redirects.set(r.source, r);
+for (const [source, destination] of moved) redirects.set(source, { source, destination, permanent: true });
+for (const [source, r] of redirects) {
+  if (!isPro(source)) continue;
+  if (live.has(source)) { redirects.delete(source); continue; }
+  if (moved.has(r.destination)) r.destination = moved.get(r.destination);
+}
+vercel.redirects = [...redirects.values()].sort((a, b) => a.source.localeCompare(b.source));
+const { redirects: rs, ...rest } = vercel;
+const restJson = JSON.stringify(rest, null, 2).slice(1, -2).trim();
+await writeFile(VERCEL, `{\n${restJson ? `  ${restJson},\n` : ""}  "redirects": [\n${rs.map((r) => `    ${JSON.stringify(r).replace(/":/g, "\": ").replace(/,"/g, ", \"")}`).join(",\n")}\n  ]\n}\n`);
+
+for (const dir of PROFILE_DIRS) {
   // Start clean so a firm that drops below PROFILE_MIN or is regrouped doesn't leave a stale page behind.
   await rm(join(ROOT, dir), { recursive: true, force: true });
   await mkdir(join(ROOT, dir), { recursive: true });
