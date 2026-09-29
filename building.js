@@ -44,7 +44,8 @@
     const noteText = (note) => String(note ?? "").split(/[,;\s]+/).filter((k) => noteId.has(k)).map((k) => {
       used.add(k);
       const n = notes[Number(noteId.get(k).slice(3))];
-      return `<span class="bnote">${n.title ? `<b>${esc(n.title)}.</b> ` : ""}${esc(n.summary || "")}</span>`;
+      // The note's title repeats the line's name, so only its text shows here.
+      return `<span class="bnote">${esc(n.summary || n.title || "")}</span>`;
     }).join("");
 
     // Group by budget, then section, in the order they appear in the plan.
