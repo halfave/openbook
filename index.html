@@ -876,20 +876,9 @@ table.pivot th[scope="row"]{white-space:nowrap}
     return addrs.length >= 2 ? { addresses: addrs.slice(0, 4) } : null;
   }
 
-  // Plans are residential, commercial or parking (plans.category). Searches cover residential plans unless the question
-  // asks for the others themselves ("commercial condos", "parking garage condos"). A building with parking or shops
-  // ("condos with parking", "with a parking garage") is still residential. Plan ID and address lookups cover every plan.
-  const NOT_AFTER = "(?<!\\b(?:with|has|have|and|plus|include|including|includes|offers?)\\s(?:an?\\s)?)";
-  const CATEGORY_RE = {
-    commercial: new RegExp(`\\b${NOT_AFTER}(?:commercial|retail|office)(?:[- ]only)? (?:condos?|condominiums?|plans?|buildings?|properties)\\b|\\bnon-?residential\\b`),
-    parking: new RegExp(`\\b${NOT_AFTER}(?:parking|garage)(?:[- ]only)? (?:condos?|condominiums?|plans?)\\b|\\b${NOT_AFTER}parking garages?\\b`),
-  };
-  const CATEGORY_LABEL = { commercial: "Commercial plans", parking: "Parking garage plans" };
-  const categoriesOf = (text) => {
-    const t = " " + String(text || "").toLowerCase().replace(/\s+/g, " ") + " ";
-    const want = Object.keys(CATEGORY_RE).filter((k) => CATEGORY_RE[k].test(t));
-    return want.length ? want : ["residential"];
-  };
+  // Residential plans unless the question asks for commercial or parking-garage plans (the rule is in search-intents.js).
+  // Plan ID and address lookups cover every plan.
+  const { categoriesOf, CATEGORY_RE, CATEGORY_LABEL } = window.CondoIntents || { categoriesOf: () => ["residential"], CATEGORY_RE: {}, CATEGORY_LABEL: {} };
   // Commercial and garage plans have no apartments and rarely readable pages, so the junk-row check can't apply to them.
   const nonResidential = (P) => !!P.categories && !P.categories.includes("residential");
 
@@ -2008,7 +1997,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
     const b = e.target.closest("[data-rm]"); if (!b) return;
     ({ stats: () => { spec.stats = null; }, near: () => { spec.near = null; }, mih: () => { spec.mih = false; }, beds: () => { spec.beds = null; }, price: () => { spec.price = null; },
       units: () => { spec.units = null; }, parking: () => { spec.parking = null; }, construction: () => { spec.construction = null; }, borough: () => { spec.borough = null; },
-      since: () => { spec.since = null; spec.until = null; spec.window = null; } })[b.dataset.rm]?.();
+      since: () => { spec.since = null; spec.until = null; spec.window = null; }, categories: () => { spec.categories = null; } })[b.dataset.rm]?.();
     spec.notes = [];
     // With nothing structured left, list every condo that fits the remaining filters.
     if (!structured(spec)) spec.all = true;

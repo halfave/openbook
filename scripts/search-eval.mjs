@@ -94,8 +94,8 @@ async function evaluate(c) {
   if (E.anchorPlan) ok("measures from the named building", res.anchor?.plan_id === E.anchorPlan, `anchor ${res.anchor?.plan_id} ${res.anchor?.label}`);
   if (E.radiusComplete && res.anchor) {
     // Independent: every geocoded condo plan, measured here.
-    const plans = await all("plans?select=plan_id,lat,lng,plan_type&lat=not.is.null");
-    const truth = new Set(plans.filter((p) => (p.plan_type === "CONDOMINIUM" || p.plan_type === "COOPERATIVE/CONDOMINIUM") && haversine(res.anchor, p) <= spec.near.miles).map((p) => p.plan_id));
+    const plans = await all("plans?select=plan_id,lat,lng,plan_type,category&lat=not.is.null");
+    const truth = new Set(plans.filter((p) => (p.plan_type === "CONDOMINIUM" || p.plan_type === "COOPERATIVE/CONDOMINIUM") && p.category === "residential" && haversine(res.anchor, p) <= spec.near.miles).map((p) => p.plan_id));
     const got = new Set(res.rows.map((r) => r.plan_id));
     const miss = [...truth].filter((x) => !got.has(x)), extra = [...got].filter((x) => !truth.has(x));
     ok(`finds every condo within ${spec.near.miles} mi (${truth.size})`, !miss.length && !extra.length, `missing ${miss.length}: ${miss.slice(0, 12).join(" ")}; extra ${extra.length}: ${extra.slice(0, 12).join(" ")}`);
@@ -147,7 +147,7 @@ async function evaluate(c) {
   if (E.parkingFactsRequired) {
     const facts = await all("facts?select=plan_id,value_text,quote&field=eq.parking_arrangement&value_text=in.(licensed,sold_or_licensed)");
     const fp = facts.filter((f) => /licen[cs]/i.test(f.quote || "")).map((f) => f.plan_id);
-    const small = fp.length ? (await get(`plans?select=plan_id&plan_id=in.${inList(fp)}&units_residential=gte.${E.unitRange[0]}&units_residential=lte.${E.unitRange[1]}&plan_type=eq.CONDOMINIUM`)).map((p) => p.plan_id) : [];
+    const small = fp.length ? (await get(`plans?select=plan_id&plan_id=in.${inList(fp)}&units_residential=gte.${E.unitRange[0]}&units_residential=lte.${E.unitRange[1]}&plan_type=eq.CONDOMINIUM&category=eq.residential`)).map((p) => p.plan_id) : [];
     const miss = small.filter((x) => !ids.has(x));
     ok(`lists all ${small.length} plans whose extracted parking arrangement is a license`, !miss.length, `missing ${miss.join(" ")}`);
   }
@@ -179,7 +179,7 @@ async function evaluate(c) {
     if (E.salesDisclaimer) ok("says plainly there is no sales data", res.notes.some((n) => /no closed-sale records/i.test(n)), res.notes.join(" | "));
     const since = new Date(); since.setFullYear(since.getFullYear() - E.yearsBack);
     const s = since.toISOString().slice(0, 10);
-    const truth = (await all(`plans?select=plan_id,price_current,units_residential,units_commercial,units_parking,units_storage,borough&plan_type=eq.CONDOMINIUM&construction=eq.NEW&status=eq.ACCEPTED&accepted_date=gte.${s}`))
+    const truth = (await all(`plans?select=plan_id,price_current,units_residential,units_commercial,units_parking,units_storage,borough&plan_type=eq.CONDOMINIUM&category=eq.residential&construction=eq.NEW&status=eq.ACCEPTED&accepted_date=gte.${s}`))
       .filter((p) => Number(p.price_current) > 0 && p.units_residential > 0);
     ok(`counts every priced plan in the window (${truth.length})`, truth.length === res.rows.length, `table counts ${res.rows.length}`);
     const per = truth.map((p) => Number(p.price_current) / (p.units_residential + (p.units_commercial || 0) + (p.units_parking || 0) + (p.units_storage || 0)));

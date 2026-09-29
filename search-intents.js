@@ -47,13 +47,29 @@
   const MONEY = "\\$?\\s?\\d+(?:,\\d{3})*(?:\\.\\d+)?\\s?(?:k|mm|m|mil|million|thousand)?";
 
   // Returns a spec when the question needs one of the structured searches, else null (the page's own parser handles it).
+  // Plans are residential, commercial or parking (plans.category). Searches cover residential plans unless the question
+  // asks for the others themselves ("commercial condos", "parking garage condos"). A building with parking or shops
+  // ("condos with parking", "with a parking garage") is still residential. The server's copy is in api/_lib/ai.mjs.
+  const NOT_AFTER = "(?<!\\b(?:with|has|have|and|plus|include|including|includes|offers?)\\s(?:an?\\s)?)";
+  const CATEGORY_RE = {
+    commercial: new RegExp(`\\b${NOT_AFTER}(?:commercial|retail|office)(?:[- ]only)? (?:condos?|condominiums?|plans?|buildings?|properties)\\b|\\bnon-?residential\\b`),
+    parking: new RegExp(`\\b${NOT_AFTER}(?:parking|garage)(?:[- ]only)? (?:condos?|condominiums?|plans?)\\b|\\b${NOT_AFTER}parking garages?\\b`),
+  };
+  const CATEGORY_LABEL = { commercial: "Commercial plans", parking: "Parking garage plans" };
+  function categoriesOf(text) {
+    const t = " " + String(text || "").toLowerCase().replace(/\s+/g, " ") + " ";
+    const want = Object.keys(CATEGORY_RE).filter((k) => CATEGORY_RE[k].test(t));
+    return want.length ? want : ["residential"];
+  }
+  const inCategories = (p, cats) => !cats || cats.includes(p.category || "residential");
+
   function parse(input, today) {
     const now = today ? new Date(today + "T12:00:00Z") : new Date();
     let s = " " + String(input || "").toLowerCase().replace(/[’‘]/g, "'").replace(/[“”]/g, '"').replace(/[–—]/g, "-").replace(/\s+/g, " ") + " ";
     // "1mi" -> "1 mi", "10units" -> "10 units", "1beds" -> "1 beds"
     s = s.replace(/(\d)(mi|miles?|km|blocks?|units?|apartments?|beds?|bedrooms?|br|bd|yrs?|years?|months?)\b/g, "$1 $2");
     const spec = { text: String(input || "").trim(), near: null, mih: false, parking: null, beds: null, price: null, units: null,
-      construction: null, borough: null, since: null, until: null, dateOn: dateOnOf(s), stats: null, wantsSales: false, notes: [] };
+      construction: null, borough: null, since: null, until: null, dateOn: dateOnOf(s), stats: null, wantsSales: false, notes: [], categories: categoriesOf(input) };
     const cut = (re) => { s = s.replace(re, " "); };
 
     // average / median offering (or "sales") price -> a table, not a list
@@ -151,13 +167,14 @@
     if (spec.parking) c.push({ k: "parking", label: "Parking offered by license" });
     if (spec.construction) c.push({ k: "construction", label: spec.construction === "NEW" ? "New construction" : titleCase(spec.construction) });
     if (spec.borough) c.push({ k: "borough", label: titleCase(spec.borough) });
+    if (spec.categories && !spec.categories.includes("residential")) c.push({ k: "categories", label: spec.categories.map((x) => CATEGORY_LABEL[x]).join(" + ") });
     if (spec.since || spec.until) c.push({ k: "since", label: `${DATE_WORD[spec.dateOn || "accepted"]} ${spec.window ? `in the last ${spec.window.n} ${spec.window.unit}${spec.window.n === 1 ? "" : "s"}` : spec.until ? `in ${spec.since.slice(0, 4)}` : `since ${spec.since.slice(0, 4)}`}` });
     return c;
   }
   function fmtMiles(mi) { return mi === 0.25 ? "¼ mile" : mi === 0.5 ? "½ mile" : mi === 1 ? "1 mile" : `${+mi.toFixed(2)} miles`; }
 
   // ---------- data helpers ----------
-  const COLS = "plan_id,name,address,borough,zip,plan_type,status,construction,units_residential,units_parking,units_commercial,units_storage,accepted_date,submitted_date,docs_posted,amendments_listed,latest_amendment_no,lat,lng,price_current,price_initial,sponsor";
+  const COLS = "plan_id,name,address,borough,zip,plan_type,status,construction,units_residential,units_parking,units_commercial,units_storage,accepted_date,submitted_date,docs_posted,amendments_listed,latest_amendment_no,lat,lng,price_current,price_initial,sponsor,category";
   const inList = (ids) => `(${ids.map((id) => `"${id}"`).join(",")})`;
   const chunk = (a, n) => { const out = []; for (let i = 0; i < a.length; i += n) out.push(a.slice(i, i + n)); return out; };
   // PostgREST stops at 1,000 rows; page through.
@@ -491,7 +508,7 @@
     } else if (spec.since) f.push(`or=(accepted_date.gte.${spec.since.slice(0, 4)}-01-01,accepted_date.is.null)`); // a plan is accepted after it's filed
     const inDates = (p) => !(spec.since || spec.until) || (spec.dateOn !== "filed" && acceptedIn(p, win)) || (spec.dateOn !== "accepted" && filedIn(p, win));
     const keep = (p) => isCondo(p) && (spec.units?.max == null || (p.units_residential >= 1 && p.units_residential <= spec.units.max)) && (spec.units?.min == null || (p.units_residential ?? -1) >= spec.units.min)
-      && (!spec.construction || p.construction === spec.construction) && (!spec.borough || p.borough === spec.borough) && inDates(p);
+      && (!spec.construction || p.construction === spec.construction) && (!spec.borough || p.borough === spec.borough) && inDates(p) && inCategories(p, spec.categories);
     if (plans) plans = plans.filter(keep);
 
     // 2. MIH: plans whose pages mention MIH / Inclusionary Housing, then only those whose pages put affordable units in the building.
@@ -608,11 +625,11 @@
     res.rows.sort(spec.near ? (a, b) => a.distance - b.distance : (a, b) => String(b.accepted_date || "").localeCompare(String(a.accepted_date || "")));
     if (spec.mih) {
       const ex = res.excludedIds || [];
-      res.excluded = ex.length ? (await byIds(io, "plans", "plan_id,name,address,borough,plan_type", ex)).map((p) => ({ ...p, why: why.get(p.plan_id) })) : [];
+      res.excluded = ex.length ? (await byIds(io, "plans", "plan_id,name,address,borough,plan_type,category", ex)).filter((p) => inCategories(p, spec.categories)).map((p) => ({ ...p, why: why.get(p.plan_id) })) : [];
       res.excluded.sort((a, b) => String(a.name).localeCompare(String(b.name)));
     }
     if (spec.parking && res.mentionIds?.length) {
-      res.mentions = (await byIds(io, "plans", "plan_id,name,address,borough,plan_type,units_residential", res.mentionIds)).filter(isCondo).map((p) => ({ ...p, why: why.get(p.plan_id) }));
+      res.mentions = (await byIds(io, "plans", "plan_id,name,address,borough,plan_type,units_residential,category", res.mentionIds)).filter((p) => isCondo(p) && inCategories(p, spec.categories)).map((p) => ({ ...p, why: why.get(p.plan_id) }));
       res.mentions.sort((a, b) => String(a.name).localeCompare(String(b.name)));
     }
     // Related filings: a record that points at another plan ("*SEE CD160304*") is the same building filed again,
@@ -724,5 +741,5 @@
     return res;
   }
 
-  return { cleanName, headerMode, areaMode, areaOf, parkingOffer, mihAssertion, excerpt, seeRef, parse, run, chipsOf, facetsOf, facetKey, fmtMiles, parseScheduleA, classifyMIH, milesBetween, resolveAnchor, addressPatterns, money, restAll, titleCase, sizeBand, LIVE };
+  return { categoriesOf, CATEGORY_RE, CATEGORY_LABEL, cleanName, headerMode, areaMode, areaOf, parkingOffer, mihAssertion, excerpt, seeRef, parse, run, chipsOf, facetsOf, facetKey, fmtMiles, parseScheduleA, classifyMIH, milesBetween, resolveAnchor, addressPatterns, money, restAll, titleCase, sizeBand, LIVE };
 });
