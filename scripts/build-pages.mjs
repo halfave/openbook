@@ -576,6 +576,65 @@ for (const r of await all("schedule_b?select=plan_id,line_items&status=eq.ok")) 
 const perYear = (v) => `$${Math.round(v).toLocaleString("en-US")}`;
 const median = (a) => { const s = [...a].sort((x, y) => x - y), m = s.length >> 1; return s.length ? (s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2) : null; };
 
+// ---------- budget blog posts ----------
+// The common charges and first-year budget posts quote the same recent plans as common-charges.html (`charged`),
+// plus each budget's expense lines, the management line above, and the reserve and managing agent facts.
+{
+  const items = new Map((await all("schedule_b?select=plan_id,line_items&status=eq.ok")).map((r) => [r.plan_id, r.line_items || []]));
+  const ids = new Set(charged.map((p) => p.plan_id));
+  const pct = (v) => `${Math.round(100 * v)}%`;
+  const ten = (v) => usd(Math.round(v / 10) * 10), hundred = (v) => usd(Math.round(v / 100) * 100);
+  const big = (v) => v >= 1e6 ? `$${(v / 1e6).toFixed(1).replace(/\.0$/, "")}M` : usd(Math.round(v / 1000) * 1000);
+  const BANDS = [[2, 6, "2–6"], [7, 12, "7–12"], [13, 30, "13–30"], [31, 100, "31–100"], [101, Infinity, "101+"]];
+  const bands = BANDS.map(([a, b, label]) => ({ label, ps: charged.filter((p) => p.units_residential >= a && p.units_residential <= b) })).filter((x) => x.ps.length >= 5);
+  const boros = [...count(charged, (p) => boro(p.borough))].filter(([, c]) => c >= 10).sort((a, b) => b[1] - a[1]).map(([b]) => ({ label: b, ps: charged.filter((p) => boro(p.borough) === b) }));
+  const perMonth = (ps) => median(ps.map((p) => p.perUnit));
+  const lowest = [...bands].sort((a, b) => perMonth(a.ps) - perMonth(b.ps))[0];
+  // Expense lines by kind, first match wins; totals and income lines are skipped. Shares are of total expenses, where the plan has the line.
+  const KINDS = [["mgmt", "Management fee", /management|managing agent/], ["elevator", "Elevator (where present)", /elevator/], ["insurance", "Insurance", /insurance/],
+    ["water", "Water &amp; sewer", /water|sewer/], ["staff", "Staff &amp; cleaning (where present)", /payroll|salar|wage|labor|janitor|clean|porter|superintendent|doorm|staff/],
+    ["reserve", "Reserve / contingency", /reserve|contingenc/], ["utilities", "Utilities (electric, gas, heat)", /electric|gas|heat|fuel|oil|utilit|cooling/],
+    ["repairs", "Repairs &amp; maintenance", /repair|mainten/], ["legal", "Legal &amp; accounting", /legal|audit|account|professional/]];
+  const shares = Object.fromEntries(KINDS.map(([k]) => [k, []]));
+  for (const p of charged) {
+    const acc = {};
+    for (const it of items.get(p.plan_id) || []) {
+      const name = String(it.item || "").toLowerCase().trim();
+      if (!/expense/i.test(it.section || "") || /^total/.test(name) || !(Number(it.amount) > 0)) continue;
+      const k = KINDS.find(([key, , re]) => re.test(name) && !(key === "water" && /heat|hot water/.test(name)));
+      if (k) acc[k[0]] = (acc[k[0]] || 0) + Number(it.amount);
+    }
+    for (const k in acc) shares[k].push(acc[k] / p.annual);
+  }
+  const share = (k) => pct(median(shares[k]) || 0);
+  const fees = charged.filter((p) => mgmtFee.has(p.plan_id)).map((p) => mgmtFee.get(p.plan_id).perUnit);
+  const feeTotals = charged.filter((p) => mgmtFee.has(p.plan_id)).map((p) => mgmtFee.get(p.plan_id).perUnit * p.units_residential);
+  const managers = (await all("facts?select=plan_id,value_text,value_num&field=eq.managing_agent&value_text=not.is.null")).filter((f) => ids.has(f.plan_id));
+  const bySponsor = managers.filter((f) => /sponsor/i.test(f.value_text));
+  const reserves = (await all("facts?select=plan_id,value_num&field=eq.reserve_fund&value_num=not.is.null")).filter((f) => ids.has(f.plan_id)).map((f) => Number(f.value_num));
+  Object.assign(STATS, {
+    bud_n: n(charged.length), bud_since: day(ccSince), bud_parsed: n(Math.floor(items.size / 100) * 100),
+    bud_month: ten(perMonth(charged)), bud_year: hundred(12 * perMonth(charged)),
+    bud_low_band: lowest.label, bud_low_month: ten(perMonth(lowest.ps)),
+    bud_boro_months: boros.map((b) => `${b.label} ${ten(perMonth(b.ps))}`).join(", "),
+    bud_boro_years: boros.map((b) => `${b.label} ${hundred(12 * perMonth(b.ps))}`).join(", "),
+    bud_elevator: share("elevator"), bud_staff: share("staff"), bud_insurance: share("insurance"), bud_water: share("water"), bud_reserve: share("reserve"), bud_mgmt: share("mgmt"),
+    bud_fee: hundred(median(feeTotals)), bud_fee_unit: ten(median(fees)),
+    bud_sponsor_mgr: pct(bySponsor.length / managers.length), bud_sponsor_nofee: n(bySponsor.filter((f) => !(f.value_num > 0)).length), bud_sponsor_n: n(bySponsor.length),
+    bud_reserve_median: hundred(median(reserves)), bud_reserve_none: pct(reserves.filter((v) => v === 0).length / reserves.length),
+  });
+  const row = (cells) => `<tr>${cells.map((c) => `<td>${c}</td>`).join("")}</tr>`;
+  const table = (head, rows) => `<div class="tscroll"><table><thead><tr>${head.map((h) => `<th>${h}</th>`).join("")}</tr></thead><tbody>${rows.join("")}</tbody></table></div>`;
+  TABLES.cc_benchmarks = () => table(["Group", "Per unit / month", "Plans"], [
+    row(["All NYC plans", ten(perMonth(charged)), n(charged.length)]),
+    ...boros.map((b) => row([esc(b.label), ten(perMonth(b.ps)), n(b.ps.length)])),
+    ...bands.map((b) => row([`${b.label} units`, ten(perMonth(b.ps)), n(b.ps.length)]))]);
+  TABLES.budget_by_size = () => table(["Building size (residential units)", "Median per unit / year", "Median total budget", "Plans"],
+    bands.map((b) => row([b.label, hundred(12 * perMonth(b.ps)), big(median(b.ps.map((p) => p.annual))), n(b.ps.length)])));
+  TABLES.budget_shares = () => table(["Line item", "Median share of budget", "Plans with the line"],
+    KINDS.filter(([k]) => shares[k].length).sort((a, b) => median(shares[b[0]]) - median(shares[a[0]])).map(([k, label]) => row([label, share(k), n(shares[k].length)])));
+}
+
 // Gold, silver and bronze trophies for the top three; plain numbers after that.
 const TROPHY = `<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4h8v5a4 4 0 0 1-8 0z" fill="currentColor"/><path d="M8 6H5v1a3 3 0 0 0 3 3M16 6h3v1a3 3 0 0 1-3 3M12 13v4M8 20h8M9 17h6"/></svg>`;
 const rank = (i) => i < 3 ? `<span class="rank r${i + 1}" title="${["1st", "2nd", "3rd"][i]}"><span class="vh">${i + 1}.</span>${TROPHY}</span>` : `<span class="rank">${i + 1}</span>`;
