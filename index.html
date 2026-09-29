@@ -165,6 +165,7 @@ a.plink{text-decoration:none}
 .stat-num{margin:0;font:700 clamp(30px,5vw,44px)/1.05 var(--display);font-variant-numeric:tabular-nums}
 .stat-num small{display:block;margin-top:4px;font:400 14px/1.4 var(--sans);color:var(--muted)}
 .stat-gap{margin:0;padding:8px 12px;background:var(--warn-bg);color:var(--warn);border-left:3px solid var(--warn);font-size:13.5px}
+table.cmp tr.self td{background:var(--chip);border-bottom-color:var(--rule-strong)}
 table.cmp tr.grp td{cursor:pointer}
 table.cmp tr.grp:hover td{background:var(--chip)}
 .grp-t{background:none;border:0;padding:0;font:600 14px/1.3 var(--sans);color:var(--ink);cursor:pointer;text-align:left}
@@ -634,6 +635,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
           <span class="chip"><b>${r.units_residential ?? "?"}</b> units</span>
           ${r.units_parking == null ? `<span class="chip pkchip" title="The AG record doesn’t give a parking-unit count">Parking units: not on record</span>` : `<span class="chip pkchip" title="Parking units in the AG record"><b>${r.units_parking}</b> parking unit${r.units_parking === 1 ? "" : "s"}</span>`}
           ${r.accepted_date ? `<span class="chip">Accepted ${esc(date(r.accepted_date))}</span>` : ""}
+          ${!r.accepted_date || filedToo(current || {}) ? filedChip(r) : ""}
           ${idx ? `<span class="chip">Full text searchable</span>` : `<span class="chip">Record only</span>`}
           ${r.hits ? `<span class="chip">${r.hits} matching pages</span>` : ""}
         </div>
@@ -646,6 +648,10 @@ table.pivot th[scope="row"]{white-space:nowrap}
         </div>
       </div>`;
     return li;
+  }
+  function filedChip(r) {
+    const d = filedDate(r), y = filedYear(r.plan_id);
+    return d || y ? `<span class="chip">Filed ${esc(d ? date(d) : String(y))}${r.status === "PENDING" ? " · pending" : ""}</span>` : "";
   }
   // Quick facts from the AG record, for cards without passages (a plain filter search).
   function factsHtml(r) {
@@ -735,7 +741,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
   // Freeform question -> { q, borough, zips, minUnits, maxUnits, minParking, planId, address, view, focus, chips[] }
   // Neighborhoods we can filter precisely use ZIP codes; the rest narrow to the borough only, and the chip says so.
   const NBHD_ZIPS = {
-    "carroll gardens": ["11231"], "red hook": ["11231"], "park slope": ["11215", "11217"], "williamsburg": ["11211", "11249"],
+    "carroll gardens": ["11231"], "red hook": ["11231"], "gowanus": ["11215", "11217", "11231"], "cobble hill": ["11201", "11231"], "boerum hill": ["11201", "11217"],"park slope": ["11215", "11217"], "williamsburg": ["11211", "11249"],
     "greenpoint": ["11222"], "dumbo": ["11201"], "long island city": ["11101", "11109"], "lic": ["11101", "11109"],
     "astoria": ["11102", "11103", "11105", "11106"], "flushing": ["11354", "11355"], "tribeca": ["10007", "10013"],
     "chelsea": ["10001", "10011"], "harlem": ["10026", "10027", "10030", "10037", "10039"],
@@ -773,6 +779,8 @@ table.pivot th[scope="row"]{white-space:nowrap}
         if (!name.length && !m[2] && m[4] !== "broadway" && m[4] !== "bowery") return null;
         return [...(m[2] ? [alts(DIRS, m[2])] : []), ...name.map(nameAlts), NOSFX.includes(m[4]) ? [m[4]] : alts(SUFFIX, m[4]), ...(m[5] ? [alts(DIRS, m[5])] : [])];
       }],
+    // 53 West 53rd, 220 E 12th: a direction and a numbered street with no suffix is a Street
+    [new RegExp(`${ANUM}\\s+(${ADIR})\\.?\\s+(\\d+(?:st|nd|rd|th))\\b`), (m) => [alts(DIRS, m[2]), nameAlts(m[3]), alts(SUFFIX, "street")]],
   ];
   function parseAddress(s) {
     for (const [re, slotsOf] of ADDR_RES) {
@@ -824,7 +832,8 @@ table.pivot th[scope="row"]{white-space:nowrap}
 
   function parseQuestion(input) {
     let s = " " + String(input || "").toLowerCase().replace(/[’']/g, "'").replace(/\s+/g, " ") + " ";
-    const out = { q: "", borough: null, zips: null, minUnits: null, maxUnits: null, minParking: null, planId: null, address: null, view: null, focus: null, chips: [], notes: [] };
+    const said = s;
+    const out = { q: "", borough: null, zips: null, minUnits: null, maxUnits: null, minParking: null, planId: null, address: null, view: null, focus: null, chips: [], notes: [], dateOn: dateOnOf(s) };
     if (/\b(sold|sells?|selling)\b/.test(s)) out.notes.push("“Sold” was set aside. A plan shows what was offered, not what sold.");
     const chip = (k, label) => out.chips.push({ k, label });
     const W = { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, eleven: 11, twelve: 12, fifteen: 15, twenty: 20, thirty: 30, forty: 40, fifty: 50, hundred: 100 };
@@ -903,9 +912,13 @@ table.pivot th[scope="row"]{white-space:nowrap}
     for (const [re, f] of DATES) {
       const x = s.match(re); if (!x) continue;
       [out.from, out.to] = f(x); cut(x[0]);
-      chip("dates", `Accepted ${[out.from && "from " + date(out.from), out.to && "to " + date(out.to)].filter(Boolean).join(" ")}`);
+      chip("dates", `${DATE_WORD[out.dateOn]} ${[out.from && "from " + date(out.from), out.to && "to " + date(out.to)].filter(Boolean).join(" ")}`);
       break;
     }
+
+    // "new condos", "new construction": the AG record's construction type (not "conversions vs new construction", which splits by it)
+    const nc = out.stat?.group !== "construction" && s.match(/\b(?:new(?:ly built)? (?:condos?|condominiums?|buildings?|construction|developments?)|newly built)\b/);
+    if (nc) { out.construction = "NEW"; chip("construction", "New construction"); cut(nc[0]); }
 
     // boroughs + common neighborhoods
     const B = [
@@ -921,16 +934,23 @@ table.pivot th[scope="row"]{white-space:nowrap}
       BORO_WORDS.forEach(([, re]) => cut(new RegExp(re.source, "g")));
     }
     for (const [boro, re] of out.boroughs ? [] : B) {
-      const mm = s.match(re);
-      if (!mm) continue;
-      const name = mm[0].trim();
+      // "Carroll Gardens and Gowanus": every neighborhood named is the area, not just the first.
+      const all = s.match(new RegExp(re.source, "g"));
+      if (!all) continue;
+      const isBoro = (x) => x === boro.toLowerCase() || x === "the bronx" || x === "bk";
+      const found = dedupe(all.map((x) => x.trim()));
+      const names = found.some((x) => !isBoro(x)) ? found.filter((x) => !isBoro(x)) : found.slice(0, 1);
+      const label = names.map(titleCase).join(" + ");
       out.borough = boro;
-      if (NBHD_ZIPS[name]) {
-        out.zips = NBHD_ZIPS[name]; chip("area", `${titleCase(name)} · ZIP ${out.zips.join(", ")}`);
-        out.notes.push(`${titleCase(name)} is approximated by ZIP ${out.zips.join(", ")}. ZIP codes don’t follow neighborhood lines, so nearby blocks are included.`);
-      } else if (name === boro.toLowerCase() || name === "the bronx") chip("area", titleCase(boro));
-      else { chip("area", `${titleCase(boro)} (for ${titleCase(name)})`); out.notes.push(`The Condo Book Project can’t filter by ${titleCase(name)} yet, so this covers all of ${titleCase(boro)}.`); }
-      cut(re); break;
+      if (names.every((x) => NBHD_ZIPS[x])) {
+        out.zips = dedupe(names.flatMap((x) => NBHD_ZIPS[x])); chip("area", `${label} · ZIP ${out.zips.join(", ")}`);
+        out.notes.push(`${label} ${names.length > 1 ? "are" : "is"} approximated by ZIP ${out.zips.join(", ")}. ZIP codes don’t follow neighborhood lines, so nearby blocks are included.`);
+      } else if (isBoro(names[0])) chip("area", titleCase(boro));
+      else {
+        const missing = names.filter((x) => !NBHD_ZIPS[x]).map(titleCase).join(" and ");
+        chip("area", `${titleCase(boro)} (for ${label})`); out.notes.push(`The Condo Book Project can’t filter by ${missing} yet, so this covers all of ${titleCase(boro)}.`);
+      }
+      cut(new RegExp(re.source, "g")); break;
     }
 
     // parking count / presence
@@ -972,6 +992,13 @@ table.pivot th[scope="row"]{white-space:nowrap}
     // Words left over ("pet policy at 80 Vernon Avenue") become passages inside the dossier.
     if (out.planId || out.address) {
       out.stat = null;
+      // "compare pricing of 501 9th Ave with new condos of 100–150 units": the named building first, then the group the filters pick.
+      const group = out.minUnits != null || out.maxUnits != null || out.minParking != null || out.from || out.to || out.construction || out.zips
+        || (out.borough && /\b(all|other|others|theirs|them)\b/.test(said));
+      if (group && /\b(compar\w*|vs\.?|versus|against|pric(e|es|ing)|theirs|others?|peers?|similar)\b/.test(said)) {
+        out.peers = true; out.view = "compare";
+        return out;
+      }
       if (/\bamendments?\b/.test(s)) out.amendments = true;
       const rest = s.replace(/[^a-z0-9\-\s]/g, " ").split(/\s+/).filter((w) => w.length > 2 && !DOSSIER_STOP.has(w));
       if (rest.length && !out.focus) { out.topic = dedupe(rest).join(" "); chip("topic", `Passages: ${out.topic}`); }
@@ -985,7 +1012,8 @@ table.pivot th[scope="row"]{white-space:nowrap}
     const STOP = new Set(("a an the and of in on at to for from by with without that which who whose where what show me see find list any all some " +
       "condo condos condominium condominiums building buildings plan plans offering offerings project projects development developments " +
       "nyc new york city ny has have having had include includes including mention mentions mentioning offer offers offered there is are " +
-      "can be only i want looking look search give please sale for-sale available jump open sold sell sells selling get total").split(" "));
+      "can be only i want looking look search give please sale for-sale available jump open sold sell sells selling get total " +
+      "filed submitted accepted approved").split(" ")); // which date the window means, read above
     const words = s.replace(/[^a-z0-9\-\s]/g, " ").split(/\s+/).filter((w, i, a) => w && (w.length > 1 || /\d/.test(w) || a[i - 1] === "schedule") && !STOP.has(w));
     const ws = dedupe(words); while (ws[0] === "or") ws.shift(); while (ws[ws.length - 1] === "or") ws.pop();
     out.q = [...quoted, ...ws].join(" ").replace(/\bor\b/g, "OR").trim();
@@ -1004,6 +1032,53 @@ table.pivot th[scope="row"]{white-space:nowrap}
     QUEENS: "QUEENS", FLUSHING: "QUEENS", BRONX: "BRONX", "STATEN ISLAND": "STATEN ISLAND", RICHMOND: "STATEN ISLAND" };
   const PLAN_COLS ="plan_id,name,address,borough,zip,units_residential,units_parking,accepted_date,docs_posted,amendments_listed,latest_amendment_no,ag_url";
   const inList = (ids) => `(${ids.map((id) => `"${id}"`).join(",")})`;
+
+  // ---------- dates: filed, accepted, or either ----------
+  // A date with no "filed" or "accepted" matches a plan filed or accepted in it.
+  const dateOnOf = (t) => {
+    const f = /\b(filed|filings?|submitted|submissions?)\b/i.test(t), a = /\b(accepted|approved|acceptances?|approvals?)\b/i.test(t);
+    return f === a ? "either" : f ? "filed" : "accepted";
+  };
+  const DATE_WORD = { either: "Filed or accepted", filed: "Filed", accepted: "Accepted" };
+  // The plan ID carries the year a plan was filed (CD24… in 2024). The AG's submitted date is the filing date only while
+  // a plan is pending; once accepted it tracks later amendments.
+  const filedYear = (id) => { const m = /^[A-Z]{2}(\d\d)/.exec(id || ""); return m ? (+m[1] > 60 ? 1900 : 2000) + +m[1] : null; };
+  const filedDate = (r) => (r.status === "PENDING" && r.submitted_date && +r.submitted_date.slice(0, 4) === filedYear(r.plan_id) ? r.submitted_date : null);
+  function filedIn(r, P) {
+    const d = filedDate(r);
+    if (d) return (!P.from || d >= P.from) && (!P.to || d <= P.to);
+    const y = filedYear(r.plan_id);
+    // Only the year is known, so the whole year must be in the window.
+    return y != null && (!P.from || `${y}-01-01` >= P.from) && (!P.to || `${y}-12-31` <= P.to);
+  }
+  const filedToo = (P) => !!(P.from || P.to) && (P.dateOn || "accepted") !== "accepted";
+  async function allPlans(args, select) {
+    const out = [];
+    for (let o = 0; o < STAT_CAP; o += 1000) {
+      const page = await rest(`rpc/search_plans_v2?${select ? `select=${select}&` : ""}offset=${o}`, { ...args, p_limit: STAT_CAP }, 600000);
+      out.push(...page); if (page.length < 1000) break;
+    }
+    return out;
+  }
+  // search_plans_v2 filters by acceptance date only, so plans filed in the window come from two more reads: the pending plans
+  // (a few hundred in all), and plans accepted in the ten years after it (the longest wait on record).
+  async function searchPlans(args, P, { all = false, select } = {}) {
+    if (!filedToo(P)) return all ? allPlans(args, select) : rpc("search_plans_v2", args);
+    const open = { ...args, p_accepted_from: null, p_accepted_to: null };
+    const later = P.dateOn === "filed" || P.to;
+    const [inWin, pending, accepted] = await Promise.all([
+      P.dateOn === "either" ? (all ? allPlans(args, select) : rpc("search_plans_v2", args)) : [],
+      !args.p_status || args.p_status.includes("PENDING") ? allPlans({ ...open, p_status: ["PENDING"] }, select) : [],
+      later ? allPlans({ ...open, p_accepted_from: P.from ? P.from.slice(0, 4) + "-01-01" : null, p_accepted_to: P.to ? `${+P.to.slice(0, 4) + 10}-12-31` : null }, select) : [],
+    ]);
+    const seen = new Set(), rows = [];
+    for (const r of [...inWin, ...pending.concat(accepted).filter((r) => filedIn(r, P))]) if (!seen.has(r.plan_id)) { seen.add(r.plan_id); rows.push(r); }
+    const when = (r) => r.accepted_date || filedDate(r) || `${filedYear(r.plan_id)}-01-01`;
+    if (args.q) rows.sort((a, b) => (b.hits || 0) - (a.hits || 0));
+    else if (args.p_sort === "units_asc" || args.p_sort === "units_desc") rows.sort((a, b) => ((a.units_residential ?? 0) - (b.units_residential ?? 0)) * (args.p_sort === "units_asc" ? 1 : -1));
+    else rows.sort((a, b) => when(b).localeCompare(when(a)));
+    return all ? rows : rows.slice(0, args.p_limit || 60);
+  }
   // Plan records straight from the plans table, shaped like search results.
   async function recordRows(filter) {
     const rows = await rest(`plans?select=${PLAN_COLS}&${filter}&order=accepted_date.desc.nullslast&limit=60`);
@@ -1040,10 +1115,30 @@ table.pivot th[scope="row"]{white-space:nowrap}
     P.matchNote = notes.join(" ") || null;
     return rows;
   }
+  // One named building, then the plans the other filters match. The named building is marked `self` and listed first.
+  async function peerRows(P) {
+    const G = { ...P, peers: false, planId: null, address: null };
+    const [mine, group] = await Promise.all([P.planId ? recordRows(`plan_id=eq.${encodeURIComponent(P.planId)}`) : addressRows(P.address), fetchRows(G)]);
+    const inBoro = P.borough ? mine.filter((r) => BORO_OF[String(r.borough || "").trim().toUpperCase()] === P.borough) : [];
+    const self = (inBoro.length ? inBoro : mine)[0];
+    const named = P.planId || titleCase(`${P.address.num} ${P.address.street}`);
+    const others = self ? group.filter((r) => r.plan_id !== self.plan_id) : group;
+    const notes = [];
+    if (!self) notes.push(`No plan record found at ${named}, so only the group is shown.`);
+    else {
+      if (mine.length > 1) notes.push(`${mine.length} plan records match ${named}; the newest (${self.plan_id}) is compared. Type its plan ID to pick another.`);
+      if (group.length && !group.some((r) => r.plan_id === self.plan_id)) notes.push(`${named} itself doesn’t match the other filters; it’s shown for comparison.`);
+    }
+    notes.push(group.length === 60 ? `Compared with the 60 newest plans that match the filters${others.length < 60 ? ` (${others.length} besides this one)` : ""}.` : `${others.length} other plan${others.length === 1 ? "" : "s"} match the filters.`);
+    if (G.matchNote) notes.push(G.matchNote);
+    P.matchNote = P.peerNote = notes.join(" ");
+    return self ? [{ ...self, self: true }, ...others] : others;
+  }
   async function fetchRows(P) {
     P.matchNote = null;
     if (P.compare) return compareRows(P);
     if (P.ai) return aiRows(P);
+    if (P.peers && (P.planId || P.address)) return peerRows(P);
     if (P.planId) return recordRows(`plan_id=eq.${encodeURIComponent(P.planId)}`);
     if (P.address) {
       const rows = await addressRows(P.address);
@@ -1056,16 +1151,19 @@ table.pivot th[scope="row"]{white-space:nowrap}
       P.matchNote = notes.join(" ") || null;
       return hits;
     }
-    if (P.zips && !P.q && !P.manager && !P.counsel) {
+    if (P.zips && !P.q && !P.manager && !P.counsel && !filedToo(P)) {
       const f = [`zip=in.(${P.zips.join(",")})`];
       if (P.minUnits != null) f.push(`units_residential=gte.${P.minUnits}`);
       if (P.maxUnits != null) f.push(`units_residential=lte.${P.maxUnits}`);
       if (P.minParking != null) f.push(`units_parking=gte.${P.minParking}`);
       if (P.from) f.push(`accepted_date=gte.${P.from}`);
       if (P.to) f.push(`accepted_date=lte.${P.to}`);
+      if (P.construction) f.push(`construction=eq.${P.construction}`);
       return recordRows(f.join("&"));
     }
     const args = { q: P.q || null, p_borough: P.borough, ...(P.boroughs ? { p_boroughs: P.boroughs } : {}), p_min_units: P.minUnits, p_max_units: P.maxUnits, p_min_parking: P.minParking, p_accepted_from: P.from || null, p_accepted_to: P.to || null, p_limit: P.zips ? 400 : 60 };
+    if (P.zips && filedToo(P)) args.p_zips = P.zips;
+    if (P.construction) args.p_construction = [P.construction];
     if (P.sort) args.p_sort = P.sort;
     if (P.manager) args.p_managing_agent = P.manager;
     if (P.counsel) args.p_counsel = P.counsel;
@@ -1074,8 +1172,8 @@ table.pivot th[scope="row"]{white-space:nowrap}
     const phraseable = words.length >= 2 && !/"|\bOR\b/.test(P.q);
     // A phrase check can time out on very common words; then we only claim "all words on one page".
     const [loose, phrase] = await Promise.all([
-      rpc("search_plans_v2", args),
-      phraseable ? rpc("search_plans_v2", { ...args, q: `"${P.q}"` }).catch(() => null) : Promise.resolve(null),
+      searchPlans(args, P),
+      phraseable ? searchPlans({ ...args, q: `"${P.q}"` }, P).catch(() => null) : Promise.resolve(null),
     ]);
     let rows;
     if (phrase) {
@@ -1168,6 +1266,19 @@ table.pivot th[scope="row"]{white-space:nowrap}
     runP(P);
   });
 
+  // "New condos this year": the AG accepts a plan months after it is filed, so a date window with no accepted plan
+  // shows the plans filed in that window that are still pending.
+  function wantsFiled(P) {
+    return !!(P.from || P.to) && !filedToo(P) && !P.stat && !P.planId && !P.address && !P.compare && !P.status && !P.manager && !P.counsel && !P.sponsor
+      && !P.topicRequired && !(P.q && !P.ai);
+  }
+  async function filedRows(P) {
+    const rows = await rpc("search_plans_v2", { q: null, p_borough: P.borough, p_zips: P.zips, p_min_units: P.minUnits, p_max_units: P.maxUnits,
+      p_min_parking: P.minParking, p_construction: P.construction ? [P.construction] : null, p_status: ["PENDING"], p_limit: 400 });
+    return rows.filter((r) => r.submitted_date && (!P.from || r.submitted_date >= P.from) && (!P.to || r.submitted_date <= P.to))
+      .sort((a, b) => b.submitted_date.localeCompare(a.submitted_date)).slice(0, 60);
+  }
+
   async function runP(P) {
     current = P;
     drawRing(null); $("facets").hidden = true; $("facets").innerHTML = "";
@@ -1177,8 +1288,14 @@ table.pivot th[scope="row"]{white-space:nowrap}
     document.body.classList.remove("answer", "stat", "mention", "plain"); $("answer").hidden = true;
     $("status").textContent = "Searching…"; $("results").innerHTML = ""; $("rview").innerHTML = ""; $("detail").innerHTML = ""; $("views").hidden = true;
     try {
-      const [rows] = await Promise.all([fetchRows(P), ensureMap()]);
+      let [rows] = await Promise.all([fetchRows(P), ensureMap()]);
       if (current !== P) return;
+      P.filedOnly = false;
+      if (!rows.length && wantsFiled(P)) {
+        rows = await filedRows(P);
+        if (current !== P) return;
+        P.filedOnly = rows.length > 0;
+      }
       lastRows = rows;
       // A plan ID names one building, so a borough typed with it isn't a filter.
       if (P.planId && P.borough) {
@@ -1202,8 +1319,9 @@ table.pivot th[scope="row"]{white-space:nowrap}
       else if (P.stat) renderStat(P);
       else if (P.aiAnswer) renderExtract(P.aiAnswer);
       const noun = P.address || P.planId || P.compare ? "Building" : "Matching Building";
-      $("rtitle").textContent = !rows.length ? (P.address ? "No Matching Record Found Here" : "No Plans Found") : rows.length === 60 ? (P.sort ? `60 ${P.sort === "units_asc" ? "Smallest" : "Largest"} Buildings` : P.q ? `Top 60 ${noun}s` : "60 Newest Buildings") : `${rows.length} ${noun}${rows.length === 1 ? "" : "s"}`;
-      $("status").textContent = rows.length ? (P.sort ? (P.sort === "units_asc" ? "fewest units first" : "most units first") : P.q ? "ranked by matching pages" : "newest first")
+      $("rtitle").textContent = P.filedOnly ? `${rows.length} Filed, Not Yet Accepted` : !rows.length ? (P.address ? "No Matching Record Found Here" : "No Plans Found") : rows.length === 60 && !rows[0].self ? (P.sort ? `60 ${P.sort === "units_asc" ? "Smallest" : "Largest"} Buildings` : P.q ? `Top 60 ${noun}s` : "60 Newest Buildings") : `${rows.length} ${noun}${rows.length === 1 ? "" : "s"}`;
+      $("status").textContent = P.filedOnly ? "None accepted in these dates. These were filed in them and are pending with the AG, newest first."
+        : rows.length ? (P.sort ? (P.sort === "units_asc" ? "fewest units first" : "most units first") : P.q ? "ranked by matching pages" : rows[0]?.self ? "named building first, then newest" : "newest first")
         : P.address ? "That doesn’t mean no plan was filed: this site may not list every plan, or the AG may spell the address differently. Try the building name or plan ID." : "Try fewer words, or remove a filter above.";
       const where = P.borough && !P.zips && !P.address ? ` in ${titleCase(P.borough)}` : "";
       if (where) $("rtitle").textContent += where;
@@ -1405,17 +1523,28 @@ table.pivot th[scope="row"]{white-space:nowrap}
       const data = rows.length ? await rest(`plans?select=${sel}&plan_id=in.${inList(rows.map((r) => r.plan_id))}`, null, 600000) : [];
       if (tok !== viewToken) return;
       const by = new Map(data.map((d) => [d.plan_id, d]));
-      const list = [...rows].sort((a, b) => String(b.accepted_date || "").localeCompare(String(a.accepted_date || "")));
-      box.innerHTML = `<p class="vnote">Total offering prices as recorded by the NY Attorney General: the sum of every unit at the plan’s prices, not sale prices. Unit-by-unit Schedule A prices and $/sf are not extracted yet.</p>
-        <div class="tscroll"><table class="cmp"><thead><tr><th>Building</th><th>Accepted</th><th class="n">Units</th><th class="n">Initial total</th><th class="n">Current</th></tr></thead><tbody>` +
+      // The named building (a "compare X with these" search) stays on top; the rest newest first.
+      const list = [...rows].sort((a, b) => (b.self === true) - (a.self === true) || String(b.accepted_date || "").localeCompare(String(a.accepted_date || "")));
+      // Per unit: the latest recorded total ÷ residential units, skipped when it can't be a whole plan's total.
+      const each = (r) => { const d = by.get(r.plan_id) || {}; const v = rawPerUnit(money(d.cur) || money(d.init), r.units_residential); return v != null && v >= PER_UNIT_MIN ? v : null; };
+      const self = list.find((r) => r.self), P = current;
+      let lead = "";
+      if (self && P?.peers) {
+        const mine = each(self), theirs = list.filter((r) => !r.self).map(each).filter((v) => v != null), med = median(theirs);
+        lead = `<p class="vnote">${esc(P.peerNote || "")} ${mine != null && med != null
+          ? `${esc(self.name || self.plan_id)}: ${fmtMoney(mine)} per unit in the AG total. The other ${theirs.length} with a recorded total: median ${fmtMoney(med)} per unit; ${theirs.filter((v) => v < mine).length} of them are lower and ${theirs.filter((v) => v > mine).length} higher.`
+          : mine == null ? `The AG record has no usable total for ${esc(self.name || self.plan_id)}, so there is nothing to compare per unit.` : ""}</p>`;
+      }
+      box.innerHTML = lead + `<p class="vnote">Total offering prices as recorded by the NY Attorney General: the sum of every unit at the plan’s prices, not sale prices. Per unit is the latest total divided by residential units. Unit-by-unit Schedule A prices and $/sf are not extracted yet.</p>
+        <div class="tscroll"><table class="cmp"><thead><tr><th>Building</th><th>Accepted</th><th class="n">Units</th><th class="n">Initial total</th><th class="n">Current</th><th class="n">Per unit</th></tr></thead><tbody>` +
         list.map((r) => { const d = by.get(r.plan_id) || {}; const i = money(d.init), c = money(d.cur);
-          return `<tr><td>${bLink(r)}<span class="pid">${esc(r.plan_id)}${d.zip ? ` · ${esc(d.zip)}` : ""}</span></td><td class="m">${esc(date(r.accepted_date))}</td><td class="n">${r.units_residential ?? "—"}<span class="sub2">${r.units_parking ? `+${r.units_parking} pkg` : ""}</span></td><td class="n">${fmtMoney(i)}</td><td class="n">${c && c !== i ? fmtMoney(c) : "—"}</td></tr>`; }).join("") +
+          return `<tr${r.self ? ` class="self"` : ""}><td>${bLink(r)}<span class="pid">${esc(r.plan_id)}${d.zip ? ` · ${esc(d.zip)}` : ""}</span></td><td class="m">${esc(date(r.accepted_date))}</td><td class="n">${r.units_residential ?? "—"}<span class="sub2">${r.units_parking ? `+${r.units_parking} pkg` : ""}</span></td><td class="n">${fmtMoney(i)}</td><td class="n">${c && c !== i ? fmtMoney(c) : "—"}</td><td class="n">${fmtMoney(each(r))}</td></tr>`; }).join("") +
         `</tbody></table></div>`;
     } catch (e) { if (tok === viewToken) box.innerHTML = `<p class="vnote">Couldn’t load the AG totals. Try again.</p>`; }
   }
 
   // ---------- answer card: a number question ----------
-  const STAT_COLS = "plan_id,name,address,borough,zip,units_residential,units_parking,units_commercial,accepted_date,construction,sponsor,law_firm,price_current,docs_indexed,total_count";
+  const STAT_COLS = "plan_id,name,address,borough,zip,units_residential,units_parking,units_commercial,accepted_date,submitted_date,status,construction,sponsor,law_firm,price_current,docs_indexed,total_count";
   const STAT_CAP = 10000, THIS_YEAR = String(new Date().getFullYear());
   const median = (a) => { if (!a.length) return null; const s = [...a].sort((x, y) => x - y), m = s.length >> 1; return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
   const mean = (a) => (a.length ? a.reduce((x, y) => x + y, 0) / a.length : null);
@@ -1439,6 +1568,10 @@ table.pivot th[scope="row"]{white-space:nowrap}
       p_accepted_from: P.from, p_accepted_to: P.to, p_construction: P.construction ? [P.construction] : null, p_status: P.status ? [P.status] : null,
       p_sponsor: P.sponsor, p_counsel: P.counsel, p_managing_agent: P.manager, p_sort: "accepted_desc", p_limit: STAT_CAP };
     const args = Object.fromEntries(Object.entries(all).filter(([, v]) => v != null));
+    if (filedToo(P)) {
+      const rows = await searchPlans(args, P, { all: true, select: STAT_COLS });
+      return { rows: rows.filter((r) => !junk(r)), total: rows.length, fetched: rows.length, dropped: rows.filter(junk).length };
+    }
     const page = (o) => rest(`rpc/search_plans_v2?select=${STAT_COLS}&offset=${o}`, args, 600000);
     const first = await page(0), total = first[0]?.total_count ?? first.length;
     const offs = []; for (let o = 1000; o < Math.min(total, STAT_CAP); o += 1000) offs.push(o);
@@ -1447,7 +1580,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
   }
 
   const STAT_GROUPS = {
-    year: ["Year accepted", (r) => (r.accepted_date ? r.accepted_date.slice(0, 4) : "Not dated")],
+    year: ["Year accepted", (r) => (r.accepted_date ? r.accepted_date.slice(0, 4) : r.status === "PENDING" ? "Pending" : "Not dated")],
     borough: ["Borough", (r) => boroName(r.borough)],
     sponsor: ["Sponsor", (r) => (r.sponsor ? tc(r.sponsor) : "Not listed")],
     law_firm: ["Sponsor’s counsel", (r) => (r.law_firm ? tc(r.law_firm) : "Not listed")],
@@ -1473,14 +1606,14 @@ table.pivot th[scope="row"]{white-space:nowrap}
     const { rows } = data;
     const metric = st.metric === "sale" || st.metric === "psf" ? "price" : st.metric;
     const group = st.group || (P.borough || P.zips ? "year" : "borough");
-    const [gLabel, keyOf] = STAT_GROUPS[group];
+    const [gLabel, keyOf] = group === "year" && P.dateOn === "filed" ? ["Year filed", (r) => String(filedYear(r.plan_id) || "Not dated")] : STAT_GROUPS[group];
     const val = { price: perUnit, units: (r) => (r.units_residential > 0 ? r.units_residential : null), parking: (r) => (Number.isFinite(r.units_parking) ? r.units_parking : null), count: () => null }[metric];
     const agg = (list) => { const vals = list.map(val).filter((v) => v != null); return { vals, avg: mean(vals), med: median(vals) }; };
 
     // groups, in an order that reads naturally for each kind
     const by = new Map(); rows.forEach((r) => { const k = keyOf(r); if (!by.has(k)) by.set(k, []); by.get(k).push(r); });
     let groups = [...by].map(([key, list]) => ({ key, rows: list, units: list.reduce((a, r) => a + (r.units_residential || 0), 0), ...agg(list) }));
-    if (group === "year") groups.sort((a, b) => (a.key === "Not dated") - (b.key === "Not dated") || b.key.localeCompare(a.key));
+    if (group === "year") groups.sort((a, b) => !/^\d{4}$/.test(a.key) - !/^\d{4}$/.test(b.key) || b.key.localeCompare(a.key));
     else if (group === "borough") groups.sort((a, b) => (BORO_ORDER.indexOf(a.key) + 1 || 9) - (BORO_ORDER.indexOf(b.key) + 1 || 9));
     else groups.sort((a, b) => b.rows.length - a.rows.length || a.key.localeCompare(b.key));
     if ((group === "sponsor" || group === "law_firm") && groups.length > 15) {
@@ -1494,7 +1627,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
     const head = whole[useAvg ? "avg" : "med"], stat = useAvg ? "Average" : "Median";
     const totalUnits = rows.reduce((a, r) => a + (r.units_residential || 0), 0);
     const dated = rows.map((r) => r.accepted_date).filter(Boolean).sort();
-    const span = dated.length ? ` accepted ${date(dated[0])}–${date(dated[dated.length - 1])}` : "";
+    const span = dated.length && !filedToo(P) ?` accepted ${date(dated[0])}–${date(dated[dated.length - 1])}` : "";
     const cover = `${fmtN(rows.length)} plan${rows.length === 1 ? "" : "s"}${span}`;
     let kicker, big, sub;
     if (st.gap === "charges") { kicker = "Common charges"; big = "Not tracked"; sub = `${cover} match the filters above.`; }
@@ -1657,7 +1790,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
     const P = { text, ai: true, q: TOPIC_Q(s.topics), topics: s.topics, borough: s.borough, zips: s.zips.length ? s.zips : null,
       minUnits: s.min_units, maxUnits: s.max_units, minParking: s.min_parking, maxParking: s.max_parking,
       minCommercial: s.min_commercial, minStorage: s.min_storage, from: s.accepted_from, to: s.accepted_to,
-      construction: s.construction, status: s.status, sponsor: s.sponsor, counsel: s.counsel,
+      construction: s.construction, status: s.status, sponsor: s.sponsor, counsel: s.counsel, dateOn: dateOnOf(text),
       view: VIEW_OF[s.shape], focus: s.doc_focus, analytic: s.analytic_op !== "none" ? { op: s.analytic_op, field: s.analytic_field } : null,
       aiAnswer: answer, planId: null, address: null, chips: [], notes: s.note ? [s.note] : [] };
     // A question about something inside the plans lists only the plans whose pages mention it (the ones the AI read).
@@ -1672,7 +1805,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
     if (s.min_parking != null || s.max_parking != null) chip("parking", s.max_parking === 0 ? "No parking units" : range(s.min_parking, s.max_parking, "parking units"));
     if (s.min_commercial != null) chip("commercial", `${s.min_commercial}+ commercial units`);
     if (s.min_storage != null) chip("storage", `${s.min_storage}+ storage units`);
-    if (s.accepted_from || s.accepted_to) chip("dates", `Accepted ${[s.accepted_from && "from " + date(s.accepted_from), s.accepted_to && "to " + date(s.accepted_to)].filter(Boolean).join(" ")}`);
+    if (s.accepted_from || s.accepted_to) chip("dates", `${DATE_WORD[P.dateOn]} ${[s.accepted_from && "from " + date(s.accepted_from), s.accepted_to && "to " + date(s.accepted_to)].filter(Boolean).join(" ")}`);
     if (s.construction) chip("construction", titleCase(s.construction));
     if (s.status) chip("status", titleCase(s.status));
     if (s.sponsor) chip("sponsor", `Sponsor: ${s.sponsor}`);
@@ -1695,10 +1828,10 @@ table.pivot th[scope="row"]{white-space:nowrap}
     // mention the topic and the plans that match the filters alone, and list the mentions first.
     let rows;
     if (P.q && hasFilter && !P.topicRequired) {
-      const [hit, all] = await Promise.all([rpc("search_plans_v2", args), rpc("search_plans_v2", { ...args, q: null })]);
+      const [hit, all] = await Promise.all([searchPlans(args, P), searchPlans({ ...args, q: null }, P)]);
       const seen = new Set(hit.map((r) => r.plan_id));
       rows = [...hit, ...all.filter((r) => !seen.has(r.plan_id)).map((r) => ({ ...r, hits: 0, snippets: [] }))].slice(0, limit);
-    } else rows = await rpc("search_plans_v2", args);
+    } else rows = await searchPlans(args, P);
     const labels = (P.topics || []).map((t) => t.label).join(", ");
     if (P.q && hasFilter && !P.topicRequired) {
       const n = rows.filter((r) => r.hits > 0).length;

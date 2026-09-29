@@ -642,8 +642,8 @@ ${listScript}
 // ---------- profile pages ----------
 // One page per property manager (managing-agents/<slug>.html), law firm (offering-plan-attorneys/<slug>.html),
 // architect (architects/<slug>.html) and selling agent (selling-agents/<slug>.html) named in at least PROFILE_MIN NYC plans: the buildings, a few key numbers, and a sidebar of the most similar firms.
-// Websites come only from data/websites.json ({"managers": {slug: url}, "attorneys": {slug: url}}), checked by hand;
-// a firm without an entry gets no website link.
+// Websites come only from data/websites.json ({"managers"|"attorneys"|"architects"|"sellers": {slug: url}}), each checked
+// against the site's own branding; a firm without an entry gets no website link.
 const SITES = JSON.parse(await readFile(join(ROOT, "data", "websites.json"), "utf8").catch(() => "{}"));
 // Firm logos (data/logos.json, from those websites) have share cards in img/og/<dir>/, made by build-og-images.mjs.
 const LOGOS = JSON.parse(await readFile(join(ROOT, "data", "logos.json"), "utf8").catch(() => "{}"));
@@ -746,6 +746,7 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
 <main class="post agents profile split">
   <div class="aside">
   <nav class="crumbs" aria-label="Breadcrumb"><a href="${P}index.html">${SITE_NAME}</a> › <a href="${P}${x.dir}.html">${listName}</a></nav>
+  ${logo ? `<div class="flogo${logo.bg === "dark" ? " dark" : ""}"><img src="${P}img/logos/${x.dir}/${x.slug}.png" alt="${esc(x.display)} logo"></div>` : ""}
   <h1>${esc(x.display)}</h1>
   <p class="anote">${mgr
     ? `Named as the first-year managing agent in ${plural(nyc, "New York City condominium offering plan")}. The board can change managers after the first year, so this may not reflect who manages each building today.`

@@ -1,6 +1,7 @@
 // Renders the 1200×630 social-sharing cards (og:image) for pages that aren't building pages:
 //   img/og/site.png                       the site card, used by every page without its own image
 //   img/og/<dir>/<slug>.png               a firm's logo card, for profiles listed in data/logos.json
+//   img/logos/<dir>/<slug>.png            the same logo, trimmed, shown on the profile page
 //
 //   PLAYWRIGHT=<folder with node_modules/playwright> node scripts/build-og-images.mjs
 //
@@ -77,7 +78,18 @@ let n = 0;
 for (const [kind, m] of Object.entries(LOGOS)) for (const [slug, x] of Object.entries(m)) {
   const ext = x.file.split(".").pop().toLowerCase();
   const raw = `data:${MIME[ext]};base64,${(await readFile(join(ROOT, "data", "logos", x.file))).toString("base64")}`;
-  await shoot(logoCard(await trimmed(raw, x.bg === "dark"), x.bg === "dark", ROLE[kind]), join(ROOT, "img", "og", DIR[kind], `${slug}.png`));
+  const logo = await trimmed(raw, x.bg === "dark");
+  await shoot(logoCard(logo, x.bg === "dark", ROLE[kind]), join(ROOT, "img", "og", DIR[kind], `${slug}.png`));
+  // The same trimmed logo, at most 640×200, for the profile page itself.
+  const small = await page.evaluate(async (src) => {
+    const img = new Image(); img.src = src; await img.decode();
+    const k = Math.min(1, 640 / img.naturalWidth, 200 / img.naturalHeight);
+    const c = Object.assign(document.createElement("canvas"), { width: Math.round(img.naturalWidth * k), height: Math.round(img.naturalHeight * k) });
+    c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+    return c.toDataURL("image/png");
+  }, logo);
+  await mkdir(join(ROOT, "img", "logos", DIR[kind]), { recursive: true });
+  await writeFile(join(ROOT, "img", "logos", DIR[kind], `${slug}.png`), Buffer.from(small.split(",")[1], "base64"));
   n++;
 }
 await browser.close();

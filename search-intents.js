@@ -16,6 +16,24 @@
   const numOf = (t) => (t in WORDNUM ? WORDNUM[t] : parseFloat(t));
   const titleCase = (s) => String(s || "").toLowerCase().replace(/\b([a-z])/g, (c) => c.toUpperCase());
 
+  // Dates: a window with no "filed" or "accepted" matches a plan filed or accepted in it (as on the page's own search).
+  // The plan ID carries the filing year (CD24… in 2024); the AG's submitted date is the filing date only while a plan is pending.
+  const dateOnOf = (t) => {
+    const f = /\b(filed|filings?|submitted|submissions?)\b/i.test(t), a = /\b(accepted|approved|acceptances?|approvals?)\b/i.test(t);
+    return f === a ? "either" : f ? "filed" : "accepted";
+  };
+  const DATE_WORD = { either: "Filed or accepted", filed: "Filed", accepted: "Accepted" };
+  const filedYear = (id) => { const m = /^[A-Z]{2}(\d\d)/.exec(id || ""); return m ? (+m[1] > 60 ? 1900 : 2000) + +m[1] : null; };
+  const filedDate = (p) => (p.status === "PENDING" && p.submitted_date && +p.submitted_date.slice(0, 4) === filedYear(p.plan_id) ? p.submitted_date : null);
+  const acceptedIn = (p, w) => !!p.accepted_date && (!w.from || p.accepted_date >= w.from) && (!w.to || p.accepted_date <= w.to);
+  function filedIn(p, w) {
+    const d = filedDate(p);
+    if (d) return (!w.from || d >= w.from) && (!w.to || d <= w.to);
+    const y = filedYear(p.plan_id);
+    // Only the year is known, so the whole year must be in the window.
+    return y != null && (!w.from || `${y}-01-01` >= w.from) && (!w.to || `${y}-12-31` <= w.to);
+  }
+
   // "$900,000", "900k", "1m", "$1.2 million" -> dollars. Bare numbers under 10,000 aren't prices.
   function money(tok) {
     const m = String(tok).toLowerCase().replace(/\s+/g, "").match(/^\$?(\d+(?:,\d{3})*(?:\.\d+)?)(k|m|mm|mil|million|thousand)?$/);
@@ -35,7 +53,7 @@
     // "1mi" -> "1 mi", "10units" -> "10 units", "1beds" -> "1 beds"
     s = s.replace(/(\d)(mi|miles?|km|blocks?|units?|apartments?|beds?|bedrooms?|br|bd|yrs?|years?|months?)\b/g, "$1 $2");
     const spec = { text: String(input || "").trim(), near: null, mih: false, parking: null, beds: null, price: null, units: null,
-      construction: null, borough: null, since: null, until: null, stats: null, wantsSales: false, notes: [] };
+      construction: null, borough: null, since: null, until: null, dateOn: dateOnOf(s), stats: null, wantsSales: false, notes: [] };
     const cut = (re) => { s = s.replace(re, " "); };
 
     // average / median offering (or "sales") price -> a table, not a list
@@ -133,7 +151,7 @@
     if (spec.parking) c.push({ k: "parking", label: "Parking offered by license" });
     if (spec.construction) c.push({ k: "construction", label: spec.construction === "NEW" ? "New construction" : titleCase(spec.construction) });
     if (spec.borough) c.push({ k: "borough", label: titleCase(spec.borough) });
-    if (spec.since || spec.until) c.push({ k: "since", label: spec.window ? `Accepted in the last ${spec.window.n} ${spec.window.unit}${spec.window.n === 1 ? "" : "s"}` : spec.until ? `Accepted in ${spec.since.slice(0, 4)}` : `Accepted since ${spec.since.slice(0, 4)}` });
+    if (spec.since || spec.until) c.push({ k: "since", label: `${DATE_WORD[spec.dateOn || "accepted"]} ${spec.window ? `in the last ${spec.window.n} ${spec.window.unit}${spec.window.n === 1 ? "" : "s"}` : spec.until ? `in ${spec.since.slice(0, 4)}` : `since ${spec.since.slice(0, 4)}`}` });
     return c;
   }
   function fmtMiles(mi) { return mi === 0.25 ? "¼ mile" : mi === 0.5 ? "½ mile" : mi === 1 ? "1 mile" : `${+mi.toFixed(2)} miles`; }
@@ -466,11 +484,14 @@
     if (spec.units?.min != null) f.push(`units_residential=gte.${spec.units.min}`);
     if (spec.construction) f.push(`construction=eq.${spec.construction}`);
     if (spec.borough) f.push(`borough=eq.${encodeURIComponent(spec.borough)}`);
-    if (spec.since) f.push(`accepted_date=gte.${spec.since}`);
-    if (spec.until) f.push(`accepted_date=lte.${spec.until}`);
+    const win = { from: spec.since, to: spec.until };
+    if (spec.dateOn === "accepted") {
+      if (spec.since) f.push(`accepted_date=gte.${spec.since}`);
+      if (spec.until) f.push(`accepted_date=lte.${spec.until}`);
+    } else if (spec.since) f.push(`or=(accepted_date.gte.${spec.since.slice(0, 4)}-01-01,accepted_date.is.null)`); // a plan is accepted after it's filed
+    const inDates = (p) => !(spec.since || spec.until) || (spec.dateOn !== "filed" && acceptedIn(p, win)) || (spec.dateOn !== "accepted" && filedIn(p, win));
     const keep = (p) => isCondo(p) && (spec.units?.max == null || (p.units_residential >= 1 && p.units_residential <= spec.units.max)) && (spec.units?.min == null || (p.units_residential ?? -1) >= spec.units.min)
-      && (!spec.construction || p.construction === spec.construction) && (!spec.borough || p.borough === spec.borough)
-      && (!spec.since || (p.accepted_date && p.accepted_date >= spec.since)) && (!spec.until || (p.accepted_date && p.accepted_date <= spec.until));
+      && (!spec.construction || p.construction === spec.construction) && (!spec.borough || p.borough === spec.borough) && inDates(p);
     if (plans) plans = plans.filter(keep);
 
     // 2. MIH: plans whose pages mention MIH / Inclusionary Housing, then only those whose pages put affordable units in the building.
@@ -680,9 +701,9 @@
       note: "The whole plan’s current offering price as recorded by the AG.", ...pivot((p) => titleCase(p.borough), boros.map(titleCase), yearOf, years, priced, (p) => Number(p.price_current)) });
     res.pureCount = pure.length;
     res.rows = priced.map((p) => ({ ...p, units_used: unitsUsed(p), per_unit: perUnit(p) })).sort((a, b) => (b.accepted_date || "").localeCompare(a.accepted_date || ""));
-    res.title = `${measure === "median" ? "Median" : "Average"} offering price, ${spec.construction === "NEW" ? "new construction " : ""}condos accepted ${spec.window ? `in the last ${spec.window.n} ${spec.window.unit}${spec.window.n === 1 ? "" : "s"}` : spec.since && spec.until ? `${spec.since} to ${spec.until}` : spec.since ? `since ${spec.since}` : spec.until ? `through ${spec.until}` : "at any date"}`;
+    res.title = `${measure === "median" ? "Median" : "Average"} offering price, ${spec.construction === "NEW" ? "new construction " : ""}condos ${DATE_WORD[spec.dateOn || "accepted"].toLowerCase()} ${spec.window ? `in the last ${spec.window.n} ${spec.window.unit}${spec.window.n === 1 ? "" : "s"}` : spec.since && spec.until ? `${spec.since} to ${spec.until}` : spec.since ? `since ${spec.since}` : spec.until ? `through ${spec.until}` : "at any date"}`;
     if (spec.wantsSales) res.notes.unshift("The Condo Book Project has no closed-sale records, so sale prices can’t be averaged. These are the sponsors’ offering prices from the plans filed with the Attorney General.");
-    res.notes.push(`${priced.length} of ${plans.length} plans are counted: accepted by the AG and with a total offering price on record.${spec.since ? ` Window: accepted ${spec.since} to ${spec.until || today}.` : spec.until ? ` Window: accepted through ${spec.until}.` : " No date limit: plans accepted at any date are counted."}`);
+    res.notes.push(`${priced.length} of ${plans.length} plans are counted: accepted by the AG and with a total offering price on record.${spec.since ? ` Window: ${DATE_WORD[spec.dateOn || "accepted"].toLowerCase()} ${spec.since} to ${spec.until || today}.` : spec.until ? ` Window: ${DATE_WORD[spec.dateOn || "accepted"].toLowerCase()} through ${spec.until}.` : " No date limit: plans accepted at any date are counted."}`);
     res.notes.push(`The plan tables use each plan’s current total offering price in the AG record; the bedroom tables use unit prices from the original plan’s Schedule A. They are different price bases and don’t reconcile: for ${changed} of ${priced.length} plans the AG’s current total differs from its initial total.`);
     // Unit-level breakdown from Schedule A, when the pages can be read.
     step("Reading Schedule A unit prices…");
