@@ -932,7 +932,15 @@ table.pivot th[scope="row"]{white-space:nowrap}
       [/\bbefore ((?:19|20)\d\d)\b/, (x) => [null, `${+x[1] - 1}-12-31`]],
       [/\b(?:in|during) ((?:19|20)\d\d)\b/, (x) => [`${x[1]}-01-01`, `${x[1]}-12-31`]],
     ];
-    for (const [re, f] of DATES) {
+    // "filed in the same year": the year comes from the named building once it's looked up (see peerRows)
+    const same = s.match(/\b(?:(?:in|during|from|of) )?(?:the )?same (?:year|time)(?: as (?:it|this|that|this one|that one|the building|them|theirs))?\b/);
+    if (same) {
+      out.sameYear = true; cut(same[0]);
+      // A filed year comes from the plan ID; otherwise the acceptance year.
+      if (out.dateOn !== "filed") out.dateOn = "accepted";
+      chip("dates", `${DATE_WORD[out.dateOn]} the same year`);
+    }
+    for (const [re, f] of same ? [] : DATES) {
       const x = s.match(re); if (!x) continue;
       [out.from, out.to] = f(x); cut(x[0]);
       chip("dates", `${DATE_WORD[out.dateOn]} ${[out.from && "from " + date(out.from), out.to && "to " + date(out.to)].filter(Boolean).join(" ")}`);
@@ -1016,7 +1024,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
     if (out.planId || out.address) {
       out.stat = null;
       // "compare pricing of 501 9th Ave with new condos of 100–150 units": the named building first, then the group the filters pick.
-      const group = out.minUnits != null || out.maxUnits != null || out.minParking != null || out.from || out.to || out.construction || out.zips
+      const group = out.minUnits != null || out.maxUnits != null || out.minParking != null || out.from || out.to || out.sameYear || out.construction || out.zips
         || (out.borough && /\b(all|other|others|theirs|them)\b/.test(said));
       if (group && /\b(compar\w*|vs\.?|versus|against|pric(e|es|ing)|theirs|others?|peers?|similar)\b/.test(said)) {
         out.peers = true; out.view = "compare";
@@ -1143,13 +1151,24 @@ table.pivot th[scope="row"]{white-space:nowrap}
   // One named building, then the plans the other filters match. The named building is marked `self` and listed first.
   async function peerRows(P) {
     const G = { ...P, peers: false, planId: null, address: null };
-    const [mine, group] = await Promise.all([P.planId ? recordRows(`plan_id=eq.${encodeURIComponent(P.planId)}`) : addressRows(P.address), fetchRows(G)]);
-    const inBoro = P.borough ? mine.filter((r) => BORO_OF[String(r.borough || "").trim().toUpperCase()] === P.borough) : [];
-    const self = (inBoro.length ? inBoro : mine)[0];
+    const pick = (mine) => { const inBoro = P.borough ? mine.filter((r) => BORO_OF[String(r.borough || "").trim().toUpperCase()] === P.borough) : []; return (inBoro.length ? inBoro : mine)[0]; };
+    const lookup = P.planId ? recordRows(`plan_id=eq.${encodeURIComponent(P.planId)}`) : addressRows(P.address);
+    // "The same year" needs the building's year before the group can be searched: the year in its plan ID if filed, else the year accepted.
+    let mine, group, year = null;
+    if (P.sameYear) {
+      mine = await lookup;
+      const s = pick(mine);
+      year = s && (P.dateOn === "filed" ? filedYear(s.plan_id) : +String(s.accepted_date || "").slice(0, 4) || null);
+      if (year) Object.assign(G, { from: `${year}-01-01`, to: `${year}-12-31` });
+      group = await fetchRows(G);
+    } else [mine, group] = await Promise.all([lookup, fetchRows(G)]);
+    const self = pick(mine);
     if (self && !P.planId) settleAddress(P, [self]);
     const named = P.planId || titleCase(`${P.address.num} ${P.address.street}`);
+    if (P.sameYear) P.chips = P.chips.map((c) => (c.k === "dates" ? { ...c, label: year ? `${DATE_WORD[P.dateOn]} in ${year}, same as ${named}` : `${DATE_WORD[P.dateOn]} the same year (not on record)` } : c));
     const others = self ? group.filter((r) => r.plan_id !== self.plan_id) : group;
     const notes = [];
+    if (P.sameYear && self && !year) notes.push(`${named} has no ${P.dateOn === "filed" ? "filing" : "acceptance"} year on record, so the year isn’t filtered.`);
     if (!self) notes.push(`No plan record found at ${named}, so only the group is shown.`);
     else {
       if (mine.length > 1) notes.push(`${mine.length} plan records match ${named}; the newest (${self.plan_id}) is compared. Type its plan ID to pick another.`);
@@ -1286,7 +1305,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
     const P = { ...current, chips: current.chips.filter((c) => c.k !== b.dataset.rm) };
     ({ q: () => { P.q = ""; }, area: () => { P.borough = null; P.zips = null; P.boroughs = null; if (P.stat?.boros) P.stat = { ...P.stat, boros: null, group: null }; }, units: () => { P.minUnits = null; P.maxUnits = null; },
       parking: () => { P.minParking = null; P.maxParking = null; }, planId: () => { P.planId = null; }, address: () => { P.address = null; }, topic: () => { P.topic = null; }, sort: () => { P.sort = null; }, compare: () => { P.compare = null; }, manager: () => { P.manager = null; },
-      dates: () => { P.from = null; P.to = null; }, construction: () => { P.construction = null; }, status: () => { P.status = null; },
+      dates: () => { P.from = null; P.to = null; P.sameYear = null; }, construction: () => { P.construction = null; }, status: () => { P.status = null; },
       sponsor: () => { P.sponsor = null; }, counsel: () => { P.counsel = null; }, commercial: () => { P.minCommercial = null; }, storage: () => { P.minStorage = null; } })[b.dataset.rm]?.();
     P.aiAnswer = null; P.aiPending = false;
     P.via = "remove_filter:" + b.dataset.rm;
