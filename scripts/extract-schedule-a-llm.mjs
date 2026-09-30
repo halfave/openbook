@@ -35,8 +35,10 @@ const FORCE = flag("--force"), ALL = flag("--all"), LOCATE = flag("--locate");
 if (!OUT && !LOCATE) { console.error("--out DIR is required"); process.exit(1); }
 
 // ---------- helpers ----------
+// An API key in the environment would take precedence over the claude.ai (Max) login and bill API credits; never pass one on.
+const { ANTHROPIC_API_KEY, ANTHROPIC_AUTH_TOKEN, ...BASE_ENV } = process.env;
 const run = (cmd, args, input, env = {}) => new Promise((res, rej) => {
-  const p = spawn(cmd, args, { stdio: ["pipe", "pipe", "pipe"], env: { ...process.env, ...env } });
+  const p = spawn(cmd, args, { stdio: ["pipe", "pipe", "pipe"], env: { ...BASE_ENV, ...env } });
   let o = "", e = "";
   p.stdout.on("data", (d) => (o += d)); p.stderr.on("data", (d) => (e += d));
   p.on("error", rej);

@@ -7,6 +7,10 @@ param(
 )
 
 $ErrorActionPreference = "Continue"
+
+# Run on the claude.ai (Max) login, never API credits: an API key in the environment takes precedence over the login.
+# This clears it for this PowerShell session only; the user-level variable is left alone.
+Remove-Item Env:ANTHROPIC_API_KEY, Env:ANTHROPIC_AUTH_TOKEN -ErrorAction SilentlyContinue
 $root = (Get-Location).Path
 $loop = Join-Path $root "search-loop"
 New-Item -ItemType Directory -Force -Path (Join-Path $loop "log") | Out-Null
