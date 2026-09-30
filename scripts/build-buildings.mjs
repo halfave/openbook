@@ -202,10 +202,12 @@ function directory(plans, ctx) {
 <main>
   <h1>Buildings</h1>
   <p class="lede">${plans.length.toLocaleString("en-US")} NYC condo offering plans on file. ${ctx.searchable.size.toLocaleString("en-US")} are searchable in full text.</p>
+  <label class="bfind"><span>Find a building</span><input id="bfind" type="search" placeholder="Name, address or CD number" autocomplete="off" enterkeyhint="search"></label>
   <nav class="toc" aria-label="Boroughs">${boros.map((b) => `<a href="#${slug(b)}">${esc(b)}</a>`).join(" · ")}</nav>
+  <p id="bfind-note" class="faint" role="status" hidden></p>
   ${body}
 </main>
-` + FOOT(P);
+` + FOOT(P, `<script src="${P}dirfind.js"></script>\n`);
 }
 
 // ---------- main ----------
