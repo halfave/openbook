@@ -276,10 +276,75 @@ export function groupPros(facts, byId, field) {
 }
 
 // ---------- developers ----------
+// The development company behind each sponsor, read from the plan text by extract-developer-companies.mjs into
+// data/developer-companies.json ({plan_id: {file_id, companies: [{name, type, page, quote}]}}), each with the page and the
+// sentence tying it to the sponsor or a principal. The sponsor itself is usually a company formed for the one building.
+// Spellings and a firm's arms vary ("The Related Companies, L.P." / "Related Realty Group" / "Related Sales LLC";
+// "Saffayeh Construction" / "Saffayeh Development"), so the key drops legal suffixes and the trade words after the name.
+const CO_TAIL = new Set(["the", "inc", "llc", "l", "c", "lp", "p", "llp", "corp", "corporation", "co", "company", "companies", "ltd", "limited", "incorporated",
+  "group", "development", "developers", "developments", "dev", "holding", "holdings", "properties", "property", "construction", "builders", "building",
+  "realty", "real", "estate", "management", "partners", "partnership", "enterprises", "sales", "services", "associates", "ny", "nyc", "usa", "us", "international"]);
+// Hand-checked: keys that name the same firm, and OCR slips ("ClM" for CIM).
+const CO_ALIAS = { clm: "cim", "el ad": "elad", "urbanview": "urban view", "z h l": "zhl" };
+export const companyKey = (v) => {
+  const ws = String(v).toLowerCase().replace(/\([^)]*\)/g, " ").replace(/&/g, " and ").replace(/[^a-z0-9]+/g, " ").trim().split(" ").filter(Boolean);
+  while (ws.length > 1 && CO_TAIL.has(ws.at(-1))) ws.pop();
+  while (ws.length > 1 && CO_TAIL.has(ws[0])) ws.shift();
+  const k = ws.join(" ");
+  return CO_ALIAS[k] || k;
+};
+// A company named only in a principal's past ("Prior to establishing the Naftali Group, Mr. Naftali ... Elad Properties",
+// "Prior to Anbau, Steve was Senior Development Officer of Continuum Company") isn't this building's developer.
+// The firm inside the "prior to ..." clause (Naftali Group, Anbau) is the current one: only a name after the clause is past.
+const PAST = /\b(?:prior to|formerly|previously|former(?:ly)?|until (?:19|20)\d\d|before (?:joining|founding|establishing|forming))\b/i;
+const pastOnly = (q, name) => {
+  const m = String(q).match(PAST);
+  if (!m) return false;
+  const flat = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "");
+  const clauseEnd = q.indexOf(",", m.index);
+  const at = flat(q).indexOf(flat(coName(name)).replace(/^the/, ""));
+  return at >= 0 && at > flat(q.slice(0, clauseEnd < 0 ? m.index : clauseEnd)).length;
+};
+// The name to show: without a trailing legal suffix ("The Related Companies, L.P." -> "The Related Companies").
+const coName = (v) => String(v).replace(/\s+/g, " ").trim().replace(/([,\s]+(inc|llc|l\.l\.c|lp|l\.p|llp|corp|co|ltd)\.?)+$/i, "").replace(/[,\s]+$/, "");
+
+// data: data/developer-companies.json. Returns [{name, plans, slug, names, cites}], most plans first;
+// cites is plan_id -> {file_id, page_no, quote}.
+export function groupCompanies(data, byId) {
+  const groups = new Map();
+  for (const [id, r] of Object.entries(data)) {
+    const p = byId.get(id);
+    if (!p || !NYC(p)) continue;
+    for (const c of r.companies || []) {
+      if (pastOnly(c.quote, c.name)) continue;
+      const k = companyKey(c.name);
+      if (k.length < 2) continue;
+      if (!groups.has(k)) groups.set(k, { key: k, names: new Map(), plans: new Map(), cites: new Map(), developer: 0 });
+      const g = groups.get(k), nm = coName(c.name);
+      g.names.set(nm, (g.names.get(nm) || 0) + 1);
+      g.plans.set(id, p);
+      if (c.type === "developer") g.developer++;
+      if (!g.cites.has(id)) g.cites.set(id, { file_id: r.file_id, page_no: c.page, quote: c.quote });
+    }
+  }
+  const slugs = new Set();
+  return [...groups.values()].map((g) => {
+    // The spelling filed most often, the longer one on a tie ("The Naftali Group" over "Naftali Group").
+    const name = [...g.names].sort((a, b) => b[1] - a[1] || b[0].length - a[0].length)[0][0];
+    const plansList = [...g.plans.values()].sort((a, b) => (b.accepted_date || "").localeCompare(a.accepted_date || "") || b.plan_id.localeCompare(a.plan_id));
+    return { name, plans: plansList, key: g.key, names: new Set(g.names.keys()), cites: g.cites };
+  }).sort((a, b) => b.plans.length - a.plans.length || a.name.localeCompare(b.name)).map(({ key, ...g }) => {
+    let s = slug(g.name.replace(/^the\s+/i, "")) || slug(key);
+    if (slugs.has(s)) s = `${s}-${slug(key)}`;
+    slugs.add(s);
+    return { ...g, slug: s };
+  });
+}
+
 // The people behind each sponsor, read from the plan text into sponsor_principals ({plan_id, name, kind, role, file_id,
-// page_no, quote}), each with the page and the sentence that names them. Only people: an entity row ("Rise Above III LLC")
-// is a holding company, not a developer. Spellings vary ("Bruce A. Beal, Jr." / "Bruce Beal"), so the key drops
-// punctuation, middle initials and generational suffixes.
+// page_no, quote}), each with the page and the sentence that names them; shown on building and developer pages next to the
+// company. Only people: an entity row ("Rise Above III LLC") is a holding company. Spellings vary ("Bruce A. Beal, Jr." /
+// "Bruce Beal"), so the key drops punctuation, middle initials and generational suffixes.
 const PERSON_STOP = new Set(["jr", "sr", "ii", "iii", "iv", "esq", "mr", "mrs", "ms", "dr"]);
 export const personKey = (v) => String(v).toLowerCase().replace(/\([^)]*\)/g, " ").replace(/[^a-z0-9' -]+/g, " ").replace(/'/g, "")
   .split(/[\s-]+/).filter((w) => w.length > 1 && !PERSON_STOP.has(w)).join(" ");
@@ -292,7 +357,7 @@ const citedPerson = (r) => {
 };
 
 // rows: sponsor_principals. Returns [{name, plans, slug, names, cites}], most plans first; cites is plan_id -> {file_id, page_no, quote, role}.
-export function groupDevelopers(rows, byId) {
+export function groupPrincipals(rows, byId) {
   const groups = new Map();
   for (const r of rows) {
     const p = byId.get(r.plan_id);
@@ -334,14 +399,18 @@ const nameLinks = (groups) => {
 
 // For building pages: plan_id -> {name as filed: slug} for managers, architects and selling agents, and plan_id -> counsel slug,
 // only for firms with a profile.
-export function profileLinks(agents, firms, architects = [], sellers = [], taxers = [], developers = []) {
+export function profileLinks(agents, firms, architects = [], sellers = [], taxers = [], developers = [], principals = []) {
   const counsel = new Map();
   for (const f of firms) if (f.plans.length >= PROFILE_MIN) for (const p of f.plans) counsel.set(p.plan_id, f.slug);
-  // Developers: plan_id -> [{name, slug (null without a profile), cite}], every person named for the plan.
-  const devs = new Map();
-  for (const d of developers) for (const p of d.plans) {
-    if (!devs.has(p.plan_id)) devs.set(p.plan_id, []);
-    devs.get(p.plan_id).push({ name: d.name, slug: d.plans.length >= PROFILE_MIN ? d.slug : null, cite: d.cites.get(p.plan_id) });
+  return { managers: nameLinks(agents), counsel, architects: nameLinks(architects), sellers: nameLinks(sellers), taxers: nameLinks(taxers),
+    developers: byPlan(developers, true), principals: byPlan(principals, false) };
+}
+// plan_id -> [{name, slug (null without a profile), cite}]: every developer company (or principal) named for the plan.
+export function byPlan(groups, linked) {
+  const out = new Map();
+  for (const d of groups) for (const p of d.plans) {
+    if (!out.has(p.plan_id)) out.set(p.plan_id, []);
+    out.get(p.plan_id).push({ name: d.name, slug: linked && d.plans.length >= PROFILE_MIN ? d.slug : null, cite: d.cites.get(p.plan_id) });
   }
-  return { managers: nameLinks(agents), counsel, architects: nameLinks(architects), sellers: nameLinks(sellers), taxers: nameLinks(taxers), developers: devs };
+  return out;
 }

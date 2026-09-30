@@ -10,7 +10,7 @@ import { mkdir, writeFile, rm, readFile, readdir } from "node:fs/promises";
 import { join } from "node:path";
 
 import { SB, KEY, SITE_URL, AG, ROOT, OUT, TODAY, rest, all, rpc, esc, tc, slug, fileFor, month, day, usDate, money, fmtMoney, plural, BORO, boro, docLabel, pagesLabel, miles, MAST_HTML, MAST, SITE_NAME, ld, SEO, HEAD, fitDesc, firstFit, OG_SITE, MENU, FOOT, urlset } from "./site.mjs";
-import { groupAgents, groupFirms, groupPros, groupDevelopers, profileLinks } from "./pros.mjs";
+import { groupAgents, groupFirms, groupPros, groupCompanies, groupPrincipals, profileLinks } from "./pros.mjs";
 
 // ---------- junk records ----------
 // AG rows that aren't a real offering: 0 units with nothing to read, or names like "*Resubmit*" or
@@ -89,15 +89,19 @@ function buildingPage(p, ctx) {
     row("Accepted", p.accepted_date && esc(day(p.accepted_date))),
     row("Plan ID", esc(p.plan_id)),
   ].join("");
-  // The people behind the sponsor, each linked to their profile, and the plan page naming them.
-  const devs = ctx.links.developers.get(p.plan_id) || [];
-  const devLink = (d) => d.slug ? `<a href="${P}developers/${esc(d.slug)}.html" title="Other offering plans naming ${esc(d.name)}">${esc(d.name)}</a>` : esc(d.name);
-  const devPages = [...new Set(devs.map((d) => d.cite).filter((c) => c?.page_no && docsById.get(c.file_id)?.pdf_url).map((c) => `${c.file_id}:${c.page_no}`))];
-  const devCite = devPages.length ? "Named on " + devPages.map((k) => { const [id, pg] = k.split(":"); return `<a href="${esc(docsById.get(+id).pdf_url)}#page=${pg}" rel="noopener">p. ${pg}</a>`; }).join(", ") : "";
+  // The development company behind the sponsor, linked to its profile, and the people named as the sponsor's principals,
+  // each with the plan pages naming them.
+  const cites = (list) => {
+    const keys = [...new Set(list.map((d) => d.cite).filter((c) => c?.page_no && docsById.get(c.file_id)?.pdf_url).map((c) => `${c.file_id}:${c.page_no}`))];
+    return keys.length ? "Named on " + keys.map((k) => { const [id, pg] = k.split(":"); return `<a href="${esc(docsById.get(+id).pdf_url)}#page=${pg}" rel="noopener">p. ${pg}</a>`; }).join(", ") : "Named in the plan";
+  };
+  const devs = ctx.links.developers.get(p.plan_id) || [], principals = ctx.links.principals.get(p.plan_id) || [];
+  const devLink = (d) => d.slug ? `<a href="${P}developers/${esc(d.slug)}.html" title="Other offering plans by ${esc(d.name)}">${esc(d.name)}</a>` : esc(d.name);
   // The team gets its own box; building.js adds the managing agent, selling agent and architect from the plan's pages.
   const team = [
     row("Sponsor", p.sponsor && esc(tc(p.sponsor))),
-    row("Developers", devs.length && devs.map(devLink).join(", ") + (devCite ? `<span class="sub">${devCite} as the sponsor's principals</span>` : `<span class="sub">Named in the plan as the sponsor's principals</span>`)),
+    row(devs.length > 1 ? "Developers" : "Developer", devs.length && devs.map(devLink).join(", ") + `<span class="sub">${cites(devs)} as the company behind the sponsor</span>`),
+    row("Principals", principals.length && esc(principals.map((d) => d.name).join(", ")) + `<span class="sub">${cites(principals)} as the sponsor's principals</span>`),
     row("Counsel", p.law_firm && (ctx.links.counsel.has(p.plan_id) ? `<a href="${P}offering-plan-attorneys/${esc(ctx.links.counsel.get(p.plan_id))}.html" title="Other offering plans with this counsel">${esc(tc(p.law_firm))}</a>` : esc(tc(p.law_firm)))),
     row("Tax estimate", taxBy && (taxSlug ? `<a href="${P}tax-consultants/${esc(taxSlug)}.html" title="Other offering plans with this tax consultant">${esc(taxBy)}</a>` : esc(taxBy))
       + `<span class="sub">Prepared the first-year real estate tax projection</span>`),
@@ -250,7 +254,8 @@ const taxPrep = new Map(Object.entries(JSON.parse(await readFile(join(ROOT, "dat
 const links = profileLinks(groupAgents(await factsOf("managing_agent"), planById), groupFirms(plans),
   groupPros(await factsOf("architect"), planById, "architect"), groupPros(await factsOf("selling_agent"), planById, "selling_agent"),
   groupPros([...taxPrep].map(([plan_id, t]) => ({ plan_id, value_text: t.name })), planById, "tax_preparer"),
-  groupDevelopers(await all("sponsor_principals?select=plan_id,name,kind,role,file_id,page_no,quote&order=id"), planById));
+  groupCompanies(JSON.parse(await readFile(join(ROOT, "data", "developer-companies.json"), "utf8").catch(() => "{}")), planById),
+  groupPrincipals(await all("sponsor_principals?select=plan_id,name,kind,role,file_id,page_no,quote&order=id"), planById));
 const ctx = { plans, docs, sections, images, searchable, scheduleA, links, taxPrep };
 for (const p of plans) await writeFile(join(OUT, fileFor(p)), buildingPage(p, ctx));
 await writeFile(join(OUT, "index.html"), directory(plans.filter((p) => !isJunk(p, searchable)), ctx));
