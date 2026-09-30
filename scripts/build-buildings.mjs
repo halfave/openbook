@@ -29,9 +29,6 @@ function buildingPage(p, ctx) {
   const done = docs.filter((d) => d.status === "done");
   const searchable = done.length > 0;
   const sections = ctx.sections.get(p.plan_id) || [];
-  // Counsel's contact from the AG record (meta.stat): attorney of record, address, phone.
-  const st = meta.stat || {};
-  const counsel = [st.By && tc(st.By), st.Address && tc(st.Address), st.Phone].filter(Boolean);
   const initial = money(mp["Initial Price"]), current = money(mp["Current Price"]);
   const agRecord = AG + encodeURIComponent(p.plan_id), agDocs = agRecord + "#tabs-6";
   const mainPdf = (docs.find((d) => d.pdf_url && d.doc_kind === "offering_plan") || docs.find((d) => d.pdf_url) || {}).pdf_url || null;
@@ -55,8 +52,7 @@ function buildingPage(p, ctx) {
 
   const search = searchable ? `<form class="psearch" id="psearch" data-plan="${esc(p.plan_id)}">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips">${["parking", "storage", "roof", "inclusionary OR MIH", "managing agent", "architect"].map((t) => `<button type="button" data-q="${esc(t)}">${esc(t)}</button>`).join("")}</div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">${JSON.stringify(Object.fromEntries(done.map((d) => [d.file_id, docLabel(d)]))).replace(/</g, "\\u003c")}</script>` : "";
@@ -91,11 +87,14 @@ function buildingPage(p, ctx) {
     row("Offering price", price && `${esc(fmtMoney(price))} total${initial && current && current !== initial ? ` <span class="sub">${esc(fmtMoney(initial))} when first offered</span>` : ""}`),
     row("Construction", p.construction && esc(tc(p.construction))),
     row("Accepted", p.accepted_date && esc(day(p.accepted_date))),
+    row("Plan ID", esc(p.plan_id)),
+  ].join("");
+  // The team gets its own box; building.js adds the managing agent, selling agent and architect from the plan's pages.
+  const team = [
     row("Sponsor", p.sponsor && esc(tc(p.sponsor))),
-    row("Counsel", p.law_firm && (ctx.links.counsel.has(p.plan_id) ? `<a href="${P}offering-plan-attorneys/${esc(ctx.links.counsel.get(p.plan_id))}.html" title="Other offering plans with this counsel">${esc(tc(p.law_firm))}</a>` : esc(tc(p.law_firm))) +(counsel.length ? `<span class="sub">${counsel.map(esc).join(" · ")}</span>` : "")),
+    row("Counsel", p.law_firm && (ctx.links.counsel.has(p.plan_id) ? `<a href="${P}offering-plan-attorneys/${esc(ctx.links.counsel.get(p.plan_id))}.html" title="Other offering plans with this counsel">${esc(tc(p.law_firm))}</a>` : esc(tc(p.law_firm)))),
     row("Tax estimate", taxBy && (taxSlug ? `<a href="${P}tax-consultants/${esc(taxSlug)}.html" title="Other offering plans with this tax consultant">${esc(taxBy)}</a>` : esc(taxBy))
       + `<span class="sub">Prepared the first-year real estate tax projection</span>`),
-    row("Plan ID", esc(p.plan_id)),
   ].join("");
   // One pictogram per kind of section; the tile opens the plan at that section's longest run.
   const ICON = {
@@ -129,17 +128,22 @@ function buildingPage(p, ctx) {
 
   <div class="sheet-grid${ctx.images.has(p.plan_id) ? "" : " noimg"}" id="overview">
     ${ctx.images.has(p.plan_id) ? `<div class="sheet-side">
-      <figure class="massing"><img src="img/${esc(p.plan_id)}.webp" alt="3D massing drawing of ${esc(name)} and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/${esc(p.plan_id)}.webp" width="960" height="720" alt="3D massing drawing of ${esc(name)} and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts">${buttons}</div>
     </div>` : ""}
     <div>
-      <span id="pricing"></span><span id="team"></span>
+      <span id="pricing"></span>
       <dl class="sheet" id="sheet">${sheet}</dl>
       ${ctx.images.has(p.plan_id) ? "" : `<div class="acts">${buttons}</div>`}
     </div>
   </div>
 
-  ${searchable ? `<section class="sheet-sec">${search}</section>` : ""}
+  <section class="sheet-sec team-box" id="team"${team ? "" : " hidden"}>
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet">${team}</dl>
+  </section>
+
+  ${searchable ? `<section class="sheet-sec psearch-strip">${search}</section>` : ""}
 
   ${ctx.scheduleA.has(p.plan_id) ? `<section class="sheet-sec" id="units" hidden>
     <h2>Units &amp; Prices</h2>
@@ -157,7 +161,7 @@ function buildingPage(p, ctx) {
     <div id="schedb-where"></div>
   </section>` : ""}
 
-  ${near.length ? `<section class="sheet-sec" id="nearby">${nearHtml.replace("<h3>Compare Nearby Condo Plans</h3>", "<h2>Nearby Plans</h2>")}</section>` : ""}
+  ${near.length ? `<section class="sheet-sec near-box" id="nearby">${nearHtml.replace("<h3>Compare Nearby Condo Plans</h3>", "<h2>Nearby Plans</h2>")}</section>` : ""}
 
 </main>
 ${ld(ldJson)}

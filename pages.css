@@ -42,7 +42,7 @@ h2 + details{border-top:0}
 
 /* About: facts list in the left column */
 .about .about-facts{margin:22px 0 0;font-size:14px;line-height:1.5}
-.about .about-facts div{border-top:1px solid var(--rule);padding:9px 0}
+.about .about-facts div{padding:9px 0}
 .about .about-facts dt{font:11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .about .about-facts dd{margin:2px 0 0}
 .about .amain p{max-width:720px;margin:0 0 18px}
@@ -342,10 +342,32 @@ main.post.filings > .tscroll{max-width:1180px}
 .ftable .sub{display:block;font-size:13px;color:var(--muted)}
 
 /* ---------- units & prices (Schedule A) ---------- */
-.sa-sum,.sa-units{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
-.sa-sum th,.sa-sum td,.sa-units th,.sa-units td{padding:8px 10px 8px 0;border-top:1px solid var(--rule);text-align:left;white-space:nowrap}
-.sa-sum thead th,.sa-units thead th{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border-top:0}
+.sa-sum,.sa-units{border-collapse:collapse;width:100%;font-size:15px;font-variant-numeric:tabular-nums}
+/* One rule under every row, the same across the label column and the numbers (the page-wide th/td rules differ). */
+.sa-sum th,.sa-sum td,.sa-units th,.sa-units td{padding:10px 16px 10px 0;border:0;border-bottom:1px solid var(--rule);text-align:left;white-space:nowrap;vertical-align:baseline}
+.sa-sum thead th,.sa-units thead th{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--rule-strong);padding-top:0}
+.sa-sum tbody th,.sa-units tbody th{font:600 15px var(--sans);letter-spacing:0;text-transform:none;color:var(--ink)}
+.sa-sum tbody tr:hover,.sa-units tbody tr:hover{background:var(--panel)}
 .sa-sum .n,.sa-units .n{text-align:right}
-.sa-sum tbody th{font-weight:600}
-details.sa-all{margin-top:14px;border:0;padding:0}
-details.sa-all summary{cursor:pointer;font:600 14px var(--sans);color:var(--accent);padding:6px 0}
+.sa-sum tr > :last-child,.sa-units tr > :last-child{padding-right:0}
+.sa-sum .sub{font-weight:400;color:var(--muted)}
+details.sa-all{margin-top:22px;border:0;padding:0}
+details.sa-all summary{cursor:pointer;font:600 14px var(--sans);color:var(--accent);padding:6px 0 10px}
+
+/* ---------- building page: team box and the full-width plan search ---------- */
+.team-box{border:1px solid var(--rule-strong);background:var(--panel);padding:18px 20px 8px}
+.team-box h2{margin-bottom:6px}
+.team-box .sheet > div:first-child > *{border-top:0}
+/* Nearby plans: the tinted, accent-ruled box of the profile pages' similar firms. */
+.near-box{background:var(--chip);border:0;border-top:3px solid var(--accent);padding:16px 20px 6px}
+.near-box h2{font:500 11.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 4px;border:0;padding:0}
+.near-box .near{margin:0}
+.near-box .near li{padding:9px 0}
+.near-box .near li:last-child{border-bottom:0}
+.psearch-strip{margin-top:40px}
+/* The band and its top and bottom rules run to the window edges; both paint outside the box, so nothing scrolls sideways. */
+.psearch-strip .psearch{margin:0;padding:28px 0 26px;border:0;border-top:1px solid var(--rule-strong);border-bottom:1px solid var(--rule-strong);
+  box-shadow:0 0 0 100vmax var(--panel);clip-path:inset(0 -100vmax);border-image:linear-gradient(var(--rule-strong) 0 0) 1 / 1px 0 / 0 100vmax}
+.psearch-strip .psearch label{font-size:21px}
+.psearch-strip .prow input{font-size:17px;padding:13px 14px}
+.psearch-strip #presults:empty{display:none}

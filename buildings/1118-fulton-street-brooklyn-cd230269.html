@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD230269.webp" alt="3D massing drawing of Park Lee Fulton and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD230269.webp" width="960" height="720" alt="3D massing drawing of Park Lee Fulton and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD230269/25642.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD230269" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>11 residential · 2 storage · 1 commercial</dd></div><div><dt>Offering price</dt><dd>$9.79 million total <span class="sub">$8.46 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Jun 20, 2024</dd></div><div><dt>Sponsor</dt><dd>Tf 1118 Fulton Jv LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/eial-girtz.html" title="Other offering plans with this counsel">Eial Girtz, PC</a><span class="sub">Eial Girtz, Esq. · 11 Grace Avenue, Suite 309 · (516) 466-6911</span></dd></div><div><dt>Plan ID</dt><dd>CD230269</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>11 residential · 2 storage · 1 commercial</dd></div><div><dt>Offering price</dt><dd>$9.79 million total <span class="sub">$8.46 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Jun 20, 2024</dd></div><div><dt>Plan ID</dt><dd>CD230269</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD230269">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>Tf 1118 Fulton Jv LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/eial-girtz.html" title="Other offering plans with this counsel">Eial Girtz, PC</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD230269">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"25642":"Offering Plan"}</script></section>
@@ -100,7 +104,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="520-franklin-avenue-nassau-cd130317.html">Garden City Medical Condominium I</a><span>next door · 0 units · 2014</span></li><li><a href="190-lefferts-place-brooklyn-cd100026.html">190 Lefferts Place Condominium</a><span>next door · 5 units · 2010</span></li><li><a href="196-lefferts-place-brooklyn-cd180093.html">196 Lefferts Place Condominium</a><span>next door · 3 units · 2018</span></li><li><a href="208-lefferts-place-brooklyn-cd140268.html">208 Lefferts Place Condominium</a><span>next door · 4 units · 2015</span></li><li><a href="176-lefferts-place-brooklyn-cd100025.html">176 Lefferts Place Condominium</a><span>next door · 5 units · 2010</span></li><li><a href="22-jefferson-avenue-brooklyn-cd210170.html">22 Jefferson Avenue Condominium</a><span>next door · 2 units · 2022</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="520-franklin-avenue-nassau-cd130317.html">Garden City Medical Condominium I</a><span>next door · 0 units · 2014</span></li><li><a href="190-lefferts-place-brooklyn-cd100026.html">190 Lefferts Place Condominium</a><span>next door · 5 units · 2010</span></li><li><a href="196-lefferts-place-brooklyn-cd180093.html">196 Lefferts Place Condominium</a><span>next door · 3 units · 2018</span></li><li><a href="208-lefferts-place-brooklyn-cd140268.html">208 Lefferts Place Condominium</a><span>next door · 4 units · 2015</span></li><li><a href="176-lefferts-place-brooklyn-cd100025.html">176 Lefferts Place Condominium</a><span>next door · 5 units · 2010</span></li><li><a href="22-jefferson-avenue-brooklyn-cd210170.html">22 Jefferson Avenue Condominium</a><span>next door · 2 units · 2022</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/1118-fulton-street-brooklyn-cd230269.html#building","name":"Park Lee Fulton","url":"https://www.condobooknyc.com/buildings/1118-fulton-street-brooklyn-cd230269.html","description":"Park Lee Fulton, 1118 Fulton Street, Brooklyn. AG plan CD230269, accepted June 2024. 11 residential units. Budget, team, documents and source links.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD230269"},"address":{"@type":"PostalAddress","streetAddress":"1118 Fulton Street","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11238","addressCountry":"US"},"numberOfAccommodationUnits":11,"geo":{"@type":"GeoCoordinates","latitude":40.68101,"longitude":-73.95637},"image":"https://www.condobooknyc.com/buildings/img/CD230269.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

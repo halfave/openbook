@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD180398.webp" alt="3D massing drawing of Beverly Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD180398.webp" width="960" height="720" alt="3D massing drawing of Beverly Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD180398/14386.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD180398" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>40 residential · 13 parking · 4 commercial</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Feb 7, 2022</dd></div><div><dt>Sponsor</dt><dd>Mdcm, LLC And 8336 Realty, LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/moritt-hock-hamroff.html" title="Other offering plans with this counsel">Moritt Hock &amp; Hamroff, LLP</a><span class="sub">Jodi B Zimmerman, Esq. · 1407 Broadway, 39th Floor · (212) 239-2000</span></dd></div><div><dt>Plan ID</dt><dd>CD180398</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>40 residential · 13 parking · 4 commercial</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Feb 7, 2022</dd></div><div><dt>Plan ID</dt><dd>CD180398</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD180398">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>Mdcm, LLC And 8336 Realty, LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/moritt-hock-hamroff.html" title="Other offering plans with this counsel">Moritt Hock &amp; Hamroff, LLP</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD180398">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"14386":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="119-40-metropolitan-avenue-queens-cd070203.html">Kew Gardens Town House Condominium</a><span>0.2 mi · 31 units · 38 parking · 2008</span></li><li><a href="116-24-grosvenor-lane-queens-cd050047.html">Park Lane Condominium</a><span>0.2 mi · 66 units · 1 parking · 2005</span></li><li><a href="83-09-talbot-street-queens-cd050564.html">83-09 Talbot Street</a><span>0.2 mi · 83 units · 2006</span></li><li><a href="116-17-grosvenor-lane-queens-cd200245.html">Garden Lane Condominium</a><span>0.2 mi · 19 units · 2021</span></li><li><a href="82-65-116th-street-queens-cd090293.html">Park Terrace 116 Condominium</a><span>0.2 mi · 24 units · 2009</span></li><li><a href="83-75-117th-street-queens-cd050071.html">Kew Condominium</a><span>0.3 mi · 39 units · 24 parking · 2005</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="119-40-metropolitan-avenue-queens-cd070203.html">Kew Gardens Town House Condominium</a><span>0.2 mi · 31 units · 38 parking · 2008</span></li><li><a href="116-24-grosvenor-lane-queens-cd050047.html">Park Lane Condominium</a><span>0.2 mi · 66 units · 1 parking · 2005</span></li><li><a href="83-09-talbot-street-queens-cd050564.html">83-09 Talbot Street</a><span>0.2 mi · 83 units · 2006</span></li><li><a href="116-17-grosvenor-lane-queens-cd200245.html">Garden Lane Condominium</a><span>0.2 mi · 19 units · 2021</span></li><li><a href="82-65-116th-street-queens-cd090293.html">Park Terrace 116 Condominium</a><span>0.2 mi · 24 units · 2009</span></li><li><a href="83-75-117th-street-queens-cd050071.html">Kew Condominium</a><span>0.3 mi · 39 units · 24 parking · 2005</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/82-04-lefferts-boulevard-queens-cd180398.html#building","name":"Beverly Condominium","url":"https://www.condobooknyc.com/buildings/82-04-lefferts-boulevard-queens-cd180398.html","description":"Beverly Condominium, 82-04 Lefferts Boulevard, Queens. AG plan CD180398, accepted February 2022. 40 residential units, 13 parking units.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD180398"},"address":{"@type":"PostalAddress","streetAddress":"82-04 Lefferts Boulevard","addressLocality":"Queens","addressRegion":"NY","postalCode":"11415","addressCountry":"US"},"numberOfAccommodationUnits":40,"geo":{"@type":"GeoCoordinates","latitude":40.707445,"longitude":-73.831621},"image":"https://www.condobooknyc.com/buildings/img/CD180398.webp","containedInPlace":{"@type":"Place","name":"Queens, New York"}}</script>

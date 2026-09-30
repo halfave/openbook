@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD200140.webp" alt="3D massing drawing of 850 57th Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD200140.webp" width="960" height="720" alt="3D massing drawing of 850 57th Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD200140/11544.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD200140" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>5 residential · 2 commercial</dd></div><div><dt>Offering price</dt><dd>$3.99 million total <span class="sub">$3.98 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Mar 19, 2021</dd></div><div><dt>Sponsor</dt><dd>Winle Property LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/claudia-murdoch.html" title="Other offering plans with this counsel">The Law Office Of Claudia V. Murdoch, P.C.</a><span class="sub">Claudia Villanella Murdoch, Esq. · 117 Seventh Avenue</span></dd></div><div><dt>Plan ID</dt><dd>CD200140</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>5 residential · 2 commercial</dd></div><div><dt>Offering price</dt><dd>$3.99 million total <span class="sub">$3.98 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Mar 19, 2021</dd></div><div><dt>Plan ID</dt><dd>CD200140</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD200140">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>Winle Property LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/claudia-murdoch.html" title="Other offering plans with this counsel">The Law Office Of Claudia V. Murdoch, P.C.</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD200140">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"11544":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="834-57th-street-brooklyn-cd090027.html">834 57th Street Condominium</a><span>next door · 12 units · 2009</span></li><li><a href="841-58th-street-brooklyn-cd260071.html">Xingfu Condominium</a><span>next door · 6 units</span></li><li><a href="849-57th-street-brooklyn-cd090265.html">849 57th Street Condominium</a><span>next door · 0 units · 3 parking · 2010</span></li><li><a href="839-58th-street-brooklyn-cd080645.html">839 58th Street Condominium</a><span>next door · 7 units · 2009</span></li><li><a href="837-58th-street-brooklyn-cd060514.html">837 58th Street Condominium</a><span>next door · 0 units · 2007</span></li><li><a href="828-57th-street-brooklyn-cd220181.html">828 57th Street Condominium</a><span>next door · 0 units · 2023</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="834-57th-street-brooklyn-cd090027.html">834 57th Street Condominium</a><span>next door · 12 units · 2009</span></li><li><a href="841-58th-street-brooklyn-cd260071.html">Xingfu Condominium</a><span>next door · 6 units</span></li><li><a href="849-57th-street-brooklyn-cd090265.html">849 57th Street Condominium</a><span>next door · 0 units · 3 parking · 2010</span></li><li><a href="839-58th-street-brooklyn-cd080645.html">839 58th Street Condominium</a><span>next door · 7 units · 2009</span></li><li><a href="837-58th-street-brooklyn-cd060514.html">837 58th Street Condominium</a><span>next door · 0 units · 2007</span></li><li><a href="828-57th-street-brooklyn-cd220181.html">828 57th Street Condominium</a><span>next door · 0 units · 2023</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/850-57th-street-brooklyn-cd200140.html#building","name":"850 57th Street Condominium","url":"https://www.condobooknyc.com/buildings/850-57th-street-brooklyn-cd200140.html","description":"850 57th Street Condominium, 850 57th Street, Brooklyn. AG plan CD200140, accepted March 2021. 5 residential units. Budget, team, documents and source links.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD200140"},"address":{"@type":"PostalAddress","streetAddress":"850 57th Street","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11220","addressCountry":"US"},"numberOfAccommodationUnits":5,"geo":{"@type":"GeoCoordinates","latitude":40.63627,"longitude":-74.006689},"image":"https://www.condobooknyc.com/buildings/img/CD200140.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

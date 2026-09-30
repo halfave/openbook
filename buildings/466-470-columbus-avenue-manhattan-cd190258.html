@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD190258.webp" alt="3D massing drawing of Charlotte Of The Upper West Side and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD190258.webp" width="960" height="720" alt="3D massing drawing of Charlotte Of The Upper West Side and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD190258/17154.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD190258" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>7 residential</dd></div><div><dt>Offering price</dt><dd>$85.3 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Oct 29, 2020</dd></div><div><dt>Sponsor</dt><dd>468 Property Owner LLC</dd></div><div><dt>Counsel</dt><dd>Federman Steifman LLP<span class="sub">Hamid Soltani, Esq. · 220 East 42nd Street, 29th Floor · (212) 922-2221</span></dd></div><div><dt>Tax estimate</dt><dd><a href="../tax-consultants/hucke-and-associates.html" title="Other offering plans with this tax consultant">Hucke and Associates</a><span class="sub">Prepared the first-year real estate tax projection</span></dd></div><div><dt>Plan ID</dt><dd>CD190258</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>7 residential</dd></div><div><dt>Offering price</dt><dd>$85.3 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Oct 29, 2020</dd></div><div><dt>Plan ID</dt><dd>CD190258</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD190258">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>468 Property Owner LLC</dd></div><div><dt>Counsel</dt><dd>Federman Steifman LLP</dd></div><div><dt>Tax estimate</dt><dd><a href="../tax-consultants/hucke-and-associates.html" title="Other offering plans with this tax consultant">Hucke and Associates</a><span class="sub">Prepared the first-year real estate tax projection</span></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD190258">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"17154":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="132-134-west-83rd-street-manhattan-cd170298.html">132-134 West 83rd Street Condominium</a><span>next door · 6 units · 2018</span></li><li><a href="45-west-81st-street-manhattan-cd220168.html">45 West 81st Street Condominium</a><span>next door · 143 units · 2024</span></li><li><a href="55-west-84th-street-manhattan-cd100258.html">Park 84 Condominium</a><span>next door · 11 units · 2011</span></li><li><a href="150-west-82nd-street-manhattan-cd180384.html">150 West 82nd Street Condominium</a><span>0.1 mi · 40 units · 2020</span></li><li><a href="164-west-83rd-street-manhattan-cd030250.html">Fremont Condominium</a><span>0.1 mi · 10 units · 2004</span></li><li><a href="140-west-81st-street-manhattan-cd210188.html">140 West 81st Street Condominium</a><span>0.1 mi · 6 units · 2022</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="132-134-west-83rd-street-manhattan-cd170298.html">132-134 West 83rd Street Condominium</a><span>next door · 6 units · 2018</span></li><li><a href="45-west-81st-street-manhattan-cd220168.html">45 West 81st Street Condominium</a><span>next door · 143 units · 2024</span></li><li><a href="55-west-84th-street-manhattan-cd100258.html">Park 84 Condominium</a><span>next door · 11 units · 2011</span></li><li><a href="150-west-82nd-street-manhattan-cd180384.html">150 West 82nd Street Condominium</a><span>0.1 mi · 40 units · 2020</span></li><li><a href="164-west-83rd-street-manhattan-cd030250.html">Fremont Condominium</a><span>0.1 mi · 10 units · 2004</span></li><li><a href="140-west-81st-street-manhattan-cd210188.html">140 West 81st Street Condominium</a><span>0.1 mi · 6 units · 2022</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/466-470-columbus-avenue-manhattan-cd190258.html#building","name":"Charlotte Of The Upper West Side","url":"https://www.condobooknyc.com/buildings/466-470-columbus-avenue-manhattan-cd190258.html","description":"Charlotte Of The Upper West Side, 466-470 Columbus Avenue, Manhattan. AG plan CD190258, accepted October 2020. 7 residential units.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD190258"},"address":{"@type":"PostalAddress","streetAddress":"466-470 Columbus Avenue","addressLocality":"Manhattan","addressRegion":"NY","postalCode":"10024","addressCountry":"US"},"numberOfAccommodationUnits":7,"geo":{"@type":"GeoCoordinates","latitude":40.784355,"longitude":-73.974128},"image":"https://www.condobooknyc.com/buildings/img/CD190258.webp","containedInPlace":{"@type":"Place","name":"Manhattan, New York"}}</script>

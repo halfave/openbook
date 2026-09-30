@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD140151.webp" alt="3D massing drawing of 2640 East 14th Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD140151.webp" width="960" height="720" alt="3D massing drawing of 2640 East 14th Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD140151#tabs-6" rel="noopener">View the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD140151" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>5 residential · 5 parking · 2 commercial</dd></div><div><dt>Offering price</dt><dd>$5.72 million total <span class="sub">$5.09 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Apr 17, 2015</dd></div><div><dt>Sponsor</dt><dd>2640 East 14 LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/ilan.html" title="Other offering plans with this counsel">Ilan Law Firm, P.C.</a><span class="sub">Gabriella Ilan, Esq. · 2709 Coney Island Avenue · (347) 933-6333</span></dd></div><div><dt>Plan ID</dt><dd>CD140151</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>5 residential · 5 parking · 2 commercial</dd></div><div><dt>Offering price</dt><dd>$5.72 million total <span class="sub">$5.09 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Apr 17, 2015</dd></div><div><dt>Plan ID</dt><dd>CD140151</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD140151">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>2640 East 14 LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/ilan.html" title="Other offering plans with this counsel">Ilan Law Firm, P.C.</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD140151">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"11380":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="2646-east-14th-street-brooklyn-cd010067.html">2646 East 14th Street Condominium</a><span>next door · 2 units · 2001</span></li><li><a href="400-15th-street-brooklyn-cd050592.html">Liberty View Condominium</a><span>next door · 18 units · 15 parking · 2006</span></li><li><a href="2573-2575-east-14th-street-brooklyn-cd030005.html">2573-2575 East 14th Street</a><span>next door · 9 units · 2004</span></li><li><a href="1524-sheepshead-bay-road-aka-1501-voorhies-brooklyn-cd160373.html">1 Brooklyn Bay Condominiums</a><span>0.1 mi · 56 units · 43 parking · 2017</span></li><li><a href="2567-east-14th-street-brooklyn-cd150220.html">2567 East 14th Street Condominium</a><span>0.1 mi · 4 units · 2016</span></li><li><a href="2607-e-12th-st-brooklyn-cd060219.html">2607 East 12th St. Condo</a><span>0.1 mi · 3 units · 2 parking · 2006</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="2646-east-14th-street-brooklyn-cd010067.html">2646 East 14th Street Condominium</a><span>next door · 2 units · 2001</span></li><li><a href="400-15th-street-brooklyn-cd050592.html">Liberty View Condominium</a><span>next door · 18 units · 15 parking · 2006</span></li><li><a href="2573-2575-east-14th-street-brooklyn-cd030005.html">2573-2575 East 14th Street</a><span>next door · 9 units · 2004</span></li><li><a href="1524-sheepshead-bay-road-aka-1501-voorhies-brooklyn-cd160373.html">1 Brooklyn Bay Condominiums</a><span>0.1 mi · 56 units · 43 parking · 2017</span></li><li><a href="2567-east-14th-street-brooklyn-cd150220.html">2567 East 14th Street Condominium</a><span>0.1 mi · 4 units · 2016</span></li><li><a href="2607-e-12th-st-brooklyn-cd060219.html">2607 East 12th St. Condo</a><span>0.1 mi · 3 units · 2 parking · 2006</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/2640-east-14th-street-brooklyn-cd140151.html#building","name":"2640 East 14th Street Condominium","url":"https://www.condobooknyc.com/buildings/2640-east-14th-street-brooklyn-cd140151.html","description":"2640 East 14th Street Condominium, 2640 East 14th Street, Brooklyn. AG plan CD140151, accepted April 2015. 5 residential units, 5 parking units.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD140151"},"address":{"@type":"PostalAddress","streetAddress":"2640 East 14th Street","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11235","addressCountry":"US"},"numberOfAccommodationUnits":5,"geo":{"@type":"GeoCoordinates","latitude":40.586821,"longitude":-73.9554},"image":"https://www.condobooknyc.com/buildings/img/CD140151.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

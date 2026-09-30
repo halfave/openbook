@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD190414.webp" alt="3D massing drawing of 1654 84th Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD190414.webp" width="960" height="720" alt="3D massing drawing of 1654 84th Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD190414/17670.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD190414" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>12 residential · 8 parking</dd></div><div><dt>Offering price</dt><dd>$7.49 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Nov 4, 2022</dd></div><div><dt>Sponsor</dt><dd>1654 Property LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/thomas-berinato.html" title="Other offering plans with this counsel">Thomas E. Berinato, Attorney At Law</a><span class="sub">Thomas E Berinato, Esq. · 123-40 83rd Avenue, Suite 1d · (718) 575-3400</span></dd></div><div><dt>Plan ID</dt><dd>CD190414</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>12 residential · 8 parking</dd></div><div><dt>Offering price</dt><dd>$7.49 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Nov 4, 2022</dd></div><div><dt>Plan ID</dt><dd>CD190414</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD190414">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>1654 Property LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/thomas-berinato.html" title="Other offering plans with this counsel">Thomas E. Berinato, Attorney At Law</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD190414">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"17670":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="1636-85th-street-brooklyn-cd080039.html">1636 85th Street</a><span>next door · 6 units · 5 parking · 2008</span></li><li><a href="1722-84th-street-aka-1710-and-1714-84th-street-brooklyn-cd240161.html">Bath Beach Residence Condominium</a><span>0.1 mi · 11 units · 9 parking · 2024</span></li><li><a href="8154-bay-16th-street-brooklyn-cd190407.html">8154 Bay 16th Street Condominium</a><span>0.1 mi · 6 units · 5 parking · 2021</span></li><li><a href="8642-16th-avenue-brooklyn-cd060820.html">8642 16th Avenue Condominium</a><span>0.2 mi · 6 units · 5 parking · 2007</span></li><li><a href="8658-8660-8662-8664-and-8666-23rd-avenue-brooklyn-cd040009.html">Galleria At Benson Condominium</a><span>0.2 mi · 20 units · 10 parking · 2004</span></li><li><a href="18-bay-17th-street-brooklyn-cd170067.html">Bay Ridge 18 Condominium</a><span>0.2 mi · 5 units · 4 parking · 2018</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="1636-85th-street-brooklyn-cd080039.html">1636 85th Street</a><span>next door · 6 units · 5 parking · 2008</span></li><li><a href="1722-84th-street-aka-1710-and-1714-84th-street-brooklyn-cd240161.html">Bath Beach Residence Condominium</a><span>0.1 mi · 11 units · 9 parking · 2024</span></li><li><a href="8154-bay-16th-street-brooklyn-cd190407.html">8154 Bay 16th Street Condominium</a><span>0.1 mi · 6 units · 5 parking · 2021</span></li><li><a href="8642-16th-avenue-brooklyn-cd060820.html">8642 16th Avenue Condominium</a><span>0.2 mi · 6 units · 5 parking · 2007</span></li><li><a href="8658-8660-8662-8664-and-8666-23rd-avenue-brooklyn-cd040009.html">Galleria At Benson Condominium</a><span>0.2 mi · 20 units · 10 parking · 2004</span></li><li><a href="18-bay-17th-street-brooklyn-cd170067.html">Bay Ridge 18 Condominium</a><span>0.2 mi · 5 units · 4 parking · 2018</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/1654-84th-street-brooklyn-cd190414.html#building","name":"1654 84th Street Condominium","url":"https://www.condobooknyc.com/buildings/1654-84th-street-brooklyn-cd190414.html","description":"1654 84th Street Condominium, 1654 84th Street, Brooklyn. AG plan CD190414, accepted November 2022. 12 residential units, 8 parking units.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD190414"},"address":{"@type":"PostalAddress","streetAddress":"1654 84th Street","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11214","addressCountry":"US"},"numberOfAccommodationUnits":12,"geo":{"@type":"GeoCoordinates","latitude":40.610401,"longitude":-74.004741},"image":"https://www.condobooknyc.com/buildings/img/CD190414.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

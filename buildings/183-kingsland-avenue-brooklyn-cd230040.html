@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD230040.webp" alt="3D massing drawing of 183 Kingsland Avenue Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD230040.webp" width="960" height="720" alt="3D massing drawing of 183 Kingsland Avenue Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD230040/21292.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD230040" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>3 residential</dd></div><div><dt>Offering price</dt><dd>$4.65 million total</dd></div><div><dt>Construction</dt><dd>Rehab</dd></div><div><dt>Accepted</dt><dd>May 23, 2023</dd></div><div><dt>Sponsor</dt><dd>281 S 2 LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/jeffrey-zwick.html" title="Other offering plans with this counsel">Jeffrey Zwick &amp; Associates, P.C.</a><span class="sub">Danielle Pistola Sidiropoulos, Esq. · 2329 Nostrand Ave, Suite 400 · (718) 513-2050</span></dd></div><div><dt>Plan ID</dt><dd>CD230040</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>3 residential</dd></div><div><dt>Offering price</dt><dd>$4.65 million total</dd></div><div><dt>Construction</dt><dd>Rehab</dd></div><div><dt>Accepted</dt><dd>May 23, 2023</dd></div><div><dt>Plan ID</dt><dd>CD230040</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD230040">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>281 S 2 LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/jeffrey-zwick.html" title="Other offering plans with this counsel">Jeffrey Zwick &amp; Associates, P.C.</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD230040">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"21292":"Offering Plan"}</script></section>
@@ -100,7 +104,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="100-monitor-street-brooklyn-cd230006.html">100 Monitor Condominium</a><span>next door · 3 units</span></li><li><a href="221-kingsland-avenue-brooklyn-cd070660.html">221 Kingsland Avenue Condominium</a><span>next door · 6 units · 2008</span></li><li><a href="54-monitor-street-brooklyn-cd160042.html">54 Monitor Street Condominium</a><span>0.1 mi · 7 units · 2016</span></li><li><a href="61-north-henry-street-brooklyn-cd220003.html">61 North Henry Street Condominium</a><span>0.1 mi · 6 units · 2022</span></li><li><a href="121-kingsland-avenue-brooklyn-cd080341.html">Concorde Ix Condominium</a><span>0.1 mi · 8 units · 2009</span></li><li><a href="93-herbert-street-brooklyn-cd110170.html">Herbert Star Condominium</a><span>0.2 mi · 8 units · 2013</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="100-monitor-street-brooklyn-cd230006.html">100 Monitor Condominium</a><span>next door · 3 units</span></li><li><a href="221-kingsland-avenue-brooklyn-cd070660.html">221 Kingsland Avenue Condominium</a><span>next door · 6 units · 2008</span></li><li><a href="54-monitor-street-brooklyn-cd160042.html">54 Monitor Street Condominium</a><span>0.1 mi · 7 units · 2016</span></li><li><a href="61-north-henry-street-brooklyn-cd220003.html">61 North Henry Street Condominium</a><span>0.1 mi · 6 units · 2022</span></li><li><a href="121-kingsland-avenue-brooklyn-cd080341.html">Concorde Ix Condominium</a><span>0.1 mi · 8 units · 2009</span></li><li><a href="93-herbert-street-brooklyn-cd110170.html">Herbert Star Condominium</a><span>0.2 mi · 8 units · 2013</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/183-kingsland-avenue-brooklyn-cd230040.html#building","name":"183 Kingsland Avenue Condominium","url":"https://www.condobooknyc.com/buildings/183-kingsland-avenue-brooklyn-cd230040.html","description":"183 Kingsland Avenue Condominium, 183 Kingsland Avenue, Brooklyn. AG plan CD230040, accepted May 2023. 3 residential units.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD230040"},"address":{"@type":"PostalAddress","streetAddress":"183 Kingsland Avenue","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11222","addressCountry":"US"},"numberOfAccommodationUnits":3,"geo":{"@type":"GeoCoordinates","latitude":40.722765,"longitude":-73.941394},"image":"https://www.condobooknyc.com/buildings/img/CD230040.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

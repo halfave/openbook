@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD210046.webp" alt="3D massing drawing of 508 Waverly Avenue Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD210046.webp" width="960" height="720" alt="3D massing drawing of 508 Waverly Avenue Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD210046/14093.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD210046" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>6 residential</dd></div><div><dt>Offering price</dt><dd>$8.11 million total <span class="sub">$6.5 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Jan 28, 2022</dd></div><div><dt>Sponsor</dt><dd>508 Waverly LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/jay-lichtman.html" title="Other offering plans with this counsel">The Law Office Of Jay Lichtman, PC</a><span class="sub">Berel Shurin, Esq. · 99 West Hawthorne Avenue Ste 520 · (347) 504-1724</span></dd></div><div><dt>Plan ID</dt><dd>CD210046</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>6 residential</dd></div><div><dt>Offering price</dt><dd>$8.11 million total <span class="sub">$6.5 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Jan 28, 2022</dd></div><div><dt>Plan ID</dt><dd>CD210046</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD210046">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>508 Waverly LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/jay-lichtman.html" title="Other offering plans with this counsel">The Law Office Of Jay Lichtman, PC</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD210046">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"14093":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="500-waverly-avenue-brooklyn-cd140317.html">500 Waverly Condominium</a><span>next door · 48 units · 2016</span></li><li><a href="525-clinton-avenue-brooklyn-cd060494.html">525 Clinton Condominium</a><span>next door · 30 units · 1 parking · 2007</span></li><li><a href="888-fulton-street-brooklyn-cd070072.html">888 Fulton Street Condominium</a><span>next door · 8 units · 2007</span></li><li><a href="505-clinton-avenue-brooklyn-cd170268.html">505 Clinton Avenue Condominium</a><span>next door · 11 units · 2018</span></li><li><a href="538-washington-avenue-brooklyn-cd140110.html">538 Washington Condominium</a><span>next door · 10 units · 2014</span></li><li><a href="532-clinton-avenue-brooklyn-cd210189.html">532 Clinton Avenue Condominium</a><span>next door · 14 units · 11 parking · 2021</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="500-waverly-avenue-brooklyn-cd140317.html">500 Waverly Condominium</a><span>next door · 48 units · 2016</span></li><li><a href="525-clinton-avenue-brooklyn-cd060494.html">525 Clinton Condominium</a><span>next door · 30 units · 1 parking · 2007</span></li><li><a href="888-fulton-street-brooklyn-cd070072.html">888 Fulton Street Condominium</a><span>next door · 8 units · 2007</span></li><li><a href="505-clinton-avenue-brooklyn-cd170268.html">505 Clinton Avenue Condominium</a><span>next door · 11 units · 2018</span></li><li><a href="538-washington-avenue-brooklyn-cd140110.html">538 Washington Condominium</a><span>next door · 10 units · 2014</span></li><li><a href="532-clinton-avenue-brooklyn-cd210189.html">532 Clinton Avenue Condominium</a><span>next door · 14 units · 11 parking · 2021</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/508-waverly-avenue-brooklyn-cd210046.html#building","name":"508 Waverly Avenue Condominium","url":"https://www.condobooknyc.com/buildings/508-waverly-avenue-brooklyn-cd210046.html","description":"508 Waverly Avenue Condominium, 508 Waverly Avenue, Brooklyn. AG plan CD210046, accepted January 2022. 6 residential units.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD210046"},"address":{"@type":"PostalAddress","streetAddress":"508 Waverly Avenue","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11238","addressCountry":"US"},"numberOfAccommodationUnits":6,"geo":{"@type":"GeoCoordinates","latitude":40.682772,"longitude":-73.965977},"image":"https://www.condobooknyc.com/buildings/img/CD210046.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

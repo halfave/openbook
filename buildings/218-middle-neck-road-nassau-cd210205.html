@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD210205.webp" alt="3D massing drawing of Rose Condominium Aka Rose At Great Neck Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD210205.webp" width="960" height="720" alt="3D massing drawing of Rose Condominium Aka Rose At Great Neck Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD210205/14094.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD210205" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>40 residential · 79 parking · 4 storage</dd></div><div><dt>Offering price</dt><dd>$53.9 million total <span class="sub">$57.6 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Jan 3, 2022</dd></div><div><dt>Sponsor</dt><dd>Mckinley Rose LLC</dd></div><div><dt>Counsel</dt><dd>Harras, Bloom &amp; Archer, LLP<span class="sub">Darren Stakey, Esq. · 445 Broad Hollow Road, Suite 127 · (516) 296-7041</span></dd></div><div><dt>Plan ID</dt><dd>CD210205</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>40 residential · 79 parking · 4 storage</dd></div><div><dt>Offering price</dt><dd>$53.9 million total <span class="sub">$57.6 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Jan 3, 2022</dd></div><div><dt>Plan ID</dt><dd>CD210205</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD210205">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>Mckinley Rose LLC</dd></div><div><dt>Counsel</dt><dd>Harras, Bloom &amp; Archer, LLP</dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD210205">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"14094":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="400-avenue-u-brooklyn-cd090178.html">Residences At 400 U</a><span>0.2 mi · 28 units · 1 parking · 2010</span></li><li><a href="346-avenue-u-brooklyn-cd230090.html">346 Avenue U Condominium</a><span>0.2 mi · 12 units · 2024</span></li><li><a href="2400-east-4th-street-brooklyn-cd060830.html">2400 East 4th Street Condo</a><span>0.2 mi · 6 units · 2007</span></li><li><a href="71-village-road-north-brooklyn-cd050018.html">Village Terrace Condominium</a><span>0.2 mi · 42 units · 21 parking · 2005</span></li><li><a href="2384-ocean-avenue-brooklyn-cd050283.html">Ocean Avenue Condominiums</a><span>0.3 mi · 10 units · 10 parking · 2006</span></li><li><a href="61-village-road-north-brooklyn-cd050086.html">61 Village Road North Condominium</a><span>0.3 mi · 11 units · 6 parking · 2005</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="400-avenue-u-brooklyn-cd090178.html">Residences At 400 U</a><span>0.2 mi · 28 units · 1 parking · 2010</span></li><li><a href="346-avenue-u-brooklyn-cd230090.html">346 Avenue U Condominium</a><span>0.2 mi · 12 units · 2024</span></li><li><a href="2400-east-4th-street-brooklyn-cd060830.html">2400 East 4th Street Condo</a><span>0.2 mi · 6 units · 2007</span></li><li><a href="71-village-road-north-brooklyn-cd050018.html">Village Terrace Condominium</a><span>0.2 mi · 42 units · 21 parking · 2005</span></li><li><a href="2384-ocean-avenue-brooklyn-cd050283.html">Ocean Avenue Condominiums</a><span>0.3 mi · 10 units · 10 parking · 2006</span></li><li><a href="61-village-road-north-brooklyn-cd050086.html">61 Village Road North Condominium</a><span>0.3 mi · 11 units · 6 parking · 2005</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/218-middle-neck-road-nassau-cd210205.html#building","name":"Rose Condominium Aka Rose At Great Neck Condominium","url":"https://www.condobooknyc.com/buildings/218-middle-neck-road-nassau-cd210205.html","description":"Rose Condominium Aka Rose At Great Neck Condominium, 218 Middle Neck Road, Nassau. AG plan CD210205, accepted January 2022.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD210205"},"address":{"@type":"PostalAddress","streetAddress":"218 Middle Neck Road","addressLocality":"Nassau","addressRegion":"NY","postalCode":"11021","addressCountry":"US"},"numberOfAccommodationUnits":40,"geo":{"@type":"GeoCoordinates","latitude":40.594563,"longitude":-73.968477},"image":"https://www.condobooknyc.com/buildings/img/CD210205.webp"}</script>

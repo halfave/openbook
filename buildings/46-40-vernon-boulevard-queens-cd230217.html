@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD230217.webp" alt="3D massing drawing of 46-40 Vernon Boulevard Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD230217.webp" width="960" height="720" alt="3D massing drawing of 46-40 Vernon Boulevard Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD230217/26908.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD230217" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>8 residential · 1 commercial</dd></div><div><dt>Offering price</dt><dd>$6.87 million total <span class="sub">$3.93 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Jan 2, 2024</dd></div><div><dt>Sponsor</dt><dd>Vernon 46 LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/thomas-berinato.html" title="Other offering plans with this counsel">Thomas E. Berinato, Attorney At Law</a><span class="sub">Thomas E Berinato, Esq. · 123-40 83rd Avenue, Suite 1d · (718) 575-3400</span></dd></div><div><dt>Plan ID</dt><dd>CD230217</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>8 residential · 1 commercial</dd></div><div><dt>Offering price</dt><dd>$6.87 million total <span class="sub">$3.93 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Jan 2, 2024</dd></div><div><dt>Plan ID</dt><dd>CD230217</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD230217">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>Vernon 46 LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/thomas-berinato.html" title="Other offering plans with this counsel">Thomas E. Berinato, Attorney At Law</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD230217">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"26908":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="47-01-vernon-boulevard-queens-cd200109.html">47-01 Vernon Boulevard Condominium</a><span>next door · 15 units · 2021</span></li><li><a href="5-30-47th-avenue-queens-cd180115.html">Vernon Iii Condominium</a><span>next door · 6 units · 2018</span></li><li><a href="10-18-47th-avenue-queens-cd160223.html">10-18 47th Avenue Condominium</a><span>next door · 2 units · 2017</span></li><li><a href="528-47th-avenue-queens-cd180114.html">Vernon Ii Condominium</a><span>next door · 6 units · 2018</span></li><li><a href="5-41-47th-road-queens-cd130155.html">5-41 47th Road Condominium</a><span>next door · 3 units · 2014</span></li><li><a href="5-26-47th-avenue-queens-cd180113.html">Vernon I Condominium</a><span>next door · 6 units · 2018</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="47-01-vernon-boulevard-queens-cd200109.html">47-01 Vernon Boulevard Condominium</a><span>next door · 15 units · 2021</span></li><li><a href="5-30-47th-avenue-queens-cd180115.html">Vernon Iii Condominium</a><span>next door · 6 units · 2018</span></li><li><a href="10-18-47th-avenue-queens-cd160223.html">10-18 47th Avenue Condominium</a><span>next door · 2 units · 2017</span></li><li><a href="528-47th-avenue-queens-cd180114.html">Vernon Ii Condominium</a><span>next door · 6 units · 2018</span></li><li><a href="5-41-47th-road-queens-cd130155.html">5-41 47th Road Condominium</a><span>next door · 3 units · 2014</span></li><li><a href="5-26-47th-avenue-queens-cd180113.html">Vernon I Condominium</a><span>next door · 6 units · 2018</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/46-40-vernon-boulevard-queens-cd230217.html#building","name":"46-40 Vernon Boulevard Condominium","url":"https://www.condobooknyc.com/buildings/46-40-vernon-boulevard-queens-cd230217.html","description":"46-40 Vernon Boulevard Condominium, 46-40 Vernon Boulevard, Queens. AG plan CD230217, accepted January 2024. 8 residential units.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD230217"},"address":{"@type":"PostalAddress","streetAddress":"46-40 Vernon Boulevard","addressLocality":"Queens","addressRegion":"NY","postalCode":"11101","addressCountry":"US"},"numberOfAccommodationUnits":8,"geo":{"@type":"GeoCoordinates","latitude":40.745861,"longitude":-73.95333},"image":"https://www.condobooknyc.com/buildings/img/CD230217.webp","containedInPlace":{"@type":"Place","name":"Queens, New York"}}</script>

@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD220045.webp" alt="3D massing drawing of 156 Devoe Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD220045.webp" width="960" height="720" alt="3D massing drawing of 156 Devoe Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD220045/17290.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD220045" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>8 residential</dd></div><div><dt>Offering price</dt><dd>$8.54 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Sep 30, 2022</dd></div><div><dt>Sponsor</dt><dd>156 Devoe Street LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/jay-lichtman.html" title="Other offering plans with this counsel">The Law Office Of Jay Lichtman, P.C.</a><span class="sub">Berel Shurin, Esq. · 68 Jay Street, Suite 420 · (347) 504-1724</span></dd></div><div><dt>Plan ID</dt><dd>CD220045</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>8 residential</dd></div><div><dt>Offering price</dt><dd>$8.54 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Sep 30, 2022</dd></div><div><dt>Plan ID</dt><dd>CD220045</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD220045">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>156 Devoe Street LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/jay-lichtman.html" title="Other offering plans with this counsel">The Law Office Of Jay Lichtman, P.C.</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD220045">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"17290":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="131-devoe-street-brooklyn-cd180284.html">131 Devoe Street Condominium</a><span>next door · 10 units · 9 parking · 2019</span></li><li><a href="710-metropolitan-avenue-brooklyn-cd180482.html">Umbrella Factory Condominium</a><span>next door · 68 units · 17 parking · 2019</span></li><li><a href="167-devoe-street-brooklyn-cd160124.html">167 Devoe Condominiums</a><span>next door · 6 units · 2016</span></li><li><a href="171-devoe-street-brooklyn-cd180173.html">171 Devoe Street Condominium</a><span>next door · 6 units · 2018</span></li><li><a href="259-ainslie-street-brooklyn-cd080460.html">259 Ainslie Condominium</a><span>next door · 8 units · 2009</span></li><li><a href="273-275-manhattan-avenue-brooklyn-cd060421.html">273-275 Manhattan Avenue Condominium</a><span>next door · 14 units · 2007</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="131-devoe-street-brooklyn-cd180284.html">131 Devoe Street Condominium</a><span>next door · 10 units · 9 parking · 2019</span></li><li><a href="710-metropolitan-avenue-brooklyn-cd180482.html">Umbrella Factory Condominium</a><span>next door · 68 units · 17 parking · 2019</span></li><li><a href="167-devoe-street-brooklyn-cd160124.html">167 Devoe Condominiums</a><span>next door · 6 units · 2016</span></li><li><a href="171-devoe-street-brooklyn-cd180173.html">171 Devoe Street Condominium</a><span>next door · 6 units · 2018</span></li><li><a href="259-ainslie-street-brooklyn-cd080460.html">259 Ainslie Condominium</a><span>next door · 8 units · 2009</span></li><li><a href="273-275-manhattan-avenue-brooklyn-cd060421.html">273-275 Manhattan Avenue Condominium</a><span>next door · 14 units · 2007</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/156-devoe-street-brooklyn-cd220045.html#building","name":"156 Devoe Street Condominium","url":"https://www.condobooknyc.com/buildings/156-devoe-street-brooklyn-cd220045.html","description":"156 Devoe Street Condominium, 156 Devoe Street, Brooklyn. AG plan CD220045, accepted September 2022. 8 residential units.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD220045"},"address":{"@type":"PostalAddress","streetAddress":"156 Devoe Street","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11211","addressCountry":"US"},"numberOfAccommodationUnits":8,"geo":{"@type":"GeoCoordinates","latitude":40.713607,"longitude":-73.944788},"image":"https://www.condobooknyc.com/buildings/img/CD220045.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

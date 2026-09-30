@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD200300.webp" alt="3D massing drawing of 5105 Junction Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD200300.webp" width="960" height="720" alt="3D massing drawing of 5105 Junction Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD200300/13633.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD200300" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>5 residential · 4 parking</dd></div><div><dt>Offering price</dt><dd>$2.4 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Sep 3, 2021</dd></div><div><dt>Sponsor</dt><dd>5105 Junction LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/lawrence-lixin-yang.html" title="Other offering plans with this counsel">Lawrence Lixin Yang, P.C.</a><span class="sub">Lawrence Yang, Esq. · 136-20 38th Avenue, Suite 10e · (718) 886-7999</span></dd></div><div><dt>Plan ID</dt><dd>CD200300</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>5 residential · 4 parking</dd></div><div><dt>Offering price</dt><dd>$2.4 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Sep 3, 2021</dd></div><div><dt>Plan ID</dt><dd>CD200300</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD200300">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>5105 Junction LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/lawrence-lixin-yang.html" title="Other offering plans with this counsel">Lawrence Lixin Yang, P.C.</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD200300">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"13633":"Offering Plan"}</script></section>
@@ -100,7 +104,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="97-05-50th-avenue-queens-cd080137.html">97-05 50th Avenue Condominium</a><span>0.1 mi · 10 units · 4 parking · 2009</span></li><li><a href="54-02-junction-boulevard-queens-cd170212.html">Minshun You Condominium</a><span>0.1 mi · 6 units · 5 parking · 2018</span></li><li><a href="47-03-junction-boulevard-queens-cd170267.html">47-03 Junction Condominium</a><span>0.2 mi · 9 units · 2018</span></li><li><a href="94-21-alstyne-avenue-queens-cd090089.html">Alstyne Avenue Condominium I</a><span>0.2 mi · 18 units · 1 parking · 2009</span></li><li><a href="55-17-junction-boulevard-queens-cd010028.html">Junction Plaza Condominium</a><span>0.2 mi · 6 units · 2001</span></li><li><a href="55-40-97th-place-queens-cd210196.html">97 Place Condominium</a><span>0.3 mi · 10 units · 2022</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="97-05-50th-avenue-queens-cd080137.html">97-05 50th Avenue Condominium</a><span>0.1 mi · 10 units · 4 parking · 2009</span></li><li><a href="54-02-junction-boulevard-queens-cd170212.html">Minshun You Condominium</a><span>0.1 mi · 6 units · 5 parking · 2018</span></li><li><a href="47-03-junction-boulevard-queens-cd170267.html">47-03 Junction Condominium</a><span>0.2 mi · 9 units · 2018</span></li><li><a href="94-21-alstyne-avenue-queens-cd090089.html">Alstyne Avenue Condominium I</a><span>0.2 mi · 18 units · 1 parking · 2009</span></li><li><a href="55-17-junction-boulevard-queens-cd010028.html">Junction Plaza Condominium</a><span>0.2 mi · 6 units · 2001</span></li><li><a href="55-40-97th-place-queens-cd210196.html">97 Place Condominium</a><span>0.3 mi · 10 units · 2022</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/51-05-junction-boulevard-queens-cd200300.html#building","name":"5105 Junction Condominium","url":"https://www.condobooknyc.com/buildings/51-05-junction-boulevard-queens-cd200300.html","description":"5105 Junction Condominium, 51-05 Junction Boulevard, Queens. AG plan CD200300, accepted September 2021. 5 residential units, 4 parking units.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD200300"},"address":{"@type":"PostalAddress","streetAddress":"51-05 Junction Boulevard","addressLocality":"Queens","addressRegion":"NY","postalCode":"11373","addressCountry":"US"},"numberOfAccommodationUnits":5,"geo":{"@type":"GeoCoordinates","latitude":40.740825,"longitude":-73.867256},"image":"https://www.condobooknyc.com/buildings/img/CD200300.webp","containedInPlace":{"@type":"Place","name":"Queens, New York"}}</script>

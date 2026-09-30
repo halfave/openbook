@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD190105.webp" alt="3D massing drawing of 567 Ocean Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD190105.webp" width="960" height="720" alt="3D massing drawing of 567 Ocean Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD190105/7968.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD190105" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>108 residential · 54 parking · 1 commercial</dd></div><div><dt>Offering price</dt><dd>$77.5 million total <span class="sub">$77.9 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Nov 15, 2019</dd></div><div><dt>Sponsor</dt><dd>North Ocean Management LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/marcus.html" title="Other offering plans with this counsel">Marcus Attorneys</a><span class="sub">Guillermo Santiago, Esq. · 13 Greene Ave · (718) 643-6555</span></dd></div><div><dt>Plan ID</dt><dd>CD190105</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>108 residential · 54 parking · 1 commercial</dd></div><div><dt>Offering price</dt><dd>$77.5 million total <span class="sub">$77.9 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Nov 15, 2019</dd></div><div><dt>Plan ID</dt><dd>CD190105</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD190105">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>North Ocean Management LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/marcus.html" title="Other offering plans with this counsel">Marcus Attorneys</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD190105">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"7968":"Offering Plan"}</script></section>
@@ -100,7 +104,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="608-ocean-avenue-brooklyn-cd240098.html">608 Ocean Avenue Condominium</a><span>next door · 32 units · 7 parking · 2025</span></li><li><a href="15-east-19th-street-brooklyn-cd180106.html">15 East 19th Street Condominium</a><span>next door · 33 units · 2018</span></li><li><a href="26-east-19th-street-brooklyn-cd170243.html">26 East 19th Street Condominium</a><span>0.1 mi · 26 units · 2018</span></li><li><a href="54-martense-street-brooklyn-cd200314.html">54 Martense Street Condominium</a><span>0.2 mi · 8 units · 2021</span></li><li><a href="17-east-17th-street-brooklyn-cd160120.html">Presidio Condominium</a><span>0.2 mi · 20 units · 2017</span></li><li><a href="61-martense-street-brooklyn-cd160216.html">61 Martense Street Condominium</a><span>0.2 mi · 36 units · 2018</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="608-ocean-avenue-brooklyn-cd240098.html">608 Ocean Avenue Condominium</a><span>next door · 32 units · 7 parking · 2025</span></li><li><a href="15-east-19th-street-brooklyn-cd180106.html">15 East 19th Street Condominium</a><span>next door · 33 units · 2018</span></li><li><a href="26-east-19th-street-brooklyn-cd170243.html">26 East 19th Street Condominium</a><span>0.1 mi · 26 units · 2018</span></li><li><a href="54-martense-street-brooklyn-cd200314.html">54 Martense Street Condominium</a><span>0.2 mi · 8 units · 2021</span></li><li><a href="17-east-17th-street-brooklyn-cd160120.html">Presidio Condominium</a><span>0.2 mi · 20 units · 2017</span></li><li><a href="61-martense-street-brooklyn-cd160216.html">61 Martense Street Condominium</a><span>0.2 mi · 36 units · 2018</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/222-east-21st-street-a-k-a-563-571-ocean-ave-brooklyn-cd190105.html#building","name":"567 Ocean Condominium","url":"https://www.condobooknyc.com/buildings/222-east-21st-street-a-k-a-563-571-ocean-ave-brooklyn-cd190105.html","description":"567 Ocean Condominium, 222 East 21st Street A/K/A 563-571 Ocean Ave, Brooklyn. AG plan CD190105, accepted November 2019.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD190105"},"address":{"@type":"PostalAddress","streetAddress":"222 East 21st Street A/K/A 563-571 Ocean Ave","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11226","addressCountry":"US"},"numberOfAccommodationUnits":108,"geo":{"@type":"GeoCoordinates","latitude":40.648961,"longitude":-73.960119},"image":"https://www.condobooknyc.com/buildings/img/CD190105.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

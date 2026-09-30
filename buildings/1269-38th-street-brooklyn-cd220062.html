@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD220062.webp" alt="3D massing drawing of 1269 38th Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD220062.webp" width="960" height="720" alt="3D massing drawing of 1269 38th Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD220062/18946.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD220062" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>4 residential</dd></div><div><dt>Offering price</dt><dd>$3.55 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Dec 6, 2022</dd></div><div><dt>Sponsor</dt><dd>Ortegro Realty 38 LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/caller.html" title="Other offering plans with this counsel">Law Offices Of N.C. Caller, P.C.</a><span class="sub">Carl Caller, Esq. · 4309 13th Avenue · (718) 438-2525</span></dd></div><div><dt>Plan ID</dt><dd>CD220062</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>4 residential</dd></div><div><dt>Offering price</dt><dd>$3.55 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Dec 6, 2022</dd></div><div><dt>Plan ID</dt><dd>CD220062</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD220062">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>Ortegro Realty 38 LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/caller.html" title="Other offering plans with this counsel">Law Offices Of N.C. Caller, P.C.</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD220062">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"18946":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="1256-38th-street-brooklyn-cd230222.html">1256 38th Street Condominium</a><span>next door · 4 units</span></li><li><a href="1252-38th-street-brooklyn-cd230221.html">1252 38th Street Condominium</a><span>next door · 4 units</span></li><li><a href="1250-38th-street-brooklyn-cd240127.html">1250 38th Street Condominium</a><span>next door · 4 units</span></li><li><a href="1204-1232-and-1264-1276-37th-street-brooklyn-cd190161.html">Culver Developments 1a &amp; 1b Condominium</a><span>next door · 36 units · 9 parking · 2021</span></li><li><a href="1331-49th-street-brooklyn-cd070054.html">1331 49th Street Condominium</a><span>0.1 mi · 3 units · 2007</span></li><li><a href="125-tehama-street-brooklyn-cd260269.html">125 Tehama Street Condominium</a><span>0.1 mi · 9 units</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="1256-38th-street-brooklyn-cd230222.html">1256 38th Street Condominium</a><span>next door · 4 units</span></li><li><a href="1252-38th-street-brooklyn-cd230221.html">1252 38th Street Condominium</a><span>next door · 4 units</span></li><li><a href="1250-38th-street-brooklyn-cd240127.html">1250 38th Street Condominium</a><span>next door · 4 units</span></li><li><a href="1204-1232-and-1264-1276-37th-street-brooklyn-cd190161.html">Culver Developments 1a &amp; 1b Condominium</a><span>next door · 36 units · 9 parking · 2021</span></li><li><a href="1331-49th-street-brooklyn-cd070054.html">1331 49th Street Condominium</a><span>0.1 mi · 3 units · 2007</span></li><li><a href="125-tehama-street-brooklyn-cd260269.html">125 Tehama Street Condominium</a><span>0.1 mi · 9 units</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/1269-38th-street-brooklyn-cd220062.html#building","name":"1269 38th Street Condominium","url":"https://www.condobooknyc.com/buildings/1269-38th-street-brooklyn-cd220062.html","description":"1269 38th Street Condominium, 1269 38th Street, Brooklyn. AG plan CD220062, accepted December 2022. 4 residential units.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD220062"},"address":{"@type":"PostalAddress","streetAddress":"1269 38th Street","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11218","addressCountry":"US"},"numberOfAccommodationUnits":4,"geo":{"@type":"GeoCoordinates","latitude":40.641553,"longitude":-73.985917},"image":"https://www.condobooknyc.com/buildings/img/CD220062.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

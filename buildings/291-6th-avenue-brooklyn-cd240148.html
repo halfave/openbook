@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD240148.webp" alt="3D massing drawing of 291 Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD240148.webp" width="960" height="720" alt="3D massing drawing of 291 Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD240148#tabs-6" rel="noopener">View the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD240148" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>4 residential</dd></div><div><dt>Offering price</dt><dd>$7.4 million total <span class="sub">$6.51 million when first offered</span></dd></div><div><dt>Construction</dt><dd>Rehab</dd></div><div><dt>Accepted</dt><dd>Feb 13, 2025</dd></div><div><dt>Sponsor</dt><dd>291 Sixth LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/abrams-fensterman-fensterman-et-al.html" title="Other offering plans with this counsel">Abrams Fensterman, LLP</a><span class="sub">Lewis Kuper, Esq. · 1 Metrotech Center, Suite 1701 · (718) 215-5300</span></dd></div><div><dt>Plan ID</dt><dd>CD240148</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>4 residential</dd></div><div><dt>Offering price</dt><dd>$7.4 million total <span class="sub">$6.51 million when first offered</span></dd></div><div><dt>Construction</dt><dd>Rehab</dd></div><div><dt>Accepted</dt><dd>Feb 13, 2025</dd></div><div><dt>Plan ID</dt><dd>CD240148</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD240148">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>291 Sixth LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/abrams-fensterman-fensterman-et-al.html" title="Other offering plans with this counsel">Abrams Fensterman, LLP</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD240148">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"28641":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="397-1st-street-brooklyn-cd110102.html">397 1st Street Condominium</a><span>next door · 8 units · 2012</span></li><li><a href="383-1st-street-brooklyn-cd100042.html">383 1st Street Condominium</a><span>next door · 4 units · 2010</span></li><li><a href="275-6th-avenue-brooklyn-cd240332.html">275 6th Avenue Condominium</a><span>next door · 4 units · 2025</span></li><li><a href="377-1st-street-brooklyn-cd050142.html">377 Park Slope Condominium</a><span>next door · 4 units · 2005</span></li><li><a href="426-2nd-street-brooklyn-cd240193.html">426 2nd Street Condominium</a><span>next door · 4 units · 2024</span></li><li><a href="470-2nd-street-brooklyn-cd220153.html">470 Second Street Condominium</a><span>next door · 2 units · 2023</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="397-1st-street-brooklyn-cd110102.html">397 1st Street Condominium</a><span>next door · 8 units · 2012</span></li><li><a href="383-1st-street-brooklyn-cd100042.html">383 1st Street Condominium</a><span>next door · 4 units · 2010</span></li><li><a href="275-6th-avenue-brooklyn-cd240332.html">275 6th Avenue Condominium</a><span>next door · 4 units · 2025</span></li><li><a href="377-1st-street-brooklyn-cd050142.html">377 Park Slope Condominium</a><span>next door · 4 units · 2005</span></li><li><a href="426-2nd-street-brooklyn-cd240193.html">426 2nd Street Condominium</a><span>next door · 4 units · 2024</span></li><li><a href="470-2nd-street-brooklyn-cd220153.html">470 Second Street Condominium</a><span>next door · 2 units · 2023</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/291-6th-avenue-brooklyn-cd240148.html#building","name":"291 Condominium","url":"https://www.condobooknyc.com/buildings/291-6th-avenue-brooklyn-cd240148.html","description":"291 Condominium, 291 6th Avenue, Brooklyn. AG plan CD240148, accepted February 2025. 4 residential units. Budget, team, documents and source links.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD240148"},"address":{"@type":"PostalAddress","streetAddress":"291 6th Avenue","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11215","addressCountry":"US"},"numberOfAccommodationUnits":4,"geo":{"@type":"GeoCoordinates","latitude":40.672583,"longitude":-73.979874},"image":"https://www.condobooknyc.com/buildings/img/CD240148.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

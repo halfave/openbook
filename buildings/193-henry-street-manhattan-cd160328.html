@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD160328.webp" alt="3D massing drawing of 193 Henry Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD160328.webp" width="960" height="720" alt="3D massing drawing of 193 Henry Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD160328#tabs-6" rel="noopener">View the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD160328" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>5 residential · 1 commercial</dd></div><div><dt>Offering price</dt><dd>$14 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Apr 16, 2018</dd></div><div><dt>Sponsor</dt><dd>193 Henry Street LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/agostino-levine-landesman-lederman.html" title="Other offering plans with this counsel">D&#39;Agostino, Levine, Landesman &amp; Lederman, LLP</a><span class="sub">600 Third Avenue, 26th Floor</span></dd></div><div><dt>Plan ID</dt><dd>CD160328</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>5 residential · 1 commercial</dd></div><div><dt>Offering price</dt><dd>$14 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Apr 16, 2018</dd></div><div><dt>Plan ID</dt><dd>CD160328</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD160328">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>193 Henry Street LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/agostino-levine-landesman-lederman.html" title="Other offering plans with this counsel">D&#39;Agostino, Levine, Landesman &amp; Lederman, LLP</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD160328">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"15590":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="177-east-77th-street-manhattan-cd030166.html">177 East 77th Street Condominium</a><span>next door · 57 units · 2004</span></li><li><a href="118-east-59th-street-manhattan-cd140339.html">118 East 59th Street Condominium</a><span>next door · 29 units · 2015</span></li><li><a href="200-east-59th-street-manhattan-cd160082.html">200 East 59th Street Condominium</a><span>next door · 68 units · 2016</span></li><li><a href="205-east-59th-street-manhattan-cd030168.html">205 East 59th Street Condominium</a><span>next door · 62 units · 2003</span></li><li><a href="207-bowery-manhattan-cd050525.html">Bowery Sun Condominium</a><span>0.1 mi · 4 units · 2006</span></li><li><a href="126-east-57th-street-manhattan-cd240247.html">Malabar Residences</a><span>0.1 mi · 145 units · 2025</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="177-east-77th-street-manhattan-cd030166.html">177 East 77th Street Condominium</a><span>next door · 57 units · 2004</span></li><li><a href="118-east-59th-street-manhattan-cd140339.html">118 East 59th Street Condominium</a><span>next door · 29 units · 2015</span></li><li><a href="200-east-59th-street-manhattan-cd160082.html">200 East 59th Street Condominium</a><span>next door · 68 units · 2016</span></li><li><a href="205-east-59th-street-manhattan-cd030168.html">205 East 59th Street Condominium</a><span>next door · 62 units · 2003</span></li><li><a href="207-bowery-manhattan-cd050525.html">Bowery Sun Condominium</a><span>0.1 mi · 4 units · 2006</span></li><li><a href="126-east-57th-street-manhattan-cd240247.html">Malabar Residences</a><span>0.1 mi · 145 units · 2025</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/193-henry-street-manhattan-cd160328.html#building","name":"193 Henry Street Condominium","url":"https://www.condobooknyc.com/buildings/193-henry-street-manhattan-cd160328.html","description":"193 Henry Street Condominium, 193 Henry Street, Manhattan. AG plan CD160328, accepted April 2018. 5 residential units. Budget, team, documents and source links.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD160328"},"address":{"@type":"PostalAddress","streetAddress":"193 Henry Street","addressLocality":"Manhattan","addressRegion":"NY","postalCode":"10022","addressCountry":"US"},"numberOfAccommodationUnits":5,"geo":{"@type":"GeoCoordinates","latitude":40.761593,"longitude":-73.968016},"image":"https://www.condobooknyc.com/buildings/img/CD160328.webp","containedInPlace":{"@type":"Place","name":"Manhattan, New York"}}</script>

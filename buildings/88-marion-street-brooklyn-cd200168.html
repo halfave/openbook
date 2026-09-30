@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD200168.webp" alt="3D massing drawing of 88 Marion Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD200168.webp" width="960" height="720" alt="3D massing drawing of 88 Marion Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD200168/11943.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD200168" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>8 residential</dd></div><div><dt>Offering price</dt><dd>$5.2 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>May 14, 2021</dd></div><div><dt>Sponsor</dt><dd>88 Marion Street LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/jeffrey-zwick.html" title="Other offering plans with this counsel">Jeffrey Zwick &amp; Associates, P.C.</a><span class="sub">Danielle Pistola Sidiropoulos, Esq. · 2329 Nostrand Ave, Suite 400 · (718) 513-2050</span></dd></div><div><dt>Plan ID</dt><dd>CD200168</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>8 residential</dd></div><div><dt>Offering price</dt><dd>$5.2 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>May 14, 2021</dd></div><div><dt>Plan ID</dt><dd>CD200168</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD200168">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>88 Marion Street LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/jeffrey-zwick.html" title="Other offering plans with this counsel">Jeffrey Zwick &amp; Associates, P.C.</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD200168">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"11943":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="153-chauncey-street-brooklyn-cd210169.html">153 Chauncey Street Condominium</a><span>0.1 mi · 16 units · 2022</span></li><li><a href="194-bainbridge-street-brooklyn-cd250151.html">194 Bainbridge Street Condominium</a><span>0.1 mi · 42 units · 2025</span></li><li><a href="241-bainbridge-street-brooklyn-cd180430.html">241 Bainbridge Street Condominium</a><span>0.1 mi · 4 units · 2019</span></li><li><a href="42-rochester-avenue-brooklyn-cd190313.html">42 Rochester Avenue Condominium</a><span>0.1 mi · 5 units</span></li><li><a href="387-decatur-street-brooklyn-cd240160.html">387 Decatur Street Condominium</a><span>0.2 mi · 4 units · 2024</span></li><li><a href="897-herkimer-street-brooklyn-cd200029.html">897 Herkimer Street Condominium</a><span>0.2 mi · 7 units · 2021</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="153-chauncey-street-brooklyn-cd210169.html">153 Chauncey Street Condominium</a><span>0.1 mi · 16 units · 2022</span></li><li><a href="194-bainbridge-street-brooklyn-cd250151.html">194 Bainbridge Street Condominium</a><span>0.1 mi · 42 units · 2025</span></li><li><a href="241-bainbridge-street-brooklyn-cd180430.html">241 Bainbridge Street Condominium</a><span>0.1 mi · 4 units · 2019</span></li><li><a href="42-rochester-avenue-brooklyn-cd190313.html">42 Rochester Avenue Condominium</a><span>0.1 mi · 5 units</span></li><li><a href="387-decatur-street-brooklyn-cd240160.html">387 Decatur Street Condominium</a><span>0.2 mi · 4 units · 2024</span></li><li><a href="897-herkimer-street-brooklyn-cd200029.html">897 Herkimer Street Condominium</a><span>0.2 mi · 7 units · 2021</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/88-marion-street-brooklyn-cd200168.html#building","name":"88 Marion Street Condominium","url":"https://www.condobooknyc.com/buildings/88-marion-street-brooklyn-cd200168.html","description":"88 Marion Street Condominium, 88 Marion Street, Brooklyn. AG plan CD200168, accepted May 2021. 8 residential units. Budget, team, documents and source links.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD200168"},"address":{"@type":"PostalAddress","streetAddress":"88 Marion Street","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11233","addressCountry":"US"},"numberOfAccommodationUnits":8,"geo":{"@type":"GeoCoordinates","latitude":40.679696,"longitude":-73.927424},"image":"https://www.condobooknyc.com/buildings/img/CD200168.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

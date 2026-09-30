@@ -1438,6 +1438,13 @@ table.pivot th[scope="row"]{white-space:nowrap}
         filters: P.chips.map((c) => c.k).join(",") || "none", borough: P.borough || "any" };
       obTrack("search", sp);
       if (!rows.length) obTrack("search_no_results", sp);
+      // One building and nothing more asked about it: open its building page, at "In the Plan" when a document was asked for.
+      // Not on a Back to this search, which would bounce forward again.
+      const page = answer && !P.topic && !P.amendments && pageFor(rows[0]);
+      if (page && !(P.via === "link" && performance.getEntriesByType?.("navigation")[0]?.type === "back_forward")) {
+        location.assign(page + (P.focus ? "#documents" : ""));
+        return;
+      }
       highlight(rows.map((r) => r.plan_id));
       const pts = points.filter((p) => rows.some((r) => r.plan_id === p.plan_id));
       if (P.boroPick && P.borough) zoomBoro(P.borough);

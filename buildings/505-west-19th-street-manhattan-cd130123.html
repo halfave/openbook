@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD130123.webp" alt="3D massing drawing of 505 West 19th Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD130123.webp" width="960" height="720" alt="3D massing drawing of 505 West 19th Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD130123/7817.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD130123" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>35 residential · 3 parking · 1 storage · 2 commercial</dd></div><div><dt>Offering price</dt><dd>$227.1 million total <span class="sub">$233.2 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Jan 2, 2014</dd></div><div><dt>Sponsor</dt><dd>Hfz Highline Property Owner LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/starr.html" title="Other offering plans with this counsel">Starr Associates LLP</a><span class="sub">Adam Kriegstein, Esq. · 220 East 42nd Street · (212) 620-2680</span></dd></div><div><dt>Plan ID</dt><dd>CD130123</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>35 residential · 3 parking · 1 storage · 2 commercial</dd></div><div><dt>Offering price</dt><dd>$227.1 million total <span class="sub">$233.2 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Jan 2, 2014</dd></div><div><dt>Plan ID</dt><dd>CD130123</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD130123">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>Hfz Highline Property Owner LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/starr.html" title="Other offering plans with this counsel">Starr Associates LLP</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD130123">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"7817":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="520-west-19th-street-manhattan-cd060213.html">520 West 19th Street Condo</a><span>next door · 26 units · 2006</span></li><li><a href="515-west-18th-street-manhattan-cd180278.html">515 West 18th Street Condominium</a><span>next door · 181 units · 2020</span></li><li><a href="456-west-19th-street-manhattan-cd080140.html">456 West 19th Street Condominium</a><span>next door · 22 units · 2008</span></li><li><a href="524-west-19th-street-manhattan-cd070147.html">524 West 19th Street Condo</a><span>next door · 9 units · 2007</span></li><li><a href="500-west-21st-street-manhattan-cd130078.html">500 West 21st Street Condominium</a><span>next door · 32 units · 2013</span></li><li><a href="532-west-20th-street-manhattan-cd200067.html">532 West 20th Street Condominium</a><span>next door · 9 units · 2020</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="520-west-19th-street-manhattan-cd060213.html">520 West 19th Street Condo</a><span>next door · 26 units · 2006</span></li><li><a href="515-west-18th-street-manhattan-cd180278.html">515 West 18th Street Condominium</a><span>next door · 181 units · 2020</span></li><li><a href="456-west-19th-street-manhattan-cd080140.html">456 West 19th Street Condominium</a><span>next door · 22 units · 2008</span></li><li><a href="524-west-19th-street-manhattan-cd070147.html">524 West 19th Street Condo</a><span>next door · 9 units · 2007</span></li><li><a href="500-west-21st-street-manhattan-cd130078.html">500 West 21st Street Condominium</a><span>next door · 32 units · 2013</span></li><li><a href="532-west-20th-street-manhattan-cd200067.html">532 West 20th Street Condominium</a><span>next door · 9 units · 2020</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/505-west-19th-street-manhattan-cd130123.html#building","name":"505 West 19th Street Condominium","url":"https://www.condobooknyc.com/buildings/505-west-19th-street-manhattan-cd130123.html","description":"505 West 19th Street Condominium, 505 West 19th Street, Manhattan. AG plan CD130123, accepted January 2014. 35 residential units, 3 parking units.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD130123"},"address":{"@type":"PostalAddress","streetAddress":"505 West 19th Street","addressLocality":"Manhattan","addressRegion":"NY","postalCode":"10011","addressCountry":"US"},"numberOfAccommodationUnits":35,"geo":{"@type":"GeoCoordinates","latitude":40.745618,"longitude":-74.006299},"image":"https://www.condobooknyc.com/buildings/img/CD130123.webp","containedInPlace":{"@type":"Place","name":"Manhattan, New York"}}</script>

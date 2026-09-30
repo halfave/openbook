@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD230281.webp" alt="3D massing drawing of Bealin and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD230281.webp" width="960" height="720" alt="3D massing drawing of Bealin and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD230281/24166.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD230281" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>10 residential · 2 commercial</dd></div><div><dt>Offering price</dt><dd>$13.2 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Apr 16, 2024</dd></div><div><dt>Sponsor</dt><dd>7616 LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/moritt-hock-hamroff.html" title="Other offering plans with this counsel">Moritt Hock &amp; Hamroff, LLP</a><span class="sub">1407 Broadway, 39th Floor</span></dd></div><div><dt>Plan ID</dt><dd>CD230281</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>10 residential · 2 commercial</dd></div><div><dt>Offering price</dt><dd>$13.2 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Apr 16, 2024</dd></div><div><dt>Plan ID</dt><dd>CD230281</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD230281">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>7616 LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/moritt-hock-hamroff.html" title="Other offering plans with this counsel">Moritt Hock &amp; Hamroff, LLP</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD230281">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"24166":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="7608-bay-parkway-brooklyn-cd160088.html">Bay Parkway Condominium</a><span>next door · 35 units · 18 parking · 2016</span></li><li><a href="7516-bay-parkway-brooklyn-cd170211.html">Bay Plaza Condominium</a><span>next door · 44 units · 30 parking · 2018</span></li><li><a href="26-avenue-p-brooklyn-cd170173.html">26 Avenue P Condominium</a><span>next door · 21 units · 7 parking · 2018</span></li><li><a href="7504-bay-parkway-brooklyn-cd200139.html">Ridge Park Condominium</a><span>next door · 10 units · 2021</span></li><li><a href="105-kings-highway-brooklyn-cd030043.html">Kings Highway Luxury Condominium</a><span>next door · 20 units · 2003</span></li><li><a href="106-kings-highway-brooklyn-cd130174.html">106 Kings Highway Condominium</a><span>0.1 mi · 6 units · 6 parking · 2014</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="7608-bay-parkway-brooklyn-cd160088.html">Bay Parkway Condominium</a><span>next door · 35 units · 18 parking · 2016</span></li><li><a href="7516-bay-parkway-brooklyn-cd170211.html">Bay Plaza Condominium</a><span>next door · 44 units · 30 parking · 2018</span></li><li><a href="26-avenue-p-brooklyn-cd170173.html">26 Avenue P Condominium</a><span>next door · 21 units · 7 parking · 2018</span></li><li><a href="7504-bay-parkway-brooklyn-cd200139.html">Ridge Park Condominium</a><span>next door · 10 units · 2021</span></li><li><a href="105-kings-highway-brooklyn-cd030043.html">Kings Highway Luxury Condominium</a><span>next door · 20 units · 2003</span></li><li><a href="106-kings-highway-brooklyn-cd130174.html">106 Kings Highway Condominium</a><span>0.1 mi · 6 units · 6 parking · 2014</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/7616-bay-parkway-brooklyn-cd230281.html#building","name":"Bealin","url":"https://www.condobooknyc.com/buildings/7616-bay-parkway-brooklyn-cd230281.html","description":"Bealin, 7616 Bay Parkway, Brooklyn. AG plan CD230281, accepted April 2024. 10 residential units. Budget, team, documents and source links.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD230281"},"address":{"@type":"PostalAddress","streetAddress":"7616 Bay Parkway","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11214","addressCountry":"US"},"numberOfAccommodationUnits":10,"geo":{"@type":"GeoCoordinates","latitude":40.607396,"longitude":-73.988541},"image":"https://www.condobooknyc.com/buildings/img/CD230281.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

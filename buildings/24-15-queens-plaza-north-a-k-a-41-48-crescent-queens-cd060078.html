@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD060078.webp" alt="3D massing drawing of View 59 Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD060078.webp" width="960" height="720" alt="3D massing drawing of View 59 Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD060078#tabs-6" rel="noopener">View the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD060078" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>39 residential · 2 commercial</dd></div><div><dt>Offering price</dt><dd>$23.9 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Oct 10, 2006</dd></div><div><dt>Sponsor</dt><dd>Crescent Street LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/seiden-schein.html" title="Other offering plans with this counsel">Seiden &amp; Schein, PC</a><span class="sub">Alvin Schein · 570 Lexington Avenue, 14th Floor · (212) 935-1400</span></dd></div><div><dt>Plan ID</dt><dd>CD060078</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>39 residential · 2 commercial</dd></div><div><dt>Offering price</dt><dd>$23.9 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Oct 10, 2006</dd></div><div><dt>Plan ID</dt><dd>CD060078</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD060078">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>Crescent Street LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/seiden-schein.html" title="Other offering plans with this counsel">Seiden &amp; Schein, PC</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD060078">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"17430":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="24-01-queens-plaza-north-queens-cd230181.html">24-01 Queens Plaza North Condominium</a><span>next door · 117 units · 2024</span></li><li><a href="41-17-crescent-street-queens-cd070035.html">Crescent Club</a><span>next door · 121 units · 29 parking · 2007</span></li><li><a href="24-16-queens-plaza-south-queens-cd190042.html">24-16 Queens Plaza South Condominium</a><span>next door · 109 units · 2019</span></li><li><a href="41-26-27th-street-queens-cd050505.html">Queens Plaza Condominium /41-26 27th St</a><span>next door · 66 units · 33 parking · 2006</span></li><li><a href="41-18-27th-street-queens-cd110139.html">Q27 Condominium</a><span>next door · 14 units · 2011</span></li><li><a href="41-21-23rd-street-queens-cd190340.html">Core 23</a><span>next door · 29 units · 2021</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="24-01-queens-plaza-north-queens-cd230181.html">24-01 Queens Plaza North Condominium</a><span>next door · 117 units · 2024</span></li><li><a href="41-17-crescent-street-queens-cd070035.html">Crescent Club</a><span>next door · 121 units · 29 parking · 2007</span></li><li><a href="24-16-queens-plaza-south-queens-cd190042.html">24-16 Queens Plaza South Condominium</a><span>next door · 109 units · 2019</span></li><li><a href="41-26-27th-street-queens-cd050505.html">Queens Plaza Condominium /41-26 27th St</a><span>next door · 66 units · 33 parking · 2006</span></li><li><a href="41-18-27th-street-queens-cd110139.html">Q27 Condominium</a><span>next door · 14 units · 2011</span></li><li><a href="41-21-23rd-street-queens-cd190340.html">Core 23</a><span>next door · 29 units · 2021</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/24-15-queens-plaza-north-a-k-a-41-48-crescent-queens-cd060078.html#building","name":"View 59 Condominium","url":"https://www.condobooknyc.com/buildings/24-15-queens-plaza-north-a-k-a-41-48-crescent-queens-cd060078.html","description":"View 59 Condominium, 24-15 Queens Plaza North A/K/A 41-48 Crescent, Queens. AG plan CD060078, accepted October 2006. 39 residential units.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD060078"},"address":{"@type":"PostalAddress","streetAddress":"24-15 Queens Plaza North A/K/A 41-48 Crescent","addressLocality":"Queens","addressRegion":"NY","postalCode":"11101","addressCountry":"US"},"numberOfAccommodationUnits":39,"geo":{"@type":"GeoCoordinates","latitude":40.751221,"longitude":-73.940386},"image":"https://www.condobooknyc.com/buildings/img/CD060078.webp","containedInPlace":{"@type":"Place","name":"Queens, New York"}}</script>

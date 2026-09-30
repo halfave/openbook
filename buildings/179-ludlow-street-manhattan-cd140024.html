@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD140024.webp" alt="3D massing drawing of 179 Ludlow Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD140024.webp" width="960" height="720" alt="3D massing drawing of 179 Ludlow Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD140024/1700.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD140024" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>6 residential · 1 commercial</dd></div><div><dt>Offering price</dt><dd>$14.7 million total <span class="sub">$13.5 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Jun 20, 2014</dd></div><div><dt>Sponsor</dt><dd>179 Ludlow Holding LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/marshall-schiff.html" title="Other offering plans with this counsel">Marshall S. Schiff, P.C.</a><span class="sub">Marshall S Schiff · 110 Cross River Road · (914) 997-6767</span></dd></div><div><dt>Plan ID</dt><dd>CD140024</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>6 residential · 1 commercial</dd></div><div><dt>Offering price</dt><dd>$14.7 million total <span class="sub">$13.5 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Jun 20, 2014</dd></div><div><dt>Plan ID</dt><dd>CD140024</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD140024">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>179 Ludlow Holding LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/marshall-schiff.html" title="Other offering plans with this counsel">Marshall S. Schiff, P.C.</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD140024">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"1700":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="196-orchard-street-manhattan-cd150263.html">196 Orchard Street Condominium</a><span>next door · 94 units · 2016</span></li><li><a href="118-east-1st-street-manhattan-cd210273.html">Acacia 118 Condominium</a><span>next door · 4 units · 2022</span></li><li><a href="145-147-ludlow-street-manhattan-cd200191.html">145 Ludlow Condominium</a><span>next door · 8 units · 2021</span></li><li><a href="101-east-2nd-street-manhattan-cd190281.html">101 Condominium</a><span>0.1 mi · 22 units · 2020</span></li><li><a href="133-135-essex-street-manhattan-cd040457.html">133 Essex Street Condominium</a><span>0.1 mi · 16 units · 2005</span></li><li><a href="64-east-1st-street-manhattan-cd150038.html">64 East 1st Street Condominium</a><span>0.1 mi · 6 units · 2015</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="196-orchard-street-manhattan-cd150263.html">196 Orchard Street Condominium</a><span>next door · 94 units · 2016</span></li><li><a href="118-east-1st-street-manhattan-cd210273.html">Acacia 118 Condominium</a><span>next door · 4 units · 2022</span></li><li><a href="145-147-ludlow-street-manhattan-cd200191.html">145 Ludlow Condominium</a><span>next door · 8 units · 2021</span></li><li><a href="101-east-2nd-street-manhattan-cd190281.html">101 Condominium</a><span>0.1 mi · 22 units · 2020</span></li><li><a href="133-135-essex-street-manhattan-cd040457.html">133 Essex Street Condominium</a><span>0.1 mi · 16 units · 2005</span></li><li><a href="64-east-1st-street-manhattan-cd150038.html">64 East 1st Street Condominium</a><span>0.1 mi · 6 units · 2015</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/179-ludlow-street-manhattan-cd140024.html#building","name":"179 Ludlow Street Condominium","url":"https://www.condobooknyc.com/buildings/179-ludlow-street-manhattan-cd140024.html","description":"179 Ludlow Street Condominium, 179 Ludlow Street, Manhattan. AG plan CD140024, accepted June 2014. 6 residential units.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD140024"},"address":{"@type":"PostalAddress","streetAddress":"179 Ludlow Street","addressLocality":"Manhattan","addressRegion":"NY","postalCode":"10002","addressCountry":"US"},"numberOfAccommodationUnits":6,"geo":{"@type":"GeoCoordinates","latitude":40.722045,"longitude":-73.987626},"image":"https://www.condobooknyc.com/buildings/img/CD140024.webp","containedInPlace":{"@type":"Place","name":"Manhattan, New York"}}</script>

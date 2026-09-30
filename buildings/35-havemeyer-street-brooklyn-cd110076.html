@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD110076.webp" alt="3D massing drawing of 35 Havemeyer Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD110076.webp" width="960" height="720" alt="3D massing drawing of 35 Havemeyer Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD110076#tabs-6" rel="noopener">View the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD110076" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>8 residential</dd></div><div><dt>Offering price</dt><dd>$3.93 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Jul 22, 2011</dd></div><div><dt>Sponsor</dt><dd>35 Havemeyer Development Corp.</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/certilman-balin-adler-hyman.html" title="Other offering plans with this counsel">Certilman Balin Adler &amp; Hyman, LLP</a><span class="sub">Crosby, Esq. Brian · 90 Merrick Avenue, 9th Floor · (212) 620-2690</span></dd></div><div><dt>Plan ID</dt><dd>CD110076</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>8 residential</dd></div><div><dt>Offering price</dt><dd>$3.93 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Jul 22, 2011</dd></div><div><dt>Plan ID</dt><dd>CD110076</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD110076">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>35 Havemeyer Development Corp.</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/certilman-balin-adler-hyman.html" title="Other offering plans with this counsel">Certilman Balin Adler &amp; Hyman, LLP</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD110076">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"17360":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="29-havemeyer-street-brooklyn-cd190095.html">29 Havemeyer Condominium</a><span>next door · 5 units · 2020</span></li><li><a href="29-havemeyer-street-brooklyn-cd220165.html">29 Havemeyer Condominium</a><span>next door · 5 units · 2023</span></li><li><a href="55-havemeyer-street-brooklyn-cd090049.html">55 Havemeyer Street Condominium</a><span>next door · 3 units · 2009</span></li><li><a href="302-308-north-7th-street-brooklyn-cd150189.html">308 North 7th Street Condominium</a><span>next door · 37 units · 19 parking · 2015</span></li><li><a href="260-262-north-9th-street-brooklyn-cd100268.html">260-262 North 9th Street Condominium</a><span>next door · 20 units · 9 parking · 2011</span></li><li><a href="258-north-9th-street-brooklyn-cd150403.html">258 North 9th Street Condominium</a><span>next door · 4 units · 1 parking · 2016</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="29-havemeyer-street-brooklyn-cd190095.html">29 Havemeyer Condominium</a><span>next door · 5 units · 2020</span></li><li><a href="29-havemeyer-street-brooklyn-cd220165.html">29 Havemeyer Condominium</a><span>next door · 5 units · 2023</span></li><li><a href="55-havemeyer-street-brooklyn-cd090049.html">55 Havemeyer Street Condominium</a><span>next door · 3 units · 2009</span></li><li><a href="302-308-north-7th-street-brooklyn-cd150189.html">308 North 7th Street Condominium</a><span>next door · 37 units · 19 parking · 2015</span></li><li><a href="260-262-north-9th-street-brooklyn-cd100268.html">260-262 North 9th Street Condominium</a><span>next door · 20 units · 9 parking · 2011</span></li><li><a href="258-north-9th-street-brooklyn-cd150403.html">258 North 9th Street Condominium</a><span>next door · 4 units · 1 parking · 2016</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/35-havemeyer-street-brooklyn-cd110076.html#building","name":"35 Havemeyer Street Condominium","url":"https://www.condobooknyc.com/buildings/35-havemeyer-street-brooklyn-cd110076.html","description":"35 Havemeyer Street Condominium, 35 Havemeyer Street, Brooklyn. AG plan CD110076, accepted July 2011. 8 residential units.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD110076"},"address":{"@type":"PostalAddress","streetAddress":"35 Havemeyer Street","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11211","addressCountry":"US"},"numberOfAccommodationUnits":8,"geo":{"@type":"GeoCoordinates","latitude":40.715538,"longitude":-73.953496},"image":"https://www.condobooknyc.com/buildings/img/CD110076.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

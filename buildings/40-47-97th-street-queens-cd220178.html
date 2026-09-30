@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD220178.webp" alt="3D massing drawing of Daffodil Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD220178.webp" width="960" height="720" alt="3D massing drawing of Daffodil Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD220178/19871.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD220178" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>15 residential · 7 parking</dd></div><div><dt>Offering price</dt><dd>$8.65 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Mar 9, 2023</dd></div><div><dt>Sponsor</dt><dd>40-47 97th Street LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/paley.html" title="Other offering plans with this counsel">Paley Group, P.C., Attorneys At Law</a><span class="sub">Marc B Paley, Esq. · 801 Second Avenue, Suite 404 · (212) 603-9899</span></dd></div><div><dt>Plan ID</dt><dd>CD220178</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>15 residential · 7 parking</dd></div><div><dt>Offering price</dt><dd>$8.65 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Mar 9, 2023</dd></div><div><dt>Plan ID</dt><dd>CD220178</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD220178">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>40-47 97th Street LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/paley.html" title="Other offering plans with this counsel">Paley Group, P.C., Attorneys At Law</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD220178">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"19871":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="40-48-97th-street-queens-cd090355.html">Tam&#39;S Condominium</a><span>next door · 17 units · 9 parking · 2010</span></li><li><a href="40-22-college-point-blvd-137-07-40th-road-queens-cd130281.html">Sky View Medical Condominium</a><span>next door · 0 units · 2015</span></li><li><a href="41-28-junction-boulevard-queens-cd050403.html">Junction House Condominium</a><span>0.1 mi · 8 units · 2006</span></li><li><a href="37-53-99th-street-queens-cd090241.html">37-53 99th Condominium</a><span>0.2 mi · 7 units · 2010</span></li><li><a href="100-23-39th-avenue-queens-cd100270.html">Green Bell Condominium</a><span>0.2 mi · 8 units · 2011</span></li><li><a href="37-28-97th-street-queens-cd160165.html">Ting Condominium</a><span>0.2 mi · 8 units · 2016</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="40-48-97th-street-queens-cd090355.html">Tam&#39;S Condominium</a><span>next door · 17 units · 9 parking · 2010</span></li><li><a href="40-22-college-point-blvd-137-07-40th-road-queens-cd130281.html">Sky View Medical Condominium</a><span>next door · 0 units · 2015</span></li><li><a href="41-28-junction-boulevard-queens-cd050403.html">Junction House Condominium</a><span>0.1 mi · 8 units · 2006</span></li><li><a href="37-53-99th-street-queens-cd090241.html">37-53 99th Condominium</a><span>0.2 mi · 7 units · 2010</span></li><li><a href="100-23-39th-avenue-queens-cd100270.html">Green Bell Condominium</a><span>0.2 mi · 8 units · 2011</span></li><li><a href="37-28-97th-street-queens-cd160165.html">Ting Condominium</a><span>0.2 mi · 8 units · 2016</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/40-47-97th-street-queens-cd220178.html#building","name":"Daffodil Condominium","url":"https://www.condobooknyc.com/buildings/40-47-97th-street-queens-cd220178.html","description":"Daffodil Condominium, 40-47 97th Street, Queens. AG plan CD220178, accepted March 2023. 15 residential units, 7 parking units.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD220178"},"address":{"@type":"PostalAddress","streetAddress":"40-47 97th Street","addressLocality":"Queens","addressRegion":"NY","postalCode":"11368","addressCountry":"US"},"numberOfAccommodationUnits":15,"geo":{"@type":"GeoCoordinates","latitude":40.748138,"longitude":-73.867387},"image":"https://www.condobooknyc.com/buildings/img/CD220178.webp","containedInPlace":{"@type":"Place","name":"Queens, New York"}}</script>

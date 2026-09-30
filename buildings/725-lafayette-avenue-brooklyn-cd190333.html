@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD190333.webp" alt="3D massing drawing of 725 Lafayette Avenue Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD190333.webp" width="960" height="720" alt="3D massing drawing of 725 Lafayette Avenue Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD190333/10982.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD190333" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>7 residential</dd></div><div><dt>Offering price</dt><dd>$4.58 million total <span class="sub">$4.45 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Dec 11, 2020</dd></div><div><dt>Sponsor</dt><dd>725 Laf Partners LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/eial-girtz.html" title="Other offering plans with this counsel">Eial Girtz, PC</a><span class="sub">Eial Girtz, Esq. · 11 Grace Avenue, Suite 309 · (516) 466-6911</span></dd></div><div><dt>Plan ID</dt><dd>CD190333</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>7 residential</dd></div><div><dt>Offering price</dt><dd>$4.58 million total <span class="sub">$4.45 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Dec 11, 2020</dd></div><div><dt>Plan ID</dt><dd>CD190333</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD190333">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>725 Laf Partners LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/eial-girtz.html" title="Other offering plans with this counsel">Eial Girtz, PC</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD190333">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"10982":"Offering Plan"}</script></section>
@@ -100,7 +104,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="733-lafayette-avenue-brooklyn-cd140058.html">733 Lafayette Avenue Condominium</a><span>next door · 8 units</span></li><li><a href="735-lafayette-avenue-brooklyn-cd210117.html">Residence At 735 Condominium</a><span>next door · 7 units · 2021</span></li><li><a href="730-lafayette-avenue-brooklyn-cd140352.html">730 Lafayette Avenue Condominium</a><span>next door · 8 units · 2015</span></li><li><a href="739-lafayette-avenue-brooklyn-cd140307.html">739 Lafayette Avenue Condominium</a><span>next door · 7 units · 2015</span></li><li><a href="701-lafayette-avenue-brooklyn-cd180368.html">701 Lafayette Condominium</a><span>next door · 8 units · 2019</span></li><li><a href="265-kosciuszko-street-brooklyn-cd110049.html">265 Kosciuszko Street Condominium</a><span>next door · 4 units</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="733-lafayette-avenue-brooklyn-cd140058.html">733 Lafayette Avenue Condominium</a><span>next door · 8 units</span></li><li><a href="735-lafayette-avenue-brooklyn-cd210117.html">Residence At 735 Condominium</a><span>next door · 7 units · 2021</span></li><li><a href="730-lafayette-avenue-brooklyn-cd140352.html">730 Lafayette Avenue Condominium</a><span>next door · 8 units · 2015</span></li><li><a href="739-lafayette-avenue-brooklyn-cd140307.html">739 Lafayette Avenue Condominium</a><span>next door · 7 units · 2015</span></li><li><a href="701-lafayette-avenue-brooklyn-cd180368.html">701 Lafayette Condominium</a><span>next door · 8 units · 2019</span></li><li><a href="265-kosciuszko-street-brooklyn-cd110049.html">265 Kosciuszko Street Condominium</a><span>next door · 4 units</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/725-lafayette-avenue-brooklyn-cd190333.html#building","name":"725 Lafayette Avenue Condominium","url":"https://www.condobooknyc.com/buildings/725-lafayette-avenue-brooklyn-cd190333.html","description":"725 Lafayette Avenue Condominium, 725 Lafayette Avenue, Brooklyn. AG plan CD190333, accepted December 2020. 7 residential units.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD190333"},"address":{"@type":"PostalAddress","streetAddress":"725 Lafayette Avenue","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11221","addressCountry":"US"},"numberOfAccommodationUnits":7,"geo":{"@type":"GeoCoordinates","latitude":40.690899,"longitude":-73.944248},"image":"https://www.condobooknyc.com/buildings/img/CD190333.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

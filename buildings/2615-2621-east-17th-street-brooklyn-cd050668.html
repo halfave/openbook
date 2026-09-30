@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD050668.webp" alt="3D massing drawing of 2615-2621 East 17th Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD050668.webp" width="960" height="720" alt="3D massing drawing of 2615-2621 East 17th Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD050668/15222.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD050668" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>29 residential · 21 parking · 1 commercial</dd></div><div><dt>Offering price</dt><dd>$24 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Jun 14, 2006</dd></div><div><dt>Sponsor</dt><dd>2615-2621 East 17th Street Realty LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/harold-gruber.html" title="Other offering plans with this counsel">Harold Gruber, P.C.</a><span class="sub">Gary Rosen, Esq. · 92 Prospect Place, Suite 1 · (516) 437-3400</span></dd></div><div><dt>Plan ID</dt><dd>CD050668</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>29 residential · 21 parking · 1 commercial</dd></div><div><dt>Offering price</dt><dd>$24 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Jun 14, 2006</dd></div><div><dt>Plan ID</dt><dd>CD050668</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD050668">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>2615-2621 East 17th Street Realty LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/harold-gruber.html" title="Other offering plans with this counsel">Harold Gruber, P.C.</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD050668">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"15222":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="1702-avenue-z-brooklyn-cd080380.html">1702 Avenue Z Condo</a><span>next door · 10 units · 2008</span></li><li><a href="2617-east-16th-street-brooklyn-cd050368.html">2617 East 16th Street Condominium</a><span>next door · 8 units · 2006</span></li><li><a href="2570-east-17th-street-brooklyn-cd050527.html">Bay Manor Condominium</a><span>next door · 16 units · 8 parking · 2006</span></li><li><a href="2654-east-18th-street-brooklyn-cd220137.html">2654 East 18th Street Condominium</a><span>next door · 18 units · 2022</span></li><li><a href="1679-east-19th-street-brooklyn-cd160058.html">Skyline Condominium</a><span>next door · 20 units · 21 parking · 2016</span></li><li><a href="1524-sheepshead-bay-road-aka-1501-voorhies-brooklyn-cd160373.html">1 Brooklyn Bay Condominiums</a><span>next door · 56 units · 43 parking · 2017</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="1702-avenue-z-brooklyn-cd080380.html">1702 Avenue Z Condo</a><span>next door · 10 units · 2008</span></li><li><a href="2617-east-16th-street-brooklyn-cd050368.html">2617 East 16th Street Condominium</a><span>next door · 8 units · 2006</span></li><li><a href="2570-east-17th-street-brooklyn-cd050527.html">Bay Manor Condominium</a><span>next door · 16 units · 8 parking · 2006</span></li><li><a href="2654-east-18th-street-brooklyn-cd220137.html">2654 East 18th Street Condominium</a><span>next door · 18 units · 2022</span></li><li><a href="1679-east-19th-street-brooklyn-cd160058.html">Skyline Condominium</a><span>next door · 20 units · 21 parking · 2016</span></li><li><a href="1524-sheepshead-bay-road-aka-1501-voorhies-brooklyn-cd160373.html">1 Brooklyn Bay Condominiums</a><span>next door · 56 units · 43 parking · 2017</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/2615-2621-east-17th-street-brooklyn-cd050668.html#building","name":"2615-2621 East 17th Street Condominium","url":"https://www.condobooknyc.com/buildings/2615-2621-east-17th-street-brooklyn-cd050668.html","description":"2615-2621 East 17th Street Condominium, 2615-2621 East 17th Street, Brooklyn. AG plan CD050668, accepted June 2006. 29 residential units, 21 parking units.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD050668"},"address":{"@type":"PostalAddress","streetAddress":"2615-2621 East 17th Street","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11235","addressCountry":"US"},"numberOfAccommodationUnits":29,"geo":{"@type":"GeoCoordinates","latitude":40.587782,"longitude":-73.952058},"image":"https://www.condobooknyc.com/buildings/img/CD050668.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD200128.webp" alt="3D massing drawing of 460 7th Avenue Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD200128.webp" width="960" height="720" alt="3D massing drawing of 460 7th Avenue Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD200128/13534.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD200128" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>3 residential</dd></div><div><dt>Offering price</dt><dd>$4.49 million total</dd></div><div><dt>Construction</dt><dd>Rehab</dd></div><div><dt>Accepted</dt><dd>Nov 1, 2021</dd></div><div><dt>Sponsor</dt><dd>460 Seventh Avenue Bk LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/tsyngauz.html" title="Other offering plans with this counsel">Tsyngauz &amp; Associates, P.C.</a><span class="sub">Yevgeny Tsyngauz, Esq. · 225 Broadway, Suite 2640 · (212) 337-9770</span></dd></div><div><dt>Plan ID</dt><dd>CD200128</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>3 residential</dd></div><div><dt>Offering price</dt><dd>$4.49 million total</dd></div><div><dt>Construction</dt><dd>Rehab</dd></div><div><dt>Accepted</dt><dd>Nov 1, 2021</dd></div><div><dt>Plan ID</dt><dd>CD200128</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD200128">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>460 Seventh Avenue Bk LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/tsyngauz.html" title="Other offering plans with this counsel">Tsyngauz &amp; Associates, P.C.</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD200128">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"13534":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="315-317-16th-street-brooklyn-cd050194.html">315-317 16th Street Condo</a><span>next door · 20 units · 2005</span></li><li><a href="349-16th-street-brooklyn-cd070367.html">349 16th Street Condominium</a><span>next door · 6 units · 2008</span></li><li><a href="337-15th-street-brooklyn-cd140397.html">337 Fifteenth Street Condominium</a><span>next door · 3 units · 2015</span></li><li><a href="359-361-16th-street-brooklyn-cd060714.html">359-361 16th Street Condominium</a><span>next door · 14 units · 2007</span></li><li><a href="431-7th-avenue-brooklyn-cd260035.html">Whitman Condominium</a><span>next door · 6 units</span></li><li><a href="363-16th-street-brooklyn-cd070204.html">363 16th Street Condominium</a><span>next door · 7 units · 2008</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="315-317-16th-street-brooklyn-cd050194.html">315-317 16th Street Condo</a><span>next door · 20 units · 2005</span></li><li><a href="349-16th-street-brooklyn-cd070367.html">349 16th Street Condominium</a><span>next door · 6 units · 2008</span></li><li><a href="337-15th-street-brooklyn-cd140397.html">337 Fifteenth Street Condominium</a><span>next door · 3 units · 2015</span></li><li><a href="359-361-16th-street-brooklyn-cd060714.html">359-361 16th Street Condominium</a><span>next door · 14 units · 2007</span></li><li><a href="431-7th-avenue-brooklyn-cd260035.html">Whitman Condominium</a><span>next door · 6 units</span></li><li><a href="363-16th-street-brooklyn-cd070204.html">363 16th Street Condominium</a><span>next door · 7 units · 2008</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/460-7th-avenue-brooklyn-cd200128.html#building","name":"460 7th Avenue Condominium","url":"https://www.condobooknyc.com/buildings/460-7th-avenue-brooklyn-cd200128.html","description":"460 7th Avenue Condominium, 460 7th Avenue, Brooklyn. AG plan CD200128, accepted November 2021. 3 residential units. Budget, team, documents and source links.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD200128"},"address":{"@type":"PostalAddress","streetAddress":"460 7th Avenue","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11215","addressCountry":"US"},"numberOfAccommodationUnits":3,"geo":{"@type":"GeoCoordinates","latitude":40.662932,"longitude":-73.985173},"image":"https://www.condobooknyc.com/buildings/img/CD200128.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

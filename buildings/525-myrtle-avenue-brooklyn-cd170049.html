@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD170049.webp" alt="3D massing drawing of Clinton House Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD170049.webp" width="960" height="720" alt="3D massing drawing of Clinton House Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD170049/27716.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD170049" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>22 residential · 3 commercial</dd></div><div><dt>Offering price</dt><dd>$16.1 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Jul 12, 2017</dd></div><div><dt>Sponsor</dt><dd>525 Myrtle Avenue Condos Realty LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/rosen.html" title="Other offering plans with this counsel">Rosen Law LLC</a><span class="sub">Jaime Rosen, Esq. · 216 Lakeville Road · (516) 437-3400</span></dd></div><div><dt>Plan ID</dt><dd>CD170049</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>22 residential · 3 commercial</dd></div><div><dt>Offering price</dt><dd>$16.1 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Jul 12, 2017</dd></div><div><dt>Plan ID</dt><dd>CD170049</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD170049">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>525 Myrtle Avenue Condos Realty LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/rosen.html" title="Other offering plans with this counsel">Rosen Law LLC</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD170049">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"27716":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="105-grand-avenue-brooklyn-cd060268.html">105 Grand Avenue Condominium</a><span>next door · 24 units · 2008</span></li><li><a href="111-steuben-street-brooklyn-cd060633.html">111 Steuben Street Condominium</a><span>next door · 35 units · 34 parking · 2007</span></li><li><a href="91-grand-avenue-brooklyn-cd070051.html">Clinton Lofts Condo / F/K/A Retro Condo</a><span>next door · 16 units · 2007</span></li><li><a href="501-myrtle-avenue-brooklyn-cd220134.html">Myrtle Avenue Condominium</a><span>next door · 10 units · 2023</span></li><li><a href="74-grand-avenue-brooklyn-cd080516.html">74 Grand Avenue Condominium</a><span>next door · 61 units · 31 parking · 2009</span></li><li><a href="72-steuben-street-brooklyn-cd070445.html">72 Steuben Condominium</a><span>next door · 10 units · 2007</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="105-grand-avenue-brooklyn-cd060268.html">105 Grand Avenue Condominium</a><span>next door · 24 units · 2008</span></li><li><a href="111-steuben-street-brooklyn-cd060633.html">111 Steuben Street Condominium</a><span>next door · 35 units · 34 parking · 2007</span></li><li><a href="91-grand-avenue-brooklyn-cd070051.html">Clinton Lofts Condo / F/K/A Retro Condo</a><span>next door · 16 units · 2007</span></li><li><a href="501-myrtle-avenue-brooklyn-cd220134.html">Myrtle Avenue Condominium</a><span>next door · 10 units · 2023</span></li><li><a href="74-grand-avenue-brooklyn-cd080516.html">74 Grand Avenue Condominium</a><span>next door · 61 units · 31 parking · 2009</span></li><li><a href="72-steuben-street-brooklyn-cd070445.html">72 Steuben Condominium</a><span>next door · 10 units · 2007</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/525-myrtle-avenue-brooklyn-cd170049.html#building","name":"Clinton House Condominium","url":"https://www.condobooknyc.com/buildings/525-myrtle-avenue-brooklyn-cd170049.html","description":"Clinton House Condominium, 525 Myrtle Avenue, Brooklyn. AG plan CD170049, accepted July 2017. 22 residential units. Budget, team, documents and source links.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD170049"},"address":{"@type":"PostalAddress","streetAddress":"525 Myrtle Avenue","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11205","addressCountry":"US"},"numberOfAccommodationUnits":22,"geo":{"@type":"GeoCoordinates","latitude":40.693906,"longitude":-73.963733},"image":"https://www.condobooknyc.com/buildings/img/CD170049.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

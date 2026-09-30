@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD210022.webp" alt="3D massing drawing of Century Tower Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD210022.webp" width="960" height="720" alt="3D massing drawing of Century Tower Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD210022/14326.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD210022" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>30 residential · 20 parking · 7 commercial</dd></div><div><dt>Offering price</dt><dd>$34.2 million total <span class="sub">$40.9 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Jan 21, 2022</dd></div><div><dt>Sponsor</dt><dd>N.Y. Excelsior Development, LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/moritt-hock-hamroff.html" title="Other offering plans with this counsel">Moritt Hock &amp; Hamroff, LLP</a><span class="sub">1407 Broadway, 39th Floor</span></dd></div><div><dt>Plan ID</dt><dd>CD210022</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>30 residential · 20 parking · 7 commercial</dd></div><div><dt>Offering price</dt><dd>$34.2 million total <span class="sub">$40.9 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Jan 21, 2022</dd></div><div><dt>Plan ID</dt><dd>CD210022</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD210022">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>N.Y. Excelsior Development, LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/moritt-hock-hamroff.html" title="Other offering plans with this counsel">Moritt Hock &amp; Hamroff, LLP</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD210022">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"14326":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="132-56-60-avenue-queens-cd200177.html">132-56 60 Avenue Condominium</a><span>next door · 5 units</span></li><li><a href="57-35-lawrence-street-queens-cd080564.html">Shagri-La Garden Condominium F/K/A Howard Mansion Condo</a><span>0.1 mi · 5 units · 2 parking · 2009</span></li><li><a href="136-18-and-136-20-maple-avenue-queens-cd200197.html">Nusun Tower</a><span>0.2 mi · 113 units · 2021</span></li><li><a href="136-20-booth-memorial-avenue-queens-cd190032.html">Booth Park Condominium</a><span>0.3 mi · 24 units · 1 parking · 2019</span></li><li><a href="136-05-booth-memorial-avenue-queens-cd210309.html">Stratford Condominium</a><span>0.3 mi · 7 units · 7 parking · 2022</span></li><li><a href="138-31-58th-road-queens-cd140235.html">138-31 58th Road Condominium</a><span>0.3 mi · 11 units · 6 parking · 2014</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="132-56-60-avenue-queens-cd200177.html">132-56 60 Avenue Condominium</a><span>next door · 5 units</span></li><li><a href="57-35-lawrence-street-queens-cd080564.html">Shagri-La Garden Condominium F/K/A Howard Mansion Condo</a><span>0.1 mi · 5 units · 2 parking · 2009</span></li><li><a href="136-18-and-136-20-maple-avenue-queens-cd200197.html">Nusun Tower</a><span>0.2 mi · 113 units · 2021</span></li><li><a href="136-20-booth-memorial-avenue-queens-cd190032.html">Booth Park Condominium</a><span>0.3 mi · 24 units · 1 parking · 2019</span></li><li><a href="136-05-booth-memorial-avenue-queens-cd210309.html">Stratford Condominium</a><span>0.3 mi · 7 units · 7 parking · 2022</span></li><li><a href="138-31-58th-road-queens-cd140235.html">138-31 58th Road Condominium</a><span>0.3 mi · 11 units · 6 parking · 2014</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/132-25-and-132-27-41st-road-queens-cd210022.html#building","name":"Century Tower Condominium","url":"https://www.condobooknyc.com/buildings/132-25-and-132-27-41st-road-queens-cd210022.html","description":"Century Tower Condominium, 132-25 & 132-27 41st Road, Queens. AG plan CD210022, accepted January 2022. 30 residential units, 20 parking units.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD210022"},"address":{"@type":"PostalAddress","streetAddress":"132-25 & 132-27 41st Road","addressLocality":"Queens","addressRegion":"NY","postalCode":"11355","addressCountry":"US"},"numberOfAccommodationUnits":30,"geo":{"@type":"GeoCoordinates","latitude":40.744731,"longitude":-73.832473},"image":"https://www.condobooknyc.com/buildings/img/CD210022.webp","containedInPlace":{"@type":"Place","name":"Queens, New York"}}</script>

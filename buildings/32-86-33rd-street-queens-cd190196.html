@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD190196.webp" alt="3D massing drawing of Astoria 33 Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD190196.webp" width="960" height="720" alt="3D massing drawing of Astoria 33 Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD190196/10365.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD190196" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>64 residential</dd></div><div><dt>Offering price</dt><dd>$33.4 million total <span class="sub">$38.4 million when first offered</span></dd></div><div><dt>Construction</dt><dd>Conversion</dd></div><div><dt>Accepted</dt><dd>Oct 30, 2020</dd></div><div><dt>Sponsor</dt><dd>33 Street Realty Co., LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/pryor-cashman.html" title="Other offering plans with this counsel">Pryor Cashman LLP</a><span class="sub">Jeanne C Matase, Esq. · 7 Times Square · (212) 326-0860</span></dd></div><div><dt>Plan ID</dt><dd>CD190196</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>64 residential</dd></div><div><dt>Offering price</dt><dd>$33.4 million total <span class="sub">$38.4 million when first offered</span></dd></div><div><dt>Construction</dt><dd>Conversion</dd></div><div><dt>Accepted</dt><dd>Oct 30, 2020</dd></div><div><dt>Plan ID</dt><dd>CD190196</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD190196">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>33 Street Realty Co., LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/pryor-cashman.html" title="Other offering plans with this counsel">Pryor Cashman LLP</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD190196">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"10365":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="34-32-35th-street-queens-cd150121.html">Marx</a><span>0.1 mi · 33 units · 18 parking · 2015</span></li><li><a href="35-12-35-14-35-16-35-18-31st-street-queens-cd080141.html">Sanvito Homes Condominium</a><span>0.2 mi · 12 units · 13 parking · 2008</span></li><li><a href="35-19-leavit-street-queens-cd170011.html">Leavitt Tower Condominium</a><span>0.2 mi · 44 units · 23 parking · 2017</span></li><li><a href="25-17-voorhies-avenue-brooklyn-cd160040.html">2517 Voorhies Condominium</a><span>0.3 mi · 20 units · 13 parking · 2016</span></li><li><a href="35-40-30th-street-queens-cd060009.html">Santorini Condominium</a><span>0.3 mi · 62 units · 64 parking · 2006</span></li><li><a href="31-35-31st-street-queens-cd080577.html">Astor Condominiums</a><span>0.3 mi · 80 units · 2009</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="34-32-35th-street-queens-cd150121.html">Marx</a><span>0.1 mi · 33 units · 18 parking · 2015</span></li><li><a href="35-12-35-14-35-16-35-18-31st-street-queens-cd080141.html">Sanvito Homes Condominium</a><span>0.2 mi · 12 units · 13 parking · 2008</span></li><li><a href="35-19-leavit-street-queens-cd170011.html">Leavitt Tower Condominium</a><span>0.2 mi · 44 units · 23 parking · 2017</span></li><li><a href="25-17-voorhies-avenue-brooklyn-cd160040.html">2517 Voorhies Condominium</a><span>0.3 mi · 20 units · 13 parking · 2016</span></li><li><a href="35-40-30th-street-queens-cd060009.html">Santorini Condominium</a><span>0.3 mi · 62 units · 64 parking · 2006</span></li><li><a href="31-35-31st-street-queens-cd080577.html">Astor Condominiums</a><span>0.3 mi · 80 units · 2009</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/32-86-33rd-street-queens-cd190196.html#building","name":"Astoria 33 Condominium","url":"https://www.condobooknyc.com/buildings/32-86-33rd-street-queens-cd190196.html","description":"Astoria 33 Condominium, 32-86 33rd Street, Queens. AG plan CD190196, accepted October 2020. 64 residential units. Budget, team, documents and source links.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD190196"},"address":{"@type":"PostalAddress","streetAddress":"32-86 33rd Street","addressLocality":"Queens","addressRegion":"NY","postalCode":"11106","addressCountry":"US"},"numberOfAccommodationUnits":64,"geo":{"@type":"GeoCoordinates","latitude":40.759256,"longitude":-73.925775},"image":"https://www.condobooknyc.com/buildings/img/CD190196.webp","containedInPlace":{"@type":"Place","name":"Queens, New York"}}</script>

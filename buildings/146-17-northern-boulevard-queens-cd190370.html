@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD190370.webp" alt="3D massing drawing of Northern and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD190370.webp" width="960" height="720" alt="3D massing drawing of Northern and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD190370/11068.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD190370" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>34 residential · 1 parking · 5 commercial</dd></div><div><dt>Offering price</dt><dd>$39.8 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Dec 22, 2020</dd></div><div><dt>Sponsor</dt><dd>14615 Northern Blvd, LLC**</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/sichenzia-ross-ference.html" title="Other offering plans with this counsel">Sichenzia Ross Ference LLP</a><span class="sub">Jodi B Zimmerman, Esq. · 1185 Avenue Of The Americas, 37th Floor · (212) 239-2000</span></dd></div><div><dt>Plan ID</dt><dd>CD190370</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>34 residential · 1 parking · 5 commercial</dd></div><div><dt>Offering price</dt><dd>$39.8 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Dec 22, 2020</dd></div><div><dt>Plan ID</dt><dd>CD190370</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD190370">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>14615 Northern Blvd, LLC**</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/sichenzia-ross-ference.html" title="Other offering plans with this counsel">Sichenzia Ross Ference LLP</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD190370">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"11068":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="146-14-35th-avenue-queens-cd040091.html">State Tower Condominium</a><span>next door · 18 units · 1 parking · 2004</span></li><li><a href="146-10-35th-avenue-queens-cd230011.html">Hong Ye Condominium</a><span>next door · 22 units · 7 parking · 2023</span></li><li><a href="35-20-146th-street-queens-cd210145.html">146 Northern Condominium</a><span>next door · 30 units · 1 parking · 2022</span></li><li><a href="35-30-146th-street-queens-cd240262.html">Northern 146 Condominium</a><span>next door · 44 units · 22 parking · 2025</span></li><li><a href="35-08-146th-street-queens-cd180145.html">Murray Hill Mansion</a><span>next door · 57 units · 34 parking · 2019</span></li><li><a href="144-49-northern-blvd-aka-144-61-northern-blvd-queens-cd210316.html">Northern Parc</a><span>next door · 172 units · 1 parking · 2022</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="146-14-35th-avenue-queens-cd040091.html">State Tower Condominium</a><span>next door · 18 units · 1 parking · 2004</span></li><li><a href="146-10-35th-avenue-queens-cd230011.html">Hong Ye Condominium</a><span>next door · 22 units · 7 parking · 2023</span></li><li><a href="35-20-146th-street-queens-cd210145.html">146 Northern Condominium</a><span>next door · 30 units · 1 parking · 2022</span></li><li><a href="35-30-146th-street-queens-cd240262.html">Northern 146 Condominium</a><span>next door · 44 units · 22 parking · 2025</span></li><li><a href="35-08-146th-street-queens-cd180145.html">Murray Hill Mansion</a><span>next door · 57 units · 34 parking · 2019</span></li><li><a href="144-49-northern-blvd-aka-144-61-northern-blvd-queens-cd210316.html">Northern Parc</a><span>next door · 172 units · 1 parking · 2022</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/146-17-northern-boulevard-queens-cd190370.html#building","name":"Northern","url":"https://www.condobooknyc.com/buildings/146-17-northern-boulevard-queens-cd190370.html","description":"Northern, 146-17 Northern Boulevard, Queens. AG plan CD190370, accepted December 2020. 34 residential units, 1 parking unit.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD190370"},"address":{"@type":"PostalAddress","streetAddress":"146-17 Northern Boulevard","addressLocality":"Queens","addressRegion":"NY","postalCode":"11354","addressCountry":"US"},"numberOfAccommodationUnits":34,"geo":{"@type":"GeoCoordinates","latitude":40.765419,"longitude":-73.820071},"image":"https://www.condobooknyc.com/buildings/img/CD190370.webp","containedInPlace":{"@type":"Place","name":"Queens, New York"}}</script>

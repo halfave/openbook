@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD200280.webp" alt="3D massing drawing of 400 Linden Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD200280.webp" width="960" height="720" alt="3D massing drawing of 400 Linden Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD200280/11295.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD200280" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>6 residential</dd></div><div><dt>Offering price</dt><dd>$4.09 million total <span class="sub">$4.07 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Jan 22, 2021</dd></div><div><dt>Sponsor</dt><dd>400 Linden LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/rosen.html" title="Other offering plans with this counsel">Rosen Law LLC</a><span class="sub">Jaime Rosen, Esq. · 216 Lakeville Road · (516) 437-3400</span></dd></div><div><dt>Plan ID</dt><dd>CD200280</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>6 residential</dd></div><div><dt>Offering price</dt><dd>$4.09 million total <span class="sub">$4.07 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Jan 22, 2021</dd></div><div><dt>Plan ID</dt><dd>CD200280</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD200280">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>400 Linden LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/rosen.html" title="Other offering plans with this counsel">Rosen Law LLC</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD200280">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"11295":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="311-saint-nicholas-avenue-queens-cd100168.html">Gates Tower Condominium</a><span>next door · 24 units · 15 parking · 2010</span></li><li><a href="358-grove-street-brooklyn-cd060308.html">358 Grove Street Condominium</a><span>0.1 mi · 59 units · 50 parking · 2007</span></li><li><a href="375-menahan-street-brooklyn-cd070216.html">375 Menahan Street Condominium</a><span>0.1 mi · 6 units · 2007</span></li><li><a href="373-palmetto-street-brooklyn-cd210149.html">373 Palmetto Street Condominium</a><span>0.1 mi · 8 units · 2021</span></li><li><a href="3-ridgewood-place-brooklyn-cd150251.html">Ridgewood Place Condominium</a><span>0.1 mi · 4 units · 2016</span></li><li><a href="343-menahan-street-brooklyn-cd240188.html">Josephine Condominium</a><span>0.2 mi · 10 units · 2024</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="311-saint-nicholas-avenue-queens-cd100168.html">Gates Tower Condominium</a><span>next door · 24 units · 15 parking · 2010</span></li><li><a href="358-grove-street-brooklyn-cd060308.html">358 Grove Street Condominium</a><span>0.1 mi · 59 units · 50 parking · 2007</span></li><li><a href="375-menahan-street-brooklyn-cd070216.html">375 Menahan Street Condominium</a><span>0.1 mi · 6 units · 2007</span></li><li><a href="373-palmetto-street-brooklyn-cd210149.html">373 Palmetto Street Condominium</a><span>0.1 mi · 8 units · 2021</span></li><li><a href="3-ridgewood-place-brooklyn-cd150251.html">Ridgewood Place Condominium</a><span>0.1 mi · 4 units · 2016</span></li><li><a href="343-menahan-street-brooklyn-cd240188.html">Josephine Condominium</a><span>0.2 mi · 10 units · 2024</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/400-linden-street-brooklyn-cd200280.html#building","name":"400 Linden Street Condominium","url":"https://www.condobooknyc.com/buildings/400-linden-street-brooklyn-cd200280.html","description":"400 Linden Street Condominium, 400 Linden Street, Brooklyn. AG plan CD200280, accepted January 2021. 6 residential units.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD200280"},"address":{"@type":"PostalAddress","streetAddress":"400 Linden Street","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11237","addressCountry":"US"},"numberOfAccommodationUnits":6,"geo":{"@type":"GeoCoordinates","latitude":40.70082,"longitude":-73.91174},"image":"https://www.condobooknyc.com/buildings/img/CD200280.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

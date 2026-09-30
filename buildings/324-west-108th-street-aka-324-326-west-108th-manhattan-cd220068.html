@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD220068.webp" alt="3D massing drawing of 324 West 108 Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD220068.webp" width="960" height="720" alt="3D massing drawing of 324 West 108 Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD220068#tabs-6" rel="noopener">View the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD220068" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>10 residential</dd></div><div><dt>Offering price</dt><dd>$30 million total <span class="sub">$26.5 million when first offered</span></dd></div><div><dt>Construction</dt><dd>Rehab</dd></div><div><dt>Accepted</dt><dd>Dec 1, 2022</dd></div><div><dt>Sponsor</dt><dd>W 108 Development LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/paley.html" title="Other offering plans with this counsel">Paley Group, P.C., Attorneys At Law</a><span class="sub">Marc B Paley, Esq. · 801 Second Avenue, Suite 404 · (212) 603-9899</span></dd></div><div><dt>Plan ID</dt><dd>CD220068</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>10 residential</dd></div><div><dt>Offering price</dt><dd>$30 million total <span class="sub">$26.5 million when first offered</span></dd></div><div><dt>Construction</dt><dd>Rehab</dd></div><div><dt>Accepted</dt><dd>Dec 1, 2022</dd></div><div><dt>Plan ID</dt><dd>CD220068</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD220068">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>W 108 Development LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/paley.html" title="Other offering plans with this counsel">Paley Group, P.C., Attorneys At Law</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD220068">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"18036":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="610-west-110th-street-manhattan-cd060628.html">610 West 110th Street Condominium</a><span>next door · 72 units · 2007</span></li><li><a href="238-west-108th-street-manhattan-cd070172.html">Columbia House</a><span>0.1 mi · 6 units · 2007</span></li><li><a href="2770-broadway-manhattan-cd030231.html">Opus Condominium</a><span>0.1 mi · 64 units · 2004</span></li><li><a href="241-west-107th-street-manhattan-cd140201.html">241 West 107th Street Condominium</a><span>0.1 mi · 6 units · 2014</span></li><li><a href="545-west-110th-street-manhattan-cd050389.html">545 West 110th Street Condominium</a><span>0.2 mi · 57 units · 2006</span></li><li><a href="915-west-end-avenue-manhattan-cd150107.html">915 West End Avenue Condominium</a><span>0.2 mi · 43 units</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="610-west-110th-street-manhattan-cd060628.html">610 West 110th Street Condominium</a><span>next door · 72 units · 2007</span></li><li><a href="238-west-108th-street-manhattan-cd070172.html">Columbia House</a><span>0.1 mi · 6 units · 2007</span></li><li><a href="2770-broadway-manhattan-cd030231.html">Opus Condominium</a><span>0.1 mi · 64 units · 2004</span></li><li><a href="241-west-107th-street-manhattan-cd140201.html">241 West 107th Street Condominium</a><span>0.1 mi · 6 units · 2014</span></li><li><a href="545-west-110th-street-manhattan-cd050389.html">545 West 110th Street Condominium</a><span>0.2 mi · 57 units · 2006</span></li><li><a href="915-west-end-avenue-manhattan-cd150107.html">915 West End Avenue Condominium</a><span>0.2 mi · 43 units</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/324-west-108th-street-aka-324-326-west-108th-manhattan-cd220068.html#building","name":"324 West 108 Condominium","url":"https://www.condobooknyc.com/buildings/324-west-108th-street-aka-324-326-west-108th-manhattan-cd220068.html","description":"324 West 108 Condominium, 324 West 108th Street (Aka 324-326 West 108th, Manhattan. AG plan CD220068, accepted December 2022. 10 residential units.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD220068"},"address":{"@type":"PostalAddress","streetAddress":"324 West 108th Street (Aka 324-326 West 108th","addressLocality":"Manhattan","addressRegion":"NY","postalCode":"10025","addressCountry":"US"},"numberOfAccommodationUnits":10,"geo":{"@type":"GeoCoordinates","latitude":40.803143,"longitude":-73.968588},"image":"https://www.condobooknyc.com/buildings/img/CD220068.webp","containedInPlace":{"@type":"Place","name":"Manhattan, New York"}}</script>

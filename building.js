@@ -60,7 +60,7 @@
     const isTotal = (it) => /\btotal\b/i.test(it.item || "");
     const tables = [...budgets].map(([b, secs]) => {
       const rows = [...secs].map(([sec, list]) => `<tr class="sec"><th colspan="3">${esc(sec)}</th></tr>` + list.map((it) => {
-        return `<tr${isTotal(it) ? ' class="total"' : ""}><td>${esc(it.item)}</td><td class="amt">${fmt(it.amount)}</td><td class="bnotes-cell">${noteText(it.note)}</td></tr>`;
+        return `<tr${isTotal(it) ? ' class="total"' : ""}><td>${esc(String(it.item ?? "").replace(/\boperating expenses?\b/gi, "Opex"))}</td><td class="amt">${fmt(it.amount)}</td><td class="bnotes-cell">${noteText(it.note)}</td></tr>`;
       }).join("")).join("");
       return (budgets.size > 1 ? `<h3>${esc(b)} Budget</h3>` : "") +
         `<div class="tscroll"><table class="budget"><thead><tr><th>Item</th><th class="amt">Amount</th><th>Notes</th></tr></thead><tbody>${rows}</tbody></table></div>`;
@@ -85,7 +85,7 @@
   // Read from the plan's Schedule A table by pattern matching (scripts/extract-schedule-a.mjs); a file exists
   // only for plans whose unit prices add up to the AG record's total offering price.
   const abox = document.getElementById("scheda");
-  if (abox) loadScheduleA(abox);
+  const aDone = abox ? loadScheduleA(abox) : null;
   async function loadScheduleA(box) {
     let row;
     try {
@@ -142,7 +142,16 @@
   // ---------- facts extracted from the offering plan ----------
   // Shown in the tab they belong to, each with its page. Only value_text is shown, except the managing
   // agent's fee (value_num is the annual fee for that field; other fields use it inconsistently).
-  loadFacts(main.dataset.plan);
+  const fDone = loadFacts(main.dataset.plan);
+  // Units & prices and the team rows load in above the lower sections, pushing a #documents-style link target down.
+  // Once they're in, go back to the target, unless the reader has scrolled on their own.
+  const target = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  if (target) {
+    let moved = false;
+    const own = () => { moved = true; };
+    for (const ev of ["wheel", "touchmove", "keydown", "mousedown"]) addEventListener(ev, own, { once: true, passive: true });
+    Promise.allSettled([aDone, fDone]).then(() => { if (!moved) target.scrollIntoView(); });
+  }
   async function loadFacts(plan) {
     if (!plan) return;
     let rows;
@@ -155,7 +164,6 @@
     if (!rows.length) return;
     const by = new Map();
     for (const f of rows) { if (!by.has(f.field)) by.set(f.field, []); by.get(f.field).push(f); }
-    const PARKING = { sold: "Sold as separate units", licensed: "Licensed", leased: "Leased", sold_or_licensed: "Sold or licensed", limited_common_element: "Limited common element" };
     const P = (document.querySelector(".wordmark")?.getAttribute("href") || "../index.html").replace(/index\.html$/, "");
     // The agent's name links to its profile page when it has one (data-managers, from build-buildings.mjs),
     // otherwise to a search for every building it manages (sponsor-managed plans aren't linked).
@@ -183,7 +191,6 @@
     };
     // Returns HTML; every value is escaped here.
     const val = (field, f) => {
-      if (field === "parking_arrangement") return esc(PARKING[f.value_text] || f.value_text);
       if (PRO_DIR[field] && f.value_text) return proLink(field, f.value_text);
       if (field === "managing_agent") {
         // Fee (and fee per residential unit) sits under the name in small type, like counsel's contact.
@@ -202,11 +209,17 @@
     };
     const sheet = document.getElementById("sheet");
     if (!sheet) return;
-    const html = [["Parking", "parking_arrangement"], ["Tax program", "tax_program"], ["Affordable housing", "affordable_housing"],
-      ["Managing agent", "managing_agent"], ["Selling agent", "selling_agent"], ["Architect", "architect"]].map(([l, f]) => row(l, f)).join("");
+    const html = [["Tax program", "tax_program"], ["Affordable housing", "affordable_housing"]].map(([l, f]) => row(l, f)).join("");
     // Plan ID stays last.
     const last = sheet.lastElementChild;
     if (html) last ? last.insertAdjacentHTML("beforebegin", html) : sheet.insertAdjacentHTML("beforeend", html);
+    // The rest of the team goes in its own box, after sponsor and counsel and before the tax estimate.
+    const team = document.getElementById("teamsheet");
+    const pros = [["Managing agent", "managing_agent"], ["Selling agent", "selling_agent"], ["Architect", "architect"]].map(([l, f]) => row(l, f)).join("");
+    if (!team || !pros) return;
+    const tax = [...team.children].find((d) => d.querySelector("dt")?.textContent === "Tax estimate");
+    tax ? tax.insertAdjacentHTML("beforebegin", pros) : team.insertAdjacentHTML("beforeend", pros);
+    team.closest("section").hidden = false;
   }
 
   // ---------- search inside this plan ----------
@@ -228,18 +241,30 @@
   }
 
   const track = (name, params) => window.obTrack?.(name, { plan_id: plan, ...params });
-  async function run(q, via) {
-    q = q.trim(); if (!q) { input.focus(); return; }
+  // A typed question becomes its topic words: "Are pets allowed?" searches for "pets". Quoted phrases and OR pass through.
+  const FILLER = new Set(("is are was were be there a an the does do did can could will would should i we you my our what which who whom how much many " +
+    "where when why this that these those building plan offering condo condominium apartment unit units allowed permitted include includes included " +
+    "any have has it its for of in on at to and about tell me show find get please with by from").split(" "));
+  const topic = (q) => /"|\bOR\b/.test(q) ? q : q.replace(/[?!.,;:]/g, " ").split(/\s+/).filter((w) => w && !FILLER.has(w.toLowerCase())).join(" ");
+  const pagesFor = async (q) => {
+    const r = await fetch(`${SB}/rest/v1/pages?plan_id=eq.${encodeURIComponent(plan)}&body=wfts(english).${encodeURIComponent(q)}&select=file_id,page_no,body&order=file_id,page_no&limit=30`,
+      { headers: { apikey: KEY, Accept: "application/json" } });
+    if (!r.ok) throw new Error(String(r.status));
+    return r.json();
+  };
+  async function run(text, via) {
+    text = text.trim(); if (!text) { input.focus(); return; }
+    const q = topic(text) || text;
     out.innerHTML = '<p class="faint">Searching…</p>';
     // Stems for highlighting: first 5 letters of each word, skipping OR and quotes.
     const terms = q.toLowerCase().replace(/"/g, " ").split(/\s+/).filter((w) => w && w !== "or" && w.length > 2).map((w) => w.slice(0, 5));
     try {
-      const r = await fetch(`${SB}/rest/v1/pages?plan_id=eq.${encodeURIComponent(plan)}&body=wfts(english).${encodeURIComponent(q)}&select=file_id,page_no,body&order=file_id,page_no&limit=30`,
-        { headers: { apikey: KEY, Accept: "application/json" } });
-      if (!r.ok) throw new Error(String(r.status));
-      const rows = await r.json();
-      track("search_plan", { search_term: q, search_via: via, results: rows.length });
-      if (!rows.length) { out.innerHTML = `<p class="faint">No pages in this plan match “${esc(q)}”. Try fewer or different words.</p>`; return; }
+      let rows = await pagesFor(q);
+      // Every word on one page is strict; with none, pages with any of the words.
+      const words = q.split(/\s+/);
+      if (!rows.length && words.length > 1 && !/"|\bOR\b/.test(q)) rows = await pagesFor(words.join(" OR "));
+      track("search_plan", { search_term: text, search_via: via, results: rows.length });
+      if (!rows.length) { out.innerHTML = `<p class="faint">No pages in this plan mention “${esc(q)}”. Try other words.</p>`; return; }
       out.innerHTML = `<p class="faint">${rows.length}${rows.length === 30 ? "+" : ""} matching page${rows.length === 1 ? "" : "s"}</p><ol class="hits">` +
         rows.map((x) => `<li><span class="cite">${esc(docs[x.file_id] || "Document")} · p. ${x.page_no}</span><p>${excerpt(x.body, terms)}</p></li>`).join("") + "</ol>";
     } catch (e) {
@@ -247,6 +272,35 @@
       out.innerHTML = '<p class="faint">The search didn\'t run. Try again in a moment.</p>';
     }
   }
-  form.addEventListener("submit", (e) => { e.preventDefault(); run(input.value, "typed"); });
-  form.querySelectorAll("[data-q]").forEach((b) => b.addEventListener("click", () => { input.value = b.dataset.q; run(b.dataset.q, "chip"); }));
+  // The box types out example questions, as on the home page. Clicking in clears it; an empty search runs the example showing.
+  const typer = (() => {
+    const list = ["Are pets allowed?", "Who is the managing agent?", "Is there a gym?", "What are the common charges?", "Is there a roof deck?", "Is storage available?"];
+    let i = 0, n = 0, dir = 1, timer = null;
+    const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const idle = () => !input.value && document.activeElement !== input;
+    function tick() {
+      if (!idle()) { timer = null; return; }
+      const t = list[i];
+      n += dir;
+      input.placeholder = t.slice(0, n);
+      let wait = dir > 0 ? 45 + Math.random() * 40 : 18;
+      if (dir > 0 && n >= t.length) { dir = -1; wait = 1800; }
+      else if (dir < 0 && n <= 0) { dir = 1; i = (i + 1) % list.length; wait = 350; }
+      timer = setTimeout(tick, wait);
+    }
+    function start() {
+      if (timer || !idle()) return;
+      if (still) { input.placeholder = list[i]; return; }
+      timer = setTimeout(tick, 250);
+    }
+    input.addEventListener("focus", () => { clearTimeout(timer); timer = null; input.placeholder = ""; });
+    input.addEventListener("blur", () => { n = 0; dir = 1; start(); });
+    start();
+    return { current: () => list[i] };
+  })();
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (!input.value.trim()) input.value = typer.current();
+    run(input.value, "typed");
+  });
 })();

@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD240159.webp" alt="3D massing drawing of 286 1st Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD240159.webp" width="960" height="720" alt="3D massing drawing of 286 1st Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD240159/27181.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD240159" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>3 residential</dd></div><div><dt>Offering price</dt><dd>$6.97 million total <span class="sub">$6.88 million when first offered</span></dd></div><div><dt>Construction</dt><dd>Rehab</dd></div><div><dt>Accepted</dt><dd>Oct 31, 2024</dd></div><div><dt>Sponsor</dt><dd>286 1st St LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/marcus.html" title="Other offering plans with this counsel">Marcus Attorneys, Pllc</a><span class="sub">Guillermo Santiago, Esq. · 13 Greene Avenue · (718) 643-6555</span></dd></div><div><dt>Plan ID</dt><dd>CD240159</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>3 residential</dd></div><div><dt>Offering price</dt><dd>$6.97 million total <span class="sub">$6.88 million when first offered</span></dd></div><div><dt>Construction</dt><dd>Rehab</dd></div><div><dt>Accepted</dt><dd>Oct 31, 2024</dd></div><div><dt>Plan ID</dt><dd>CD240159</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD240159">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>286 1st St LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/marcus.html" title="Other offering plans with this counsel">Marcus Attorneys, Pllc</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD240159">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"27181":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="323-second-street-brooklyn-cd050331.html">323 Second Street Condominium</a><span>next door · 9 units · 2006</span></li><li><a href="277-1st-street-brooklyn-cd170180.html">277 1st Street Condominium</a><span>next door · 6 units · 1 parking · 2017</span></li><li><a href="267-273-first-street-brooklyn-cd050324.html">267-273 First Street Condominium</a><span>next door · 9 units · 2006</span></li><li><a href="44-garfield-place-brooklyn-cd230202.html">44 Garfield Place Condominium</a><span>next door · 4 units · 2024</span></li><li><a href="354-2nd-street-347-and-355-3rd-street-brooklyn-cd040005.html">Park Slope Gardens Condominiums</a><span>next door · 30 units · 2004</span></li><li><a href="42-garfield-place-brooklyn-cd230168.html">42 Garfield Place Condominium</a><span>next door · 2 units · 2024</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="323-second-street-brooklyn-cd050331.html">323 Second Street Condominium</a><span>next door · 9 units · 2006</span></li><li><a href="277-1st-street-brooklyn-cd170180.html">277 1st Street Condominium</a><span>next door · 6 units · 1 parking · 2017</span></li><li><a href="267-273-first-street-brooklyn-cd050324.html">267-273 First Street Condominium</a><span>next door · 9 units · 2006</span></li><li><a href="44-garfield-place-brooklyn-cd230202.html">44 Garfield Place Condominium</a><span>next door · 4 units · 2024</span></li><li><a href="354-2nd-street-347-and-355-3rd-street-brooklyn-cd040005.html">Park Slope Gardens Condominiums</a><span>next door · 30 units · 2004</span></li><li><a href="42-garfield-place-brooklyn-cd230168.html">42 Garfield Place Condominium</a><span>next door · 2 units · 2024</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/286-1st-street-brooklyn-cd240159.html#building","name":"286 1st Street Condominium","url":"https://www.condobooknyc.com/buildings/286-1st-street-brooklyn-cd240159.html","description":"286 1st Street Condominium, 286 1st Street, Brooklyn. AG plan CD240159, accepted October 2024. 3 residential units. Budget, team, documents and source links.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD240159"},"address":{"@type":"PostalAddress","streetAddress":"286 1st Street","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11215","addressCountry":"US"},"numberOfAccommodationUnits":3,"geo":{"@type":"GeoCoordinates","latitude":40.674278,"longitude":-73.983233},"image":"https://www.condobooknyc.com/buildings/img/CD240159.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD060218.webp" alt="3D massing drawing of 245 W. 115th Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD060218.webp" width="960" height="720" alt="3D massing drawing of 245 W. 115th Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD060218#tabs-6" rel="noopener">View the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD060218" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>20 residential</dd></div><div><dt>Offering price</dt><dd>$5.19 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Sep 27, 2006</dd></div><div><dt>Sponsor</dt><dd>245 West 115th Street Partners, LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/golenbock-eiseman-assor-etal.html" title="Other offering plans with this counsel">Golenbock Eiseman Assor Etal LLP</a><span class="sub">Jonathan S Hacker, Esq. · 437 Madison Avenue · (212) 867-6000</span></dd></div><div><dt>Plan ID</dt><dd>CD060218</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>20 residential</dd></div><div><dt>Offering price</dt><dd>$5.19 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Sep 27, 2006</dd></div><div><dt>Plan ID</dt><dd>CD060218</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD060218">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>245 West 115th Street Partners, LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/golenbock-eiseman-assor-etal.html" title="Other offering plans with this counsel">Golenbock Eiseman Assor Etal LLP</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD060218">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"17429":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="266-west-115th-street-manhattan-cd060506.html">Palomar</a><span>next door · 15 units · 2007</span></li><li><a href="2110-frederick-douglass-boulevard-manhattan-cd090155.html">Douglass Condominium</a><span>next door · 38 units · 13 parking · 2009</span></li><li><a href="227-229-west-116th-street-manhattan-cd060038.html">Casa Loma Condominium</a><span>next door · 16 units · 2006</span></li><li><a href="306-west-115th-street-manhattan-cd080375.html">Ibo</a><span>next door · 4 units · 2008</span></li><li><a href="2098-eight-avenue-manhattan-cd040103.html">Gateway Condominium</a><span>next door · 75 units · 2004</span></li><li><a href="318-320-west-115th-street-manhattan-cd140396.html">320 West 115th Street Condominium</a><span>next door · 6 units · 2015</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="266-west-115th-street-manhattan-cd060506.html">Palomar</a><span>next door · 15 units · 2007</span></li><li><a href="2110-frederick-douglass-boulevard-manhattan-cd090155.html">Douglass Condominium</a><span>next door · 38 units · 13 parking · 2009</span></li><li><a href="227-229-west-116th-street-manhattan-cd060038.html">Casa Loma Condominium</a><span>next door · 16 units · 2006</span></li><li><a href="306-west-115th-street-manhattan-cd080375.html">Ibo</a><span>next door · 4 units · 2008</span></li><li><a href="2098-eight-avenue-manhattan-cd040103.html">Gateway Condominium</a><span>next door · 75 units · 2004</span></li><li><a href="318-320-west-115th-street-manhattan-cd140396.html">320 West 115th Street Condominium</a><span>next door · 6 units · 2015</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/245-west-115th-street-manhattan-cd060218.html#building","name":"245 W. 115th Street Condominium","url":"https://www.condobooknyc.com/buildings/245-west-115th-street-manhattan-cd060218.html","description":"245 W. 115th Street Condominium, 245 West 115th Street, Manhattan. AG plan CD060218, accepted September 2006. 20 residential units.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD060218"},"address":{"@type":"PostalAddress","streetAddress":"245 West 115th Street","addressLocality":"Manhattan","addressRegion":"NY","postalCode":"10026","addressCountry":"US"},"numberOfAccommodationUnits":20,"geo":{"@type":"GeoCoordinates","latitude":40.803646,"longitude":-73.955072},"image":"https://www.condobooknyc.com/buildings/img/CD060218.webp","containedInPlace":{"@type":"Place","name":"Manhattan, New York"}}</script>

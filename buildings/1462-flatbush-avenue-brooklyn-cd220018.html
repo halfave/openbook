@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD220018.webp" alt="3D massing drawing of 1462 Flatbush Avenue Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD220018.webp" width="960" height="720" alt="3D massing drawing of 1462 Flatbush Avenue Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD220018/16964.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD220018" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>45 residential · 2 commercial</dd></div><div><dt>Offering price</dt><dd>$28.1 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Aug 10, 2022</dd></div><div><dt>Sponsor</dt><dd>1458 - 1466 Flatbush Jv LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/jay-lichtman.html" title="Other offering plans with this counsel">The Law Office Of Jay Lichtman, P.C.</a><span class="sub">Berel Shurin, Esq. · 68 Jay Street, Suite 420 · (347) 504-1724</span></dd></div><div><dt>Plan ID</dt><dd>CD220018</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>45 residential · 2 commercial</dd></div><div><dt>Offering price</dt><dd>$28.1 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Aug 10, 2022</dd></div><div><dt>Plan ID</dt><dd>CD220018</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD220018">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>1458 - 1466 Flatbush Jv LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/jay-lichtman.html" title="Other offering plans with this counsel">The Law Office Of Jay Lichtman, P.C.</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD220018">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"16964":"Offering Plan"}</script></section>
@@ -100,7 +104,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="113-kenilworth-place-brooklyn-cd090261.html">Kenilworth Plaza I Condominium</a><span>0.1 mi · 16 units · 7 parking · 2009</span></li><li><a href="108-kenilworth-place-brooklyn-cd100135.html">108 Mansion Condominium</a><span>0.1 mi · 19 units · 8 parking · 2010</span></li><li><a href="145-kenilworth-place-brooklyn-cd090329.html">Kenilworth Plaza Ii Condominium</a><span>0.2 mi · 10 units · 2010</span></li><li><a href="452-458-east-29th-street-brooklyn-cd160171.html">452-458 East 29th Street Condominium</a><span>0.3 mi · 16 units · 2016</span></li><li><a href="458-east-25th-street-brooklyn-cd210239.html">458 East 25th Street Condominium</a><span>0.3 mi · 37 units · 2022</span></li><li><a href="785-east-34th-street-brooklyn-cd210327.html">34th Street Residence Condominium</a><span>0.4 mi · 13 units · 1 parking · 2022</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="113-kenilworth-place-brooklyn-cd090261.html">Kenilworth Plaza I Condominium</a><span>0.1 mi · 16 units · 7 parking · 2009</span></li><li><a href="108-kenilworth-place-brooklyn-cd100135.html">108 Mansion Condominium</a><span>0.1 mi · 19 units · 8 parking · 2010</span></li><li><a href="145-kenilworth-place-brooklyn-cd090329.html">Kenilworth Plaza Ii Condominium</a><span>0.2 mi · 10 units · 2010</span></li><li><a href="452-458-east-29th-street-brooklyn-cd160171.html">452-458 East 29th Street Condominium</a><span>0.3 mi · 16 units · 2016</span></li><li><a href="458-east-25th-street-brooklyn-cd210239.html">458 East 25th Street Condominium</a><span>0.3 mi · 37 units · 2022</span></li><li><a href="785-east-34th-street-brooklyn-cd210327.html">34th Street Residence Condominium</a><span>0.4 mi · 13 units · 1 parking · 2022</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/1462-flatbush-avenue-brooklyn-cd220018.html#building","name":"1462 Flatbush Avenue Condominium","url":"https://www.condobooknyc.com/buildings/1462-flatbush-avenue-brooklyn-cd220018.html","description":"1462 Flatbush Avenue Condominium, 1462 Flatbush Avenue, Brooklyn. AG plan CD220018, accepted August 2022. 45 residential units.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD220018"},"address":{"@type":"PostalAddress","streetAddress":"1462 Flatbush Avenue","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11210","addressCountry":"US"},"numberOfAccommodationUnits":45,"geo":{"@type":"GeoCoordinates","latitude":40.635,"longitude":-73.95041},"image":"https://www.condobooknyc.com/buildings/img/CD220018.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

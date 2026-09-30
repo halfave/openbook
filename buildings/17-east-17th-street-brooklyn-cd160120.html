@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD160120.webp" alt="3D massing drawing of Presidio Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD160120.webp" width="960" height="720" alt="3D massing drawing of Presidio Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD160120/1548.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD160120" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>20 residential</dd></div><div><dt>Offering price</dt><dd>$13.5 million total <span class="sub">$10.6 million when first offered</span></dd></div><div><dt>Construction</dt><dd>Conversion</dd></div><div><dt>Accepted</dt><dd>Apr 26, 2017</dd></div><div><dt>Sponsor</dt><dd>Ct 17e17 LLC And Gpnz 17e17 LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/jay-lichtman.html" title="Other offering plans with this counsel">The Law Office Of Jay Lichtman, P.C.</a><span class="sub">Berel Shurin, Esq. · 68 Jay Street, Suite 420 · (347) 504-1724</span></dd></div><div><dt>Plan ID</dt><dd>CD160120</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>20 residential</dd></div><div><dt>Offering price</dt><dd>$13.5 million total <span class="sub">$10.6 million when first offered</span></dd></div><div><dt>Construction</dt><dd>Conversion</dd></div><div><dt>Accepted</dt><dd>Apr 26, 2017</dd></div><div><dt>Plan ID</dt><dd>CD160120</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD160120">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>Ct 17e17 LLC And Gpnz 17e17 LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/jay-lichtman.html" title="Other offering plans with this counsel">The Law Office Of Jay Lichtman, P.C.</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD160120">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"1548":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="1735-caton-avenue-brooklyn-cd050462.html">Caton Court Condominium</a><span>next door · 25 units · 2006</span></li><li><a href="34-crooke-avenue-brooklyn-cd060380.html">34 Crooke Avenue Condominium</a><span>next door · 23 units · 7 parking · 2008</span></li><li><a href="26-east-19th-street-brooklyn-cd170243.html">26 East 19th Street Condominium</a><span>0.1 mi · 26 units · 2018</span></li><li><a href="15-east-19th-street-brooklyn-cd180106.html">15 East 19th Street Condominium</a><span>0.1 mi · 33 units · 2018</span></li><li><a href="56-marlborough-road-brooklyn-cd190073.html">56 Marlborough Condominium</a><span>0.2 mi · 2 units · 2019</span></li><li><a href="68-woodruff-avenue-brooklyn-cd180247.html">68 Woodruff Avenue Condominium</a><span>0.2 mi · 8 units · 2 parking · 2019</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="1735-caton-avenue-brooklyn-cd050462.html">Caton Court Condominium</a><span>next door · 25 units · 2006</span></li><li><a href="34-crooke-avenue-brooklyn-cd060380.html">34 Crooke Avenue Condominium</a><span>next door · 23 units · 7 parking · 2008</span></li><li><a href="26-east-19th-street-brooklyn-cd170243.html">26 East 19th Street Condominium</a><span>0.1 mi · 26 units · 2018</span></li><li><a href="15-east-19th-street-brooklyn-cd180106.html">15 East 19th Street Condominium</a><span>0.1 mi · 33 units · 2018</span></li><li><a href="56-marlborough-road-brooklyn-cd190073.html">56 Marlborough Condominium</a><span>0.2 mi · 2 units · 2019</span></li><li><a href="68-woodruff-avenue-brooklyn-cd180247.html">68 Woodruff Avenue Condominium</a><span>0.2 mi · 8 units · 2 parking · 2019</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/17-east-17th-street-brooklyn-cd160120.html#building","name":"Presidio Condominium","url":"https://www.condobooknyc.com/buildings/17-east-17th-street-brooklyn-cd160120.html","description":"Presidio Condominium, 17 East 17th Street, Brooklyn. AG plan CD160120, accepted April 2017. 20 residential units. Budget, team, documents and source links.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD160120"},"address":{"@type":"PostalAddress","streetAddress":"17 East 17th Street","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11226","addressCountry":"US"},"numberOfAccommodationUnits":20,"geo":{"@type":"GeoCoordinates","latitude":40.650604,"longitude":-73.963973},"image":"https://www.condobooknyc.com/buildings/img/CD160120.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

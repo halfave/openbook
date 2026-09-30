@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD180469.webp" alt="3D massing drawing of 479 Monroe Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD180469.webp" width="960" height="720" alt="3D massing drawing of 479 Monroe Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD180469/10367.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD180469" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>7 residential</dd></div><div><dt>Offering price</dt><dd>$4.28 million total <span class="sub">$3.79 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Jun 17, 2020</dd></div><div><dt>Sponsor</dt><dd>Gsn-Lng LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/tsyngauz.html" title="Other offering plans with this counsel">Tsyngauz &amp; Associates, P.C.</a><span class="sub">Yevgeny Tsyngauz, Esq. · 225 Broadway, Suite 2640 · (212) 337-9770</span></dd></div><div><dt>Plan ID</dt><dd>CD180469</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>7 residential</dd></div><div><dt>Offering price</dt><dd>$4.28 million total <span class="sub">$3.79 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Jun 17, 2020</dd></div><div><dt>Plan ID</dt><dd>CD180469</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD180469">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>Gsn-Lng LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/tsyngauz.html" title="Other offering plans with this counsel">Tsyngauz &amp; Associates, P.C.</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD180469">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"10367":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="481-monroe-street-brooklyn-cd260157.html">481 Monroe Street Condominium</a><span>next door · 6 units</span></li><li><a href="491-monroe-street-brooklyn-cd180025.html">491 Monroe Street Condominium</a><span>next door · 6 units · 2018</span></li><li><a href="518-madison-street-brooklyn-cd140297.html">518 Madison Street Condominium</a><span>next door · 2 units · 2015</span></li><li><a href="488-madison-street-brooklyn-cd180083.html">488 Madison Street Condominium</a><span>next door · 2 units · 2018</span></li><li><a href="583-putnam-avenue-brooklyn-cd230062.html">583 Putnam Avenue Condominium</a><span>0.1 mi · 4 units · 2024</span></li><li><a href="541-madison-street-brooklyn-cd180277.html">Adler Condominium</a><span>0.1 mi · 4 units · 2019</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="481-monroe-street-brooklyn-cd260157.html">481 Monroe Street Condominium</a><span>next door · 6 units</span></li><li><a href="491-monroe-street-brooklyn-cd180025.html">491 Monroe Street Condominium</a><span>next door · 6 units · 2018</span></li><li><a href="518-madison-street-brooklyn-cd140297.html">518 Madison Street Condominium</a><span>next door · 2 units · 2015</span></li><li><a href="488-madison-street-brooklyn-cd180083.html">488 Madison Street Condominium</a><span>next door · 2 units · 2018</span></li><li><a href="583-putnam-avenue-brooklyn-cd230062.html">583 Putnam Avenue Condominium</a><span>0.1 mi · 4 units · 2024</span></li><li><a href="541-madison-street-brooklyn-cd180277.html">Adler Condominium</a><span>0.1 mi · 4 units · 2019</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/479-monroe-street-brooklyn-cd180469.html#building","name":"479 Monroe Street Condominium","url":"https://www.condobooknyc.com/buildings/479-monroe-street-brooklyn-cd180469.html","description":"479 Monroe Street Condominium, 479 Monroe Street, Brooklyn. AG plan CD180469, accepted June 2020. 7 residential units. Budget, team, documents and source links.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD180469"},"address":{"@type":"PostalAddress","streetAddress":"479 Monroe Street","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11221","addressCountry":"US"},"numberOfAccommodationUnits":7,"geo":{"@type":"GeoCoordinates","latitude":40.687124,"longitude":-73.937962},"image":"https://www.condobooknyc.com/buildings/img/CD180469.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD210055.webp" alt="3D massing drawing of 526 Union Avenue Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD210055.webp" width="960" height="720" alt="3D massing drawing of 526 Union Avenue Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD210055/14882.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD210055" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>44 residential · 23 parking · 8 storage</dd></div><div><dt>Offering price</dt><dd>$52.2 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Apr 5, 2022</dd></div><div><dt>Sponsor</dt><dd>Northside Capital Corp</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/marans-newman-tsolis-nazinitsky.html" title="Other offering plans with this counsel">Marans Newman Tsolis &amp; Nazinitsky LLC</a><span class="sub">Stephanie Mcpeake, Esq · 29 Broadway, Suite 2400 · (646) 690-8917</span></dd></div><div><dt>Plan ID</dt><dd>CD210055</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>44 residential · 23 parking · 8 storage</dd></div><div><dt>Offering price</dt><dd>$52.2 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Apr 5, 2022</dd></div><div><dt>Plan ID</dt><dd>CD210055</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD210055">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>Northside Capital Corp</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/marans-newman-tsolis-nazinitsky.html" title="Other offering plans with this counsel">Marans Newman Tsolis &amp; Nazinitsky LLC</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD210055">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"14882":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="538-union-avenue-brooklyn-cd130270.html">538 Union Avenue Condominium</a><span>next door · 13 units · 7 parking · 2014</span></li><li><a href="15-and-17-judge-street-brooklyn-cd070556.html">15-17 Judge Street Condominium</a><span>next door · 16 units · 2008</span></li><li><a href="525-union-avenue-brooklyn-cd070689.html">Union Withers Condominium</a><span>next door · 43 units · 21 parking · 2008</span></li><li><a href="34-and-36-boradway-brooklyn-cd010012.html">Broadway Plaza Condominium Ii</a><span>next door · 14 units · 2001</span></li><li><a href="38-skillman-avenue-brooklyn-cd230191.html">38 Skillman Avenue Condominium</a><span>next door · 3 units · 2024</span></li><li><a href="260-262-north-9th-street-brooklyn-cd100268.html">260-262 North 9th Street Condominium</a><span>next door · 20 units · 9 parking · 2011</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="538-union-avenue-brooklyn-cd130270.html">538 Union Avenue Condominium</a><span>next door · 13 units · 7 parking · 2014</span></li><li><a href="15-and-17-judge-street-brooklyn-cd070556.html">15-17 Judge Street Condominium</a><span>next door · 16 units · 2008</span></li><li><a href="525-union-avenue-brooklyn-cd070689.html">Union Withers Condominium</a><span>next door · 43 units · 21 parking · 2008</span></li><li><a href="34-and-36-boradway-brooklyn-cd010012.html">Broadway Plaza Condominium Ii</a><span>next door · 14 units · 2001</span></li><li><a href="38-skillman-avenue-brooklyn-cd230191.html">38 Skillman Avenue Condominium</a><span>next door · 3 units · 2024</span></li><li><a href="260-262-north-9th-street-brooklyn-cd100268.html">260-262 North 9th Street Condominium</a><span>next door · 20 units · 9 parking · 2011</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/526-union-avenue-brooklyn-cd210055.html#building","name":"526 Union Avenue Condominium","url":"https://www.condobooknyc.com/buildings/526-union-avenue-brooklyn-cd210055.html","description":"526 Union Avenue Condominium, 526 Union Avenue, Brooklyn. AG plan CD210055, accepted April 2022. 44 residential units, 23 parking units.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD210055"},"address":{"@type":"PostalAddress","streetAddress":"526 Union Avenue","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11211","addressCountry":"US"},"numberOfAccommodationUnits":44,"geo":{"@type":"GeoCoordinates","latitude":40.71635,"longitude":-73.95168},"image":"https://www.condobooknyc.com/buildings/img/CD210055.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

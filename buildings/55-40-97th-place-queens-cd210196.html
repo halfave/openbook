@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD210196.webp" alt="3D massing drawing of 97 Place Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD210196.webp" width="960" height="720" alt="3D massing drawing of 97 Place Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD210196/14881.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD210196" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>10 residential · 1 commercial</dd></div><div><dt>Offering price</dt><dd>$3.36 million total <span class="sub">$3.26 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Apr 8, 2022</dd></div><div><dt>Sponsor</dt><dd>972 Pl LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/lan.html" title="Other offering plans with this counsel">Lan &amp; Associates, P.C.</a><span class="sub">Shiyu Wang, Esq. · 39-01 Main Street, Suite 507 · (718) 362-3707</span></dd></div><div><dt>Plan ID</dt><dd>CD210196</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>10 residential · 1 commercial</dd></div><div><dt>Offering price</dt><dd>$3.36 million total <span class="sub">$3.26 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Apr 8, 2022</dd></div><div><dt>Plan ID</dt><dd>CD210196</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD210196">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>972 Pl LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/lan.html" title="Other offering plans with this counsel">Lan &amp; Associates, P.C.</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD210196">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"14881":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="55-17-junction-boulevard-queens-cd010028.html">Junction Plaza Condominium</a><span>0.1 mi · 6 units · 2001</span></li><li><a href="54-02-junction-boulevard-queens-cd170212.html">Minshun You Condominium</a><span>0.2 mi · 6 units · 5 parking · 2018</span></li><li><a href="85-95-long-island-expressway-nassau-cd070257.html">Residences, North Hills Condominium One</a><span>0.2 mi · 40 units · 2008</span></li><li><a href="85-95-long-island-expressway-nassau-cd080234.html">Residences , North Hills Condominium Two</a><span>0.2 mi · 56 units · 15 parking · 2008</span></li><li><a href="85-95-long-island-expressway-nassau-cd080241.html">Residences , North Hills Condo Three</a><span>0.2 mi · 44 units · 2008</span></li><li><a href="85-95-long-island-expressway-nassau-cd080483.html">Vanderbilt At The Residences North Hills Cond</a><span>0.2 mi · 52 units · 2008</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="55-17-junction-boulevard-queens-cd010028.html">Junction Plaza Condominium</a><span>0.1 mi · 6 units · 2001</span></li><li><a href="54-02-junction-boulevard-queens-cd170212.html">Minshun You Condominium</a><span>0.2 mi · 6 units · 5 parking · 2018</span></li><li><a href="85-95-long-island-expressway-nassau-cd070257.html">Residences, North Hills Condominium One</a><span>0.2 mi · 40 units · 2008</span></li><li><a href="85-95-long-island-expressway-nassau-cd080234.html">Residences , North Hills Condominium Two</a><span>0.2 mi · 56 units · 15 parking · 2008</span></li><li><a href="85-95-long-island-expressway-nassau-cd080241.html">Residences , North Hills Condo Three</a><span>0.2 mi · 44 units · 2008</span></li><li><a href="85-95-long-island-expressway-nassau-cd080483.html">Vanderbilt At The Residences North Hills Cond</a><span>0.2 mi · 52 units · 2008</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/55-40-97th-place-queens-cd210196.html#building","name":"97 Place Condominium","url":"https://www.condobooknyc.com/buildings/55-40-97th-place-queens-cd210196.html","description":"97 Place Condominium, 55-40 97th Place, Queens. AG plan CD210196, accepted April 2022. 10 residential units. Budget, team, documents and source links.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD210196"},"address":{"@type":"PostalAddress","streetAddress":"55-40 97th Place","addressLocality":"Queens","addressRegion":"NY","postalCode":"11368","addressCountry":"US"},"numberOfAccommodationUnits":10,"geo":{"@type":"GeoCoordinates","latitude":40.737686,"longitude":-73.863532},"image":"https://www.condobooknyc.com/buildings/img/CD210196.webp","containedInPlace":{"@type":"Place","name":"Queens, New York"}}</script>

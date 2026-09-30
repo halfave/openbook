@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD230303.webp" alt="3D massing drawing of 74 Carroll Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD230303.webp" width="960" height="720" alt="3D massing drawing of 74 Carroll Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD230303/28920.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD230303" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>3 residential</dd></div><div><dt>Offering price</dt><dd>$7.1 million total <span class="sub">$6.7 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Mar 3, 2025</dd></div><div><dt>Sponsor</dt><dd>74 Carroll Realty LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/rosen.html" title="Other offering plans with this counsel">Rosen Law LLC</a><span class="sub">Jaime Rosen, Esq. · 216 Lakeville Road · (516) 437-3400</span></dd></div><div><dt>Plan ID</dt><dd>CD230303</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>3 residential</dd></div><div><dt>Offering price</dt><dd>$7.1 million total <span class="sub">$6.7 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Mar 3, 2025</dd></div><div><dt>Plan ID</dt><dd>CD230303</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD230303">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>74 Carroll Realty LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/rosen.html" title="Other offering plans with this counsel">Rosen Law LLC</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD230303">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"28920":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="69-75-carroll-street-brooklyn-cd050150.html">69-75 Carroll St Condo</a><span>next door · 13 units · 11 parking · 2005</span></li><li><a href="110-president-street-brooklyn-cd130280.html">110 President Street Condominium</a><span>next door · 5 units · 2015</span></li><li><a href="255-columbia-street-brooklyn-cd130062.html">255 Columbia Street Condominium</a><span>next door · 13 units · 2013</span></li><li><a href="100-summit-street-brooklyn-cd160319.html">100 Summit Street Condominium</a><span>next door · 3 units · 2017</span></li><li><a href="102-summit-street-brooklyn-cd220044.html">102 Summit Street Condominium</a><span>next door · 3 units · 2022</span></li><li><a href="118-president-street-brooklyn-cd120119.html">118 President Street Condominium</a><span>next door · 4 units</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="69-75-carroll-street-brooklyn-cd050150.html">69-75 Carroll St Condo</a><span>next door · 13 units · 11 parking · 2005</span></li><li><a href="110-president-street-brooklyn-cd130280.html">110 President Street Condominium</a><span>next door · 5 units · 2015</span></li><li><a href="255-columbia-street-brooklyn-cd130062.html">255 Columbia Street Condominium</a><span>next door · 13 units · 2013</span></li><li><a href="100-summit-street-brooklyn-cd160319.html">100 Summit Street Condominium</a><span>next door · 3 units · 2017</span></li><li><a href="102-summit-street-brooklyn-cd220044.html">102 Summit Street Condominium</a><span>next door · 3 units · 2022</span></li><li><a href="118-president-street-brooklyn-cd120119.html">118 President Street Condominium</a><span>next door · 4 units</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/74-carroll-street-brooklyn-cd230303.html#building","name":"74 Carroll Street Condominium","url":"https://www.condobooknyc.com/buildings/74-carroll-street-brooklyn-cd230303.html","description":"74 Carroll Street Condominium, 74 Carroll Street, Brooklyn. AG plan CD230303, accepted March 2025. 3 residential units.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD230303"},"address":{"@type":"PostalAddress","streetAddress":"74 Carroll Street","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11231","addressCountry":"US"},"numberOfAccommodationUnits":3,"geo":{"@type":"GeoCoordinates","latitude":40.68273,"longitude":-74.003089},"image":"https://www.condobooknyc.com/buildings/img/CD230303.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

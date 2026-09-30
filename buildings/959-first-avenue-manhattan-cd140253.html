@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD140253.webp" alt="3D massing drawing of Sutton Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD140253.webp" width="960" height="720" alt="3D massing drawing of Sutton Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD140253/5941.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD140253" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>113 residential · 12 storage · 2 commercial</dd></div><div><dt>Offering price</dt><dd>$265.5 million total <span class="sub">$271.9 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Dec 5, 2014</dd></div><div><dt>Sponsor</dt><dd>Toll First Avenue LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/seiden-schein.html" title="Other offering plans with this counsel">Seiden &amp; Schein, P.C.</a><span class="sub">Adam A Levenson, Esq. · 570 Lexington Avenue, 14th Floor · (212) 935-1400</span></dd></div><div><dt>Plan ID</dt><dd>CD140253</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>113 residential · 12 storage · 2 commercial</dd></div><div><dt>Offering price</dt><dd>$265.5 million total <span class="sub">$271.9 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Dec 5, 2014</dd></div><div><dt>Plan ID</dt><dd>CD140253</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD140253">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>Toll First Avenue LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/seiden-schein.html" title="Other offering plans with this counsel">Seiden &amp; Schein, P.C.</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD140253">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"5941":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="323-east-52nd-street-manhattan-cd160312.html">La Maison 323 East 52nd Street Condominium</a><span>next door · 4 units · 2017</span></li><li><a href="325-east-53rd-street-manhattan-cd050332.html">325 East 53rd Street</a><span>next door · 3 units · 2005</span></li><li><a href="323-east-53rd-street-manhattan-cd200132.html">323 East 53rd Street Condominium</a><span>next door · 11 units · 2021</span></li><li><a href="336-east-54th-street-manhattan-cd160411.html">336 E. 54th Street Condominium</a><span>next door · 10 units · 2017</span></li><li><a href="401-east-51st-street-manhattan-cd260206.html">401 East 51st Street Condominium</a><span>next door · 83 units · 5 parking</span></li><li><a href="400-east-51st-street-manhattan-cd010026.html">Grand Beekman Condominium</a><span>next door · 88 units · 2001</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="323-east-52nd-street-manhattan-cd160312.html">La Maison 323 East 52nd Street Condominium</a><span>next door · 4 units · 2017</span></li><li><a href="325-east-53rd-street-manhattan-cd050332.html">325 East 53rd Street</a><span>next door · 3 units · 2005</span></li><li><a href="323-east-53rd-street-manhattan-cd200132.html">323 East 53rd Street Condominium</a><span>next door · 11 units · 2021</span></li><li><a href="336-east-54th-street-manhattan-cd160411.html">336 E. 54th Street Condominium</a><span>next door · 10 units · 2017</span></li><li><a href="401-east-51st-street-manhattan-cd260206.html">401 East 51st Street Condominium</a><span>next door · 83 units · 5 parking</span></li><li><a href="400-east-51st-street-manhattan-cd010026.html">Grand Beekman Condominium</a><span>next door · 88 units · 2001</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/959-first-avenue-manhattan-cd140253.html#building","name":"Sutton Condominium","url":"https://www.condobooknyc.com/buildings/959-first-avenue-manhattan-cd140253.html","description":"Sutton Condominium, 959 First Avenue, Manhattan. AG plan CD140253, accepted December 2014. 113 residential units. Budget, team, documents and source links.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD140253"},"address":{"@type":"PostalAddress","streetAddress":"959 First Avenue","addressLocality":"Manhattan","addressRegion":"NY","postalCode":"10022","addressCountry":"US"},"numberOfAccommodationUnits":113,"geo":{"@type":"GeoCoordinates","latitude":40.755628,"longitude":-73.965226},"image":"https://www.condobooknyc.com/buildings/img/CD140253.webp","containedInPlace":{"@type":"Place","name":"Manhattan, New York"}}</script>

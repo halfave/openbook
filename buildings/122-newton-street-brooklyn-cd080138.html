@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD080138.webp" alt="3D massing drawing of 122 Newton Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD080138.webp" width="960" height="720" alt="3D massing drawing of 122 Newton Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD080138/3891.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD080138" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>5 residential</dd></div><div><dt>Offering price</dt><dd>$5.98 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Oct 8, 2008</dd></div><div><dt>Sponsor</dt><dd>124 Newton Street, LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/smith-buss-jacobs.html" title="Other offering plans with this counsel">Smith, Buss &amp; Jacobs, LLP</a><span class="sub">Allen M Turek · 733 Yonkers Avenue, Suite 200 · (212) 223-3562</span></dd></div><div><dt>Plan ID</dt><dd>CD080138</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>5 residential</dd></div><div><dt>Offering price</dt><dd>$5.98 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Oct 8, 2008</dd></div><div><dt>Plan ID</dt><dd>CD080138</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD080138">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>124 Newton Street, LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/smith-buss-jacobs.html" title="Other offering plans with this counsel">Smith, Buss &amp; Jacobs, LLP</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD080138">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"3891":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="128-newton-street-brooklyn-cd060361.html">New Condominium</a><span>next door · 15 units · 11 parking · 2006</span></li><li><a href="135-bayard-street-brooklyn-cd160209.html">Bayard Pointe</a><span>next door · 5 units · 2017</span></li><li><a href="100-engert-avenue-brooklyn-cd070730.html">100 Engert Avenue Condominium</a><span>next door · 31 units · 17 parking · 2009</span></li><li><a href="34-36-eckford-street-brooklyn-cd060246.html">Eckford &amp; Engert Condominium</a><span>next door · 24 units · 6 parking · 2006</span></li><li><a href="419-manhattan-avenue-brooklyn-cd240203.html">419 Manhattan Avenue Condominium</a><span>next door · 5 units · 2024</span></li><li><a href="84-engert-avenue-brooklyn-cd060845.html">North Point Towers I</a><span>next door · 16 units · 18 parking · 2007</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="128-newton-street-brooklyn-cd060361.html">New Condominium</a><span>next door · 15 units · 11 parking · 2006</span></li><li><a href="135-bayard-street-brooklyn-cd160209.html">Bayard Pointe</a><span>next door · 5 units · 2017</span></li><li><a href="100-engert-avenue-brooklyn-cd070730.html">100 Engert Avenue Condominium</a><span>next door · 31 units · 17 parking · 2009</span></li><li><a href="34-36-eckford-street-brooklyn-cd060246.html">Eckford &amp; Engert Condominium</a><span>next door · 24 units · 6 parking · 2006</span></li><li><a href="419-manhattan-avenue-brooklyn-cd240203.html">419 Manhattan Avenue Condominium</a><span>next door · 5 units · 2024</span></li><li><a href="84-engert-avenue-brooklyn-cd060845.html">North Point Towers I</a><span>next door · 16 units · 18 parking · 2007</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/122-newton-street-brooklyn-cd080138.html#building","name":"122 Newton Condominium","url":"https://www.condobooknyc.com/buildings/122-newton-street-brooklyn-cd080138.html","description":"122 Newton Condominium, 122 Newton Street, Brooklyn. AG plan CD080138, accepted October 2008. 5 residential units. Budget, team, documents and source links.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD080138"},"address":{"@type":"PostalAddress","streetAddress":"122 Newton Street","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11211","addressCountry":"US"},"numberOfAccommodationUnits":5,"geo":{"@type":"GeoCoordinates","latitude":40.720237,"longitude":-73.947093},"image":"https://www.condobooknyc.com/buildings/img/CD080138.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

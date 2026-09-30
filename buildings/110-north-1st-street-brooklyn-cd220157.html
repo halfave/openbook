@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD220157.webp" alt="3D massing drawing of 110 North 1st Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD220157.webp" width="960" height="720" alt="3D massing drawing of 110 North 1st Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD220157/19591.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD220157" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>38 residential · 19 parking · 22 storage</dd></div><div><dt>Offering price</dt><dd>$80.2 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Feb 16, 2023</dd></div><div><dt>Sponsor</dt><dd>110 N1 Owner, LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/marans-newman-tsolis-nazinitsky.html" title="Other offering plans with this counsel">Marans Newman Tsolis &amp; Nazinitsky LLC</a><span class="sub">Jason A Nazinitsky, Esq. · 29 Broadway, Suite 2400 · (646) 568-6153</span></dd></div><div><dt>Plan ID</dt><dd>CD220157</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>38 residential · 19 parking · 22 storage</dd></div><div><dt>Offering price</dt><dd>$80.2 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Feb 16, 2023</dd></div><div><dt>Plan ID</dt><dd>CD220157</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD220157">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>110 N1 Owner, LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/marans-newman-tsolis-nazinitsky.html" title="Other offering plans with this counsel">Marans Newman Tsolis &amp; Nazinitsky LLC</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD220157">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"19591":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="103-grand-street-brooklyn-cd230035.html">103 Grand Street Condominium</a><span>next door · 3 units · 2023</span></li><li><a href="96-north-1st-street-brooklyn-cd230297.html">96 North 1st Street Condominium</a><span>next door · 5 units · 1 parking · 2024</span></li><li><a href="265-wythe-avenue-brooklyn-cd140199.html">265 Wythe Avenue Condominium</a><span>next door · 4 units · 2015</span></li><li><a href="66-68-north-1st-street-brooklyn-cd070264.html">66-68 North 1st Street Condominium</a><span>next door · 21 units · 2007</span></li><li><a href="91-93-metropolitan-ave-brooklyn-cd070537.html">91-93 Metropolitan Avenue Condominium</a><span>next door · 13 units · 7 parking · 2008</span></li><li><a href="268-berry-street-brooklyn-cd080210.html">268 Berry Street Condominium</a><span>0.1 mi · 2 units · 2009</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="103-grand-street-brooklyn-cd230035.html">103 Grand Street Condominium</a><span>next door · 3 units · 2023</span></li><li><a href="96-north-1st-street-brooklyn-cd230297.html">96 North 1st Street Condominium</a><span>next door · 5 units · 1 parking · 2024</span></li><li><a href="265-wythe-avenue-brooklyn-cd140199.html">265 Wythe Avenue Condominium</a><span>next door · 4 units · 2015</span></li><li><a href="66-68-north-1st-street-brooklyn-cd070264.html">66-68 North 1st Street Condominium</a><span>next door · 21 units · 2007</span></li><li><a href="91-93-metropolitan-ave-brooklyn-cd070537.html">91-93 Metropolitan Avenue Condominium</a><span>next door · 13 units · 7 parking · 2008</span></li><li><a href="268-berry-street-brooklyn-cd080210.html">268 Berry Street Condominium</a><span>0.1 mi · 2 units · 2009</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/110-north-1st-street-brooklyn-cd220157.html#building","name":"110 North 1st Street Condominium","url":"https://www.condobooknyc.com/buildings/110-north-1st-street-brooklyn-cd220157.html","description":"110 North 1st Street Condominium, 110 North 1st Street, Brooklyn. AG plan CD220157, accepted February 2023. 38 residential units, 19 parking units.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD220157"},"address":{"@type":"PostalAddress","streetAddress":"110 North 1st Street","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11249","addressCountry":"US"},"numberOfAccommodationUnits":38,"geo":{"@type":"GeoCoordinates","latitude":40.71567,"longitude":-73.96292},"image":"https://www.condobooknyc.com/buildings/img/CD220157.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD000003.webp" alt="3D massing drawing of Harbor House Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD000003.webp" width="960" height="720" alt="3D massing drawing of Harbor House Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD000003#tabs-6" rel="noopener">View the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD000003" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>9 residential</dd></div><div><dt>Offering price</dt><dd>$3.56 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>May 26, 2000</dd></div><div><dt>Sponsor</dt><dd>Batchelder By The Bay Condominiums, LLC</dd></div><div><dt>Counsel</dt><dd>Friedman Krauss &amp; Zlotolow<span class="sub">Douglas Heller · 888 Seventh Avenue · (212) 247-5990</span></dd></div><div><dt>Plan ID</dt><dd>CD000003</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>9 residential</dd></div><div><dt>Offering price</dt><dd>$3.56 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>May 26, 2000</dd></div><div><dt>Plan ID</dt><dd>CD000003</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD000003">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>Batchelder By The Bay Condominiums, LLC</dd></div><div><dt>Counsel</dt><dd>Friedman Krauss &amp; Zlotolow</dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD000003">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"18788":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="1829-and-1833-east-13th-street-brooklyn-cd040106.html">1829 &amp; 1833 East 13th St. Condominium</a><span>0.1 mi · 12 units · 2004</span></li><li><a href="2133-haring-street-brooklyn-cd180129.html">2133 Haring Street Condominium</a><span>0.4 mi · 9 units · 7 parking · 2018</span></li><li><a href="3180-3182-avenue-v-brooklyn-cd060769.html">Avenue V Condominium</a><span>0.5 mi · 6 units · 2007</span></li><li><a href="2409-ocean-avenue-brooklyn-cd160237.html">2409 Ocean Avenue Condominium</a><span>0.6 mi · 12 units · 16 parking · 2016</span></li><li><a href="2381-ocean-avenue-brooklyn-cd050654.html">2381 Ocean Avenue Condominium</a><span>0.6 mi · 19 units · 1 parking · 2006</span></li><li><a href="2443-ocean-avenue-brooklyn-cd170038.html">Tresor</a><span>0.6 mi · 28 units · 23 parking · 2017</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="1829-and-1833-east-13th-street-brooklyn-cd040106.html">1829 &amp; 1833 East 13th St. Condominium</a><span>0.1 mi · 12 units · 2004</span></li><li><a href="2133-haring-street-brooklyn-cd180129.html">2133 Haring Street Condominium</a><span>0.4 mi · 9 units · 7 parking · 2018</span></li><li><a href="3180-3182-avenue-v-brooklyn-cd060769.html">Avenue V Condominium</a><span>0.5 mi · 6 units · 2007</span></li><li><a href="2409-ocean-avenue-brooklyn-cd160237.html">2409 Ocean Avenue Condominium</a><span>0.6 mi · 12 units · 16 parking · 2016</span></li><li><a href="2381-ocean-avenue-brooklyn-cd050654.html">2381 Ocean Avenue Condominium</a><span>0.6 mi · 19 units · 1 parking · 2006</span></li><li><a href="2443-ocean-avenue-brooklyn-cd170038.html">Tresor</a><span>0.6 mi · 28 units · 23 parking · 2017</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/2803-batchelder-street-brooklyn-cd000003.html#building","name":"Harbor House Condominium","url":"https://www.condobooknyc.com/buildings/2803-batchelder-street-brooklyn-cd000003.html","description":"Harbor House Condominium, 2803 Batchelder Street, Brooklyn. AG plan CD000003, accepted May 2000. 9 residential units. Budget, team, documents and source links.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD000003"},"address":{"@type":"PostalAddress","streetAddress":"2803 Batchelder Street","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11229","addressCountry":"US"},"numberOfAccommodationUnits":9,"geo":{"@type":"GeoCoordinates","latitude":40.604996,"longitude":-73.94031},"image":"https://www.condobooknyc.com/buildings/img/CD000003.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

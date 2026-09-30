@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD200090.webp" alt="3D massing drawing of 115 St. Marks Place Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD200090.webp" width="960" height="720" alt="3D massing drawing of 115 St. Marks Place Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD200090/11037.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD200090" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>3 residential</dd></div><div><dt>Offering price</dt><dd>$5.59 million total <span class="sub">$5.5 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Sep 15, 2020</dd></div><div><dt>Sponsor</dt><dd>115 St. Marks LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/raphael-marks.html" title="Other offering plans with this counsel">Raphael And Marks Attorneys At Law</a><span class="sub">Stephen M Raphael, Esq. · 276 Park Avenue South, 3rd Floor · (212) 505-2880</span></dd></div><div><dt>Plan ID</dt><dd>CD200090</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>3 residential</dd></div><div><dt>Offering price</dt><dd>$5.59 million total <span class="sub">$5.5 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Sep 15, 2020</dd></div><div><dt>Plan ID</dt><dd>CD200090</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD200090">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>115 St. Marks LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/raphael-marks.html" title="Other offering plans with this counsel">Raphael And Marks Attorneys At Law</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD200090">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"11037":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="113-st-marks-place-brooklyn-cd160224.html">113 St. Marks Place Condominium</a><span>next door · 3 units · 2016</span></li><li><a href="119-st-marks-place-brooklyn-cd070183.html">119 St. Marks Place Condominium</a><span>next door · 4 units · 2007</span></li><li><a href="118-st-marks-place-brooklyn-cd060486.html">118 St. Marks Place Condominium</a><span>next door · 3 units · 2006</span></li><li><a href="103-st-marks-place-brooklyn-cd030215.html">103 St. Marks Place Condominium</a><span>next door · 2 units · 2003</span></li><li><a href="112-st-mark-s-place-brooklyn-cd090254.html">112 St. Mark&#39;S Place Condominium</a><span>next door · 3 units · 2010</span></li><li><a href="414-bergen-street-brooklyn-cd260325.html">414 Bergen Street Condominium</a><span>next door · 2 units</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="113-st-marks-place-brooklyn-cd160224.html">113 St. Marks Place Condominium</a><span>next door · 3 units · 2016</span></li><li><a href="119-st-marks-place-brooklyn-cd070183.html">119 St. Marks Place Condominium</a><span>next door · 4 units · 2007</span></li><li><a href="118-st-marks-place-brooklyn-cd060486.html">118 St. Marks Place Condominium</a><span>next door · 3 units · 2006</span></li><li><a href="103-st-marks-place-brooklyn-cd030215.html">103 St. Marks Place Condominium</a><span>next door · 2 units · 2003</span></li><li><a href="112-st-mark-s-place-brooklyn-cd090254.html">112 St. Mark&#39;S Place Condominium</a><span>next door · 3 units · 2010</span></li><li><a href="414-bergen-street-brooklyn-cd260325.html">414 Bergen Street Condominium</a><span>next door · 2 units</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/115-st-marks-place-brooklyn-cd200090.html#building","name":"115 St. Marks Place Condominium","url":"https://www.condobooknyc.com/buildings/115-st-marks-place-brooklyn-cd200090.html","description":"115 St. Marks Place Condominium, 115 St. Marks Place, Brooklyn. AG plan CD200090, accepted September 2020. 3 residential units.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD200090"},"address":{"@type":"PostalAddress","streetAddress":"115 St. Marks Place","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11215","addressCountry":"US"},"numberOfAccommodationUnits":3,"geo":{"@type":"GeoCoordinates","latitude":40.681355,"longitude":-73.978278},"image":"https://www.condobooknyc.com/buildings/img/CD200090.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

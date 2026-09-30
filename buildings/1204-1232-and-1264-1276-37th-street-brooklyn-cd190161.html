@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD190161.webp" alt="3D massing drawing of Culver Developments 1a &amp; 1b Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD190161.webp" width="960" height="720" alt="3D massing drawing of Culver Developments 1a &amp; 1b Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD190161/11336.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD190161" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>36 residential · 9 parking</dd></div><div><dt>Offering price</dt><dd>$18.1 million total <span class="sub">$15.6 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Mar 15, 2021</dd></div><div><dt>Sponsor</dt><dd>Culver Housing Developments LLC</dd></div><div><dt>Counsel</dt><dd>Krieger &amp; Prager, LLP<span class="sub">Samuel M Krieger · 39 Broadway, Suite 920 · (212) 363-2900</span></dd></div><div><dt>Plan ID</dt><dd>CD190161</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>36 residential · 9 parking</dd></div><div><dt>Offering price</dt><dd>$18.1 million total <span class="sub">$15.6 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Mar 15, 2021</dd></div><div><dt>Plan ID</dt><dd>CD190161</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD190161">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>Culver Housing Developments LLC</dd></div><div><dt>Counsel</dt><dd>Krieger &amp; Prager, LLP</dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD190161">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"11336":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="1250-38th-street-brooklyn-cd240127.html">1250 38th Street Condominium</a><span>next door · 4 units</span></li><li><a href="1252-38th-street-brooklyn-cd230221.html">1252 38th Street Condominium</a><span>next door · 4 units</span></li><li><a href="1256-38th-street-brooklyn-cd230222.html">1256 38th Street Condominium</a><span>next door · 4 units</span></li><li><a href="1202-40th-street-brooklyn-cd150069.html">1202 40th Street Condominium</a><span>next door · 4 units · 2015</span></li><li><a href="1265-41st-street-brooklyn-cd210287.html">1265 41st Street Condominium</a><span>next door · 2 units · 2022</span></li><li><a href="1269-38th-street-brooklyn-cd220062.html">1269 38th Street Condominium</a><span>next door · 4 units · 2022</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="1250-38th-street-brooklyn-cd240127.html">1250 38th Street Condominium</a><span>next door · 4 units</span></li><li><a href="1252-38th-street-brooklyn-cd230221.html">1252 38th Street Condominium</a><span>next door · 4 units</span></li><li><a href="1256-38th-street-brooklyn-cd230222.html">1256 38th Street Condominium</a><span>next door · 4 units</span></li><li><a href="1202-40th-street-brooklyn-cd150069.html">1202 40th Street Condominium</a><span>next door · 4 units · 2015</span></li><li><a href="1265-41st-street-brooklyn-cd210287.html">1265 41st Street Condominium</a><span>next door · 2 units · 2022</span></li><li><a href="1269-38th-street-brooklyn-cd220062.html">1269 38th Street Condominium</a><span>next door · 4 units · 2022</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/1204-1232-and-1264-1276-37th-street-brooklyn-cd190161.html#building","name":"Culver Developments 1a & 1b Condominium","url":"https://www.condobooknyc.com/buildings/1204-1232-and-1264-1276-37th-street-brooklyn-cd190161.html","description":"Culver Developments 1a & 1b Condominium, 1204-1232 And 1264-1276 37th Street, Brooklyn. AG plan CD190161, accepted March 2021.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD190161"},"address":{"@type":"PostalAddress","streetAddress":"1204-1232 And 1264-1276 37th Street","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11218","addressCountry":"US"},"numberOfAccommodationUnits":36,"geo":{"@type":"GeoCoordinates","latitude":40.641185,"longitude":-73.987602},"image":"https://www.condobooknyc.com/buildings/img/CD190161.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

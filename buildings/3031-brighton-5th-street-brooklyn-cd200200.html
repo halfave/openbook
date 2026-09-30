@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD200200.webp" alt="3D massing drawing of 3031 Brighton 5th Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD200200.webp" width="960" height="720" alt="3D massing drawing of 3031 Brighton 5th Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD200200/16744.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD200200" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>16 residential · 9 parking</dd></div><div><dt>Offering price</dt><dd>$9.22 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Mar 14, 2022</dd></div><div><dt>Sponsor</dt><dd>Richard &amp; Uncle 3031, LLC**</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/thomas-berinato.html" title="Other offering plans with this counsel">Thomas E. Berinato, Attorney At Law</a><span class="sub">Thomas E Berinato, Esq. · 123-40 83rd Avenue, Suite 1d · (718) 575-3400</span></dd></div><div><dt>Plan ID</dt><dd>CD200200</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>16 residential · 9 parking</dd></div><div><dt>Offering price</dt><dd>$9.22 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Mar 14, 2022</dd></div><div><dt>Plan ID</dt><dd>CD200200</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD200200">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>Richard &amp; Uncle 3031, LLC**</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/thomas-berinato.html" title="Other offering plans with this counsel">Thomas E. Berinato, Attorney At Law</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD200200">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"16744":"Offering Plan"}</script></section>
@@ -100,7 +104,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="3031-brighton-5th-street-brooklyn-cd180463.html">3031 Brighton 5th Street Condominium</a><span>next door · 16 units · 9 parking</span></li><li><a href="3016-brighton-5th-street-brooklyn-cd180279.html">3016 Brighton 5th Street Condominium</a><span>next door · 16 units · 11 parking · 2018</span></li><li><a href="3037-brighton-6th-street-brooklyn-cd090126.html">3037 Brighton 6th Street Condominium</a><span>next door · 14 units · 14 parking · 2009</span></li><li><a href="3047-brighton-6th-street-brooklyn-cd080468.html">Brighton Tower I Condominium</a><span>next door · 24 units · 20 parking · 2008</span></li><li><a href="412-ocean-view-avenue-brooklyn-cd160389.html">412 Ocean View Avenue Condominium</a><span>next door · 15 units · 2017</span></li><li><a href="3015-brighton-6th-street-brooklyn-cd080488.html">Brighton Tower Ii Condominium</a><span>next door · 38 units · 44 parking · 2008</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="3031-brighton-5th-street-brooklyn-cd180463.html">3031 Brighton 5th Street Condominium</a><span>next door · 16 units · 9 parking</span></li><li><a href="3016-brighton-5th-street-brooklyn-cd180279.html">3016 Brighton 5th Street Condominium</a><span>next door · 16 units · 11 parking · 2018</span></li><li><a href="3037-brighton-6th-street-brooklyn-cd090126.html">3037 Brighton 6th Street Condominium</a><span>next door · 14 units · 14 parking · 2009</span></li><li><a href="3047-brighton-6th-street-brooklyn-cd080468.html">Brighton Tower I Condominium</a><span>next door · 24 units · 20 parking · 2008</span></li><li><a href="412-ocean-view-avenue-brooklyn-cd160389.html">412 Ocean View Avenue Condominium</a><span>next door · 15 units · 2017</span></li><li><a href="3015-brighton-6th-street-brooklyn-cd080488.html">Brighton Tower Ii Condominium</a><span>next door · 38 units · 44 parking · 2008</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/3031-brighton-5th-street-brooklyn-cd200200.html#building","name":"3031 Brighton 5th Street Condominium","url":"https://www.condobooknyc.com/buildings/3031-brighton-5th-street-brooklyn-cd200200.html","description":"3031 Brighton 5th Street Condominium, 3031 Brighton 5th Street, Brooklyn. AG plan CD200200, accepted March 2022. 16 residential units, 9 parking units.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD200200"},"address":{"@type":"PostalAddress","streetAddress":"3031 Brighton 5th Street","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11214","addressCountry":"US"},"numberOfAccommodationUnits":16,"geo":{"@type":"GeoCoordinates","latitude":40.578586,"longitude":-73.962577},"image":"https://www.condobooknyc.com/buildings/img/CD200200.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

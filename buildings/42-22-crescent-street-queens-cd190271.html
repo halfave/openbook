@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD190271.webp" alt="3D massing drawing of Crescent Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD190271.webp" width="960" height="720" alt="3D massing drawing of Crescent Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD190271/10472.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD190271" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>31 residential · 1 commercial</dd></div><div><dt>Offering price</dt><dd>$27.3 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Aug 12, 2020</dd></div><div><dt>Sponsor</dt><dd>22 Crescent Realty, LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/thomas-berinato.html" title="Other offering plans with this counsel">Thomas E. Berinato Attorney At Law</a><span class="sub">Thomas E Berinato, Esq. · 123-40 83rd Avenue, Suite # 1d · (718) 575-3400</span></dd></div><div><dt>Plan ID</dt><dd>CD190271</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>31 residential · 1 commercial</dd></div><div><dt>Offering price</dt><dd>$27.3 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Aug 12, 2020</dd></div><div><dt>Plan ID</dt><dd>CD190271</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD190271">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>22 Crescent Realty, LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/thomas-berinato.html" title="Other offering plans with this counsel">Thomas E. Berinato Attorney At Law</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD190271">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"10472":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="24-16-queens-plaza-south-queens-cd190042.html">24-16 Queens Plaza South Condominium</a><span>next door · 109 units · 2019</span></li><li><a href="24-12-42nd-road-queens-cd170054.html">Arcadia Lic</a><span>next door · 36 units · 2017</span></li><li><a href="23-01-42nd-road-queens-cd150275.html">Qps 23-10 Condominium</a><span>next door · 391 units · 62 parking · 2016</span></li><li><a href="42-50-27th-street-queens-cd170136.html">Arcadia 27</a><span>next door · 32 units · 7 parking · 2018</span></li><li><a href="42-60-crescent-street-queens-cd140205.html">Factory House Condominium</a><span>next door · 70 units · 2015</span></li><li><a href="42-37-27th-street-queens-cd130030.html">Ivy 28 Condominium</a><span>next door · 28 units · 2 parking · 2013</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="24-16-queens-plaza-south-queens-cd190042.html">24-16 Queens Plaza South Condominium</a><span>next door · 109 units · 2019</span></li><li><a href="24-12-42nd-road-queens-cd170054.html">Arcadia Lic</a><span>next door · 36 units · 2017</span></li><li><a href="23-01-42nd-road-queens-cd150275.html">Qps 23-10 Condominium</a><span>next door · 391 units · 62 parking · 2016</span></li><li><a href="42-50-27th-street-queens-cd170136.html">Arcadia 27</a><span>next door · 32 units · 7 parking · 2018</span></li><li><a href="42-60-crescent-street-queens-cd140205.html">Factory House Condominium</a><span>next door · 70 units · 2015</span></li><li><a href="42-37-27th-street-queens-cd130030.html">Ivy 28 Condominium</a><span>next door · 28 units · 2 parking · 2013</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/42-22-crescent-street-queens-cd190271.html#building","name":"Crescent Condominium","url":"https://www.condobooknyc.com/buildings/42-22-crescent-street-queens-cd190271.html","description":"Crescent Condominium, 42-22 Crescent Street, Queens. AG plan CD190271, accepted August 2020. 31 residential units. Budget, team, documents and source links.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD190271"},"address":{"@type":"PostalAddress","streetAddress":"42-22 Crescent Street","addressLocality":"Queens","addressRegion":"NY","postalCode":"11101","addressCountry":"US"},"numberOfAccommodationUnits":31,"geo":{"@type":"GeoCoordinates","latitude":40.750147,"longitude":-73.94129},"image":"https://www.condobooknyc.com/buildings/img/CD190271.webp","containedInPlace":{"@type":"Place","name":"Queens, New York"}}</script>

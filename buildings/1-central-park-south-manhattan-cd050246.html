@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD050246.webp" alt="3D massing drawing of Plaza Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD050246.webp" width="960" height="720" alt="3D massing drawing of Plaza Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD050246/19899.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD050246" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>181 residential · 30 storage · 3 commercial</dd></div><div><dt>Offering price</dt><dd>$1.12 million total <span class="sub">$1331.2 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Dec 7, 2005</dd></div><div><dt>Sponsor</dt><dd>Plaza Residential Owner LP</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/kramer-levin-naftalis-frankel.html" title="Other offering plans with this counsel">Kramer Levin Naftalis &amp; Frankel LLP</a><span class="sub">Nicole M Debare, Esq. · 1177 Avenue Of The Americas · (212) 715-9594</span></dd></div><div><dt>Plan ID</dt><dd>CD050246</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>181 residential · 30 storage · 3 commercial</dd></div><div><dt>Offering price</dt><dd>$1.12 million total <span class="sub">$1331.2 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Dec 7, 2005</dd></div><div><dt>Plan ID</dt><dd>CD050246</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD050246">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>Plaza Residential Owner LP</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/kramer-levin-naftalis-frankel.html" title="Other offering plans with this counsel">Kramer Levin Naftalis &amp; Frankel LLP</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD050246">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"19899":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="768-fifth-avenue-manhattan-cd060068.html">Plaza Hotel - Condominiums</a><span>next door · 181 units · 2006</span></li><li><a href="22-central-park-south-manhattan-cd130111.html">22 Central Park South Condominium</a><span>next door · 7 units · 2013</span></li><li><a href="7-west-57th-street-manhattan-cd180323.html">7 West 57th Street Condominium</a><span>next door · 15 units · 2022</span></li><li><a href="730-fifth-avenue-manhattan-cd160369.html">Aman New York Residences</a><span>0.1 mi · 26 units · 2017</span></li><li><a href="33-west-56th-street-manhattan-cd070132.html">Centurion Condominium</a><span>0.1 mi · 48 units · 2007</span></li><li><a href="100-west-58th-street-manhattan-cd040234.html">Windsor Park Condominium</a><span>0.1 mi · 103 units · 2004</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="768-fifth-avenue-manhattan-cd060068.html">Plaza Hotel - Condominiums</a><span>next door · 181 units · 2006</span></li><li><a href="22-central-park-south-manhattan-cd130111.html">22 Central Park South Condominium</a><span>next door · 7 units · 2013</span></li><li><a href="7-west-57th-street-manhattan-cd180323.html">7 West 57th Street Condominium</a><span>next door · 15 units · 2022</span></li><li><a href="730-fifth-avenue-manhattan-cd160369.html">Aman New York Residences</a><span>0.1 mi · 26 units · 2017</span></li><li><a href="33-west-56th-street-manhattan-cd070132.html">Centurion Condominium</a><span>0.1 mi · 48 units · 2007</span></li><li><a href="100-west-58th-street-manhattan-cd040234.html">Windsor Park Condominium</a><span>0.1 mi · 103 units · 2004</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/1-central-park-south-manhattan-cd050246.html#building","name":"Plaza Condominium","url":"https://www.condobooknyc.com/buildings/1-central-park-south-manhattan-cd050246.html","description":"Plaza Condominium, 1 Central Park South, Manhattan. AG plan CD050246, accepted December 2005. 181 residential units. Budget, team, documents and source links.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD050246"},"address":{"@type":"PostalAddress","streetAddress":"1 Central Park South","addressLocality":"Manhattan","addressRegion":"NY","postalCode":"10019","addressCountry":"US"},"numberOfAccommodationUnits":181,"geo":{"@type":"GeoCoordinates","latitude":40.76446,"longitude":-73.97449},"image":"https://www.condobooknyc.com/buildings/img/CD050246.webp","containedInPlace":{"@type":"Place","name":"Manhattan, New York"}}</script>

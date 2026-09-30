@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD190321.webp" alt="3D massing drawing of Huntington Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD190321.webp" width="960" height="720" alt="3D massing drawing of Huntington Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD190321/9553.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD190321" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>15 residential · 10 parking</dd></div><div><dt>Offering price</dt><dd>$20.6 million total <span class="sub">$19.9 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>May 8, 2020</dd></div><div><dt>Sponsor</dt><dd>Huntington &amp; Hicks LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/rosen.html" title="Other offering plans with this counsel">Rosen Law LLC</a><span class="sub">Jaime Rosen, Esq. · 216 Lakeville Road · (516) 437-3400</span></dd></div><div><dt>Plan ID</dt><dd>CD190321</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>15 residential · 10 parking</dd></div><div><dt>Offering price</dt><dd>$20.6 million total <span class="sub">$19.9 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>May 8, 2020</dd></div><div><dt>Plan ID</dt><dd>CD190321</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD190321">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>Huntington &amp; Hicks LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/rosen.html" title="Other offering plans with this counsel">Rosen Law LLC</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD190321">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"9553":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="100-luquer-street-brooklyn-cd110070.html">100 Luquer Street Condominium</a><span>0.2 mi · 20 units · 14 parking · 2011</span></li><li><a href="111-nelson-street-brooklyn-cd230042.html">111 Nelson Street Condominium</a><span>0.2 mi · 3 units · 2024</span></li><li><a href="16-4th-place-brooklyn-cd070184.html">16 4th Place Condominium</a><span>0.2 mi · 2 units · 2008</span></li><li><a href="110-luquer-street-brooklyn-cd230154.html">110 Luquer Street Condominium</a><span>0.2 mi · 3 units · 2025</span></li><li><a href="112-luquer-street-brooklyn-cd230155.html">112 Luquer Street Condominium</a><span>0.2 mi · 3 units · 2025</span></li><li><a href="22-4th-place-brooklyn-cd260082.html">22 4th Place Condominium</a><span>0.2 mi · 2 units</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="100-luquer-street-brooklyn-cd110070.html">100 Luquer Street Condominium</a><span>0.2 mi · 20 units · 14 parking · 2011</span></li><li><a href="111-nelson-street-brooklyn-cd230042.html">111 Nelson Street Condominium</a><span>0.2 mi · 3 units · 2024</span></li><li><a href="16-4th-place-brooklyn-cd070184.html">16 4th Place Condominium</a><span>0.2 mi · 2 units · 2008</span></li><li><a href="110-luquer-street-brooklyn-cd230154.html">110 Luquer Street Condominium</a><span>0.2 mi · 3 units · 2025</span></li><li><a href="112-luquer-street-brooklyn-cd230155.html">112 Luquer Street Condominium</a><span>0.2 mi · 3 units · 2025</span></li><li><a href="22-4th-place-brooklyn-cd260082.html">22 4th Place Condominium</a><span>0.2 mi · 2 units</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/40-huntington-street-brooklyn-cd190321.html#building","name":"Huntington Condominium","url":"https://www.condobooknyc.com/buildings/40-huntington-street-brooklyn-cd190321.html","description":"Huntington Condominium, 40 Huntington Street, Brooklyn. AG plan CD190321, accepted May 2020. 15 residential units, 10 parking units.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD190321"},"address":{"@type":"PostalAddress","streetAddress":"40 Huntington Street","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11231","addressCountry":"US"},"numberOfAccommodationUnits":15,"geo":{"@type":"GeoCoordinates","latitude":40.677238,"longitude":-74.004828},"image":"https://www.condobooknyc.com/buildings/img/CD190321.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

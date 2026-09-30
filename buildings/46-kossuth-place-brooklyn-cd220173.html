@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD220173.webp" alt="3D massing drawing of 46 Kossuth Place Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD220173.webp" width="960" height="720" alt="3D massing drawing of 46 Kossuth Place Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD220173/18597.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD220173" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>10 residential</dd></div><div><dt>Offering price</dt><dd>$9.56 million total <span class="sub">$9.22 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Dec 21, 2022</dd></div><div><dt>Sponsor</dt><dd>856 Bushwick Avenue Realty LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/jay-lichtman.html" title="Other offering plans with this counsel">Law Office Of Jay Lichtman, P.C.</a><span class="sub">Berel Shurin, Esq. · 68 Jay Street, Suite 420 · (347) 504-1724</span></dd></div><div><dt>Plan ID</dt><dd>CD220173</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>10 residential</dd></div><div><dt>Offering price</dt><dd>$9.56 million total <span class="sub">$9.22 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Dec 21, 2022</dd></div><div><dt>Plan ID</dt><dd>CD220173</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD220173">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>856 Bushwick Avenue Realty LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/jay-lichtman.html" title="Other offering plans with this counsel">Law Office Of Jay Lichtman, P.C.</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD220173">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"18597":"Offering Plan"}</script></section>
@@ -100,7 +104,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="1143-lafayette-avenue-brooklyn-cd170259.html">1143 Lafayette Avenue Condominium</a><span>next door · 10 units · 2018</span></li><li><a href="27-kossuth-place-brooklyn-cd170185.html">27 Kossuth Place Condominium</a><span>next door · 10 units · 2018</span></li><li><a href="1067-greene-avenue-brooklyn-cd090189.html">1067 Greene Avenue Condominium</a><span>0.1 mi · 3 units · 2009</span></li><li><a href="267-evergreen-avenue-brooklyn-cd180058.html">267 Evergreen Avenue Condominium</a><span>0.1 mi · 8 units · 2018</span></li><li><a href="923-bushwick-avenue-brooklyn-cd220028.html">923 Bushwick Avenue Condominium</a><span>0.1 mi · 8 units · 2023</span></li><li><a href="925-bushwick-avenue-brooklyn-cd200259.html">Green Bushwick Condominium</a><span>0.1 mi · 8 units · 2021</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="1143-lafayette-avenue-brooklyn-cd170259.html">1143 Lafayette Avenue Condominium</a><span>next door · 10 units · 2018</span></li><li><a href="27-kossuth-place-brooklyn-cd170185.html">27 Kossuth Place Condominium</a><span>next door · 10 units · 2018</span></li><li><a href="1067-greene-avenue-brooklyn-cd090189.html">1067 Greene Avenue Condominium</a><span>0.1 mi · 3 units · 2009</span></li><li><a href="267-evergreen-avenue-brooklyn-cd180058.html">267 Evergreen Avenue Condominium</a><span>0.1 mi · 8 units · 2018</span></li><li><a href="923-bushwick-avenue-brooklyn-cd220028.html">923 Bushwick Avenue Condominium</a><span>0.1 mi · 8 units · 2023</span></li><li><a href="925-bushwick-avenue-brooklyn-cd200259.html">Green Bushwick Condominium</a><span>0.1 mi · 8 units · 2021</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/46-kossuth-place-brooklyn-cd220173.html#building","name":"46 Kossuth Place Condominium","url":"https://www.condobooknyc.com/buildings/46-kossuth-place-brooklyn-cd220173.html","description":"46 Kossuth Place Condominium, 46 Kossuth Place, Brooklyn. AG plan CD220173, accepted December 2022. 10 residential units.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD220173"},"address":{"@type":"PostalAddress","streetAddress":"46 Kossuth Place","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11221","addressCountry":"US"},"numberOfAccommodationUnits":10,"geo":{"@type":"GeoCoordinates","latitude":40.69385,"longitude":-73.92653},"image":"https://www.condobooknyc.com/buildings/img/CD220173.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

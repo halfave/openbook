@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD050153.webp" alt="3D massing drawing of 1570 Prospect Place Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD050153.webp" width="960" height="720" alt="3D massing drawing of 1570 Prospect Place Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD050153/15694.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD050153" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>7 residential · 3 parking</dd></div><div><dt>Offering price</dt><dd>$3.22 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Sep 9, 2005</dd></div><div><dt>Sponsor</dt><dd>Prospect Place Condo, LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/allan-lebowitz.html" title="Other offering plans with this counsel">Allan Lebowitz, P.C.</a><span class="sub">266 Broadway, Suite 304</span></dd></div><div><dt>Plan ID</dt><dd>CD050153</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>7 residential · 3 parking</dd></div><div><dt>Offering price</dt><dd>$3.22 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Sep 9, 2005</dd></div><div><dt>Plan ID</dt><dd>CD050153</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD050153">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>Prospect Place Condo, LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/allan-lebowitz.html" title="Other offering plans with this counsel">Allan Lebowitz, P.C.</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD050153">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"15694":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="1477-1479-1481-1483-1485-prospect-place-brooklyn-cd110227.html">Promark Condominiums At Stuyvesant Heights I</a><span>0.1 mi · 36 units · 2012</span></li><li><a href="1270-1272-1274-1276-1278-1280-st-marks-ave-brooklyn-cd110228.html">Promark Condominiums At Stuyvesant Heights Ii</a><span>0.2 mi · 39 units · 2012</span></li><li><a href="1894-pacific-street-brooklyn-cd180071.html">1894 Pacific Street Condominium</a><span>0.2 mi · 7 units · 2018</span></li><li><a href="1526-lincoln-place-brooklyn-cd220145.html">1526 Lincoln Place Condominium</a><span>0.3 mi · 8 units · 2023</span></li><li><a href="1226-st-marks-avenue-brooklyn-cd200059.html">1226 St. Marks Avenue Condominium</a><span>0.3 mi · 8 units · 2021</span></li><li><a href="1489-sterling-place-brooklyn-cd220096.html">1489 Sterling Place Condominium</a><span>0.3 mi · 8 units · 2022</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="1477-1479-1481-1483-1485-prospect-place-brooklyn-cd110227.html">Promark Condominiums At Stuyvesant Heights I</a><span>0.1 mi · 36 units · 2012</span></li><li><a href="1270-1272-1274-1276-1278-1280-st-marks-ave-brooklyn-cd110228.html">Promark Condominiums At Stuyvesant Heights Ii</a><span>0.2 mi · 39 units · 2012</span></li><li><a href="1894-pacific-street-brooklyn-cd180071.html">1894 Pacific Street Condominium</a><span>0.2 mi · 7 units · 2018</span></li><li><a href="1526-lincoln-place-brooklyn-cd220145.html">1526 Lincoln Place Condominium</a><span>0.3 mi · 8 units · 2023</span></li><li><a href="1226-st-marks-avenue-brooklyn-cd200059.html">1226 St. Marks Avenue Condominium</a><span>0.3 mi · 8 units · 2021</span></li><li><a href="1489-sterling-place-brooklyn-cd220096.html">1489 Sterling Place Condominium</a><span>0.3 mi · 8 units · 2022</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/1570-prospect-place-brooklyn-cd050153.html#building","name":"1570 Prospect Place Condominium","url":"https://www.condobooknyc.com/buildings/1570-prospect-place-brooklyn-cd050153.html","description":"1570 Prospect Place Condominium, 1570 Prospect Place, Brooklyn. AG plan CD050153, accepted September 2005. 7 residential units, 3 parking units.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD050153"},"address":{"@type":"PostalAddress","streetAddress":"1570 Prospect Place","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11233","addressCountry":"US"},"numberOfAccommodationUnits":7,"geo":{"@type":"GeoCoordinates","latitude":40.672698,"longitude":-73.924347},"image":"https://www.condobooknyc.com/buildings/img/CD050153.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

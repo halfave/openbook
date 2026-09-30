@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD150301.webp" alt="3D massing drawing of Hendrik Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD150301.webp" width="960" height="720" alt="3D massing drawing of Hendrik Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD150301#tabs-6" rel="noopener">View the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD150301" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>33 residential · 12 parking</dd></div><div><dt>Offering price</dt><dd>$134.9 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>May 20, 2016</dd></div><div><dt>Sponsor</dt><dd>522-528 LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/starr.html" title="Other offering plans with this counsel">Starr Associates LLP</a><span class="sub">Shaun Pappas · 220 East 42nd Street, Suite 3302 · (212) 620-2680</span></dd></div><div><dt>Plan ID</dt><dd>CD150301</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>33 residential · 12 parking</dd></div><div><dt>Offering price</dt><dd>$134.9 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>May 20, 2016</dd></div><div><dt>Plan ID</dt><dd>CD150301</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD150301">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>522-528 LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/starr.html" title="Other offering plans with this counsel">Starr Associates LLP</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD150301">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"3267":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="52-third-avenue-brooklyn-cd040121.html">Bococa Suites Condiminium</a><span>next door · 15 units · 2004</span></li><li><a href="533-pacific-street-brooklyn-cd210282.html">533 Pacific Street Condominium</a><span>next door · 41 units · 10 parking · 2022</span></li><li><a href="522-state-street-brooklyn-cd230195.html">522 State Street Condominium</a><span>next door · 4 units · 2024</span></li><li><a href="489-atlantic-ave-and-480-state-street-brooklyn-cd050311.html">489 Atlantic Ave. And 480 State St. Condo</a><span>next door · 8 units · 2006</span></li><li><a href="557-atlantic-ave-and-556-state-st-brooklyn-cd050121.html">Boerum Heights Condo</a><span>next door · 71 units · 28 parking · 2005</span></li><li><a href="561-pacific-street-brooklyn-cd170362.html">561 Pacific Street Condominium</a><span>0.1 mi · 63 units · 16 parking · 2018</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="52-third-avenue-brooklyn-cd040121.html">Bococa Suites Condiminium</a><span>next door · 15 units · 2004</span></li><li><a href="533-pacific-street-brooklyn-cd210282.html">533 Pacific Street Condominium</a><span>next door · 41 units · 10 parking · 2022</span></li><li><a href="522-state-street-brooklyn-cd230195.html">522 State Street Condominium</a><span>next door · 4 units · 2024</span></li><li><a href="489-atlantic-ave-and-480-state-street-brooklyn-cd050311.html">489 Atlantic Ave. And 480 State St. Condo</a><span>next door · 8 units · 2006</span></li><li><a href="557-atlantic-ave-and-556-state-st-brooklyn-cd050121.html">Boerum Heights Condo</a><span>next door · 71 units · 28 parking · 2005</span></li><li><a href="561-pacific-street-brooklyn-cd170362.html">561 Pacific Street Condominium</a><span>0.1 mi · 63 units · 16 parking · 2018</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/509-pacific-street-brooklyn-cd150301.html#building","name":"Hendrik Condominium","url":"https://www.condobooknyc.com/buildings/509-pacific-street-brooklyn-cd150301.html","description":"Hendrik Condominium, 509 Pacific Street, Brooklyn. AG plan CD150301, accepted May 2016. 33 residential units, 12 parking units.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD150301"},"address":{"@type":"PostalAddress","streetAddress":"509 Pacific Street","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11217","addressCountry":"US"},"numberOfAccommodationUnits":33,"geo":{"@type":"GeoCoordinates","latitude":40.684883,"longitude":-73.98066},"image":"https://www.condobooknyc.com/buildings/img/CD150301.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

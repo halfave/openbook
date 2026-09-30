@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD190315.webp" alt="3D massing drawing of 270 12th Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD190315.webp" width="960" height="720" alt="3D massing drawing of 270 12th Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD190315/8982.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD190315" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>4 residential</dd></div><div><dt>Offering price</dt><dd>$4.89 million total <span class="sub">$4.55 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Mar 31, 2020</dd></div><div><dt>Sponsor</dt><dd>270 12th St LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/korsinsky-klein.html" title="Other offering plans with this counsel">Korsinsky &amp; Klein, LLP</a><span class="sub">Leah Berman-Gestring, Esq · 2926 Avenue L, 2nd Fl · (212) 598-2354</span></dd></div><div><dt>Plan ID</dt><dd>CD190315</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>4 residential</dd></div><div><dt>Offering price</dt><dd>$4.89 million total <span class="sub">$4.55 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Mar 31, 2020</dd></div><div><dt>Plan ID</dt><dd>CD190315</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD190315">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>270 12th St LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/korsinsky-klein.html" title="Other offering plans with this counsel">Korsinsky &amp; Klein, LLP</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD190315">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"8982":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="258-260-12th-street-brooklyn-cd080197.html">Twelfth Street Condominium</a><span>next door · 16 units · 2009</span></li><li><a href="257-13th-street-brooklyn-cd210197.html">257 13th Street Condominium</a><span>next door · 4 units · 2021</span></li><li><a href="294-12th-street-brooklyn-cd140103.html">294 12th Street Condominium</a><span>next door · 4 units · 2014</span></li><li><a href="295-12th-street-brooklyn-cd240196.html">295 12th Street Condominium</a><span>next door · 2 units · 2025</span></li><li><a href="515-fifth-avenue-brooklyn-cd060357.html">515 Condominium</a><span>next door · 15 units · 2006</span></li><li><a href="225-14th-street-brooklyn-cd170148.html">225 14th Street Condominium</a><span>next door · 9 units · 3 parking · 2017</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="258-260-12th-street-brooklyn-cd080197.html">Twelfth Street Condominium</a><span>next door · 16 units · 2009</span></li><li><a href="257-13th-street-brooklyn-cd210197.html">257 13th Street Condominium</a><span>next door · 4 units · 2021</span></li><li><a href="294-12th-street-brooklyn-cd140103.html">294 12th Street Condominium</a><span>next door · 4 units · 2014</span></li><li><a href="295-12th-street-brooklyn-cd240196.html">295 12th Street Condominium</a><span>next door · 2 units · 2025</span></li><li><a href="515-fifth-avenue-brooklyn-cd060357.html">515 Condominium</a><span>next door · 15 units · 2006</span></li><li><a href="225-14th-street-brooklyn-cd170148.html">225 14th Street Condominium</a><span>next door · 9 units · 3 parking · 2017</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/270-12th-street-brooklyn-cd190315.html#building","name":"270 12th Street Condominium","url":"https://www.condobooknyc.com/buildings/270-12th-street-brooklyn-cd190315.html","description":"270 12th Street Condominium, 270 12th Street, Brooklyn. AG plan CD190315, accepted March 2020. 4 residential units. Budget, team, documents and source links.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD190315"},"address":{"@type":"PostalAddress","streetAddress":"270 12th Street","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11215","addressCountry":"US"},"numberOfAccommodationUnits":4,"geo":{"@type":"GeoCoordinates","latitude":40.667499,"longitude":-73.988423},"image":"https://www.condobooknyc.com/buildings/img/CD190315.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

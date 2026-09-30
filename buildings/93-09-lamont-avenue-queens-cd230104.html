@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD230104.webp" alt="3D massing drawing of Splendid Tower Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD230104.webp" width="960" height="720" alt="3D massing drawing of Splendid Tower Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD230104/26897.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD230104" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>17 residential · 9 parking</dd></div><div><dt>Offering price</dt><dd>$10.9 million total <span class="sub">$9.18 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Jan 12, 2024</dd></div><div><dt>Sponsor</dt><dd>Splendid Realty LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/moritt-hock-hamroff.html" title="Other offering plans with this counsel">Moritt Hock &amp; Hamroff, LLP</a><span class="sub">1407 Broadway, 39th Floor</span></dd></div><div><dt>Plan ID</dt><dd>CD230104</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>17 residential · 9 parking</dd></div><div><dt>Offering price</dt><dd>$10.9 million total <span class="sub">$9.18 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>Jan 12, 2024</dd></div><div><dt>Plan ID</dt><dd>CD230104</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD230104">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>Splendid Realty LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/moritt-hock-hamroff.html" title="Other offering plans with this counsel">Moritt Hock &amp; Hamroff, LLP</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD230104">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"26897":"Offering Plan"}</script></section>
@@ -100,7 +104,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="91-06-whitney-avenue-queens-cd090153.html">Whitney Manor Condominium</a><span>next door · 18 units · 8 parking · 2009</span></li><li><a href="90-12-whitney-avenue-queens-cd230317.html">Whitney Condominium</a><span>0.1 mi · 20 units · 10 parking</span></li><li><a href="90-12-whitney-avenue-queens-cd260165.html">Whitney Condominium</a><span>0.1 mi · 20 units · 10 parking</span></li><li><a href="41-28-junction-boulevard-queens-cd050403.html">Junction House Condominium</a><span>0.2 mi · 8 units · 2006</span></li><li><a href="91-23-corona-avenue-queens-cd230204.html">Apollo Plaza Condominium</a><span>0.2 mi · 35 units · 22 parking · 2023</span></li><li><a href="42-09-hampton-street-queens-cd240037.html">Hampton Condominium</a><span>0.3 mi · 10 units · 1 parking · 2024</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="91-06-whitney-avenue-queens-cd090153.html">Whitney Manor Condominium</a><span>next door · 18 units · 8 parking · 2009</span></li><li><a href="90-12-whitney-avenue-queens-cd230317.html">Whitney Condominium</a><span>0.1 mi · 20 units · 10 parking</span></li><li><a href="90-12-whitney-avenue-queens-cd260165.html">Whitney Condominium</a><span>0.1 mi · 20 units · 10 parking</span></li><li><a href="41-28-junction-boulevard-queens-cd050403.html">Junction House Condominium</a><span>0.2 mi · 8 units · 2006</span></li><li><a href="91-23-corona-avenue-queens-cd230204.html">Apollo Plaza Condominium</a><span>0.2 mi · 35 units · 22 parking · 2023</span></li><li><a href="42-09-hampton-street-queens-cd240037.html">Hampton Condominium</a><span>0.3 mi · 10 units · 1 parking · 2024</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/93-09-lamont-avenue-queens-cd230104.html#building","name":"Splendid Tower Condominium","url":"https://www.condobooknyc.com/buildings/93-09-lamont-avenue-queens-cd230104.html","description":"Splendid Tower Condominium, 93-09 Lamont Avenue, Queens. AG plan CD230104, accepted January 2024. 17 residential units, 9 parking units.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD230104"},"address":{"@type":"PostalAddress","streetAddress":"93-09 Lamont Avenue","addressLocality":"Queens","addressRegion":"NY","postalCode":"11373","addressCountry":"US"},"numberOfAccommodationUnits":17,"geo":{"@type":"GeoCoordinates","latitude":40.746135,"longitude":-73.872861},"image":"https://www.condobooknyc.com/buildings/img/CD230104.webp","containedInPlace":{"@type":"Place","name":"Queens, New York"}}</script>

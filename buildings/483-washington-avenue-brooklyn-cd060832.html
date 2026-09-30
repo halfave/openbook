@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD060832.webp" alt="3D massing drawing of Dewitt Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD060832.webp" width="960" height="720" alt="3D massing drawing of Dewitt Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD060832/6451.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD060832" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>0 residential · 7 parking · 16 commercial</dd></div><div><dt>Offering price</dt><dd>$10.1 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>May 30, 2007</dd></div><div><dt>Sponsor</dt><dd>483 Washington Avenue, LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/hirschen-singer-epstein.html" title="Other offering plans with this counsel">Hirschen Singer &amp; Epstein LLP</a><span class="sub">Melanie B Samuels, Esq. · 257 Park Avenue South, Fl 15 · (914) 899-8000</span></dd></div><div><dt>Plan ID</dt><dd>CD060832</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>0 residential · 7 parking · 16 commercial</dd></div><div><dt>Offering price</dt><dd>$10.1 million total</dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>May 30, 2007</dd></div><div><dt>Plan ID</dt><dd>CD060832</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD060832">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>483 Washington Avenue, LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/hirschen-singer-epstein.html" title="Other offering plans with this counsel">Hirschen Singer &amp; Epstein LLP</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD060832">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"6451":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="475-washington-avenue-brooklyn-cd180051.html">475 Washington Avenue Condominium</a><span>next door · 60 units · 2019</span></li><li><a href="226-st-james-place-brooklyn-cd040007.html">226 St. James Place Condominium</a><span>next door · 8 units · 2004</span></li><li><a href="461-washington-avenue-brooklyn-cd140323.html">461 Washington Avenue Condominium</a><span>next door · 4 units · 2015</span></li><li><a href="476-washington-avenue-brooklyn-cd180345.html">476 Washington Avenue Condominium</a><span>next door · 4 units · 2019</span></li><li><a href="888-fulton-street-brooklyn-cd070072.html">888 Fulton Street Condominium</a><span>next door · 8 units · 2007</span></li><li><a href="474-waverly-avenue-brooklyn-cd070281.html">474 Waverly Avenue Condominium</a><span>next door · 3 units · 2007</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="475-washington-avenue-brooklyn-cd180051.html">475 Washington Avenue Condominium</a><span>next door · 60 units · 2019</span></li><li><a href="226-st-james-place-brooklyn-cd040007.html">226 St. James Place Condominium</a><span>next door · 8 units · 2004</span></li><li><a href="461-washington-avenue-brooklyn-cd140323.html">461 Washington Avenue Condominium</a><span>next door · 4 units · 2015</span></li><li><a href="476-washington-avenue-brooklyn-cd180345.html">476 Washington Avenue Condominium</a><span>next door · 4 units · 2019</span></li><li><a href="888-fulton-street-brooklyn-cd070072.html">888 Fulton Street Condominium</a><span>next door · 8 units · 2007</span></li><li><a href="474-waverly-avenue-brooklyn-cd070281.html">474 Waverly Avenue Condominium</a><span>next door · 3 units · 2007</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/483-washington-avenue-brooklyn-cd060832.html#building","name":"Dewitt Condominium","url":"https://www.condobooknyc.com/buildings/483-washington-avenue-brooklyn-cd060832.html","description":"Dewitt Condominium, 483 Washington Avenue, Brooklyn. AG plan CD060832, accepted May 2007. 0 residential units, 7 parking units.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD060832"},"address":{"@type":"PostalAddress","streetAddress":"483 Washington Avenue","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11238","addressCountry":"US"},"numberOfAccommodationUnits":0,"geo":{"@type":"GeoCoordinates","latitude":40.683885,"longitude":-73.964614},"image":"https://www.condobooknyc.com/buildings/img/CD060832.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

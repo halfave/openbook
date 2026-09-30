@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD250119.webp" alt="3D massing drawing of 236 West 112th Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD250119.webp" width="960" height="720" alt="3D massing drawing of 236 West 112th Street Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD250119/32489.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD250119" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>2 residential</dd></div><div><dt>Offering price</dt><dd>$4.24 million total</dd></div><div><dt>Construction</dt><dd>Rehab</dd></div><div><dt>Accepted</dt><dd>Jan 20, 2026</dd></div><div><dt>Sponsor</dt><dd>112 London, L.P.</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/jeffrey-zwick.html" title="Other offering plans with this counsel">Jeffrey Zwick &amp; Associates, P.C.</a><span class="sub">Danielle Pistola Sidiropoulos, Esq. · 2329 Nostrand Ave, Suite 400 · (718) 513-2050</span></dd></div><div><dt>Plan ID</dt><dd>CD250119</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>2 residential</dd></div><div><dt>Offering price</dt><dd>$4.24 million total</dd></div><div><dt>Construction</dt><dd>Rehab</dd></div><div><dt>Accepted</dt><dd>Jan 20, 2026</dd></div><div><dt>Plan ID</dt><dd>CD250119</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD250119">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>112 London, L.P.</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/jeffrey-zwick.html" title="Other offering plans with this counsel">Jeffrey Zwick &amp; Associates, P.C.</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD250119">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"32489":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="209-west-111th-street-manhattan-cd060525.html">209 West 111th Street Condominium</a><span>next door · 2 units · 2006</span></li><li><a href="220-west-111th-street-manhattan-cd050575.html">Park Central Condominium</a><span>next door · 24 units · 2006</span></li><li><a href="261-west-112th-street-manhattan-cd080105.html">Lore Condominium</a><span>next door · 36 units · 2008</span></li><li><a href="203-05-west-112th-street-manhattan-cd030050.html">Washington Irving Condominium</a><span>next door · 13 units · 2003</span></li><li><a href="263-west-112th-street-manhattan-cd040322.html">Leonora Condominium</a><span>next door · 5 units · 2005</span></li><li><a href="2072-8th-avenue-manhattan-cd050050.html">Jacob&#39;S Court I Condominium</a><span>next door · 13 units · 2005</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="209-west-111th-street-manhattan-cd060525.html">209 West 111th Street Condominium</a><span>next door · 2 units · 2006</span></li><li><a href="220-west-111th-street-manhattan-cd050575.html">Park Central Condominium</a><span>next door · 24 units · 2006</span></li><li><a href="261-west-112th-street-manhattan-cd080105.html">Lore Condominium</a><span>next door · 36 units · 2008</span></li><li><a href="203-05-west-112th-street-manhattan-cd030050.html">Washington Irving Condominium</a><span>next door · 13 units · 2003</span></li><li><a href="263-west-112th-street-manhattan-cd040322.html">Leonora Condominium</a><span>next door · 5 units · 2005</span></li><li><a href="2072-8th-avenue-manhattan-cd050050.html">Jacob&#39;S Court I Condominium</a><span>next door · 13 units · 2005</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/236-west-112th-street-manhattan-cd250119.html#building","name":"236 West 112th Street Condominium","url":"https://www.condobooknyc.com/buildings/236-west-112th-street-manhattan-cd250119.html","description":"236 West 112th Street Condominium, 236 West 112th Street, Manhattan. AG plan CD250119, accepted January 2026. 2 residential units.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD250119"},"address":{"@type":"PostalAddress","streetAddress":"236 West 112th Street","addressLocality":"Manhattan","addressRegion":"NY","postalCode":"10026","addressCountry":"US"},"numberOfAccommodationUnits":2,"geo":{"@type":"GeoCoordinates","latitude":40.801104,"longitude":-73.955902},"image":"https://www.condobooknyc.com/buildings/img/CD250119.webp","containedInPlace":{"@type":"Place","name":"Manhattan, New York"}}</script>

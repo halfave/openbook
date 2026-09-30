@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD160097.webp" alt="3D massing drawing of Crown 601 Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD160097.webp" width="960" height="720" alt="3D massing drawing of Crown 601 Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD160097/1062.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD160097" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>27 residential</dd></div><div><dt>Offering price</dt><dd>$16.4 million total <span class="sub">$17.6 million when first offered</span></dd></div><div><dt>Construction</dt><dd>Conversion</dd></div><div><dt>Accepted</dt><dd>Sep 15, 2017</dd></div><div><dt>Sponsor</dt><dd>601 Crown LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/pryor-cashman.html" title="Other offering plans with this counsel">Pryor Cashman, LLP</a><span class="sub">Jeanne C Matase, Esq. · 7 Times Square · (212) 326-0860</span></dd></div><div><dt>Plan ID</dt><dd>CD160097</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>27 residential</dd></div><div><dt>Offering price</dt><dd>$16.4 million total <span class="sub">$17.6 million when first offered</span></dd></div><div><dt>Construction</dt><dd>Conversion</dd></div><div><dt>Accepted</dt><dd>Sep 15, 2017</dd></div><div><dt>Plan ID</dt><dd>CD160097</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD160097">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>601 Crown LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/pryor-cashman.html" title="Other offering plans with this counsel">Pryor Cashman, LLP</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD160097">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"1062":"Offering Plan"}</script></section>
@@ -97,7 +101,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="580-crown-street-brooklyn-cd070418.html">Crown Plaza Condominium</a><span>next door · 76 units · 66 parking · 2007</span></li><li><a href="466-albany-avenue-brooklyn-cd100206.html">Albany Avenue Estates</a><span>0.2 mi · 13 units · 7 parking · 2011</span></li><li><a href="866-eastern-parkway-brooklyn-cd030053.html">866 Eastern Parkway</a><span>0.2 mi · 23 units · 2003</span></li><li><a href="744-lefferts-avenue-brooklyn-cd180228.html">744 Lefferts Condominiums</a><span>0.2 mi · 7 units · 2020</span></li><li><a href="881-83-eastern-parkway-brooklyn-cd990150.html">881-83 Eastern Parkway Condominium</a><span>0.3 mi · 4 units · 2000</span></li><li><a href="282-troy-avenue-brooklyn-cd070727.html">282 Troy Avenue Condominium</a><span>0.3 mi · 4 units · 2 parking · 2008</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="580-crown-street-brooklyn-cd070418.html">Crown Plaza Condominium</a><span>next door · 76 units · 66 parking · 2007</span></li><li><a href="466-albany-avenue-brooklyn-cd100206.html">Albany Avenue Estates</a><span>0.2 mi · 13 units · 7 parking · 2011</span></li><li><a href="866-eastern-parkway-brooklyn-cd030053.html">866 Eastern Parkway</a><span>0.2 mi · 23 units · 2003</span></li><li><a href="744-lefferts-avenue-brooklyn-cd180228.html">744 Lefferts Condominiums</a><span>0.2 mi · 7 units · 2020</span></li><li><a href="881-83-eastern-parkway-brooklyn-cd990150.html">881-83 Eastern Parkway Condominium</a><span>0.3 mi · 4 units · 2000</span></li><li><a href="282-troy-avenue-brooklyn-cd070727.html">282 Troy Avenue Condominium</a><span>0.3 mi · 4 units · 2 parking · 2008</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/601-crown-street-brooklyn-cd160097.html#building","name":"Crown 601 Condominium","url":"https://www.condobooknyc.com/buildings/601-crown-street-brooklyn-cd160097.html","description":"Crown 601 Condominium, 601 Crown Street, Brooklyn. AG plan CD160097, accepted September 2017. 27 residential units. Budget, team, documents and source links.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD160097"},"address":{"@type":"PostalAddress","streetAddress":"601 Crown Street","addressLocality":"Brooklyn","addressRegion":"NY","postalCode":"11213","addressCountry":"US"},"numberOfAccommodationUnits":27,"geo":{"@type":"GeoCoordinates","latitude":40.66588,"longitude":-73.938326},"image":"https://www.condobooknyc.com/buildings/img/CD160097.webp","containedInPlace":{"@type":"Place","name":"Brooklyn, New York"}}</script>

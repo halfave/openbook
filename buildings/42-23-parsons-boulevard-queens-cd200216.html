@@ -31,7 +31,7 @@
 <body>
 <header class="mast compact">
   <div class="mast-in">
-    <a class="wordmark" href="../index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
+    <a class="wordmark" href="../index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
     <nav class="mastnav" aria-label="Main"><a href="../about.html">About</a><span aria-hidden="true">|</span><a href="../faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="../new-condo-filings.html">New Construction</a><a href="../time-to-approval.html">Approval Times</a><a href="../common-charges.html">Common Charges</a><a href="../property-taxes.html">Property Taxes</a><a href="../managing-agents.html">Property Managers</a><a href="../offering-plan-attorneys.html">OP Attorneys</a><a href="../architects.html">Architects</a><a href="../selling-agents.html">Selling Agents</a><a href="../tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
@@ -66,20 +66,24 @@
 
   <div class="sheet-grid" id="overview">
     <div class="sheet-side">
-      <figure class="massing"><img src="img/CD200216.webp" alt="3D massing drawing of Golden Garden Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
+      <figure class="massing"><img src="img/CD200216.webp" width="960" height="720" alt="3D massing drawing of Golden Garden Condominium and neighboring buildings" loading="lazy"><figcaption>3D massing, not a photo. The building is in green.</figcaption></figure>
       <div class="acts"><a class="btn primary" href="https://dvywgltjqpntldlztapu.supabase.co/storage/v1/object/public/plans/CD200216/15859.pdf" rel="noopener">Open the offering plan ↗</a><a class="btn" href="https://offeringplandatasearch.ag.ny.gov/REF/planFormServlet?planId=CD200216" rel="noopener">AG filing record ↗</a></div>
     </div>
     <div>
-      <span id="pricing"></span><span id="team"></span>
-      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>33 residential · 17 parking</dd></div><div><dt>Offering price</dt><dd>$18.1 million total <span class="sub">$21.9 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>May 20, 2022</dd></div><div><dt>Sponsor</dt><dd>First Red Apple Realty, LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/thomas-berinato.html" title="Other offering plans with this counsel">Thomas E. Berinato, Attorney At Law</a><span class="sub">Thomas E Berinato, Esq. · 123-40 83rd Avenue, Suite 1d · (718) 575-3400</span></dd></div><div><dt>Plan ID</dt><dd>CD200216</dd></div></dl>
+      <span id="pricing"></span>
+      <dl class="sheet" id="sheet"><div><dt>Units</dt><dd>33 residential · 17 parking</dd></div><div><dt>Offering price</dt><dd>$18.1 million total <span class="sub">$21.9 million when first offered</span></dd></div><div><dt>Construction</dt><dd>New</dd></div><div><dt>Accepted</dt><dd>May 20, 2022</dd></div><div><dt>Plan ID</dt><dd>CD200216</dd></div></dl>
       
     </div>
   </div>
 
-  <section class="sheet-sec"><form class="psearch" id="psearch" data-plan="CD200216">
+  <section class="sheet-sec team-box" id="team">
+    <h2>Team</h2>
+    <dl class="sheet" id="teamsheet"><div><dt>Sponsor</dt><dd>First Red Apple Realty, LLC</dd></div><div><dt>Counsel</dt><dd><a href="../offering-plan-attorneys/thomas-berinato.html" title="Other offering plans with this counsel">Thomas E. Berinato, Attorney At Law</a></dd></div></dl>
+  </section>
+
+  <section class="sheet-sec psearch-strip"><form class="psearch" id="psearch" data-plan="CD200216">
       <label for="pq">Search This Offering Plan</label>
-      <div class="prow"><input id="pq" type="search" placeholder="e.g. parking, storage, roof, managing agent" enterkeyhint="search"><button type="submit">Search</button></div>
-      <div class="chips"><button type="button" data-q="parking">parking</button><button type="button" data-q="storage">storage</button><button type="button" data-q="roof">roof</button><button type="button" data-q="inclusionary OR MIH">inclusionary OR MIH</button><button type="button" data-q="managing agent">managing agent</button><button type="button" data-q="architect">architect</button></div>
+      <div class="prow"><input id="pq" type="search" placeholder="Ask about this building" enterkeyhint="search"><button type="submit">Search</button></div>
       <div id="presults" role="status"></div>
     </form>
     <script type="application/json" id="pdocs">{"15859":"Offering Plan"}</script></section>
@@ -100,7 +104,7 @@
     <div id="schedb-where"></div>
   </section>
 
-  <section class="sheet-sec" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="42-29-parsons-boulevard-queens-cd200015.html">Parsons Tower Condominium</a><span>next door · 40 units · 20 parking · 2021</span></li><li><a href="42-11-parsons-blvd-queens-cd050541.html">Parsons Point Condominium</a><span>next door · 20 units · 13 parking · 2006</span></li><li><a href="42-05-parsons-boulevard-queens-cd080609.html">42-05 Parsons Boulevard Condominium</a><span>next door · 14 units · 11 parking · 2009</span></li><li><a href="146-27-beech-avenue-queens-cd080562.html">Beech Garden Condominium</a><span>next door · 11 units · 26 parking · 2009</span></li><li><a href="144-27-sanford-avenue-queens-cd200137.html">Flushing Garden Condominium</a><span>next door · 131 units · 66 parking · 2021</span></li><li><a href="42-24-147th-street-queens-cd260021.html">Lamstead Condominium</a><span>0.1 mi · 20 units · 5 parking</span></li></ul></section>
+  <section class="sheet-sec near-box" id="nearby"><h2>Nearby Plans</h2><ul class="near"><li><a href="42-29-parsons-boulevard-queens-cd200015.html">Parsons Tower Condominium</a><span>next door · 40 units · 20 parking · 2021</span></li><li><a href="42-11-parsons-blvd-queens-cd050541.html">Parsons Point Condominium</a><span>next door · 20 units · 13 parking · 2006</span></li><li><a href="42-05-parsons-boulevard-queens-cd080609.html">42-05 Parsons Boulevard Condominium</a><span>next door · 14 units · 11 parking · 2009</span></li><li><a href="146-27-beech-avenue-queens-cd080562.html">Beech Garden Condominium</a><span>next door · 11 units · 26 parking · 2009</span></li><li><a href="144-27-sanford-avenue-queens-cd200137.html">Flushing Garden Condominium</a><span>next door · 131 units · 66 parking · 2021</span></li><li><a href="42-24-147th-street-queens-cd260021.html">Lamstead Condominium</a><span>0.1 mi · 20 units · 5 parking</span></li></ul></section>
 
 </main>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ApartmentComplex","@id":"https://www.condobooknyc.com/buildings/42-23-parsons-boulevard-queens-cd200216.html#building","name":"Golden Garden Condominium","url":"https://www.condobooknyc.com/buildings/42-23-parsons-boulevard-queens-cd200216.html","description":"Golden Garden Condominium, 42-23 Parsons Boulevard, Queens. AG plan CD200216, accepted May 2022. 33 residential units, 17 parking units.","identifier":{"@type":"PropertyValue","propertyID":"NY AG offering plan ID","value":"CD200216"},"address":{"@type":"PostalAddress","streetAddress":"42-23 Parsons Boulevard","addressLocality":"Queens","addressRegion":"NY","postalCode":"11355","addressCountry":"US"},"numberOfAccommodationUnits":33,"geo":{"@type":"GeoCoordinates","latitude":40.75825,"longitude":-73.81914},"image":"https://www.condobooknyc.com/buildings/img/CD200216.webp","containedInPlace":{"@type":"Place","name":"Queens, New York"}}</script>
