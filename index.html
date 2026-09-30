@@ -202,8 +202,6 @@ table.side tr.faint td{color:var(--muted)}
 .stat .v{font:700 26px/1.15 var(--display);font-variant-numeric:tabular-nums}
 .stat .v small{font:400 13px var(--sans);color:var(--muted)}
 .stat .s{font-size:12px;line-height:1.4;color:var(--faint)}
-.stat.lead{background:var(--accent-soft)}
-.stat.lead .v{color:var(--accent)}
 .stat:hover .v{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
 .stat:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
 @media (max-width:560px){ .stats{grid-template-columns:1fr} .stat+.stat{border-left:0;border-top:1px solid var(--rule)} }
@@ -246,6 +244,15 @@ body.searched .go{padding:0 20px;font-size:13px}
 .mapbox svg{width:100%;height:100%;display:block}
 .boro{fill:var(--land);stroke:var(--land-edge);stroke-width:1;vector-effect:non-scaling-stroke}
 .boro-label{font:italic 400 22px var(--display);fill:var(--faint);pointer-events:none}
+.park{fill:var(--park);stroke:none;pointer-events:none}
+.street{fill:none;stroke:var(--street);stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;pointer-events:none}
+.street.l{stroke-width:.6;display:none}
+.street.a{stroke-width:1.1}
+.street.h{stroke:var(--street-major);stroke-width:1.6}
+#map.mid .street.l{display:inline}
+#map.near .street.l{stroke-width:1.6}
+#map.near .street.a{stroke-width:2.6}
+#map.near .street.h{stroke-width:3.2}
 .hood{fill:none;stroke:var(--land-edge);stroke-width:.6;stroke-opacity:.75;stroke-linejoin:round;vector-effect:non-scaling-stroke;pointer-events:none}
 .hood-label{font-family:var(--sans);font-weight:500;fill:var(--faint);text-anchor:middle;pointer-events:none;paint-order:stroke;stroke:var(--land);stroke-width:.25em;stroke-linejoin:round}
 #hoodLabels{display:none}
@@ -256,7 +263,7 @@ body.searched .go{padding:0 20px;font-size:13px}
 .dot.dim{display:none}
 .dot.hit{fill:var(--hit);stroke:var(--panel);stroke-width:1.2}
 .dot.sel{stroke:var(--ink);stroke-width:2.2}
-.dot.hot{display:inline;fill:var(--hit);stroke:var(--ink);stroke-width:2.5;r:10}
+.dot:hover,.dot:focus-visible,.dot.hot{display:inline;fill:var(--hot);stroke:var(--panel);stroke-width:1.2;outline:none}
 .zoom{position:absolute;right:10px;bottom:10px;display:flex;flex-direction:column;gap:4px}
 .zoom button{width:32px;height:32px;border:1px solid var(--rule-strong);background:var(--panel);color:var(--ink);font:600 16px var(--sans);cursor:pointer}
 .tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--ground);font:12px/1.35 var(--sans);padding:6px 8px;max-width:220px;transform:translate(-50%,calc(-100% - 10px))}
@@ -418,9 +425,9 @@ table.pivot th[scope="row"]{white-space:nowrap}
     <div class="notice" id="notice" hidden></div>
     <nav class="stats" aria-label="Key figures">
       <!-- stats -->
-      <a class="stat lead" href="time-to-approval.html"><span class="k">Avg. time to AG approval</span><span class="v">8 <small>months</small></span><span class="s">Median 7.1 months · 50 recent plans</span></a>
-      <a class="stat" href="common-charges.html"><span class="k">Median common charges</span><span class="v">$535 <small>a month</small></span><span class="s">Per unit · $0.50 per SF</span></a>
-      <a class="stat" href="property-taxes.html"><span class="k">Median property taxes</span><span class="v">$0.69 <small>per SF a month</small></span><span class="s">Projected first year</span></a>
+      <a class="stat" href="time-to-approval.html"><span class="k">Avg. time to AG approval</span><span class="v">8 <small>months</small></span></a>
+      <a class="stat" href="common-charges.html"><span class="k">Avg. common charges</span><span class="v">$717 <small>/month</small></span><span class="s">$1.00 /SF</span></a>
+      <a class="stat" href="property-taxes.html"><span class="k">Avg. property taxes</span><span class="v">$700 <small>/month</small></span><span class="s">$0.75 /SF</span></a>
       <!-- /stats -->
     </nav>
     <nav class="top10" aria-label="Directory">
@@ -540,9 +547,12 @@ table.pivot th[scope="row"]{white-space:nowrap}
   let vb = { x: 0, y: 0, w: 1000, h: 1039 }, full = { ...vb };
   // Neighborhood names show once zoomed in far enough to read them; the font is sized to stay constant on screen.
   const HOOD_ZOOM = 420;
+  // Side streets fill in a little before that; highways, avenues and parks show at every zoom.
+  const STREET_ZOOM = 600;
   const setVB = () => {
     svg.setAttribute("viewBox", `${vb.x} ${vb.y} ${vb.w} ${vb.h}`);
     svg.classList.toggle("near", vb.w < HOOD_ZOOM);
+    svg.classList.toggle("mid", vb.w < STREET_ZOOM);
     const hl = $("hoodLabels"), sr = svg.getBoundingClientRect();
     if (hl && sr.width && sr.height) hl.setAttribute("font-size", (10.5 * Math.max(vb.w / sr.width, vb.h / sr.height)).toFixed(2));
     // Dots keep about the same size on screen at every zoom (a fixed floor made them huge when zoomed to a few blocks).
@@ -556,7 +566,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
     for (const [name, d] of Object.entries(geo.paths)) {
       const p = document.createElementNS(NS, "path"); p.setAttribute("d", d); p.setAttribute("class", "boro"); p.dataset.b = name; land.appendChild(p);
     }
-    const hoods = document.createElementNS(NS, "g"); hoods.id = "hoods"; land.appendChild(hoods);
+    for (const id of ["parks", "streets", "hoods"]) { const g = document.createElementNS(NS, "g"); g.id = id; land.appendChild(g); }
     for (const [name, [lng, lat]] of Object.entries(labels)) {
       const [x, y] = project(lat, lng); const t = document.createElementNS(NS, "text"); t.setAttribute("x", x); t.setAttribute("y", y); t.setAttribute("text-anchor", "middle"); t.setAttribute("class", "boro-label"); t.textContent = name; land.appendChild(t);
     }
@@ -575,6 +585,19 @@ table.pivot th[scope="row"]{white-space:nowrap}
     }
     setVB();
   }
+  // Streets and parks (NYC street centerlines and Parks properties, built by scripts/build-map-layers.mjs). Decoration only, like the neighborhood lines.
+  // Each line is packed as integers in 1e-4 degrees: the first point, then the steps between points.
+  const unpackPath = (lines, close) => lines.map((q) => {
+    let x = q[0], y = q[1], d = "M" + project(y / 1e4, x / 1e4).map((v) => v.toFixed(1)).join(",");
+    for (let i = 2; i < q.length; i += 2) { x += q[i]; y += q[i + 1]; d += "L" + project(y / 1e4, x / 1e4).map((v) => v.toFixed(1)).join(","); }
+    return close ? d + "Z" : d;
+  }).join("");
+  function drawLayer(id, cls, d) {
+    const g = $(id); if (!g) return;
+    const p = document.createElementNS(NS, "path"); p.setAttribute("class", cls); p.setAttribute("d", d); g.appendChild(p);
+  }
+  const drawParks = (list) => drawLayer("parks", "park", unpackPath(list, true));
+  const drawStreets = (s) => ["l", "a", "h"].forEach((c) => s[c] && drawLayer("streets", "street " + c, unpackPath(s[c], false)));
   function drawDots() {
     dotsG.innerHTML = "";
     for (const p of points) {
@@ -667,7 +690,6 @@ table.pivot th[scope="row"]{white-space:nowrap}
         <div class="acts">
           <a class="btn primary" href="${esc(agDocs(r.plan_id))}" target="_blank" rel="noopener">Open plan documents ↗</a>
           <button class="btn" type="button" data-open="${esc(r.plan_id)}">Details</button>
-          ${pageFor(r) ? `<a class="btn" href="${esc(pageFor(r))}">Building page</a>` : ""}
         </div>
       </div>`;
     return li;
@@ -748,7 +770,6 @@ table.pivot th[scope="row"]{white-space:nowrap}
             ${(() => { const main = docs.find((x) => x.pdf_url && x.kind === "offering_plan") || docs.find((x) => x.pdf_url); return main
               ? `<a class="btn primary" href="${esc(main.pdf_url)}" target="_blank" rel="noopener">Open offering plan (PDF) ↗</a>`
               : `<a class="btn primary" href="${esc(agDocs(p.plan_id))}" target="_blank" rel="noopener">Open plan documents ↗</a>`; })()}
-            ${pageFor(p) ? `<a class="btn" href="${esc(pageFor(p))}">Building page</a>` : ""}
             ${street(p) ? `<a class="btn" href="${esc(street(p))}" target="_blank" rel="noopener">Street View ↗</a>` : ""}
             <a class="btn" href="${esc(AG + encodeURIComponent(p.plan_id))}" target="_blank" rel="noopener">AG record ↗</a>
           </div>
@@ -1289,6 +1310,8 @@ table.pivot th[scope="row"]{white-space:nowrap}
       const [g] = await rest("site_assets?key=eq.boroughs_svg&select=value", null, 3600000);
       geo = JSON.parse(g.value); drawLand();
       fetch("neighborhoods.json").then((r) => r.ok ? r.json() : null).then((h) => h && drawHoods(h)).catch(() => {});
+      fetch("parks.json").then((r) => r.ok ? r.json() : null).then((p) => p && drawParks(p)).catch(() => {});
+      fetch("streets.json").then((r) => r.ok ? r.json() : null).then((s) => s && drawStreets(s)).catch(() => {});
       // The API returns at most 1,000 rows per call, so page through all of them.
       const all = [];
       for (let i = 0; ; i += 8) {
@@ -1524,17 +1547,15 @@ table.pivot th[scope="row"]{white-space:nowrap}
     .sort((a, b) => a.file_id - b.file_id || a.first_page - b.first_page);
   const pagesTxt = (a, b) => (a === b ? `p. ${a}` : `pp. ${a}–${b}`);
 
-  // One building found by address or plan ID: name, address, and three links. No page references.
+  // One building found by address or plan ID: name, address, and a link to its documents. No page references.
   async function renderAnswer(r, P) {
-    const box = $("answer"), page = pageFor(r), focus = KINDS.find((k) => k[0] === P.focus);
+    const box = $("answer"), page = pageFor(r);
     box.innerHTML = `<article class="ans">
       <p class="ans-kicker">Plan ${esc(r.plan_id)}</p>
       <h2>${page ? `<a href="${esc(page)}" class="plink" style="font:inherit">${esc(tc(r.name))}</a>` : esc(tc(r.name))}</h2>
       <p class="caddr">${esc(tc(r.address))}, ${esc(tc(r.borough))}${r.accepted_date ? ` · accepted ${esc(date(r.accepted_date))}` : ""} · ${r.units_residential ?? "?"} units</p>
       ${P.topic || P.amendments ? `<div id="ansextra"><p class="vnote">${P.topic ? "Finding passages…" : "Loading the amendments…"}</p></div>` : ""}
-      <div class="acts"><span id="ansdoc"></span>
-        ${page ? `<a class="btn" href="${esc(page)}${focus ? "#" + focus[2] : ""}">Building page</a>` : ""}
-        <a class="btn" href="${esc(agDocs(r.plan_id))}" target="_blank" rel="noopener">AG documents ↗</a></div>
+      <div class="acts"><a class="btn primary" id="ansdoc" href="${esc(agDocs(r.plan_id))}" target="_blank" rel="noopener">Open plan documents ↗</a></div>
     </article>`;
     if (P.topic || P.amendments) dossierExtra(r, P);
     if (!r.docs_indexed) return;
@@ -1542,7 +1563,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
       const docs = await rest(`documents?status=eq.done&plan_id=eq.${encodeURIComponent(r.plan_id)}&doc_kind=eq.offering_plan&pdf_url=not.is.null&select=pdf_url&limit=1`, null, 600000);
       const slot = $("ansdoc");
       if (slot && docs[0]) slot.outerHTML = `<a class="btn primary" href="${esc(docs[0].pdf_url)}" target="_blank" rel="noopener">Open offering plan ↗</a>`;
-    } catch (e) { /* no hosted PDF: the AG link covers it */ }
+    } catch (e) { /* no hosted PDF: the AG documents link stays */ }
   }
 
   // A dossier asked about something: the passages that mention it, or the amendments on file. Only what the documents say.

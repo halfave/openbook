@@ -24,6 +24,14 @@
   });
 })();
 
+// Every link opens in a new tab, including ones the page draws later. Jumps within the page, email and phone links stay put.
+document.addEventListener("click", (e) => {
+  const a = e.target.closest?.("a[href]");
+  if (!a || a.target || !/^https?:$/.test(a.protocol)) return;
+  if (a.hash && a.origin === location.origin && a.pathname === location.pathname && a.search === location.search) return;
+  a.target = "_blank"; a.rel = (a.rel + " noopener").trim();
+}, true);
+
 // Pinned header: the masthead stays at the top at one height.
 // --head-h holds that height, for anything pinned under it and for anchor offsets.
 (() => {

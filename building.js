@@ -97,25 +97,30 @@
     if (!units.length) return;
     const $ = (n) => n == null ? "—" : "$" + Math.round(n).toLocaleString("en-US");
     const sf = (n) => n == null ? "—" : Math.round(n).toLocaleString("en-US");
-    const bedLabel = (b) => b === 0 ? "Studio" : b == null ? "Not stated" : `${b} bedroom${b === 1 ? "" : "s"}`;
-    // Parking, storage and commercial rows: no bedroom count and a P1 / S-2 / G3 / C1-style unit number,
-    // or too small or cheap to be a home. They're listed after the homes and left out of the summary.
-    const isOther = (u) => u.beds == null && (/^(p(?!h)|s|g|c|r|com|retail|stor|park)[\s-]?\d/i.test(u.unit) || /^(retail|commercial|storage|parking|garage)/i.test(u.unit)
-      || (u.sqft != null && u.sqft < 400) || u.price < 200000 || (u.sqft == null && u.beds == null));
+    // Home types as buyers compare them: Studio, 1BD/1BA, 2BD/1BA, 2BD/2BA… (a studio with one bath is just "Studio").
+    const typeLabel = (b, ba) => b == null ? "Not stated"
+      : b === 0 ? (ba == null || ba <= 1 ? "Studio" : `Studio/${ba}BA`)
+      : ba == null ? `${b}BD (baths not stated)` : `${b}BD/${ba}BA`;
+    // Parking, storage and commercial rows: a retail / commercial / storage / parking name, no bedroom count and a
+    // P1 / S-2 / G3 / C1-style unit number, or too small or cheap to be a home. Listed after the homes, left out of the summary.
+    const isOther = (u) => /^(retail|commercial|storage|parking|garage)/i.test(u.unit)
+      || (u.beds == null && /^(p(?!h)|s|g|c|r|com|stor|park)[\s-]?\d/i.test(u.unit))
+      || (u.sqft != null && u.sqft < 400) || u.price < 200000 || (u.sqft == null && u.beds == null);
     const homes = units.filter((u) => !isOther(u));
     const other = units.filter(isOther);
     const psf = (u) => (u.sqft ? u.price / u.sqft : null);
 
-    // Summary by bedroom count.
+    // Summary by home type (bedrooms, then baths).
     const groups = new Map();
-    for (const u of homes) { const k = u.beds ?? -1; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(u); }
+    for (const u of homes) { const k = typeLabel(u.beds, u.baths); if (!groups.has(k)) groups.set(k, []); groups.get(k).push(u); }
+    const order = ([, a]) => [a[0].beds ?? 99, a[0].beds == null ? 0 : a[0].baths ?? 99];
     const range = (a) => { const lo = Math.min(...a), hi = Math.max(...a); return lo === hi ? lo : [lo, hi]; };
     const fmtRange = (v, f) => Array.isArray(v) ? `${f(v[0])}–${f(v[1])}` : f(v);
     const avg = (a) => a.length ? a.reduce((s, x) => s + x, 0) / a.length : null;
-    const summary = [...groups].sort((a, b) => (a[0] < 0) - (b[0] < 0) || a[0] - b[0]).map(([k, list]) => {
+    const summary = [...groups].sort((a, b) => { const x = order(a), y = order(b); return x[0] - y[0] || x[1] - y[1]; }).map(([k, list]) => {
       const sizes = list.map((u) => u.sqft).filter((x) => x != null);
       const per = list.map(psf).filter((x) => x != null);
-      return `<tr><th scope="row">${esc(bedLabel(k < 0 ? null : k))}</th><td class="n">${list.length}</td>` +
+      return `<tr><th scope="row">${esc(k)}</th><td class="n">${list.length}</td>` +
         `<td class="n">${sizes.length ? fmtRange(range(sizes), sf) + " sf" : "—"}</td>` +
         `<td class="n">${fmtRange(range(list.map((u) => u.price)), $)}</td><td class="n">${per.length ? $(avg(per)) : "—"}</td></tr>`;
     }).join("");

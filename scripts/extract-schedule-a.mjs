@@ -45,12 +45,16 @@ function parseRow(line, hdr, bare) {
   if (!um) return null;
   const unit = um[1].replace(/\s+/g, " ").trim();
   if (NOT_UNIT.test(unit) || !/\d|^ph|^[a-z]$/i.test(unit)) return null;
+  if (/^\d$/.test(unit) && l[um.index + um[0].length] === "/") return null; // "0/ two half baths": a bed/bath figure, not a unit
   if (/^\d+\.\d{2,}$/.test(unit)) return null; // a percentage or decimal, not a unit number
   // Numbers between the unit and the price: square feet, bedrooms, bathrooms (and sometimes outdoor space).
-  const mid = l.slice(um.index + um[0].length, Math.min(priceM.i, pm.index));
+  // Bracketed notes like "*Cellar [410.50 sf]" are dropped so their numbers aren't read as the unit's size.
+  // Half baths written "3-1/2" or "3½" become 3.5.
+  const mid = l.slice(um.index + um[0].length, Math.min(priceM.i, pm.index)).replace(/\[[^\]]*\]|\([^)]*\)/g, " ")
+    .replace(/(\d)\s*(?:-\s*1\/2|½)/g, "$1.5");
   const studio = /\bstudio\b|\bstu\b/i.test(mid);
-  // "2 & 2", "2/1.5", "1 BR / 1 BA": bedrooms and baths written as a pair.
-  const pair = mid.match(/(?:^|\s)(\d|studio)\s*(?:br|bed(?:room)?s?)?\s*(?:&|\/|and)\s*(\d(?:\.\d)?)\s*(?:ba(?:th)?s?)?(?=\s|$)/i);
+  // "2 & 2", "2/1.5", "3+3.5", "1 BR / 1 BA", "2 Bedrooms/2 Bathrooms", "1BD/1BA": bedrooms and baths written as a pair.
+  const pair = mid.match(/(?:^|\s)(\d|studio)\s*(?:br|bd|bed(?:room)?s?)?\s*(?:&|\/|\+|and)\s*(\d(?:\.\d)?)\s*(?:ba(?:th(?:room)?)?s?)?(?=[\s;,]|$)/i);
   const nums = [...(pair ? mid.replace(pair[0], " ") : mid).matchAll(/(?<![\w.])(\d{1,2}(?:,\d{3})+|\d+(?:\.\d)?)(?![\w%])/g)].map((m) => num(m[1]));
   const big = nums.filter((n) => n >= 150 && n <= 30000);
   const small = nums.filter((n) => n <= 9);
@@ -71,8 +75,17 @@ function parsePages(pages, bare) {
     const lines = pg.body.split(/\n/);
     const firstRow = lines.findIndex((x) => parseRow(x, { bed: false, bath: false }, bare));
     const hdr = headerInfo(lines.slice(0, Math.max(firstRow, 0) + 1).join(" "));
-    for (const line of lines) {
-      const r = parseRow(line, hdr, bare);
+    for (let k = 0; k < lines.length; k++) {
+      let r = parseRow(lines[k], hdr, bare);
+      // A row wrapped onto the next line: "1-A *Cellar [410.50 sf]" then "First Floor 1,296.84 … 13.91% $845,000".
+      // Joined only when this line is a stub (a unit number and more words, no percentage), the next line is not
+      // a row, a total or a note of its own, and the joined price is plausible for the size.
+      if (!r && k + 1 < lines.length && /^\s*\S+\s+\S/.test(lines[k]) && !PCT.test(lines[k])
+        && !/^\s*(sub)?totals?\b/i.test(lines[k + 1]) && !parseRow(lines[k + 1], hdr, bare)) {
+        const joined = lines[k] + " " + lines[k + 1];
+        const j = /not for sale|\bnotes?\b|×|\bx\s*\(/i.test(joined) ? null : parseRow(joined, hdr, bare);
+        if (j && (!j.sqft || (j.price / j.sqft >= 150 && j.price / j.sqft <= 6000))) { r = j; k++; }
+      }
       if (r && !units.has(r.unit.toUpperCase())) units.set(r.unit.toUpperCase(), { ...r, page: pg.page_no });
     }
   }
