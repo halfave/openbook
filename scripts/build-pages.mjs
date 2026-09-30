@@ -652,6 +652,8 @@ const listScript = `<script>
   const show = () => {
     const q = box ? box.value.trim().toLowerCase() : "";
     cards.forEach((c) => { c.hidden = q ? !c.dataset.name.includes(q) : !all && c.hasAttribute("data-more"); });
+    // A section whose only card doesn't match the search hides with it.
+    document.querySelectorAll(".aself").forEach((s) => { s.hidden = !!q && !s.querySelector("details.agent:not([hidden])"); });
     if (btn) { btn.parentNode.hidden = !!q; btn.textContent = all ? btn.dataset.top : btn.dataset.all; }
   };
   if (box) box.addEventListener("input", show);
@@ -704,12 +706,12 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
   <h2>Top ${TOP} Condo Property Managers</h2>
   <div class="agents-list">${groups.map((g, i) => card(g, i)).join("\n")}</div>
   ${moreButton(groups.length, "managers")}
-  ${selfPlans.length ? `<h2>Managed by the Sponsor</h2>
+  ${selfPlans.length ? `<section class="aself"><h2>Managed by the Sponsor</h2>
   <p>In these ${n(selfPlans.length)} plans no outside company is hired: the sponsor, a company tied to it, or the condo board manages the building, often at no fee for the first year.</p>
   <details class="agent" data-name="sponsor self-managed">
     <summary><span class="an">Sponsor or board managed</span><span class="ac">${plural(selfPlans.length, "building")}</span></summary>
     <ul class="dir">${selfPlans.map(selfRow).join("")}</ul>
-  </details>` : ""}
+  </details></section>` : ""}
   <p class="src">Named in the offering plan as filed; the board can change managers after the first year. The fee is the management line of the plan's Schedule B first-year budget divided by its residential units; a manager's figure is the median across its buildings with a readable budget. Plans whose pages aren't searchable yet, or that don't name a manager, aren't included.</p>
   ${cta(P)}
   </div>
