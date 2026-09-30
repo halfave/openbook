@@ -16,8 +16,8 @@ import { ROOT, SITE_NAME } from "./site.mjs";
 const PW = process.env.PLAYWRIGHT || join(ROOT, "..", "openbook-search-loop", ".loop", "tools");
 const { chromium } = createRequire(join(PW, "package.json"))("playwright");
 const LOGOS = JSON.parse(await readFile(join(ROOT, "data", "logos.json"), "utf8"));
-const DIR = { managers: "managing-agents", attorneys: "offering-plan-attorneys", architects: "architects", sellers: "selling-agents" };
-const ROLE = { managers: "Property manager", attorneys: "Sponsor's counsel", architects: "Architect", sellers: "Selling agent" };
+const DIR = { managers: "managing-agents", attorneys: "offering-plan-attorneys", architects: "architects", sellers: "selling-agents", taxers: "tax-consultants" };
+const ROLE = { managers: "Property manager", attorneys: "Sponsor's counsel", architects: "Architect", sellers: "Selling agent", taxers: "Tax consultant" };
 const MIME = { svg: "image/svg+xml", png: "image/png", webp: "image/webp", jpg: "image/jpeg", jpeg: "image/jpeg", gif: "image/gif", avif: "image/avif" };
 
 // The site mark, as in the favicon (see HEAD in site.mjs).
