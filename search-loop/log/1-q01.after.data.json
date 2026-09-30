@@ -1,0 +1,135 @@
+{
+  "question_id": "q01",
+  "question": "What is the average price per square foot for condos in Carroll Gardens, Brooklyn right now?",
+  "type": "pivot",
+  "extractor": "pivot",
+  "template": "metric",
+  "answer": "About $1,596 per square foot: the median sold price across all Carroll Gardens home sales in Q2 2026, the latest published quarter (18 sales, 12 of them condos). An exact condo-only figure isn't published: PropertyShark shows it only rounded to the thousand. No source publishes an average; this is a median.",
+  "figure": {
+    "value": 1596,
+    "prefix": "$",
+    "unit": "/sqft",
+    "basis": "median sold price, all home types",
+    "n": 18,
+    "source": "PropertyShark, Carroll Gardens market trends",
+    "url": "https://www.propertyshark.com/mason/market-trends/residential/nyc/brooklyn/carroll-gardens",
+    "as_of": "Q2 2026 (Apr–Jun), read 2026-09-29"
+  },
+  "pivot": "per square foot",
+  "scope": "Carroll Gardens, Brooklyn · closed sales · Q2 2026",
+  "cross_check": [
+    {
+      "value": "1K",
+      "prefix": "$",
+      "unit": "/sqft",
+      "basis": "median sold price, condos only",
+      "n": 12,
+      "source": "PropertyShark, Carroll Gardens market trends (condo row)",
+      "url": "https://www.propertyshark.com/mason/market-trends/residential/nyc/brooklyn/carroll-gardens",
+      "as_of": "Q2 2026 (Apr–Jun), read 2026-09-29",
+      "exact": false
+    },
+    {
+      "value": 1361,
+      "prefix": "$",
+      "unit": "/sqft",
+      "basis": "median asking price, active listings, all types",
+      "n": 33,
+      "source": "Milton Coste market report (REBNY RLS data)",
+      "url": "https://miltoncoste.com/blog/market-update/carroll-gardens/june-2026",
+      "as_of": "June 2026 report, read 2026-09-29"
+    }
+  ],
+  "breakdown_label": "Year over year, Q2 2026 vs Q2 2025",
+  "breakdown": [
+    {
+      "label": "All home types, median $/sqft",
+      "figure": {
+        "value": 38.1,
+        "prefix": "+",
+        "unit": "%",
+        "basis": "YoY",
+        "n": 18,
+        "source": "PropertyShark",
+        "url": "https://www.propertyshark.com/mason/market-trends/residential/nyc/brooklyn/carroll-gardens",
+        "as_of": "Q2 2026"
+      }
+    },
+    {
+      "label": "Condos only, median $/sqft",
+      "figure": {
+        "value": 35.6,
+        "prefix": "+",
+        "unit": "%",
+        "basis": "YoY",
+        "n": 12,
+        "source": "PropertyShark",
+        "url": "https://www.propertyshark.com/mason/market-trends/residential/nyc/brooklyn/carroll-gardens",
+        "as_of": "Q2 2026"
+      }
+    },
+    {
+      "label": "Condos only, median sale price",
+      "figure": {
+        "value": 1.8,
+        "prefix": "$",
+        "unit": "M",
+        "basis": "median sold price",
+        "n": 12,
+        "source": "PropertyShark",
+        "url": "https://www.propertyshark.com/mason/market-trends/residential/nyc/brooklyn/carroll-gardens",
+        "as_of": "Q2 2026"
+      }
+    }
+  ],
+  "conflicts": [
+    {
+      "label": "Condo-only median vs all-types median",
+      "figures": [
+        {
+          "value": "1K",
+          "prefix": "$",
+          "unit": "/sqft",
+          "basis": "condos",
+          "n": 12,
+          "source": "PropertyShark",
+          "url": "https://www.propertyshark.com/mason/market-trends/residential/nyc/brooklyn/carroll-gardens",
+          "as_of": "Q2 2026",
+          "exact": false
+        },
+        {
+          "value": 1596,
+          "prefix": "$",
+          "unit": "/sqft",
+          "basis": "all types",
+          "n": 18,
+          "source": "PropertyShark",
+          "url": "https://www.propertyshark.com/mason/market-trends/residential/nyc/brooklyn/carroll-gardens",
+          "as_of": "Q2 2026"
+        }
+      ],
+      "resolution": "The condo row is rounded on the page. Houses also show the same rounded figure, and a median across 18 sales can't sit above the medians of both groups that make up 16 of them, so the rounded condo figure is a display artifact, not an exact figure. The all-types median is the headline until an exact condo figure is published."
+    }
+  ],
+  "caveats": [
+    "Q2 is the latest quarter published as of 2026-09-29; 'right now' means that quarter.",
+    "Only 18 sales in the quarter, so the figure moves a lot quarter to quarter."
+  ],
+  "notes": [
+    "Redfin's Carroll Gardens housing-market page returned HTTP 403, so the second sold-price source wasn't reached. The only second source is asking prices (Milton Coste/REBNY RLS).",
+    "The search snippet for the Milton Coste June 2026 page said 26 listings at $1,488/sqft; the fetched page said 33 listings at $1,361/sqft. Used the fetched page (the snippet is probably from an earlier version).",
+    "The Brooklyn Bridge Parents article (2026-09-26) repeats PropertyShark's $1,596 and labels it condos, but its own text says the neighborhood figures cover all home sales. Not counted as an independent source.",
+    "The question asks for an average; every source publishes medians. The template has no field saying 'statistic asked vs statistic available'; it went in the answer text.",
+    "After judge 1: template change (mismatch line under the number, caveats moved up, rounded figures marked not exact). Data unchanged except the new asked/shown fields and exact:false flags.",
+    "Judge 2 is right that the conflict resolution is unsound: 2 of the 18 sales are in neither group, so a pooled median above both group medians is possible. The condo figure may be well below the all-types figure. Next time q01 comes up: rewrite the resolution, and try the asked-subset slot the judge suggested."
+  ],
+  "asked": {
+    "statistic": "average",
+    "scope": "condos only"
+  },
+  "shown": {
+    "statistic": "median",
+    "scope": "all home types"
+  },
+  "asked_unavailable": "No source publishes an average, and PropertyShark shows the condo-only median only rounded."
+}
