@@ -275,6 +275,49 @@ export function groupPros(facts, byId, field) {
   });
 }
 
+// ---------- developers ----------
+// The people behind each sponsor, read from the plan text into sponsor_principals ({plan_id, name, kind, role, file_id,
+// page_no, quote}), each with the page and the sentence that names them. Only people: an entity row ("Rise Above III LLC")
+// is a holding company, not a developer. Spellings vary ("Bruce A. Beal, Jr." / "Bruce Beal"), so the key drops
+// punctuation, middle initials and generational suffixes.
+const PERSON_STOP = new Set(["jr", "sr", "ii", "iii", "iv", "esq", "mr", "mrs", "ms", "dr"]);
+export const personKey = (v) => String(v).toLowerCase().replace(/\([^)]*\)/g, " ").replace(/[^a-z0-9' -]+/g, " ").replace(/'/g, "")
+  .split(/[\s-]+/).filter((w) => w.length > 1 && !PERSON_STOP.has(w)).join(" ");
+// A row counts only when it names a person (two words or more) and its quote has their surname, so a name the reader
+// got wrong or took from elsewhere isn't shown with a citation that doesn't support it.
+const citedPerson = (r) => {
+  if (r.kind !== "person" || !r.quote || /^\s*not stated\b/i.test(r.name)) return false;
+  const k = personKey(r.name).split(" ");
+  return k.length >= 2 && r.quote.toLowerCase().includes(k.at(-1));
+};
+
+// rows: sponsor_principals. Returns [{name, plans, slug, names, cites}], most plans first; cites is plan_id -> {file_id, page_no, quote, role}.
+export function groupDevelopers(rows, byId) {
+  const groups = new Map();
+  for (const r of rows) {
+    const p = byId.get(r.plan_id);
+    if (!p || !NYC(p) || !citedPerson(r)) continue;
+    const k = personKey(r.name);
+    if (!groups.has(k)) groups.set(k, { key: k, names: new Map(), plans: new Map(), cites: new Map() });
+    const g = groups.get(k), nm = r.name.trim();
+    g.names.set(nm, (g.names.get(nm) || 0) + 1);
+    g.plans.set(p.plan_id, p);
+    if (!g.cites.has(p.plan_id)) g.cites.set(p.plan_id, { file_id: r.file_id, page_no: r.page_no, quote: r.quote, role: r.role });
+  }
+  const slugs = new Set();
+  return [...groups.values()].map((g) => {
+    // The spelling filed most often, the fuller one on a tie ("Bruce A. Beal, Jr." over "Bruce Beal"), without a trailing comma.
+    const name = [...g.names].sort((a, b) => b[1] - a[1] || b[0].length - a[0].length)[0][0].replace(/[,\s]+$/, "");
+    const plansList = [...g.plans.values()].sort((a, b) => (b.accepted_date || "").localeCompare(a.accepted_date || "") || b.plan_id.localeCompare(a.plan_id));
+    return { name, plans: plansList, key: g.key, names: new Set(g.names.keys()), cites: g.cites };
+  }).sort((a, b) => b.plans.length - a.plans.length || a.name.localeCompare(b.name)).map(({ key, ...g }) => {
+    let s = slug(key) || key.replace(/ /g, "-");
+    if (slugs.has(s)) s = `${s}-${slugs.size}`;
+    slugs.add(s);
+    return { ...g, slug: s };
+  });
+}
+
 // plan_id -> {name as filed: slug}, only for groups with a profile. Only the spellings in each group, so a second firm
 // named in the same plan isn't linked to this one.
 const nameLinks = (groups) => {
@@ -291,8 +334,14 @@ const nameLinks = (groups) => {
 
 // For building pages: plan_id -> {name as filed: slug} for managers, architects and selling agents, and plan_id -> counsel slug,
 // only for firms with a profile.
-export function profileLinks(agents, firms, architects = [], sellers = [], taxers = []) {
+export function profileLinks(agents, firms, architects = [], sellers = [], taxers = [], developers = []) {
   const counsel = new Map();
   for (const f of firms) if (f.plans.length >= PROFILE_MIN) for (const p of f.plans) counsel.set(p.plan_id, f.slug);
-  return { managers: nameLinks(agents), counsel, architects: nameLinks(architects), sellers: nameLinks(sellers), taxers: nameLinks(taxers) };
+  // Developers: plan_id -> [{name, slug (null without a profile), cite}], every person named for the plan.
+  const devs = new Map();
+  for (const d of developers) for (const p of d.plans) {
+    if (!devs.has(p.plan_id)) devs.set(p.plan_id, []);
+    devs.get(p.plan_id).push({ name: d.name, slug: d.plans.length >= PROFILE_MIN ? d.slug : null, cite: d.cites.get(p.plan_id) });
+  }
+  return { managers: nameLinks(agents), counsel, architects: nameLinks(architects), sellers: nameLinks(sellers), taxers: nameLinks(taxers), developers: devs };
 }

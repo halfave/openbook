@@ -3,7 +3,8 @@
 //   - new-condo-filings.html, the 10 newest NYC plans accepted for filing
 //   - time-to-approval.html, common-charges.html and property-taxes.html, from the AG dates, the Schedule B budgets
 //     and the Schedule A tax columns
-//   - managing-agents/*.html, offering-plan-attorneys/*.html, architects/*.html, selling-agents/*.html and tax-consultants/*.html, a profile per firm
+//   - managing-agents/*.html, offering-plan-attorneys/*.html, architects/*.html, selling-agents/*.html and tax-consultants/*.html, a profile per firm,
+//     and developers/*.html, a profile per person named as a principal of a sponsor
 //   - the SEO block in the hand-written pages (index, about, faq, terms, privacy, disclaimers)
 //   - sitemap-pages.xml, sitemap.xml (an index of it and sitemap-buildings.xml) and robots.txt
 //   - the redirects in vercel.json, for profile URLs that went away (see "redirects" below)
@@ -17,7 +18,7 @@
 import { mkdir, writeFile, readFile, readdir, rm } from "node:fs/promises";
 import { join } from "node:path";
 import { SITE_URL, AG, ROOT, TODAY, all, esc, tc, fileFor, day, month, usDate, money, fmtMoney, plural, boro, SITE_NAME, ld, SEO, HEAD, FOOT, urlset, fitDesc, firstFit, OG_SITE } from "./site.mjs";
-import { PROFILE_MIN, isSelf, groupAgents, groupFirms, groupPros } from "./pros.mjs";
+import { PROFILE_MIN, isSelf, groupAgents, groupFirms, groupPros, groupDevelopers } from "./pros.mjs";
 
 // ---------- data ----------
 const plans = (await all("plans?select=plan_id,name,address,zip,borough,construction,submitted_date,accepted_date,units_residential,units_parking,units_commercial,units_storage,units_other,category,sponsor,law_firm,meta,fetched_at,lat,lng&order=plan_id"))
@@ -770,7 +771,19 @@ const SELLERS = groupPros(await all("facts?select=plan_id,value_text&field=eq.se
 // Who prepared each plan's first-year real estate tax estimate, read from the plan text by extract-tax-preparers.mjs.
 const TAX_PREP = JSON.parse(await readFile(join(ROOT, "data", "tax-preparers.json"), "utf8").catch(() => "{}"));
 const TAXERS = groupPros(Object.entries(TAX_PREP).map(([plan_id, t]) => ({ plan_id, value_text: t.name })), byId, "tax_preparer");
+// The people behind each sponsor, read from the plan text with the page and sentence naming them (sponsor_principals).
+const DEVELOPERS = groupDevelopers(await all("sponsor_principals?select=plan_id,name,kind,role,file_id,page_no,quote&order=id"), byId);
+const pdfById = new Map((await all("documents?select=file_id,pdf_url&pdf_url=not.is.null&order=file_id")).map((d) => [d.file_id, d.pdf_url]));
 const PRO_DIRS = {
+  developer: {
+    groups: DEVELOPERS, dir: "developers", crumb: "Developers", noun: "developers", find: "Find a developer",
+    title: "Top NYC Condo Developers by Building",
+    h1: "Top NYC Condo Developers",
+    listName: "Developers most often named as principals of the sponsor in NYC condominium offering plans",
+    description: (g, planCount) => withTop(`${n(g.length)} developers named as principals of the sponsor in ${n(planCount)} NYC condominium offering plans, with the buildings each one sponsored.`, g.slice(0, 3).map((x) => `${x.name} (${x.plans.length})`)),
+    note: (g, planCount) => `The people each New York City condominium offering plan names as principals of its sponsor, the company that develops and sells the building. ${n(g.length)} developers across ${n(planCount)} buildings. Ranked by the number of offering plans naming each person, not by size or quality.`,
+    src: "Read from the offering plan's text, where the plan names the sponsor's principals; each profile cites the page. Sponsors are usually a new company for each building, so developers are listed by the people named rather than a firm, and partners who file together each have their own entry. Different spellings of one name are counted together. Plans whose pages aren't searchable yet, or that don't name the sponsor's principals, aren't included.",
+  },
   architect: {
     groups: ARCHITECTS, dir: "architects", crumb: "Architects", noun: "architects", find: "Find an architect",
     title: "Top NYC Condo Architects by Building",
@@ -847,7 +860,7 @@ ${listScript}
 const SITES = JSON.parse(await readFile(join(ROOT, "data", "websites.json"), "utf8").catch(() => "{}"));
 // Firm logos (data/logos.json, from those websites) have share cards in img/og/<dir>/, made by build-og-images.mjs.
 const LOGOS = JSON.parse(await readFile(join(ROOT, "data", "logos.json"), "utf8").catch(() => "{}"));
-const LOGO_KIND = { manager: "managers", attorney: "attorneys", architect: "architects", seller: "sellers", taxer: "taxers" };
+const LOGO_KIND = { manager: "managers", attorney: "attorneys", architect: "architects", seller: "sellers", taxer: "taxers", developer: "developers" };
 const offerPrice = (p) => money(p.meta?.plan?.["Current Price"]) || money(p.meta?.plan?.["Initial Price"]);
 const sumUnits = (list) => list.reduce((s, p) => s + (p.units_residential || 0), 0);
 const yearSpan = (list) => { const ys = list.map((p) => p.accepted_date?.slice(0, 4)).filter(Boolean).sort(); return ys.length ? (ys[0] === ys.at(-1) ? ys[0] : `${ys[0]}–${ys.at(-1)}`) : ""; };
@@ -872,8 +885,11 @@ const ATT = byPrice(FIRMS, "offering-plan-attorneys", SITES.attorneys, (f) => tc
 const ARCH = byPrice(ARCHITECTS, "architects", SITES.architects);
 const SELL = byPrice(SELLERS, "selling-agents", SITES.sellers);
 const TAX = byPrice(TAXERS, "tax-consultants", SITES.taxers);
+const DEV = byPrice(DEVELOPERS, "developers", SITES.developers);
 // What differs between the four $/unit profile kinds.
 const ROLE = {
+  developer: { pool: DEV, list: "Developers", as: "a principal of the sponsor", on: "in", other: "developer", Other: "Developers", count: "building", type: "Person",
+    title: "NYC Condo Developer", short: "Condo Developer", source: "in the plan's text; each building below cites the page. The sponsor is the company that develops and sells the condominium." },
   attorney: { pool: ATT, list: "Offering plan attorneys", as: "sponsor's counsel", on: "on", other: "firm", Other: "Firms", count: "plan", type: "LegalService",
     title: "NYC Condo Sponsor's Counsel", short: "Sponsor's Counsel", source: "as recorded by the Attorney General. This may not reflect current representation." },
   architect: { pool: ARCH, list: "Architects", as: "the architect", on: "in", other: "architect", Other: "Architects", count: "building", type: "ProfessionalService",
@@ -924,7 +940,10 @@ function profilePage(x, kind) {
   const row = (p) => {
     const u = p.units_residential, pr = offerPrice(p), fee = mgmtFee.get(p.plan_id)?.perUnit;
     const last = mgr ? (fee != null ? perYear(fee) : dash) : (pr && u ? esc(fmtMoney(pr / u)) : dash);
-    return `<tr id="${esc(p.plan_id.toLowerCase())}"><td><a href="${P}buildings/${esc(fileFor(p))}">${esc(tc(p.name))}</a><span class="sub">${esc(tc(p.address))} · ${esc(boro(p.borough))}${KIND[p.construction] ? ` · ${KIND[p.construction]}` : ""}</span></td>` +
+    // Developers: the sponsor company, and the page naming this person with the sentence on hover.
+    const cite = x.cites?.get(p.plan_id), pdf = cite && pdfById.get(cite.file_id);
+    const named = cite ? `<span class="sub">${p.sponsor ? `Sponsor: ${esc(tc(p.sponsor))} · ` : ""}${pdf && cite.page_no ? `<a href="${esc(pdf)}#page=${cite.page_no}" rel="noopener" title="${esc(cite.quote)}">Named on p. ${cite.page_no} ↗</a>` : `<span title="${esc(cite.quote)}">Named in the plan</span>`}</span>` : "";
+    return `<tr id="${esc(p.plan_id.toLowerCase())}"><td><a href="${P}buildings/${esc(fileFor(p))}">${esc(tc(p.name))}</a><span class="sub">${esc(tc(p.address))} · ${esc(boro(p.borough))}${KIND[p.construction] ? ` · ${KIND[p.construction]}` : ""}</span>${named}</td>` +
       `<td class="nowrap">${p.accepted_date ? esc(p.accepted_date.slice(0, 4)) : dash}</td><td class="num">${u ?? dash}</td><td class="num">${last}</td></tr>`;
   };
   const pool = mgr ? MGR : r.pool;
@@ -933,7 +952,7 @@ function profilePage(x, kind) {
     const pv = mgr ? (y.fee != null ? `${perYear(y.fee)}/unit/yr` : "") : (y.perUnit != null ? `${fmtMoney(y.perUnit)}/unit` : "");
     return `<li><a href="${esc(y.slug)}.html">${esc(y.display)}</a><span>${plural(y.plans.length, mgr ? "building" : r.count)} · ${plural(y.units, "unit")}${pv ? ` · ${esc(pv)}` : ""}</span></li>`;
   };
-  const org = { "@type": mgr ? "Organization" : r.type, name: x.display, ...(x.site ? { url: x.site, sameAs: [x.site] } : {}), areaServed: "New York City" };
+  const org = { "@type": mgr ? "Organization" : r.type, name: x.display, ...(x.site ? { url: x.site, sameAs: [x.site] } : {}), ...(kind === "developer" ? {} : { areaServed: "New York City" }) };
 
   const logo = LOGOS[LOGO_KIND[kind]]?.[x.slug];
   const image = logo ? `${SITE_URL}/img/og/${x.dir}/${x.slug}.png` : OG_SITE;
@@ -969,7 +988,7 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
   <div class="tscroll"><table class="ftable"><thead><tr><th>Condominium</th><th>Accepted</th><th class="num">Units</th><th class="num">${mgr ? "Fee/unit/yr" : "$/unit"}</th></tr></thead><tbody>${x.plans.map(row).join("")}</tbody></table></div>
   <p class="src">${mgr
     ? "The fee is the management line of each plan's Schedule B first-year budget divided by its residential units; — means the budget hasn't been read or doesn't break it out. The median fee is across the buildings with a figure."
-    : "$/unit is the offering price on the AG record divided by the residential units; the median is across the plans with both."} Different spellings of one ${mgr ? "company" : r.other}'s name are counted together.</p>
+    : "$/unit is the offering price on the AG record divided by the residential units; the median is across the plans with both."} Different spellings of one ${mgr ? "company" : r.other}'s name are counted together.${kind === "developer" ? " Two people can share a name; the cited page shows who each plan names." : ""}</p>
   ${cta(P)}
   </div>
   ${sims.length ? `<aside class="sims" aria-label="Similar ${mgr ? "managers" : r.other + "s"}"><h2>Similar ${mgr ? "Managers" : r.Other}</h2>
@@ -1037,10 +1056,11 @@ await writeFile(join(ROOT, "common-charges.html"), commonChargesPage());
 await writeFile(join(ROOT, "property-taxes.html"), propertyTaxesPage());
 await writeFile(join(ROOT, "managing-agents.html"), agentsPage());
 await writeFile(join(ROOT, "offering-plan-attorneys.html"), attorneysPage());
+await writeFile(join(ROOT, "developers.html"), proDirPage("developer"));
 await writeFile(join(ROOT, "architects.html"), proDirPage("architect"));
 await writeFile(join(ROOT, "selling-agents.html"), proDirPage("seller"));
 await writeFile(join(ROOT, "tax-consultants.html"), proDirPage("taxer"));
-const PROFILE_DIRS = ["managing-agents", "offering-plan-attorneys", "architects", "selling-agents", "tax-consultants"];
+const PROFILE_DIRS = ["developers", "managing-agents", "offering-plan-attorneys", "architects", "selling-agents", "tax-consultants"];
 // The last build's profiles and the buildings each linked to, so a page that goes away (firms merged, or a new filing
 // changes the name shown) can redirect to the profile that has its buildings now.
 const oldProfiles = [];
@@ -1054,7 +1074,7 @@ for (const dir of PROFILE_DIRS) for (const f of (await readdir(join(ROOT, dir)).
 // vercel.json keeps a permanent redirect for every profile URL that ever went away: to the profile sharing the most of
 // its buildings, or to the directory when no profile has any. Older redirects follow their destination if it moved,
 // and are dropped once their URL is a page again. Redirects outside the profile directories are left as they are.
-const live = new Map([...MGR, ...ATT, ...ARCH, ...SELL, ...TAX].map((x) => [`/${x.dir}/${x.slug}.html`, x]));
+const live = new Map([...DEV, ...MGR, ...ATT, ...ARCH, ...SELL, ...TAX].map((x) => [`/${x.dir}/${x.slug}.html`, x]));
 const moved = new Map();
 for (const o of oldProfiles) {
   if (live.has(o.path)) continue;
@@ -1092,10 +1112,11 @@ for (const x of ATT) await writeFile(join(ROOT, "offering-plan-attorneys", x.slu
 for (const x of ARCH) await writeFile(join(ROOT, "architects", x.slug + ".html"), profilePage(x, "architect"));
 for (const x of SELL) await writeFile(join(ROOT, "selling-agents", x.slug + ".html"), profilePage(x, "seller"));
 for (const x of TAX) await writeFile(join(ROOT, "tax-consultants", x.slug + ".html"), profilePage(x, "taxer"));
+for (const x of DEV) await writeFile(join(ROOT, "developers", x.slug + ".html"), profilePage(x, "developer"));
 for (const [file, path] of Object.entries(STATIC)) await stampStatic(file, path);
 
-const pageUrls = [["", TODAY], ["about.html"], ["faq.html", TODAY], ["new-condo-filings.html", TODAY], ["time-to-approval.html", TODAY], ["common-charges.html", TODAY], ["property-taxes.html", TODAY], ["managing-agents.html", TODAY], ["offering-plan-attorneys.html", TODAY], ["architects.html", TODAY], ["selling-agents.html", TODAY], ["tax-consultants.html", TODAY], ["blog/", TODAY], ["terms.html"], ["privacy.html"], ["disclaimers.html"],
-  ...[...MGR, ...ATT, ...ARCH, ...SELL, ...TAX].map((x) => [`${x.dir}/${x.slug}.html`, TODAY]),
+const pageUrls = [["", TODAY], ["about.html"], ["faq.html", TODAY], ["new-condo-filings.html", TODAY], ["time-to-approval.html", TODAY], ["common-charges.html", TODAY], ["property-taxes.html", TODAY], ["developers.html", TODAY], ["managing-agents.html", TODAY], ["offering-plan-attorneys.html", TODAY], ["architects.html", TODAY], ["selling-agents.html", TODAY], ["tax-consultants.html", TODAY], ["blog/", TODAY], ["terms.html"], ["privacy.html"], ["disclaimers.html"],
+  ...[...DEV, ...MGR, ...ATT, ...ARCH, ...SELL, ...TAX].map((x) => [`${x.dir}/${x.slug}.html`, TODAY]),
   ...posts.map((q) => [`blog/${q.slug}.html`, q.updated || q.published])];
 await writeFile(join(ROOT, "sitemap-pages.xml"), urlset(pageUrls));
 await writeFile(join(ROOT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>
@@ -1105,4 +1126,4 @@ await writeFile(join(ROOT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"
 </sitemapindex>
 `);
 await writeFile(join(ROOT, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`);
-console.log(`${posts.length} posts, blog index, new-condo-filings.html, time-to-approval.html, common-charges.html, property-taxes.html, managing-agents.html, offering-plan-attorneys.html, architects.html, selling-agents.html, tax-consultants.html, ${MGR.length} manager, ${ATT.length} attorney, ${ARCH.length} architect, ${SELL.length} selling agent and ${TAX.length} tax consultant profiles, ${Object.keys(STATIC).length} stamped pages, sitemap-pages.xml with ${pageUrls.length} URLs`);
+console.log(`${posts.length} posts, blog index, new-condo-filings.html, time-to-approval.html, common-charges.html, property-taxes.html, developers.html, managing-agents.html, offering-plan-attorneys.html, architects.html, selling-agents.html, tax-consultants.html, ${DEV.length} developer, ${MGR.length} manager, ${ATT.length} attorney, ${ARCH.length} architect, ${SELL.length} selling agent and ${TAX.length} tax consultant profiles, ${Object.keys(STATIC).length} stamped pages, sitemap-pages.xml with ${pageUrls.length} URLs`);
