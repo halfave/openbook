@@ -1,0 +1,234 @@
+{
+ "plan_id": "CD190274",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 5,
+   "failed": [
+    "ag",
+    "printed",
+    "pct100",
+    "sqftTotal",
+    "monthlyTotals",
+    "allRowsParsed",
+    "outdoor"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 3,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4908,
+   "output_tokens": 1189,
+   "seconds": 16,
+   "cost_usd": 0.026762
+  },
+  {
+   "model": "sonnet",
+   "tokens": 8354,
+   "output_tokens": 918,
+   "seconds": 82,
+   "cost_usd": 0.0247952
+  },
+  {
+   "model": "sonnet",
+   "tokens": 13993,
+   "output_tokens": 856,
+   "seconds": 12,
+   "cost_usd": 0.0368142
+  }
+ ],
+ "tokens": 27255,
+ "api_equiv_usd": 0.088,
+ "located_pages": [
+  29
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "hold",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": false,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": false,
+  "monthlyTotals": false,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": false
+ },
+ "price_total": 2595000,
+ "step": "sonnet-text",
+ "budget_period": "January 1, 2021 - December 31, 2021",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approximate Habitable Area (SF) (1)",
+  "Approximate Unhabitable Area (SF) (1)",
+  "Approximate Outdoor Area (SF) (1)",
+  "No. of Bedrooms/Bathrooms (1)",
+  "Offering Price (2)",
+  "Percent Common Interest (3)",
+  "Projected Monthly Common Charges (4)",
+  "Projected Real Estate Taxes Post Construction (Annual) (5)",
+  "Projected Real Estate Taxes Post Construction (Monthly) (5)",
+  "Projected Monthly Carrying Charges (6)"
+ ],
+ "tax2": null,
+ "sf2": "uninhabitable sf",
+ "printed_totals": {
+  "price": 4163000,
+  "pct": 100,
+  "cc_m": 2209.5,
+  "tax_m": 51392.6,
+  "int_sf": 4400,
+  "ext_sf": 536
+ },
+ "problems": [
+  "row with 17 cells dropped: U\t1F\tR\tBasement/1st Floor\t-\t-\t2\t869000.00\t19.94%\t-\t440.61\t10248.48\t854.04\t-\t-\t12",
+  "row with 19 cells dropped: U\t1R\tR\tCellar/Basement\t-\t0\t1\t400\t36\t699000.00\t18.16%\t-\t401.14\t9330.40\t777.53\t-\t-",
+  "Row for 1F: beds/bathrooms column printed \"0/2\" but habitable area shows \"975\" and an extra \"0\" before it that doesn't clearly map to rooms/floor count — unclear which field the stray \"0\" belongs to, so rooms left blank.",
+  "Row for 1R: printed figures \"575 400 4 36\" are ambiguous between habitable/unhabitable/outdoor columns; interpreted as habitable=575, unhabitable=400, outdoor=4(?)/36(?) — used unhabitable=400 (per Note A) and outdoor=36, dropped the \"4\" as unclear.",
+  "Row for 2R: printed \"575 19.8 4 99 .8\" is garbled; interpreted outdoor area as 499.8 but this is uncertain (Note B says Unit 2R has 480 SF Yard, which conflicts with the printed \"499.8\" outdoor figure in the table).",
+  "Total row \"no. of Bedrooms/Bathrooms\" total \"1,052\" and area total \"4,400 536\" could not be fully reconciled to per-unit values due to OCR spacing issues; transcribed as printed where legible.",
+  "tax_m vs tax2_m: only one real estate tax scenario (Post Construction) is printed; no second tax scenario found, so TAX2 left empty and tax2_m set to -."
+ ],
+ "units": [
+  {
+   "unit": "2R",
+   "type": "residential",
+   "floor": "1st Floor",
+   "rooms": null,
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 575,
+   "sf2": 19.8,
+   "ext_sf": 499.8,
+   "price": 499000,
+   "pct": 13.97,
+   "pct2": null,
+   "cc_m": 308.63,
+   "cc_a": 7178.75,
+   "tax_m": 598.23,
+   "tax_a": null,
+   "tax2_m": null,
+   "carry_m": 906.86,
+   "page": 29,
+   "note": null
+  },
+  {
+   "unit": "3F",
+   "type": "residential",
+   "floor": "2nd Floor",
+   "rooms": null,
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 563,
+   "sf2": null,
+   "ext_sf": 19.5,
+   "price": 499000,
+   "pct": 11.77,
+   "pct2": null,
+   "cc_m": 260.06,
+   "cc_a": 6049.06,
+   "tax_m": 504.09,
+   "tax_a": null,
+   "tax2_m": null,
+   "carry_m": 764.15,
+   "page": 29,
+   "note": null
+  },
+  {
+   "unit": "3R",
+   "type": "residential",
+   "floor": "2nd Floor",
+   "rooms": null,
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 575,
+   "sf2": null,
+   "ext_sf": 20.93,
+   "price": 549000,
+   "pct": 12.49,
+   "pct2": null,
+   "cc_m": 276.05,
+   "cc_a": 6420.96,
+   "tax_m": 535.08,
+   "tax_a": null,
+   "tax2_m": null,
+   "carry_m": 811.13,
+   "page": 29,
+   "note": null
+  },
+  {
+   "unit": "4F",
+   "type": "residential",
+   "floor": "3rd Floor",
+   "rooms": null,
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 562,
+   "sf2": null,
+   "ext_sf": 19.5,
+   "price": 499000,
+   "pct": 11.47,
+   "pct2": null,
+   "cc_m": 253.47,
+   "cc_a": 5895.6,
+   "tax_m": 491.3,
+   "tax_a": null,
+   "tax2_m": null,
+   "carry_m": 744.77,
+   "page": 29,
+   "note": null
+  },
+  {
+   "unit": "4R",
+   "type": "residential",
+   "floor": "3rd Floor",
+   "rooms": null,
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 575,
+   "sf2": null,
+   "ext_sf": 55.87,
+   "price": 549000,
+   "pct": 12.2,
+   "pct2": null,
+   "cc_m": 269.54,
+   "cc_a": 6269.35,
+   "tax_m": 522.45,
+   "tax_a": null,
+   "tax2_m": null,
+   "carry_m": 791.98,
+   "page": 29,
+   "note": null
+  }
+ ]
+}

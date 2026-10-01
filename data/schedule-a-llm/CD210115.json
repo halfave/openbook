@@ -1,0 +1,147 @@
+{
+ "plan_id": "CD210115",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 1,
+   "failed": [
+    "ag",
+    "printed",
+    "pct100",
+    "sqftTotal",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "hold",
+   "units": 8,
+   "failed": [
+    "ag",
+    "printed",
+    "pct100",
+    "monthlyTotals"
+   ]
+  }
+ ],
+ "calls": 3,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 5163,
+   "output_tokens": 996,
+   "seconds": 16,
+   "cost_usd": 0.026624000000000002
+  },
+  {
+   "model": "sonnet",
+   "tokens": 5065,
+   "output_tokens": 895,
+   "seconds": 11,
+   "cost_usd": 0.025626
+  },
+  {
+   "model": "sonnet",
+   "tokens": 15547,
+   "output_tokens": 1518,
+   "seconds": 19,
+   "cost_usd": 0.0453074
+  }
+ ],
+ "tokens": 25775,
+ "api_equiv_usd": 0.098,
+ "located_pages": [
+  34
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "hold",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": false,
+  "ccProportional": null,
+  "carrying": null,
+  "sqftTotal": false,
+  "monthlyTotals": false,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": true
+ },
+ "price_total": 0,
+ "step": "sonnet-text",
+ "budget_period": "July 1, 2022 - June 30, 2023",
+ "columns_printed": [
+  "Unit",
+  "CF Sq. Ftg.",
+  "Other Sq. Ftg.",
+  "Rooms/Bths",
+  "% of Common Interest",
+  "Offering Price",
+  "With ICAP Tax Ben. Monthly Common Charges",
+  "With ICAP Tax Ben. Monthly Real Estate Taxes",
+  "Without ICAP Tax Ben. Monthly Common Charges",
+  "Without ICAP Tax Ben. Monthly Real Estate Taxes",
+  "Monthly Carrying Charges",
+  "Annual RE Taxes With ICAP Tax Benefits",
+  "Annual RE Taxes Without ICAP Tax Benefits"
+ ],
+ "tax2": "without ICAP Tax Ben.",
+ "sf2": "Other Sq. Ftg.",
+ "printed_totals": {
+  "price": 6400000,
+  "pct": 100,
+  "cc_m": 5099.5,
+  "tax_m": 1016.5,
+  "int_sf": 12145,
+  "ext_sf": null
+ },
+ "problems": [
+  "row with 19 cells dropped: U\t1\tC\t-\t-\t1\t2\t2199\t938\t-\t1000000\t19.32\t-\t985.13\t-\t196.37\t-\t1181.49\t34\t-",
+  "row with 19 cells dropped: U\t2\tC\t-\t-\t1\t1\t1439\t48\t-\t800000\t11.52\t-\t587.39\t-\t117.09\t-\t704.48\t34\t-",
+  "row with 19 cells dropped: U\t3\tC\t-\t-\t1\t1\t1439\t48\t-\t800000\t11.52\t-\t587.39\t-\t117.09\t-\t704.48\t34\t-",
+  "row with 19 cells dropped: U\t4\tC\t-\t-\t1\t1\t1439\t48\t-\t800000\t11.52\t-\t587.39\t-\t117.09\t-\t704.48\t34\t-",
+  "row with 19 cells dropped: U\t5\tC\t-\t-\t1\t1\t1439\t48\t-\t800000\t11.52\t-\t587.39\t-\t117.09\t-\t704.48\t34\t-",
+  "row with 19 cells dropped: U\t6\tC\t-\t-\t1\t1\t1335\t630\t-\t800000\t11.85\t-\t604.19\t-\t120.44\t-\t724.63\t34\t-",
+  "row with 19 cells dropped: U\t7\tC\t-\t-\t1\t1\t906\t48\t-\t600000\t7.28\t-\t371.24\t-\t74.00\t-\t445.24\t34\t-",
+  "Rooms/Bths column printed as \"1/2\" or \"1/1\" format is ambiguous (could be rooms/baths rather than bedrooms/baths); not mapped to beds/baths fields since unclear which is bedrooms vs bathrooms. carry_m not clearly printed as a single carrying-charge column distinct from tax figures; left blank (-). ext_sf not printed; Other Sq. Ftg. placed in sf2 per notes (balconies/terraces), not ext_sf, since multiple descriptions apply per note 1."
+ ],
+ "units": [
+  {
+   "unit": "C",
+   "type": "commercial",
+   "floor": null,
+   "rooms": null,
+   "beds": null,
+   "baths": 1,
+   "int_sf": 2,
+   "sf2": 1949,
+   "ext_sf": 938,
+   "price": null,
+   "pct": 800000,
+   "pct2": 15.47,
+   "cc_m": null,
+   "cc_a": 788.99,
+   "tax_m": null,
+   "tax_a": 157.27,
+   "tax2_m": null,
+   "carry_m": 946.26,
+   "page": 34,
+   "note": null
+  }
+ ]
+}

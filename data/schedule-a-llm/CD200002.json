@@ -1,0 +1,242 @@
+{
+ "plan_id": "CD200002",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 6,
+   "failed": [
+    "carrying",
+    "monthlyTotals"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "hold",
+   "units": 6,
+   "failed": [
+    "carrying",
+    "monthlyTotals"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 3,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 8339,
+   "output_tokens": 821,
+   "seconds": 87,
+   "cost_usd": 0.0239974
+  },
+  {
+   "model": "sonnet",
+   "tokens": 4614,
+   "output_tokens": 853,
+   "seconds": 10,
+   "cost_usd": 0.02357
+  },
+  {
+   "model": "sonnet",
+   "tokens": 22212,
+   "output_tokens": 960,
+   "seconds": 87,
+   "cost_usd": 0.039629000000000004
+  }
+ ],
+ "tokens": 35165,
+ "api_equiv_usd": 0.087,
+ "located_pages": [
+  32
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "hold",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": false,
+  "sqftTotal": true,
+  "monthlyTotals": false,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 4150000,
+ "step": "sonnet-text",
+ "budget_period": "July 1, 2021 -June 30, 2022",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approx. Floor Area Square Footage",
+  "*Approx. Limited Common Area Square Footage",
+  "No. of Bedooms/Bathrooms",
+  "Offering Price",
+  "Percent Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Real Estate Taxes (Monthly)",
+  "Projected Real Estate Taxes (Annual)",
+  "Projected Carrying Charges (Monthly)"
+ ],
+ "tax2": null,
+ "sf2": "limited common area",
+ "printed_totals": {
+  "price": 4150000,
+  "pct": 100,
+  "cc_m": 1929.25,
+  "tax_m": 6753.27,
+  "int_sf": 5278,
+  "ext_sf": 1719
+ },
+ "problems": [
+  "Unit 1 and Unit 4 each list two Limited Common Area figures (e.g., 167 (LW) and 900 (RY); 40 (B) and 385 (T)); both are shown combined in the sf2 cell since no single ext_sf figure applies. The carry_m (Projected Carrying Charges Monthly) column appears blank/not legible for units 2A, 2B, 3A, 3B in the source text as printed (only Unit 1 and Unit 4 show values); recorded as - for those rows."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": "Cellar/First Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 1856,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 1300000,
+   "pct": 32.57,
+   "pct2": null,
+   "cc_m": 628.36,
+   "cc_a": 2199.54,
+   "tax_m": 26394.52,
+   "tax_a": null,
+   "tax2_m": null,
+   "carry_m": 8682.52,
+   "page": 32,
+   "note": null
+  },
+  {
+   "unit": "2A",
+   "type": "residential",
+   "floor": "Second Floor",
+   "rooms": null,
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 615,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 465000,
+   "pct": 11.18,
+   "pct2": null,
+   "cc_m": 215.69,
+   "cc_a": 755.02,
+   "tax_m": 9060.2,
+   "tax_a": null,
+   "tax2_m": null,
+   "carry_m": null,
+   "page": 32,
+   "note": null
+  },
+  {
+   "unit": "2B",
+   "type": "residential",
+   "floor": "Second Floor",
+   "rooms": null,
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 638,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 500000,
+   "pct": 11.81,
+   "pct2": null,
+   "cc_m": 227.84,
+   "cc_a": 797.56,
+   "tax_m": 9570.75,
+   "tax_a": null,
+   "tax2_m": null,
+   "carry_m": null,
+   "page": 32,
+   "note": null
+  },
+  {
+   "unit": "3A",
+   "type": "residential",
+   "floor": "Third Floor",
+   "rooms": null,
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 613,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 500000,
+   "pct": 11.66,
+   "pct2": null,
+   "cc_m": 224.95,
+   "cc_a": 787.43,
+   "tax_m": 9449.19,
+   "tax_a": null,
+   "tax2_m": null,
+   "carry_m": null,
+   "page": 32,
+   "note": null
+  },
+  {
+   "unit": "3B",
+   "type": "residential",
+   "floor": "Third Floor",
+   "rooms": null,
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 636,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 535000,
+   "pct": 12.43,
+   "pct2": null,
+   "cc_m": 239.81,
+   "cc_a": 839.43,
+   "tax_m": 10073.19,
+   "tax_a": null,
+   "tax2_m": null,
+   "carry_m": null,
+   "page": 32,
+   "note": null
+  },
+  {
+   "unit": "4",
+   "type": "residential",
+   "floor": "Fourth Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 920,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 850000,
+   "pct": 20.35,
+   "pct2": null,
+   "cc_m": 392.6,
+   "cc_a": 1374.29,
+   "tax_m": 16491.51,
+   "tax_a": null,
+   "tax2_m": null,
+   "carry_m": 1766.89,
+   "page": 32,
+   "note": null
+  }
+ ]
+}

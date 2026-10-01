@@ -1,0 +1,111 @@
+{
+ "plan_id": "CD210117",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 4,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12621,
+   "output_tokens": 605,
+   "seconds": 8,
+   "cost_usd": 0.02466
+  },
+  {
+   "model": "haiku",
+   "tokens": 4941,
+   "output_tokens": 97,
+   "seconds": 3,
+   "cost_usd": 0.005329
+  },
+  {
+   "model": "haiku",
+   "tokens": 8726,
+   "output_tokens": 570,
+   "seconds": 7,
+   "cost_usd": 0.016773000000000003
+  },
+  {
+   "model": "sonnet",
+   "tokens": 11989,
+   "output_tokens": 1360,
+   "seconds": 86,
+   "cost_usd": 0.0257232
+  }
+ ],
+ "tokens": 38277,
+ "api_equiv_usd": 0.072,
+ "located_pages": [],
+ "text_layer": true,
+ "found": false,
+ "verdict": "not_found",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": null,
+  "ccProportional": null,
+  "carrying": null,
+  "sqftTotal": null,
+  "monthlyTotals": false,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": true
+ },
+ "price_total": 0,
+ "step": "sonnet-images",
+ "budget_period": "July 1, 2022 - June 30, 2023",
+ "columns_printed": [
+  "Unit No.",
+  "Bdrs/Bths",
+  "Approx. Size of Units in sq. ft. [habitable]",
+  "Approx. Size of Units in sq. ft. [uninhabitable]",
+  "Rear Yard",
+  "Area Way",
+  "Storage Space",
+  "Balcony",
+  "Terrace",
+  "Offering Prices",
+  "% of Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Monthly Real Estate Taxes",
+  "Projected Annual Real Estate Taxes",
+  "Projected Monthly Carrying Charges",
+  "Projected Annual Carrying Charges"
+ ],
+ "tax2": "-",
+ "sf2": "uninhabitable",
+ "printed_totals": {
+  "price": 5169000,
+  "pct": 100,
+  "cc_m": 2791.25,
+  "tax_m": 4262.75,
+  "int_sf": 4418,
+  "ext_sf": null
+ },
+ "problems": [
+  "row with 19 cells dropped: U\t1A\tR\t-\t-\t2\t2.5\t1147.00\t652.00\t-\t1325000.00\t25.63\t-\t715.40\t1092.54\t13110.51\t-\t1",
+  "row with 19 cells dropped: U\t2A\tR\t-\t-\t1\t1\t573.00\t0.00\t-\t625000.00\t12.09\t-\t337.46\t515.37\t6184.40\t-\t852.83\t39",
+  "row with 19 cells dropped: U\t2B\tR\t-\t-\t1\t1\t545.00\t0.00\t-\t675000.00\t13.06\t-\t364.54\t556.72\t6680.58\t-\t921.25\t39",
+  "row with 19 cells dropped: U\t3A\tR\t-\t-\t1\t1\t571.00\t0.00\t-\t625000.00\t12.09\t-\t337.46\t515.37\t6184.40\t-\t852.83\t39",
+  "row with 19 cells dropped: U\t3B\tR\t-\t-\t1\t1\t545.00\t0.00\t-\t679000.00\t13.14\t-\t366.77\t560.13\t6721.50\t-\t926.90\t39",
+  "row with 19 cells dropped: U\t4A\tR\t-\t-\t0\t1\t492.00\t0.00\t-\t555000.00\t10.74\t-\t299.78\t457.82\t5493.83\t-\t757.60\t39",
+  "row with 19 cells dropped: U\t4B\tR\t-\t-\t1\t1\t545.00\t0.00\t-\t685000.00\t13.25\t-\t369.84\t564.81\t6777.77\t-\t934.66\t39",
+  "Bdrs/Bths column printed as combined code (e.g. \"2/2.5\", \"1/1\", \"0/1\"); interpreted as beds/baths per rules (0/1 = 0 beds, 1 bath).",
+  "Table has no residential/commercial Type column; all units assumed Type R based on context (dwelling units with bedrooms/baths).",
+  "ext_sf not populated in standard column because multiple separate outdoor area figures (rear yard, area way, balcony, terrace) are printed per unit; listed in note instead.",
+  "No pct2, cc_a-only annual carrying charges column exists but no \"cc_a\" field in required schema was requested (carry_a also printed but not in required columns); annual common charges ($21,695.28 etc.) and annual carrying charges not transcribed as no matching field was defined."
+ ],
+ "units": []
+}

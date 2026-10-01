@@ -1,0 +1,101 @@
+{
+ "plan_id": "CD210333",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 4,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12586,
+   "output_tokens": 573,
+   "seconds": 8,
+   "cost_usd": 0.024495000000000003
+  },
+  {
+   "model": "haiku",
+   "tokens": 4959,
+   "output_tokens": 106,
+   "seconds": 4,
+   "cost_usd": 0.005383
+  },
+  {
+   "model": "haiku",
+   "tokens": 8764,
+   "output_tokens": 609,
+   "seconds": 8,
+   "cost_usd": 0.016967
+  },
+  {
+   "model": "sonnet",
+   "tokens": 11357,
+   "output_tokens": 726,
+   "seconds": 10,
+   "cost_usd": 0.0302516
+  }
+ ],
+ "tokens": 37666,
+ "api_equiv_usd": 0.077,
+ "located_pages": [],
+ "text_layer": true,
+ "found": false,
+ "verdict": "not_found",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": null,
+  "ccProportional": null,
+  "carrying": null,
+  "sqftTotal": null,
+  "monthlyTotals": false,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": true
+ },
+ "price_total": 0,
+ "step": "sonnet-images",
+ "budget_period": "July 1, 2022 - June 30, 2023",
+ "columns_printed": [
+  "Unit No.",
+  "Bdrs/Bths",
+  "Approx. Size of Units in sq. ft. [habitable]",
+  "Approx. Size of Units in sq. ft. [uninhabitable]",
+  "Approx. Size of Limited Common Elements in sq. ft. [uninhabitable]: Rear Yard",
+  "Roof Deck",
+  "Offering Prices",
+  "% of Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Monthly Real Estate Taxes**",
+  "Projected Annual Real Estate Taxes**",
+  "Projected Monthly Carrying Charges",
+  "Projected Annual Carrying Charges"
+ ],
+ "tax2": null,
+ "sf2": "uninhabitable",
+ "printed_totals": {
+  "price": 5590000,
+  "pct": 100,
+  "cc_m": 2134.33,
+  "tax_m": 909.75,
+  "int_sf": 3501,
+  "ext_sf": null
+ },
+ "problems": [
+  "row with 19 cells dropped: U\tTH1\tR\t-\t-\t2\t2.5\t1153\t664\t-\t2325000.00\t41.43\t-\t884.25\t376.91\t4522.91\t-\t1261.16\t",
+  "row with 19 cells dropped: U\tFL2\tR\t-\t-\t3\t2\t1174\t-\t-\t1440000.00\t25.24\t-\t538.71\t229.62\t2755.45\t-\t768.33\t38\t-",
+  "row with 19 cells dropped: U\tPH\tR\t-\t-\t3\t2\t1174\t-\t831\t1825000.00\t33.33\t-\t711.37\t303.22\t3638.64\t-\t1014.59\t38\t",
+  "Unit FL2 has \"Rear Yard\" and \"Roof Deck\" both listed as \"None\" (no ext_sf value); unit TH1 has Rear Yard 664.00 sq ft treated as ext_sf since only one outdoor figure is printed (Roof Deck is None); unit PH has Roof Deck 831.00 sq ft treated as ext_sf (Rear Yard is None). The \"uninhabitable\" size column (sq2) for FL2 is printed as 0.00, mapped to - per blank/not-applicable convention."
+ ],
+ "units": []
+}

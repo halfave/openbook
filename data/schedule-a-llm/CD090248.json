@@ -1,0 +1,198 @@
+{
+ "plan_id": "CD090248",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "hold",
+   "units": 4,
+   "failed": [
+    "carrying"
+   ]
+  }
+ ],
+ "calls": 5,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12624,
+   "output_tokens": 554,
+   "seconds": 10,
+   "cost_usd": 0.024476
+  },
+  {
+   "model": "haiku",
+   "tokens": 5013,
+   "output_tokens": 97,
+   "seconds": 7,
+   "cost_usd": 0.0054009999999999996
+  },
+  {
+   "model": "haiku",
+   "tokens": 5009,
+   "output_tokens": 97,
+   "seconds": 3,
+   "cost_usd": 0.005397000000000001
+  },
+  {
+   "model": "haiku",
+   "tokens": 8758,
+   "output_tokens": 554,
+   "seconds": 8,
+   "cost_usd": 0.016757
+  },
+  {
+   "model": "sonnet",
+   "tokens": 12062,
+   "output_tokens": 1291,
+   "seconds": 16,
+   "cost_usd": 0.036283
+  }
+ ],
+ "tokens": 43466,
+ "api_equiv_usd": 0.088,
+ "located_pages": [],
+ "text_layer": true,
+ "found": true,
+ "verdict": "hold",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": false,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 2207000,
+ "step": "sonnet-images",
+ "budget_period": "January 1, 2010 through December 31, 2010",
+ "columns_printed": [
+  "Unit",
+  "Beds\\Baths",
+  "Indoor Space (SF)",
+  "Storage Space (SF)",
+  "Outdoor Space (SF)",
+  "Total Space (SF)",
+  "Offering Price (3)",
+  "Percent Common Interest (100%) (2)",
+  "Estimated Common Charges (4) Annual",
+  "Estimated Common Charges (4) Monthly",
+  "Estimated Real Estate Charges w/o 421-a Benefits (5) Annual",
+  "Estimated Real Estate Charges w/o 421-a Benefits (5) Monthly",
+  "Total Carrying Charges w/o 421-a Benefits (4) + (5) Annual",
+  "Total Carrying Charges w/o 421-a Benefits (4) + (5) Monthly",
+  "Estimated Real Estate Charges w/ 421-a Benefits (6) Annual",
+  "Estimated Real Estate Charges w/ 421-a Benefits (6) Monthly",
+  "Total Carrying Charges w/ 421-a benefits (4) + (6) Annual",
+  "Total Carrying Charges w/ 421-a benefits (4) + (6) Monthly"
+ ],
+ "tax2": "with 421-a benefits",
+ "sf2": "storage sf",
+ "printed_totals": {
+  "price": 2207000,
+  "pct": 100,
+  "cc_m": 1411.08,
+  "tax_m": 30983,
+  "int_sf": 5950,
+  "ext_sf": 2411
+ },
+ "problems": [
+  "Row A's Offering Price is printed as \"N/A\"; price cell set to \"-\" per rules. Beds\\Baths column prints as e.g. \"4\\5\", \"3\\2\" — ambiguous whether second number is baths or a code; could not clearly parse as beds/baths so left beds/baths cells blank and put raw values in rooms-adjacent columns is not possible either — treated first number as beds and second as baths per literal format \"X\\Y\" but this is uncertain for unit A (\"4\\5\" = 4 beds/5 baths seems unusual).",
+  "Totals row text is partially obscured by shading/pattern; transcribed values read as Indoor 5950, Storage 288, Outdoor 2411, Total 8649, Offering Price 2207000, Percent 100, Common Charges Annual 6933.00(?)/Monthly 1411.08(?), Real Estate w/o 421-a Annual 30983.00, Monthly 2681.92(?), Total w/o 421-a Annual 47916.00(?)/Monthly 3983.00(?), Real Estate w/421-a Annual 570.00(?)/Monthly 47.50(?), Total w/421-a 17503.00(?)/1458.58(?) — numbers partly illegible due to shading; reported best-read figures only for standard TOTAL columns requested.",
+  "tax2_m (with 421-a monthly) column not explicitly labeled TAX2 in COLS header name mapping but assumed = \"Estimated Real Estate Charges w/ 421-a Benefits (6) Monthly\"."
+ ],
+ "units": [
+  {
+   "unit": "A",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 4,
+   "baths": 5,
+   "int_sf": 3044,
+   "sf2": 288,
+   "ext_sf": 1408,
+   "price": null,
+   "pct": 46.5,
+   "pct2": null,
+   "cc_m": 656.15,
+   "cc_a": 1200.59,
+   "tax_m": 14407.1,
+   "tax_a": 22.09,
+   "tax2_m": 265.05,
+   "carry_m": 678.24,
+   "page": 27,
+   "note": null
+  },
+  {
+   "unit": "B",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1282,
+   "sf2": 0,
+   "ext_sf": 65,
+   "price": 929000,
+   "pct": 22.5,
+   "pct2": null,
+   "cc_m": 317.49,
+   "cc_a": 580.93,
+   "tax_m": 6971.18,
+   "tax_a": 10.69,
+   "tax2_m": 128.25,
+   "carry_m": 328.18,
+   "page": 27,
+   "note": null
+  },
+  {
+   "unit": "C",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1030,
+   "sf2": 0,
+   "ext_sf": 661,
+   "price": 829000,
+   "pct": 20.5,
+   "pct2": null,
+   "cc_m": 289.27,
+   "cc_a": 529.29,
+   "tax_m": 6351.52,
+   "tax_a": 9.74,
+   "tax2_m": 116.85,
+   "carry_m": 299.01,
+   "page": 27,
+   "note": null
+  },
+  {
+   "unit": "D",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 594,
+   "sf2": 0,
+   "ext_sf": 277,
+   "price": 449000,
+   "pct": 10.5,
+   "pct2": null,
+   "cc_m": 148.16,
+   "cc_a": 271.1,
+   "tax_m": 3253.22,
+   "tax_a": 4.99,
+   "tax2_m": 59.85,
+   "carry_m": 153.15,
+   "page": 27,
+   "note": null
+  }
+ ]
+}

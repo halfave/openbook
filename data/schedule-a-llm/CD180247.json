@@ -1,0 +1,147 @@
+{
+ "plan_id": "CD180247",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "hold",
+   "units": 1,
+   "failed": [
+    "ag",
+    "printed",
+    "pct100",
+    "sqftTotal",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 6,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12602,
+   "output_tokens": 574,
+   "seconds": 9,
+   "cost_usd": 0.024495
+  },
+  {
+   "model": "haiku",
+   "tokens": 5009,
+   "output_tokens": 97,
+   "seconds": 24,
+   "cost_usd": 0.005397000000000001
+  },
+  {
+   "model": "haiku",
+   "tokens": 4991,
+   "output_tokens": 97,
+   "seconds": 3,
+   "cost_usd": 0.005379
+  },
+  {
+   "model": "haiku",
+   "tokens": 5019,
+   "output_tokens": 97,
+   "seconds": 3,
+   "cost_usd": 0.005407
+  },
+  {
+   "model": "haiku",
+   "tokens": 8806,
+   "output_tokens": 577,
+   "seconds": 5,
+   "cost_usd": 0.016921
+  },
+  {
+   "model": "sonnet",
+   "tokens": 21889,
+   "output_tokens": 1467,
+   "seconds": 16,
+   "cost_usd": 0.0508334
+  }
+ ],
+ "tokens": 58316,
+ "api_equiv_usd": 0.108,
+ "located_pages": [],
+ "text_layer": false,
+ "found": true,
+ "verdict": "hold",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": false,
+  "ccProportional": null,
+  "carrying": true,
+  "sqftTotal": false,
+  "monthlyTotals": false,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": true
+ },
+ "price_total": 825000,
+ "step": "sonnet-images",
+ "budget_period": "January 1, 2020 - December 31, 2020",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approx. Floor Area",
+  "Uninhabitable Floor Area",
+  "No. of Bedrooms / Bathrooms",
+  "Offering Price",
+  "Percent Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Real Estate Taxes (Monthly)",
+  "Projected Real Estate Taxes (Annual)",
+  "Projected Monthly Carrying Charges",
+  "Projected Annual Carrying Charges"
+ ],
+ "tax2": null,
+ "sf2": "uninhabitable floor area",
+ "printed_totals": {
+  "price": 6350000,
+  "pct": 100,
+  "cc_m": 3097.66,
+  "tax_m": 1494.46,
+  "int_sf": 6321,
+  "ext_sf": null
+ },
+ "problems": [
+  "row with 21 cells dropped: U\t1B\tR\tCellar/Basement\t-\t-\t1\t1.5\t768\t661\t-\t890000.00\t17.29\t-\t535.68\t-\t258.44\t310",
+  "row with 21 cells dropped: U\t2A\tR\t1st Floor\t-\t-\t1\t1\t519\t-\t-\t550000.00\t7.45\t-\t230.71\t-\t111.31\t1335.69\t-\t342.",
+  "row with 21 cells dropped: U\t2B\tR\t1st Floor\t-\t-\t1\t1\t791\t38\t-\t775000.00\t11.22\t-\t347.40\t-\t167.60\t2011.24\t-\t51",
+  "row with 21 cells dropped: U\t3A\tR\t2nd Floor\t-\t-\t2\t1\t590\t-\t-\t670000.00\t8.82\t-\t273.18\t-\t131.80\t1581.56\t-\t404.",
+  "row with 21 cells dropped: U\t3B\tR\t2nd Floor\t-\t-\t1\t1\t772\t-\t-\t775000.00\t10.81\t-\t334.76\t-\t161.51\t1938.07\t-\t496",
+  "row with 21 cells dropped: U\t4A\tR\t3rd Floor/Penthouse\t-\t-\t2\t2\t926\t-\t-\t1020000.00\t14.93\t-\t462.39\t-\t223.08\t26",
+  "row with 21 cells dropped: U\t4B\tR\t3rd Floor\t-\t-\t1\t1\t847\t-\t-\t755000.00\t11.10\t-\t343.81\t-\t165.87\t1990.44\t-\t509",
+  "row with 21 cells dropped: U\tP1\tP\tBasement\t-\t-\t-\t-\t153\t-\t-\t45000.00\t1.77\t-\t54.86\t-\t26.47\t317.60\t-\t81.33\t32\t",
+  "row with 21 cells dropped: U\tP2\tP\tBasement\t-\t-\t-\t-\t166\t-\t-\t45000.00\t1.75\t-\t54.12\t-\t26.17\t314.06\t-\t80.29\t32\t",
+  "Unit 2B \"Percent Common Interest\" (11.22%) and \"Real Estate Taxes (Monthly)\" (167.60) are printed in bold, differing in style from other rows but values are clear.",
+  "Uninhabitable Floor Area column contains codes with multiple figures per unit (e.g., 1A: \"c. 442 w. 27 y. 260\"); only the first (\"c.\" cellar) figure was used for sf2; the remaining w./y./b./st./t./sy. figures (window well, yard, balcony, stairs, terrace, storage yard) are not transcribed per instructions since they are not ext_sf single figures and int_sf/sf2 don't have a slot for them.",
+  "No. of Bedrooms/Bathrooms column uses single numbers or \"x/y\" format (e.g., \"11.5\" for 1A likely means 1 bed/1.5 bath, \"1/1.5\" for 1B); beds/baths left as parsed literally from printed digits per format, but some single-digit entries (e.g., 2A \"1/1\", 3A \"2/1\") may represent Bedrooms/Bathrooms as printed."
+ ],
+ "units": [
+  {
+   "unit": "1A",
+   "type": "residential",
+   "floor": "Cellar/Basement",
+   "rooms": null,
+   "beds": null,
+   "baths": 11.5,
+   "int_sf": 789,
+   "sf2": 442,
+   "ext_sf": null,
+   "price": 825000,
+   "pct": 14.86,
+   "pct2": null,
+   "cc_m": 454.71,
+   "cc_a": null,
+   "tax_m": 222.23,
+   "tax_a": 2666.71,
+   "tax2_m": null,
+   "carry_m": 676.94,
+   "page": 32,
+   "note": null
+  }
+ ]
+}

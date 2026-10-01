@@ -1,0 +1,237 @@
+{
+ "plan_id": "CD230231",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 6,
+   "failed": [
+    "monthlyTotals"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "hold",
+   "units": 6,
+   "failed": [
+    "carrying"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "publish_ag",
+   "units": 6,
+   "failed": []
+  }
+ ],
+ "calls": 3,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 3918,
+   "output_tokens": 699,
+   "seconds": 8,
+   "cost_usd": 0.019861999999999998
+  },
+  {
+   "model": "sonnet",
+   "tokens": 3935,
+   "output_tokens": 717,
+   "seconds": 8,
+   "cost_usd": 0.020038
+  },
+  {
+   "model": "sonnet",
+   "tokens": 12940,
+   "output_tokens": 815,
+   "seconds": 19,
+   "cost_usd": 0.034279
+  }
+ ],
+ "tokens": 20793,
+ "api_equiv_usd": 0.074,
+ "located_pages": [
+  31
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": null,
+  "monthlyTotals": true,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 5310000,
+ "step": "sonnet-images",
+ "budget_period": "July 1, 2024 – June 30, 2025",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approximate Habitable Area (SF)",
+  "Approximate Unhabitable Area (SF)",
+  "Approximate Outdoor Area (SF)",
+  "No. of Bedrooms/Bathrooms",
+  "Offering Price",
+  "Percent Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Real Estate Taxes (Annual)",
+  "Projected Real Estate Taxes (Monthly)",
+  "Projected Monthly Carrying Charges"
+ ],
+ "tax2": null,
+ "sf2": "unhabitable sf",
+ "printed_totals": {
+  "price": 5310000,
+  "pct": 100,
+  "cc_m": 2156.25,
+  "tax_m": 2078.08,
+  "int_sf": 4687,
+  "ext_sf": 1548
+ },
+ "problems": [
+  "Unit 1's int_sf cell appears to have been misread as price in my first pass; corrected: int_sf=821, price=875000.00. Beds/Baths given only as combined \"X/Y\" codes (interpreted as beds/baths per instructions). Parking units P1/P2 have no bedroom/bathroom data (N/A, left blank).",
+  "unit sizes left out: the area columns did not add up to the printed totals"
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": "1st Floor",
+   "rooms": null,
+   "beds": null,
+   "baths": 1,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 875000,
+   "pct": 14.26,
+   "pct2": null,
+   "cc_m": 307.48,
+   "cc_a": 3556.02,
+   "tax_m": 296.33,
+   "tax_a": null,
+   "tax2_m": null,
+   "carry_m": 603.82,
+   "page": 31,
+   "note": null
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "2nd Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 1295000,
+   "pct": 23.44,
+   "pct2": null,
+   "cc_m": 505.43,
+   "cc_a": 5845.23,
+   "tax_m": 487.1,
+   "tax_a": null,
+   "tax2_m": null,
+   "carry_m": 992.53,
+   "page": 31,
+   "note": null
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": "3rd Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 1365000,
+   "pct": 24.27,
+   "pct2": null,
+   "cc_m": 523.32,
+   "cc_a": 6052.21,
+   "tax_m": 504.35,
+   "tax_a": null,
+   "tax2_m": null,
+   "carry_m": 1027.67,
+   "page": 31,
+   "note": null
+  },
+  {
+   "unit": "4",
+   "type": "residential",
+   "floor": "4th Floor/Penthouse",
+   "rooms": null,
+   "beds": 3,
+   "baths": 3,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 1675000,
+   "pct": 34.35,
+   "pct2": null,
+   "cc_m": 740.67,
+   "cc_a": 8565.86,
+   "tax_m": 713.82,
+   "tax_a": null,
+   "tax2_m": null,
+   "carry_m": 1454.49,
+   "page": 31,
+   "note": null
+  },
+  {
+   "unit": "P1",
+   "type": "parking",
+   "floor": "Outdoor",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 50000,
+   "pct": 2.1,
+   "pct2": null,
+   "cc_m": 45.28,
+   "cc_a": 523.68,
+   "tax_m": 43.64,
+   "tax_a": null,
+   "tax2_m": null,
+   "carry_m": 88.92,
+   "page": 31,
+   "note": null
+  },
+  {
+   "unit": "P2",
+   "type": "parking",
+   "floor": "Outdoor",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 50000,
+   "pct": 1.58,
+   "pct2": null,
+   "cc_m": 34.07,
+   "cc_a": 394,
+   "tax_m": 32.83,
+   "tax_a": null,
+   "tax2_m": null,
+   "carry_m": 66.9,
+   "page": 31,
+   "note": null
+  }
+ ]
+}

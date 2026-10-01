@@ -1,0 +1,111 @@
+{
+ "plan_id": "CD180124",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 5,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12548,
+   "output_tokens": 554,
+   "seconds": 7,
+   "cost_usd": 0.024362
+  },
+  {
+   "model": "haiku",
+   "tokens": 4939,
+   "output_tokens": 97,
+   "seconds": 6,
+   "cost_usd": 0.005327
+  },
+  {
+   "model": "haiku",
+   "tokens": 4955,
+   "output_tokens": 106,
+   "seconds": 5,
+   "cost_usd": 0.005379
+  },
+  {
+   "model": "haiku",
+   "tokens": 8728,
+   "output_tokens": 572,
+   "seconds": 9,
+   "cost_usd": 0.016784
+  },
+  {
+   "model": "sonnet",
+   "tokens": 12137,
+   "output_tokens": 1512,
+   "seconds": 75,
+   "cost_usd": 0.038098999999999994
+  }
+ ],
+ "tokens": 43307,
+ "api_equiv_usd": 0.09,
+ "located_pages": [],
+ "text_layer": true,
+ "found": false,
+ "verdict": "not_found",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": null,
+  "ccProportional": null,
+  "carrying": null,
+  "sqftTotal": null,
+  "monthlyTotals": false,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": true
+ },
+ "price_total": 0,
+ "step": "sonnet-images",
+ "budget_period": "11/1/2018",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Use",
+  "Approx. Habitable Area (SF)",
+  "Approx. Uninhabitable Area (SF)",
+  "Approx. Outdoor Area (SF)",
+  "Approx. Parking Area (SF)",
+  "No. of Bedrooms/Baths",
+  "Offering Price",
+  "Percent Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Annual Common Charges",
+  "Projected Real Estate Taxes (Monthly)",
+  "Projected Real Estate Taxes (Annual)",
+  "Projected Monthly Carrying Charges",
+  "Projected Annual Carrying Charges"
+ ],
+ "tax2": null,
+ "sf2": "uninhabitable",
+ "printed_totals": {
+  "price": 2565000,
+  "pct": 100,
+  "cc_m": 1324.61,
+  "tax_m": 1399.79,
+  "int_sf": 4296,
+  "ext_sf": 1075
+ },
+ "problems": [
+  "row with 21 cells dropped: U\t1\tR\tCellar/1st Floor\t-\t-\t1\t2.5\t1308\t1725\t652\t1100000.00\t39.06\t-\t525.69\t6308.25",
+  "row with 21 cells dropped: U\t2\tR\t2nd Floor\t-\t-\t1\t2.5\t1453\t0\t259\t715000.00\t30.27\t-\t340.06\t4080.66\t423.59\t508",
+  "row with 21 cells dropped: U\t3\tR\t3rd Floor\t-\t-\t2\t1.5\t1535\t1536\t164\t750000.00\t30.70\t-\t458.87\t5506.40\t429.61\t",
+  "Table has an additional \"Approx. Parking Area (SF)\" column (144, 0, 0; total 144) not in the specified schema; placed in note field for each unit. Carrying charges annual column (e.g. 12,867.38) also not in schema; omitted. Table rotated 90° in source image."
+ ],
+ "units": []
+}

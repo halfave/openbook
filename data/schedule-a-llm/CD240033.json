@@ -1,0 +1,99 @@
+{
+ "plan_id": "CD240033",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 2,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4514,
+   "output_tokens": 792,
+   "seconds": 9,
+   "cost_usd": 0.022804
+  },
+  {
+   "model": "sonnet",
+   "tokens": 14160,
+   "output_tokens": 1023,
+   "seconds": 14,
+   "cost_usd": 0.038484199999999996
+  }
+ ],
+ "tokens": 18674,
+ "api_equiv_usd": 0.061,
+ "located_pages": [
+  34
+ ],
+ "text_layer": true,
+ "found": false,
+ "verdict": "not_found",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": null,
+  "ccProportional": null,
+  "carrying": null,
+  "sqftTotal": null,
+  "monthlyTotals": false,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": true
+ },
+ "price_total": 0,
+ "step": "sonnet-text",
+ "budget_period": "January 1, 2025- December 31, 2025",
+ "columns_printed": [
+  "Unit No.",
+  "Floor Location",
+  "Approx. Floor Area",
+  "Approx. Common/Outdoor/Uninhabitable/Limited Common Area",
+  "No. of Bedooms/Bathrooms",
+  "Offering Price",
+  "Percent Common Interest",
+  "Monthly Common Charges",
+  "Projected Real Estate Taxes (Monthly)",
+  "Projected Real Estate Taxes (Annual)",
+  "Projected Carrying Charges (Monthly)"
+ ],
+ "tax2": null,
+ "sf2": "common/outdoor/uninhabitable/limited common area",
+ "printed_totals": {
+  "price": 8250000,
+  "pct": 100,
+  "cc_m": 3625,
+  "tax_m": 5151.01,
+  "int_sf": 5314,
+  "ext_sf": 2354
+ },
+ "problems": [
+  "row with 21 cells dropped: U\t1\tR\tCellar*/First Floor\t-\t-\t1\t1.5\t728\t139 (AW); 81 (S); 617 (RY)\t-\t1750000\t22.",
+  "row with 21 cells dropped: U\t2\tR\tSecond Floor\t-\t-\t3\t2\t1124\t179 (T); 42 (S); 72 (E)\t-\t2000000\t22.41\t-\t812.36",
+  "row with 21 cells dropped: U\t3\tR\tThird Floor\t-\t-\t3\t2\t1124\t62 (B); 42 (S); 72 (E)\t-\t2000000\t22.13\t-\t802.21\t-",
+  "row with 21 cells dropped: U\t4\tR\tFourth Floor/Fifth Floor\t-\t-\t3\t2\t1544\t62 (B); 1130 (T); 42 (S); 72 (E)\t-\t2",
+  "Unit 1 and Unit 4 each have interior area split across two floors printed as two figures (728/740 for Unit 1; blank/1544 for Unit 4, labeled \"Fourth Floor\" with no number and \"Fifth Floor 1544\"); I used the single printed interior figure(s) per instructions (740 not clearly separable from 728 for Unit 1 — table shows \"728*\" then \"740\" with no floor labels distinguishing which is cellar vs first floor, so I used 728 as int_sf per convention of cellar being marked with * going to sf2, but note the pairing is inferred from layout, not explicit labels)."
+ ],
+ "units": []
+}

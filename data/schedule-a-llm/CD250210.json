@@ -1,0 +1,123 @@
+{
+ "plan_id": "CD250210",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "publish_printed",
+   "units": 2,
+   "failed": [
+    "ag"
+   ]
+  }
+ ],
+ "calls": 1,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 3863,
+   "output_tokens": 660,
+   "seconds": 10,
+   "cost_usd": 0.019407999999999998
+  }
+ ],
+ "tokens": 3863,
+ "api_equiv_usd": 0.019,
+ "located_pages": [
+  46
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_printed",
+ "checks": {
+  "ag": false,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": null,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 12000000,
+ "step": "sonnet-text",
+ "budget_period": "APRIL 1, 2026 - MARCH 31, 2027",
+ "columns_printed": [
+  "Unit",
+  "Approximate Square Footage",
+  "Approximate Limited Common Element Square Footage*",
+  "BR",
+  "Bath",
+  "Offering Price",
+  "Percentage of Common Interest",
+  "Estimated Monthly Common Charges",
+  "Estimated Monthly Common Charges Annually",
+  "Estimated Real Estate Taxes Monthly",
+  "Estimated Real Estate Taxes Annually",
+  "Total of Estimated Common Charges and Real Estate Taxes Monthly",
+  "Total of Estimated Common Charges and Real Estate Taxes Annually"
+ ],
+ "tax2": null,
+ "sf2": "limited common element sf",
+ "printed_totals": {
+  "price": 12000000,
+  "pct": 100,
+  "cc_m": 3331.04,
+  "tax_m": 4260.75,
+  "int_sf": 5638,
+  "ext_sf": 918
+ },
+ "problems": [
+  "Unit 1's limited common element sf is a combined total (108 storage + 564 yard = 672); individual components listed in source but ext_sf left blank per rules since these are storage/yard, not a single terrace/balcony figure.",
+  "\"Bath\" column shows values like \"2/2\" and \"3/1\" which appear to be BR/Bath codes already split from a BR column also showing \"2\" and \"3\" — unclear if \"2/2\" means 2 bed/2 bath or something else; used BR column value for beds and left baths empty, placing raw code in note was considered but BR seems reliable so beds filled, baths left as given value only in rooms-less context — actually baths unclear, see note.",
+  "Could not clearly determine separate monthly/annual tax2 column; only one tax scenario appears printed."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": null,
+   "int_sf": 2772,
+   "sf2": 672,
+   "ext_sf": null,
+   "price": 5800000,
+   "pct": 50.1065,
+   "pct2": null,
+   "cc_m": 1669.07,
+   "cc_a": 20028.84,
+   "tax_m": 2134.91,
+   "tax_a": 25618.96,
+   "tax2_m": null,
+   "carry_m": 3803.98,
+   "page": 46,
+   "note": null
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": null,
+   "int_sf": 2866,
+   "sf2": 246,
+   "ext_sf": null,
+   "price": 6200000,
+   "pct": 49.8935,
+   "pct2": null,
+   "cc_m": 1661.97,
+   "cc_a": 19943.68,
+   "tax_m": 2125.84,
+   "tax_a": 25510.04,
+   "tax2_m": null,
+   "carry_m": 3787.81,
+   "page": 46,
+   "note": null
+  }
+ ]
+}

@@ -1,0 +1,165 @@
+{
+ "plan_id": "CD190338",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "hold",
+   "units": 3,
+   "failed": [
+    "carrying",
+    "monthlyTotals"
+   ]
+  }
+ ],
+ "calls": 4,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12626,
+   "output_tokens": 606,
+   "seconds": 8,
+   "cost_usd": 0.024671
+  },
+  {
+   "model": "haiku",
+   "tokens": 4967,
+   "output_tokens": 110,
+   "seconds": 3,
+   "cost_usd": 0.005407
+  },
+  {
+   "model": "haiku",
+   "tokens": 8722,
+   "output_tokens": 569,
+   "seconds": 6,
+   "cost_usd": 0.016763
+  },
+  {
+   "model": "sonnet",
+   "tokens": 11438,
+   "output_tokens": 809,
+   "seconds": 10,
+   "cost_usd": 0.0310774
+  }
+ ],
+ "tokens": 37753,
+ "api_equiv_usd": 0.078,
+ "located_pages": [],
+ "text_layer": true,
+ "found": true,
+ "verdict": "hold",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": false,
+  "sqftTotal": true,
+  "monthlyTotals": false,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 7300000,
+ "step": "sonnet-images",
+ "budget_period": "January 1, 2021 - December 31, 2021",
+ "columns_printed": [
+  "Unit No.",
+  "Bdrs/Bths",
+  "Approx. Size of Units in sq. ft. [habitable]",
+  "Approx. Size of Units in sq. ft. [uninhabitable]",
+  "Rear Yard",
+  "Storage Space",
+  "Balcony",
+  "Balcony",
+  "Offering Prices",
+  "% of Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Monthly Real Estate Taxes",
+  "Projected Annual Real Estate Taxes **",
+  "Projected Monthly Carrying Charges",
+  "Projected Annual Carrying Charges"
+ ],
+ "tax2": null,
+ "sf2": "uninhabitable sq. ft. (includes rear yard/storage/balcony)",
+ "printed_totals": {
+  "price": 7300000,
+  "pct": 100,
+  "cc_m": 1772.5,
+  "tax_m": 1718.92,
+  "int_sf": 3620,
+  "ext_sf": null
+ },
+ "problems": [
+  "Table has a single \"uninhabitable\" sq ft column plus separate Rear Yard/Storage Space/Balcony/Balcony limited common element columns per unit; these additional figures (rear yard, storage, two balcony values) are listed in each unit's note since they don't fit the fixed ext_sf/sf2 slots. Unit 1's uninhabitable sq ft cell is blank in the printed table (only Rear Yard 753.00 shown); placed 753 in sf2 per instructions but note it may represent rear yard rather than a generic uninhabitable total."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 974,
+   "sf2": 753,
+   "ext_sf": null,
+   "price": 2500000,
+   "pct": 34.24,
+   "pct2": null,
+   "cc_m": 606.9,
+   "cc_a": 588.56,
+   "tax_m": 7062.68,
+   "tax_a": null,
+   "tax2_m": 1195.46,
+   "carry_m": 14345.53,
+   "page": 37,
+   "note": "storage None, balcony None"
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1064,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 1800000,
+   "pct": 24.66,
+   "pct2": null,
+   "cc_m": 437.1,
+   "cc_a": 423.88,
+   "tax_m": 5086.62,
+   "tax_a": null,
+   "tax2_m": 860.98,
+   "carry_m": 10331.8,
+   "page": 37,
+   "note": "uninhabitable 0.00, rear yard None, storage 46.00, balcony 140.00"
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 2.5,
+   "int_sf": 1582,
+   "sf2": 59,
+   "ext_sf": null,
+   "price": 3000000,
+   "pct": 41.1,
+   "pct2": null,
+   "cc_m": 728.5,
+   "cc_a": 706.47,
+   "tax_m": 8477.7,
+   "tax_a": null,
+   "tax2_m": 1434.97,
+   "carry_m": 17219.67,
+   "page": 37,
+   "note": "rear yard None, storage 55.00, balcony 277.00, balcony 52.00"
+  }
+ ]
+}

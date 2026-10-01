@@ -1,0 +1,105 @@
+{
+ "plan_id": "CD190276",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 4,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12594,
+   "output_tokens": 574,
+   "seconds": 10,
+   "cost_usd": 0.024510999999999998
+  },
+  {
+   "model": "haiku",
+   "tokens": 4939,
+   "output_tokens": 97,
+   "seconds": 4,
+   "cost_usd": 0.005327
+  },
+  {
+   "model": "haiku",
+   "tokens": 8722,
+   "output_tokens": 570,
+   "seconds": 7,
+   "cost_usd": 0.016767
+  },
+  {
+   "model": "sonnet",
+   "tokens": 11871,
+   "output_tokens": 1246,
+   "seconds": 16,
+   "cost_usd": 0.035439
+  }
+ ],
+ "tokens": 38126,
+ "api_equiv_usd": 0.082,
+ "located_pages": [],
+ "text_layer": false,
+ "found": false,
+ "verdict": "not_found",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": null,
+  "ccProportional": null,
+  "carrying": null,
+  "sqftTotal": null,
+  "monthlyTotals": false,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": true
+ },
+ "price_total": 0,
+ "step": "sonnet-images",
+ "budget_period": "January 1, 2021 - December 31, 2021",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approx. Floor Area (1)",
+  "Uninhabitable Floor Area (1)",
+  "No. of Bedrooms / Bathrooms",
+  "Offering Price (2)",
+  "Percent Common Interest (3)",
+  "Projected Monthly Common Charges (4)",
+  "Projected Real Estate Taxes (Monthly) (5)",
+  "Projected Real Estate Taxes (Annual) (5)",
+  "Post-Completion Projected Real Estate Taxes (Monthly) (5)",
+  "Post-Completion Projected Real Estate Taxes (Annual) (5)",
+  "Projected Monthly Carrying Charges (6)"
+ ],
+ "tax2": "-",
+ "sf2": "uninhabitable floor area",
+ "printed_totals": {
+  "price": 3500000,
+  "pct": 100,
+  "cc_m": 2918.75,
+  "tax_m": 33804.91,
+  "int_sf": 3347,
+  "ext_sf": null
+ },
+ "problems": [
+  "row with 21 cells dropped: U\t1\tR\t1st Floor\t-\t2/1\t-\t-\t884\t50/691\t-\t1000000.00\t34.80\t-\t854.20\t11764.11\t1517.2",
+  "row with 21 cells dropped: U\t2F\tR\t2nd Floor\t-\t1/1\t-\t-\t487\t-\t-\t550000.00\t13.79\t-\t402.35\t4343.93\t714.68\t8576.",
+  "row with 21 cells dropped: U\t2R\tR\t2nd Floor\t-\t1/1\t-\t-\t525\t-\t-\t550000.00\t14.25\t-\t415.86\t4475.77\t738.68\t8864.",
+  "row with 21 cells dropped: U\t3F\tR\t3rd Floor\t-\t11\t-\t-\t487\t-\t-\t550000.00\t13.79\t-\t402.35\t4343.93\t714.68\t8576.1",
+  "row with 21 cells dropped: U\t3R\tR\t3rd Flr. / 4th Flr.\t-\t2/2\t-\t-\t964\t111/476\t-\t850000.00\t28.92\t-\t843.99\t8877",
+  "Unit 3F \"No. of Bedrooms/Bathrooms\" column prints \"11\" with no slash, unclear code — kept as printed in note and left beds/baths blank per instructions, but beds/baths cells left empty rather than filled with \"-\" since code is unclear (see note column \"11\").",
+  "Table has two tax scenarios (Projected Real Estate Taxes Monthly/Annual, and Post-Completion Projected Real Estate Taxes Monthly/Annual); carrying charge appears closer to Post-Completion figures, so Post-Completion Monthly/Annual used as tax_m/tax_a and Monthly Taxes (pre-Post-Completion) used as tax2_m.",
+  "Uninhabitable Floor Area column contains footnote text (e.g. \"fy. 50 ry. 691\", \"rt. 111 ft. 476\") rather than a plain number for units 1 and 3R; these are yard/terrace area notes, not gross/cellar sf, so sf2 was left blank for those rows and the codes placed in int_sf's sf2 slot only where a plain number was given (487, 525) — for units 1 and 3R the raw text is preserved in the note column instead since it does not represent a simple second area figure."
+ ],
+ "units": []
+}

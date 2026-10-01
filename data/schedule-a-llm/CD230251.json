@@ -1,0 +1,188 @@
+{
+ "plan_id": "CD230251",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "publish_ag",
+   "units": 3,
+   "failed": []
+  }
+ ],
+ "calls": 7,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12546,
+   "output_tokens": 554,
+   "seconds": 9,
+   "cost_usd": 0.024359
+  },
+  {
+   "model": "haiku",
+   "tokens": 4939,
+   "output_tokens": 97,
+   "seconds": 5,
+   "cost_usd": 0.005327
+  },
+  {
+   "model": "haiku",
+   "tokens": 4943,
+   "output_tokens": 97,
+   "seconds": 7,
+   "cost_usd": 0.005331000000000001
+  },
+  {
+   "model": "haiku",
+   "tokens": 4939,
+   "output_tokens": 97,
+   "seconds": 5,
+   "cost_usd": 0.005327
+  },
+  {
+   "model": "haiku",
+   "tokens": 4941,
+   "output_tokens": 97,
+   "seconds": 5,
+   "cost_usd": 0.005329
+  },
+  {
+   "model": "haiku",
+   "tokens": 8852,
+   "output_tokens": 697,
+   "seconds": 8,
+   "cost_usd": 0.017406
+  },
+  {
+   "model": "sonnet",
+   "tokens": 21128,
+   "output_tokens": 1705,
+   "seconds": 92,
+   "cost_usd": 0.0314944
+  }
+ ],
+ "tokens": 62288,
+ "api_equiv_usd": 0.095,
+ "located_pages": [],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 500000,
+ "step": "sonnet-images",
+ "budget_period": "7/1/2024 - 6/30/2025",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approx. Area",
+  "Uninhabitable Area",
+  "No. of Bedrooms/Bathrooms",
+  "Offering Price",
+  "Percent Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Real Estate Taxes (Monthly) first year of condominium operations",
+  "Projected Real Estate Taxes (Annual) first year of condominium operations",
+  "Projected Real Estate Taxes (Monthly) second year of condominium operations",
+  "Projected Real Estate Taxes (Annual) second year of condominium operations",
+  "Projected Monthly Carrying Charges first year of condominium operations",
+  "Projected Monthly Carrying Charges second year of condominium operations"
+ ],
+ "tax2": "-",
+ "sf2": "uninhabitable area",
+ "printed_totals": {
+  "price": 500000,
+  "pct": 100,
+  "cc_m": 1216.42,
+  "tax_m": 2742.84,
+  "int_sf": 5312,
+  "ext_sf": null
+ },
+ "problems": [
+  "Table uses two \"Projected Real Estate Taxes\" scenarios for first and second year of condominium operations (not a tax-exempt vs non-exempt scenario); I placed first-year monthly/annual in tax_m/tax_a and second-year monthly in tax2_m per template convention, but second-year annual (16532.77/15992.04/14495.38) is not captured in any template column.",
+  "\"Uninhabitable Area\" column contains multiple sub-figures per unit (e.g. \"c. 872 a. 202 p. 198 ry. 825\" = cellar/areaway/porch/rear yard sq ft); only the first (cellar, used as sf2) is captured numerically; full breakdown placed in note.",
+  "No \"ext_sf\" (terrace/balcony/yard single figure) column exists in this table; left as \"-\" for all units since outdoor areas are part of the combined uninhabitable-area breakdown, not a standalone column.",
+  "Also no \"Rooms\" or \"Floor\" numeric column, and beds/bathrooms given as combined code (e.g. \"1/2full3half\") which is ambiguous — recorded as-is in beds/baths columns is not possible per template rules (not clearly \"beds/baths\" format); for Unit 1 \"1/2full3half\" left as note/unclear, beds/baths left \"-\".",
+  "\"No. of Bedrooms/Bathrooms\" format for units 2 and 3 (\"3/2\" and \"4/2.5\") interpreted as beds/baths per template examples; Unit 1's code \"1/2full3half\" does not fit that pattern and was left blank with note.",
+  "Projected Monthly Carrying Charges has two values (first year/second year); per template I used first-year carrying charge as carry_m; second-year carrying charge (1392.11/1346.58/1220.56 — note these numbers match second-year tax_m, verify against page) is not captured.",
+  "Total row's price total is $500,000.00 and pct total 100.00%, but individual unit prices for Units 1 and 2 are \"Not for sale\"/\"Not for Sale\" (non-numeric) — total figure in TOTAL line reflects only Unit 3's price."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": "1st Flr./Cellar",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 1541,
+   "sf2": 872,
+   "ext_sf": null,
+   "price": null,
+   "pct": 35.16,
+   "pct2": null,
+   "cc_m": 427.7,
+   "cc_a": null,
+   "tax_m": 964.41,
+   "tax_a": 11572.92,
+   "tax2_m": 1377.73,
+   "carry_m": 1392.11,
+   "page": 37,
+   "note": "c. 872 a. 202 p. 198 ry. 825"
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "1st Flr./2nd Flr.",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 1937,
+   "sf2": 610,
+   "ext_sf": null,
+   "price": null,
+   "pct": 34.01,
+   "pct2": null,
+   "cc_m": 413.72,
+   "cc_a": null,
+   "tax_m": 932.87,
+   "tax_a": 11194.41,
+   "tax2_m": 1332.67,
+   "carry_m": 1346.58,
+   "page": 37,
+   "note": "c. 610 st. 63 r. 232"
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": "3rd Floor",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 1834,
+   "sf2": 78,
+   "ext_sf": null,
+   "price": 500000,
+   "pct": 30.83,
+   "pct2": null,
+   "cc_m": 375,
+   "cc_a": null,
+   "tax_m": 845.56,
+   "tax_a": 10146.76,
+   "tax2_m": 1207.95,
+   "carry_m": 1220.56,
+   "page": 37,
+   "note": "st. 78 b. 55 r. 1383"
+  }
+ ]
+}

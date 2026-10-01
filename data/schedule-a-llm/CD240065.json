@@ -1,0 +1,102 @@
+{
+ "plan_id": "CD240065",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 2,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 8449,
+   "output_tokens": 1123,
+   "seconds": 87,
+   "cost_usd": 0.0266142
+  },
+  {
+   "model": "sonnet",
+   "tokens": 14235,
+   "output_tokens": 1226,
+   "seconds": 17,
+   "cost_usd": 0.0402454
+  }
+ ],
+ "tokens": 22684,
+ "api_equiv_usd": 0.067,
+ "located_pages": [
+  34
+ ],
+ "text_layer": true,
+ "found": false,
+ "verdict": "not_found",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": null,
+  "ccProportional": null,
+  "carrying": null,
+  "sqftTotal": null,
+  "monthlyTotals": false,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": true
+ },
+ "price_total": 0,
+ "step": "sonnet-text",
+ "budget_period": "January 1, 2025- December 31, 2025",
+ "columns_printed": [
+  "Unit No.",
+  "Floor Location",
+  "Approx. Floor Area",
+  "Uninhabitable/Limited Common Area",
+  "No. of Bedooms/Bathrooms",
+  "Offering Price",
+  "Approx. Percent Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Real Estate Taxes (Monthly)",
+  "Projected Real Estate Taxes (Annual)",
+  "Projected Carrying Charges (Monthly)"
+ ],
+ "tax2": null,
+ "sf2": "Outdoor/Uninhabitable/Limited Common Area",
+ "printed_totals": {
+  "price": 9565000,
+  "pct": 100,
+  "cc_m": 2443.33,
+  "tax_m": 9712.78,
+  "int_sf": 5178,
+  "ext_sf": 1168
+ },
+ "problems": [
+  "row with 21 cells dropped: U\t1\tR\tCellar/First Floor/Second Floor\t-\t-\t4\t3 Full 2 Half\t1871\t1423\t495\t4950000\t",
+  "row with 21 cells dropped: U\t2\tR\tThird Floor\t-\t-\t4\t3\t2151\t-\t98\t2000000\t30.80\t-\t752.55\t-\t2991.54\t35898.43\t-\t",
+  "row with 21 cells dropped: U\t3\tR\tFourth Floor/Fifth Floor\t-\t-\t1\t1 Full 2 Half\t2151\t-\t97\t2615000\t22.39\t-\t547",
+  "Unit 1: multiple floor areas (1423*, 1871, 2037) and multiple limited common areas (33 AW, 495 RY, 399 P) printed; only one int_sf and one sf2 cell available, so Second Floor 2037 and RY/P figures could not be placed.",
+  "Unit 2: limited common area printed as \"98 + 62 (B) 38 (S)\"; only 98 placed in sf2, 62 and 38 omitted.",
+  "Unit 3: floor area printed as two figures (2151, 670) for two floors, and limited common area as multiple figures (97+135(B), 761+590(T), 1089(R), 347(BR), 112(S), 1094(SE)); only 2151 placed in int_sf and 97 in sf2, remaining figures omitted.",
+  "Beds/Baths column header reads \"Bedooms/Bathrooms\" (printed typo), transcribed as-is in COLS.",
+  "ext_sf left blank for all units; outdoor areas (balcony, terrace, roof, patio, rear yard, areaway) are mixed into the same column as uninhabitable/limited common area and could not be cleanly separated per unit."
+ ],
+ "units": []
+}

@@ -1,0 +1,213 @@
+{
+ "plan_id": "CD180412",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 5,
+   "failed": [
+    "monthlyTotals"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "hold",
+   "units": 5,
+   "failed": [
+    "ccProportional"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "publish_ag",
+   "units": 5,
+   "failed": []
+  }
+ ],
+ "calls": 3,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4106,
+   "output_tokens": 910,
+   "seconds": 11,
+   "cost_usd": 0.02188
+  },
+  {
+   "model": "sonnet",
+   "tokens": 3973,
+   "output_tokens": 780,
+   "seconds": 11,
+   "cost_usd": 0.020568
+  },
+  {
+   "model": "sonnet",
+   "tokens": 12903,
+   "output_tokens": 824,
+   "seconds": 14,
+   "cost_usd": 0.034272399999999995
+  }
+ ],
+ "tokens": 20982,
+ "api_equiv_usd": 0.077,
+ "located_pages": [
+  21
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 58750000,
+ "step": "sonnet-images",
+ "budget_period": "January 1, 2022 - December 31, 2022",
+ "columns_printed": [
+  "Unit",
+  "Sq. Ft",
+  "BR/BTH",
+  "% of Common Interest",
+  "Limited Common Area",
+  "Offering Price",
+  "Monthly Common Charges",
+  "Projected Monthly Real Estate Tax",
+  "Projected Total Monthly Carrying Charges and Tax",
+  "Projected Total Annual Real Estate Tax",
+  "Projected Total Annual Carrying Charges and TaX"
+ ],
+ "tax2": null,
+ "sf2": "limited common area (terrace sqft)",
+ "printed_totals": {
+  "price": 58750000,
+  "pct": 100,
+  "cc_m": 35189.26,
+  "tax_m": 49670.25,
+  "int_sf": 24992,
+  "ext_sf": null
+ },
+ "problems": [
+  "Unit column prints floor/area labels (e.g. \"1st & Cellar\", \"2nd Floor\") rather than unit numbers/letters; transcribed as printed. BR/BTH \"Retail\" and numeric codes like \"5BR/5.5BTH\" transcribed as beds/baths per stated rule. Limited Common Area (terrace) treated as sf2 since it's a separate second area column, not ext_sf per instructions since only given for two rows."
+ ],
+ "units": [
+  {
+   "unit": "1st & Cellar",
+   "type": "commercial",
+   "floor": "1st & Cellar",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 5530,
+   "sf2": null,
+   "ext_sf": null,
+   "price": null,
+   "pct": 22.12,
+   "pct2": null,
+   "cc_m": 3964,
+   "cc_a": null,
+   "tax_m": 10987.06,
+   "tax_a": 131844.71,
+   "tax2_m": null,
+   "carry_m": 14951.06,
+   "page": 21,
+   "note": null
+  },
+  {
+   "unit": "2nd Floor",
+   "type": "residential",
+   "floor": "2nd Floor",
+   "rooms": null,
+   "beds": 5,
+   "baths": 5.5,
+   "int_sf": 4258,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 10500000,
+   "pct": 17.04,
+   "pct2": null,
+   "cc_m": 6831.63,
+   "cc_a": null,
+   "tax_m": 8463.81,
+   "tax_a": 101565.73,
+   "tax2_m": null,
+   "carry_m": 15295.44,
+   "page": 21,
+   "note": null
+  },
+  {
+   "unit": "3rd Floor",
+   "type": "residential",
+   "floor": "3rd Floor",
+   "rooms": null,
+   "beds": 5,
+   "baths": 5.5,
+   "int_sf": 4258,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 11250000,
+   "pct": 17.04,
+   "pct2": null,
+   "cc_m": 6831.63,
+   "cc_a": null,
+   "tax_m": 8463.81,
+   "tax_a": 101565.73,
+   "tax2_m": null,
+   "carry_m": 15295.44,
+   "page": 21,
+   "note": null
+  },
+  {
+   "unit": "4th Floor",
+   "type": "residential",
+   "floor": "4th Floor",
+   "rooms": null,
+   "beds": 5,
+   "baths": 5.5,
+   "int_sf": 4258,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 12000000,
+   "pct": 17.04,
+   "pct2": null,
+   "cc_m": 6831.63,
+   "cc_a": null,
+   "tax_m": 8463.81,
+   "tax_a": 101565.73,
+   "tax2_m": null,
+   "carry_m": 15295.44,
+   "page": 21,
+   "note": null
+  },
+  {
+   "unit": "5th/6th Floor",
+   "type": "residential",
+   "floor": "5th/6th Floor",
+   "rooms": null,
+   "beds": 7,
+   "baths": 8,
+   "int_sf": 6688,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 25000000,
+   "pct": 26.76,
+   "pct2": null,
+   "cc_m": 10730.37,
+   "cc_a": null,
+   "tax_m": 13291.76,
+   "tax_a": 159501.11,
+   "tax2_m": null,
+   "carry_m": 24022.13,
+   "page": 21,
+   "note": null
+  }
+ ]
+}

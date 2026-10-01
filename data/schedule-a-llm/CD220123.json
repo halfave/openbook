@@ -1,0 +1,160 @@
+{
+ "plan_id": "CD220123",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "publish_ag",
+   "units": 3,
+   "failed": []
+  }
+ ],
+ "calls": 2,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4361,
+   "output_tokens": 905,
+   "seconds": 12,
+   "cost_usd": 0.02287
+  },
+  {
+   "model": "sonnet",
+   "tokens": 13501,
+   "output_tokens": 898,
+   "seconds": 14,
+   "cost_usd": 0.0361128
+  }
+ ],
+ "tokens": 17862,
+ "api_equiv_usd": 0.059,
+ "located_pages": [
+  43
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": null,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 7195000,
+ "step": "sonnet-images",
+ "budget_period": "For the first year of operation April 1, 2023 through March 31, 2024",
+ "columns_printed": [
+  "Unit",
+  "Number of Bedrooms (2)",
+  "Number of Baths (2)",
+  "Square Footage of Each Unit Listed by Floor (2)",
+  "Total Square Footage (2)",
+  "Square Footage Roof Top Limited Common Element (2)",
+  "Square Footage Rear Yard Limited Common Element (2)",
+  "Total Square Footage Including Limited Common Elements (2)",
+  "Estimated Offering Price (1)",
+  "Percentage of Common Interest (3)",
+  "**Projected Monthly Real Estate Tax (5)",
+  "Projected Annual Real Estate Tax (5)",
+  "Projected Monthly Common Charges (4)",
+  "Projected Annual Common Charges (4)"
+ ],
+ "tax2": null,
+ "sf2": "cellar/roof/rear yard limited common element sf",
+ "printed_totals": {
+  "price": 7195000,
+  "pct": 100,
+  "cc_m": 1633.33,
+  "tax_m": 1301.08,
+  "int_sf": 4703,
+  "ext_sf": null
+ },
+ "problems": [
+  "Table does not have an \"ext_sf\" column in the usual sense; Roof Top and Rear Yard Limited Common Element columns placed in sf2 (summed) since no single ext_sf column exists and these are separate limited common elements, not a simple terrace/balcony figure. \"pct2\" column not present. tax2_m not present (only one tax scenario shown; monthly tax column used for tax_m, annual for tax_a). carry_m not printed separately from common charges."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": "Cellar/1st Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 2145,
+   "sf2": 800,
+   "ext_sf": null,
+   "price": 2700000,
+   "pct": 37,
+   "pct2": null,
+   "cc_m": 604.33,
+   "cc_a": 7252,
+   "tax_m": 481.4,
+   "tax_a": 5776.81,
+   "tax2_m": null,
+   "carry_m": null,
+   "page": 43,
+   "note": "Interior sf is total of Cellar 1040 + 1st Floor 1105 = 2145; Roof Top LCE 0; Rear Yard LCE 800; Total incl. LCE 2945"
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "2nd Floor",
+   "rooms": null,
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1112,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 1795000,
+   "pct": 26,
+   "pct2": null,
+   "cc_m": 424.67,
+   "cc_a": 5096,
+   "tax_m": 338.28,
+   "tax_a": 4059.38,
+   "tax2_m": null,
+   "carry_m": null,
+   "page": 43,
+   "note": "Roof Top LCE 0, Rear Yard LCE 0"
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": "3rd Floor/4th Floor",
+   "rooms": null,
+   "beds": 3,
+   "baths": 3,
+   "int_sf": 1446,
+   "sf2": 1080,
+   "ext_sf": null,
+   "price": 2700000,
+   "pct": 37,
+   "pct2": null,
+   "cc_m": 604.33,
+   "cc_a": 7252,
+   "tax_m": 481.4,
+   "tax_a": 5776.81,
+   "tax2_m": null,
+   "carry_m": null,
+   "page": 43,
+   "note": "Interior sf is total of 3rd Floor 1100 + 4th Floor 346 = 1446; Roof Top LCE 1080; Rear Yard LCE 0; Total incl. LCE 2565"
+  }
+ ]
+}

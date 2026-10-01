@@ -1,0 +1,129 @@
+{
+ "plan_id": "CD190327",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 7,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12638,
+   "output_tokens": 614,
+   "seconds": 7,
+   "cost_usd": 0.024716999999999996
+  },
+  {
+   "model": "haiku",
+   "tokens": 4945,
+   "output_tokens": 97,
+   "seconds": 4,
+   "cost_usd": 0.005333000000000001
+  },
+  {
+   "model": "haiku",
+   "tokens": 4945,
+   "output_tokens": 97,
+   "seconds": 4,
+   "cost_usd": 0.005333000000000001
+  },
+  {
+   "model": "haiku",
+   "tokens": 4945,
+   "output_tokens": 97,
+   "seconds": 5,
+   "cost_usd": 0.005333000000000001
+  },
+  {
+   "model": "haiku",
+   "tokens": 4937,
+   "output_tokens": 97,
+   "seconds": 5,
+   "cost_usd": 0.005325
+  },
+  {
+   "model": "haiku",
+   "tokens": 8718,
+   "output_tokens": 569,
+   "seconds": 8,
+   "cost_usd": 0.016757
+  },
+  {
+   "model": "sonnet",
+   "tokens": 12014,
+   "output_tokens": 1389,
+   "seconds": 16,
+   "cost_usd": 0.036869
+  }
+ ],
+ "tokens": 53142,
+ "api_equiv_usd": 0.1,
+ "located_pages": [],
+ "text_layer": true,
+ "found": false,
+ "verdict": "not_found",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": null,
+  "ccProportional": null,
+  "carrying": null,
+  "sqftTotal": null,
+  "monthlyTotals": false,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": true
+ },
+ "price_total": 0,
+ "step": "sonnet-images",
+ "budget_period": "6/1/2020 - 5/31/2021",
+ "columns_printed": [
+  "Unit",
+  "Number of Bedrooms (BR) / Bathrooms (BA)",
+  "Balcony Square Footage (2)*",
+  "Terrace Square Footage (2)*",
+  "Roof Level Square Footage (2)*",
+  "Cellar Level Square Footage (2)*",
+  "Rear Yard Square Footage (2)**",
+  "Total Limited Common Elements Square Footage (2)",
+  "Unit Square Footage (2)",
+  "Offering Price (3)",
+  "General Common Interest (4)",
+  "Residential Common Interest (4) (b)",
+  "Estimated Monthly Common Charges (5)",
+  "Estimated Monthly Real Estate Taxes (6) ***",
+  "Estimated Annual Real Estate Taxes (6) ***",
+  "Estimated Total Monthly Charges 1st Year (7) ***",
+  "Estimated Total Annual Charges 1st Year (7) ***",
+  "Comon Elements to which Unit has immediate access to"
+ ],
+ "tax2": "-",
+ "sf2": "cellar level square footage",
+ "printed_totals": {
+  "price": 10000000,
+  "pct": 100,
+  "cc_m": 5193,
+  "tax_m": 4946,
+  "int_sf": 5700,
+  "ext_sf": null
+ },
+ "problems": [
+  "row with 19 cells dropped: U\t2\tR\t-\t-\t2\t2\t1142\t-\t-\t1825000\t18.4816%\t20.0822%\t993\t923\t11075\t1916\t22993\t60\t-",
+  "row with 19 cells dropped: U\t3\tR\t-\t-\t2\t2\t1142\t-\t-\t1875000\t19.1161%\t20.7316%\t1025\t953\t11433\t1978\t23736\t60\t-",
+  "row with 19 cells dropped: U\t4\tR\t-\t-\t2\t2\t1142\t623\t-\t1925000\t19.5711%\t21.6816%\t1072\t996\t11957\t2069\t24824\t60\t",
+  "row with 19 cells dropped: U\tPH\tR\t-\t-\t3\t3\t1890\t-\t-\t3250000\t33.8673%\t37.5046%\t1855\t1724\t20684\t3578\t42940\t60\t",
+  "row with 19 cells dropped: U\tRetail Unit\tC\t-\t-\t-\t-\t384\t623\t-\t1125000\t8.9639%\t0.0000%\t248\t350\t4200\t598\t7176\t",
+  "Rooms column not present; beds/baths given as \"2 BR / 2 BA\" etc. treated as beds=2 baths=2. Unit Square Footage (col labeled \"Unit Square Footage (2)\") placed in int_sf; separate Balcony/Terrace/Roof/Cellar/Rear Yard footage columns exist but table has no single ext_sf column, so ext_sf left blank/\"-\" except cellar placed in SF2 per unit (only Unit 4 had cellar 623, Retail had cellar 623 too). Balcony/Terrace/Roof/Rear Yard square footages (e.g. Unit 2: Roof 70; Unit 3: Roof 66, Terrace -; Unit 4: Roof 55, Balcony 46; PH: Balcony 46, Terrace 367, Roof 66) not transcribed into note field — provided here: Unit 2: Roof Level 70; Unit 3: Balcony 46, Roof Level 66; Unit 4: Balcony 46, Roof Level 55, Cellar 623; PH: Balcony 46, Terrace 367, Roof Level 66; Retail Unit: Cellar 623, Rear Yard 656. There is also a row \"Residential Storage Units *\" with Rear Yard 188 and Total Limited Common Elements 188 but no unit number, price, or other data — not included as a U line since it lacks identifying unit/price info; flagged here for reference. TOTALS row's int_sf (Unit Square Footage) printed as 5700, but this appears to be sum of residential(5316)+commercial(384)=5700, not a separate column — used as printed."
+ ],
+ "units": []
+}

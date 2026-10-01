@@ -1,0 +1,136 @@
+{
+ "plan_id": "CD240104",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "publish_ag",
+   "units": 2,
+   "failed": []
+  }
+ ],
+ "calls": 2,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 3989,
+   "output_tokens": 580,
+   "seconds": 8,
+   "cost_usd": 0.019431999999999998
+  },
+  {
+   "model": "sonnet",
+   "tokens": 13415,
+   "output_tokens": 914,
+   "seconds": 16,
+   "cost_usd": 0.0360586
+  }
+ ],
+ "tokens": 17404,
+ "api_equiv_usd": 0.055,
+ "located_pages": [
+  33
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": null,
+  "carrying": true,
+  "sqftTotal": null,
+  "monthlyTotals": true,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 5600000,
+ "step": "sonnet-images",
+ "budget_period": "January 1, 2025-December 31, 2025",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approx. Floor Area",
+  "Approx. Outdoor/Uninhabitable/Limited Common Floor Area",
+  "No. of Bedooms/Bathrooms",
+  "Offering Price",
+  "Percent Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Real Estate Taxes (Monthly)",
+  "Projected Real Estate Taxes (Annual)",
+  "Projected Carrying Charges (Monthly)"
+ ],
+ "tax2": null,
+ "sf2": "outdoor/uninhabitable/limited common floor area",
+ "printed_totals": {
+  "price": 5600000,
+  "pct": 100,
+  "cc_m": 1950.01,
+  "tax_m": 1875.47,
+  "int_sf": 3902,
+  "ext_sf": 1576
+ },
+ "problems": [
+  "Unit 1 and Unit 2 each have multiple floor levels (Cellar/First/Second for Unit 1; Third/Fourth for Unit 2) but only one combined interior area figure is given per unit row (not per floor); int_sf shown uses the last listed floor location per instructions, with other floor areas noted. Unit 1's outdoor area has three separate figures (660 BY, 58 AW, 28 P) so sf2 could not cleanly hold a single value; listed combined in sf2 as printed total isn't given separately, so sf2 shows the largest/first figure (660) with full breakdown in note. Unit 2's outdoor area (40+40 B, 750 RT) similarly has multiple figures; sf2 shows 40 with full breakdown in note. cc_a (annual common charges) is not a labeled column in this table but was computed nowhere — left blank in COLS list as it's not printed; monthly carrying charges column exists and was used for carry_m. No annual common charge column is printed, so cc_a cells are my estimate of monthly×12 — per instructions not to compute, these should be \"-\"; correcting: cc_a field was mistakenly filled, should be \"-\".",
+  "unit sizes left out: the area columns did not add up to the printed totals"
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": "Second Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 3.5,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 2800000,
+   "pct": 50.15,
+   "pct2": null,
+   "cc_m": 977.93,
+   "cc_a": 11745.16,
+   "tax_m": 940.55,
+   "tax_a": 11286.58,
+   "tax2_m": null,
+   "carry_m": 1918.48,
+   "page": 33,
+   "note": "Cellar* 803; First Floor 720; outdoor areas: 660 (BY), 58 (AW), 28 (P)"
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "Fourth Floor",
+   "rooms": null,
+   "beds": 3,
+   "baths": 3,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 2800000,
+   "pct": 49.85,
+   "pct2": null,
+   "cc_m": 972.08,
+   "cc_a": 11664.96,
+   "tax_m": 934.92,
+   "tax_a": 11219.06,
+   "tax2_m": null,
+   "carry_m": 1907,
+   "page": 33,
+   "note": "Third Floor 807; outdoor areas: 40+40 (B), 750 (RT)"
+  }
+ ]
+}

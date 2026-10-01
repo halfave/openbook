@@ -1,0 +1,107 @@
+{
+ "plan_id": "CD230162",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 4,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12596,
+   "output_tokens": 577,
+   "seconds": 7,
+   "cost_usd": 0.024526
+  },
+  {
+   "model": "haiku",
+   "tokens": 4945,
+   "output_tokens": 97,
+   "seconds": 6,
+   "cost_usd": 0.005333000000000001
+  },
+  {
+   "model": "haiku",
+   "tokens": 8690,
+   "output_tokens": 554,
+   "seconds": 8,
+   "cost_usd": 0.016655
+  },
+  {
+   "model": "sonnet",
+   "tokens": 11712,
+   "output_tokens": 1087,
+   "seconds": 13,
+   "cost_usd": 0.033849000000000004
+  }
+ ],
+ "tokens": 37943,
+ "api_equiv_usd": 0.08,
+ "located_pages": [],
+ "text_layer": true,
+ "found": false,
+ "verdict": "not_found",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": null,
+  "ccProportional": null,
+  "carrying": null,
+  "sqftTotal": null,
+  "monthlyTotals": false,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": true
+ },
+ "price_total": 0,
+ "step": "sonnet-images",
+ "budget_period": "July 1, 2024 - June 30, 2025",
+ "columns_printed": [
+  "Unit No.",
+  "Bdrs/Bths",
+  "Approx. Size of Units in sq. ft. [habitable]",
+  "Approx. Size of Units in sq. ft. [uninhabitable]",
+  "Approx. Size of Limited Common Elements in sq. ft. [uninhabitable]: Rear Terrace, Rear Yard & Side Yard",
+  "Cellar Level Entrance",
+  "Roof Deck",
+  "Roof Deck",
+  "Offering Prices",
+  "% of Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Monthly Real Estate Taxes After Construction Completion",
+  "Projected Annual Real Estate Taxes After Construction Completion",
+  "Projected Monthly Carrying Charges",
+  "Projected Annual Carrying Charges"
+ ],
+ "tax2": null,
+ "sf2": "uninhabitable sq ft",
+ "printed_totals": {
+  "price": 11400000,
+  "pct": 100,
+  "cc_m": 3271.75,
+  "tax_m": 7061.17,
+  "int_sf": 6415,
+  "ext_sf": null
+ },
+ "problems": [
+  "row with 19 cells dropped: U\tTownhouse\tR\t-\t-\t3\t3.5\t2047\t1891\t652\t4000000.00\t35.09\t-\t1148.06\t2477.76\t29733.1",
+  "row with 19 cells dropped: U\t1\tR\t-\t-\t2\t2\t1057\t34\t-\t1750000.00\t15.35\t-\t502.21\t1083.89\t13006.67\t-\t1586.10\t57\t",
+  "row with 19 cells dropped: U\t2\tR\t-\t-\t2\t2\t1126\t32\t-\t1800000.00\t15.79\t-\t516.61\t1114.96\t13379.50\t-\t1631.57\t57\t",
+  "row with 19 cells dropped: U\tPenthouse 1\tR\t-\t-\t2\t2\t1033\t167\t-\t1900000.00\t16.67\t-\t545.40\t1177.10\t14125.16\t-\t",
+  "row with 19 cells dropped: U\tPenthouse 2\tR\t-\t-\t2\t2\t1152\t165\t-\t1950000.00\t17.10\t-\t559.47\t1207.46\t14489.51\t-\t",
+  "Table has two \"uninhabitable\" size columns plus a \"Limited Common Elements\" section with multiple sub-columns (Rear Terrace/Rear Yard & Side Yard, Cellar Level Entrance, Roof Deck, Roof Deck); these could not be cleanly mapped to single int_sf/sf2/ext_sf cells for each unit, so details are recorded in note instead of ext_sf per instructions.",
+  "Bdrs/Bths for Townhouse printed as \"3/3.5\" — interpreted as 3 beds, 3.5 baths.",
+  "No separate \"annual common charges\" column is printed; carry_m/carry_a mapped to Projected Monthly/Annual Carrying Charges columns."
+ ],
+ "units": []
+}

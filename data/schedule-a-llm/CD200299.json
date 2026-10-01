@@ -1,0 +1,125 @@
+{
+ "plan_id": "CD200299",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "hold",
+   "units": 1,
+   "failed": [
+    "ag",
+    "printed",
+    "pct100",
+    "carrying",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 4,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12636,
+   "output_tokens": 624,
+   "seconds": 8,
+   "cost_usd": 0.024749
+  },
+  {
+   "model": "haiku",
+   "tokens": 4937,
+   "output_tokens": 97,
+   "seconds": 5,
+   "cost_usd": 0.005325
+  },
+  {
+   "model": "haiku",
+   "tokens": 8728,
+   "output_tokens": 571,
+   "seconds": 8,
+   "cost_usd": 0.01678
+  },
+  {
+   "model": "sonnet",
+   "tokens": 11553,
+   "output_tokens": 926,
+   "seconds": 13,
+   "cost_usd": 0.0322432
+  }
+ ],
+ "tokens": 37854,
+ "api_equiv_usd": 0.079,
+ "located_pages": [],
+ "text_layer": true,
+ "found": true,
+ "verdict": "hold",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": false,
+  "ccProportional": null,
+  "carrying": false,
+  "sqftTotal": null,
+  "monthlyTotals": false,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": true
+ },
+ "price_total": 1950000,
+ "step": "sonnet-images",
+ "budget_period": "July 1, 2021- June 30, 2022",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approx. Square Footage (1)",
+  "Approx. Uninhabitable Square Footage (1)",
+  "Approx. Outdoor/Limited Square Footage (1)",
+  "No. of Bedooms/Bathrooms (1)",
+  "Offering Price (2)",
+  "General Percent Common Interest (3)",
+  "Residential Percent Common Interest (3)",
+  "Projected Monthly Common Charges (4)",
+  "Projected Real Estate Taxes (Monthly) (5)",
+  "Projected Real Estate Taxes (Annual) (5)",
+  "Projected Carrying Charges (Monthly) (6)"
+ ],
+ "tax2": null,
+ "sf2": "uninhabitable",
+ "printed_totals": {
+  "price": 8650000,
+  "pct": 100,
+  "cc_m": 2481.5,
+  "tax_m": 3647.8,
+  "int_sf": 5106,
+  "ext_sf": 2153
+ },
+ "problems": [
+  "row with 21 cells dropped: U\t2\tR\tSecond Floor/Third Floor\t-\t3\t-\t2.5\t899/844\t-\t630 (T)/14 (C)/50 (B)/58 (S)\t",
+  "row with 21 cells dropped: U\t3\tR\tThird Floor/Fourth Floor/Fifth Floor/Sixth Floor/Roof\t-\t4\t-\t4.5\t70/1042/10",
+  "Unit 1 beds/baths printed as \"0/2 half\" (ambiguous code), kept as-is in beds/baths columns with note left blank; int_sf for each unit spans multiple floor levels (printed as separate figures per floor, not a single interior figure) — all floor-level square footages listed in int_sf separated by \"/\"; outdoor/limited sf for Units 2 and 3 consists of multiple separate areas (terrace/closet/balcony/storage), so left blank in ext_sf and listed in sf2 column per instructions (note: these are limited common element areas, not strictly \"outdoor\" ext_sf, but table only has one such column so values placed there); Uninhabitable SF for Unit 1 spans two floor levels (944/1332), both listed in sf2."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "commercial",
+   "floor": "Cellar/First Floor",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 1950000,
+   "pct": 22.54,
+   "pct2": null,
+   "cc_m": 559.33,
+   "cc_a": 822.21,
+   "tax_m": 9866.57,
+   "tax_a": null,
+   "tax2_m": null,
+   "carry_m": 1381.54,
+   "page": 33,
+   "note": null
+  }
+ ]
+}

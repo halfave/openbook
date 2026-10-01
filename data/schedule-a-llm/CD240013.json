@@ -1,0 +1,153 @@
+{
+ "plan_id": "CD240013",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 1,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed",
+    "outdoor"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "hold",
+   "units": 1,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed",
+    "outdoor"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "hold",
+   "units": 11,
+   "failed": [
+    "ag",
+    "printed",
+    "pct100",
+    "carrying",
+    "monthlyTotals",
+    "outdoor"
+   ]
+  }
+ ],
+ "calls": 3,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 8369,
+   "output_tokens": 1147,
+   "seconds": 17,
+   "cost_usd": 0.0266358
+  },
+  {
+   "model": "sonnet",
+   "tokens": 8235,
+   "output_tokens": 1021,
+   "seconds": 88,
+   "cost_usd": 0.025359
+  },
+  {
+   "model": "sonnet",
+   "tokens": 14085,
+   "output_tokens": 1180,
+   "seconds": 15,
+   "cost_usd": 0.039567000000000005
+  }
+ ],
+ "tokens": 30689,
+ "api_equiv_usd": 0.092,
+ "located_pages": [
+  32
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "hold",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": null,
+  "ccProportional": null,
+  "carrying": null,
+  "sqftTotal": null,
+  "monthlyTotals": false,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": false
+ },
+ "price_total": 0,
+ "step": "sonnet-text",
+ "budget_period": "August 1, 2024 – July 31, 2025",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approximate Habitable Area (SF) (1)",
+  "Approximate Unhabitable Area (SF) (1)",
+  "Approximate Outdoor Area (SF) (1)",
+  "No. of Bedrooms/Bathrooms (1)",
+  "Offering Price (2)",
+  "Percent Common Interest (3)",
+  "Residential PCI (4)",
+  "Monthly Common Charges (5)",
+  "Real Estate Taxes (Annual)",
+  "Real Estate Taxes (Monthly)",
+  "Monthly Carrying Charges (6)"
+ ],
+ "tax2": null,
+ "sf2": "unhabitable sf",
+ "printed_totals": {
+  "price": 13650000,
+  "pct": 100,
+  "cc_m": 6910.05,
+  "tax_m": null,
+  "int_sf": 9970,
+  "ext_sf": 3614
+ },
+ "problems": [
+  "row with 19 cells dropped: U\t2F\tR\t2nd Floor\t-\t2\t2\t976\t0\t276\t1350000\t8.09\t10.20\t617.15\t13710.93\t1142.58\t-\t17",
+  "row with 19 cells dropped: U\t2R\tR\t2nd Floor\t-\t1\t2\t672\t0\t1143\t1350000\t9.05\t11.42\t690.65\t15338.41\t1278.20\t-\t1",
+  "row with 19 cells dropped: U\t3F\tR\t3rd Floor\t-\t2\t2\t976\t0\t171\t1350000\t7.83\t9.89\t597.98\t13273.73\t1106.14\t-\t170",
+  "row with 19 cells dropped: U\t3R\tR\t3rd Floor\t-\t1\t2\t672\t0\t378\t1350000\t7.25\t9.15\t553.70\t12290.81\t1024.23\t-\t157",
+  "row with 19 cells dropped: U\t4F\tR\t4th Floor\t-\t2\t2\t976\t0\t223\t1350000\t7.95\t10.04\t607.32\t13480.89\t1123.41\t-\t17",
+  "row with 19 cells dropped: U\t4R\tR\t4th Floor\t-\t1\t2\t672\t0\t378\t1350000\t7.25\t9.15\t553.70\t12290.81\t1024.23\t-\t157",
+  "row with 19 cells dropped: U\t5F\tR\t5th Floor\t-\t2\t2\t976\t0\t171\t1350000\t7.83\t9.89\t597.98\t13273.73\t1106.14\t-\t170",
+  "row with 19 cells dropped: U\t5R\tR\t5th Floor\t-\t1\t2\t672\t0\t378\t1350000\t7.25\t9.15\t553.70\t12290.81\t1024.23\t-\t157",
+  "row with 19 cells dropped: U\t6F\tR\t6th Floor/Penthouse\t-\t0\t1.5\t1353\t0\t118\t1500000\t9.48\t11.96\t723.44\t16058.58",
+  "row with 19 cells dropped: U\t6R\tR\t6th Floor\t-\t1\t2\t672\t0\t378\t1350000\t7.25\t9.15\t553.70\t12290.81\t1024.23\t-\t157",
+  "CF1 beds/baths printed as \"0/6 half baths\"; kept beds=0, baths=6, note includes original text since format is unclear.",
+  "Total row's tax_m (annual 199101.51, monthly 16591.79) printed but TOTAL line format only requests price/pct/cc_m/tax_m/int_sf/ext_sf; used monthly tax_m 16591.79 is not requested separately so omitted per template (tax_m column asked is monthly real estate tax total = 16591.79, used that)."
+ ],
+ "units": [
+  {
+   "unit": "CF1",
+   "type": "commercial",
+   "floor": "Cellar/1st Floor",
+   "rooms": null,
+   "beds": null,
+   "baths": 0,
+   "int_sf": null,
+   "sf2": 1353,
+   "ext_sf": 3014,
+   "price": 0,
+   "pct": null,
+   "pct2": 20.77,
+   "cc_m": null,
+   "cc_a": 860.71,
+   "tax_m": 64802,
+   "tax_a": 5400.17,
+   "tax2_m": null,
+   "carry_m": 6260.88,
+   "page": 32,
+   "note": "0/6 half baths"
+  }
+ ]
+}

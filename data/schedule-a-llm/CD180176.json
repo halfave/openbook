@@ -1,0 +1,95 @@
+{
+ "plan_id": "CD180176",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 4,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12700,
+   "output_tokens": 617,
+   "seconds": 10,
+   "cost_usd": 0.024821999999999997
+  },
+  {
+   "model": "haiku",
+   "tokens": 5009,
+   "output_tokens": 97,
+   "seconds": 4,
+   "cost_usd": 0.005397000000000001
+  },
+  {
+   "model": "haiku",
+   "tokens": 15362,
+   "output_tokens": 633,
+   "seconds": 84,
+   "cost_usd": 0.0217141
+  },
+  {
+   "model": "sonnet",
+   "tokens": 13642,
+   "output_tokens": 2911,
+   "seconds": 36,
+   "cost_usd": 0.0523116
+  }
+ ],
+ "tokens": 46713,
+ "api_equiv_usd": 0.104,
+ "located_pages": [],
+ "text_layer": true,
+ "found": false,
+ "verdict": "not_found",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": null,
+  "ccProportional": null,
+  "carrying": null,
+  "sqftTotal": null,
+  "monthlyTotals": false,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": true
+ },
+ "price_total": 0,
+ "step": "sonnet-images",
+ "budget_period": null,
+ "columns_printed": null,
+ "tax2": null,
+ "sf2": null,
+ "printed_totals": {
+  "price": 6850000,
+  "pct": 100,
+  "cc_m": 4860.93,
+  "tax_m": 5386.39,
+  "int_sf": 10106,
+  "ext_sf": 1346
+ },
+ "problems": [
+  "row with 22 cells dropped: U\tChurch\tC\tCellar, 1st Floor\t-\t0\t2\t2973\t474\t-\tNot for Sale\t21.76\tN/A\t814.30\t0.00",
+  "row with 21 cells dropped: U\t2A\tR\t2nd Floor\t-\t1\t1\t646\t-\t-\t681000\t7.29\t9.94\t384.01\t535.41\t6424.87\t132.42\t158",
+  "row with 21 cells dropped: U\t2B\tR\t2nd Floor\t-\t1\t1\t705\t110\t-\t622000\t7.46\t9.08\t380.75\t489.08\t5868.99\t120.97\t1",
+  "row with 21 cells dropped: U\t3A\tR\t3rd Floor\t-\t1\t1\t676\t-\t-\t711000\t7.62\t10.38\t401.28\t559.11\t6709.27\t138.28\t16",
+  "row with 21 cells dropped: U\t3B\tR\t3rd Floor\t-\t1\t1\t704\t101\t-\t625000\t7.46\t9.12\t381.20\t491.24\t5894.85\t121.50\t1",
+  "row with 21 cells dropped: U\t4A\tR\t4th Floor\t-\t1\t1\t676\t-\t-\t711000\t7.62\t10.38\t401.28\t559.11\t6709.27\t138.28\t16",
+  "row with 21 cells dropped: U\t4B\tR\t4th Floor\t-\t1\t1\t704\t101\t-\t625000\t7.46\t9.12\t381.20\t491.24\t5894.85\t121.50\t1",
+  "row with 21 cells dropped: U\t5A\tR\t5th, 6th, & Penthouse Floors\t-\t2\t3\t1555\t358\t-\t1573000\t17.81\t22.96\t923.34\t",
+  "row with 21 cells dropped: U\t5B\tR\t5th & 6th Floors\t-\t2\t3\t1467\t202\t-\t1302000\t15.52\t19.02\t793.57\t1024.49\t1229",
+  "The \"No. of Bedrooms/Bathrooms\" column prints simple fractions like \"1/1\" or \"2/3\" for residential units with no explicit bed/bath wording; left beds/baths blank per unclear-code rule and placed raw code in note for each unit except Church (0/2 half baths, parsed as 0 beds/2 half baths = 1.0 bath).",
+  "The table has a third tax/carrying-charge scenario (\"w/ J-51 and CRC\", monthly & annual) that doesn't fit the schema's columns; those figures are recorded in the note field for each unit.",
+  "Carrying charge \"w/ J-51 (Monthly)\" column value for 2B (423.05) does not equal CC+tax2_m (380.75+559.11=939.86), unlike other rows where it matches; transcribed as printed, flagged as possible printing inconsistency/typo in source."
+ ],
+ "units": []
+}

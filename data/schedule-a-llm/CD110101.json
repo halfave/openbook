@@ -1,0 +1,151 @@
+{
+ "plan_id": "CD110101",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 3,
+   "failed": [
+    "carrying"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "publish_ag",
+   "units": 3,
+   "failed": []
+  }
+ ],
+ "calls": 2,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 3800,
+   "output_tokens": 523,
+   "seconds": 7,
+   "cost_usd": 0.018334
+  },
+  {
+   "model": "sonnet",
+   "tokens": 3724,
+   "output_tokens": 452,
+   "seconds": 7,
+   "cost_usd": 0.017603999999999998
+  }
+ ],
+ "tokens": 7524,
+ "api_equiv_usd": 0.036,
+ "located_pages": [
+  19
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 3100000,
+ "step": "sonnet-text-retry",
+ "budget_period": "March 1, 2012 - February 28, 2013",
+ "columns_printed": [
+  "Unit",
+  "Sq. Ftg.",
+  "Bdms/Bths",
+  "% of Common Interest",
+  "Cash Purchase Price",
+  "Monthly Common Charges",
+  "Monthly Real Estate Taxes",
+  "Monthly Carrying Charges"
+ ],
+ "tax2": null,
+ "sf2": null,
+ "printed_totals": {
+  "price": 3100000,
+  "pct": 100,
+  "cc_m": 812,
+  "tax_m": 420,
+  "int_sf": 4270,
+  "ext_sf": null
+ },
+ "problems": [
+  "Monthly real estate taxes column shows $420.00 total but Note 2 gives annual figures per unit ($1,951, $1,382, $1,708); annual tax_a not separately printed in table, so values from Note 2 used as tax_a."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 2014,
+   "sf2": null,
+   "ext_sf": 795,
+   "price": 1200000,
+   "pct": 38.71,
+   "pct2": null,
+   "cc_m": 314.32,
+   "cc_a": null,
+   "tax_m": 162.58,
+   "tax_a": 1951,
+   "tax2_m": null,
+   "carry_m": 476.9,
+   "page": 19,
+   "note": "Sq ftg includes below-grade recreation room of approx 901 sf, not habitable; rear yard approx 795 sf limited common element"
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1104,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 850000,
+   "pct": 27.42,
+   "pct2": null,
+   "cc_m": 222.65,
+   "cc_a": null,
+   "tax_m": 115.16,
+   "tax_a": 1382,
+   "tax2_m": null,
+   "carry_m": 337.81,
+   "page": 19,
+   "note": null
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1152,
+   "sf2": null,
+   "ext_sf": 1200,
+   "price": 1050000,
+   "pct": 33.87,
+   "pct2": null,
+   "cc_m": 275.03,
+   "cc_a": null,
+   "tax_m": 142.26,
+   "tax_a": 1708,
+   "tax2_m": null,
+   "carry_m": 417.29,
+   "page": 19,
+   "note": "Roof deck approx 1200 sf limited common element"
+  }
+ ]
+}

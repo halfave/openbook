@@ -1,0 +1,115 @@
+{
+ "plan_id": "CD210101",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 4,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12674,
+   "output_tokens": 654,
+   "seconds": 9,
+   "cost_usd": 0.024911
+  },
+  {
+   "model": "haiku",
+   "tokens": 4939,
+   "output_tokens": 97,
+   "seconds": 3,
+   "cost_usd": 0.005327
+  },
+  {
+   "model": "haiku",
+   "tokens": 8694,
+   "output_tokens": 554,
+   "seconds": 29,
+   "cost_usd": 0.016661000000000002
+  },
+  {
+   "model": "sonnet",
+   "tokens": 12726,
+   "output_tokens": 2103,
+   "seconds": 23,
+   "cost_usd": 0.0440048
+  }
+ ],
+ "tokens": 39033,
+ "api_equiv_usd": 0.091,
+ "located_pages": [],
+ "text_layer": true,
+ "found": false,
+ "verdict": "not_found",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": null,
+  "ccProportional": null,
+  "carrying": null,
+  "sqftTotal": null,
+  "monthlyTotals": false,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": true
+ },
+ "price_total": 0,
+ "step": "sonnet-images",
+ "budget_period": "July 1, 2023- June 30, 2024",
+ "columns_printed": [
+  "Unit",
+  "Lease Status (Note 1)",
+  "Bed/Bath/Study (Note 2)",
+  "Unit SQFT (Note 3)",
+  "Non-Habitable Space* (Note 2)",
+  "Limited Common Elements (Note 4)",
+  "% of Common Elements (Note 5)",
+  "Offering Price Tenants in Occupancy (Note 6)",
+  "Offering Price** (Note 7)",
+  "Common Charges Monthly (Note 8)",
+  "Common Charges Annually (Note 8)",
+  "Real Estate Tax Monthly (Note 9)",
+  "Real Estate Tax Annually (Note 9)",
+  "Projected Total Monthly (Note 10)",
+  "Projected Total Annually (Note 10)"
+ ],
+ "tax2": "-",
+ "sf2": "Non-Habitable Space",
+ "printed_totals": {
+  "price": 7320000,
+  "pct": 100,
+  "cc_m": 5924.85,
+  "tax_m": null,
+  "int_sf": 9571.18,
+  "ext_sf": null
+ },
+ "problems": [
+  "row with 19 cells dropped: U\tC1\tC\t-\t-\t-\t-\t1157\t-\t-\t780000\t11.37\t-\t673.66\t8083.86\t1464.35\t17572.14\t10221.86\t",
+  "row with 19 cells dropped: U\tC2\tC\t-\t-\t-\t-\t1758\t-\t-\t0\t14.79\t-\t876.29\t10515.42\t0.00\t0.00\t11391.71\t66\tN/A; Com",
+  "row with 19 cells dropped: U\tRes1\tR\t-\t-\t-\t55\t660\t0\t-\t628000\t6.85\t-\t405.85\t4870.23\t687.53\t8250.41\t5963.61\t66",
+  "row with 19 cells dropped: U\tRes2\tR\t-\t-\t-\t54\t668\t620.83(T)\t-\t688000\t9.80\t-\t586.56\t7038.72\t993.66\t11923.95\t8",
+  "row with 19 cells dropped: U\tRes3\tR\t-\t-\t-\t55\t663\t12.50(B)\t-\t638000\t7.05\t-\t417.70\t5012.42\t707.61\t8491.30\t613",
+  "row with 19 cells dropped: U\tRes4\tR\t-\t-\t-\t54\t669\t19.00(B)\t-\t638000\t7.08\t-\t419.48\t5033.75\t710.62\t8527.43\t616",
+  "row with 19 cells dropped: U\tRes5\tR\t-\t-\t-\t55\t663\t12.50(b)\t-\t648000\t7.10\t-\t420.66\t5047.97\t712.83\t8551.52\t618",
+  "row with 19 cells dropped: U\tRes6\tR\t-\t-\t-\t54\t669\t19.00(B)\t-\t648000\t7.12\t-\t421.85\t5062.19\t714.63\t8575.61\t619",
+  "row with 19 cells dropped: U\tRes7\tR\t-\t-\t-\t55\t663\t12.50(B)\t-\t658000\t7.15\t-\t423.63\t5083.52\t717.65\t8611.74\t622",
+  "row with 19 cells dropped: U\tRes8\tR\t-\t-\t-\t54\t669\t19.00(B)\t-\t658000\t7.17\t-\t424.81\t5097.74\t719.65\t8635.83\t624",
+  "row with 19 cells dropped: U\tRes9\tR\t-\t-\t-\t55\t663\t12.50(B)\t-\t668000\t7.20\t-\t426.59\t5119.07\t722.66\t8671.96\t626",
+  "row with 19 cells dropped: U\tRes10\tR\t-\t-\t-\t54\t669\t19.00(B)\t-\t668000\t7.22\t-\t427.77\t5133.29\t724.67\t8696.05\t62",
+  "This Schedule A does not follow the standard unit-table layout (no separate interior sf/floor/rooms/ext sf/carrying-charge columns); int_sf mapped from \"Unit SQFT\", sf2 mapped from \"Non-Habitable Space*\" column though some entries there are dollar-like limited common element codes (e.g. \"620.83(T)\") rather than non-habitable space values — the sheet has both a \"Non-Habitable Space*\" and \"Limited Common Elements\" column and values may have been placed in the wrong printed column due to table complexity; verify against source.",
+  "Two \"Offering Price\" columns exist (Tenants in Occupancy, and Offering Price**); used the second (\"Offering Price**\") as price per unit since totals ($7,320,000) match it; \"Tenants in Occupancy\" total ($7,123,800) not transcribed per unit beyond row values is identical to second column for Res1-10 but differs for C1/C2 — not included as a separate cell per schema (no slot for it).",
+  "No separate \"pct2\", \"cc_m\"/\"cc_a\" ambiguity: cc_m/cc_a taken directly as printed; tax_m/tax_a taken directly as printed; no carrying-charge column printed so carry_m set to Projected Total Monthly per convention is NOT used — carry_m left blank/-; Projected Total Monthly/Annually values are not captured in the required 20-cell schema (no slot) and are omitted from unit rows.",
+  "Page number used is 66 (PDF page) though printed page number at bottom is \"62\"; PERIOD line taken from table header \"First Year of Condominium Operation July 1, 2023- June 30, 2024\"."
+ ],
+ "units": []
+}

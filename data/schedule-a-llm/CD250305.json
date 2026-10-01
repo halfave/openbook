@@ -1,0 +1,119 @@
+{
+ "plan_id": "CD250305",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "publish_ag",
+   "units": 2,
+   "failed": []
+  }
+ ],
+ "calls": 1,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4210,
+   "output_tokens": 737,
+   "seconds": 12,
+   "cost_usd": 0.021258
+  }
+ ],
+ "tokens": 4210,
+ "api_equiv_usd": 0.021,
+ "located_pages": [
+  34
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": null,
+  "carrying": true,
+  "sqftTotal": null,
+  "monthlyTotals": true,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 5000000,
+ "step": "sonnet-text",
+ "budget_period": "July 1, 2027-June 30, 2028",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approx. Floor Area",
+  "Uninhabitable/Limited Common Floor Area",
+  "Approx. No. of Bedooms/Bathrooms",
+  "Offering Price",
+  "Percent Common Interest",
+  "Common Charges (Monthly)",
+  "Projected Real Estate Taxes (Monthly)",
+  "Projected Real Estate Taxes (Annual)",
+  "Projected Common Charges (Monthly)"
+ ],
+ "tax2": null,
+ "sf2": "Outdoor/Uninhabitable/Limited Common Area",
+ "printed_totals": {
+  "price": 5000000,
+  "pct": 100,
+  "cc_m": 1985,
+  "tax_m": 2768.37,
+  "int_sf": 3895,
+  "ext_sf": 1693
+ },
+ "problems": [
+  "TH and PH unit floor-area figures are split across multiple floor lines (Cellar/First/Second for TH; Third/Fourth/Penthouse for PH) with no single \"interior sf\" total printed per unit, only a combined Total row (3,895 interior-type and 1,693 outdoor/uninhabitable). int_sf for TH/PH above reflects the main habitable floor figures summed is not computable without guessing, so int_sf and sf2 values shown are the individual printed floor-area numbers assigned per the note's cellar/habitable rule as best as determinable; verify against original floor plan table formatting.",
+  "Column header wording (\"Bedooms\") reproduced exactly as printed (likely typo for \"Bedrooms\").",
+  "unit sizes left out: the area columns did not add up to the printed totals"
+ ],
+ "units": [
+  {
+   "unit": "TH",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 2.5,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 2000000,
+   "pct": 44.49,
+   "pct2": null,
+   "cc_m": 883.13,
+   "cc_a": null,
+   "tax_m": 1231.65,
+   "tax_a": 14779.75,
+   "tax2_m": null,
+   "carry_m": 2114.78,
+   "page": 31,
+   "note": "Cellar* 759, First Floor 621, Second Floor 602*; Outdoor/Limited Common: 40(B) Balcony, 412(RY) Rear Yard"
+  },
+  {
+   "unit": "PH",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 2.5,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 3000000,
+   "pct": 55.51,
+   "pct2": null,
+   "cc_m": 1101.87,
+   "cc_a": null,
+   "tax_m": 1536.72,
+   "tax_a": 18440.64,
+   "tax2_m": null,
+   "carry_m": 2638.59,
+   "page": 31,
+   "note": "Third Floor 870, Fourth Floor 850, Penthouse 193; Outdoor/Limited Common: 80(B) Balcony, 678(T) Terrace, 137(E) Elevator, 346(ST) Stairs"
+  }
+ ]
+}

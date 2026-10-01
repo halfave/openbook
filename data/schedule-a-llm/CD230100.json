@@ -1,0 +1,100 @@
+{
+ "plan_id": "CD230100",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 2,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 7939,
+   "output_tokens": 761,
+   "seconds": 86,
+   "cost_usd": 0.0226834
+  },
+  {
+   "model": "sonnet",
+   "tokens": 13739,
+   "output_tokens": 868,
+   "seconds": 12,
+   "cost_usd": 0.0363756
+  }
+ ],
+ "tokens": 21678,
+ "api_equiv_usd": 0.059,
+ "located_pages": [
+  33
+ ],
+ "text_layer": true,
+ "found": false,
+ "verdict": "not_found",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": null,
+  "ccProportional": null,
+  "carrying": null,
+  "sqftTotal": null,
+  "monthlyTotals": false,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": true
+ },
+ "price_total": 0,
+ "step": "sonnet-text",
+ "budget_period": "January 1, 2024- December 31, 2024",
+ "columns_printed": [
+  "Unit No.",
+  "Floor Location",
+  "Approx. Floor Area",
+  "Approx. Uninhabitable/Limited Common Outdoor/Common Area",
+  "No. of Bedooms/Bathrooms",
+  "Offering Price",
+  "Percent Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Real Estate Taxes (Monthly)",
+  "Projected Real Estate Taxes (Annual)",
+  "Projected Carrying Charges (Monthly)"
+ ],
+ "tax2": null,
+ "sf2": "outdoor/limited common/uninhabitable area",
+ "printed_totals": {
+  "price": 7450000,
+  "pct": 100,
+  "cc_m": 3455.83,
+  "tax_m": 4381.07,
+  "int_sf": 5203,
+  "ext_sf": 2373
+ },
+ "problems": [
+  "row with 21 cells dropped: U\tTH\tR\tCellar*/First Floor\t-\t-\t2\t2.5\t1027\t746\t-\t1750000.00\t28.14\t-\t972.47\t-\t1232",
+  "row with 21 cells dropped: U\t2\tR\tSecond Floor\t-\t-\t3\t2\t1040\t260\t-\t1600000.00\t20.99\t-\t725.38\t-\t919.59\t11035.0",
+  "row with 21 cells dropped: U\t3\tR\tThird Floor\t-\t-\t3\t2\t1040\t89\t-\t1600000.00\t20.02\t-\t691.86\t-\t877.09\t10525.07\t",
+  "row with 21 cells dropped: U\tPH\tR\tFourth Floor/Penthouse\t-\t-\t3\t2\t1350\t89\t-\t2500000.00\t30.85\t-\t1066.12\t-\t135",
+  "Unit TH's floor area line shows \"746*\" then \"1027 994 (RY)\" on following lines; interpreted 1027 as int_sf and 746 as uninhabitable/outdoor sf2, with 994 (RY) as an additional rear yard figure noted but not placed in ext_sf per instructions (multiple area figures present).",
+  "Unit PH shows two area figures \"1350 89 (B)\" and \"941 (T)\" across lines; interpreted 1350 as int_sf and 89 as sf2, with 941 (T) noted as an additional terrace figure not placed in ext_sf."
+ ],
+ "units": []
+}

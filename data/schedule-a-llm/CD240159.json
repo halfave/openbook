@@ -1,0 +1,147 @@
+{
+ "plan_id": "CD240159",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "hold",
+   "units": 2,
+   "failed": [
+    "ag",
+    "printed",
+    "pct100",
+    "sqftTotal",
+    "monthlyTotals",
+    "psf",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 2,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4297,
+   "output_tokens": 742,
+   "seconds": 8,
+   "cost_usd": 0.021636000000000002
+  },
+  {
+   "model": "sonnet",
+   "tokens": 13741,
+   "output_tokens": 948,
+   "seconds": 13,
+   "cost_usd": 0.0370118
+  }
+ ],
+ "tokens": 18038,
+ "api_equiv_usd": 0.059,
+ "located_pages": [
+  37
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "hold",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": false,
+  "ccProportional": null,
+  "carrying": true,
+  "sqftTotal": false,
+  "monthlyTotals": false,
+  "psf": false,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": true
+ },
+ "price_total": 4385000,
+ "step": "sonnet-images",
+ "budget_period": "JANUARY 1, 2025 THROUGH DECEMBER 31, 2025",
+ "columns_printed": [
+  "Unit",
+  "Beds (1)",
+  "Baths (1)",
+  "Location*",
+  "Unit Approx Area sq. ft. (2)",
+  "Limited Common Element (8)*",
+  "Ltd. Common Element Approx. Area sq. ft. (2)",
+  "Offering Price (3)",
+  "Common Interest % (4)",
+  "Est. Common Charges monthly/anually (5)",
+  "Est. RE Taxes monthly/annually First Year (6)",
+  "Est. RE Taxes monthly/annually Second Year (6)",
+  "Est. Carrying Costs monthly/annually First Year (7)"
+ ],
+ "tax2": "Est. RE Taxes monthly/annually Second Year",
+ "sf2": "limited common element area",
+ "printed_totals": {
+  "price": 6885000,
+  "pct": 100,
+  "cc_m": 2330.17,
+  "tax_m": 1226.83,
+  "int_sf": 4622,
+  "ext_sf": null
+ },
+ "problems": [
+  "row with 21 cells dropped: U\t1\tR\tCellar/Floor 1\t-\t-\t2\t2.5\t2017\t757\t1690000\t2500000\t44.00\t-\t1025.27\t12303.28",
+  "Unit 1 price printed as 2,500,000.00 but totaled with Units 2 and 3 (1,735,000 + 2,650,000 = 4,385,000) plus Unit 1 does not equal the printed total of 6,885,000.00; transcribed Unit 1 price as printed (2500000) despite this discrepancy.",
+  "ext_sf left blank for all units: each unit's limited common elements consist of multiple separate areas (yard, terrace, deck, condenser, storage, balcony, skylights, etc.) rather than a single outdoor area figure, so per instructions these are not combined; individual areas not itemized in note field but can be found in COLS/text layer (Rear Yard 516, Terrace 184, Deck 50, Condenser 7 for Unit 1; Storage 40, Terrace 27, Condenser 7 for Unit 2; Storage 65, Balcony 36, Rear Terrace 581, Front Terrace 60, Skylights 26, Condenser 7 for Unit 3)."
+ ],
+ "units": [
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "Floor 2/Roof Plan",
+   "rooms": null,
+   "beds": null,
+   "baths": 2,
+   "int_sf": 2,
+   "sf2": 1086,
+   "ext_sf": 74,
+   "price": 1735000,
+   "pct": 19,
+   "pct2": null,
+   "cc_m": 442.73,
+   "cc_a": 5312.78,
+   "tax_m": 233.1,
+   "tax_a": 2797.18,
+   "tax2_m": 342.51,
+   "carry_m": 675.83,
+   "page": 37,
+   "note": null
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": "Floor 3/Penthouse",
+   "rooms": null,
+   "beds": null,
+   "baths": 3,
+   "int_sf": 2,
+   "sf2": 1519,
+   "ext_sf": 775,
+   "price": 2650000,
+   "pct": 37,
+   "pct2": null,
+   "cc_m": 862.16,
+   "cc_a": 10345.94,
+   "tax_m": 453.93,
+   "tax_a": 5447.14,
+   "tax2_m": 666.99,
+   "carry_m": 1316.09,
+   "page": 37,
+   "note": null
+  }
+ ]
+}

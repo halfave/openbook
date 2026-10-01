@@ -1,0 +1,158 @@
+{
+ "plan_id": "CD170248",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "publish_ag",
+   "units": 3,
+   "failed": []
+  }
+ ],
+ "calls": 4,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12654,
+   "output_tokens": 573,
+   "seconds": 8,
+   "cost_usd": 0.024597
+  },
+  {
+   "model": "haiku",
+   "tokens": 5009,
+   "output_tokens": 97,
+   "seconds": 4,
+   "cost_usd": 0.005397000000000001
+  },
+  {
+   "model": "haiku",
+   "tokens": 8855,
+   "output_tokens": 625,
+   "seconds": 8,
+   "cost_usd": 0.017159
+  },
+  {
+   "model": "sonnet",
+   "tokens": 11748,
+   "output_tokens": 1011,
+   "seconds": 12,
+   "cost_usd": 0.0333242
+  }
+ ],
+ "tokens": 38266,
+ "api_equiv_usd": 0.08,
+ "located_pages": [],
+ "text_layer": false,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": null,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 2750000,
+ "step": "sonnet-images",
+ "budget_period": "7/1/2020 - 6/30/2021",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approx. Area (1)",
+  "Uninhabitable Area *",
+  "No. of Bedrooms / Bathrooms (1)",
+  "Offering Price (2)",
+  "Percent Common Interest (3)",
+  "Projected Monthly Common Charges (4)",
+  "Projected Real Estate Taxes (Monthly) (5)",
+  "Projected Real Estate Taxes (Annual) (5)",
+  "Projected Annual Carrying Charges (6)"
+ ],
+ "tax2": null,
+ "sf2": "uninhabitable area",
+ "printed_totals": {
+  "price": 2750000,
+  "pct": 100,
+  "cc_m": 994.13,
+  "tax_m": 2020.83,
+  "int_sf": 4311,
+  "ext_sf": null
+ },
+ "problems": [
+  "Bedrooms/Bathrooms codes (\"2/1w 2half\", \"4/2\") are ambiguous combined codes, not placed in beds/baths. Uninhabitable Area values are coded limited-common-element areas (cellar/areaway/porch/yard/balcony/roof/storage), not a simple ext_sf or sf2 number, so left out of int_sf/sf2/ext_sf and recorded in note instead. Carrying Charges column is annual only (6), no monthly carry_m printed."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": "1st Floor/Cellar",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 1443,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 1000000,
+   "pct": 40.282,
+   "pct2": null,
+   "cc_m": 400.45,
+   "cc_a": null,
+   "tax_m": 814.03,
+   "tax_a": 9768.38,
+   "tax2_m": null,
+   "carry_m": null,
+   "page": 28,
+   "note": "2/1w 2half; uninhabitable area: c. 1342 a. 119 p. 199 y. 842"
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "2nd Floor",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 1434,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 875000,
+   "pct": 28.364,
+   "pct2": null,
+   "cc_m": 281.97,
+   "cc_a": null,
+   "tax_m": 573.19,
+   "tax_a": 6878.23,
+   "tax2_m": null,
+   "carry_m": null,
+   "page": 28,
+   "note": "4/2; uninhabitable area: rb. 187 fb. 29 s. 30"
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": "3rd Floor",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 1434,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 875000,
+   "pct": 31.354,
+   "pct2": null,
+   "cc_m": 311.7,
+   "cc_a": null,
+   "tax_m": 633.61,
+   "tax_a": 7603.36,
+   "tax2_m": null,
+   "carry_m": null,
+   "page": 28,
+   "note": "4/2; uninhabitable area: s. 30 fb.29 rb. 70 r. 1325"
+  }
+ ]
+}

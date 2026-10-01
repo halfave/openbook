@@ -1,0 +1,107 @@
+{
+ "plan_id": "CD200097",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 4,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 7856,
+   "output_tokens": 16,
+   "seconds": 79,
+   "cost_usd": 0.018149
+  },
+  {
+   "model": "haiku",
+   "tokens": 4937,
+   "output_tokens": 97,
+   "seconds": 7,
+   "cost_usd": 0.005325
+  },
+  {
+   "model": "haiku",
+   "tokens": 8726,
+   "output_tokens": 571,
+   "seconds": 8,
+   "cost_usd": 0.016777
+  },
+  {
+   "model": "sonnet",
+   "tokens": 11947,
+   "output_tokens": 1310,
+   "seconds": 18,
+   "cost_usd": 0.0361042
+  }
+ ],
+ "tokens": 33466,
+ "api_equiv_usd": 0.076,
+ "located_pages": [],
+ "text_layer": true,
+ "found": false,
+ "verdict": "not_found",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": null,
+  "ccProportional": null,
+  "carrying": null,
+  "sqftTotal": null,
+  "monthlyTotals": false,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": true
+ },
+ "price_total": 0,
+ "step": "sonnet-images",
+ "budget_period": "July 1, 2021 - June 30, 2022",
+ "columns_printed": [
+  "Unit No.",
+  "Bdrs/Bths",
+  "Approx. Size of Units in sq. ft. [habitable]",
+  "Approx. Size of Units in sq. ft. [uninhabitable]",
+  "Approx. Size of Limited Common Elements in sq. ft. [uninhabitble]: Rear Yard",
+  "Areaway",
+  "Balcony",
+  "Balcony",
+  "Terrace",
+  "Offering Prices",
+  "% of Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Monthly Real Estate Taxes",
+  "Projected Annual Real Estate Taxes",
+  "Projected Monthly Carrying Charges",
+  "Projected Annual Carrying Charges"
+ ],
+ "tax2": null,
+ "sf2": "uninhabitable",
+ "printed_totals": {
+  "price": 5485000,
+  "pct": 100,
+  "cc_m": 3330.67,
+  "tax_m": 4970.92,
+  "int_sf": 4584,
+  "ext_sf": null
+ },
+ "problems": [
+  "row with 19 cells dropped: U\t1\tR\t-\t-\t0\t1.5\t406.00\t0.00\t-\t725000.00\t13.22\t-\t440.31\t657.16\t7885.86\t-\t1097.47\t",
+  "row with 19 cells dropped: U\t2\tR\t-\t-\t1\t1.5\t600.00\t595.00\t-\t1025000.00\t18.69\t-\t622.50\t929.06\t11148.77\t-\t1551",
+  "row with 19 cells dropped: U\t3\tR\t-\t-\t1\t1\t640.00\t0.00\t-\t695000.00\t12.67\t-\t422.00\t629.82\t7557.78\t-\t1051.81\t38",
+  "row with 19 cells dropped: U\t4\tR\t-\t-\t1\t1\t632.00\t0.00\t-\t665000.00\t12.12\t-\t403.68\t602.48\t7229.70\t-\t1006.15\t38",
+  "row with 19 cells dropped: U\t5\tR\t-\t-\t2\t2\t1040.00\t0.00\t-\t1050000.00\t19.14\t-\t637.49\t951.43\t11417.20\t-\t1588.92",
+  "row with 19 cells dropped: U\t6\tR\t-\t-\t2\t2\t1266.00\t0.00\t-\t1325000.00\t24.16\t-\t804.69\t1200.97\t14411.68\t-\t2005.6",
+  "Table has no separate \"floor\" or \"rooms\" column; left blank. Units have multiple separate outdoor areas (Rear Yard/Areaway/Balcony/Balcony/Terrace) so ext_sf left empty and listed in note per unit as instructed. \"Approx. Size of Units [uninhabitable]\" used as SF2; several units show 0.00, kept as printed rather than \"-\". No tax2/second percentage/carry_a column mapping requested beyond carry_m, but table also has an Annual Carrying Charges column not in the requested schema (omitted per instructions). Page 35 (notes) not provided, so footnote text for \"**\" could not be verified beyond what's visible."
+ ],
+ "units": []
+}

@@ -1,0 +1,180 @@
+{
+ "plan_id": "CD240206",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "publish_ag",
+   "units": 4,
+   "failed": []
+  }
+ ],
+ "calls": 2,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 3731,
+   "output_tokens": 141,
+   "seconds": 7,
+   "cost_usd": 0.015766000000000002
+  },
+  {
+   "model": "sonnet",
+   "tokens": 13778,
+   "output_tokens": 903,
+   "seconds": 13,
+   "cost_usd": 0.036734
+  }
+ ],
+ "tokens": 17509,
+ "api_equiv_usd": 0.053,
+ "located_pages": [
+  58
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 9925000,
+ "step": "sonnet-images",
+ "budget_period": "September 1, 2025 through August 31, 2026",
+ "columns_printed": [
+  "Unit",
+  "Number of Bedrooms",
+  "Number of Baths",
+  "Square Footage of Each Unit Listed by Floor",
+  "Total Square Footage",
+  "*Square Footage Rear Yard Limited Common Element",
+  "*Square Footage Roof Top Limited Common Element",
+  "Total Square Footage Including Limited Common Elements",
+  "Estimated Offering Price",
+  "Percentage of Common Interest",
+  "**Projected Monthly Real Estate Tax",
+  "**Projected Annual Real Estate Tax",
+  "Projected Monthly Common Charges",
+  "Projected Annual Common Charges",
+  "Total Estimated Monthly Carrying Charges"
+ ],
+ "tax2": null,
+ "sf2": "rear yard + roof top limited common element sf",
+ "printed_totals": {
+  "price": 9925000,
+  "pct": 100,
+  "cc_m": 2035.83,
+  "tax_m": 1755.08,
+  "int_sf": 5771,
+  "ext_sf": 1146
+ },
+ "problems": [
+  "Number of Baths for Unit 1 printed as \"2 Full/1 Half\" (2.5); ext_sf not clearly a single terrace/balcony figure — table prints separate Rear Yard LCE and Roof Top LCE square footage columns plus a combined \"Total Square Footage Including Limited Common Elements\" column, so SF2 column used to hold these LCE figures and details placed in note per unit."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 2191,
+   "sf2": 569,
+   "ext_sf": null,
+   "price": 2975000,
+   "pct": 31,
+   "pct2": null,
+   "cc_m": 631.11,
+   "cc_a": 7573.3,
+   "tax_m": 544.08,
+   "tax_a": 6528.91,
+   "tax2_m": null,
+   "carry_m": 1175.18,
+   "page": 58,
+   "note": "Cellar 988, 1st Floor 1,203; Roof Top LCE 0; Total incl. LCE 2,760"
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1200,
+   "sf2": 0,
+   "ext_sf": null,
+   "price": 2250000,
+   "pct": 23,
+   "pct2": null,
+   "cc_m": 468.24,
+   "cc_a": 5618.9,
+   "tax_m": 403.67,
+   "tax_a": 4844.03,
+   "tax2_m": null,
+   "carry_m": 871.91,
+   "page": 58,
+   "note": "2nd Floor 1,200; Rear Yard LCE 0, Roof Top LCE 0; Total incl. LCE 1,200"
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1190,
+   "sf2": 555,
+   "ext_sf": null,
+   "price": 2350000,
+   "pct": 23,
+   "pct2": null,
+   "cc_m": 468.24,
+   "cc_a": 5618.9,
+   "tax_m": 403.67,
+   "tax_a": 4844.03,
+   "tax2_m": null,
+   "carry_m": 871.91,
+   "page": 58,
+   "note": "3rd Floor 1,190; Rear Yard LCE 0; Total incl. LCE 1,745"
+  },
+  {
+   "unit": "4",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1190,
+   "sf2": 591,
+   "ext_sf": null,
+   "price": 2350000,
+   "pct": 23,
+   "pct2": null,
+   "cc_m": 468.24,
+   "cc_a": 5618.9,
+   "tax_m": 403.67,
+   "tax_a": 4844.03,
+   "tax2_m": null,
+   "carry_m": 871.91,
+   "page": 58,
+   "note": "4th Floor 1,190; Rear Yard LCE 0; Total incl. LCE 1,781"
+  }
+ ]
+}

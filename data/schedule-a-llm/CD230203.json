@@ -1,0 +1,118 @@
+{
+ "plan_id": "CD230203",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 6,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12628,
+   "output_tokens": 612,
+   "seconds": 9,
+   "cost_usd": 0.024695
+  },
+  {
+   "model": "haiku",
+   "tokens": 4939,
+   "output_tokens": 97,
+   "seconds": 5,
+   "cost_usd": 0.005327
+  },
+  {
+   "model": "haiku",
+   "tokens": 4941,
+   "output_tokens": 97,
+   "seconds": 4,
+   "cost_usd": 0.005329
+  },
+  {
+   "model": "haiku",
+   "tokens": 4939,
+   "output_tokens": 97,
+   "seconds": 4,
+   "cost_usd": 0.005327
+  },
+  {
+   "model": "haiku",
+   "tokens": 8688,
+   "output_tokens": 554,
+   "seconds": 8,
+   "cost_usd": 0.016652
+  },
+  {
+   "model": "sonnet",
+   "tokens": 11557,
+   "output_tokens": 928,
+   "seconds": 11,
+   "cost_usd": 0.0322674
+  }
+ ],
+ "tokens": 47692,
+ "api_equiv_usd": 0.09,
+ "located_pages": [],
+ "text_layer": true,
+ "found": false,
+ "verdict": "not_found",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": null,
+  "ccProportional": null,
+  "carrying": null,
+  "sqftTotal": null,
+  "monthlyTotals": false,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": true
+ },
+ "price_total": 0,
+ "step": "sonnet-images",
+ "budget_period": "April 1, 2024 – March 30, 2025",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approx. Habitable Area",
+  "Approx. Uninhabitable Area",
+  "Approx. Total Outdoor Area",
+  "No. of Bedrooms/Bathrooms",
+  "Offering Price*",
+  "Percent Common Interest",
+  "Projected Common Charges (Monthly)",
+  "Projected 1st year Real Estate Taxes (Monthly)",
+  "Projected 1st Year Real Estate Taxes (Annual)",
+  "Projected Post Completion Real Estate Taxes (Monthly)",
+  "Projected Post Completion Real Estate Taxes (Annual)",
+  "Projected 1st Year Monthly Carrying Charges",
+  "Projected Post Completion Monthly Carrying Charges"
+ ],
+ "tax2": "Post Completion Real Estate Taxes (Monthly)",
+ "sf2": "uninhabitable area",
+ "printed_totals": {
+  "price": 2700000,
+  "pct": 100,
+  "cc_m": 1038.58,
+  "tax_m": 1043.46,
+  "int_sf": 2174,
+  "ext_sf": 1861
+ },
+ "problems": [
+  "row with 21 cells dropped: U\t1\tR\tCellar/1st Floor\t-\t-\t2\t2.5\t963\t577\t819\t1350000.00\t48.01\t-\t498.58\t6011.07\t5",
+  "row with 21 cells dropped: U\t2\tR\tCellar, 1st Floor, 2nd Floor, Bulkhead\t-\t-\t2\t2\t1211\t376\t1042\t1350000.00\t51",
+  "Table has two tax scenarios (1st Year and Post Completion) each with monthly/annual figures; I used 1st Year Taxes (Monthly/Annual) for tax_m/tax_a and Post Completion Taxes (Monthly) for tax2_m, omitting Post Completion Taxes (Annual, $7,303.18 and $7,909.88) and Post Completion Monthly Carrying Charges ($1,107.18 and $1,199.16) since no column was available for them.",
+  "\"No. of Bedrooms/Bathrooms\" column gives combined code (e.g. \"2/2.5\"); interpreted as beds/baths per rules.",
+  "Table does not have separate \"floor\" or \"rooms\" columns; \"Location\" column used only for note context, not floor."
+ ],
+ "units": []
+}

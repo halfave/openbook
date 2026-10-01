@@ -1,0 +1,212 @@
+{
+ "plan_id": "CD220163",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "hold",
+   "units": 4,
+   "failed": [
+    "notPlaceholder"
+   ]
+  }
+ ],
+ "calls": 8,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12496,
+   "output_tokens": 554,
+   "seconds": 8,
+   "cost_usd": 0.024256
+  },
+  {
+   "model": "haiku",
+   "tokens": 4940,
+   "output_tokens": 96,
+   "seconds": 5,
+   "cost_usd": 0.005324
+  },
+  {
+   "model": "haiku",
+   "tokens": 4947,
+   "output_tokens": 97,
+   "seconds": 5,
+   "cost_usd": 0.0053349999999999995
+  },
+  {
+   "model": "haiku",
+   "tokens": 4941,
+   "output_tokens": 97,
+   "seconds": 4,
+   "cost_usd": 0.005329
+  },
+  {
+   "model": "haiku",
+   "tokens": 4937,
+   "output_tokens": 97,
+   "seconds": 5,
+   "cost_usd": 0.005325
+  },
+  {
+   "model": "haiku",
+   "tokens": 4941,
+   "output_tokens": 97,
+   "seconds": 6,
+   "cost_usd": 0.005329
+  },
+  {
+   "model": "haiku",
+   "tokens": 9194,
+   "output_tokens": 502,
+   "seconds": 81,
+   "cost_usd": 0.019410999999999998
+  },
+  {
+   "model": "sonnet",
+   "tokens": 11503,
+   "output_tokens": 878,
+   "seconds": 12,
+   "cost_usd": 0.031758999999999996
+  }
+ ],
+ "tokens": 57899,
+ "api_equiv_usd": 0.102,
+ "located_pages": [],
+ "text_layer": true,
+ "found": true,
+ "verdict": "hold",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": false,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 1000000,
+ "step": "sonnet-images",
+ "budget_period": "1/1/2024 -12/31/2024",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approx. Area (1)",
+  "Uninhabitable Area *",
+  "No. of Bedrooms / Bathrooms (1)",
+  "Offering Price (2)",
+  "Percent Common Interest (3)",
+  "Projected Monthly Common Charges (4)",
+  "Projected Real Estate Taxes (Monthly) (5)",
+  "Projected Real Estate Taxes (Annual) (5)",
+  "Projected Monthly Carrying Charges (6)",
+  "Projected Annual Carrying Charges (7)"
+ ],
+ "tax2": null,
+ "sf2": "Uninhabitable Area",
+ "printed_totals": {
+  "price": 1000000,
+  "pct": 100,
+  "cc_m": 995.25,
+  "tax_m": 4045.8,
+  "int_sf": 5352,
+  "ext_sf": null
+ },
+ "problems": [
+  "Beds/baths column prints as combined code \"No. of Bedrooms / Bathrooms\" (e.g. \"1/1.5\", \"3/2\"); transcribed first number as beds, second as baths per example format, though the header does not explicitly confirm this order.",
+  "Uninhabitable Area column contains coded abbreviations (c=cellar, a=areaway, ry=rear yard, fy=front yard, st=storage, t=terrace, b=balcony, rt=roof terrace) representing multiple limited common elements, not a single square-footage figure; placed verbatim in sf2 as it is the table's designated \"Uninhabitable Area\" column, but it is not a simple numeric area."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": "1st Floor/ Cellar",
+   "rooms": null,
+   "beds": 1,
+   "baths": 1.5,
+   "int_sf": 1406,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 250000,
+   "pct": 33.34,
+   "pct2": null,
+   "cc_m": 331.77,
+   "cc_a": null,
+   "tax_m": 1348.67,
+   "tax_a": 16184,
+   "tax2_m": null,
+   "carry_m": 1680.43,
+   "page": 37,
+   "note": null
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "2nd Floor",
+   "rooms": null,
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1268,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 250000,
+   "pct": 21.15,
+   "pct2": null,
+   "cc_m": 210.48,
+   "cc_a": null,
+   "tax_m": 855.61,
+   "tax_a": 10267.27,
+   "tax2_m": null,
+   "carry_m": 1066.08,
+   "page": 37,
+   "note": null
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": "3rd Floor",
+   "rooms": null,
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1268,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 250000,
+   "pct": 21.16,
+   "pct2": null,
+   "cc_m": 210.59,
+   "cc_a": null,
+   "tax_m": 856.09,
+   "tax_a": 10273.09,
+   "tax2_m": null,
+   "carry_m": 1066.69,
+   "page": 37,
+   "note": null
+  },
+  {
+   "unit": "4",
+   "type": "residential",
+   "floor": "4th Floor",
+   "rooms": null,
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1410,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 250000,
+   "pct": 24.36,
+   "pct2": null,
+   "cc_m": 242.41,
+   "cc_a": null,
+   "tax_m": 985.44,
+   "tax_a": 11825.22,
+   "tax2_m": null,
+   "carry_m": 1227.85,
+   "page": 37,
+   "note": null
+  }
+ ]
+}

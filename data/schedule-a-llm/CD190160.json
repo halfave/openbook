@@ -1,0 +1,140 @@
+{
+ "plan_id": "CD190160",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "publish_ag",
+   "units": 3,
+   "failed": []
+  }
+ ],
+ "calls": 1,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 7696,
+   "output_tokens": 706,
+   "seconds": 82,
+   "cost_usd": 0.021738599999999997
+  }
+ ],
+ "tokens": 7696,
+ "api_equiv_usd": 0.022,
+ "located_pages": [
+  30
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": null,
+  "monthlyTotals": true,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 8850000,
+ "step": "sonnet-text",
+ "budget_period": "April 1, 2020- March 31, 2021",
+ "columns_printed": [
+  "Unit No.",
+  "Floor Location",
+  "Approx. Floor Area",
+  "Approx. Outdoor/Uninhabitable/Limited Common Area",
+  "No. of Bedooms/Bathrooms",
+  "Offering Price",
+  "Percent Common Interest",
+  "Common Charges (Monthly)",
+  "Projected Real Estate Taxes (Monthly)",
+  "Projected Real Estate Taxes (Annual)",
+  "Projected Common Carrying Charges (Monthly)"
+ ],
+ "tax2": null,
+ "sf2": "cellar/basement/uninhabitable or limited common area",
+ "printed_totals": {
+  "price": 8850000,
+  "pct": 100,
+  "cc_m": 2000.83,
+  "tax_m": 2125.01,
+  "int_sf": 5768,
+  "ext_sf": 739
+ },
+ "problems": [
+  "Unit 1 floor area has three figures (Cellar 1027*, Basement 1178, 1st Floor 1147) for a unit spanning three levels; placed 1st Floor figure in int_sf and the other two in sf2 per habitable/cellar rule, though basement is not strictly a cellar. Unit 1 and Unit 3 outdoor/limited common areas have multiple separate figures (not single ext_sf numbers), so ext_sf left blank and noted instead.",
+  "unit sizes left out: the area columns did not add up to the printed totals"
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 2.5,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 4200000,
+   "pct": 49.5,
+   "pct2": null,
+   "cc_m": 990.41,
+   "cc_a": null,
+   "tax_m": 1051.88,
+   "tax_a": 12622.5,
+   "tax2_m": null,
+   "carry_m": 2042.29,
+   "page": 30,
+   "note": "Floor Area: Cellar 1027*, Basement 1178, 1st Floor 1147; Floor Location: Cellar/Basement/1st Floor; beds/baths \"3/2 Full, 2 Half\""
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "2nd Floor",
+   "rooms": null,
+   "beds": 3,
+   "baths": 2,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 2100000,
+   "pct": 23.1,
+   "pct2": null,
+   "cc_m": 462.19,
+   "cc_a": null,
+   "tax_m": 490.88,
+   "tax_a": 5890.5,
+   "tax2_m": null,
+   "carry_m": 953.07,
+   "page": 30,
+   "note": null
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": "3rd Floor",
+   "rooms": null,
+   "beds": 3,
+   "baths": 2,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 2550000,
+   "pct": 27.4,
+   "pct2": null,
+   "cc_m": 548.23,
+   "cc_a": null,
+   "tax_m": 582.25,
+   "tax_a": 6987,
+   "tax2_m": null,
+   "carry_m": 1130.48,
+   "page": 30,
+   "note": "Uninhabitable/Limited Common Area two figures: 559 (T), 352 (RT)"
+  }
+ ]
+}

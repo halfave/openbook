@@ -1,0 +1,100 @@
+{
+ "plan_id": "CD230168",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 2,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4027,
+   "output_tokens": 595,
+   "seconds": 9,
+   "cost_usd": 0.019674
+  },
+  {
+   "model": "sonnet",
+   "tokens": 13319,
+   "output_tokens": 764,
+   "seconds": 13,
+   "cost_usd": 0.034672
+  }
+ ],
+ "tokens": 17346,
+ "api_equiv_usd": 0.054,
+ "located_pages": [
+  31
+ ],
+ "text_layer": true,
+ "found": false,
+ "verdict": "not_found",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": null,
+  "ccProportional": null,
+  "carrying": null,
+  "sqftTotal": null,
+  "monthlyTotals": false,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": true
+ },
+ "price_total": 0,
+ "step": "sonnet-text",
+ "budget_period": "First Year",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approx. Habitable Area",
+  "Approx. Uninhabitable Area",
+  "No. of Bedrooms/Bathrooms",
+  "Offering Price*",
+  "Percent Common Interest",
+  "Projected Common Charges (Monthly)",
+  "Projected Real Estate Taxes First Year (Monthly)",
+  "Projected Real Estate Taxes First Year Post Construction (Monthly)",
+  "Projected Real Estate Taxes First Year (Annual)",
+  "Projected Real Estate Taxes First Year Post Construction (Annual)",
+  "Projected Monthly Carrying Charges First Year",
+  "Projected Monthly Carrying Charges First Year Post construction"
+ ],
+ "tax2": "post construction",
+ "sf2": "uninhabitable area",
+ "printed_totals": {
+  "price": 5750000,
+  "pct": 100,
+  "cc_m": 1056.3,
+  "tax_m": 1727.21,
+  "int_sf": 2920,
+  "ext_sf": 2455
+ },
+ "problems": [
+  "row with 21 cells dropped: U\t1\tR\tCellar/1st Floor\t-\t-\t1\t2.5\t762\t1569\t-\t2500000.00\t42.28\t-\t446.63\t1078.30\t73",
+  "row with 21 cells dropped: U\t2\tR\t1st Floor/2nd Floor/3rd Floor/Roof\t-\t-\t3\t2.5\t2158\t886\t-\t3250000.00\t57.72\t-",
+  "ext_sf not printed as single figure for either unit (Unit 1: 692 SF yard per Note A; Unit 2: multiple areas listed in note); tax_m/tax_a chosen as first-year (pre-construction) figures since carry_m (First Year) corresponds to these, with post-construction as TAX2/second carry column."
+ ],
+ "units": []
+}

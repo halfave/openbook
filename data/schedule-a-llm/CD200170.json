@@ -1,0 +1,100 @@
+{
+ "plan_id": "CD200170",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 2,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4543,
+   "output_tokens": 888,
+   "seconds": 11,
+   "cost_usd": 0.023496000000000003
+  },
+  {
+   "model": "sonnet",
+   "tokens": 13858,
+   "output_tokens": 851,
+   "seconds": 10,
+   "cost_usd": 0.0364912
+  }
+ ],
+ "tokens": 18401,
+ "api_equiv_usd": 0.06,
+ "located_pages": [
+  33
+ ],
+ "text_layer": true,
+ "found": false,
+ "verdict": "not_found",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": null,
+  "ccProportional": null,
+  "carrying": null,
+  "sqftTotal": null,
+  "monthlyTotals": false,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": true
+ },
+ "price_total": 0,
+ "step": "sonnet-text",
+ "budget_period": "July 1, 2021- June 30, 2021",
+ "columns_printed": [
+  "Unit No.",
+  "Floor Location",
+  "Approx. Floor Area",
+  "Approx. Outdoor/Uninhabitable/Limited Common Floor Area",
+  "No. of Bedooms/Bathrooms",
+  "Offering Price",
+  "Percent Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Real Estate Taxes (Monthly)",
+  "Projected Real Estate Taxes (Annual)",
+  "Projected Carrying Charges (Monthly)"
+ ],
+ "tax2": null,
+ "sf2": "outdoor/uninhabitable/limited common area",
+ "printed_totals": {
+  "price": 7360000,
+  "pct": 100,
+  "cc_m": 2985.83,
+  "tax_m": 5239.27,
+  "int_sf": 5813,
+  "ext_sf": 1648
+ },
+ "problems": [
+  "row with 21 cells dropped: U\t1\tR\tCellar/First Floor\t-\t-\t2\t2.5\t1080\t983\t762 (T); 171 (S); 430 (A)\t2200000\t29",
+  "row with 21 cells dropped: U\t2\tR\tSecond Floor\t-\t-\t1\t1\t1216\t-\t38 (S); 178 (T)\t1600000\t21.98\t-\t656.29\t-\t1151.",
+  "row with 21 cells dropped: U\t3\tR\tThird Floor\t-\t-\t1\t1\t1216\t-\t66 (B); 68 (S); 210 (T)\t1600000\t22.28\t-\t665.24\t",
+  "row with 21 cells dropped: U\t4\tR\tFourth Floor Penthouse\t-\t-\t2\t1.5\t1318\t-\t57 (S); 68 (B); 472 (T)\t1960000\t26",
+  "Unit 1 area breakdown printed as \"983*\" and \"1080\" with \"762 (T)/171 (S)/430 (A)\" as a third group; assigned 1080 (first floor, habitable) to int_sf and 983 (cellar) to sf2 per instructions, with the 762/171/430 figures listed as outdoor/limited elements in note since no single ext_sf figure is given.",
+  "Units 2-4 have multiple limited-element area components (S/B/T) rather than a single second-area or ext_sf figure, so sf2 and ext_sf columns are left as - with components listed in note."
+ ],
+ "units": []
+}

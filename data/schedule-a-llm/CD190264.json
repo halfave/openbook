@@ -1,0 +1,184 @@
+{
+ "plan_id": "CD190264",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "hold",
+   "units": 4,
+   "failed": [
+    "pct100",
+    "ccProportional"
+   ]
+  }
+ ],
+ "calls": 4,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12563,
+   "output_tokens": 609,
+   "seconds": 10,
+   "cost_usd": 0.024557000000000002
+  },
+  {
+   "model": "haiku",
+   "tokens": 4937,
+   "output_tokens": 97,
+   "seconds": 5,
+   "cost_usd": 0.005325
+  },
+  {
+   "model": "haiku",
+   "tokens": 8688,
+   "output_tokens": 554,
+   "seconds": 10,
+   "cost_usd": 0.016652
+  },
+  {
+   "model": "sonnet",
+   "tokens": 11491,
+   "output_tokens": 868,
+   "seconds": 14,
+   "cost_usd": 0.0316548
+  }
+ ],
+ "tokens": 37679,
+ "api_equiv_usd": 0.078,
+ "located_pages": [],
+ "text_layer": false,
+ "found": true,
+ "verdict": "hold",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": false,
+  "ccProportional": false,
+  "carrying": true,
+  "sqftTotal": null,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 3600000,
+ "step": "sonnet-images",
+ "budget_period": "1/1/2021 - 12/31/2021",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approx. Habitable Area",
+  "No. of Bedrooms/Bathrooms",
+  "Uninhabitable Area",
+  "Offering Price",
+  "Percent Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Real Estate Taxes (Monthly)",
+  "Projected Real Estate Taxes (Annual)",
+  "Projected Monthly Carrying Charges"
+ ],
+ "tax2": null,
+ "sf2": "uninhabitable area",
+ "printed_totals": {
+  "price": 3600000,
+  "pct": 100,
+  "cc_m": 958.2,
+  "tax_m": 2214.89,
+  "int_sf": null,
+  "ext_sf": null
+ },
+ "problems": [
+  "Uninhabitable Area column prints as \"*c 459 ry. 715\" for Unit 1 (cellar 459 + rearyard portion unclear) and \"p. 106\"/\"rt. 314\" for others, likely referencing porch/roof terrace limited common elements rather than pure sf; transcribed numeric portion only (459 for Unit 1, 106 for Unit 2, 314 for Units 3-4) as SF2; ext_sf left blank since these appear to be limited common element area labels (porch/roof terrace), not separate ext_sf figures, and exact breakdown is unclear.",
+  "Bedrooms/Bathrooms code \"1/1 w 2 half\" for Unit 1 is ambiguous; left beds/baths blank and placed code in note column is not shown since note column instructions only allow code when ext_sf has multiple areas — recorded as code text was not placed; beds/baths left blank, type column O not used, see int_sf row note field is \"-\"."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": "Basement / Cellar",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 941,
+   "sf2": 459,
+   "ext_sf": null,
+   "price": 1125000,
+   "pct": 31.73,
+   "pct2": null,
+   "cc_m": 229.03,
+   "cc_a": null,
+   "tax_m": 702.91,
+   "tax_a": 8434.88,
+   "tax2_m": null,
+   "carry_m": 931.94,
+   "page": 33,
+   "note": null
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "1st Floor",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 746,
+   "sf2": 106,
+   "ext_sf": null,
+   "price": 825000,
+   "pct": 22.07,
+   "pct2": null,
+   "cc_m": 229.03,
+   "cc_a": null,
+   "tax_m": 514.42,
+   "tax_a": 6173.08,
+   "tax2_m": null,
+   "carry_m": 743.46,
+   "page": 33,
+   "note": null
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": "2nd Floor",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 763,
+   "sf2": 314,
+   "ext_sf": null,
+   "price": 825000,
+   "pct": 24.09,
+   "pct2": null,
+   "cc_m": 250.06,
+   "cc_a": null,
+   "tax_m": 500.55,
+   "tax_a": 6006.64,
+   "tax2_m": null,
+   "carry_m": 750.62,
+   "page": 33,
+   "note": null
+  },
+  {
+   "unit": "4",
+   "type": "residential",
+   "floor": "3rd Floor",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 763,
+   "sf2": 314,
+   "ext_sf": null,
+   "price": 825000,
+   "pct": 24.09,
+   "pct2": null,
+   "cc_m": 250.06,
+   "cc_a": null,
+   "tax_m": 497.01,
+   "tax_a": 5964.12,
+   "tax2_m": null,
+   "carry_m": 747.07,
+   "page": 33,
+   "note": null
+  }
+ ]
+}

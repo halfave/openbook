@@ -1,0 +1,204 @@
+{
+ "plan_id": "CD200201",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 4,
+   "failed": [
+    "carrying",
+    "monthlyTotals"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 3,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4388,
+   "output_tokens": 761,
+   "seconds": 11,
+   "cost_usd": 0.022114
+  },
+  {
+   "model": "sonnet",
+   "tokens": 4326,
+   "output_tokens": 701,
+   "seconds": 7,
+   "cost_usd": 0.021506
+  },
+  {
+   "model": "sonnet",
+   "tokens": 13812,
+   "output_tokens": 877,
+   "seconds": 10,
+   "cost_usd": 0.0366
+  }
+ ],
+ "tokens": 22526,
+ "api_equiv_usd": 0.08,
+ "located_pages": [
+  31
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "hold",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": false,
+  "sqftTotal": true,
+  "monthlyTotals": false,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 3230000,
+ "step": "sonnet-text",
+ "budget_period": "May 1, 2021 - April 30, 2022",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approximate Habitable Area (SF) (1)",
+  "Approximate Unhabitable Area (SF) (1)",
+  "Approximate Outdoor Area (SF) (1)",
+  "No. of Bedrooms/Bathrooms (1)",
+  "Offering Price (2)",
+  "Percent Common Interest (3)",
+  "Monthly Common Charges (4)",
+  "Projected Real Estate Taxes First Year* (Annual) (5)",
+  "Projected Real Estate Taxes First Year* (Monthly) (5)",
+  "Projected Real Estate Taxes Post Construction (Annual) (5)",
+  "Projected Real Estate Taxes Post Construction (Monthly) (5)",
+  "Monthly Carrying Charges First Year* (6)",
+  "Monthly Carrying Charges Post Construction (6)"
+ ],
+ "tax2": null,
+ "sf2": "uninhabitable",
+ "printed_totals": {
+  "price": 3230000,
+  "pct": 100,
+  "cc_m": 1903.59,
+  "tax_m": 2973.42,
+  "int_sf": 3487,
+  "ext_sf": 826
+ },
+ "problems": [
+  "Monthly common charges total printed as \"1,903.59 $\" with \"$\" appearing before the next column (likely a formatting artifact in source); treated 1903.59 as cc_m per-row and 1903.59 as total. Per-unit cc_m values not individually printed in dollars in the source (only the total row shows \"$\" before annual tax figures); the \"582.94\", \"433.97\", etc. values before \"$\" appear to be the per-unit monthly common charges and were used as such."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": "Cellar/1st Floor",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 820,
+   "sf2": 319,
+   "ext_sf": 826,
+   "price": 895000,
+   "pct": 30.62,
+   "pct2": null,
+   "cc_m": 910.55,
+   "cc_a": 10926.6,
+   "tax_m": 1082.84,
+   "tax_a": 12994.05,
+   "tax2_m": null,
+   "carry_m": 1665.77,
+   "page": 31,
+   "note": null
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "2nd Floor",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 889,
+   "sf2": 0,
+   "ext_sf": null,
+   "price": 745000,
+   "pct": 22.8,
+   "pct2": null,
+   "cc_m": 677.86,
+   "cc_a": 8134.34,
+   "tax_m": 806.12,
+   "tax_a": 9673.46,
+   "tax2_m": null,
+   "carry_m": 1240.09,
+   "page": 31,
+   "note": null
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": "3rd Floor",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 889,
+   "sf2": 0,
+   "ext_sf": null,
+   "price": 795000,
+   "pct": 23.57,
+   "pct2": null,
+   "cc_m": 700.88,
+   "cc_a": 8410.51,
+   "tax_m": 833.49,
+   "tax_a": 10001.89,
+   "tax2_m": null,
+   "carry_m": 1282.19,
+   "page": 31,
+   "note": null
+  },
+  {
+   "unit": "4",
+   "type": "residential",
+   "floor": "4th Floor",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 889,
+   "sf2": 0,
+   "ext_sf": null,
+   "price": 795000,
+   "pct": 23.01,
+   "pct2": null,
+   "cc_m": 684.13,
+   "cc_a": 8209.54,
+   "tax_m": 813.57,
+   "tax_a": 9762.89,
+   "tax2_m": null,
+   "carry_m": 1251.55,
+   "page": 31,
+   "note": null
+  }
+ ]
+}

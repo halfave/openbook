@@ -1,0 +1,145 @@
+{
+ "plan_id": "CD200205",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "hold",
+   "units": 2,
+   "failed": [
+    "carrying",
+    "monthlyTotals"
+   ]
+  }
+ ],
+ "calls": 4,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 22255,
+   "output_tokens": 616,
+   "seconds": 82,
+   "cost_usd": 0.0256808
+  },
+  {
+   "model": "haiku",
+   "tokens": 4941,
+   "output_tokens": 97,
+   "seconds": 6,
+   "cost_usd": 0.005329
+  },
+  {
+   "model": "haiku",
+   "tokens": 8686,
+   "output_tokens": 554,
+   "seconds": 7,
+   "cost_usd": 0.016649
+  },
+  {
+   "model": "sonnet",
+   "tokens": 11374,
+   "output_tokens": 747,
+   "seconds": 11,
+   "cost_usd": 0.0304532
+  }
+ ],
+ "tokens": 47256,
+ "api_equiv_usd": 0.078,
+ "located_pages": [],
+ "text_layer": true,
+ "found": true,
+ "verdict": "hold",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": null,
+  "carrying": false,
+  "sqftTotal": true,
+  "monthlyTotals": false,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 5250000,
+ "step": "sonnet-images",
+ "budget_period": "April 1, 2021 - March 31, 2022",
+ "columns_printed": [
+  "Unit No.",
+  "Bdrs/Bths",
+  "Approx. Size of Units in sq. ft. [habitable]",
+  "Approx. Size of Units in sq. ft. [uninhabitable]",
+  "Approx. Size of Limited Common Elements in sq. ft. [uninhabitble]: Garage",
+  "Space",
+  "Terrace",
+  "Terrace",
+  "Terrace",
+  "Offering Prices",
+  "% of Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Monthly Real Estate Taxes",
+  "Projected Annual Real Estate Taxes ***",
+  "Projected Monthly Carrying Charges",
+  "Projected Annual Carrying Charges"
+ ],
+ "tax2": null,
+ "sf2": "uninhabitable sq. ft.",
+ "printed_totals": {
+  "price": 5250000,
+  "pct": 100,
+  "cc_m": 909.58,
+  "tax_m": 1382.92,
+  "int_sf": 3019,
+  "ext_sf": null
+ },
+ "problems": [
+  "Unit 1 and Unit 2 each have multiple limited-common-element size columns (Parking Garage, Storage Space, three Terrace columns) rather than a single exterior sf figure; these values (Unit1: 280.00 garage, 45.00 storage, 580.00 terrace, None, None; Unit2: 297.00 garage, 27.00 storage, 100.00 terrace, 442.00 terrace, 150.00 terrace) could not be placed in a single ext_sf cell and are not fully represented above.",
+  "\"Bdrs/Bths\" values \"3/3\" and \"3/3.5\" interpreted as 3 beds/3 baths and 3 beds/3.5 baths respectively."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 3,
+   "int_sf": 1261,
+   "sf2": 515,
+   "ext_sf": null,
+   "price": 2500000,
+   "pct": 47.62,
+   "pct2": null,
+   "cc_m": 433.14,
+   "cc_a": 658.54,
+   "tax_m": 7902.54,
+   "tax_a": null,
+   "tax2_m": 1091.69,
+   "carry_m": 13100.26,
+   "page": 35,
+   "note": null
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 3.5,
+   "int_sf": 1758,
+   "sf2": 0,
+   "ext_sf": null,
+   "price": 2750000,
+   "pct": 52.38,
+   "pct2": null,
+   "cc_m": 476.44,
+   "cc_a": 724.37,
+   "tax_m": 8692.46,
+   "tax_a": null,
+   "tax2_m": 1200.81,
+   "carry_m": 14409.74,
+   "page": 35,
+   "note": null
+  }
+ ]
+}

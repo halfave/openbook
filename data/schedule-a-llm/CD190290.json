@@ -1,0 +1,157 @@
+{
+ "plan_id": "CD190290",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "publish_ag",
+   "units": 3,
+   "failed": []
+  }
+ ],
+ "calls": 4,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12558,
+   "output_tokens": 554,
+   "seconds": 8,
+   "cost_usd": 0.024377000000000003
+  },
+  {
+   "model": "haiku",
+   "tokens": 4947,
+   "output_tokens": 97,
+   "seconds": 5,
+   "cost_usd": 0.0053349999999999995
+  },
+  {
+   "model": "haiku",
+   "tokens": 8722,
+   "output_tokens": 571,
+   "seconds": 10,
+   "cost_usd": 0.016771
+  },
+  {
+   "model": "sonnet",
+   "tokens": 11344,
+   "output_tokens": 711,
+   "seconds": 84,
+   "cost_usd": 0.0192416
+  }
+ ],
+ "tokens": 37571,
+ "api_equiv_usd": 0.066,
+ "located_pages": [],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 6250000,
+ "step": "sonnet-images",
+ "budget_period": "March 1, 2021 - February 28, 2022",
+ "columns_printed": [
+  "Unit",
+  "Habitable Sq. Ftg.",
+  "Other Sq. Ftg.",
+  "Bdms/Bths",
+  "% of Common Interest",
+  "Offering Price",
+  "Monthly Common Charges",
+  "Monthly Real Es. Taxes",
+  "Monthly Carrying Charges",
+  "Annual Real Es. Taxes"
+ ],
+ "tax2": null,
+ "sf2": "other sf",
+ "printed_totals": {
+  "price": 6250000,
+  "pct": null,
+  "cc_m": 1517,
+  "tax_m": 2657,
+  "int_sf": 3526,
+  "ext_sf": null
+ },
+ "problems": [
+  "Unit 1 beds/baths printed as \"3/2.5\"; interpreted as 3 bedrooms/2.5 baths. Ext_sf not printed as a single separate column (rear yard/terrace/balcony+roof areas described only in Notes, not per-unit in table), so left as - per rule for multiple separate areas; see Note 2 for details (Unit1: 600sf yard; Unit2: 168sf terrace; Unit3: 18sf balcony+576sf roof, all within \"Other Sq. Ftg.\" column which is used as SF2). Annual real estate taxes total not printed as a single total in TOTAL row request (table shows $31,884.00 as annual tax total, but requested TOTAL line only asks for price/pct/cc_m/tax_m/int_sf/ext_sf, so omitted per instructions)."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 2.5,
+   "int_sf": 1840,
+   "sf2": 600,
+   "ext_sf": null,
+   "price": 3250000,
+   "pct": 52,
+   "pct2": null,
+   "cc_m": 788.84,
+   "cc_a": null,
+   "tax_m": 1381.64,
+   "tax_a": 16579.68,
+   "tax2_m": null,
+   "carry_m": 2170.48,
+   "page": 26,
+   "note": null
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 1,
+   "int_sf": 843,
+   "sf2": 168,
+   "ext_sf": null,
+   "price": 1500000,
+   "pct": 24,
+   "pct2": null,
+   "cc_m": 364.08,
+   "cc_a": null,
+   "tax_m": 637.68,
+   "tax_a": 7652.16,
+   "tax2_m": null,
+   "carry_m": 1001.76,
+   "page": 26,
+   "note": null
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 1,
+   "int_sf": 843,
+   "sf2": 594,
+   "ext_sf": null,
+   "price": 1500000,
+   "pct": 24,
+   "pct2": null,
+   "cc_m": 364.08,
+   "cc_a": null,
+   "tax_m": 637.68,
+   "tax_a": 7652.16,
+   "tax2_m": null,
+   "carry_m": 1001.76,
+   "page": 26,
+   "note": null
+  }
+ ]
+}

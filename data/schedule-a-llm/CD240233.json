@@ -1,0 +1,164 @@
+{
+ "plan_id": "CD240233",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "publish_ag",
+   "units": 3,
+   "failed": []
+  }
+ ],
+ "calls": 4,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12596,
+   "output_tokens": 574,
+   "seconds": 9,
+   "cost_usd": 0.024514
+  },
+  {
+   "model": "haiku",
+   "tokens": 4935,
+   "output_tokens": 97,
+   "seconds": 4,
+   "cost_usd": 0.005323
+  },
+  {
+   "model": "haiku",
+   "tokens": 8698,
+   "output_tokens": 554,
+   "seconds": 7,
+   "cost_usd": 0.016667
+  },
+  {
+   "model": "sonnet",
+   "tokens": 11544,
+   "output_tokens": 913,
+   "seconds": 85,
+   "cost_usd": 0.021257400000000003
+  }
+ ],
+ "tokens": 37773,
+ "api_equiv_usd": 0.068,
+ "located_pages": [],
+ "text_layer": false,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 1650000,
+ "step": "sonnet-images",
+ "budget_period": "APRIL 1, 2025-MARCH 31, 2026",
+ "columns_printed": [
+  "UNIT #",
+  "BR",
+  "BATH",
+  "BD/BATH",
+  "INTERIOR HABITABLE SF**",
+  "***REAR YARD SF",
+  "*CELLAR UNINHABITABLE SF",
+  "TOTAL SF",
+  "OFFERING PRICE",
+  "%COMMON INTEREST",
+  "PROJECTED ANNUAL COMMON CHARGES",
+  "PROJECTED MONTHLY COMMON CHARGES",
+  "PROJECTED ANNUAL R.E. TAXES",
+  "PROJECTED MONTHLY R.E. TAXES",
+  "PROJECTED MONTHLY TOTAL CARRYING CHARGES"
+ ],
+ "tax2": null,
+ "sf2": "cellar uninhabitable sf",
+ "printed_totals": {
+  "price": 1650000,
+  "pct": 100,
+  "cc_m": 4068.08,
+  "tax_m": 1508.42,
+  "int_sf": 3049,
+  "ext_sf": 936
+ },
+ "problems": [
+  "Table columns order on page lists Annual Common Charges before Monthly Common Charges, and Annual R.E. Taxes before Monthly R.E. Taxes; cc_m/cc_a and tax_m/tax_a assigned by meaning (monthly vs annual) rather than printed left-to-right order.",
+  "Rear Yard SF (258/678/0) is a separate outdoor area column, not an interior sf2; placed in note since ext_sf field is reserved per instructions for single terrace/balcony figures and sf2 is used for cellar uninhabitable sf — rear yard values (258, 678, totaling 936) are not captured in a dedicated column.",
+  "Unit #2 offering price printed as \"n/a\"; total offering price row sums only Units 1 and 3 plus presumably unit 2, but total shown is 1,650,000.00 despite unit 2 price being n/a."
+ ],
+ "units": [
+  {
+   "unit": "#1",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 1,
+   "baths": 1.5,
+   "int_sf": 861,
+   "sf2": 628,
+   "ext_sf": 258,
+   "price": 850000,
+   "pct": 33.2198,
+   "pct2": null,
+   "cc_m": 1351.41,
+   "cc_a": 16216.9,
+   "tax_m": 501.09,
+   "tax_a": 6013.11,
+   "tax2_m": null,
+   "carry_m": 1852.5,
+   "page": 46,
+   "note": "BD/BATH 1/1.5"
+  },
+  {
+   "unit": "#2",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 1.5,
+   "int_sf": 1430,
+   "sf2": 0,
+   "ext_sf": 678,
+   "price": null,
+   "pct": 45.613,
+   "pct2": null,
+   "cc_m": 1855.57,
+   "cc_a": 22266.88,
+   "tax_m": 688.03,
+   "tax_a": 8256.4,
+   "tax2_m": null,
+   "carry_m": 2543.61,
+   "page": 46,
+   "note": "BD/BATH 3/1.5; offering price n/a"
+  },
+  {
+   "unit": "#3",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 1,
+   "int_sf": 758,
+   "sf2": 0,
+   "ext_sf": 0,
+   "price": 800000,
+   "pct": 21.1673,
+   "pct2": null,
+   "cc_m": 861.1,
+   "cc_a": 10333.23,
+   "tax_m": 319.29,
+   "tax_a": 3831.49,
+   "tax2_m": null,
+   "carry_m": 1180.39,
+   "page": 46,
+   "note": "BD/BATH 2/1"
+  }
+ ]
+}

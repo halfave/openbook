@@ -1,0 +1,204 @@
+{
+ "plan_id": "CD180468",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 4,
+   "failed": [
+    "ag",
+    "printed",
+    "pct100",
+    "sqftTotal",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "hold",
+   "units": 2,
+   "failed": [
+    "ag",
+    "printed",
+    "pct100",
+    "sqftTotal",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "publish_ag",
+   "units": 4,
+   "failed": []
+  }
+ ],
+ "calls": 3,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4393,
+   "output_tokens": 1005,
+   "seconds": 13,
+   "cost_usd": 0.023598
+  },
+  {
+   "model": "sonnet",
+   "tokens": 4092,
+   "output_tokens": 702,
+   "seconds": 10,
+   "cost_usd": 0.020576
+  },
+  {
+   "model": "sonnet",
+   "tokens": 13540,
+   "output_tokens": 1079,
+   "seconds": 74,
+   "cost_usd": 0.0376246
+  }
+ ],
+ "tokens": 22025,
+ "api_equiv_usd": 0.082,
+ "located_pages": [
+  28
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 3656000,
+ "step": "sonnet-images",
+ "budget_period": "Year Projected to Begin April 1, 2020- March 31, 2021",
+ "columns_printed": [
+  "UNIT NO.",
+  "NO. BEDROOMS AND BATHS",
+  "LOCATION",
+  "SQ. FT (1) habitable",
+  "SQ. FT (1) un-inhabitable*",
+  "OFFERING PRICE (2)",
+  "COMMON INTEREST (3)",
+  "PROJECTED COMMON CHARGES (4) Monthly",
+  "PROJECTED COMMON CHARGES (4) Annual",
+  "ESTIMATED REAL ESTATE TAXES (5) Monthly",
+  "ESTIMATED REAL ESTATE TAXES (5) Annual",
+  "PROJECTED TOTAL CARRYING COSTS (6) Monthly",
+  "PROJECTED TOTAL CARRYING COSTS (6) Annual"
+ ],
+ "tax2": null,
+ "sf2": "un-inhabitable",
+ "printed_totals": {
+  "price": 3656000,
+  "pct": 100,
+  "cc_m": 1917,
+  "tax_m": 3135,
+  "int_sf": 3820,
+  "ext_sf": null
+ },
+ "problems": [
+  "Unit 1's bed/bath column lists three different codes (0/.5, 2/2, 2/2.5) suggesting it may represent one unit spanning Cellar and Basement with mixed habitable/uninhabitable breakdown (363 r.y., 635 r.y., 38 st.); exact structure/labeling for beds/baths was unclear so left blank and noted raw codes.",
+  "For unit 4, \"196 r.t.\" (roof terrace) could be ext_sf, but a second separate uninhabitable figure (21 st.) also exists, so both were put in note per instructions for multiple separate areas rather than assigning either to ext_sf."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": "Cellar/Basement",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 986,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 999000,
+   "pct": 31.53,
+   "pct2": null,
+   "cc_m": 604,
+   "cc_a": 7251,
+   "tax_m": 989,
+   "tax_a": 11862,
+   "tax2_m": null,
+   "carry_m": 1593,
+   "page": 28,
+   "note": "0/.5 Cellar 363 r.y.; 2/2.5 Basement 635 r.y., 38 st."
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "First",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 967,
+   "sf2": 44,
+   "ext_sf": null,
+   "price": 879000,
+   "pct": 23.14,
+   "pct2": null,
+   "cc_m": 444,
+   "cc_a": 5323,
+   "tax_m": 726,
+   "tax_a": 8708,
+   "tax2_m": null,
+   "carry_m": 1170,
+   "page": 28,
+   "note": "44 sf is storage (st.)"
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": "Second",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 1021,
+   "sf2": 44,
+   "ext_sf": null,
+   "price": 899000,
+   "pct": 24.4,
+   "pct2": null,
+   "cc_m": 468,
+   "cc_a": 5613,
+   "tax_m": 765,
+   "tax_a": 9181,
+   "tax2_m": null,
+   "carry_m": 1233,
+   "page": 28,
+   "note": "44 sf is storage (st.)"
+  },
+  {
+   "unit": "4",
+   "type": "residential",
+   "floor": "Third",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 846,
+   "sf2": 21,
+   "ext_sf": null,
+   "price": 879000,
+   "pct": 20.93,
+   "pct2": null,
+   "cc_m": 401,
+   "cc_a": 4813,
+   "tax_m": 656,
+   "tax_a": 7874,
+   "tax2_m": null,
+   "carry_m": 1057,
+   "page": 28,
+   "note": "21 sf storage, 196 sf roof terrace (r.t.)"
+  }
+ ]
+}

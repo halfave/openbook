@@ -1,0 +1,151 @@
+{
+ "plan_id": "CD240246",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "publish_ag",
+   "units": 2,
+   "failed": []
+  }
+ ],
+ "calls": 6,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12628,
+   "output_tokens": 612,
+   "seconds": 9,
+   "cost_usd": 0.024695
+  },
+  {
+   "model": "haiku",
+   "tokens": 4933,
+   "output_tokens": 91,
+   "seconds": 4,
+   "cost_usd": 0.0052970000000000005
+  },
+  {
+   "model": "haiku",
+   "tokens": 4969,
+   "output_tokens": 110,
+   "seconds": 4,
+   "cost_usd": 0.005409000000000001
+  },
+  {
+   "model": "haiku",
+   "tokens": 4945,
+   "output_tokens": 97,
+   "seconds": 4,
+   "cost_usd": 0.005333000000000001
+  },
+  {
+   "model": "haiku",
+   "tokens": 8889,
+   "output_tokens": 730,
+   "seconds": 9,
+   "cost_usd": 0.017578
+  },
+  {
+   "model": "sonnet",
+   "tokens": 20486,
+   "output_tokens": 1063,
+   "seconds": 20,
+   "cost_usd": 0.068231
+  }
+ ],
+ "tokens": 56850,
+ "api_equiv_usd": 0.127,
+ "located_pages": [],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": null,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 5950000,
+ "step": "sonnet-images",
+ "budget_period": "7/1/2026 - 6/30/2027",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approx. Area (1)",
+  "Limited Common / Uninhabitable Area * (1)",
+  "No. of Bedrooms / Bathrooms (1)",
+  "Offering Price (2)",
+  "Percent Common Interest (3)",
+  "Projected Common Charges (Monthly) (4)",
+  "Projected Real Estate Taxes (Monthly) (5)",
+  "Projected Real Estate Taxes (Annual) (5)",
+  "Projected Carrying Charges (Monthly) (6)",
+  "Projected Carrying Charges (Annual) (6)"
+ ],
+ "tax2": "-",
+ "sf2": "Limited Common/Uninhabitable Area",
+ "printed_totals": {
+  "price": 5950000,
+  "pct": 100,
+  "cc_m": 2126.39,
+  "tax_m": 3349.04,
+  "int_sf": 3404,
+  "ext_sf": null
+ },
+ "problems": [
+  "Unit 1 bedrooms/bathrooms printed as \"3/2 full & 2 half\" (3 bedrooms, 2 full + 2 half baths = 2.5 per rule, kept as 2.5); Unit 2 Limited Common/Uninhabitable Area column lists multiple separate area codes (s.=storage, h.=hallway, b.=balcony, r.=roof) which could not be reduced to a single sf2 or ext_sf figure, so full text was placed in sf2 column; annual common charges column not printed in table (only monthly, totals computed by sponsor appear only for monthly/annual tax and carrying charges, not common charges annual) so TOTAL cc_a/other unspecified fields left as \"-\"; TOTAL ext_sf not printed, left as \"-\"."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": "Basement/1st Floor",
+   "rooms": null,
+   "beds": 3,
+   "baths": 2.5,
+   "int_sf": 1643,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 3100000,
+   "pct": 52.48,
+   "pct2": null,
+   "cc_m": 1115.99,
+   "cc_a": 34483.81,
+   "tax_m": 1757.66,
+   "tax_a": 21091.97,
+   "tax2_m": null,
+   "carry_m": 2873.65,
+   "page": 37,
+   "note": "3 full & 2 half bedrooms/bathrooms"
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "2nd Flr/3rd Flr",
+   "rooms": null,
+   "beds": 3,
+   "baths": 2.5,
+   "int_sf": 1761,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 2850000,
+   "pct": 47.52,
+   "pct2": null,
+   "cc_m": 1010.41,
+   "cc_a": 31221.39,
+   "tax_m": 1591.38,
+   "tax_a": 19096.51,
+   "tax2_m": null,
+   "carry_m": 2601.78,
+   "page": 37,
+   "note": null
+  }
+ ]
+}

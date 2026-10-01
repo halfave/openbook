@@ -1,0 +1,115 @@
+{
+ "plan_id": "CD210191",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 5,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12633,
+   "output_tokens": 618,
+   "seconds": 8,
+   "cost_usd": 0.024724000000000003
+  },
+  {
+   "model": "haiku",
+   "tokens": 4945,
+   "output_tokens": 97,
+   "seconds": 4,
+   "cost_usd": 0.005333000000000001
+  },
+  {
+   "model": "haiku",
+   "tokens": 4945,
+   "output_tokens": 97,
+   "seconds": 3,
+   "cost_usd": 0.005333000000000001
+  },
+  {
+   "model": "haiku",
+   "tokens": 8688,
+   "output_tokens": 554,
+   "seconds": 9,
+   "cost_usd": 0.016652
+  },
+  {
+   "model": "sonnet",
+   "tokens": 19211,
+   "output_tokens": 1838,
+   "seconds": 93,
+   "cost_usd": 0.0427198
+  }
+ ],
+ "tokens": 50422,
+ "api_equiv_usd": 0.095,
+ "located_pages": [],
+ "text_layer": false,
+ "found": false,
+ "verdict": "not_found",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": null,
+  "ccProportional": null,
+  "carrying": null,
+  "sqftTotal": null,
+  "monthlyTotals": false,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": true
+ },
+ "price_total": 0,
+ "step": "sonnet-images",
+ "budget_period": "July 1, 2022 through June 30, 2023",
+ "columns_printed": [
+  "Unit",
+  "Beds",
+  "Bath",
+  "Unit SF (Excludes Terrace)",
+  "Exterior Private Terrace SF**",
+  "Offering Price",
+  "% Common Interest",
+  "Percentage of Common Interest from Residential Section",
+  "Estimated Annual Common Charges",
+  "Estimated Monthly Common Charges",
+  "Estimated Annual RE Tax for First Year of Operations (7/1/22-6/30/23)",
+  "Estimated Annual RE Tax for First Post-Construction Tax Year (7/1/23-6/30/24)",
+  "Estimated Monthly RE Tax",
+  "Estimated Total Annual Carrying Costs",
+  "Estimated Total Monthly Carrying Costs"
+ ],
+ "tax2": "Estimated Annual RE Tax for First Post-Construction Tax Year (7/1/23-6/30/24)",
+ "sf2": "-",
+ "printed_totals": {
+  "price": 13890000,
+  "pct": 100,
+  "cc_m": 14083.25,
+  "tax_m": 6692.25,
+  "int_sf": 6762,
+  "ext_sf": 914
+ },
+ "problems": [
+  "row with 18 cells dropped: U\tCommercial\t-\t-\t-\t-\t-\t-\t4100000\t12.1860\t22.210\t20594.27\t1716.19\t10669.00\t16448.",
+  "row with 16 cells dropped: U\t2A\t2\t2\t1085.5\t400\t1750000\t19.5035\t-\t32960.70\t2746.73\t15466.60\t24879.43\t1288.88",
+  "row with 16 cells dropped: U\t3A\t1\t1\t468.9\t-\t1070000\t7.5028\t8.544\t12679.69\t1056.64\t5949.87\t9570.89\t495.82\t18",
+  "row with 16 cells dropped: U\t3B\t1\t1\t523.9\t-\t995000\t8.3829\t9.546\t14166.96\t1180.58\t6647.76\t10693.52\t553.98\t20",
+  "row with 16 cells dropped: U\t4A\t1\t1\t468.9\t-\t975000\t7.5028\t8.544\t12679.69\t1056.64\t5949.87\t9570.89\t495.82\t186",
+  "row with 16 cells dropped: U\t4B\t3\t3\t1615.2\t-\t2900000\t25.8446\t29.431\t43677.19\t3639.77\t20495.25\t32968.46\t1707",
+  "row with 16 cells dropped: U\t6A\t2\t2\t1087.6\t314\t2100000\t19.0773\t21.725\t32240.50\t2686.50\t15128.65\t24335.80\t12",
+  "Table has no floor or rooms columns, and no separate residential/commercial price percentage breakdown beyond what's listed. Unit \"Commercial\" has no stated beds/bath/SF/terrace (left blank); type set to C. Int_sf for unit 2A (1085.5) assumed habitable (no split cellar/floor noted). TOTAL row's monthly common charges (14083.25... wait, check) and other totals: total row combines all unit types; cc_m total used is 14083.25 (Estimated Monthly Common Charges total), tax_m total used is 6692.25 per column(5) Estimated Monthly RE Tax — note possible mismatch versus tax_m col chosen for unit rows (Estimated Annual RE Tax First Year of Operations used as tax_a per instructions, so tax_m total from \"Estimated Monthly RE Tax\" column=6692.25, not 80307.00 annual figure's monthly counterpart. Correcting below.",
+  "No floor/rooms columns printed in table; left blank per column spec not included for this layout. Unit \"Commercial\" row has blank beds/bath/sf/terrace/pct2 as printed (dashes used for not-applicable columns in that row). tax_m used is \"Estimated Monthly RE Tax\" column (post-construction basis), and tax2_m holds the other annual tax column per TAX2 label — note tax2_m field in U lines was left blank since only one monthly tax figure is printed per unit; the second annual-tax column (first year of operations, 7/1/22-6/30/23) is captured separately above as tax_a, with the post-construction annual figure placed in tax2 is not applicable since tax2_m is specifically monthly — here there is no second *monthly* tax figure printed, so tax2_m = \"-\" for all units."
+ ],
+ "units": []
+}

@@ -1,0 +1,153 @@
+{
+ "plan_id": "CD240370",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "publish_ag",
+   "units": 2,
+   "failed": []
+  }
+ ],
+ "calls": 6,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12644,
+   "output_tokens": 621,
+   "seconds": 10,
+   "cost_usd": 0.024753999999999998
+  },
+  {
+   "model": "haiku",
+   "tokens": 4943,
+   "output_tokens": 97,
+   "seconds": 6,
+   "cost_usd": 0.005331000000000001
+  },
+  {
+   "model": "haiku",
+   "tokens": 4947,
+   "output_tokens": 97,
+   "seconds": 6,
+   "cost_usd": 0.0053349999999999995
+  },
+  {
+   "model": "haiku",
+   "tokens": 4941,
+   "output_tokens": 97,
+   "seconds": 8,
+   "cost_usd": 0.005329
+  },
+  {
+   "model": "haiku",
+   "tokens": 10966,
+   "output_tokens": 173,
+   "seconds": 80,
+   "cost_usd": 0.0154399
+  },
+  {
+   "model": "sonnet",
+   "tokens": 11400,
+   "output_tokens": 777,
+   "seconds": 83,
+   "cost_usd": 0.0198806
+  }
+ ],
+ "tokens": 49841,
+ "api_equiv_usd": 0.076,
+ "located_pages": [],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": null,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 8450000,
+ "step": "sonnet-images",
+ "budget_period": "April 1, 2026– March 30, 2027",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approx. Habitable Area",
+  "Approx. Uninhabitable Cellar Area",
+  "Approx. Uninhabitable Outdoor Area",
+  "No. of Bedrooms/Bathrooms",
+  "Offering Price*",
+  "Percent Common Interest",
+  "Projected Common Charges (Monthly)",
+  "Projected Real Estate Taxes First Year (Monthly)",
+  "Projected Real Estate Taxes First Year (Annual)",
+  "Projected Monthly Carrying Charges First Year"
+ ],
+ "tax2": null,
+ "sf2": "uninhabitable cellar area",
+ "printed_totals": {
+  "price": 8450000,
+  "pct": 100,
+  "cc_m": 1340.17,
+  "tax_m": 1660.25,
+  "int_sf": 4272,
+  "ext_sf": 852
+ },
+ "problems": [
+  "Beds/baths column printed as combined code \"4/3\" (bedrooms/bathrooms); per instructions this is unclear so not split into separate beds/baths fields and the raw code is not otherwise usable (bedrooms cannot be derived from rooms, and no separate rooms column exists).",
+  "Outdoor area column (\"Approx. Uninhabitable Outdoor Area\") contains a single figure per unit but also two separate limited-common-element outdoor areas are listed in Note A (e.g., Unit 1: 915 SF yard + 155 SF balcony; Unit 2: 206 SF roof terrace + 333 SF roof deck + 403 SF roof + 137 SF bulkhead roof); the printed table column figure (1070/1079) was used as ext_sf since it is the single number in the Schedule A table itself.",
+  "outdoor space left out: its column did not add up to the printed total"
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": "Cellar/Basement/1st Floor",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 2054,
+   "sf2": 852,
+   "ext_sf": null,
+   "price": 4500000,
+   "pct": 50,
+   "pct2": null,
+   "cc_m": 670.08,
+   "cc_a": null,
+   "tax_m": 830.13,
+   "tax_a": 9961.5,
+   "tax2_m": null,
+   "carry_m": 1500.21,
+   "page": 31,
+   "note": null
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "1st Floor/2nd Floor/3rd Floor/Bulkhead",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 2218,
+   "sf2": 0,
+   "ext_sf": null,
+   "price": 3950000,
+   "pct": 50,
+   "pct2": null,
+   "cc_m": 670.08,
+   "cc_a": null,
+   "tax_m": 830.13,
+   "tax_a": 9961.5,
+   "tax2_m": null,
+   "carry_m": 1500.21,
+   "page": 31,
+   "note": null
+  }
+ ]
+}

@@ -1,0 +1,145 @@
+{
+ "plan_id": "CD210299",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "publish_ag",
+   "units": 3,
+   "failed": []
+  }
+ ],
+ "calls": 1,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4748,
+   "output_tokens": 822,
+   "seconds": 10,
+   "cost_usd": 0.023920000000000004
+  }
+ ],
+ "tokens": 4748,
+ "api_equiv_usd": 0.024,
+ "located_pages": [
+  32
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": null,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 2297000,
+ "step": "sonnet-text",
+ "budget_period": "May 1, 2022 ‐ April 30, 2023",
+ "columns_printed": [
+  "Unit",
+  "Sq. Ftg.",
+  "Un-inhabitable Sq. Ftg.",
+  "Bdms/Bths",
+  "Residential Common Interest",
+  "General Common Interest",
+  "Offering Price",
+  "1st Yr Post-Operation Monthly Common Charges",
+  "1st Yr Operation Monthly Real Estate Taxes",
+  "Post-Completion Monthly Real Estate Taxes",
+  "1st Yr Operation Monthly Carrying Charges",
+  "1st Yr Operation Annual Real Estate Taxes",
+  "Post-Completion Annual Real Estate Taxes",
+  "1st Yr Operation Annual Common Charges",
+  "1st Yr Operation Annual Carrying Charges"
+ ],
+ "tax2": "Post-Completion monthly real estate taxes",
+ "sf2": "Un-inhabitable sq. ftg.",
+ "printed_totals": {
+  "price": 2297000,
+  "pct": 100,
+  "cc_m": 1415.4,
+  "tax_m": 728.45,
+  "int_sf": 3094,
+  "ext_sf": null
+ },
+ "problems": [
+  "Columns (6A)/(6B)/(7)/(8) header labels and tax2 assignment are inferred from context; the printed table has two \"Monthly Real Estate Taxes\" columns labeled \"1st Yr Operation\" and \"Post-Completion 1st Yr Operation\" but exact mapping of which feeds carry_m vs tax2_m is based on carrying charges calc, not explicit labeling.",
+  "Bdms/Bths values \"1/1\" and \"2/1\" for units 2 and 3 - treated as beds/baths (1 bed/1 bath, 2 bed/1 bath); Unit 1 (commercial) listed as N/A.",
+  "tax_m/tax_a chosen as the \"1st Yr Operation\" (first) tax columns per rule; tax2_m holds \"Post-Completion 1st Yr Operation\" monthly taxes."
+ ],
+ "units": [
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 721,
+   "sf2": 115,
+   "ext_sf": null,
+   "price": 949000,
+   "pct": 21.92,
+   "pct2": 43.11,
+   "cc_m": 310.22,
+   "cc_a": 1915.91,
+   "tax_m": 159.66,
+   "tax_a": 1915.91,
+   "tax2_m": 172.06,
+   "carry_m": 469.88,
+   "page": 32,
+   "note": null
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 1,
+   "int_sf": 786,
+   "sf2": 813,
+   "ext_sf": null,
+   "price": 949000,
+   "pct": 28.92,
+   "pct2": 56.89,
+   "cc_m": 409.32,
+   "cc_a": 2527.92,
+   "tax_m": 210.66,
+   "tax_a": 2527.92,
+   "tax2_m": 227.02,
+   "carry_m": 619.98,
+   "page": 32,
+   "note": null
+  },
+  {
+   "unit": "1",
+   "type": "commercial",
+   "floor": null,
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 1587,
+   "sf2": 380,
+   "ext_sf": null,
+   "price": 399000,
+   "pct": 49.16,
+   "pct2": 100,
+   "cc_m": 695.86,
+   "cc_a": 4297.57,
+   "tax_m": 358.13,
+   "tax_a": 4297.57,
+   "tax2_m": 385.95,
+   "carry_m": 1053.99,
+   "page": 32,
+   "note": null
+  }
+ ]
+}

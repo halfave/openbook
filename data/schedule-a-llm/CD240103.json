@@ -1,0 +1,151 @@
+{
+ "plan_id": "CD240103",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 2,
+   "failed": [
+    "monthlyTotals"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "hold",
+   "units": 2,
+   "failed": [
+    "monthlyTotals",
+    "outdoor"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "publish_ag",
+   "units": 2,
+   "failed": []
+  }
+ ],
+ "calls": 3,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4230,
+   "output_tokens": 751,
+   "seconds": 11,
+   "cost_usd": 0.021422
+  },
+  {
+   "model": "sonnet",
+   "tokens": 4219,
+   "output_tokens": 736,
+   "seconds": 12,
+   "cost_usd": 0.021288
+  },
+  {
+   "model": "sonnet",
+   "tokens": 13499,
+   "output_tokens": 844,
+   "seconds": 12,
+   "cost_usd": 0.035682000000000005
+  }
+ ],
+ "tokens": 21948,
+ "api_equiv_usd": 0.078,
+ "located_pages": [
+  36
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": null,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 5080000,
+ "step": "sonnet-images",
+ "budget_period": "FROM JANUARY 1, 2025 THROUGH DECEMBER 31, 2025",
+ "columns_printed": [
+  "Unit",
+  "Beds (1)",
+  "Baths (1)",
+  "Location",
+  "Unit Approx Area sq. ft. (2)",
+  "Limited Common Element (8)**",
+  "Ltd. Common Element Approx. Area sq. ft. (2)",
+  "Offering Price (3)",
+  "Common Interest % (4)",
+  "Est. Common Charges monthly/anually (5)",
+  "Est. RE Taxes monthly/annually First Year (6)",
+  "Est. RE Taxes monthly/annually Second Year (6)",
+  "Est. Carrying Costs monthly/annually First Year (7)"
+ ],
+ "tax2": "Second Year",
+ "sf2": "Ltd. Common Element Approx. Area sq. ft.",
+ "printed_totals": {
+  "price": 5080000,
+  "pct": 100,
+  "cc_m": 1583.58,
+  "tax_m": 767.5,
+  "int_sf": 4414,
+  "ext_sf": 1470
+ },
+ "problems": [
+  "Unit area is split across multiple floor lines (e.g., 1375A: Cellar 1408, Floor 1 978, with a printed \"Total\" of 2386); int_sf uses the printed unit Total rather than a single habitable-floor figure since no cellar/lower figure is separately designated as sf2 in the main area column. sf2 instead holds the Ltd. Common Element total area per instructions (second area column); ext_sf left blank since multiple separate limited common element areas are listed (Rear Yard/Deck/Front Porch/HVAC for 1375A; Front Side Entry/Balcony 1/Balcony 2/Deck/HVAC for 1375B) — see note.",
+  "note column left as \"-\" but limited common element breakdowns: 1375A: Rear Yard 750, Deck 357, Front Porch 119, HVAC 3; 1375B: Front Side Entry 70, Balcony 1 16, Balcony 2 29, Deck 123, HVAC 3."
+ ],
+ "units": [
+  {
+   "unit": "1375A",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 4,
+   "baths": 3,
+   "int_sf": 2386,
+   "sf2": 1229,
+   "ext_sf": null,
+   "price": 2680000,
+   "pct": 60,
+   "pct2": null,
+   "cc_m": 950.15,
+   "cc_a": 11401.8,
+   "tax_m": 460.5,
+   "tax_a": 5526,
+   "tax2_m": 488.15,
+   "carry_m": 1410.65,
+   "page": 36,
+   "note": null
+  },
+  {
+   "unit": "1375B",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 5,
+   "baths": 3,
+   "int_sf": 2028,
+   "sf2": 241,
+   "ext_sf": null,
+   "price": 2400000,
+   "pct": 40,
+   "pct2": null,
+   "cc_m": 633.43,
+   "cc_a": 7601.2,
+   "tax_m": 307,
+   "tax_a": 3684,
+   "tax2_m": 325.43,
+   "carry_m": 940.43,
+   "page": 36,
+   "note": null
+  }
+ ]
+}

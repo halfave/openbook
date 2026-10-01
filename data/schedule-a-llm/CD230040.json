@@ -1,0 +1,144 @@
+{
+ "plan_id": "CD230040",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "publish_ag",
+   "units": 3,
+   "failed": []
+  }
+ ],
+ "calls": 1,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4257,
+   "output_tokens": 734,
+   "seconds": 11,
+   "cost_usd": 0.021428
+  }
+ ],
+ "tokens": 4257,
+ "api_equiv_usd": 0.021,
+ "located_pages": [
+  31
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 4650000,
+ "step": "sonnet-text",
+ "budget_period": "October 1, 2023 – September 30, 2024",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approx. Habitable Area",
+  "Approx. Uninhabitable Area",
+  "Approx. Total Outdoor Area",
+  "No. of Bedrooms/Bathrooms",
+  "Offering Price*",
+  "Percent Common Interest",
+  "Common Charges (Monthly)",
+  "Real Estate Taxes (Monthly)",
+  "Real Estate Taxes (Annual)",
+  "Real Estate Taxes (Monthly)",
+  "Real Estate Taxes (Annual)",
+  "1st Year Carrying Charges",
+  "Post Completion Carrying Charges"
+ ],
+ "tax2": "-",
+ "sf2": "Uninhabitable Area",
+ "printed_totals": {
+  "price": 4650000,
+  "pct": 100,
+  "cc_m": 1553.49,
+  "tax_m": null,
+  "int_sf": 2713,
+  "ext_sf": 997
+ },
+ "problems": [
+  "cc_m and cc_a: table has \"Common Charges (Monthly)\" column only (no annual common charges column); printed values 669.81/434.41/449.28 placed in cc_m. tax_m/tax_a assigned per printed column order (Monthly, Annual, Monthly, Annual) with first Monthly/Annual pair as tax_m/tax_a and second Monthly as carry candidate; carry_m taken from \"1st Year Carrying Charges\" column (948.29/615.02/636.07 appear to be the second \"Monthly Carrying Charges\" set, not matched definitively to 1st Year vs Post Completion) — note the row has 15 numeric values per unit and column-to-value mapping for the two carrying-charge columns (948.29 vs 1210.98 etc.) was inferred from position; please verify.",
+  "tax columns swapped so the main tax is the one used in the carrying charges"
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": "1st Floor/Cellar",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 923,
+   "sf2": 618,
+   "ext_sf": 997,
+   "price": 1800000,
+   "pct": 43.12,
+   "pct2": null,
+   "cc_m": 669.81,
+   "cc_a": null,
+   "tax_m": 541.18,
+   "tax_a": null,
+   "tax2_m": 278.48,
+   "carry_m": 1210.98,
+   "page": 31,
+   "note": null
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "2nd Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 857,
+   "sf2": 84,
+   "ext_sf": 0,
+   "price": 1400000,
+   "pct": 27.96,
+   "pct2": null,
+   "cc_m": 434.41,
+   "cc_a": null,
+   "tax_m": 350.98,
+   "tax_a": null,
+   "tax2_m": 180.61,
+   "carry_m": 785.39,
+   "page": 31,
+   "note": null
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": "3rd Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 933,
+   "sf2": 84,
+   "ext_sf": 0,
+   "price": 1450000,
+   "pct": 28.92,
+   "pct2": null,
+   "cc_m": 449.28,
+   "cc_a": null,
+   "tax_m": 363,
+   "tax_a": null,
+   "tax2_m": 186.79,
+   "carry_m": 812.27,
+   "page": 31,
+   "note": null
+  }
+ ]
+}

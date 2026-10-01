@@ -1,0 +1,100 @@
+{
+ "plan_id": "CD230084",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 4,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12590,
+   "output_tokens": 576,
+   "seconds": 7,
+   "cost_usd": 0.024513
+  },
+  {
+   "model": "haiku",
+   "tokens": 4939,
+   "output_tokens": 97,
+   "seconds": 3,
+   "cost_usd": 0.005327
+  },
+  {
+   "model": "haiku",
+   "tokens": 8724,
+   "output_tokens": 570,
+   "seconds": 7,
+   "cost_usd": 0.01677
+  },
+  {
+   "model": "sonnet",
+   "tokens": 11550,
+   "output_tokens": 923,
+   "seconds": 12,
+   "cost_usd": 0.0322132
+  }
+ ],
+ "tokens": 37803,
+ "api_equiv_usd": 0.079,
+ "located_pages": [],
+ "text_layer": true,
+ "found": false,
+ "verdict": "not_found",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": null,
+  "ccProportional": null,
+  "carrying": null,
+  "sqftTotal": null,
+  "monthlyTotals": false,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": true
+ },
+ "price_total": 0,
+ "step": "sonnet-images",
+ "budget_period": "4/1/2024 - 3/31/2025",
+ "columns_printed": [
+  "Location",
+  "Approx. Area",
+  "Limited Common / Uninhabitable Area",
+  "No. of Bedrooms / Bathrooms",
+  "Offering Price",
+  "Percent Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Real Estate Taxes (Monthly)",
+  "Projected Real Estate Taxes (Annual)",
+  "Projected Monthly Carrying Charges",
+  "Projected Annual Carrying Charges"
+ ],
+ "tax2": null,
+ "sf2": "limited common/uninhabitable area",
+ "printed_totals": {
+  "price": 4600000,
+  "pct": 100,
+  "cc_m": 1684.84,
+  "tax_m": 3296.04,
+  "int_sf": 7465,
+  "ext_sf": null
+ },
+ "problems": [
+  "row with 19 cells dropped: U\tCF\tC\tBasement /Cellar/ 1st Floor\t-\t-\t-/2 half\t2645\tst. 173 e. 14\t-\t800000.00\t3",
+  "row with 19 cells dropped: U\t1\tR\t2nd Floor/3rd Floor\t-\t-\t3/2.5\t2217\tt. 958\t-\t1,500,000.00\t33.81%\t-\t536.91\t1",
+  "row with 19 cells dropped: U\t2\tR\t4th Floor/ Mezzanine\t-\t-\t1/2\t1318\tb. 147\t-\t1,000,000.00\t19.57%\t-\t310.71\t60",
+  "row with 19 cells dropped: U\t3\tR\t5th Floor/Mezzanine\t-\t-\t1/1\t1285\tb. 23 + 76 r. 447\t-\t1,300,000.00\t19.59%\t-",
+  "Unit CF bedrooms/bathrooms column prints \"-/2 half\" — unclear format, left beds/baths blank and recorded code in note for that row; ext_sf not printed as single combined numbers for any unit so left as - (areas are embedded in Limited Common/Uninhabitable Area column per footnote codes s/e/t/r/b); Unit 3's limited common area \"b. 23 + 76 r. 447\" contains multiple codes (balcony 23, terrace? 76, roof 447) and is ambiguous — placed in sf2 and noted in note column."
+ ],
+ "units": []
+}

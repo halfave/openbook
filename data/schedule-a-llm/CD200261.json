@@ -1,0 +1,150 @@
+{
+ "plan_id": "CD200261",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "publish_ag",
+   "units": 3,
+   "failed": []
+  }
+ ],
+ "calls": 1,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4892,
+   "output_tokens": 1112,
+   "seconds": 11,
+   "cost_usd": 0.026236000000000002
+  }
+ ],
+ "tokens": 4892,
+ "api_equiv_usd": 0.026,
+ "located_pages": [
+  43
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 6300000,
+ "step": "sonnet-text",
+ "budget_period": "October 1, 2025 through September 30, 2026",
+ "columns_printed": [
+  "Unit #",
+  "Bedrooms / Bathrooms",
+  "Square Footage of Unit - Main Floor (sq.ft.)",
+  "Penthouse Floor (sq.ft.)",
+  "Cellar Floor (sq.ft.)",
+  "Total Square Footage of Unit (sq.ft.)",
+  "Yard - Limited Common Element (sq.ft.)",
+  "Areaway - Limited Common Element (sq.ft.)",
+  "Roof - Limited Common Element (sq.ft.)",
+  "Offering Price",
+  "Percentage of Common Interest",
+  "Estimate of Monthly Common Charges",
+  "Projected Pre-Completion Monthly Real Estate Taxes for the Period 10/1/2025-9/30/2026",
+  "Projected Pre-Completion Annual Real Estate Taxes for the Period 10/1/2025-9/30/2026",
+  "Projected Post-Completion Assessment - Monthly Real Estate Taxes for the Period 10/1/2026-9/30/2027",
+  "Projected Post-Completion Assessment - Annual Real Estate Taxes for the Period 10/1/2026-9/30/2027",
+  "Estimated Total Monthly Carrying Costs 10/1/2025-9/30/2026",
+  "Estimated Total Monthly Carrying Costs 10/1/2026-9/30/2027"
+ ],
+ "tax2": "post-completion assessment monthly real estate taxes 10/1/2026-9/30/2027",
+ "sf2": "cellar floor sq.ft.",
+ "printed_totals": {
+  "price": 6300000,
+  "pct": 100,
+  "cc_m": 1788.67,
+  "tax_m": null,
+  "int_sf": 3924.31,
+  "ext_sf": 913.86
+ },
+ "problems": [
+  "Carrying costs column order in source has 10/1/2026-9/30/2027 value printed before 10/1/2025-9/30/2026 value in the row text; carry_m taken as the first-year (2025-2026) figure (1749.81, 1419.60, 1562.26), with the 2026-2027 figure (1021.81, 828.60, 911.26) omitted since only one carry_m column exists.",
+  "Unit 3's total sq.ft. (1878.13) doesn't map to a single ext_sf; Penthouse/Roof figures listed in note instead per ext_sf rule for multiple separate areas.",
+  "Unit 1 and 3 have both Yard/Areaway/Roof as limited common elements with values; only one ext_sf cell exists, so additional areas placed in note.",
+  "tax columns swapped so the main tax is the one used in the carrying charges",
+  "outdoor space left out: its column did not add up to the printed total"
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 1194.53,
+   "sf2": 1060.48,
+   "ext_sf": null,
+   "price": 2150000,
+   "pct": 37,
+   "pct2": null,
+   "cc_m": 661.81,
+   "cc_a": null,
+   "tax_m": 1088,
+   "tax_a": null,
+   "tax2_m": 360,
+   "carry_m": 1749.81,
+   "page": 17,
+   "note": "Penthouse 0.00 sf, Areaway 5.33 sf, Roof 0.00 sf"
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1345.28,
+   "sf2": 0,
+   "ext_sf": null,
+   "price": 1850000,
+   "pct": 30,
+   "pct2": null,
+   "cc_m": 536.6,
+   "cc_a": null,
+   "tax_m": 883,
+   "tax_a": null,
+   "tax2_m": 292,
+   "carry_m": 1419.6,
+   "page": 17,
+   "note": "Penthouse 0.00 sf, Yard 0.00 sf, Areaway 0.00 sf, Roof 0.00 sf"
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 3,
+   "int_sf": 1384.5,
+   "sf2": 0,
+   "ext_sf": null,
+   "price": 2300000,
+   "pct": 33,
+   "pct2": null,
+   "cc_m": 590.26,
+   "cc_a": null,
+   "tax_m": 972,
+   "tax_a": null,
+   "tax2_m": 321,
+   "carry_m": 1562.26,
+   "page": 17,
+   "note": "Penthouse 493.63 sf, Yard 0.00 sf, Areaway 0.00 sf"
+  }
+ ]
+}

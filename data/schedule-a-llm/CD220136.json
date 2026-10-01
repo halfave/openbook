@@ -1,0 +1,161 @@
+{
+ "plan_id": "CD220136",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "publish_ag",
+   "units": 3,
+   "failed": []
+  }
+ ],
+ "calls": 2,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4708,
+   "output_tokens": 782,
+   "seconds": 67,
+   "cost_usd": 0.023520000000000003
+  },
+  {
+   "model": "sonnet",
+   "tokens": 14416,
+   "output_tokens": 883,
+   "seconds": 11,
+   "cost_usd": 0.0379158
+  }
+ ],
+ "tokens": 19124,
+ "api_equiv_usd": 0.061,
+ "located_pages": [
+  44
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 5576200,
+ "step": "sonnet-images",
+ "budget_period": "For the Period January 1, 2023 through December 31, 2023",
+ "columns_printed": [
+  "Unit #",
+  "Bedrooms / Bathrooms",
+  "Square Footage of Unit - Main Floor (sq.ft.)",
+  "Storage - Limited Common Element (sq.ft.)",
+  "Cellar (non-habitable sq.ft.)",
+  "Areaway - Limited Common Element (sq.ft.)",
+  "Yard - Limited Common Element (sq.ft.)",
+  "Roof Terrace-Limited Common Element (sq.ft.)",
+  "Total Square Footage of Unit",
+  "Offering Price",
+  "Percentage of Common Interest",
+  "Estimate of Monthly Common Charges",
+  "Estimated Monthly Real Estate Taxes - 1/1/2023 - 12/31/2023",
+  "Estimated Annual Real Estate Taxes - 1/1/2023 - 12/31/2023",
+  "Estimated Total Monthly Carrying Taxes 1/1/2023 - 12/31/2023"
+ ],
+ "tax2": null,
+ "sf2": "cellar (non-habitable sq.ft.)",
+ "printed_totals": {
+  "price": 5576200,
+  "pct": 100,
+  "cc_m": 1517.33,
+  "tax_m": 1507.59,
+  "int_sf": 3983,
+  "ext_sf": 698
+ },
+ "problems": [
+  "ext_sf left blank for all units because multiple separate outdoor-area columns are printed (storage, areaway, yard, roof terrace); figures listed in note instead per instructions."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": "Cellar and First Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 886,
+   "sf2": 651,
+   "ext_sf": null,
+   "price": 1240400,
+   "pct": 35,
+   "pct2": null,
+   "cc_m": 531.07,
+   "cc_a": null,
+   "tax_m": 527.66,
+   "tax_a": 6331.89,
+   "tax2_m": null,
+   "carry_m": 1058.72,
+   "page": 44,
+   "note": "Storage 40.00 sq.ft.; Areaway 93.00 sq.ft.; Yard 537.00 sq.ft.; Total sq.ft. 2,207.00"
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "Second Floor",
+   "rooms": null,
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1400,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 1960000,
+   "pct": 25,
+   "pct2": null,
+   "cc_m": 379.33,
+   "cc_a": null,
+   "tax_m": 376.9,
+   "tax_a": 4522.78,
+   "tax2_m": null,
+   "carry_m": 756.23,
+   "page": 44,
+   "note": "Storage 47.00 sq.ft.; Total sq.ft. 1,447.00"
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": "Third, Fourth, and Penthouse Floors",
+   "rooms": null,
+   "beds": 4,
+   "baths": 3,
+   "int_sf": 1697,
+   "sf2": null,
+   "ext_sf": 698,
+   "price": 2375800,
+   "pct": 40,
+   "pct2": null,
+   "cc_m": 606.93,
+   "cc_a": null,
+   "tax_m": 603.04,
+   "tax_a": 7236.44,
+   "tax2_m": null,
+   "carry_m": 1209.97,
+   "page": 44,
+   "note": "Storage 33.00 sq.ft.; Roof Terrace 698.00 sq.ft.; Total sq.ft. 2,428.00"
+  }
+ ]
+}

@@ -1,0 +1,183 @@
+{
+ "plan_id": "CD240195",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "publish_ag",
+   "units": 4,
+   "failed": []
+  }
+ ],
+ "calls": 2,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4410,
+   "output_tokens": 854,
+   "seconds": 14,
+   "cost_usd": 0.022760000000000002
+  },
+  {
+   "model": "sonnet",
+   "tokens": 13740,
+   "output_tokens": 953,
+   "seconds": 12,
+   "cost_usd": 0.037049200000000004
+  }
+ ],
+ "tokens": 18150,
+ "api_equiv_usd": 0.06,
+ "located_pages": [
+  32
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": null,
+  "monthlyTotals": true,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 9050000,
+ "step": "sonnet-images",
+ "budget_period": "July 1, 2025 -June 30, 2026",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approx. Floor Area",
+  "Approx. Outdoor/Uninhabitable/Limited Common Element Floor Area",
+  "No. of Bedooms/Bathrooms",
+  "Offering Price",
+  "Percent Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Real Estate Taxes (Monthly)",
+  "Projected Real Estate Taxes (Annual)",
+  "Projected Carrying Charges (Monthly)"
+ ],
+ "tax2": null,
+ "sf2": "outdoor/uninhabitable/limited common element",
+ "printed_totals": {
+  "price": 9050000,
+  "pct": 100,
+  "cc_m": 2947.09,
+  "tax_m": 2624.61,
+  "int_sf": 5165,
+  "ext_sf": null
+ },
+ "problems": [
+  "Unit 1 floor area printed as two figures \"1050\" and \"901*\" on separate lines under Approx. Floor Area; used 1050 as int_sf and 901 as sf2 per convention, with 334 (BY) as a separate outdoor limited common element figure placed in note since table structure doesn't cleanly map it to ext_sf.",
+  "Unit 4's second column shows \"1172 ( R)\" which appears to be gross/limited common element floor area including roof, not a simple ext_sf; placed in sf2 and noted.",
+  "Column (5) is labeled \"Taxes (Monthly)\" then \"Taxes (Annual)\" but the printed order in the row is Monthly value then Annual value; used Monthly=786.34-type values for tax_m and Annual for tax_a consistent with header order.",
+  "Total row's int_sf shown as \"5,165\" and sf2 as \"1,506\"; no separate ext_sf total printed.",
+  "unit sizes left out: the area columns did not add up to the printed totals"
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": "First Floor Cellar*",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 2750000,
+   "pct": 29.96,
+   "pct2": null,
+   "cc_m": 882.95,
+   "cc_a": 9436.03,
+   "tax_m": 786.34,
+   "tax_a": null,
+   "tax2_m": null,
+   "carry_m": 1669.29,
+   "page": 32,
+   "note": "cellar area 901*; limited common element 334 (BY)"
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "Second Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 2100000,
+   "pct": 21.83,
+   "pct2": null,
+   "cc_m": 643.35,
+   "cc_a": 6875.45,
+   "tax_m": 572.95,
+   "tax_a": null,
+   "tax2_m": null,
+   "carry_m": 1216.3,
+   "page": 32,
+   "note": null
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": "Third Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 2100000,
+   "pct": 21.83,
+   "pct2": null,
+   "cc_m": 643.35,
+   "cc_a": 6875.45,
+   "tax_m": 572.95,
+   "tax_a": null,
+   "tax2_m": null,
+   "carry_m": 1216.3,
+   "page": 32,
+   "note": null
+  },
+  {
+   "unit": "4",
+   "type": "residential",
+   "floor": "Fourth Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 2100000,
+   "pct": 26.38,
+   "pct2": null,
+   "cc_m": 777.44,
+   "cc_a": 8308.49,
+   "tax_m": 692.37,
+   "tax_a": null,
+   "tax2_m": null,
+   "carry_m": 1469.81,
+   "page": 32,
+   "note": "gross/limited common element floor area 1172 (R); roof limited common element"
+  }
+ ]
+}

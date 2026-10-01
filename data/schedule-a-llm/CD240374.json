@@ -1,0 +1,113 @@
+{
+ "plan_id": "CD240374",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 4,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12592,
+   "output_tokens": 573,
+   "seconds": 10,
+   "cost_usd": 0.024504
+  },
+  {
+   "model": "haiku",
+   "tokens": 4931,
+   "output_tokens": 97,
+   "seconds": 4,
+   "cost_usd": 0.005319000000000001
+  },
+  {
+   "model": "haiku",
+   "tokens": 8722,
+   "output_tokens": 572,
+   "seconds": 6,
+   "cost_usd": 0.016774999999999998
+  },
+  {
+   "model": "sonnet",
+   "tokens": 22804,
+   "output_tokens": 2435,
+   "seconds": 27,
+   "cost_usd": 0.06065860000000001
+  }
+ ],
+ "tokens": 49049,
+ "api_equiv_usd": 0.107,
+ "located_pages": [],
+ "text_layer": true,
+ "found": false,
+ "verdict": "not_found",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": null,
+  "ccProportional": null,
+  "carrying": null,
+  "sqftTotal": null,
+  "monthlyTotals": false,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": true
+ },
+ "price_total": 0,
+ "step": "sonnet-images",
+ "budget_period": "July 1, 2025 - June 30, 2026",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approx. Floor Area",
+  "Uninhabitable Area",
+  "No. of Bedrooms/Bathrooms",
+  "Offering Price",
+  "Percent Common Interest",
+  "Projected Common Charges (Monthly)",
+  "Projected Real Estate Taxes Post Construction with ICAP Tax Benefits (Monthly)",
+  "Projected Real Estate Taxes Post Construction with ICAP Tax Benefits (Annual)",
+  "Projected Carrying Charges Post Construction without ICAP Tax Benefits (Monthly)",
+  "Projected Real Estate Taxes Post Construction without ICAP Tax Benefits (Monthly)",
+  "Projected Real Estate Taxes Post Construction without ICAP Tax Benefits (Annual)",
+  "Projected Carrying Charges Post Construction without ICAP Tax Benefits (Monthly)"
+ ],
+ "tax2": "with ICAP Tax Benefits",
+ "sf2": "Uninhabitable Area",
+ "printed_totals": {
+  "price": 45925000,
+  "pct": 100,
+  "cc_m": 7750.55,
+  "tax_m": 46700,
+  "int_sf": 45925,
+  "ext_sf": null
+ },
+ "problems": [
+  "row with 21 cells dropped: U\t1\tR\t1st Flr/2nd Flr/Basement/Cellar\t-\t-\t-\t-\t11825\tc. 4687 ia. 108 ea. 13 s. 27",
+  "row with 21 cells dropped: U\t2\tR\t2nd Floor\t-\t-\t-\t-\t2862\tr. 627\t-\t2862000.00\t6.13\t-\t474.89\t-\t2861.81\t34341.6",
+  "row with 21 cells dropped: U\t3\tR\t3rd Floor\t-\t-\t-\t-\t5547\tr. 835\t-\t5547000.00\t11.64\t-\t902.27\t-\t5437.44\t65249.",
+  "row with 21 cells dropped: U\t4A\tR\t4th Floor\t-\t-\t-\t-\t1718\tr. 1107\t-\t1718000.00\t4.03\t-\t319.90\t-\t1927.68\t23132",
+  "row with 21 cells dropped: U\t4B\tR\t4th Floor\t-\t-\t-\t-\t1727\tr. 917\t-\t1727000.00\t4.28\t-\t312.23\t-\t1881.56\t22578.",
+  "row with 21 cells dropped: U\t5\tR\t5th Floor\t-\t-\t-\t-\t3872\tr. 835\t-\t3872000.00\t8.28\t-\t641.81\t-\t3867.93\t46415.1",
+  "row with 21 cells dropped: U\t6\tR\t6th Floor\t-\t-\t-\t-\t3872\tr. 835\t-\t3872000.00\t8.28\t-\t641.81\t-\t3867.93\t46415.1",
+  "row with 21 cells dropped: U\t7\tR\t7th Floor\t-\t-\t-\t-\t3872\tr. 835\t-\t3872000.00\t4.72\t-\t641.81\t-\t3867.93\t46415.1",
+  "row with 21 cells dropped: U\t8\tR\t8th Floor\t-\t-\t-\t-\t1950\tia. 159 ea. 1184\t-\t1950000.00\t3.24\t-\t365.93\t-\t2205.",
+  "row with 21 cells dropped: U\tS1\tS\tCellar\t-\t-\t-\t-\t1482\tia. 494\t-\t1482000.00\t3.24\t-\t251.08\t-\t1506.29\t18075.50",
+  "row with 21 cells dropped: U\tP1\tP\tBasement\t-\t-\t-\t-\t7198\t-\t-\t7198000.00\t14.44\t-\t1119.26\t-\t6744.69\t80936.32\t6",
+  "\"No. of Bedrooms/Bathrooms\" column uses codes like \"-/24half\", \"-/2half\", \"-/4half\", \"-/1half\" that are unclear; printed verbatim in note column, not converted to beds/baths",
+  "Unit 4A \"Percent Common Interest\" printed as 4.03% but column header area suggests check: values sum approx to 100% (26.83+6.13+11.64+4.03+4.28+8.28+8.28+4.72(should be listed under unit7 per image, but appears under unit 8 row in some read)+3.24+3.24+14.44) — transcribed exactly as printed per row",
+  "Table does not contain floor/room-count, beds, baths, or separate exterior-area column; \"Uninhabitable Area\" used as sf2",
+  "Unit 1 price printed with \"$\" and commas as \"11,825,000.00\" — transcribed without symbols per instructions"
+ ],
+ "units": []
+}

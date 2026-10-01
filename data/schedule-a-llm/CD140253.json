@@ -1,0 +1,96 @@
+{
+ "plan_id": "CD140253",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag"
+   ]
+  }
+ ],
+ "calls": 4,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 13429,
+   "output_tokens": 607,
+   "seconds": 7,
+   "cost_usd": 0.026244
+  },
+  {
+   "model": "haiku",
+   "tokens": 5011,
+   "output_tokens": 97,
+   "seconds": 4,
+   "cost_usd": 0.005399000000000001
+  },
+  {
+   "model": "haiku",
+   "tokens": 8807,
+   "output_tokens": 578,
+   "seconds": 9,
+   "cost_usd": 0.016925000000000003
+  },
+  {
+   "model": "sonnet",
+   "tokens": 60597,
+   "output_tokens": 2039,
+   "seconds": 106,
+   "cost_usd": 0.0881696
+  }
+ ],
+ "tokens": 87844,
+ "api_equiv_usd": 0.137,
+ "located_pages": [],
+ "text_layer": true,
+ "found": false,
+ "verdict": "not_found",
+ "checks": {
+  "ag": false,
+  "printed": null,
+  "pct100": null,
+  "ccProportional": null,
+  "carrying": null,
+  "sqftTotal": null,
+  "monthlyTotals": true,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 0,
+ "step": "sonnet-images",
+ "budget_period": "January 1, 2017 - December 31, 2017",
+ "columns_printed": [
+  "Unit No.",
+  "Unit Type",
+  "Approx. Interior Sq. Ft. (2)",
+  "Cubic SF",
+  "Approx. Exterior Sq. Ft. (2)",
+  "# Bedrooms",
+  "# Baths",
+  "Offering Price (3)",
+  "AHC Grant (4)",
+  "Percent General Common Interest (5)",
+  "Percent Residential Common Interest (5)",
+  "Estimated Monthly Common Charges (6)",
+  "Estimated Annual Common Charges (6)",
+  "Estimated Monthly Real Estate Taxes w/421-a '12-'13 commencement (7)",
+  "Estimated Annual Real Estate Taxes w/421-a '12-'13 commencement (7)",
+  "Estimated Monthly Real Estate Taxes w/421-a '06-'07 commencement (7)",
+  "Estimated Annual Real Estate Taxes w/421-a '06-'07 commencement (7)",
+  "Estimated Monthly Real Estate Taxes w/o 421-a (7)",
+  "Estimated Annual Real Estate Taxes w/o 421-a (7)"
+ ],
+ "tax2": "w/421-a '06-'07 commencement (monthly)",
+ "sf2": "-",
+ "printed_totals": null,
+ "problems": [
+  "The table's columns (no floor column; separate numeric Bedrooms/Baths columns; Offering Price; AHC Grant; two Percent Common Interest columns; Cubic SF; two commencement-date tax scenarios each with w/421-a and w/o 421-a monthly/annual figures) do not match the fixed 20-cell U-line schema, and the image resolution (p0043-150.png, p0044-150.png) is too low to reliably distinguish individual digits across the ~150 densely-packed rows (e.g., 5-7 digit prices and tax figures) without risk of transcription error, so I could not safely produce the per-unit U lines. A higher-resolution scan/crop of pages 38-39 would be needed for accurate unit-by-unit transcription.",
+  "No floor column is present in this Schedule A; \"rooms\" column also absent (only separate Bedrooms and Baths counts are given).",
+  "No TOTAL row is visible/printed at the bottom of either page for price, pct, cc_m, tax_m, int_sf, or ext_sf (page 39 shows column sums for interior sq ft, cubic sf, exterior sq ft, offering price, AHC grant, and percentages at the very bottom, but not for common charges or taxes per unit groupings) — could not confirm a single combined total row."
+ ],
+ "units": []
+}

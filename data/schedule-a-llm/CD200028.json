@@ -1,0 +1,245 @@
+{
+ "plan_id": "CD200028",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 6,
+   "failed": [
+    "carrying"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "hold",
+   "units": 6,
+   "failed": [
+    "carrying",
+    "monthlyTotals"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "hold",
+   "units": 6,
+   "failed": [
+    "carrying"
+   ]
+  }
+ ],
+ "calls": 3,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 9969,
+   "output_tokens": 957,
+   "seconds": 89,
+   "cost_usd": 0.0284948
+  },
+  {
+   "model": "sonnet",
+   "tokens": 5632,
+   "output_tokens": 1126,
+   "seconds": 12,
+   "cost_usd": 0.02928
+  },
+  {
+   "model": "sonnet",
+   "tokens": 15987,
+   "output_tokens": 1294,
+   "seconds": 17,
+   "cost_usd": 0.0444618
+  }
+ ],
+ "tokens": 31588,
+ "api_equiv_usd": 0.102,
+ "located_pages": [
+  27
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "hold",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": false,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 14520000,
+ "step": "sonnet-text",
+ "budget_period": "January 1, 2023 - December 31, 2023",
+ "columns_printed": [
+  "Unit",
+  "Habitable Sq. Ftg.",
+  "Uninhab. Sq. Ftg.",
+  "Bdms/Bths",
+  "% of Common Interest",
+  "Offering Price",
+  "1st Year Est. Monthly Common Charges",
+  "1st Yr Est. Monthly Real Es. Taxes (Class 1)",
+  "1st Yr Est. Monthly Real Es. Taxes (Class 2)",
+  "1st Yr Est. Monthly Carrying Charges (Class 1)",
+  "1st Yr Est. Monthly Carrying Charges (Class 2)",
+  "1st Year Est. Annual Common Charges",
+  "1st Year Est. Annual Real Es. Taxes (Class 1)",
+  "1st Year Est. Annual Real Es. Taxes (Class 2)",
+  "1st Year Est. Annual Carrying Charges (Class 1)",
+  "1st Year Est. Annual Carrying Charges (Class 2)",
+  "Post-Completion Est. Annual Real Es. Taxes (Class 1)",
+  "Post-Completion Est. Annual Real Es. Taxes (Class 2)"
+ ],
+ "tax2": "Class 2",
+ "sf2": "Uninhab. Sq. Ftg.",
+ "printed_totals": {
+  "price": 14520000,
+  "pct": 100,
+  "cc_m": 1894.83,
+  "tax_m": 4345.29,
+  "int_sf": 6060,
+  "ext_sf": null
+ },
+ "problems": [
+  "Unit column header \"(1A)/(1B)\" labeled Habitable/Uninhab. Sq. Ftg.; tax_m/tax_a chosen as Class 1 (first printed); Class 2 monthly placed in tax2_m per instructions, but Class 2 annual value exists in table and is not captured in any output column."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 1900,
+   "sf2": 560,
+   "ext_sf": null,
+   "price": 5000000,
+   "pct": 34.62,
+   "pct2": null,
+   "cc_m": 655.99,
+   "cc_a": 7871.9,
+   "tax_m": 1504.34,
+   "tax_a": 18052.08,
+   "tax2_m": 1752.95,
+   "carry_m": 1096.96,
+   "page": 27,
+   "note": "3/2+2(½)"
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 1800,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 4000000,
+   "pct": 25.82,
+   "pct2": null,
+   "cc_m": 489.25,
+   "cc_a": 5870.95,
+   "tax_m": 1121.95,
+   "tax_a": 13463.45,
+   "tax2_m": 1307.37,
+   "carry_m": 818.13,
+   "page": 27,
+   "note": "3/2.5"
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 2360,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 5200000,
+   "pct": 38.15,
+   "pct2": null,
+   "cc_m": 722.88,
+   "cc_a": 8674.55,
+   "tax_m": 1657.73,
+   "tax_a": 19892.75,
+   "tax2_m": 1931.69,
+   "carry_m": 1208.81,
+   "page": 27,
+   "note": "5/3.5"
+  },
+  {
+   "unit": "P1",
+   "type": "parking",
+   "floor": null,
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 120000,
+   "pct": 0.47,
+   "pct2": null,
+   "cc_m": 8.91,
+   "cc_a": 106.87,
+   "tax_m": 20.42,
+   "tax_a": 245.07,
+   "tax2_m": 23.8,
+   "carry_m": 14.89,
+   "page": 27,
+   "note": "parking"
+  },
+  {
+   "unit": "P2",
+   "type": "parking",
+   "floor": null,
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 100000,
+   "pct": 0.47,
+   "pct2": null,
+   "cc_m": 8.91,
+   "cc_a": 106.87,
+   "tax_m": 20.42,
+   "tax_a": 245.07,
+   "tax2_m": 23.8,
+   "carry_m": 14.89,
+   "page": 27,
+   "note": "parking"
+  },
+  {
+   "unit": "P3",
+   "type": "parking",
+   "floor": null,
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 100000,
+   "pct": 0.47,
+   "pct2": null,
+   "cc_m": 8.91,
+   "cc_a": 106.87,
+   "tax_m": 20.42,
+   "tax_a": 245.07,
+   "tax2_m": 23.8,
+   "carry_m": 14.89,
+   "page": 27,
+   "note": "parking"
+  }
+ ]
+}

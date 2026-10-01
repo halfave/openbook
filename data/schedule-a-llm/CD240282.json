@@ -1,0 +1,167 @@
+{
+ "plan_id": "CD240282",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "publish_ag",
+   "units": 3,
+   "failed": []
+  }
+ ],
+ "calls": 2,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4701,
+   "output_tokens": 950,
+   "seconds": 9,
+   "cost_usd": 0.0245
+  },
+  {
+   "model": "sonnet",
+   "tokens": 14538,
+   "output_tokens": 1353,
+   "seconds": 18,
+   "cost_usd": 0.041885
+  }
+ ],
+ "tokens": 19239,
+ "api_equiv_usd": 0.066,
+ "located_pages": [
+  48
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 6100000,
+ "step": "sonnet-images",
+ "budget_period": "July 1, 2025 through June 30, 2026",
+ "columns_printed": [
+  "Unit #",
+  "Location",
+  "Bedrooms / Bathrooms",
+  "Square Footage of Unit - Main Floor (sq.ft.)",
+  "First Floor Space (sq.ft.)",
+  "Penthouse Floor Space (sq.ft.)",
+  "Cellar Accessory Space (sq.ft.)",
+  "Areaway - Limited Common Element (sq.ft.)",
+  "Rear Yard - Limited Common Element (sq.ft.)",
+  "Balcony Limited Common Element (sq.ft.)",
+  "Roof - Limited Common Element (sq.ft.)",
+  "Total Square Footage of Unit",
+  "Offering Price",
+  "Percentage of Common Interest",
+  "Estimate of Monthly Common Charges",
+  "Projected Pre-Completion Monthly Real Estate Taxes for the Period 7/1/2025-6/30/2026",
+  "Projected Pre-Completion Annual Real Estate Taxes for the Period 7/1/2025-6/30/2026",
+  "Projected Post-Completion Assessment - Monthly Real Estate Taxes for the Period 7/1/2026-6/30/2027",
+  "Projected Post-Completion Assessment - Annual Real Estate Taxes for the Period 7/1/2026-6/30/2027",
+  "Estimated Total Monthly Carrying Costs 7/1/2025-6/30/2026",
+  "Estimated Total Monthly Carrying Costs 7/1/2026-6/30/2027"
+ ],
+ "tax2": "post-completion assessment monthly real estate taxes",
+ "sf2": "-",
+ "printed_totals": {
+  "price": 6100000,
+  "pct": 100,
+  "cc_m": 2035.58,
+  "tax_m": 550.33,
+  "int_sf": 3131,
+  "ext_sf": null
+ },
+ "problems": [
+  "Bedrooms/Bathrooms column gives only bedroom/bathroom counts, no separate \"rooms\" column exists, so rooms is left blank (-). Multiple area columns (main floor, first floor, penthouse, cellar accessory, areaway, rear yard, balcony, roof) exist; int_sf uses \"Square Footage of Unit - Main Floor\", sf2 uses \"Cellar Accessory Space\"; other area figures (first floor space, penthouse floor space, areaway, rear yard, balcony, roof) are listed in each unit's note since ext_sf requires a single printed outdoor figure and multiple exist for unit 1 and unit 3. Tax_m/tax_a chosen as pre-completion figures (first-listed); tax2_m holds post-completion monthly figure; post-completion annual and both carrying-cost columns are not in the fixed schema and are noted instead. TOTAL row's tax_m taken as pre-completion monthly (550.33); int_sf total is main-floor total (3131.00); ext_sf total not clearly a single column, left as -."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 1102,
+   "sf2": 928,
+   "ext_sf": 600,
+   "price": 2400000,
+   "pct": 40,
+   "pct2": null,
+   "cc_m": 814.23,
+   "cc_a": 2641.6,
+   "tax_m": 220.13,
+   "tax_a": 1183,
+   "tax2_m": 14196,
+   "carry_m": 1034.37,
+   "page": 19,
+   "note": "areaway 16.00, roof -, total sq.ft. 2646.00; carrying cost 7/1/2026-6/30/2027: 1997.23"
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1017,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 1300000,
+   "pct": 20,
+   "pct2": null,
+   "cc_m": 407.12,
+   "cc_a": 1320.8,
+   "tax_m": 110.07,
+   "tax_a": 591.5,
+   "tax2_m": 7098,
+   "carry_m": 517.18,
+   "page": 19,
+   "note": "total sq.ft. 1017.00; carrying cost 7/1/2026-6/30/2027: 998.62"
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1012,
+   "sf2": null,
+   "ext_sf": 682,
+   "price": 2400000,
+   "pct": 40,
+   "pct2": null,
+   "cc_m": 814.23,
+   "cc_a": 2641.6,
+   "tax_m": 220.13,
+   "tax_a": 1183,
+   "tax2_m": 14196,
+   "carry_m": 1034.37,
+   "page": 19,
+   "note": "first floor space 51.00, penthouse floor space 367.00, balcony 60.00, roof 682.00, total sq.ft. 2172.00; carrying cost 7/1/2026-6/30/2027: 1997.23"
+  }
+ ]
+}

@@ -11,7 +11,8 @@
 //
 // Model results (data/schedule-a-llm/<PLAN_ID>.json, from extract-schedule-a-llm.mjs) take precedence per plan:
 // a table that passed its checks replaces the pattern-matched one; a table held by those stricter checks removes
-// it; "not found" leaves it. Re-run after new plans are loaded or the model pass adds plans, then run build-buildings.mjs.
+// it, unless the model read the same prices (then the pattern table stays, except for placeholder prices);
+// "not found" leaves it. Re-run after new plans are loaded or the model pass adds plans, then run build-buildings.mjs.
 import { writeFile, mkdir, rm, readdir, readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { all, rpc, money, ROOT } from "./site.mjs";
@@ -143,7 +144,16 @@ if (test) {
   const files = new Map(results.filter((r) => r.status === "ok")
     .map((r) => [r.plan_id, { source: "pattern", units: r.units, unit_count: r.unit_count, price_total: r.price_total, pages: r.pages }]));
   const npat = files.size;
-  const llm = { published: 0, held: 0 };
+  const llm = { published: 0, held: 0, confirmed: 0 };
+  // At least 90% of the pattern table's prices found in the model's reading, and the model read no more than 10% extra.
+  const samePrices = (a, b) => {
+    const left = new Map();
+    for (const u of b) if (u.price != null) left.set(u.price, (left.get(u.price) || 0) + 1);
+    let hit = 0;
+    for (const u of a) if (left.get(u.price) > 0) { hit++; left.set(u.price, left.get(u.price) - 1); }
+    const nb = b.filter((u) => u.price != null).length;
+    return a.length > 0 && hit >= 0.9 * a.length && nb <= 1.1 * a.length;
+  };
   const LLM = join(ROOT, "data", "schedule-a-llm");
   for (const f of await readdir(LLM).catch(() => [])) {
     if (!f.endsWith(".json")) continue;
@@ -154,8 +164,15 @@ if (test) {
       files.set(m.plan_id, { source: "model", checked: m.verdict === "publish_ag" ? "ag_total" : "printed_total", budget_period: m.budget_period,
         units, unit_count: units.length, price_total: m.price_total, pages: [...new Set(units.map((u) => u.page).filter(Boolean))] });
       llm.published++;
-    } else if (m.verdict === "hold") { files.delete(m.plan_id); llm.held++; }
+    } else if (m.verdict === "hold") {
+      // A held reading still confirms a pattern-matched table when it found the same prices (compared as a multiset,
+      // so unit-name formatting doesn't matter): two independent readings agree, and the pattern table already tied
+      // out to the AG total. Placeholder plans (one price for every home) stay held even when both agree.
+      const pat = files.get(m.plan_id);
+      if (pat && m.checks?.notPlaceholder !== false && samePrices(pat.units, m.units)) llm.confirmed++;
+      else { files.delete(m.plan_id); llm.held++; }
+    }
   }
   for (const [id, row] of files) await writeFile(join(DATA, id + ".json"), JSON.stringify(row));
-  console.log(`${results.length} plans:`, by, `| pattern ok ${npat}, model published ${llm.published}, model held ${llm.held} → ${files.size} files in data/schedule-a/`);
+  console.log(`${results.length} plans:`, by, `| pattern ok ${npat}, model published ${llm.published}, model held ${llm.held} (and ${llm.confirmed} pattern tables kept, the model reading the same prices) → ${files.size} files in data/schedule-a/`);
 }

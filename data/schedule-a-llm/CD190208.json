@@ -1,0 +1,99 @@
+{
+ "plan_id": "CD190208",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 4,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12554,
+   "output_tokens": 554,
+   "seconds": 8,
+   "cost_usd": 0.024371
+  },
+  {
+   "model": "haiku",
+   "tokens": 4945,
+   "output_tokens": 97,
+   "seconds": 4,
+   "cost_usd": 0.005333000000000001
+  },
+  {
+   "model": "haiku",
+   "tokens": 8906,
+   "output_tokens": 754,
+   "seconds": 11,
+   "cost_usd": 0.017687
+  },
+  {
+   "model": "sonnet",
+   "tokens": 20479,
+   "output_tokens": 1052,
+   "seconds": 15,
+   "cost_usd": 0.0681294
+  }
+ ],
+ "tokens": 46884,
+ "api_equiv_usd": 0.116,
+ "located_pages": [],
+ "text_layer": false,
+ "found": false,
+ "verdict": "not_found",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": null,
+  "ccProportional": null,
+  "carrying": null,
+  "sqftTotal": null,
+  "monthlyTotals": false,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": true
+ },
+ "price_total": 0,
+ "step": "sonnet-images",
+ "budget_period": "1/1/2021 - 12/31/2021",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approx. Area",
+  "Limited Common Elements Area",
+  "No. of Bedrooms / Bathrooms",
+  "Offering Price",
+  "Percent Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Real Estate Taxes (Monthly)",
+  "Projected Real Estate Taxes (Annual)",
+  "Projected Monthly Carrying Charges"
+ ],
+ "tax2": "-",
+ "sf2": "-",
+ "printed_totals": {
+  "price": 1650000,
+  "pct": 100,
+  "cc_m": 1273.33,
+  "tax_m": 2449.09,
+  "int_sf": 5265,
+  "ext_sf": null
+ },
+ "problems": [
+  "row with 21 cells dropped: U\t1\tR\t1st Fir./2nd Flr./Cellar\t-\t-\t4\t4.5\t2633\t-\t-\t500000\t41.22\t-\t524.91\t-\t1046.7",
+  "row with 21 cells dropped: U\t2\tR\t3rd Floor\t-\t-\t3\t2\t1316\t-\t-\t650000\t29.01\t-\t369.38\t-\t636.27\t7635.28\t-\t1005.6",
+  "row with 21 cells dropped: U\t3\tR\t4th Floor\t-\t-\t3\t2\t1316\t-\t-\t500000\t29.77\t-\t379.05\t-\t766.08\t9192.90\t-\t1145.1",
+  "Table has no \"floor\"/\"rooms\" column as separate fields; \"Location\" text placed in floor column and \"Limited Common Elements Area\" text placed in note column. Bedrooms/Bathrooms column prints combined as e.g. \"4/4.5\"; parsed into beds/baths accordingly. No second percentage, tax2, or sf2/ext_sf columns are printed in this table. The table (3 units) fits entirely on page 34; pages 35-37 contain only narrative notes, no continuation of the Schedule A price table."
+ ],
+ "units": []
+}

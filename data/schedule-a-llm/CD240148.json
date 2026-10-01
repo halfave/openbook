@@ -1,0 +1,178 @@
+{
+ "plan_id": "CD240148",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 4,
+   "failed": [
+    "carrying"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "hold",
+   "units": 4,
+   "failed": [
+    "monthlyTotals"
+   ]
+  }
+ ],
+ "calls": 2,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4260,
+   "output_tokens": 752,
+   "seconds": 14,
+   "cost_usd": 0.021547999999999998
+  },
+  {
+   "model": "sonnet",
+   "tokens": 7702,
+   "output_tokens": 686,
+   "seconds": 86,
+   "cost_usd": 0.0215932
+  }
+ ],
+ "tokens": 11962,
+ "api_equiv_usd": 0.043,
+ "located_pages": [
+  33
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "hold",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": false,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 6510000,
+ "step": "sonnet-text",
+ "budget_period": "FOR THE FIRST YEAR OF CONDOMINIUM OPERATION COMMENCING OCTOBER 1, 2024 AND ENDING SEPTEMBER 30, 2025",
+ "columns_printed": [
+  "Unit",
+  "Floor #",
+  "Number of Bedrooms and Baths",
+  "Approximate Square Footage",
+  "Approximate Outdoor Square Footage",
+  "Percentage of Common Elements",
+  "Projected Monthly Common Charges",
+  "Projected 1st Year R.E. Taxes",
+  "Proj. Monthly 1st Year R.E. Taxes",
+  "Total Monthly Carrying Charges"
+ ],
+ "tax2": null,
+ "sf2": "cellar/lower floor sf",
+ "printed_totals": {
+  "price": 6510000,
+  "pct": 100,
+  "cc_m": 2333.33,
+  "tax_m": 19417,
+  "int_sf": 3859,
+  "ext_sf": null
+ },
+ "problems": [
+  "Column (8) \"Unit Floor #\" has no values printed in the table for floor; left as -. Outdoor square footage figures (406*, 423*, 282*, 338*) appear to be cellar/roof-terrace footnoted areas rather than a strict second interior area; placed in sf2 per footnote text since footnotes describe them as cellar (Unit 1) and roof terrace/rear yard (Units 2-4) — note that Unit 1's 406 is cellar-related per instructions, but Units 2-4's asterisked figures are actually described as private outdoor yard/terrace space in the footnotes, which would normally belong in ext_sf; however the column header groups all these as one \"Approximate Outdoor Square Footage\" column, so I placed them in sf2 to keep them in one consistent column per the printed table structure."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 1445,
+   "sf2": 406,
+   "ext_sf": null,
+   "price": 2290000,
+   "pct": 37.445,
+   "pct2": null,
+   "cc_m": 873.72,
+   "cc_a": null,
+   "tax_m": 7270.68,
+   "tax_a": 605.89,
+   "tax2_m": null,
+   "carry_m": 1479.61,
+   "page": 33,
+   "note": null
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 808,
+   "sf2": 423,
+   "ext_sf": null,
+   "price": 1440000,
+   "pct": 20.938,
+   "pct2": null,
+   "cc_m": 488.55,
+   "cc_a": null,
+   "tax_m": 4065.54,
+   "tax_a": 338.8,
+   "tax2_m": null,
+   "carry_m": 827.35,
+   "page": 33,
+   "note": null
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 803,
+   "sf2": 282,
+   "ext_sf": null,
+   "price": 1390000,
+   "pct": 20.808,
+   "pct2": null,
+   "cc_m": 485.53,
+   "cc_a": null,
+   "tax_m": 4040.39,
+   "tax_a": 336.7,
+   "tax2_m": null,
+   "carry_m": 822.23,
+   "page": 33,
+   "note": null
+  },
+  {
+   "unit": "4",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 803,
+   "sf2": 338,
+   "ext_sf": null,
+   "price": 1390000,
+   "pct": 20.808,
+   "pct2": null,
+   "cc_m": 485.53,
+   "cc_a": null,
+   "tax_m": 4040.39,
+   "tax_a": 336.7,
+   "tax2_m": null,
+   "carry_m": 822.23,
+   "page": 33,
+   "note": null
+  }
+ ],
+ "reason": "no PDF"
+}

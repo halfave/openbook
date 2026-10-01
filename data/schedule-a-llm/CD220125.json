@@ -1,0 +1,195 @@
+{
+ "plan_id": "CD220125",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "publish_ag",
+   "units": 4,
+   "failed": []
+  }
+ ],
+ "calls": 6,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12590,
+   "output_tokens": 573,
+   "seconds": 9,
+   "cost_usd": 0.024501000000000002
+  },
+  {
+   "model": "haiku",
+   "tokens": 4939,
+   "output_tokens": 97,
+   "seconds": 4,
+   "cost_usd": 0.005327
+  },
+  {
+   "model": "haiku",
+   "tokens": 4969,
+   "output_tokens": 109,
+   "seconds": 6,
+   "cost_usd": 0.005405
+  },
+  {
+   "model": "haiku",
+   "tokens": 4947,
+   "output_tokens": 97,
+   "seconds": 5,
+   "cost_usd": 0.0053349999999999995
+  },
+  {
+   "model": "haiku",
+   "tokens": 8702,
+   "output_tokens": 554,
+   "seconds": 8,
+   "cost_usd": 0.016673
+  },
+  {
+   "model": "sonnet",
+   "tokens": 11555,
+   "output_tokens": 930,
+   "seconds": 14,
+   "cost_usd": 0.032279
+  }
+ ],
+ "tokens": 47702,
+ "api_equiv_usd": 0.09,
+ "located_pages": [],
+ "text_layer": false,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 3250000,
+ "step": "sonnet-images",
+ "budget_period": "July 1, 2023 - June 30, 2024",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approx. Floor Area (1)",
+  "Uninhabitable Floor Area",
+  "No. of Bedrooms / Bathrooms (1)",
+  "Offering Price (2)",
+  "Percent Common Interest (3)",
+  "Projected Monthly Common Charges (4)",
+  "Projected Real Estate Taxes ** (Monthly) (5)",
+  "Projected Real Estate Taxes ** (Annual) (5)",
+  "Projected Monthly Carrying Charges (6)"
+ ],
+ "tax2": null,
+ "sf2": null,
+ "printed_totals": {
+  "price": 3250000,
+  "pct": 100,
+  "cc_m": 1715.96,
+  "tax_m": 6010.97,
+  "int_sf": 7245,
+  "ext_sf": null
+ },
+ "problems": [
+  "Unit 1's Bedrooms/Bathrooms cell prints as \"-/2 half\" (unclear code); left beds/baths empty.",
+  "\"Uninhabitable Floor Area\" column contains location-code text (e.g. \"ll. 31 r. 656\") rather than a single numeric figure, so sf2 left blank for all units and the raw text placed in each unit's note instead."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": "1st Floor/ Cellar",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 1990,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 500000,
+   "pct": 34.09,
+   "pct2": null,
+   "cc_m": 585.01,
+   "cc_a": null,
+   "tax_m": 1879.14,
+   "tax_a": 22549.71,
+   "tax2_m": null,
+   "carry_m": 2464.16,
+   "page": 34,
+   "note": "code \"-/2 half\" bedrooms/bathrooms unclear; uninhabitable floor area \"* c. 1666 ry. 164 e. 15\""
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "2nd Floor",
+   "rooms": null,
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1665,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 1125000,
+   "pct": 21.93,
+   "pct2": null,
+   "cc_m": 376.3,
+   "cc_a": null,
+   "tax_m": 1374.79,
+   "tax_a": 16497.47,
+   "tax2_m": null,
+   "carry_m": 1751.09,
+   "page": 34,
+   "note": "uninhabitable floor area \"ll. 31 r. 656\""
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": "3rd Floor",
+   "rooms": null,
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1665,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 1125000,
+   "pct": 19.6,
+   "pct2": null,
+   "cc_m": 336.35,
+   "cc_a": null,
+   "tax_m": 1228.83,
+   "tax_a": 14746.01,
+   "tax2_m": null,
+   "carry_m": 1565.19,
+   "page": 34,
+   "note": "uninhabitable floor area \"fb. 30\""
+  },
+  {
+   "unit": "4",
+   "type": "residential",
+   "floor": "4th Floor/ Penthouse",
+   "rooms": null,
+   "beds": 2,
+   "baths": 3,
+   "int_sf": 1925,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 500000,
+   "pct": 24.38,
+   "pct2": null,
+   "cc_m": 418.3,
+   "cc_a": null,
+   "tax_m": 1528.21,
+   "tax_a": 18338.46,
+   "tax2_m": null,
+   "carry_m": 1946.5,
+   "page": 34,
+   "note": "uninhabitable floor area \"fb. 25 rt. 977\""
+  }
+ ]
+}

@@ -1,0 +1,138 @@
+{
+ "plan_id": "CD200260",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "publish_ag",
+   "units": 3,
+   "failed": []
+  }
+ ],
+ "calls": 1,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4134,
+   "output_tokens": 750,
+   "seconds": 10,
+   "cost_usd": 0.021032
+  }
+ ],
+ "tokens": 4134,
+ "api_equiv_usd": 0.021,
+ "located_pages": [
+  32
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 8075000,
+ "step": "sonnet-text",
+ "budget_period": "January 1, 2022 to December 31, 2022",
+ "columns_printed": [
+  "Unit",
+  "Approximate Floor Area in Square Feet (Yard \"Y\"/Terrace \"T\"/Storage \"S\"",
+  "Total)",
+  "Percentage of Common Interest",
+  "Estimated Monthly Common Charges",
+  "Estimate of Monthly Real Estate Taxes",
+  "Estimate of Annual Real Estate Taxes",
+  "Total Monthly Combined Common Charges & Real Estate Taxes"
+ ],
+ "tax2": null,
+ "sf2": "Yard/Terrace/Storage",
+ "printed_totals": {
+  "price": 8075000,
+  "pct": 100,
+  "cc_m": 2893,
+  "tax_m": 2411.42,
+  "int_sf": 4833,
+  "ext_sf": null
+ },
+ "problems": [
+  "Total row's \"Total\" square footage column prints as 7,461 but Unit totals (3091+2212+2158=7461) match; int_sf total for TOTAL row uses printed 4,833 for interior and 5,719/7,461 appear to be other totals — only int_sf total (4833) requested is included; ext_sf not separately itemized as combined yard/terrace/storage figures per unit (see SF2 column), so ext_sf total left as -.",
+  "Beds/baths for Unit 1 printed as \"1 Br/1Bth/2 1/2 Bth\" interpreted as 1 bedroom, 2.5 bathrooms (1 full + 2 half?) — original text is garbled (\"1 Br/18th/2 1/2 8th\"); transcribed as 1 bed/2.5 bath but source OCR is unclear.",
+  "Number of Rooms column header present but per-unit room counts not clearly printed (only Bedrooms/Bathrooms given); rooms left as -."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 1,
+   "baths": 2.5,
+   "int_sf": 1773,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 3100000,
+   "pct": 40.63,
+   "pct2": null,
+   "cc_m": 1175.43,
+   "cc_a": null,
+   "tax_m": 979.76,
+   "tax_a": 11757.13,
+   "tax2_m": null,
+   "carry_m": 2155.19,
+   "page": 32,
+   "note": null
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 3,
+   "int_sf": 1499,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 2400000,
+   "pct": 29.44,
+   "pct2": null,
+   "cc_m": 851.7,
+   "cc_a": null,
+   "tax_m": 709.92,
+   "tax_a": 8519.07,
+   "tax2_m": null,
+   "carry_m": 1561.62,
+   "page": 32,
+   "note": null
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 3,
+   "int_sf": 1561,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 2575000,
+   "pct": 29.93,
+   "pct2": null,
+   "cc_m": 865.87,
+   "cc_a": null,
+   "tax_m": 721.74,
+   "tax_a": 8660.87,
+   "tax2_m": null,
+   "carry_m": 1587.61,
+   "page": 32,
+   "note": null
+  }
+ ]
+}

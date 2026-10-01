@@ -1,0 +1,99 @@
+{
+ "plan_id": "CD240067",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 2,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4195,
+   "output_tokens": 560,
+   "seconds": 9,
+   "cost_usd": 0.020135999999999998
+  },
+  {
+   "model": "sonnet",
+   "tokens": 13718,
+   "output_tokens": 767,
+   "seconds": 13,
+   "cost_usd": 0.0355336
+  }
+ ],
+ "tokens": 17913,
+ "api_equiv_usd": 0.056,
+ "located_pages": [
+  34
+ ],
+ "text_layer": true,
+ "found": false,
+ "verdict": "not_found",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": null,
+  "ccProportional": null,
+  "carrying": null,
+  "sqftTotal": null,
+  "monthlyTotals": false,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": true
+ },
+ "price_total": 0,
+ "step": "sonnet-text",
+ "budget_period": "January 1, 2025 - December 31, 2025",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approx. Square Footage",
+  "Approx. Outdoor/Limited Square Footage",
+  "No. of Bedooms/Bathrooms",
+  "Projected Offering Price",
+  "Percent Common Interest",
+  "Projected Common Charges (Monthly)",
+  "Projected Real Estate Taxes (Monthly)",
+  "Projected Real Estate Taxes (Annual)",
+  "Projected Carrying Charges (Monthly)"
+ ],
+ "tax2": null,
+ "sf2": "outdoor/limited common square footage",
+ "printed_totals": {
+  "price": 3150000,
+  "pct": 100,
+  "cc_m": 2959.58,
+  "tax_m": 1286.2,
+  "int_sf": 4520,
+  "ext_sf": 3247
+ },
+ "problems": [
+  "row with 21 cells dropped: U\t1\tR\tCellar / 1st Floor\t-\t-\t2\t2.5\t820\t1159\t183\t700000\t35.89\t-\t1062.19\t-\t461.62\t",
+  "row with 21 cells dropped: U\t2\tR\t2nd Floor\t-\t-\t2\t2\t837\t-\t198\t700000\t17.87\t-\t528.88\t-\t229.84\t2758.12\t-\t758.7",
+  "row with 21 cells dropped: U\t3\tR\t3rd Floor\t-\t-\t3\t2\t855\t-\t268\t850000\t20.29\t-\t600.50\t-\t260.97\t3131.63\t-\t861.4",
+  "row with 21 cells dropped: U\t4\tR\t4th Floor\t-\t-\t2\t2\t849\t-\t899\t900000\t25.95\t-\t768.01\t-\t333.77\t4005.21\t-\t1101.",
+  "Unit 3's outdoor/limited square footage is printed as two figures (158 (B) and 110 (R)); summed as 268 and placed in sf2 since it represents limited common balcony/roof area, not a single ext_sf figure."
+ ],
+ "units": []
+}

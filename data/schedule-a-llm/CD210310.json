@@ -1,0 +1,181 @@
+{
+ "plan_id": "CD210310",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "publish_ag",
+   "units": 4,
+   "failed": []
+  }
+ ],
+ "calls": 2,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 3638,
+   "output_tokens": 544,
+   "seconds": 80,
+   "cost_usd": 0.0060624
+  },
+  {
+   "model": "sonnet",
+   "tokens": 12655,
+   "output_tokens": 788,
+   "seconds": 14,
+   "cost_usd": 0.0334672
+  }
+ ],
+ "tokens": 16293,
+ "api_equiv_usd": 0.04,
+ "located_pages": [
+  31
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 3525000,
+ "step": "sonnet-images",
+ "budget_period": "January 1, 2023 - December 31, 2023",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approx. Habitable Area",
+  "Approx. Uninhabitable Area",
+  "Approx. Total L.C.E. Area (See Note A)",
+  "No. of Bedrooms/Bathrooms",
+  "Offering Price*",
+  "Percent Common Interest",
+  "Projected Common Charges (Monthly)",
+  "Projected Real Estate Taxes (Monthly)",
+  "Projected Real Estate Taxes (Annual)",
+  "Projected Monthly Carrying Charges"
+ ],
+ "tax2": null,
+ "sf2": "uninhabitable area",
+ "printed_totals": {
+  "price": 3525000,
+  "pct": 100,
+  "cc_m": 2007.75,
+  "tax_m": 2652.17,
+  "int_sf": 3356,
+  "ext_sf": null
+ },
+ "problems": [
+  "Bedrooms/Bathrooms column prints as single codes (e.g. \"2/1\", \"2/2\") that are ambiguous between beds/baths vs rooms/baths; left beds/baths empty and noted code in location context is not available per-row note field, so codes are: Unit1=2/1, Unit2=2/2, Unit3=2/2, Unit4=2/2.",
+  "Total row's Habitable Area total 3,356 placed under int_sf; Uninhabitable Area total 643 not included in TOTAL line per requested columns (only int_sf and ext_sf requested, ext_sf not printed as separate column so left as -)."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": "1st Floor/Cellar",
+   "rooms": null,
+   "beds": 2,
+   "baths": 1,
+   "int_sf": 821,
+   "sf2": 643,
+   "ext_sf": null,
+   "price": 900000,
+   "pct": 30.68,
+   "pct2": null,
+   "cc_m": 616,
+   "cc_a": null,
+   "tax_m": 813.71,
+   "tax_a": 9764.54,
+   "tax2_m": null,
+   "carry_m": 1429.71,
+   "page": 31,
+   "note": null
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "2nd Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 845,
+   "sf2": 0,
+   "ext_sf": null,
+   "price": 875000,
+   "pct": 23.07,
+   "pct2": null,
+   "cc_m": 463.19,
+   "cc_a": null,
+   "tax_m": 611.85,
+   "tax_a": 7342.26,
+   "tax2_m": null,
+   "carry_m": 1075.04,
+   "page": 31,
+   "note": null
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": "3rd Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 845,
+   "sf2": 0,
+   "ext_sf": null,
+   "price": 875000,
+   "pct": 23.39,
+   "pct2": null,
+   "cc_m": 469.63,
+   "cc_a": null,
+   "tax_m": 620.37,
+   "tax_a": 7444.42,
+   "tax2_m": null,
+   "carry_m": 1090,
+   "page": 31,
+   "note": null
+  },
+  {
+   "unit": "4",
+   "type": "residential",
+   "floor": "4th Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 845,
+   "sf2": 0,
+   "ext_sf": null,
+   "price": 875000,
+   "pct": 22.86,
+   "pct2": null,
+   "cc_m": 458.93,
+   "cc_a": null,
+   "tax_m": 606.23,
+   "tax_a": 7274.79,
+   "tax2_m": null,
+   "carry_m": 1065.16,
+   "page": 31,
+   "note": null
+  }
+ ]
+}

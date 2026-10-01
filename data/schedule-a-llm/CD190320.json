@@ -1,0 +1,141 @@
+{
+ "plan_id": "CD190320",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "publish_ag",
+   "units": 3,
+   "failed": []
+  }
+ ],
+ "calls": 1,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4326,
+   "output_tokens": 702,
+   "seconds": 10,
+   "cost_usd": 0.021512
+  }
+ ],
+ "tokens": 4326,
+ "api_equiv_usd": 0.022,
+ "located_pages": [
+  45
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 6985000,
+ "step": "sonnet-text",
+ "budget_period": "July 1, 2020 through June 30, 2021",
+ "columns_printed": [
+  "Unit #",
+  "Bedrooms / Bathrooms",
+  "Square Footage of Unit - Main Floor (sq.ft.) (Habitable Areas)",
+  "Cellar / Penthouse Floor (sq.ft.) (Habitable Areas)",
+  "Total Square Footage of Unit (sq.ft.) (Habitable Areas)",
+  "Yard - Limited Common Element (sq.ft.)",
+  "Roof - Limited Common Element (sq.ft.)",
+  "Offering Price",
+  "Percentage of Common Interest",
+  "Estimate of Monthly Common Charges",
+  "Estimate of Monthly Real Estate Taxes - 7/1/2020-6/30/2021",
+  "Estimate of Annual Real Estate Taxes - 7/1/2020-6/30/2021",
+  "Estimated Total Monthly Carrying Charges - 7/1/2020-6/30/2021"
+ ],
+ "tax2": null,
+ "sf2": "cellar/penthouse floor",
+ "printed_totals": {
+  "price": 6985000,
+  "pct": 100,
+  "cc_m": 1876.75,
+  "tax_m": 3333.33,
+  "int_sf": 3934.82,
+  "ext_sf": 867.66
+ },
+ "problems": [
+  "Yard (750.00/0.00/0.00) and Total Square Footage columns printed but not mapped to any output column; ext_sf used Roof column per unit since each unit shows only one nonzero outdoor figure (Roof) except Unit 1 which has Yard 750.00 and Roof 0.00 - used Roof value (0.00) per rule preferring single printed ext_sf figure; Yard values not captured."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 1201.15,
+   "sf2": 1031.49,
+   "ext_sf": null,
+   "price": 2495000,
+   "pct": 36,
+   "pct2": null,
+   "cc_m": 675.63,
+   "cc_a": null,
+   "tax_m": 1200,
+   "tax_a": 14400,
+   "tax2_m": null,
+   "carry_m": 1875.63,
+   "page": 45,
+   "note": null
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1360.38,
+   "sf2": 0,
+   "ext_sf": null,
+   "price": 1895000,
+   "pct": 28,
+   "pct2": null,
+   "cc_m": 525.49,
+   "cc_a": null,
+   "tax_m": 933.33,
+   "tax_a": 11200,
+   "tax2_m": null,
+   "carry_m": 1458.82,
+   "page": 45,
+   "note": null
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 3,
+   "int_sf": 1373.29,
+   "sf2": 496.67,
+   "ext_sf": 867.66,
+   "price": 2595000,
+   "pct": 36,
+   "pct2": null,
+   "cc_m": 675.63,
+   "cc_a": null,
+   "tax_m": 1200,
+   "tax_a": 14400,
+   "tax2_m": null,
+   "carry_m": 1875.63,
+   "page": 45,
+   "note": null
+  }
+ ]
+}

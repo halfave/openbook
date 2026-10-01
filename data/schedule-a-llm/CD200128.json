@@ -1,0 +1,175 @@
+{
+ "plan_id": "CD200128",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "publish_ag",
+   "units": 3,
+   "failed": []
+  }
+ ],
+ "calls": 6,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12578,
+   "output_tokens": 570,
+   "seconds": 9,
+   "cost_usd": 0.024471
+  },
+  {
+   "model": "haiku",
+   "tokens": 4943,
+   "output_tokens": 97,
+   "seconds": 5,
+   "cost_usd": 0.005331000000000001
+  },
+  {
+   "model": "haiku",
+   "tokens": 4935,
+   "output_tokens": 97,
+   "seconds": 5,
+   "cost_usd": 0.005323
+  },
+  {
+   "model": "haiku",
+   "tokens": 4941,
+   "output_tokens": 97,
+   "seconds": 6,
+   "cost_usd": 0.005329
+  },
+  {
+   "model": "haiku",
+   "tokens": 8764,
+   "output_tokens": 611,
+   "seconds": 10,
+   "cost_usd": 0.016973000000000002
+  },
+  {
+   "model": "sonnet",
+   "tokens": 15322,
+   "output_tokens": 808,
+   "seconds": 84,
+   "cost_usd": 0.031848
+  }
+ ],
+ "tokens": 51483,
+ "api_equiv_usd": 0.089,
+ "located_pages": [],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 4485000,
+ "step": "sonnet-images",
+ "budget_period": "January 1, 2022 - December 30, 2022",
+ "columns_printed": [
+  "Unit No.",
+  "Bdrs/Baths",
+  "Approx. Size of Units in sq. ft. [habitable]",
+  "Approx. Size of Units in sq. ft. [uninhabitable]",
+  "Rear Yard",
+  "Terrace",
+  "Roof Terrace",
+  "Offering Prices",
+  "% of Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Monthly Real Estate Taxes",
+  "Projected Annual Real Estate Taxes",
+  "Projected Monthly Carrying Charges",
+  "Projected Annual Carrying Charges"
+ ],
+ "tax2": null,
+ "sf2": "uninhabitable",
+ "printed_totals": {
+  "price": 4485000,
+  "pct": 100,
+  "cc_m": 1353.17,
+  "tax_m": 614.75,
+  "int_sf": 2258,
+  "ext_sf": null
+ },
+ "problems": [
+  "Table has no separate \"floor\" or unit \"type\" column; type inferred as R (residential) for all units. Ext_sf left blank for units 1 and 2 since multiple outdoor areas (rear yard/terrace) are printed separately; unit 3's single terrace figure (150.00) also listed in note rather than ext_sf for consistency, with its Roof Terrace (676.00) kept separate. Annual tax figure 2714.74 for unit 1 appears to not exactly equal 12x monthly (226.23); copied as printed."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 1.5,
+   "int_sf": 703,
+   "sf2": 638,
+   "ext_sf": null,
+   "price": 1695000,
+   "pct": 36.8,
+   "pct2": null,
+   "cc_m": 497.97,
+   "cc_a": null,
+   "tax_m": 226.23,
+   "tax_a": 2714.74,
+   "tax2_m": null,
+   "carry_m": 724.19,
+   "page": 41,
+   "note": "rear yard 296.00, terrace 164.00; 638.00 sf uninhabitable is in the cellar"
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 1.5,
+   "int_sf": 743,
+   "sf2": 0,
+   "ext_sf": null,
+   "price": 1195000,
+   "pct": 27.07,
+   "pct2": null,
+   "cc_m": 366.3,
+   "cc_a": null,
+   "tax_m": 166.41,
+   "tax_a": 1996.95,
+   "tax2_m": null,
+   "carry_m": 532.72,
+   "page": 41,
+   "note": "terrace 150.00"
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 1.5,
+   "int_sf": 812,
+   "sf2": 0,
+   "ext_sf": 676,
+   "price": 1595000,
+   "pct": 36.13,
+   "pct2": null,
+   "cc_m": 488.9,
+   "cc_a": null,
+   "tax_m": 222.11,
+   "tax_a": 2665.31,
+   "tax2_m": null,
+   "carry_m": 711.01,
+   "page": 41,
+   "note": "terrace 150.00"
+  }
+ ]
+}

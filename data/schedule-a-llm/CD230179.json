@@ -1,0 +1,106 @@
+{
+ "plan_id": "CD230179",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 2,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4671,
+   "output_tokens": 1002,
+   "seconds": 13,
+   "cost_usd": 0.024692000000000002
+  },
+  {
+   "model": "sonnet",
+   "tokens": 13780,
+   "output_tokens": 745,
+   "seconds": 85,
+   "cost_usd": 0.0209284
+  }
+ ],
+ "tokens": 18451,
+ "api_equiv_usd": 0.046,
+ "located_pages": [
+  46
+ ],
+ "text_layer": true,
+ "found": false,
+ "verdict": "not_found",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": null,
+  "ccProportional": null,
+  "carrying": null,
+  "sqftTotal": null,
+  "monthlyTotals": false,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": true
+ },
+ "price_total": 0,
+ "step": "sonnet-text",
+ "budget_period": "April 1, 2024 through March 31, 2025",
+ "columns_printed": [
+  "Unit",
+  "Number of Bedrooms",
+  "Number of Baths",
+  "Square Footage of Each Unit Listed by Floor",
+  "Square Footage Roof Top Limited Common Element",
+  "Square Footage Rear Yard Limited Common Element",
+  "Square Footage Storage Space Limited Common Element",
+  "Total Square Footage Including Limited Common Elements",
+  "Estimated Offering Price",
+  "Percentage of Common Interest",
+  "Projected Monthly Real Estate Tax",
+  "Projected Annual Real Estate Tax",
+  "Projected Monthly Common Charges",
+  "Projected Annual Common Charges",
+  "Total Estimated Monthly Carrying Charges",
+  "Total Estimated Annual Carrying Charges"
+ ],
+ "tax2": null,
+ "sf2": "roof top / rear yard / storage limited common element sf",
+ "printed_totals": {
+  "price": 4595000,
+  "pct": 100,
+  "cc_m": 1983.33,
+  "tax_m": 1425.58,
+  "int_sf": 3496,
+  "ext_sf": null
+ },
+ "problems": [
+  "row with 21 cells dropped: U\t1\tR\t-\t-\t2\t1.5\t1141\t470/0/0\t1611\t1250000\t32.000\t-\t456.19\t5474.24\t634.67\t7616.00",
+  "row with 21 cells dropped: U\t2\tR\t-\t-\t2\t1\t710\t330/0/0\t1068\t1050000\t21.000\t-\t299.37\t3592.47\t416.50\t4998.00\t-\t",
+  "row with 21 cells dropped: U\t3\tR\t-\t-\t2\t1\t730\t190/28/32\t952\t995000\t21.000\t-\t299.37\t3592.47\t416.50\t4998.00\t-\t",
+  "row with 21 cells dropped: U\t4\tR\t-\t-\t3\t2\t915\t0/0/280\t1234\t1300000\t26.000\t-\t370.65\t4447.82\t515.67\t6188.00\t-\t",
+  "Unit 3's square footage/price/pct figures were printed out of row order relative to units 1,2,4 and had to be matched by elimination; unit 3's bed/bath count (\"2 Bed 1 Bath\") appears separately from its area figures and may not align with the same row.",
+  "Table has no int_sf vs ext_sf distinction; roof top and rear yard areas were placed in SF2 (combined with storage) rather than ext_sf since each unit has multiple separate outdoor-type areas (roof/yard/storage), per instructions for multiple separate areas - but only Unit 3 clearly has nonzero values in more than one of these three columns.",
+  "\"Square Footage of Each Unit Listed by Floor\" was used as int_sf; unexplained standalone numbers \"1,611 1,068 1,234\" in document may be the \"Total Square Footage Including Limited Common Elements\" column, placed as such, but order of association with unit rows is uncertain given the scrambled source text."
+ ],
+ "units": []
+}

@@ -1,0 +1,200 @@
+{
+ "plan_id": "CD220132",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 4,
+   "failed": [
+    "carrying"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 3,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 3717,
+   "output_tokens": 565,
+   "seconds": 11,
+   "cost_usd": 0.018254
+  },
+  {
+   "model": "sonnet",
+   "tokens": 3818,
+   "output_tokens": 669,
+   "seconds": 9,
+   "cost_usd": 0.019282
+  },
+  {
+   "model": "sonnet",
+   "tokens": 12697,
+   "output_tokens": 708,
+   "seconds": 9,
+   "cost_usd": 0.032923400000000005
+  }
+ ],
+ "tokens": 20232,
+ "api_equiv_usd": 0.07,
+ "located_pages": [
+  29
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "hold",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": false,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 7525000,
+ "step": "sonnet-text",
+ "budget_period": "January 1, 2023 – December 31, 2023",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approximate Habitable Area (SF)",
+  "Approximate Unhabitable Area (SF)",
+  "Approximate Outdoor Area (SF)",
+  "No. of Bedrooms/Bathrooms",
+  "Offering Price",
+  "Percent Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Real Estate Taxes (Annual)",
+  "Projected Real Estate Taxes (Monthly)",
+  "Monthly Carrying Charges"
+ ],
+ "tax2": null,
+ "sf2": "unhabitable sf",
+ "printed_totals": {
+  "price": 7525000,
+  "pct": 100,
+  "cc_m": 2231.11,
+  "tax_m": 54443,
+  "int_sf": 4674,
+  "ext_sf": 2347
+ },
+ "problems": [
+  "Unit 1 beds/baths printed as \"1/1 full, 2 half\" — unclear code, left beds/baths empty and placed code in note."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": "Cellar/1st Floor",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 1039,
+   "sf2": 723,
+   "ext_sf": 1238,
+   "price": 2100000,
+   "pct": 30.91,
+   "pct2": null,
+   "cc_m": 689.7,
+   "cc_a": null,
+   "tax_m": 16829.92,
+   "tax_a": 1402.49,
+   "tax2_m": null,
+   "carry_m": 2092.2,
+   "page": 29,
+   "note": "1/1 full, 2 half"
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "2nd Floor",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 1171,
+   "sf2": 31,
+   "ext_sf": 84,
+   "price": 1750000,
+   "pct": 20.78,
+   "pct2": null,
+   "cc_m": 463.63,
+   "cc_a": null,
+   "tax_m": 11313.37,
+   "tax_a": 942.78,
+   "tax2_m": null,
+   "carry_m": 1406.41,
+   "page": 29,
+   "note": "3/2"
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": "3rd Floor",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 1171,
+   "sf2": 31,
+   "ext_sf": 84,
+   "price": 1775000,
+   "pct": 20.95,
+   "pct2": null,
+   "cc_m": 467.34,
+   "cc_a": null,
+   "tax_m": 11403.8,
+   "tax_a": 950.32,
+   "tax2_m": null,
+   "carry_m": 1417.65,
+   "page": 29,
+   "note": "3/2"
+  },
+  {
+   "unit": "4",
+   "type": "residential",
+   "floor": "4th Floor/Penthouse",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 1293,
+   "sf2": 59,
+   "ext_sf": 941,
+   "price": 1900000,
+   "pct": 27.36,
+   "pct2": null,
+   "cc_m": 610.45,
+   "cc_a": null,
+   "tax_m": 14895.91,
+   "tax_a": 1241.33,
+   "tax2_m": null,
+   "carry_m": 1851.77,
+   "page": 29,
+   "note": "3/2"
+  }
+ ]
+}

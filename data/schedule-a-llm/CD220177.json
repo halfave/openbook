@@ -1,0 +1,180 @@
+{
+ "plan_id": "CD220177",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "publish_ag",
+   "units": 4,
+   "failed": []
+  }
+ ],
+ "calls": 2,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 8249,
+   "output_tokens": 727,
+   "seconds": 82,
+   "cost_usd": 0.0230658
+  },
+  {
+   "model": "sonnet",
+   "tokens": 14033,
+   "output_tokens": 832,
+   "seconds": 11,
+   "cost_usd": 0.0367086
+  }
+ ],
+ "tokens": 22282,
+ "api_equiv_usd": 0.06,
+ "located_pages": [
+  34
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 6750000,
+ "step": "sonnet-images",
+ "budget_period": "July 1, 2023- June 30, 2024",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approx. Floor Area",
+  "Approx. Outdoor/Uninhabitable/Limited Common Floor Area",
+  "No. of Bedooms/Bathrooms",
+  "Offering Price",
+  "Percent Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Real Estate Taxes (Monthly)",
+  "Projected Real Estate Taxes (Annual)",
+  "Projected Carrying Charges (Monthly)"
+ ],
+ "tax2": null,
+ "sf2": "outdoor/uninhabitable/limited common floor area",
+ "printed_totals": {
+  "price": 6750000,
+  "pct": 100,
+  "cc_m": 1894.16,
+  "tax_m": 4388.18,
+  "int_sf": 5394,
+  "ext_sf": 2016
+ },
+ "problems": [
+  "Unit 1's interior area is printed as two figures on separate lines (684* for cellar, 1070 for first floor); per instructions the habitable floor's figure (1070) was used for int_sf and the cellar figure (684) for sf2, though sf2 column is actually labeled as outdoor/uninhabitable/limited common area, not a simple second interior area.",
+  "Units 2, 3, and 4 have limited common areas (terrace/storage/balcony) listed as multiple separate figures, so these were placed in the note column per instructions rather than in ext_sf."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": "Cellar/First Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 1070,
+   "sf2": 684,
+   "ext_sf": null,
+   "price": 2000000,
+   "pct": 28.73,
+   "pct2": null,
+   "cc_m": 544.19,
+   "cc_a": null,
+   "tax_m": 1260.73,
+   "tax_a": 15128.7,
+   "tax2_m": null,
+   "carry_m": 1804.92,
+   "page": 34,
+   "note": "657 (RY), 55 (A), 22 (S)"
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "Second Floor",
+   "rooms": null,
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1153,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 1500000,
+   "pct": 21.04,
+   "pct2": null,
+   "cc_m": 398.53,
+   "cc_a": null,
+   "tax_m": 923.27,
+   "tax_a": 11079.28,
+   "tax2_m": null,
+   "carry_m": 1321.8,
+   "page": 34,
+   "note": "51 (T), 22 (S)"
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": "Third Floor",
+   "rooms": null,
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1178,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 1550000,
+   "pct": 21.66,
+   "pct2": null,
+   "cc_m": 410.28,
+   "cc_a": null,
+   "tax_m": 950.48,
+   "tax_a": 11405.76,
+   "tax2_m": null,
+   "carry_m": 1360.76,
+   "page": 34,
+   "note": "59 (B), 22 (S)"
+  },
+  {
+   "unit": "4",
+   "type": "residential",
+   "floor": "Fourth Floor/Penthouse",
+   "rooms": null,
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1309,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 1700000,
+   "pct": 28.57,
+   "pct2": null,
+   "cc_m": 541.16,
+   "cc_a": null,
+   "tax_m": 1253.7,
+   "tax_a": 15044.44,
+   "tax2_m": null,
+   "carry_m": 1794.86,
+   "page": 34,
+   "note": "1069 (T), 59 (B)"
+  }
+ ]
+}

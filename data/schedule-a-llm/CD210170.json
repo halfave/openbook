@@ -1,0 +1,99 @@
+{
+ "plan_id": "CD210170",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 4,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12586,
+   "output_tokens": 571,
+   "seconds": 7,
+   "cost_usd": 0.024487000000000002
+  },
+  {
+   "model": "haiku",
+   "tokens": 4941,
+   "output_tokens": 97,
+   "seconds": 77,
+   "cost_usd": 0.005329
+  },
+  {
+   "model": "haiku",
+   "tokens": 8725,
+   "output_tokens": 572,
+   "seconds": 78,
+   "cost_usd": 0.016778
+  },
+  {
+   "model": "sonnet",
+   "tokens": 20418,
+   "output_tokens": 991,
+   "seconds": 14,
+   "cost_usd": 0.06751940000000001
+  }
+ ],
+ "tokens": 46670,
+ "api_equiv_usd": 0.114,
+ "located_pages": [],
+ "text_layer": false,
+ "found": false,
+ "verdict": "not_found",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": null,
+  "ccProportional": null,
+  "carrying": null,
+  "sqftTotal": null,
+  "monthlyTotals": false,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": true
+ },
+ "price_total": 0,
+ "step": "sonnet-images",
+ "budget_period": "7/1/2022 - 6/30/2022",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approx. Area (1)",
+  "Uninhabitable/Limited Common Area",
+  "No. of Bedrooms / Bathrooms (1)",
+  "Offering Price (2)",
+  "Percent Common Interest (3)",
+  "Projected Monthly Common Charges (4)",
+  "Projected Real Estate Taxes ** (Monthly) (5)",
+  "Projected Real Estate Taxes ** (Annual) (5)",
+  "Projected Monthly Carrying Charges (6)",
+  "Projected Annual Carrying Charges (7)"
+ ],
+ "tax2": null,
+ "sf2": null,
+ "printed_totals": {
+  "price": 2500000,
+  "pct": 100,
+  "cc_m": 1299.92,
+  "tax_m": 139.42,
+  "int_sf": 4247,
+  "ext_sf": null
+ },
+ "problems": [
+  "row with 21 cells dropped: U\t1\tR\tBasement / 1st Floor\t-\t-\t3\t3.5\t1997\t-\t-\t2500000\t49.76\t-\t646.83\t8594.42\t69.",
+  "row with 21 cells dropped: U\t2\tR\t2nd Floor / 3rd Floor/ Roof\t-\t-\t3\t3.5\t2250\t-\t-\t2400000\t50.24\t-\t653.09\t8677",
+  "Columns (1) \"No. of Bedrooms/Bathrooms\" printed as \"3/3 2 half\" for Unit 1 and \"3/3.5\" for Unit 2; interpreted as 3 bedrooms, 3.5 bathrooms for both per the half-bath rule. Annual tax total in table header row area shows \"$139.42\" under monthly column and \"$1,673.10\" under annual column for total row - transcribed from table total line. Price total line in source lists $2,500,000.00 under a column also containing $2,400,000.00 individually for unit 2, but the printed grand total for price only shows one figure ($2,500,000.00) aligned with \"Offering Price\" total - this appears to be a possible transcription artifact in the original table where only one total figure is legible; used printed total as shown."
+ ],
+ "units": []
+}

@@ -1,0 +1,180 @@
+{
+ "plan_id": "CD240055",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "publish_ag",
+   "units": 4,
+   "failed": []
+  }
+ ],
+ "calls": 2,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4372,
+   "output_tokens": 761,
+   "seconds": 10,
+   "cost_usd": 0.02205
+  },
+  {
+   "model": "sonnet",
+   "tokens": 13862,
+   "output_tokens": 943,
+   "seconds": 13,
+   "cost_usd": 0.03722640000000001
+  }
+ ],
+ "tokens": 18234,
+ "api_equiv_usd": 0.059,
+ "located_pages": [
+  32
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 6080000,
+ "step": "sonnet-images",
+ "budget_period": "January 1, 2025-December 31, 2025",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approx. Floor Area",
+  "Approx. Outdoor/Uninhabitable/Limited Common Floor Area",
+  "No. of Bedooms/Bathrooms",
+  "Offering Price",
+  "Percent Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Real Estate Taxes (Monthly)",
+  "Projected Real Estate Taxes (Annual)",
+  "Projected Carrying Charges (Monthly)"
+ ],
+ "tax2": null,
+ "sf2": "outdoor/uninhabitable/limited common floor area",
+ "printed_totals": {
+  "price": 6080000,
+  "pct": 100,
+  "cc_m": 2148.33,
+  "tax_m": 5546.01,
+  "int_sf": 5624,
+  "ext_sf": 1371
+ },
+ "problems": [
+  "Unit 1's floor area is printed as two figures on separate lines (692* for Cellar, 1128 for First Floor); per rules the habitable figure (1128) was placed in int_sf and the cellar figure (692*) was placed in sf2, though the outdoor/limited common column also contains entries (133 (P), 70 (L)) which were listed in note per the multiple-area ext_sf rule.",
+  "Units 2, 3A, 3B have multiple outdoor/limited-common area entries (e.g. 44(T); 144(B)+556(T); 144(B)+280(T)); per rules these were left out of ext_sf and listed in note instead."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": "Cellar/First Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 1128,
+   "sf2": 692,
+   "ext_sf": null,
+   "price": 1495000,
+   "pct": 25.4,
+   "pct2": null,
+   "cc_m": 545.68,
+   "cc_a": null,
+   "tax_m": 1408.69,
+   "tax_a": 16904.25,
+   "tax2_m": null,
+   "carry_m": 1954.37,
+   "page": 32,
+   "note": "Cellar area 692* is uninhabitable; ext_sf areas: 133 (P), 70 (L)"
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "Second Floor",
+   "rooms": null,
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1166,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 1395000,
+   "pct": 21.67,
+   "pct2": null,
+   "cc_m": 465.54,
+   "cc_a": null,
+   "tax_m": 1201.82,
+   "tax_a": 14421.85,
+   "tax2_m": null,
+   "carry_m": 1667.36,
+   "page": 32,
+   "note": null
+  },
+  {
+   "unit": "3A",
+   "type": "residential",
+   "floor": "Third Floor/Fourth Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 1239,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 1495000,
+   "pct": 25.82,
+   "pct2": null,
+   "cc_m": 554.7,
+   "cc_a": null,
+   "tax_m": 1431.98,
+   "tax_a": 17183.76,
+   "tax2_m": null,
+   "carry_m": 1986.68,
+   "page": 32,
+   "note": "ext_sf areas: 144 (B), 556 (T)"
+  },
+  {
+   "unit": "3B",
+   "type": "residential",
+   "floor": "Third Floor/Fourth Floor/Penthouse",
+   "rooms": null,
+   "beds": 3,
+   "baths": 3.5,
+   "int_sf": 1399,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 1695000,
+   "pct": 27.11,
+   "pct2": null,
+   "cc_m": 582.41,
+   "cc_a": null,
+   "tax_m": 1503.52,
+   "tax_a": 18042.29,
+   "tax2_m": null,
+   "carry_m": 2085.93,
+   "page": 32,
+   "note": "ext_sf areas: 144 (B), 280 (T)"
+  }
+ ]
+}

@@ -1,0 +1,164 @@
+{
+ "plan_id": "CD230274",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "publish_printed",
+   "units": 3,
+   "failed": [
+    "ag"
+   ]
+  }
+ ],
+ "calls": 2,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4476,
+   "output_tokens": 816,
+   "seconds": 68,
+   "cost_usd": 0.022796
+  },
+  {
+   "model": "sonnet",
+   "tokens": 13955,
+   "output_tokens": 940,
+   "seconds": 12,
+   "cost_usd": 0.037398
+  }
+ ],
+ "tokens": 18431,
+ "api_equiv_usd": 0.06,
+ "located_pages": [
+  45
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_printed",
+ "checks": {
+  "ag": false,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 7156900,
+ "step": "sonnet-images",
+ "budget_period": "July 1, 2024 through June 30, 2025",
+ "columns_printed": [
+  "Unit #",
+  "Bedrooms / Bathrooms",
+  "Square Footage of Unit - Main Floor (sq.ft.) (Habitable Areas)",
+  "Accessory Space - Cellar Floor (sq.ft.) (Non-Habitable Areas)",
+  "Penthouse Floor (sq.ft.) (Habitable Areas)",
+  "Yard - Limited Common Element (sq.ft.)",
+  "Stairwell - Limited Common Element (sq.ft.)",
+  "Areaway - Limited Common Element (sq.ft.)",
+  "Roof - Limited Common Element (sq.ft.)",
+  "Total Square Footage of Unit",
+  "Offering Price",
+  "Percentage of Common Interest",
+  "Estimate of Monthly Common Charges",
+  "Projected Monthly Real Estate Taxes for the First Year of Condominium Operation 7/1/2024-6/30/2025",
+  "Projected Annual Real Estate Taxes for the First Year of Condominium Operation 7/1/2024-6/30/2025",
+  "Estimated Total Monthly Carrying Taxes - 7/1/2024 - 6/30/2025"
+ ],
+ "tax2": null,
+ "sf2": "cellar (accessory space, non-habitable)",
+ "printed_totals": {
+  "price": 7156900,
+  "pct": 100,
+  "cc_m": 2203.42,
+  "tax_m": 616.61,
+  "int_sf": 4285,
+  "ext_sf": null
+ },
+ "problems": [
+  "Unit 3 has three outdoor/accessory figures (Penthouse 452, Stairwell 74, Roof 869) in addition to the cellar column; only the cellar figure (none for unit 3) could go to sf2, so all three are listed in note per the multiple-areas rule. Carrying-charge column (vi, Estimated Total Monthly Carrying Taxes) does not clearly correspond to a single tax_m value by column header wording, so tax_m was taken as the \"Projected Monthly Real Estate Taxes\" column as the most likely basis."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 1478,
+   "sf2": 1313,
+   "ext_sf": null,
+   "price": 2899500,
+   "pct": 37,
+   "pct2": null,
+   "cc_m": 815.26,
+   "cc_a": null,
+   "tax_m": 228.15,
+   "tax_a": 2737.74,
+   "tax2_m": null,
+   "carry_m": 1043.41,
+   "page": 45,
+   "note": "Yard 590 sf, Roof 206 sf"
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1329,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 1727700,
+   "pct": 30,
+   "pct2": null,
+   "cc_m": 661.03,
+   "cc_a": null,
+   "tax_m": 184.98,
+   "tax_a": 2219.79,
+   "tax2_m": null,
+   "carry_m": 846.01,
+   "page": 45,
+   "note": null
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 3,
+   "int_sf": 1478,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 2529700,
+   "pct": 33,
+   "pct2": null,
+   "cc_m": 727.13,
+   "cc_a": null,
+   "tax_m": 203.48,
+   "tax_a": 2441.77,
+   "tax2_m": null,
+   "carry_m": 930.61,
+   "page": 45,
+   "note": "Penthouse 452 sf, Stairwell 74 sf, Roof 869 sf"
+  }
+ ]
+}

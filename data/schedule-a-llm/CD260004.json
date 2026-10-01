@@ -1,0 +1,160 @@
+{
+ "plan_id": "CD260004",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 1,
+   "failed": [
+    "ag",
+    "pct100",
+    "carrying",
+    "sqftTotal",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "hold",
+   "units": 1,
+   "failed": [
+    "ag",
+    "printed",
+    "pct100",
+    "sqftTotal",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "publish_ag",
+   "units": 2,
+   "failed": []
+  }
+ ],
+ "calls": 3,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4457,
+   "output_tokens": 900,
+   "seconds": 14,
+   "cost_usd": 0.023224
+  },
+  {
+   "model": "sonnet",
+   "tokens": 4444,
+   "output_tokens": 889,
+   "seconds": 11,
+   "cost_usd": 0.023106
+  },
+  {
+   "model": "sonnet",
+   "tokens": 13753,
+   "output_tokens": 954,
+   "seconds": 83,
+   "cost_usd": 0.022971200000000004
+  }
+ ],
+ "tokens": 22654,
+ "api_equiv_usd": 0.069,
+ "located_pages": [
+  56
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": null,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 9050000,
+ "step": "sonnet-images",
+ "budget_period": "January 1, 2027 through December 31, 2027",
+ "columns_printed": [
+  "Unit",
+  "Number of Bedrooms",
+  "Number of Bathrooms",
+  "Square Footage of Each Unit Listed by Floor",
+  "Total Square Footage",
+  "*Square Footage of Rear Yard Limited Common Elements (Uninhabitable)",
+  "*Square Footage of Roof Terrace Limited Common Elements (Uninhabitable)",
+  "*Square Footage of Cellar Storage Limited Common Elements (Uninhabitable)",
+  "Estimated Offering Price",
+  "Percentage of Common Interest",
+  "**Projected Monthly Real Estate Tax",
+  "**Projected Annual Real Estate Tax",
+  "Projected Monthly Common Charges",
+  "Projected Annual Common Charges",
+  "Total Estimated Monthly Carrying Charges"
+ ],
+ "tax2": "-",
+ "sf2": "cellar storage (uninhabitable)",
+ "printed_totals": {
+  "price": 9050000,
+  "pct": 100,
+  "cc_m": 1683.33,
+  "tax_m": 2007.33,
+  "int_sf": 5760,
+  "ext_sf": 1573
+ },
+ "problems": [
+  "Ext_sf for each unit has two separate uninhabitable areas printed (rear yard and roof terrace) in addition to the sf2 (cellar storage) column; per instructions these are listed in note rather than ext_sf, but a single ext_sf figure could not be determined, so ext_sf is left blank and rear yard/roof terrace values are noted here: Unit 1 rear yard 491, roof terrace 0; Unit 2 rear yard 0, roof terrace 1082. TOTAL ext_sf shown is sum of rear yard (491) + roof terrace (1082) = 1573, as no single combined ext_sf total is printed separately."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 4,
+   "baths": 3.5,
+   "int_sf": 3197,
+   "sf2": 0,
+   "ext_sf": 491,
+   "price": 4800000,
+   "pct": 50,
+   "pct2": null,
+   "cc_m": 841.67,
+   "cc_a": 10100,
+   "tax_m": 1003.67,
+   "tax_a": 12044,
+   "tax2_m": null,
+   "carry_m": 1845.33,
+   "page": 56,
+   "note": null
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 4,
+   "baths": 4,
+   "int_sf": 2563,
+   "sf2": 84,
+   "ext_sf": 1082,
+   "price": 4250000,
+   "pct": 50,
+   "pct2": null,
+   "cc_m": 841.67,
+   "cc_a": 10100,
+   "tax_m": 1003.67,
+   "tax_a": 12044,
+   "tax2_m": null,
+   "carry_m": 1845.33,
+   "page": 56,
+   "note": null
+  }
+ ]
+}

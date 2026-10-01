@@ -1,0 +1,186 @@
+{
+ "plan_id": "CD170237",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "publish_ag",
+   "units": 4,
+   "failed": []
+  }
+ ],
+ "calls": 5,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12716,
+   "output_tokens": 620,
+   "seconds": 9,
+   "cost_usd": 0.024859
+  },
+  {
+   "model": "haiku",
+   "tokens": 5009,
+   "output_tokens": 97,
+   "seconds": 5,
+   "cost_usd": 0.005397000000000001
+  },
+  {
+   "model": "haiku",
+   "tokens": 5033,
+   "output_tokens": 110,
+   "seconds": 4,
+   "cost_usd": 0.0054730000000000004
+  },
+  {
+   "model": "haiku",
+   "tokens": 8972,
+   "output_tokens": 744,
+   "seconds": 8,
+   "cost_usd": 0.017751
+  },
+  {
+   "model": "sonnet",
+   "tokens": 20599,
+   "output_tokens": 1070,
+   "seconds": 12,
+   "cost_usd": 0.0685236
+  }
+ ],
+ "tokens": 52329,
+ "api_equiv_usd": 0.122,
+ "located_pages": [],
+ "text_layer": false,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 4050000,
+ "step": "sonnet-images",
+ "budget_period": "May 1, 2018 to April 30, 2019",
+ "columns_printed": [
+  "(1) Price",
+  "(2) Number of Rooms, Bedrooms (BR), Bathrooms (BTH)",
+  "Approximate Floor Area in Square Feet: Unit",
+  "Approximate Floor Area in Square Feet: Non-Habitable Balcony/Terrace/Patio",
+  "Approximate Floor Area in Square Feet: Total",
+  "(3) Percentage of Common Interest",
+  "(4) Estimated Monthly Common Charges",
+  "Estimate of Monthly Real Estate Taxes",
+  "Estimate of Annual Real Estate Taxes",
+  "Total Monthly Combined Common Charges & Real Estate Taxes"
+ ],
+ "tax2": null,
+ "sf2": null,
+ "printed_totals": {
+  "price": 4050000,
+  "pct": 100,
+  "cc_m": 1175.25,
+  "tax_m": 1074.07,
+  "int_sf": 3287,
+  "ext_sf": 889
+ },
+ "problems": [
+  "Rooms column header is \"Number of Rooms, Bedrooms (BR), Bathrooms (BTH)\" but only BR/BTH codes are printed (e.g. \"1 Br/1.5 Bth\"), no separate room count; \"rooms\" cell left blank and code placed in \"floor\" position per instruction ambiguity — actually placed BR/BTH code string in rooms-equivalent slot since no distinct floor/room data exist; beds/baths left blank because \"1.5 Bth\" format not in the explicitly listed patterns, so full code retained only in that cell for reference."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 952,
+   "sf2": 468,
+   "ext_sf": null,
+   "price": 1200000,
+   "pct": 32.5,
+   "pct2": null,
+   "cc_m": 377.97,
+   "cc_a": null,
+   "tax_m": 345.43,
+   "tax_a": 4145,
+   "tax2_m": null,
+   "carry_m": 723.4,
+   "page": 30,
+   "note": null
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 781,
+   "sf2": 84,
+   "ext_sf": null,
+   "price": 950000,
+   "pct": 22.5,
+   "pct2": null,
+   "cc_m": 265.76,
+   "cc_a": null,
+   "tax_m": 242.88,
+   "tax_a": 2914.56,
+   "tax2_m": null,
+   "carry_m": 508.64,
+   "page": 30,
+   "note": null
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 777,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 950000,
+   "pct": 22.5,
+   "pct2": null,
+   "cc_m": 265.76,
+   "cc_a": null,
+   "tax_m": 242.88,
+   "tax_a": 2914.56,
+   "tax2_m": null,
+   "carry_m": 508.64,
+   "page": 30,
+   "note": null
+  },
+  {
+   "unit": "4",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 777,
+   "sf2": 337,
+   "ext_sf": null,
+   "price": 950000,
+   "pct": 22.5,
+   "pct2": null,
+   "cc_m": 265.76,
+   "cc_a": null,
+   "tax_m": 242.88,
+   "tax_a": 2914.56,
+   "tax2_m": null,
+   "carry_m": 508.64,
+   "page": 30,
+   "note": null
+  }
+ ]
+}

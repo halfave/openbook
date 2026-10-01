@@ -1,0 +1,118 @@
+{
+ "plan_id": "CD210010",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "publish_ag",
+   "units": 2,
+   "failed": []
+  }
+ ],
+ "calls": 1,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4101,
+   "output_tokens": 614,
+   "seconds": 7,
+   "cost_usd": 0.020083999999999998
+  }
+ ],
+ "tokens": 4101,
+ "api_equiv_usd": 0.02,
+ "located_pages": [
+  33
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": null,
+  "carrying": true,
+  "sqftTotal": null,
+  "monthlyTotals": true,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 2000000,
+ "step": "sonnet-text",
+ "budget_period": "January 1, 2022 - December 31, 2022",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approx. Square Footage",
+  "Outdoor/Limited Square Footage",
+  "No. of Bedooms/Bathrooms",
+  "Offering Price",
+  "Percent Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Real Estate Taxes (Monthly)",
+  "Projected Real Estate Taxes (Annual)",
+  "Projected Carrying Charges (Monthly)"
+ ],
+ "tax2": null,
+ "sf2": "outdoor/limited",
+ "printed_totals": {
+  "price": 2000000,
+  "pct": 100,
+  "cc_m": 1522.92,
+  "tax_m": 2104.5,
+  "int_sf": 4025,
+  "ext_sf": 1568
+ },
+ "problems": [
+  "Unit 1 and Unit 2 each have multiple floor areas (interior) printed on separate lines; int_sf shows only the first (Cellar/Third Floor) figure per rules, with full breakdown in note. Outdoor/Limited Square Footage total is also a sum of multiple labeled areas; reported sf2 is first listed figure only with full breakdown in note. Bedrooms/Bathrooms printed as \"3/2 Full; 2 Half\" and \"3/2.5\" — interpreted as 3 beds, 2.5 baths for both.",
+  "unit sizes left out: the area columns did not add up to the printed totals"
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 2.5,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 1050000,
+   "pct": 54.62,
+   "pct2": null,
+   "cc_m": 831.82,
+   "cc_a": null,
+   "tax_m": 1149.48,
+   "tax_a": 13793.73,
+   "tax2_m": null,
+   "carry_m": 1981.3,
+   "page": 33,
+   "note": "Cellar 837, First Floor 720, Second Floor 759; outdoor/limited: 110 (D), 549 (RY)"
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 2.5,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 950000,
+   "pct": 45.38,
+   "pct2": null,
+   "cc_m": 691.1,
+   "cc_a": null,
+   "tax_m": 955.02,
+   "tax_a": 11460.27,
+   "tax2_m": null,
+   "carry_m": 1646.12,
+   "page": 33,
+   "note": "Third Floor 791, Fourth Floor 837, Roof 81; outdoor/limited: 36+36 (B), 756 (RT), 81 (R)"
+  }
+ ]
+}

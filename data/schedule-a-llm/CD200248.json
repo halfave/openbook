@@ -1,0 +1,124 @@
+{
+ "plan_id": "CD200248",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "hold",
+   "units": 1,
+   "failed": [
+    "ag",
+    "printed",
+    "pct100",
+    "sqftTotal",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 4,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12606,
+   "output_tokens": 578,
+   "seconds": 8,
+   "cost_usd": 0.024545
+  },
+  {
+   "model": "haiku",
+   "tokens": 4957,
+   "output_tokens": 106,
+   "seconds": 3,
+   "cost_usd": 0.005381
+  },
+  {
+   "model": "haiku",
+   "tokens": 8782,
+   "output_tokens": 619,
+   "seconds": 8,
+   "cost_usd": 0.01703
+  },
+  {
+   "model": "sonnet",
+   "tokens": 11453,
+   "output_tokens": 826,
+   "seconds": 11,
+   "cost_usd": 0.0312432
+  }
+ ],
+ "tokens": 37798,
+ "api_equiv_usd": 0.078,
+ "located_pages": [],
+ "text_layer": false,
+ "found": true,
+ "verdict": "hold",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": false,
+  "ccProportional": null,
+  "carrying": true,
+  "sqftTotal": false,
+  "monthlyTotals": false,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": true
+ },
+ "price_total": 1100000,
+ "step": "sonnet-images",
+ "budget_period": "7/1/2021 - 6/30/2022",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approx. Area (1)",
+  "Limited common Area",
+  "No. of Bedrooms / Bathrooms (1)",
+  "Offering Price (2)",
+  "Percent Common Interest (3)",
+  "Projected Monthly Common Charges (4)",
+  "Projected Real Estate Taxes (Monthly) (5)",
+  "Projected Real Estate Taxes (Annual) (5)",
+  "Projected Monthly Carrying Charges (6)",
+  "Projected Annual Carrying Charges (7)"
+ ],
+ "tax2": null,
+ "sf2": null,
+ "printed_totals": {
+  "price": 3000000,
+  "pct": 100,
+  "cc_m": 977.91,
+  "tax_m": 789.25,
+  "int_sf": 5120,
+  "ext_sf": null
+ },
+ "problems": [
+  "row with 21 cells dropped: U\t2\tR\t2nd Floor\t-\t-\t2\t2\t1335\t-\t-\t700000.00\t24.65\t-\t241.06\t2892.68\t194.55\t2334.62",
+  "row with 21 cells dropped: U\t3\tR\t3rd Flr. / 4th Flr.\t-\t-\t4\t3\t2669\t-\t-\t1200000.00\t37.28\t-\t364.60\t4375.14\t294",
+  "Unit 1 Projected Annual Carrying Charges printed as $8,072.30, but monthly ($672.69)×12=$8,072.28; transcribed as printed. Unit 1 bedrooms/bathrooms printed as \"1/1 whole 2 half\" — unclear code, left beds/baths blank and placed code in note. Total row \"Projected Monthly Common Charges\" printed as $977.91 but sum of rows is $977.91 (372.25+241.06+364.60=977.91) — consistent. cc_a column not in header list (table has no explicit monthly common charges annual column separate from carrying charges); cc_a left blank as not a distinct printed column."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": "1st Floor/ Cellar",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 1116,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 1100000,
+   "pct": 38.07,
+   "pct2": null,
+   "cc_m": 372.25,
+   "cc_a": 4472.68,
+   "tax_m": 300.44,
+   "tax_a": 3605.26,
+   "tax2_m": null,
+   "carry_m": 672.69,
+   "page": 33,
+   "note": "1/1 whole 2 half; limited common area: c 1097 a. 200 st. 42 y. 1043"
+  }
+ ]
+}

@@ -1,0 +1,118 @@
+{
+ "plan_id": "CD220121",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "publish_ag",
+   "units": 2,
+   "failed": []
+  }
+ ],
+ "calls": 1,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4229,
+   "output_tokens": 663,
+   "seconds": 11,
+   "cost_usd": 0.02089
+  }
+ ],
+ "tokens": 4229,
+ "api_equiv_usd": 0.021,
+ "located_pages": [
+  35
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": null,
+  "carrying": true,
+  "sqftTotal": null,
+  "monthlyTotals": true,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 2400000,
+ "step": "sonnet-text",
+ "budget_period": "January 1, 2023 - December 31, 2023",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approx. Square Footage",
+  "Approx. Outdoor/Limited Square Footage",
+  "No. of Bedooms/Bathrooms",
+  "Offering Price",
+  "Percent Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Real Estate Taxes (Monthly)",
+  "Projected Real Estate Taxes (Annual)",
+  "Projected Carrying Charges (Monthly)"
+ ],
+ "tax2": null,
+ "sf2": "outdoor/limited common square footage",
+ "printed_totals": {
+  "price": 2400000,
+  "pct": 100,
+  "cc_m": 1535.83,
+  "tax_m": 1028.99,
+  "int_sf": 4065,
+  "ext_sf": 1568
+ },
+ "problems": [
+  "Unit 2's \"Approx. Square Footage\" column prints three figures (44, 1,096, 1,096) across First/Second/Third Floor; unclear which represents interior habitable sf vs. other, so int_sf is left as printed (44) and the multiple areas are noted; Outdoor/Limited Square Footage column contains multiple limited-element figures per unit rather than a single ext_sf number, so ext_sf is left blank per rules and details placed in note.",
+  "unit sizes left out: the area columns did not add up to the printed totals"
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": "Cellar/First Floor",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 1100000,
+   "pct": 41.37,
+   "pct2": null,
+   "cc_m": 635.37,
+   "cc_a": null,
+   "tax_m": 425.69,
+   "tax_a": 5108.31,
+   "tax2_m": null,
+   "carry_m": 1061.06,
+   "page": 35,
+   "note": "Cellar 854, First Floor 975; Limited: 55 (A) Areaway, 17 (S) Stairwell, 639 (RY) Rear Yard"
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "First/Second/Third Floor",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 1300000,
+   "pct": 58.63,
+   "pct2": null,
+   "cc_m": 900.46,
+   "cc_a": null,
+   "tax_m": 603.3,
+   "tax_a": 7239.56,
+   "tax2_m": null,
+   "carry_m": 1503.76,
+   "page": 35,
+   "note": "Interior areas: First Floor 44, Second Floor 1096, Third Floor 1096 (total int_sf unclear, printed as 44/1096/1096); Limited: 30+24 (B) Balcony, 1096 (RT) Roof Terrace, 11 (L) Ledge"
+  }
+ ]
+}

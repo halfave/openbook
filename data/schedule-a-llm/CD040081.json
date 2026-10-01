@@ -1,0 +1,181 @@
+{
+ "plan_id": "CD040081",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "publish_ag",
+   "units": 4,
+   "failed": []
+  }
+ ],
+ "calls": 4,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12192,
+   "output_tokens": 618,
+   "seconds": 8,
+   "cost_usd": 0.023806000000000004
+  },
+  {
+   "model": "haiku",
+   "tokens": 4969,
+   "output_tokens": 97,
+   "seconds": 6,
+   "cost_usd": 0.005357000000000001
+  },
+  {
+   "model": "haiku",
+   "tokens": 8634,
+   "output_tokens": 572,
+   "seconds": 8,
+   "cost_usd": 0.016563
+  },
+  {
+   "model": "sonnet",
+   "tokens": 11918,
+   "output_tokens": 1360,
+   "seconds": 16,
+   "cost_usd": 0.036102
+  }
+ ],
+ "tokens": 37713,
+ "api_equiv_usd": 0.082,
+ "located_pages": [],
+ "text_layer": false,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": null,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 2194000,
+ "step": "sonnet-images",
+ "budget_period": "Commencing January 1, 2005 and Ending December 31, 2005",
+ "columns_printed": [
+  "Unit",
+  "No. of Rooms & Baths",
+  "Approx. Sq. Ft. Area",
+  "Offering Price",
+  "Pctg. of Common Interest",
+  "Estimated Annual/Monthly Common Charges",
+  "Estimated 2005/2006 Annual/Monthly Real Estate Taxes (Including Section 421a Benefits)",
+  "Estimated 2005/2006 Annual/Monthly Real Estate Taxes (Assuming No Section 421a Benefits)",
+  "Estimated Annual/Monthly Carrying Charges (Including Section 421a Benefits)",
+  "Estimated Annual/Monthly Carrying Charges (Assuming No Section 421a Benefits)",
+  "Estimated Annual/Monthly Carrying Charges Deductible for Income Tax Purposes (Including Section 421a Benefits)",
+  "Estimated Annual/Monthly Carrying Charges Deductible for Income Tax Purposes (Assuming No Section 421a Benefits)"
+ ],
+ "tax2": "Assuming No Section 421a Benefits",
+ "sf2": null,
+ "printed_totals": {
+  "price": 2194000,
+  "pct": 100,
+  "cc_m": 1340.25,
+  "tax_m": 593.16,
+  "int_sf": null,
+  "ext_sf": null
+ },
+ "problems": [
+  "Table lacks separate columns for unit type, floor, rooms count, beds/baths split, interior/exterior sf, and a single tax_m/tax_a — I mapped \"No. of Rooms & Baths\" to rooms field as printed (e.g. \"3.5/1.5\") since format is unclear (likely rooms/baths, not beds/baths), left beds/baths blank per instructions for unclear codes. Approx Sq. Ft. Area placed in int_sf; units 2 and 3 are marked \"1547 B\" meaning balcony, so ext_sf could not be isolated as a separate number and is left blank per instructions, with \"B denotes Balcony\" noted. Used col 9 (Including 421a) as cc_m/cc_a and tax_m/tax_a since it is listed before the \"Assuming No\" column; tax2_m holds the \"Assuming No Section 421a\" monthly tax. No separate \"carry_m\" deductible column was used for carry_m field (cols 11/12) since instructions define carry_m as monthly carrying charges, which I took from col 9's monthly figure (duplicate of cc_m) — columns 10-12 (Assuming No 421a carrying charges, and the two deductible-for-tax-purposes variants) are not individually captured in the fixed 20-cell U-line format."
+ ],
+ "units": [
+  {
+   "unit": "1F",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 1556,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 410000,
+   "pct": 20,
+   "pct2": null,
+   "cc_m": 268.05,
+   "cc_a": 3216.6,
+   "tax_m": 124,
+   "tax_a": 1488,
+   "tax2_m": 198,
+   "carry_m": 392.05,
+   "page": 24,
+   "note": null
+  },
+  {
+   "unit": "1R",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 1553,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 425000,
+   "pct": 20,
+   "pct2": null,
+   "cc_m": 268.05,
+   "cc_a": 3216.6,
+   "tax_m": 124,
+   "tax_a": 1488,
+   "tax2_m": 198,
+   "carry_m": 392.05,
+   "page": 24,
+   "note": null
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 1547,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 670000,
+   "pct": 30,
+   "pct2": null,
+   "cc_m": 402.07,
+   "cc_a": 4824.9,
+   "tax_m": 172.58,
+   "tax_a": 2071,
+   "tax2_m": 276.42,
+   "carry_m": 574.66,
+   "page": 24,
+   "note": "B denotes Balcony"
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 1547,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 689000,
+   "pct": 30,
+   "pct2": null,
+   "cc_m": 402.07,
+   "cc_a": 4824.9,
+   "tax_m": 172.58,
+   "tax_a": 2071,
+   "tax2_m": 276.42,
+   "carry_m": 574.66,
+   "page": 24,
+   "note": "B denotes Balcony"
+  }
+ ]
+}

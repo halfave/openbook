@@ -1,0 +1,163 @@
+{
+ "plan_id": "CD230022",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 2,
+   "failed": [
+    "ag",
+    "printed",
+    "pct100",
+    "sqftTotal",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 3,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4731,
+   "output_tokens": 1001,
+   "seconds": 12,
+   "cost_usd": 0.024926
+  },
+  {
+   "model": "sonnet",
+   "tokens": 4714,
+   "output_tokens": 980,
+   "seconds": 14,
+   "cost_usd": 0.024732
+  },
+  {
+   "model": "sonnet",
+   "tokens": 13882,
+   "output_tokens": 723,
+   "seconds": 12,
+   "cost_usd": 0.0355304
+  }
+ ],
+ "tokens": 23327,
+ "api_equiv_usd": 0.085,
+ "located_pages": [
+  33
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "hold",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": false,
+  "ccProportional": null,
+  "carrying": true,
+  "sqftTotal": false,
+  "monthlyTotals": false,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": true
+ },
+ "price_total": 4900000,
+ "step": "sonnet-text",
+ "budget_period": "January 1, 2024 - December 31, 2024",
+ "columns_printed": [
+  "Unit No.",
+  "Floor Location",
+  "Approx. Floor Area",
+  "Approx. Outdoor/Uninhabitable/Limited Common Area",
+  "No. of Bedooms/Bathrooms",
+  "Offering Price",
+  "Percent Common Interest",
+  "Common Charges (Monthly)",
+  "Projected Real Estate Taxes (Monthly)",
+  "Projected Real Estate Taxes (Annual)",
+  "Projected Carrying Charges (Monthly)"
+ ],
+ "tax2": null,
+ "sf2": "outdoor/uninhabitable/limited common area",
+ "printed_totals": {
+  "price": 7075000,
+  "pct": 100,
+  "cc_m": 1909.58,
+  "tax_m": 7184.3,
+  "int_sf": 7262,
+  "ext_sf": 2700
+ },
+ "problems": [
+  "row with 21 cells dropped: U\t1\tR\tCellar/First Floor\t-\t-\t0\t1\t1027\t451 (RY) | 52 (WW) | 437 (S) | 549 (RD) | ",
+  "Unit 2 and Unit 3 each print two floor-area figures (two-level units, not cellar/first-floor style) with only one labeled outdoor/limited-common figure; I placed the first number in int_sf per convention but the second interior-floor number (1542 for Unit 2, 1341 for Unit 3) does not fit any column and is noted here rather than guessed.",
+  "cc_a (monthly common charges x12) is not printed as a separate column in the source table; I left it blank since it's not part of the required cell list, but tax_m/tax_a cross-check could not independently verify cc_a since no annual common charge column exists.",
+  "Total row floor area figures (7,262 and 2,700) correspond to sum of int_sf and sf2/outdoor columns respectively but individual unit per-line totals for the second interior figures (1542, 1341) aren't reflected in my int_sf column since only first figure was used."
+ ],
+ "units": [
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "Second Floor/Third Floor",
+   "rooms": null,
+   "beds": 3,
+   "baths": 3.5,
+   "int_sf": 954,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 2550000,
+   "pct": 35.62,
+   "pct2": null,
+   "cc_m": 680.19,
+   "cc_a": 8162.28,
+   "tax_m": 2559.05,
+   "tax_a": 30708.61,
+   "tax2_m": null,
+   "carry_m": 3239.24,
+   "page": 33,
+   "note": "int_sf 954 (second floor); sf2 575 (RT); 1542 (third floor) not placed - see PROBLEM"
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": "Fourth Floor/Fifth Floor",
+   "rooms": null,
+   "beds": 3,
+   "baths": 3.5,
+   "int_sf": 1522,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 2350000,
+   "pct": 34.9,
+   "pct2": null,
+   "cc_m": 666.44,
+   "cc_a": 7997.28,
+   "tax_m": 2507.32,
+   "tax_a": 30087.89,
+   "tax2_m": null,
+   "carry_m": 3173.76,
+   "page": 33,
+   "note": "int_sf 1522 (fourth floor); 1341 (fifth floor) not placed - see PROBLEM; sf2 items: 47+95 (B), 244 (T), 11 (SO)"
+  }
+ ]
+}

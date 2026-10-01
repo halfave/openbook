@@ -1,0 +1,166 @@
+{
+ "plan_id": "CD070566",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "publish_ag",
+   "units": 3,
+   "failed": []
+  }
+ ],
+ "calls": 5,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12662,
+   "output_tokens": 573,
+   "seconds": 7,
+   "cost_usd": 0.024609
+  },
+  {
+   "model": "haiku",
+   "tokens": 5011,
+   "output_tokens": 97,
+   "seconds": 6,
+   "cost_usd": 0.005399000000000001
+  },
+  {
+   "model": "haiku",
+   "tokens": 5009,
+   "output_tokens": 97,
+   "seconds": 4,
+   "cost_usd": 0.005397000000000001
+  },
+  {
+   "model": "haiku",
+   "tokens": 8836,
+   "output_tokens": 609,
+   "seconds": 7,
+   "cost_usd": 0.017074
+  },
+  {
+   "model": "sonnet",
+   "tokens": 11565,
+   "output_tokens": 796,
+   "seconds": 12,
+   "cost_usd": 0.031328800000000004
+  }
+ ],
+ "tokens": 43083,
+ "api_equiv_usd": 0.084,
+ "located_pages": [],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": null,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 1652000,
+ "step": "sonnet-images",
+ "budget_period": "December 1, 2007 – November 30, 2008",
+ "columns_printed": [
+  "Floor & Unit",
+  "Square Footage",
+  "No. of Rooms/Bathrooms",
+  "Purchase Price",
+  "Common Interest (%)",
+  "Projected Monthly Common Charges",
+  "Projected Annual Real Estate Taxes with J-51",
+  "Projected Monthly Real Estate Taxes with J-51",
+  "Projected Annual Real Estate Taxes w/o J-51",
+  "Projected Monthly Real Estate Taxes w/o J-51",
+  "Projected Monthly Carrying Charges w/J-51/w/o J-51"
+ ],
+ "tax2": "with J-51",
+ "sf2": null,
+ "printed_totals": {
+  "price": 1652000,
+  "pct": 100,
+  "cc_m": 971.25,
+  "tax_m": 0,
+  "int_sf": 4053,
+  "ext_sf": null
+ },
+ "problems": [
+  "No. of Rooms/Bathrooms column printed as combined rooms/baths (e.g. \"3/2\"); could not separate into rooms vs baths vs beds per instructions, so beds/baths left blank and raw value omitted (not clearly bedrooms per rules) — note: column represents total rooms/bathrooms, not bed/bath count.",
+  "tax_m and tax_a (w/ J-51) are both printed as $0.00; tax2_m holds the \"with J-51\" monthly figure (also 0.00), while w/o J-51 annual/monthly are 3,766.78/313.90 etc. — mapped tax_m/tax_a to the w/o J-51 columns since those are nonzero and appear to be the figures the carrying-charge total uses; verify this assumption against carrying charge formula."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": "1",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 1237,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 577000,
+   "pct": 30.52,
+   "pct2": null,
+   "cc_m": 296.43,
+   "cc_a": null,
+   "tax_m": 0,
+   "tax_a": 3766.78,
+   "tax2_m": 0,
+   "carry_m": null,
+   "page": 34,
+   "note": null
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "2",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 1408,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 525000,
+   "pct": 34.74,
+   "pct2": null,
+   "cc_m": 337.41,
+   "cc_a": null,
+   "tax_m": 0,
+   "tax_a": 4287.49,
+   "tax2_m": 0,
+   "carry_m": null,
+   "page": 34,
+   "note": null
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": "3",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 1408,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 550000,
+   "pct": 34.74,
+   "pct2": null,
+   "cc_m": 337.41,
+   "cc_a": null,
+   "tax_m": 0,
+   "tax_a": 4287.49,
+   "tax2_m": 0,
+   "carry_m": null,
+   "page": 34,
+   "note": null
+  }
+ ]
+}

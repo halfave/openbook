@@ -1,0 +1,112 @@
+{
+ "plan_id": "CD180181",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 5,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12698,
+   "output_tokens": 616,
+   "seconds": 8,
+   "cost_usd": 0.024814
+  },
+  {
+   "model": "haiku",
+   "tokens": 5013,
+   "output_tokens": 97,
+   "seconds": 5,
+   "cost_usd": 0.0054009999999999996
+  },
+  {
+   "model": "haiku",
+   "tokens": 5019,
+   "output_tokens": 97,
+   "seconds": 4,
+   "cost_usd": 0.005407
+  },
+  {
+   "model": "haiku",
+   "tokens": 8792,
+   "output_tokens": 571,
+   "seconds": 9,
+   "cost_usd": 0.016876
+  },
+  {
+   "model": "sonnet",
+   "tokens": 18599,
+   "output_tokens": 1079,
+   "seconds": 20,
+   "cost_usd": 0.0353454
+  }
+ ],
+ "tokens": 50121,
+ "api_equiv_usd": 0.088,
+ "located_pages": [],
+ "text_layer": true,
+ "found": false,
+ "verdict": "not_found",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": null,
+  "ccProportional": null,
+  "carrying": null,
+  "sqftTotal": null,
+  "monthlyTotals": false,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": true
+ },
+ "price_total": 0,
+ "step": "sonnet-images",
+ "budget_period": "June 1, 2019 - May 31, 2020",
+ "columns_printed": [
+  "Unit No.",
+  "Bdrs/Bths",
+  "Approx. Size of Units in sq. ft. [habitable]",
+  "Approx. Size of Units in sq. ft. [uninhabitable]",
+  "Approx. Size of Limited Common Elements in sq. ft. [uninhabitble] (Rear Yard)",
+  "Approx. Size of Limited Common Elements in sq. ft. [uninhabitble] (Balcony)",
+  "Approx. Size of Limited Common Elements in sq. ft. [uninhabitble] (Terrace)",
+  "Offering Prices",
+  "% of Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Monthly Real Estate Taxes",
+  "Projected Annual Real Estate Taxes",
+  "Projected Monthly Carrying Charges",
+  "Projected Annual Carrying Charges"
+ ],
+ "tax2": null,
+ "sf2": "uninhabitable",
+ "printed_totals": {
+  "price": 6644000,
+  "pct": 100,
+  "cc_m": 1546.25,
+  "tax_m": 4308.08,
+  "int_sf": 4513,
+  "ext_sf": null
+ },
+ "problems": [
+  "row with 19 cells dropped: U\t1\tR\t-\t-\t0\t1.5\t388\t387\t390\t795000\t13.80\t-\t213.38\t594.52\t7134.19\t-\t807.90\t35\tRea",
+  "row with 19 cells dropped: U\t2\tR\t-\t-\t1\t1.5\t643\t639\t-\t1349000\t20.65\t-\t319.30\t889.62\t10675.43\t-\t1208.92\t35\tRe",
+  "row with 19 cells dropped: U\t3\tR\t-\t-\t1\t1\t663\t0\t-\t895000\t13.32\t-\t205.96\t573.84\t6886.04\t-\t779.80\t35\tRear Yard",
+  "row with 19 cells dropped: U\t4\tR\t-\t-\t1\t1\t668\t0\t-\t885000\t12.52\t-\t193.59\t539.37\t6472.46\t-\t732.96\t35\tRear Yard",
+  "row with 19 cells dropped: U\t5\tR\t-\t-\t2\t2\t1070\t0\t261\t1350000\t19.77\t-\t305.69\t851.71\t10220.50\t-\t1157.40\t35\tRea",
+  "row with 19 cells dropped: U\t6\tR\t-\t-\t2\t2\t1081\t0\t258\t1370000\t19.94\t-\t308.32\t859.03\t10308.38\t-\t1167.35\t35\tRea",
+  "Table has no \"int_sf\"/\"sf2\" headers as such; sf2 populated from the \"uninhabitable\" size column (0.00 for units 3,4,5,6, meaning none printed). Rear Yard/Balcony/Terrace are three separate limited common element area columns, placed in note per ext_sf rule since multiple separate areas are printed. Bdrs/Bths column header literally reads \"Bdrs/Bths\" with values like \"0/1.5\"; beds/baths derived directly from this code."
+ ],
+ "units": []
+}

@@ -1,0 +1,185 @@
+{
+ "plan_id": "CD210300",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "publish_printed",
+   "units": 4,
+   "failed": [
+    "ag"
+   ]
+  }
+ ],
+ "calls": 2,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4241,
+   "output_tokens": 715,
+   "seconds": 11,
+   "cost_usd": 0.021249999999999998
+  },
+  {
+   "model": "sonnet",
+   "tokens": 13541,
+   "output_tokens": 796,
+   "seconds": 10,
+   "cost_usd": 0.035391000000000006
+  }
+ ],
+ "tokens": 17782,
+ "api_equiv_usd": 0.057,
+ "located_pages": [
+  37
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_printed",
+ "checks": {
+  "ag": false,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 6949996,
+ "step": "sonnet-images",
+ "budget_period": "April 29, 2022-April 28, 2023",
+ "columns_printed": [
+  "Unit No.",
+  "Bedrooms",
+  "Baths",
+  "Balcony (Sq.ft.)",
+  "Terrace (Sq.ft)",
+  "Rear Yard (Sq. ft.)",
+  "Roof Area (Sq. ft.)",
+  "Accessory Cellar Storage (Sq. ft.)",
+  "Approximate Square Footage (Sq.ft.)",
+  "Offering Price",
+  "Percentage of Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Monthly RE Tax",
+  "Projected Annual RE Tax",
+  "Projected Monthly Carrying Charges"
+ ],
+ "tax2": "-",
+ "sf2": "accessory cellar storage / balcony / terrace / rear yard / roof area (limited common element areas)",
+ "printed_totals": {
+  "price": 6949996,
+  "pct": 100,
+  "cc_m": 2220.56,
+  "tax_m": 3058,
+  "int_sf": 4771.91,
+  "ext_sf": null
+ },
+ "problems": [
+  "Columns 2c-2f (rear yard, roof area, balcony, terrace) and accessory cellar storage are limited common element areas with varying meanings per unit; could not fit all into fixed int_sf/sf2/ext_sf/note schema cleanly, so sf2 holds accessory cellar storage where present and other limited common areas are listed in note."
+ ],
+ "units": [
+  {
+   "unit": "1F",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1184.12,
+   "sf2": 605.91,
+   "ext_sf": null,
+   "price": 1799999,
+   "pct": 29.61,
+   "pct2": null,
+   "cc_m": 657.44,
+   "cc_a": null,
+   "tax_m": 1034,
+   "tax_a": 12408,
+   "tax2_m": null,
+   "carry_m": 1691.44,
+   "page": 37,
+   "note": "rear yard 1075 sf"
+  },
+  {
+   "unit": "2F",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1308.56,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 1749999,
+   "pct": 24.67,
+   "pct2": null,
+   "cc_m": 547.76,
+   "cc_a": null,
+   "tax_m": 739,
+   "tax_a": 8868,
+   "tax2_m": null,
+   "carry_m": 1286.76,
+   "page": 37,
+   "note": "roof area 511.15 sf"
+  },
+  {
+   "unit": "3F",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1308.56,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 1799999,
+   "pct": 26.32,
+   "pct2": null,
+   "cc_m": 584.39,
+   "cc_a": null,
+   "tax_m": 733,
+   "tax_a": 8796,
+   "tax2_m": null,
+   "carry_m": 1317.39,
+   "page": 37,
+   "note": "balcony 81.08 sf, roof area 337.32 sf"
+  },
+  {
+   "unit": "4F",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 970.67,
+   "sf2": 180.47,
+   "ext_sf": null,
+   "price": 1599999,
+   "pct": 19.41,
+   "pct2": null,
+   "cc_m": 430.97,
+   "cc_a": null,
+   "tax_m": 552,
+   "tax_a": 6624,
+   "tax2_m": null,
+   "carry_m": 982.97,
+   "page": 37,
+   "note": "balcony 81.08 sf, terrace 347.66 sf"
+  }
+ ]
+}

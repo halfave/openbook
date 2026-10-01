@@ -1,0 +1,171 @@
+{
+ "plan_id": "CD240289",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "hold",
+   "units": 3,
+   "failed": [
+    "ag",
+    "carrying",
+    "monthlyTotals"
+   ]
+  }
+ ],
+ "calls": 4,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12548,
+   "output_tokens": 554,
+   "seconds": 10,
+   "cost_usd": 0.024362
+  },
+  {
+   "model": "haiku",
+   "tokens": 4947,
+   "output_tokens": 97,
+   "seconds": 63,
+   "cost_usd": 0.0053349999999999995
+  },
+  {
+   "model": "haiku",
+   "tokens": 8692,
+   "output_tokens": 554,
+   "seconds": 10,
+   "cost_usd": 0.016658
+  },
+  {
+   "model": "sonnet",
+   "tokens": 11747,
+   "output_tokens": 1130,
+   "seconds": 15,
+   "cost_usd": 0.0342622
+  }
+ ],
+ "tokens": 37934,
+ "api_equiv_usd": 0.081,
+ "located_pages": [],
+ "text_layer": true,
+ "found": true,
+ "verdict": "hold",
+ "checks": {
+  "ag": false,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": false,
+  "sqftTotal": true,
+  "monthlyTotals": false,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 7200000,
+ "step": "sonnet-images",
+ "budget_period": "January 1, 2026 - December 31, 2026",
+ "columns_printed": [
+  "Unit No.",
+  "Bdrs/Bths",
+  "Approx. Size of Units in sq. ft. [habitable] (1)",
+  "Approx. Size of Units in sq. ft. [uninhabitable] (1)**",
+  "Areaway",
+  "Storage Space",
+  "Rear Yard & Ramp",
+  "Balcony",
+  "Roof Terrace",
+  "Total",
+  "Offering Prices (3)",
+  "% of Common Interest (4)",
+  "Projected Monthly Common Charges",
+  "Projected Monthly Real Estate Taxes Before Renovation Completion (6)***",
+  "Projected Annual Real Estate Taxes Before Renovation Completion (6)***",
+  "Projected Annual Real Estate Taxes After Renovation Completion (6)***",
+  "Projected Monthly Carrying Charges",
+  "Projected Annual Carrying Charges"
+ ],
+ "tax2": "after renovation completion (annual)",
+ "sf2": "uninhabitable",
+ "printed_totals": {
+  "price": 7200000,
+  "pct": 100,
+  "cc_m": 2684.42,
+  "tax_m": 1201.5,
+  "int_sf": 3393,
+  "ext_sf": null
+ },
+ "problems": [
+  "Table has two tax scenarios (before/after renovation completion, both annual, plus one monthly before-renovation figure); used \"before renovation\" monthly/annual as tax_m/tax_a since carrying charges appear to use these, and put annual \"after renovation\" figure in tax2_m per schema even though it is annual not monthly — no second monthly tax figure is printed.",
+  "\"Approx. Size of Limited Common Elements\" breaks into Areaway/Storage Space/Rear Yard & Ramp/Balcony/Roof Terrace/Total columns; sf2 column used is the uninhabitable unit size (habitable units size used as int_sf), not these limited common element sub-columns, which are not individually transcribed.",
+  "ext_sf left blank for all units since several separate limited-common-element areas are printed (areaway, storage, rear yard & ramp, balcony, roof terrace) rather than one ext_sf figure; per rules these should be listed in note, but note column left as \"-\" — see totals row Areaway 249.00, Storage 32.00/32.00/34.00, Rear Yard&Ramp 450.00/None/None, Balcony 5.00/5.00/46.00, Roof Terrace 100.00/85.00/718.00, Total 836.00/122.00/798.00 for Units 1/2/3 respectively."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 1274,
+   "sf2": 836,
+   "ext_sf": null,
+   "price": 3400000,
+   "pct": 45,
+   "pct2": null,
+   "cc_m": 1207.99,
+   "cc_a": 540.68,
+   "tax_m": 6488.1,
+   "tax_a": 8665.2,
+   "tax2_m": 1748.66,
+   "carry_m": 20983.95,
+   "page": 48,
+   "note": null
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 2.5,
+   "int_sf": 1276,
+   "sf2": 122,
+   "ext_sf": null,
+   "price": 2000000,
+   "pct": 30,
+   "pct2": null,
+   "cc_m": 805.33,
+   "cc_a": 360.45,
+   "tax_m": 4325.4,
+   "tax_a": 5776.8,
+   "tax2_m": 1165.78,
+   "carry_m": 13989.3,
+   "page": 48,
+   "note": null
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 843,
+   "sf2": 798,
+   "ext_sf": null,
+   "price": 1800000,
+   "pct": 25,
+   "pct2": null,
+   "cc_m": 671.1,
+   "cc_a": 300.38,
+   "tax_m": 3604.5,
+   "tax_a": 4814,
+   "tax2_m": 971.48,
+   "carry_m": 11657.75,
+   "page": 48,
+   "note": null
+  }
+ ]
+}

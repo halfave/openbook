@@ -1,0 +1,180 @@
+{
+ "plan_id": "CD220069",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 4,
+   "failed": [
+    "carrying"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "publish_ag",
+   "units": 4,
+   "failed": []
+  }
+ ],
+ "calls": 2,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4558,
+   "output_tokens": 727,
+   "seconds": 9,
+   "cost_usd": 0.02259
+  },
+  {
+   "model": "sonnet",
+   "tokens": 4635,
+   "output_tokens": 803,
+   "seconds": 13,
+   "cost_usd": 0.023354
+  }
+ ],
+ "tokens": 9193,
+ "api_equiv_usd": 0.046,
+ "located_pages": [
+  31
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 11040000,
+ "step": "sonnet-text-retry",
+ "budget_period": "April 1, 2023 - March 31, 2024",
+ "columns_printed": [
+  "Unit",
+  "Habitable Sq. Ftg.",
+  "Uninhab. Sq. Ftg.",
+  "Bdms/Bths",
+  "% of Common Interest",
+  "Offering Price",
+  "Monthly Common Charges",
+  "Annual Common Charges",
+  "Monthly Real Estate Taxes",
+  "Annual Real Estate Taxes",
+  "Monthly Carrying Charges",
+  "Monthly Real Estate Taxes",
+  "Annual Real Estate Taxes",
+  "Monthly Carrying Charges"
+ ],
+ "tax2": null,
+ "sf2": "uninhabitable sq. ftg.",
+ "printed_totals": {
+  "price": 11040000,
+  "pct": 100,
+  "cc_m": 2235.67,
+  "tax_m": 5040.83,
+  "int_sf": 6154,
+  "ext_sf": 4796
+ },
+ "problems": [
+  "beds/baths given as combined codes (e.g. \"3/2f2h\", \"3/2.5\") in Bdms/Bths column; left beds/baths blank per unclear-code rule and recorded codes in note.",
+  "Table has two tax/carrying-charge scenarios (\"1st Year\" and \"Post-Completion\"); used 1st Year figures for tax_m/tax_a/carry_m and put post-completion monthly/annual figures in note since no tax2_m column was indicated for this layout."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 1452,
+   "sf2": 2543,
+   "ext_sf": null,
+   "price": 3225000,
+   "pct": 28.39,
+   "pct2": null,
+   "cc_m": 634.78,
+   "cc_a": 7617.32,
+   "tax_m": 1431.25,
+   "tax_a": 17175.03,
+   "tax2_m": null,
+   "carry_m": 2066.03,
+   "page": 31,
+   "note": "3/2f2h; post-completion monthly taxes 1717.93, annual 20615.15, carrying 2352.71"
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 1572,
+   "sf2": 993,
+   "ext_sf": null,
+   "price": 2650000,
+   "pct": 24.76,
+   "pct2": null,
+   "cc_m": 553.44,
+   "cc_a": 6641.33,
+   "tax_m": 1247.87,
+   "tax_a": 14974.42,
+   "tax2_m": null,
+   "carry_m": 1801.31,
+   "page": 31,
+   "note": "3/2.5; post-completion monthly taxes 1497.81, annual 17973.76, carrying 2051.26"
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 1563,
+   "sf2": 571,
+   "ext_sf": null,
+   "price": 2515000,
+   "pct": 23.2,
+   "pct2": null,
+   "cc_m": 518.63,
+   "cc_a": 6223.56,
+   "tax_m": 1169.37,
+   "tax_a": 14032.48,
+   "tax2_m": null,
+   "carry_m": 1688,
+   "page": 31,
+   "note": "3/2.5; post-completion monthly taxes 1403.60, annual 16843.15, carrying 1922.23"
+  },
+  {
+   "unit": "4",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 1567,
+   "sf2": 689,
+   "ext_sf": null,
+   "price": 2650000,
+   "pct": 23.65,
+   "pct2": null,
+   "cc_m": 528.82,
+   "cc_a": 6345.79,
+   "tax_m": 1192.34,
+   "tax_a": 14308.07,
+   "tax2_m": null,
+   "carry_m": 1721.15,
+   "page": 31,
+   "note": "3/2.5; post-completion monthly taxes 1431.16, annual 17173.94, carrying 1959.98"
+  }
+ ]
+}

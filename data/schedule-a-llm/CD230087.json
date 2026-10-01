@@ -1,0 +1,165 @@
+{
+ "plan_id": "CD230087",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 2,
+   "failed": [
+    "ag",
+    "printed",
+    "pct100",
+    "sqftTotal",
+    "monthlyTotals",
+    "psf",
+    "allRowsParsed",
+    "outdoor"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 3,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4411,
+   "output_tokens": 747,
+   "seconds": 10,
+   "cost_usd": 0.022122
+  },
+  {
+   "model": "sonnet",
+   "tokens": 7987,
+   "output_tokens": 649,
+   "seconds": 83,
+   "cost_usd": 0.0218994
+  },
+  {
+   "model": "sonnet",
+   "tokens": 13906,
+   "output_tokens": 877,
+   "seconds": 14,
+   "cost_usd": 0.036797399999999994
+  }
+ ],
+ "tokens": 26304,
+ "api_equiv_usd": 0.081,
+ "located_pages": [
+  34
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "hold",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": false,
+  "ccProportional": null,
+  "carrying": true,
+  "sqftTotal": false,
+  "monthlyTotals": false,
+  "psf": false,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": false
+ },
+ "price_total": 6350000,
+ "step": "sonnet-text",
+ "budget_period": "July 1, 2024- June 30, 2025",
+ "columns_printed": [
+  "Unit No.",
+  "Floor Location",
+  "Approx. Floor Area",
+  "Uninhabitable/Limited Common Area",
+  "No. of Bedooms/Bathrooms",
+  "Offering Price",
+  "Approx. Percent Common Interest",
+  "Projected Common Charges (Monthly)",
+  "Projected Real Estate Taxes (Monthly)",
+  "Projected Real Estate Taxes (Annual)",
+  "Projected Carrying Charges (Monthly)"
+ ],
+ "tax2": null,
+ "sf2": "outdoor/uninhabitable/limited common area",
+ "printed_totals": {
+  "price": 8850000,
+  "pct": 100,
+  "cc_m": 2455.41,
+  "tax_m": 1310.71,
+  "int_sf": 7003,
+  "ext_sf": 2206
+ },
+ "problems": [
+  "row with 19 cells dropped: U\t1\tR\tCellar/First Floor\t-\t-\t2\t1053\t879\t2500000\t28.32\t-\t695.37\t-\t371.19\t4454.31\t",
+  "Unit 1 floor area shows \"656*\" then \"1053\" on separate lines for Cellar/First Floor; used 1053 as int_sf (first floor habitable) and could not confirm which figure is cellar vs first floor sf2, so sf2 total (879 = sum of limited common areas) may not match intended column; the \"656*\" figure was not used anywhere and may represent cellar sf2 instead.",
+  "Bedrooms/Bathrooms column prints as combined codes (e.g. \"2/2.5\", \"3/2\") without explicit \"BR/BA\" labels; interpreted as beds/baths per rules.",
+  "Unit 2 \"rooms\" cell ambiguous - no separate rooms column exists in table; left as - and beds/baths filled from \"3/2\" code."
+ ],
+ "units": [
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "Second Floor/Third Floor",
+   "rooms": null,
+   "beds": null,
+   "baths": 3,
+   "int_sf": 2,
+   "sf2": 1640,
+   "ext_sf": 279,
+   "price": 2850000,
+   "pct": 31.24,
+   "pct2": null,
+   "cc_m": 767.07,
+   "cc_a": null,
+   "tax_m": 409.47,
+   "tax_a": 4913.59,
+   "tax2_m": null,
+   "carry_m": 1176.54,
+   "page": 34,
+   "note": "218 (T), 61 (S)"
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": "Third Floor/Fourth Floor/Roof",
+   "rooms": null,
+   "beds": null,
+   "baths": 3,
+   "int_sf": 2.5,
+   "sf2": 1945,
+   "ext_sf": 1102,
+   "price": 3500000,
+   "pct": 40.44,
+   "pct2": null,
+   "cc_m": 992.97,
+   "cc_a": null,
+   "tax_m": 530.05,
+   "tax_a": 6360.61,
+   "tax2_m": null,
+   "carry_m": 1523.02,
+   "page": 34,
+   "note": "183 (T), 26 (S), 893 (RT)"
+  }
+ ]
+}

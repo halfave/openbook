@@ -1,0 +1,111 @@
+{
+ "plan_id": "CD180228",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 4,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12656,
+   "output_tokens": 573,
+   "seconds": 8,
+   "cost_usd": 0.024600000000000004
+  },
+  {
+   "model": "haiku",
+   "tokens": 5015,
+   "output_tokens": 97,
+   "seconds": 4,
+   "cost_usd": 0.005403
+  },
+  {
+   "model": "haiku",
+   "tokens": 8790,
+   "output_tokens": 570,
+   "seconds": 8,
+   "cost_usd": 0.016869000000000002
+  },
+  {
+   "model": "sonnet",
+   "tokens": 12726,
+   "output_tokens": 2001,
+   "seconds": 78,
+   "cost_usd": 0.043199
+  }
+ ],
+ "tokens": 39187,
+ "api_equiv_usd": 0.09,
+ "located_pages": [],
+ "text_layer": false,
+ "found": false,
+ "verdict": "not_found",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": null,
+  "ccProportional": null,
+  "carrying": null,
+  "sqftTotal": null,
+  "monthlyTotals": false,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": true
+ },
+ "price_total": 0,
+ "step": "sonnet-images",
+ "budget_period": "January 1, 2020 - December 31, 2020",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approx. Floor Area",
+  "Uninhabitable Floor Area",
+  "No. of Bedrooms/Bathrooms",
+  "Offering Price",
+  "Percent Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Real Estate Taxes W/O ICAP-421A Tax Benefits (Monthly)",
+  "Projected Real Estate Taxes W/O ICAP-421A Tax Benefits (Annual)",
+  "Projected Real Estate Taxes With ICAP-421A Tax Benefits (Monthly)",
+  "Projected Real Estate Taxes With ICAP-421A Tax Benefits (Annual)",
+  "Projected Monthly Carrying Charges W/O ICAP-421A Tax Benefits",
+  "Projected Annual Carrying Charges W/O ICAP-421A Tax Benefits",
+  "Projected Monthly Carrying Charges With ICAP-421A Tax Benefits",
+  "Projected Annual Carrying Charges With ICAP-421A Tax Benefits"
+ ],
+ "tax2": "without ICAP-421A (monthly)",
+ "sf2": "uninhabitable floor area",
+ "printed_totals": {
+  "price": 5690000,
+  "pct": 100,
+  "cc_m": 3659.83,
+  "tax_m": 56256.49,
+  "int_sf": 6975,
+  "ext_sf": null
+ },
+ "problems": [
+  "row with 22 cells dropped: U\t1\tR\tCellar/1st Fl.\t-\t-\t-\t-\t1552\tc. 1227 a. 60 y. 172\t-\t1000000.00\t24.46\t-\t895.",
+  "row with 22 cells dropped: U\t2\tR\t2nd Floor\t-\t-\t3\t2\t1085\tt. 674 fb. 26\t-\t950000.00\t17.41\t-\t637.10\t871.56\t104",
+  "row with 22 cells dropped: U\t3\tR\t3rd Floor\t-\t-\t3\t2\t1111\trb. 40 fb. 30\t-\t925000.00\t14.53\t-\t531.63\t716.51\t859",
+  "row with 22 cells dropped: U\t4\tR\t4th Floor\t-\t-\t1\t1\t603\trb. 40\t-\t440000.00\t7.35\t-\t268.89\t364.57\t4374.80\t2.88",
+  "row with 22 cells dropped: U\t5\tR\t4th Floor\t-\t-\t1\t1\t508\tfb. 30\t-\t500000.00\t7.31\t-\t267.57\t358.01\t4296.10\t2.83",
+  "row with 22 cells dropped: U\t6\tR\t5th Floor\t-\t-\t1\t1\t603\trb. 40\t-\t450000.00\t7.43\t-\t272.07\t368.76\t4425.12\t2.91",
+  "row with 22 cells dropped: U\t7\tR\t5th Floor\t-\t-\t1\t1\t508\tfb. 30\t-\t525000.00\t7.53\t-\t275.62\t368.01\t4416.15\t2.91",
+  "row with 22 cells dropped: U\t8\tR\t6th Floor\t-\t-\t3\t2\t1005\tt. 106 b. 30\t-\t900000.00\t13.98\t-\t511.57\t688.78\t8265",
+  "Bedrooms/Bathrooms column prints combined codes (e.g. \"-2 half\", \"3/2\", \"1/1\") rather than clearly labeled beds/baths; transcribed beds/baths numerically where the slash format was unambiguous (3/2, 1/1), but Unit 1's \"-2 half\" code could not be confidently parsed and was left blank with the code noted.",
+  "Table has two tax scenarios (With and Without ICAP-421A) and two carrying-charge scenarios (With and Without); carry_m was taken as the \"W/O ICAP-421A\" carrying charge and tax2_m as the \"With ICAP-421A\" monthly tax, but column mapping is ambiguous since the rules only anticipate one tax2 and one carry column — the \"With ICAP-421A\" carrying charge (monthly/annual) and annual figures for taxes/carrying charges could not be placed in the fixed schema and are omitted.",
+  "\"Uninhabitable Floor Area\" column (e.g. \"c. 1227 a. 60 y. 172\" for Unit 1) contains multiple labeled sub-areas (cellar, areaway, yard) rather than a single number; could not be reduced to a single sf2 value per the instructions, so sf2 is left as \"-\" for all units and the raw codes are not separately captured."
+ ],
+ "units": []
+}

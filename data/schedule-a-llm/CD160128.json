@@ -1,0 +1,103 @@
+{
+ "plan_id": "CD160128",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag"
+   ]
+  }
+ ],
+ "calls": 5,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12689,
+   "output_tokens": 604,
+   "seconds": 8,
+   "cost_usd": 0.024758
+  },
+  {
+   "model": "haiku",
+   "tokens": 5011,
+   "output_tokens": 97,
+   "seconds": 5,
+   "cost_usd": 0.005399000000000001
+  },
+  {
+   "model": "haiku",
+   "tokens": 5011,
+   "output_tokens": 97,
+   "seconds": 5,
+   "cost_usd": 0.005399000000000001
+  },
+  {
+   "model": "haiku",
+   "tokens": 8803,
+   "output_tokens": 581,
+   "seconds": 9,
+   "cost_usd": 0.016928
+  },
+  {
+   "model": "sonnet",
+   "tokens": 36823,
+   "output_tokens": 1857,
+   "seconds": 148,
+   "cost_usd": 0.079477
+  }
+ ],
+ "tokens": 68337,
+ "api_equiv_usd": 0.132,
+ "located_pages": [],
+ "text_layer": true,
+ "found": false,
+ "verdict": "not_found",
+ "checks": {
+  "ag": false,
+  "printed": null,
+  "pct100": null,
+  "ccProportional": null,
+  "carrying": null,
+  "sqftTotal": null,
+  "monthlyTotals": true,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 0,
+ "step": "sonnet-images",
+ "budget_period": "JULY 1, 2018-JUNE 30, 2019",
+ "columns_printed": [
+  "(1) UNIT",
+  "(1) NO BED-ROOMS",
+  "(1) NO. BATHS / NO. HALF BATHS",
+  "(2) RENT REGULATORY STATUS",
+  "(3) APPROX UNIT SQUARE FOOTAGE",
+  "(3) APPROX EXTERIOR SQUARE FOOTAGE",
+  "(4) PURCHASE PRICE",
+  "(5) RESIDENTIAL COMMON INTEREST",
+  "(5) COMMON INTEREST",
+  "(6) PROJECTED MONTHLY COMMON CHARGES",
+  "(6) PROJECTED ANNUAL COMMON CHARGES",
+  "(7) PROJECTED MONTHLY RE TAXES",
+  "(7) PROJECTED ANNUAL RE TAXES",
+  "(8) PROJECTED TOTAL MONTHLY CARRYING CHARGES",
+  "(9) ALLOCATION OF RESIDENT MANAGERS UNIT PURCHASE"
+ ],
+ "tax2": null,
+ "sf2": null,
+ "printed_totals": null,
+ "problems": [
+  "The table does not match the required 20-column U-line schema (no int_sf/sf2 split as specified, no \"type\", \"floor\", \"pct2\" as described, columns are bedrooms/baths/rent status/sf/price/two common-interest %/common charges/RE taxes/carrying charges/resident manager allocation). This is a rent-stabilized/regulated building Schedule A with \"Resident Managers Unit Purchase Price\" allocation column (9), not a standard sale-price schedule matching the template's semantics (no \"floor,\" \"rooms,\" \"type R/C/P/S/O\" distinctions, no \"pct2\" as percentage, no separate ext_sf numeric column that is blank for most rows — column (3) EXTERIOR SQUARE FOOTAGE is blank for all rows shown).",
+  "Rent Regulatory Status codes (RC, RC², RS, RS², RS⁴, V, A³, FM, FM1, etc.) are unclear abbreviations; left unmapped to type R/C/P/S/O — cannot be reliably converted into the \"type\" field as specified (residential/commercial/parking/storage/other), so type column cannot be filled with confidence.",
+  "No \"floor\" or \"rooms\" columns exist in this table as printed.",
+  "No \"int_sf\"/\"sf2\" split exists; only a single \"APPROX UNIT SQUARE FOOTAGE\" (3) column is printed, with \"APPROX EXTERIOR SQUARE FOOTAGE\" (3) column present but blank on all visible rows.",
+  "Column (5) has two percentages: \"RESIDENTIAL COMMON INTEREST\" and \"COMMON INTEREST\" — unclear which maps to \"pct\" vs \"pct2\" per the schema's intended meaning (not stated as two \"pricing\" percentages, but two different common-interest shares).",
+  "Column (9) \"ALLOCATION OF RESIDENT MANAGERS UNIT PURCHASE\" does not correspond to any field in the requested 20-column schema (not price, not carry_m, not note) and cannot be placed without guessing; omitted from output.",
+  "Total row on page 78 (PDF page 78) lists RESIDENTIAL TOTAL with aggregated SF, PRICE, COMMON INTEREST %, COMMON CHARGES, RE TAXES, CARRYING CHARGES, and ALLOCATION, but field order/mapping to TOTAL line (price, pct, cc_m, tax_m, int_sf, ext_sf) is ambiguous given the above structural mismatches."
+ ],
+ "units": []
+}
