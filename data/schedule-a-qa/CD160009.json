@@ -1,0 +1,144 @@
+{
+ "plan_id": "CD160009",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 5,
+ "pub_hash": "2cb5f3f2f442",
+ "verdict": "errors",
+ "pages": [
+  35,
+  36
+ ],
+ "units_read": 5,
+ "cells_compared": 45,
+ "cells_agreeing": 43,
+ "errors": 2,
+ "unresolved": 0,
+ "findings": [
+  {
+   "unit": "1",
+   "field": "outdoor_sqft",
+   "published": 1011.03,
+   "read": 598.77,
+   "kind": "differs",
+   "page": 35,
+   "printed": 598.77,
+   "outcome": "published_wrong",
+   "why": "The cell has two lines: 598.77 RY (rear yard) and 412.26 RT (roof terrace). 1011.03 is their sum and is not printed anywhere."
+  },
+  {
+   "unit": "5",
+   "field": "outdoor_sqft",
+   "published": 873.6,
+   "read": 94.1,
+   "kind": "differs",
+   "page": 35,
+   "printed": 94.1,
+   "outcome": "published_wrong",
+   "why": "The cell has two lines: 94.10 B (balcony) on the unit's row and 779.50 RT (roof terrace) on the line below. 873.6 is their sum and is not printed anywhere."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [
+  {
+   "published": "1",
+   "read": "1 Maisonette Unit"
+  },
+  {
+   "published": "2",
+   "read": "2 Two Bedroom Unit – 3rd Floor"
+  },
+  {
+   "published": "3",
+   "read": "3 Two Bedroom Unit – 4th Floor"
+  },
+  {
+   "published": "4",
+   "read": "4 Two Bedroom Unit – 5th Floor"
+  },
+  {
+   "published": "5",
+   "read": "5 Duplex Penthouse Unit"
+  }
+ ],
+ "filled_by_reading": 0,
+ "read_problems": [
+  "Unit 1 has two outdoor areas printed (598.77 RY and 412.26 RT); ext_sf given is only the first (RY) figure. Unit 5 also has two outdoor areas printed (94.10 B and 779.50 RT); ext_sf given is only the first (B) figure."
+ ],
+ "read_units": [
+  {
+   "unit": "1 Maisonette Unit",
+   "beds": 3,
+   "baths": 3.5,
+   "int_sf": 3585.95,
+   "ext_sf": 598.77,
+   "price": 5995000,
+   "pct": 32.688,
+   "pct2": null,
+   "cc_m": 3556.41,
+   "tax_m": 1082.75,
+   "carry_m": 4639.16,
+   "page": 35
+  },
+  {
+   "unit": "2 Two Bedroom Unit – 3rd Floor",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1313.12,
+   "ext_sf": 94.1,
+   "price": 2495000,
+   "pct": 13.086,
+   "pct2": null,
+   "cc_m": 1423.74,
+   "tax_m": 433.46,
+   "carry_m": 1857.2,
+   "page": 35
+  },
+  {
+   "unit": "3 Two Bedroom Unit – 4th Floor",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1313.12,
+   "ext_sf": 94.1,
+   "price": 2550000,
+   "pct": 13.359,
+   "pct2": null,
+   "cc_m": 1453.44,
+   "tax_m": 442.5,
+   "carry_m": 1895.94,
+   "page": 35
+  },
+  {
+   "unit": "4 Two Bedroom Unit – 5th Floor",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1313.12,
+   "ext_sf": 94.1,
+   "price": 2595000,
+   "pct": 13.631,
+   "pct2": null,
+   "cc_m": 1483.03,
+   "tax_m": 451.51,
+   "carry_m": 1934.55,
+   "page": 35
+  },
+  {
+   "unit": "5 Duplex Penthouse Unit",
+   "beds": 3,
+   "baths": 2.5,
+   "int_sf": 1840.8,
+   "ext_sf": 94.1,
+   "price": 4995000,
+   "pct": 27.236,
+   "pct2": null,
+   "cc_m": 2963.24,
+   "tax_m": 902.16,
+   "carry_m": 3865.4,
+   "page": 35
+  }
+ ],
+ "calls": 2,
+ "tokens": 22129,
+ "qa_date": "2026-10-01T18:42:47.938Z"
+}

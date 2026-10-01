@@ -1,0 +1,237 @@
+{
+ "plan_id": "CD010166",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 6,
+ "pub_hash": "0d725d2a8201",
+ "verdict": "unresolved",
+ "pages": [
+  30,
+  31
+ ],
+ "units_read": 6,
+ "cells_compared": 45,
+ "cells_agreeing": 35,
+ "errors": 0,
+ "unresolved": 10,
+ "findings": [
+  {
+   "unit": "2",
+   "field": "beds",
+   "published": 4,
+   "read": 4.5,
+   "kind": "differs",
+   "page": 30,
+   "printed": 4.5,
+   "outcome": "unresolved",
+   "why": "The combined Bedroom/Bathroom cell reads '4-1/2'. It is most likely the mixed number 4½ with no separate bath count, but it could also mean 4 bedrooms / 2 baths."
+  },
+  {
+   "unit": "2",
+   "field": "baths",
+   "published": 2,
+   "read": null,
+   "kind": "not_read",
+   "page": 30,
+   "printed": null,
+   "outcome": "unresolved",
+   "why": "The only entry in the combined cell is '4-1/2'. No separate bath figure is printed unless '/2' is read as the bath count."
+  },
+  {
+   "unit": "3",
+   "field": "beds",
+   "published": 4,
+   "read": 4.5,
+   "kind": "differs",
+   "page": 30,
+   "printed": 4.5,
+   "outcome": "unresolved",
+   "why": "The cell reads '4-1/2', which is ambiguous in the same way as unit 2."
+  },
+  {
+   "unit": "3",
+   "field": "baths",
+   "published": 2,
+   "read": null,
+   "kind": "not_read",
+   "page": 30,
+   "printed": null,
+   "outcome": "unresolved",
+   "why": "The combined cell reads '4-1/2'. No separate bath figure is printed."
+  },
+  {
+   "unit": "4",
+   "field": "beds",
+   "published": 4,
+   "read": 4.5,
+   "kind": "differs",
+   "page": 30,
+   "printed": 4.5,
+   "outcome": "unresolved",
+   "why": "The cell reads '4-1/2', which is ambiguous in the same way as unit 2."
+  },
+  {
+   "unit": "4",
+   "field": "baths",
+   "published": 2,
+   "read": null,
+   "kind": "not_read",
+   "page": 30,
+   "printed": null,
+   "outcome": "unresolved",
+   "why": "The combined cell reads '4-1/2'. No separate bath figure is printed."
+  },
+  {
+   "unit": "5",
+   "field": "beds",
+   "published": 4,
+   "read": 4.5,
+   "kind": "differs",
+   "page": 30,
+   "printed": 4.5,
+   "outcome": "unresolved",
+   "why": "The cell reads '4-1/2', which is ambiguous in the same way as unit 2."
+  },
+  {
+   "unit": "5",
+   "field": "baths",
+   "published": 2,
+   "read": null,
+   "kind": "not_read",
+   "page": 30,
+   "printed": null,
+   "outcome": "unresolved",
+   "why": "The combined cell reads '4-1/2'. No separate bath figure is printed."
+  },
+  {
+   "unit": "PH",
+   "field": "beds",
+   "published": 7,
+   "read": 7.5,
+   "kind": "differs",
+   "page": 30,
+   "printed": 7.5,
+   "outcome": "unresolved",
+   "why": "The PH-Duplex cell reads '7-1/2'. It is most likely the mixed number 7½, but it could also mean 7 bedrooms / 2 baths."
+  },
+  {
+   "unit": "PH",
+   "field": "baths",
+   "published": 2,
+   "read": null,
+   "kind": "not_read",
+   "page": 30,
+   "printed": null,
+   "outcome": "unresolved",
+   "why": "The combined cell reads '7-1/2'. No separate bath figure is printed."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [
+  {
+   "published": "2",
+   "read": "2 and Terrace"
+  },
+  {
+   "published": "PH",
+   "read": "PH-Duplex and two Terraces"
+  }
+ ],
+ "filled_by_reading": 2,
+ "read_problems": [
+  "Bedroom/Bathroom column gives a single combined figure (e.g. \"4-1/2\"); placed in beds cell, baths left blank since not separately stated.",
+  "Cellar area (1,435 SF) printed alongside 2,028 SF for Commercial Unit; int_sf given as 2028 (first/primary figure), cellar not used.",
+  "Real estate tax column lists two scenarios (with 421-a / w/o 421-a); tax_m and carry_m taken from the \"with 421-a\" scenario, which is listed first.",
+  "Unit 2 and PH terrace sf (397, and 175+376=551) taken from narrative text on page 31, not from the Schedule A table itself."
+ ],
+ "read_units": [
+  {
+   "unit": "Commercial Unit (First Floor) and Cellar",
+   "beds": null,
+   "baths": null,
+   "int_sf": 2028,
+   "ext_sf": null,
+   "price": null,
+   "pct": 15,
+   "pct2": null,
+   "cc_m": 881.25,
+   "tax_m": 197,
+   "carry_m": 1078.25,
+   "page": 30
+  },
+  {
+   "unit": "2 and Terrace",
+   "beds": 4.5,
+   "baths": null,
+   "int_sf": 1542,
+   "ext_sf": 397,
+   "price": 1100000,
+   "pct": 16,
+   "pct2": null,
+   "cc_m": 940,
+   "tax_m": 210,
+   "carry_m": 1150,
+   "page": 30
+  },
+  {
+   "unit": "3",
+   "beds": 4.5,
+   "baths": null,
+   "int_sf": 1542,
+   "ext_sf": null,
+   "price": 985000,
+   "pct": 15,
+   "pct2": null,
+   "cc_m": 881.25,
+   "tax_m": 197,
+   "carry_m": 1078.25,
+   "page": 30
+  },
+  {
+   "unit": "4",
+   "beds": 4.5,
+   "baths": null,
+   "int_sf": 1542,
+   "ext_sf": null,
+   "price": 1025000,
+   "pct": 15,
+   "pct2": null,
+   "cc_m": 881.25,
+   "tax_m": 197,
+   "carry_m": 1078.25,
+   "page": 30
+  },
+  {
+   "unit": "5",
+   "beds": 4.5,
+   "baths": null,
+   "int_sf": 1542,
+   "ext_sf": null,
+   "price": 1065000,
+   "pct": 16,
+   "pct2": null,
+   "cc_m": 940,
+   "tax_m": 210,
+   "carry_m": 1150,
+   "page": 30
+  },
+  {
+   "unit": "PH-Duplex and two Terraces",
+   "beds": 7.5,
+   "baths": null,
+   "int_sf": 2411,
+   "ext_sf": 551,
+   "price": 2175000,
+   "pct": 23,
+   "pct2": null,
+   "cc_m": 1351.25,
+   "tax_m": 355.04,
+   "carry_m": 1706.29,
+   "page": 30
+  }
+ ],
+ "calls": 2,
+ "tokens": 29544,
+ "qa_date": "2026-10-01T18:31:08.864Z"
+}

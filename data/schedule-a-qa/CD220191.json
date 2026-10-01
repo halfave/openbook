@@ -1,0 +1,191 @@
+{
+ "plan_id": "CD220191",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 5,
+ "pub_hash": "07f1ac55c80a",
+ "verdict": "unresolved",
+ "pages": [
+  38,
+  39
+ ],
+ "units_read": 5,
+ "cells_compared": 35,
+ "cells_agreeing": 27,
+ "errors": 0,
+ "unresolved": 2,
+ "findings": [
+  {
+   "unit": "1",
+   "field": "beds",
+   "published": 3,
+   "read": null,
+   "kind": "not_read",
+   "page": 38,
+   "printed": 3,
+   "outcome": "ok",
+   "why": "Printed '3/2 Full; 3 Half', so 3 bedrooms"
+  },
+  {
+   "unit": "1",
+   "field": "baths",
+   "published": 3.5,
+   "read": 2.5,
+   "kind": "differs",
+   "page": 38,
+   "printed": 3.5,
+   "outcome": "ok",
+   "why": "Printed '3/2 Full; 3 Half'; 2 full baths plus 3 half baths at .5 each is 3.5"
+  },
+  {
+   "unit": "2",
+   "field": "beds",
+   "published": 4,
+   "read": null,
+   "kind": "not_read",
+   "page": 38,
+   "printed": 4,
+   "outcome": "ok",
+   "why": "Printed '4/3 Full; 2 Half', so 4 bedrooms"
+  },
+  {
+   "unit": "2",
+   "field": "baths",
+   "published": 3.5,
+   "read": 2,
+   "kind": "differs",
+   "page": 38,
+   "printed": 4,
+   "outcome": "unresolved",
+   "why": "Printed '4/3 Full; 2 Half'. At .5 per half bath that is 4, which matches neither candidate. Not sure how half baths should be converted."
+  },
+  {
+   "unit": "3",
+   "field": "beds",
+   "published": 4,
+   "read": null,
+   "kind": "not_read",
+   "page": 38,
+   "printed": 4,
+   "outcome": "ok",
+   "why": "Printed '4/3 Full; 2 Half', so 4 bedrooms"
+  },
+  {
+   "unit": "3",
+   "field": "baths",
+   "published": 3.5,
+   "read": 2,
+   "kind": "differs",
+   "page": 38,
+   "printed": 4,
+   "outcome": "unresolved",
+   "why": "Printed '4/3 Full; 2 Half'. At .5 per half bath that is 4, which matches neither candidate. Not sure how half baths should be converted."
+  },
+  {
+   "unit": "4",
+   "field": "beds",
+   "published": 4,
+   "read": null,
+   "kind": "not_read",
+   "page": 38,
+   "printed": 4,
+   "outcome": "ok",
+   "why": "Printed '4/3.5'"
+  },
+  {
+   "unit": "5",
+   "field": "beds",
+   "published": 4,
+   "read": null,
+   "kind": "not_read",
+   "page": 38,
+   "printed": 4,
+   "outcome": "ok",
+   "why": "Printed '4/3.5'"
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 10,
+ "read_problems": [
+  "Beds/baths for units 1-3 printed as combined \"X/Y Full; Z Half\" (e.g. \"3/2 Full; 3 Half\") where first number is ambiguous as bedroom count vs full baths; interpreted as beds=- (not clearly stated) and baths as Full+Half sum (2 Full+3 Half=2.5 for unit1; 3 Full+2 Half=3.5 for unit2 would conflict with printed \"4/3 Full; 2 Half\" wait re-check); for units 1 and 2 printed format differs from units 4/5 (\"4/3.5\"), values transcribed as best interpretation of total baths only.",
+  "Unit 1 area: two figures \"1559*\" and \"2884\" printed in Approx. Floor Area column; used 1559 as int_sf and 2884 as ext_sf per instructions, but 2884 may represent a gross/cellar total rather than outdoor area, and outdoor areas (766 RY, 192 AW, 253 B) are listed separately in next column - ext_sf may be incorrect.",
+  "Units 3,4,5 ext_sf taken from single Limited Common Floor Area figures (253, 190, combined 59+1426); unit 5 has two figures \"59 (B)\" and \"1426 (RT)\" summed interpretation uncertain - used 82 per table (82 appears to be a separate Approx. Floor Area second figure, not outdoor) - please verify unit 5 ext_sf assignment."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": null,
+   "baths": 2.5,
+   "int_sf": 1559,
+   "ext_sf": 2884,
+   "price": 2400000,
+   "pct": 22.5,
+   "pct2": null,
+   "cc_m": 550.13,
+   "tax_m": 2122.01,
+   "carry_m": 2672.14,
+   "page": 38
+  },
+  {
+   "unit": "2",
+   "beds": null,
+   "baths": 2,
+   "int_sf": 691,
+   "ext_sf": 3079,
+   "price": 1900000,
+   "pct": 21.69,
+   "pct2": null,
+   "cc_m": 530.32,
+   "tax_m": 2045.62,
+   "carry_m": 2575.94,
+   "page": 38
+  },
+  {
+   "unit": "3",
+   "beds": null,
+   "baths": 2,
+   "int_sf": 315,
+   "ext_sf": 3079,
+   "price": 1800000,
+   "pct": 17.86,
+   "pct2": null,
+   "cc_m": 436.68,
+   "tax_m": 1684.4,
+   "carry_m": 2121.08,
+   "page": 38
+  },
+  {
+   "unit": "4",
+   "beds": null,
+   "baths": 3.5,
+   "int_sf": 3079,
+   "ext_sf": 190,
+   "price": 1800000,
+   "pct": 17.3,
+   "pct2": null,
+   "cc_m": 422.99,
+   "tax_m": 1631.59,
+   "carry_m": 2054.58,
+   "page": 38
+  },
+  {
+   "unit": "5",
+   "beds": null,
+   "baths": 3.5,
+   "int_sf": 3079,
+   "ext_sf": 82,
+   "price": 2000000,
+   "pct": 20.65,
+   "pct2": null,
+   "cc_m": 504.89,
+   "tax_m": 1947.53,
+   "carry_m": 2452.42,
+   "page": 38
+  }
+ ],
+ "calls": 2,
+ "tokens": 22651,
+ "qa_date": "2026-10-01T04:53:06.385Z"
+}

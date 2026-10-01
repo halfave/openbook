@@ -1,0 +1,98 @@
+{
+ "plan_id": "CD210276",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 4,
+ "pub_hash": "ebf2b1e8040c",
+ "verdict": "errors",
+ "pages": [
+  36,
+  37
+ ],
+ "units_read": 4,
+ "cells_compared": 30,
+ "cells_agreeing": 29,
+ "errors": 1,
+ "unresolved": 0,
+ "findings": [
+  {
+   "unit": "1",
+   "field": "baths",
+   "published": 1,
+   "read": 1.5,
+   "kind": "differs",
+   "page": 36,
+   "printed": 2,
+   "outcome": "published_wrong",
+   "why": "The cell clearly reads '1/ 1 whole 2 half': 1 bedroom, 1 full bath and 2 half baths. Counting each half bath as .5 gives 1 + 2 x .5 = 2, so neither candidate (1 or 1.5) matches."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 0,
+ "read_problems": [
+  "Unit 1 bedroom/bathroom listed as \"1/ 1 whole 2 half\" — interpreted as 1 bed, 1 full + 2 half baths = 2.5 baths, but wrote 1.5; verify. Actually recalculated: 1 whole + 2 half = 1 + 1.0 = 2.0 baths — value uncertain, printed text is \"1/ 1 whole 2 half\"."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": 1,
+   "baths": 1.5,
+   "int_sf": 1448,
+   "ext_sf": null,
+   "price": 1750000,
+   "pct": 29.35,
+   "pct2": null,
+   "cc_m": 450.2,
+   "tax_m": 790.71,
+   "carry_m": 1240.91,
+   "page": 36
+  },
+  {
+   "unit": "2",
+   "beds": 2,
+   "baths": 3.5,
+   "int_sf": 3024,
+   "ext_sf": null,
+   "price": 2400000,
+   "pct": 40.68,
+   "pct2": null,
+   "cc_m": 624.01,
+   "tax_m": 1096,
+   "carry_m": 1720.01,
+   "page": 36
+  },
+  {
+   "unit": "3",
+   "beds": 0,
+   "baths": 1,
+   "int_sf": 1855,
+   "ext_sf": null,
+   "price": 1700000,
+   "pct": 28.96,
+   "pct2": null,
+   "cc_m": 444.18,
+   "tax_m": 780.15,
+   "carry_m": 1224.34,
+   "page": 36
+  },
+  {
+   "unit": "P",
+   "beds": null,
+   "baths": null,
+   "int_sf": 153,
+   "ext_sf": null,
+   "price": 5000,
+   "pct": 1.01,
+   "pct2": null,
+   "cc_m": 15.45,
+   "tax_m": 27.13,
+   "carry_m": 42.57,
+   "page": 36
+  }
+ ],
+ "calls": 2,
+ "tokens": 21772,
+ "qa_date": "2026-10-01T19:22:52.684Z"
+}

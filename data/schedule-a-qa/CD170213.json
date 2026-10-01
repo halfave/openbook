@@ -1,0 +1,151 @@
+{
+ "plan_id": "CD170213",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 7,
+ "verdict": "errors",
+ "pages": [
+  40,
+  41
+ ],
+ "units_read": 7,
+ "cells_compared": 50,
+ "cells_agreeing": 48,
+ "errors": 2,
+ "unresolved": 0,
+ "findings": [
+  {
+   "unit": "TH",
+   "field": "outdoor_sqft",
+   "published": 1541,
+   "read": 543.31,
+   "kind": "differs",
+   "page": 40,
+   "printed": 543.31,
+   "outcome": "published_wrong",
+   "why": "TH's exterior sq ft column shows 543.31 on its Lower Level row; 1,541.00 is the TOTALS row for the whole building"
+  },
+  {
+   "unit": "3B",
+   "field": "beds",
+   "published": 2,
+   "read": 1,
+   "kind": "differs",
+   "page": 40,
+   "printed": 1,
+   "outcome": "published_wrong",
+   "why": "Unit 3B's No. of Bedrooms cell is printed as 1"
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 11,
+ "read_problems": [
+  "TH unit bedrooms/bathrooms printed as 3/3 on a combined row for Lower Level/Upper Level with no separate price breakdown; used totals row (3 bed, 3 bath, 1632.31 sf, 543.31 ext sf) per table structure.",
+  "PH unit bedroom count shown as blank in \"No. of Bedrooms\" column with \"2\" appearing only in bathrooms column for the total row; used 3 beds, 2 baths from the row aligned with 6th Fl./Roof/Total."
+ ],
+ "read_units": [
+  {
+   "unit": "TH",
+   "beds": 3,
+   "baths": 3,
+   "int_sf": 1632.31,
+   "ext_sf": 543.31,
+   "price": 2995000,
+   "pct": 19.42,
+   "pct2": null,
+   "cc_m": 1374.42,
+   "tax_m": 2472.24,
+   "carry_m": 3846.66,
+   "page": 40
+  },
+  {
+   "unit": "2",
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 709.52,
+   "ext_sf": null,
+   "price": 1250000,
+   "pct": 7.68,
+   "pct2": null,
+   "cc_m": 543.18,
+   "tax_m": 977.05,
+   "carry_m": 1520.23,
+   "page": 40
+  },
+  {
+   "unit": "3A",
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 709.52,
+   "ext_sf": null,
+   "price": 1275000,
+   "pct": 7.68,
+   "pct2": null,
+   "cc_m": 543.18,
+   "tax_m": 977.05,
+   "carry_m": 1520.23,
+   "page": 40
+  },
+  {
+   "unit": "3B",
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 727.09,
+   "ext_sf": 84,
+   "price": 1300000,
+   "pct": 8.14,
+   "pct2": null,
+   "cc_m": 575.93,
+   "tax_m": 1035.95,
+   "carry_m": 1611.87,
+   "page": 40
+  },
+  {
+   "unit": "4",
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1653.75,
+   "ext_sf": 84,
+   "price": 2700000,
+   "pct": 18.16,
+   "pct2": null,
+   "cc_m": 1285.34,
+   "tax_m": 2312.01,
+   "carry_m": 3597.36,
+   "page": 40
+  },
+  {
+   "unit": "5",
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1653.75,
+   "ext_sf": 84,
+   "price": 2795000,
+   "pct": 18.16,
+   "pct2": null,
+   "cc_m": 1285.34,
+   "tax_m": 2312.01,
+   "carry_m": 3597.36,
+   "page": 40
+  },
+  {
+   "unit": "PH",
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1725.85,
+   "ext_sf": 644.5,
+   "price": 3300000,
+   "pct": 20.76,
+   "pct2": null,
+   "cc_m": 1469.27,
+   "tax_m": 2642.85,
+   "carry_m": 4112.12,
+   "page": 40
+  }
+ ],
+ "calls": 2,
+ "tokens": 21459,
+ "qa_date": "2026-10-01T02:36:06.998Z"
+}

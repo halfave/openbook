@@ -1,0 +1,84 @@
+{
+ "plan_id": "CD240186",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 4,
+ "pub_hash": "f7c7473be9e3",
+ "verdict": "verified",
+ "pages": [
+  40,
+  41
+ ],
+ "units_read": 1,
+ "cells_compared": 9,
+ "cells_agreeing": 8,
+ "errors": 0,
+ "unresolved": 0,
+ "findings": [
+  {
+   "unit": "1",
+   "field": "outdoor_sqft",
+   "published": 1007,
+   "read": null,
+   "kind": "not_read",
+   "page": 40,
+   "printed": 1007,
+   "outcome": "ok",
+   "why": "The 'Limited Common Element square feet' column shows 1,007.00 for unit 1. The footnote says this is Rear yard (828 sf) plus Areaway (179 sf). There is no separate terrace/balcony column."
+  },
+  {
+   "unit": "2",
+   "kind": "missing",
+   "page": 40,
+   "printed": 1950000,
+   "outcome": "ok",
+   "why": "Unit 2's offering price is printed as $ 1,950,000.00."
+  },
+  {
+   "unit": "3",
+   "kind": "missing",
+   "page": 40,
+   "printed": 2100000,
+   "outcome": "ok",
+   "why": "Unit 3's offering price is printed as $ 2,100,000.00."
+  },
+  {
+   "unit": "4",
+   "kind": "missing",
+   "page": 40,
+   "printed": 2450000,
+   "outcome": "ok",
+   "why": "Unit 4's offering price is printed as $ 2,450,000.00."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 0,
+ "read_problems": [
+  "row with 13 cells: U\t2\t2\t2\t0\t1164\t-\t1950000.00\t22.4000\t-\t681.87\t1260.63\t1942.51\t40",
+  "row with 13 cells: U\t3\t3\t2\t0\t1164\t-\t2100000.00\t22.4000\t-\t681.87\t1260.63\t1942.51\t40",
+  "row with 13 cells: U\t4\t3\t3\t0\t1399\t-\t2450000.00\t28.7000\t-\t873.65\t1615.19\t2488.84\t40",
+  "Table does not print separate exterior/terrace square footage for units; terrace/balcony/roof figures listed only in \"Limited common areas\" notes, not as a single ext_sf column, so ext_sf set to -.",
+  "1/2 Bathroom(s) per Unit column: Unit 2, 3 show 0, included in baths as whole number (2, 2); Unit 1 has 1 half bath (added as .5); Unit 4 has 0 half baths."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 1036,
+   "ext_sf": null,
+   "price": 2700000,
+   "pct": 26.5,
+   "pct2": null,
+   "cc_m": 806.68,
+   "tax_m": 1491.38,
+   "carry_m": 2298.06,
+   "page": 40
+  }
+ ],
+ "calls": 2,
+ "tokens": 22100,
+ "qa_date": "2026-10-01T19:58:57.000Z"
+}

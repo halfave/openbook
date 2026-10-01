@@ -1,0 +1,97 @@
+{
+ "plan_id": "CD170247",
+ "source": "held",
+ "checked": null,
+ "units_published": 3,
+ "pub_hash": "08c6b5677389",
+ "verdict": "verified",
+ "pages": [
+  29,
+  30
+ ],
+ "units_read": 3,
+ "cells_compared": 24,
+ "cells_agreeing": 22,
+ "errors": 0,
+ "unresolved": 0,
+ "findings": [
+  {
+   "unit": "1",
+   "field": "beds",
+   "published": 1,
+   "read": null,
+   "kind": "not_read",
+   "page": 29,
+   "printed": 1,
+   "outcome": "ok",
+   "why": "The Bedrooms/Bathrooms cell for unit 1 reads \"1/2.5\", so bedrooms is 1."
+  },
+  {
+   "unit": "1",
+   "field": "baths",
+   "published": 2.5,
+   "read": null,
+   "kind": "not_read",
+   "page": 29,
+   "printed": 2.5,
+   "outcome": "ok",
+   "why": "The same \"1/2.5\" cell gives 2.5 for bathrooms."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 0,
+ "read_problems": [
+  "Page 29: Beds/Baths column shows \"1/2.5\" for Unit 1 (interpreted as 1 bedroom / 2.5 baths), \"3/2\" for Units 2 and 3.",
+  "Page 29: Two tax columns printed (Monthly and Annual); used Monthly tax figure for tax_m as it corresponds with carrying charge sum.",
+  "Page 30: No Schedule A price table present (notes only)."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": null,
+   "baths": null,
+   "int_sf": 1323,
+   "ext_sf": null,
+   "price": 1000000,
+   "pct": 38.718,
+   "pct2": null,
+   "cc_m": 384.9,
+   "tax_m": 735.94,
+   "carry_m": 13450.16,
+   "page": 29
+  },
+  {
+   "unit": "2",
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1391,
+   "ext_sf": null,
+   "price": 875000,
+   "pct": 29.111,
+   "pct2": null,
+   "cc_m": 289.4,
+   "tax_m": 553.34,
+   "carry_m": 10112.99,
+   "page": 29
+  },
+  {
+   "unit": "3",
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1391,
+   "ext_sf": null,
+   "price": 875000,
+   "pct": 32.171,
+   "pct2": null,
+   "cc_m": 319.82,
+   "tax_m": 611.49,
+   "carry_m": 11175.7,
+   "page": 29
+  }
+ ],
+ "calls": 2,
+ "tokens": 21670,
+ "qa_date": "2026-10-01T23:15:39.013Z"
+}

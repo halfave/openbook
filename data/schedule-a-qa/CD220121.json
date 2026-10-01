@@ -1,0 +1,62 @@
+{
+ "plan_id": "CD220121",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 2,
+ "pub_hash": "0dc5d7a9587a",
+ "verdict": "verified",
+ "pages": [
+  35,
+  36
+ ],
+ "units_read": 2,
+ "cells_compared": 10,
+ "cells_agreeing": 10,
+ "errors": 0,
+ "unresolved": 0,
+ "findings": [],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 6,
+ "read_problems": [
+  "Unit 1 interior sq footage lists two figures (854, 975) for Cellar/First Floor; used 854 (first/primary figure) per int_sf rule, 975 appears to be a second interior figure not gross/cellar-labeled - unsure which to use.",
+  "Unit 1 and Unit 2 bedrooms/bathrooms printed as \"1/3\" and \"2/3\" (No. of Bedrooms/Bathrooms combined column) - interpreted as beds/baths but format unclear.",
+  "Unit 1 outdoor sf printed as three separate figures (55(A), 17(S), 639(RY)) - combined into one field since no single ext_sf number given.",
+  "Unit 2 outdoor sf printed as four figures (30+24(B), 1096(RT), 11(L)) - combined into one field since no single ext_sf number given.",
+  "Unit 2 interior sf printed as three figures (44, 1096, 1096) for First/Second/Third Floor - used 1096 as representative value is unclear; combined shown in cell instead since rule requires single number but table lists multiple floor areas."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": 1,
+   "baths": 3,
+   "int_sf": 854,
+   "ext_sf": null,
+   "price": 1100000,
+   "pct": 41.37,
+   "pct2": null,
+   "cc_m": 635.37,
+   "tax_m": 425.69,
+   "carry_m": 1061.06,
+   "page": 35
+  },
+  {
+   "unit": "2",
+   "beds": 2,
+   "baths": 3,
+   "int_sf": 1096,
+   "ext_sf": null,
+   "price": 1300000,
+   "pct": 58.63,
+   "pct2": null,
+   "cc_m": 900.46,
+   "tax_m": 603.3,
+   "carry_m": 1503.76,
+   "page": 35
+  }
+ ],
+ "calls": 1,
+ "tokens": 13417,
+ "qa_date": "2026-10-01T19:36:42.823Z"
+}

@@ -1,0 +1,85 @@
+{
+ "plan_id": "CD200288",
+ "source": "pattern",
+ "checked": null,
+ "units_published": 3,
+ "pub_hash": "0b8035142119",
+ "verdict": "errors",
+ "pages": [
+  31,
+  32
+ ],
+ "units_read": 3,
+ "cells_compared": 15,
+ "cells_agreeing": 14,
+ "errors": 1,
+ "unresolved": 0,
+ "findings": [
+  {
+   "unit": "1",
+   "field": "baths",
+   "published": 1,
+   "read": 2.5,
+   "kind": "differs",
+   "page": 31,
+   "printed": 2,
+   "outcome": "published_wrong",
+   "why": "Cell reads '1 /1 full, 2 half', which is 1 full bath plus 2 half baths. Counting each half as .5 gives 2, so both candidates (1 and 2.5) are wrong."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 12,
+ "read_problems": [
+  "Unit 1 beds/baths printed as \"1 /1 full, 2 half\" — transcribed as 1 bed / 2.5 baths (1 full + 2 half); tax_m used is monthly column (5), not the annual column also labeled (5).",
+  "Page 32 contains no Schedule A price table (notes text only)."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": 1,
+   "baths": 2.5,
+   "int_sf": 1030,
+   "ext_sf": 737,
+   "price": 2350000,
+   "pct": 37.12,
+   "pct2": null,
+   "cc_m": 548.52,
+   "tax_m": 206.95,
+   "carry_m": 755.47,
+   "page": 31
+  },
+  {
+   "unit": "2",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1047,
+   "ext_sf": 0,
+   "price": 1550000,
+   "pct": 23.98,
+   "pct2": null,
+   "cc_m": 354.35,
+   "tax_m": 133.69,
+   "carry_m": 488.04,
+   "page": 31
+  },
+  {
+   "unit": "3",
+   "beds": 3,
+   "baths": 2.5,
+   "int_sf": 1481,
+   "ext_sf": 765,
+   "price": 2400000,
+   "pct": 38.9,
+   "pct2": null,
+   "cc_m": 574.83,
+   "tax_m": 216.87,
+   "carry_m": 791.7,
+   "page": 31
+  }
+ ],
+ "calls": 2,
+ "tokens": 21009,
+ "qa_date": "2026-10-01T04:00:06.906Z"
+}

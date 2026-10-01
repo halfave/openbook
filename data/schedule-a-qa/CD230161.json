@@ -1,0 +1,192 @@
+{
+ "plan_id": "CD230161",
+ "source": "pattern",
+ "checked": null,
+ "units_published": 6,
+ "pub_hash": "60e36774c95c",
+ "verdict": "errors",
+ "pages": [
+  36,
+  37
+ ],
+ "units_read": 6,
+ "cells_compared": 24,
+ "cells_agreeing": 17,
+ "errors": 7,
+ "unresolved": 0,
+ "findings": [
+  {
+   "unit": "1",
+   "field": "baths",
+   "published": 1,
+   "read": 2.5,
+   "kind": "differs",
+   "page": 36,
+   "printed": 2.5,
+   "outcome": "published_wrong",
+   "why": "Bathroom(s) column shows 2 and 1/2 Bathroom(s) column shows 1, so 2 + 0.5 = 2.5"
+  },
+  {
+   "unit": "2F",
+   "field": "baths",
+   "published": 0,
+   "read": 1,
+   "kind": "differs",
+   "page": 36,
+   "printed": 1,
+   "outcome": "published_wrong",
+   "why": "Bathroom(s) column shows 1 and 1/2 Bathroom(s) column shows 0"
+  },
+  {
+   "unit": "2R",
+   "field": "baths",
+   "published": 0,
+   "read": 1,
+   "kind": "differs",
+   "page": 36,
+   "printed": 1,
+   "outcome": "published_wrong",
+   "why": "Bathroom(s) column shows 1 and 1/2 Bathroom(s) column shows 0"
+  },
+  {
+   "unit": "3F",
+   "field": "baths",
+   "published": 0,
+   "read": 1,
+   "kind": "differs",
+   "page": 36,
+   "printed": 1,
+   "outcome": "published_wrong",
+   "why": "Bathroom(s) column shows 1 and 1/2 Bathroom(s) column shows 0"
+  },
+  {
+   "unit": "3R",
+   "field": "baths",
+   "published": 0,
+   "read": 1,
+   "kind": "differs",
+   "page": 36,
+   "printed": 1,
+   "outcome": "published_wrong",
+   "why": "Bathroom(s) column shows 1 and 1/2 Bathroom(s) column shows 0"
+  },
+  {
+   "unit": "4",
+   "field": "beds",
+   "published": 2,
+   "read": 3,
+   "kind": "differs",
+   "page": 36,
+   "printed": 3,
+   "outcome": "published_wrong",
+   "why": "Bedrooms per Unit column shows 3"
+  },
+  {
+   "unit": "4",
+   "field": "baths",
+   "published": 0,
+   "read": 2,
+   "kind": "differs",
+   "page": 36,
+   "printed": 2,
+   "outcome": "published_wrong",
+   "why": "Bathroom(s) column shows 2 and 1/2 Bathroom(s) column shows 0"
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 24,
+ "read_problems": [
+  "Table has \"Square footage\" and \"Cellar Space square footage\" columns, not explicitly labeled interior/exterior; used Square footage as int_sf. Cellar space (650.00 for Unit 1, 0 for others) not mapped to ext_sf field per instructions (not terrace/balcony/yard/roof)."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 916,
+   "ext_sf": null,
+   "price": 1850000,
+   "pct": 27.246,
+   "pct2": null,
+   "cc_m": 757.58,
+   "tax_m": 1314.4,
+   "carry_m": 2071.98,
+   "page": 36
+  },
+  {
+   "unit": "2F",
+   "beds": 1,
+   "baths": 1,
+   "int_sf": null,
+   "ext_sf": 525,
+   "price": 795000,
+   "pct": 11.7084,
+   "pct2": null,
+   "cc_m": 325.55,
+   "tax_m": 564.84,
+   "carry_m": 890.39,
+   "page": 36
+  },
+  {
+   "unit": "2R",
+   "beds": 1,
+   "baths": 1,
+   "int_sf": null,
+   "ext_sf": 512,
+   "price": 795000,
+   "pct": 12.8783,
+   "pct2": null,
+   "cc_m": 358.08,
+   "tax_m": 621.28,
+   "carry_m": 979.36,
+   "page": 36
+  },
+  {
+   "unit": "3F",
+   "beds": 1,
+   "baths": 1,
+   "int_sf": null,
+   "ext_sf": 531,
+   "price": 825000,
+   "pct": 12.1502,
+   "pct2": null,
+   "cc_m": 337.84,
+   "tax_m": 586.15,
+   "carry_m": 923.99,
+   "page": 36
+  },
+  {
+   "unit": "3R",
+   "beds": 1,
+   "baths": 1,
+   "int_sf": null,
+   "ext_sf": 512,
+   "price": 825000,
+   "pct": 12.1502,
+   "pct2": null,
+   "cc_m": 337.84,
+   "tax_m": 586.15,
+   "carry_m": 923.99,
+   "page": 36
+  },
+  {
+   "unit": "4",
+   "beds": 3,
+   "baths": 2,
+   "int_sf": null,
+   "ext_sf": 1052,
+   "price": 1700000,
+   "pct": 25.0368,
+   "pct2": null,
+   "cc_m": 696.15,
+   "tax_m": 1207.83,
+   "carry_m": 1903.98,
+   "page": 36
+  }
+ ],
+ "calls": 2,
+ "tokens": 22606,
+ "qa_date": "2026-10-01T19:52:21.119Z"
+}

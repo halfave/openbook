@@ -1,0 +1,121 @@
+{
+ "plan_id": "CD220234",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 4,
+ "pub_hash": "3b01729b67a0",
+ "verdict": "unresolved",
+ "pages": [
+  44,
+  45
+ ],
+ "units_read": 4,
+ "cells_compared": 35,
+ "cells_agreeing": 32,
+ "errors": 0,
+ "unresolved": 3,
+ "findings": [
+  {
+   "unit": "2A",
+   "field": "outdoor_sqft",
+   "published": 804,
+   "read": 34,
+   "kind": "differs",
+   "page": 44,
+   "printed": 804,
+   "outcome": "unresolved",
+   "why": "The table has three outdoor columns. For 2A, Rear Yard is None, Balcony is 34.00 and Roof Terrace is 804.00. Both candidates are printed, so I gave Roof Terrace; Balcony is 34."
+  },
+  {
+   "unit": "3A",
+   "field": "outdoor_sqft",
+   "published": 261,
+   "read": null,
+   "kind": "not_read",
+   "page": 44,
+   "printed": 261,
+   "outcome": "unresolved",
+   "why": "For 3A, Rear Yard and Balcony are both None, and Roof Terrace is 261.00. 'Blank' matches the Balcony column; 261 is the Roof Terrace column."
+  },
+  {
+   "unit": "3B",
+   "field": "outdoor_sqft",
+   "published": 278,
+   "read": 86,
+   "kind": "differs",
+   "page": 44,
+   "printed": 278,
+   "outcome": "unresolved",
+   "why": "For 3B, Rear Yard is None, Balcony is 86.00 and Roof Terrace is 278.00. Both candidates are printed, so I gave Roof Terrace; Balcony is 86."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 1,
+ "read_problems": [
+  "Images provided (p0044-150.png, p0045-150.png) show printed page numbers 40 and 41, not 44/45 as stated; transcribed from the table visible on the first image.",
+  "Unit ext_sf: table lists separate Rear Yard, Balcony, and Roof Terrace columns (uninhabitable limited common elements); ext_sf above uses Rear Yard for 1A, Balcony for 2A, Roof Terrace for 3A/3B as the only single nonzero figure printed for each; 3A had Roof Terrace 261.00 which conflicts—only one ext_sf cell allowed, so verify against source if multiple nonzero values exist per unit."
+ ],
+ "read_units": [
+  {
+   "unit": "1A",
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1177,
+   "ext_sf": 1025,
+   "price": 1565000,
+   "pct": 25.36,
+   "pct2": null,
+   "cc_m": 579.2,
+   "tax_m": 1013.6,
+   "carry_m": 1592.8,
+   "page": 44
+  },
+  {
+   "unit": "2A",
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1332,
+   "ext_sf": 34,
+   "price": 1775000,
+   "pct": 28.77,
+   "pct2": null,
+   "cc_m": 657.08,
+   "tax_m": 1149.89,
+   "carry_m": 1806.97,
+   "page": 44
+  },
+  {
+   "unit": "3A",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1051,
+   "ext_sf": null,
+   "price": 1395000,
+   "pct": 22.61,
+   "pct2": null,
+   "cc_m": 516.39,
+   "tax_m": 903.68,
+   "carry_m": 1420.08,
+   "page": 44
+  },
+  {
+   "unit": "3B",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1076,
+   "ext_sf": 86,
+   "price": 1435000,
+   "pct": 23.26,
+   "pct2": null,
+   "cc_m": 531.24,
+   "tax_m": 929.66,
+   "carry_m": 1460.9,
+   "page": 44
+  }
+ ],
+ "calls": 2,
+ "tokens": 25918,
+ "qa_date": "2026-10-01T19:46:02.559Z"
+}

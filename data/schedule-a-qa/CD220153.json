@@ -1,0 +1,95 @@
+{
+ "plan_id": "CD220153",
+ "source": "pattern",
+ "checked": null,
+ "units_published": 2,
+ "pub_hash": "d886c15da75e",
+ "verdict": "errors",
+ "pages": [
+  47,
+  48
+ ],
+ "units_read": 2,
+ "cells_compared": 10,
+ "cells_agreeing": 7,
+ "errors": 1,
+ "unresolved": 1,
+ "findings": [
+  {
+   "unit": "1",
+   "field": "beds",
+   "published": 2,
+   "read": 3,
+   "kind": "differs",
+   "page": 47,
+   "printed": 3,
+   "outcome": "published_wrong",
+   "why": "BR column for unit 1 clearly reads 3"
+  },
+  {
+   "unit": "1",
+   "field": "baths",
+   "published": 2,
+   "read": null,
+   "kind": "not_read",
+   "page": 47,
+   "printed": 2,
+   "outcome": "unresolved",
+   "why": "The Bath cell is printed as '2 & 2 (.5)', meaning 2 full baths and 2 half baths. It is not one plain number, so 2 is only the full-bath count."
+  },
+  {
+   "unit": "1",
+   "field": "sqft",
+   "published": 2713,
+   "read": 1959,
+   "kind": "differs",
+   "page": 47,
+   "printed": 2713,
+   "outcome": "ok",
+   "why": "Total Unit Square Footage column reads 2,713; the 1,959 is in the separate Habitable Square Footage column"
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 6,
+ "read_problems": [
+  "Bath for Unit 1 printed as \"2 & 2 (5)\" with footnote reference (5); unclear exact meaning beyond face value.",
+  "Habitable Square Footage used for int_sf; Total Unit Square Footage (2713 for Unit 1, 2046 for Unit 2) also printed but appears to include cellar/other space.",
+  "Ext_sf not available as single number for Yard (Unit 1) or Storage & Terraces (Unit 2); Limited Common Element Square Footage column (660, 900) may combine multiple elements, not purely terrace/yard.",
+  "Page 48 contains no Schedule A price table (Notes to Schedule A only)."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": 3,
+   "baths": null,
+   "int_sf": 1959,
+   "ext_sf": null,
+   "price": 3695000,
+   "pct": 50,
+   "pct2": null,
+   "cc_m": 784.07,
+   "tax_m": 1283.13,
+   "carry_m": 2067.2,
+   "page": 47
+  },
+  {
+   "unit": "2",
+   "beds": 3,
+   "baths": 2.5,
+   "int_sf": 2046,
+   "ext_sf": null,
+   "price": 3395000,
+   "pct": 50,
+   "pct2": null,
+   "cc_m": 784.07,
+   "tax_m": 1283.13,
+   "carry_m": 2067.2,
+   "page": 47
+  }
+ ],
+ "calls": 2,
+ "tokens": 30627,
+ "qa_date": "2026-10-01T04:49:25.891Z"
+}

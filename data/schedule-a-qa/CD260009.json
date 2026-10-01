@@ -1,0 +1,141 @@
+{
+ "plan_id": "CD260009",
+ "source": "pattern",
+ "checked": null,
+ "units_published": 7,
+ "pub_hash": "7372b435ef9e",
+ "verdict": "unresolved",
+ "pages": [
+  32,
+  33
+ ],
+ "units_read": 7,
+ "cells_compared": 35,
+ "cells_agreeing": 34,
+ "errors": 0,
+ "unresolved": 1,
+ "findings": [
+  {
+   "unit": "1",
+   "field": "sqft",
+   "published": 1187,
+   "read": 1611,
+   "kind": "differs",
+   "page": 32,
+   "printed": 1187,
+   "outcome": "unresolved",
+   "why": "Unit 1's area cell has two printed numbers: 1187 on the Cellar** line, which is the unit's main row, and 1611 on the 1st Floor line below it. Both candidates are printed, so neither is clearly the single value. The 13253 total only matches if both are counted, so the unit's full interior area may be 1187 + 1611."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 28,
+ "read_problems": [
+  "Unit 1 lists two area figures (Cellar 1187 SF and 1st Floor 1611 SF); used 1611 (1st Floor, non-cellar) as int_sf per instructions to avoid cellar/gross figures.",
+  "Unit 7 lists two ext_sf figures (267 terrace and 240 terrace); used first (267) per instructions."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": 3,
+   "baths": 2.5,
+   "int_sf": 1611,
+   "ext_sf": 507,
+   "price": 2000000,
+   "pct": 17.39,
+   "pct2": null,
+   "cc_m": 1309.92,
+   "tax_m": 2207.33,
+   "carry_m": 3517.26,
+   "page": 32
+  },
+  {
+   "unit": "2",
+   "beds": 4,
+   "baths": 2.5,
+   "int_sf": 1828,
+   "ext_sf": 99,
+   "price": 2000000,
+   "pct": 13.94,
+   "pct2": null,
+   "cc_m": 1049.47,
+   "tax_m": 1768.44,
+   "carry_m": 2817.9,
+   "page": 32
+  },
+  {
+   "unit": "3",
+   "beds": 4,
+   "baths": 2.5,
+   "int_sf": 1828,
+   "ext_sf": 89,
+   "price": 2000000,
+   "pct": 13.92,
+   "pct2": null,
+   "cc_m": 1047.97,
+   "tax_m": 1765.92,
+   "carry_m": 2813.89,
+   "page": 32
+  },
+  {
+   "unit": "4",
+   "beds": 4,
+   "baths": 2.5,
+   "int_sf": 1828,
+   "ext_sf": 70,
+   "price": 2000000,
+   "pct": 13.88,
+   "pct2": null,
+   "cc_m": 1045.13,
+   "tax_m": 1761.13,
+   "carry_m": 2806.27,
+   "page": 32
+  },
+  {
+   "unit": "5",
+   "beds": 4,
+   "baths": 2.5,
+   "int_sf": 1828,
+   "ext_sf": 88,
+   "price": 2000000,
+   "pct": 13.91,
+   "pct2": null,
+   "cc_m": 1047.82,
+   "tax_m": 1765.67,
+   "carry_m": 2813.49,
+   "page": 32
+  },
+  {
+   "unit": "6",
+   "beds": 4,
+   "baths": 2.5,
+   "int_sf": 1828,
+   "ext_sf": 57,
+   "price": 2000000,
+   "pct": 13.85,
+   "pct2": null,
+   "cc_m": 1043.19,
+   "tax_m": 1757.86,
+   "carry_m": 2801.05,
+   "page": 32
+  },
+  {
+   "unit": "7",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1315,
+   "ext_sf": 267,
+   "price": 2000000,
+   "pct": 13.11,
+   "pct2": null,
+   "cc_m": 987.58,
+   "tax_m": 1664.15,
+   "carry_m": 2651.72,
+   "page": 32
+  }
+ ],
+ "calls": 2,
+ "tokens": 24631,
+ "qa_date": "2026-10-01T06:08:56.187Z"
+}

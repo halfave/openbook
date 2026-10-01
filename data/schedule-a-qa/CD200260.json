@@ -1,0 +1,85 @@
+{
+ "plan_id": "CD200260",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 3,
+ "pub_hash": "03e3e107b074",
+ "verdict": "unresolved",
+ "pages": [
+  32,
+  33
+ ],
+ "units_read": 3,
+ "cells_compared": 24,
+ "cells_agreeing": 23,
+ "errors": 0,
+ "unresolved": 1,
+ "findings": [
+  {
+   "unit": "1",
+   "field": "baths",
+   "published": 2.5,
+   "read": 1.5,
+   "kind": "differs",
+   "page": 32,
+   "printed": 2.5,
+   "outcome": "unresolved",
+   "why": "Cell prints '1 Br/ 1 Bth/ 2 1/2 Bth' on two lines. '2 1/2 Bth' reads as 2.5, but the extra '1 Bth' makes it unclear: it could mean 1 full bath plus two half baths. 1.5 is not printed anywhere."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 0,
+ "read_problems": [
+  "Unit 1 beds/baths printed as \"1 Br/ 1 Bth/ 2 1/2 Bth\" - interpreted baths as 1.5 (1 Bth + 1/2 Bth); unclear if \"2 1/2\" refers to a second separate bath count rather than a half bath addition.",
+  "ext_sf column contains combined yard/terrace and storage figures (e.g. \"1,035 Y & 283 S\") which includes storage area, not purely terrace/yard; reported as printed since only one combined figure exists per unit."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": 1,
+   "baths": 1.5,
+   "int_sf": 1773,
+   "ext_sf": null,
+   "price": 3100000,
+   "pct": 40.63,
+   "pct2": null,
+   "cc_m": 1175.43,
+   "tax_m": 979.76,
+   "carry_m": 2155.19,
+   "page": 32
+  },
+  {
+   "unit": "2",
+   "beds": 3,
+   "baths": 3,
+   "int_sf": 1499,
+   "ext_sf": null,
+   "price": 2400000,
+   "pct": 29.44,
+   "pct2": null,
+   "cc_m": 851.7,
+   "tax_m": 709.92,
+   "carry_m": 1561.62,
+   "page": 32
+  },
+  {
+   "unit": "3",
+   "beds": 3,
+   "baths": 3,
+   "int_sf": 1561,
+   "ext_sf": null,
+   "price": 2575000,
+   "pct": 29.93,
+   "pct2": null,
+   "cc_m": 865.87,
+   "tax_m": 721.74,
+   "carry_m": 1587.61,
+   "page": 32
+  }
+ ],
+ "calls": 2,
+ "tokens": 21961,
+ "qa_date": "2026-10-01T19:11:11.849Z"
+}

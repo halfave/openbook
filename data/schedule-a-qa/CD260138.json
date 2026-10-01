@@ -1,0 +1,109 @@
+{
+ "plan_id": "CD260138",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 4,
+ "pub_hash": "9ef9df4fc774",
+ "verdict": "unresolved",
+ "pages": [
+  63,
+  64
+ ],
+ "units_read": 4,
+ "cells_compared": 36,
+ "cells_agreeing": 34,
+ "errors": 0,
+ "unresolved": 1,
+ "findings": [
+  {
+   "unit": "1",
+   "field": "outdoor_sqft",
+   "published": 0,
+   "read": 829,
+   "kind": "differs",
+   "page": 63,
+   "printed": 829,
+   "outcome": "unresolved",
+   "why": "Two outdoor columns are printed. For unit 1, the Rear Yard Limited Common Element column shows 829 and the Balcony Limited Common Element column shows 0. 829 is the unit's only outdoor area, but if the field means balcony only, the answer is 0."
+  },
+  {
+   "unit": "2",
+   "field": "outdoor_sqft",
+   "published": 0,
+   "read": null,
+   "kind": "not_read",
+   "page": 63,
+   "printed": 0,
+   "outcome": "ok",
+   "why": "For unit 2, both the Rear Yard and Balcony columns clearly show 0, so the cell is not blank."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 0,
+ "read_problems": [
+  "None - table fully legible"
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": 1,
+   "baths": 1.5,
+   "int_sf": 1765.5,
+   "ext_sf": 829,
+   "price": 2100000,
+   "pct": 30,
+   "pct2": null,
+   "cc_m": 662.5,
+   "tax_m": 624.73,
+   "carry_m": 1287.23,
+   "page": 63
+  },
+  {
+   "unit": "2",
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1074.5,
+   "ext_sf": null,
+   "price": 1550000,
+   "pct": 22,
+   "pct2": null,
+   "cc_m": 485.83,
+   "tax_m": 458.13,
+   "carry_m": 943.97,
+   "page": 63
+  },
+  {
+   "unit": "3",
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1073.5,
+   "ext_sf": 18,
+   "price": 1675000,
+   "pct": 24,
+   "pct2": null,
+   "cc_m": 530,
+   "tax_m": 499.78,
+   "carry_m": 1029.78,
+   "page": 63
+  },
+  {
+   "unit": "4",
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1073.5,
+   "ext_sf": 18,
+   "price": 1675000,
+   "pct": 24,
+   "pct2": null,
+   "cc_m": 530,
+   "tax_m": 499.78,
+   "carry_m": 1029.78,
+   "page": 63
+  }
+ ],
+ "calls": 2,
+ "tokens": 22109,
+ "qa_date": "2026-10-01T20:09:36.696Z"
+}

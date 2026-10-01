@@ -1,0 +1,158 @@
+{
+ "plan_id": "CD060164",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 5,
+ "pub_hash": "f7d96f70dfb9",
+ "verdict": "verified",
+ "pages": [
+  18,
+  19
+ ],
+ "units_read": 5,
+ "cells_compared": 30,
+ "cells_agreeing": 25,
+ "errors": 0,
+ "unresolved": 0,
+ "findings": [
+  {
+   "unit": "1",
+   "field": "tax_m",
+   "published": 4.46,
+   "read": 1343.35,
+   "kind": "differs",
+   "page": 18,
+   "printed": 4.46,
+   "outcome": "ok",
+   "why": "Monthly taxes with 421-a read 4.46, and 332.77 + 4.46 = 337.23, the carrying charge with 421-a. The page also has a without-421-a scenario, which reads 1,343.35."
+  },
+  {
+   "unit": "2",
+   "field": "tax_m",
+   "published": 2.94,
+   "read": 886,
+   "kind": "differs",
+   "page": 18,
+   "printed": 2.94,
+   "outcome": "ok",
+   "why": "Monthly taxes with 421-a read 2.94. Without 421-a, the page reads 886.00."
+  },
+  {
+   "unit": "3",
+   "field": "tax_m",
+   "published": 4.64,
+   "read": 1398.11,
+   "kind": "differs",
+   "page": 18,
+   "printed": 4.64,
+   "outcome": "ok",
+   "why": "Monthly taxes with 421-a read 4.64. Without 421-a, the page reads 1,398.11."
+  },
+  {
+   "unit": "4",
+   "field": "tax_m",
+   "published": 4.57,
+   "read": 1377.34,
+   "kind": "differs",
+   "page": 18,
+   "printed": 4.57,
+   "outcome": "ok",
+   "why": "Monthly taxes with 421-a read 4.57. Without 421-a, the page reads 1,377.34."
+  },
+  {
+   "unit": "5",
+   "field": "tax_m",
+   "published": 4.61,
+   "read": 1386.88,
+   "kind": "differs",
+   "page": 18,
+   "printed": 4.61,
+   "outcome": "ok",
+   "why": "Monthly taxes with 421-a read 4.61. Without 421-a, the page reads 1,386.88."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 0,
+ "read_problems": [
+  "Beds/baths given as \"No. of Rooms/Bathrooms\" (e.g. 1/1, 3/2, 2/1), not standard bed/bath format; left beds/baths as - since these are room counts, not bedroom counts.",
+  "Two tax scenarios printed (with 421-a and w/o 421-a); tax_m and carry_m taken from \"with 421-a Tax Benefits\" columns, which the printed \"Monthly Carrying Charges with 421-a\" total matches.",
+  "Page 19 contains no Schedule A price table, only narrative Notes to Schedule A."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": null,
+   "baths": null,
+   "int_sf": 980,
+   "ext_sf": null,
+   "price": 490000,
+   "pct": 21.017,
+   "pct2": null,
+   "cc_m": 332.77,
+   "tax_m": 1343.35,
+   "carry_m": 337.23,
+   "page": 18
+  },
+  {
+   "unit": "2",
+   "beds": null,
+   "baths": null,
+   "int_sf": 750,
+   "ext_sf": null,
+   "price": 380000,
+   "pct": 13.862,
+   "pct2": null,
+   "cc_m": 219.48,
+   "tax_m": 886,
+   "carry_m": 222.42,
+   "page": 18
+  },
+  {
+   "unit": "3",
+   "beds": null,
+   "baths": null,
+   "int_sf": 1020,
+   "ext_sf": null,
+   "price": 510000,
+   "pct": 21.874,
+   "pct2": null,
+   "cc_m": 346.34,
+   "tax_m": 1398.11,
+   "carry_m": 350.98,
+   "page": 18
+  },
+  {
+   "unit": "4",
+   "beds": null,
+   "baths": null,
+   "int_sf": 1020,
+   "ext_sf": null,
+   "price": 510000,
+   "pct": 21.549,
+   "pct2": null,
+   "cc_m": 341.19,
+   "tax_m": 1377.34,
+   "carry_m": 345.77,
+   "page": 18
+  },
+  {
+   "unit": "5",
+   "beds": null,
+   "baths": null,
+   "int_sf": 960,
+   "ext_sf": null,
+   "price": 480000,
+   "pct": 21.698,
+   "pct2": null,
+   "cc_m": 343.56,
+   "tax_m": 1386.88,
+   "carry_m": 348.16,
+   "page": 18
+  }
+ ],
+ "calls": 2,
+ "tokens": 32011,
+ "qa_date": "2026-10-01T18:35:50.321Z"
+}

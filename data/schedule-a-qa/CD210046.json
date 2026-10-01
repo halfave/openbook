@@ -1,0 +1,127 @@
+{
+ "plan_id": "CD210046",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 6,
+ "pub_hash": "4f926a9a0b7e",
+ "verdict": "errors",
+ "pages": [
+  34,
+  35
+ ],
+ "units_read": 6,
+ "cells_compared": 36,
+ "cells_agreeing": 35,
+ "errors": 1,
+ "unresolved": 0,
+ "findings": [
+  {
+   "unit": "1",
+   "field": "baths",
+   "published": 1,
+   "read": null,
+   "kind": "not_read",
+   "page": 34,
+   "printed": 2,
+   "outcome": "published_wrong",
+   "why": "Unit 1's bathrooms cell reads '1 Full/ 2 Half' (bedrooms are 1). Counting a half bath as .5 gives 1 + 2×.5 = 2, so neither candidate is right."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 10,
+ "read_problems": [
+  "Unit 1 beds/baths printed as \"1/ 1 Full/ 2 Half\" and int_sf as \"501*/655\" (two figures, both transcribed as given); unable to determine which single figure is the primary interior sf.",
+  "Unit 1 beds column value placed in beds cell; baths value (1 Full/2 Half = 1.5) not separately computed per rules (no derivation performed)."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": null,
+   "baths": null,
+   "int_sf": null,
+   "ext_sf": null,
+   "price": 1250000,
+   "pct": 19.84,
+   "pct2": null,
+   "cc_m": 766.98,
+   "tax_m": 726.62,
+   "carry_m": 1493.6,
+   "page": 34
+  },
+  {
+   "unit": "2",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 985,
+   "ext_sf": null,
+   "price": 995000,
+   "pct": 15.37,
+   "pct2": null,
+   "cc_m": 594.18,
+   "tax_m": 562.91,
+   "carry_m": 1157.09,
+   "page": 34
+  },
+  {
+   "unit": "3",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 985,
+   "ext_sf": null,
+   "price": 1050000,
+   "pct": 16.1,
+   "pct2": null,
+   "cc_m": 622.4,
+   "tax_m": 589.64,
+   "carry_m": 1212.04,
+   "page": 34
+  },
+  {
+   "unit": "4",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 985,
+   "ext_sf": null,
+   "price": 1050000,
+   "pct": 16.1,
+   "pct2": null,
+   "cc_m": 622.4,
+   "tax_m": 589.64,
+   "carry_m": 1212.04,
+   "page": 34
+  },
+  {
+   "unit": "5",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 985,
+   "ext_sf": null,
+   "price": 1050000,
+   "pct": 16.1,
+   "pct2": null,
+   "cc_m": 622.4,
+   "tax_m": 589.64,
+   "carry_m": 1212.04,
+   "page": 34
+  },
+  {
+   "unit": "6",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 985,
+   "ext_sf": null,
+   "price": 1100000,
+   "pct": 16.49,
+   "pct2": null,
+   "cc_m": 637.48,
+   "tax_m": 603.93,
+   "carry_m": 1241.41,
+   "page": 34
+  }
+ ],
+ "calls": 2,
+ "tokens": 21819,
+ "qa_date": "2026-10-01T19:13:39.002Z"
+}

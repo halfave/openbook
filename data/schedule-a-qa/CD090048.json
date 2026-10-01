@@ -1,0 +1,170 @@
+{
+ "plan_id": "CD090048",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 5,
+ "pub_hash": "360bf8830471",
+ "verdict": "errors",
+ "pages": [
+  21,
+  22
+ ],
+ "units_read": 7,
+ "cells_compared": 35,
+ "cells_agreeing": 33,
+ "errors": 3,
+ "unresolved": 1,
+ "findings": [
+  {
+   "unit": "5",
+   "field": "beds",
+   "published": 0,
+   "read": 2,
+   "kind": "differs",
+   "page": 21,
+   "printed": 2,
+   "outcome": "published_wrong",
+   "why": "Unit 5 spans two floors and has two lines. The Fourth-floor line, which carries the price, reads 2/2, so 2 bedrooms. The Fifth-floor line reads 0/.5, which adds no bedrooms."
+  },
+  {
+   "unit": "5",
+   "field": "baths",
+   "published": 0.5,
+   "read": 2,
+   "kind": "differs",
+   "page": 21,
+   "printed": 2,
+   "outcome": "unresolved",
+   "why": "The main (Fourth) line reads 2/2, so 2 baths. A second Fifth-floor line reads 0/.5, so the unit has 2.5 baths in total. No combined figure is printed, and the 10/11 total row counts each line separately."
+  },
+  {
+   "unit": "1",
+   "kind": "extra",
+   "read": 1395000,
+   "page": 21,
+   "printed": 1395000,
+   "outcome": "unit_missing_from_published",
+   "why": "The unit 1 row (Cellar/Basement, 0/.5 and 2/2) shows $1,395,000."
+  },
+  {
+   "unit": "5",
+   "kind": "extra",
+   "read": 1495000,
+   "page": 21,
+   "printed": 1495000,
+   "outcome": "unit_missing_from_published",
+   "why": "The unit 5 row (Fourth/Fifth) shows $1,495,000."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 5,
+ "read_problems": [
+  "Unit 1 and Unit 5 each have two bed/bath entries (0/.5 and 2/2) corresponding to two location/sqft rows (Cellar/Basement and Fourth/Fifth); table gives one combined price/common interest/charges per unit, so these figures are duplicated across both rows rather than split.",
+  "Carrying costs \"WITHOUT SECTION J-51\" column used for carry_m per task default (first tax scenario); \"WITH SECTION J-51 BENEFITS\" shows $0 which appears to not be in effect."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": 0,
+   "baths": 0.5,
+   "int_sf": 717,
+   "ext_sf": null,
+   "price": 1395000,
+   "pct": 23.4,
+   "pct2": null,
+   "cc_m": 513.92,
+   "tax_m": 156,
+   "carry_m": 669.92,
+   "page": 21
+  },
+  {
+   "unit": "1",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1238,
+   "ext_sf": null,
+   "price": 1395000,
+   "pct": 23.4,
+   "pct2": null,
+   "cc_m": 513.92,
+   "tax_m": 156,
+   "carry_m": 669.92,
+   "page": 21
+  },
+  {
+   "unit": "2",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1167,
+   "ext_sf": null,
+   "price": 960000,
+   "pct": 16.7,
+   "pct2": null,
+   "cc_m": 366.42,
+   "tax_m": 111.25,
+   "carry_m": 477.67,
+   "page": 21
+  },
+  {
+   "unit": "3",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1230,
+   "ext_sf": null,
+   "price": 985000,
+   "pct": 17.4,
+   "pct2": null,
+   "cc_m": 382.42,
+   "tax_m": 116.08,
+   "carry_m": 498.5,
+   "page": 21
+  },
+  {
+   "unit": "4",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1230,
+   "ext_sf": null,
+   "price": 995000,
+   "pct": 17.4,
+   "pct2": null,
+   "cc_m": 382.08,
+   "tax_m": 116,
+   "carry_m": 498.08,
+   "page": 21
+  },
+  {
+   "unit": "5",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1230,
+   "ext_sf": null,
+   "price": 1495000,
+   "pct": 25.1,
+   "pct2": null,
+   "cc_m": 550.17,
+   "tax_m": 167.08,
+   "carry_m": 717.25,
+   "page": 21
+  },
+  {
+   "unit": "5",
+   "beds": 0,
+   "baths": 0.5,
+   "int_sf": 387,
+   "ext_sf": null,
+   "price": 1495000,
+   "pct": 25.1,
+   "pct2": null,
+   "cc_m": 550.17,
+   "tax_m": 167.08,
+   "carry_m": 717.25,
+   "page": 21
+  }
+ ],
+ "calls": 2,
+ "tokens": 22386,
+ "qa_date": "2026-10-01T18:38:40.700Z"
+}

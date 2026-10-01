@@ -1,0 +1,139 @@
+{
+ "plan_id": "CD180095",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 6,
+ "verdict": "verified",
+ "pages": [
+  29,
+  30
+ ],
+ "units_read": 6,
+ "cells_compared": 48,
+ "cells_agreeing": 48,
+ "errors": 0,
+ "unresolved": 0,
+ "findings": [],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [
+  {
+   "published": "1",
+   "read": "1 (Commercial)"
+  },
+  {
+   "published": "2",
+   "read": "2 (Residential)"
+  },
+  {
+   "published": "3",
+   "read": "3 (Residential)"
+  },
+  {
+   "published": "4",
+   "read": "4 (Residential)"
+  },
+  {
+   "published": "5",
+   "read": "5 (Residential)"
+  },
+  {
+   "published": "6",
+   "read": "6 (Residential)"
+  }
+ ],
+ "filled_by_reading": 5,
+ "read_problems": [
+  "Table has two real estate tax/carrying cost scenarios (without ICAP/Condo Abatement vs with Condo Abatement); used \"without\" scenario (col 6/7) since it matches the first-listed figures per instructions.",
+  "\"Approx. Ltd. Common Element sq. ft.\" column (e.g., 221, 823, 29, 1104) is a limited common element area, not clearly terrace/balcony ext_sf except where notes say Units 2 and 6 have terraces; used those values as ext_sf for units 2 and 6, and left others as - except where only this figure was available (units 1,3,4,5 use this column as ext_sf despite uncertainty)."
+ ],
+ "read_units": [
+  {
+   "unit": "1 (Commercial)",
+   "beds": 0,
+   "baths": 0.5,
+   "int_sf": 4989,
+   "ext_sf": null,
+   "price": 8500000,
+   "pct": 30,
+   "pct2": null,
+   "cc_m": 985.15,
+   "tax_m": 7431,
+   "carry_m": 8416.15,
+   "page": 29
+  },
+  {
+   "unit": "2 (Residential)",
+   "beds": 3,
+   "baths": 3,
+   "int_sf": 1869,
+   "ext_sf": 823,
+   "price": 4500000,
+   "pct": 15,
+   "pct2": null,
+   "cc_m": 1233.43,
+   "tax_m": 3561.3,
+   "carry_m": 4794.74,
+   "page": 29
+  },
+  {
+   "unit": "3 (Residential)",
+   "beds": 3,
+   "baths": 3.5,
+   "int_sf": 1866,
+   "ext_sf": 29,
+   "price": 4200000,
+   "pct": 13,
+   "pct2": null,
+   "cc_m": 1068.97,
+   "tax_m": 3086.46,
+   "carry_m": 4155.44,
+   "page": 29
+  },
+  {
+   "unit": "4 (Residential)",
+   "beds": 3,
+   "baths": 3.5,
+   "int_sf": 1866,
+   "ext_sf": 29,
+   "price": 4250000,
+   "pct": 13,
+   "pct2": null,
+   "cc_m": 1068.97,
+   "tax_m": 3086.46,
+   "carry_m": 4155.44,
+   "page": 29
+  },
+  {
+   "unit": "5 (Residential)",
+   "beds": 3,
+   "baths": 3.5,
+   "int_sf": 1866,
+   "ext_sf": 29,
+   "price": 4300000,
+   "pct": 13,
+   "pct2": null,
+   "cc_m": 1068.97,
+   "tax_m": 3086.46,
+   "carry_m": 4155.44,
+   "page": 29
+  },
+  {
+   "unit": "6 (Residential)",
+   "beds": 3,
+   "baths": 3.5,
+   "int_sf": 2036,
+   "ext_sf": 1104,
+   "price": 5650000,
+   "pct": 16,
+   "pct2": null,
+   "cc_m": 1315.66,
+   "tax_m": 3798.72,
+   "carry_m": 5114.38,
+   "page": 29
+  }
+ ],
+ "calls": 1,
+ "tokens": 13191,
+ "qa_date": "2026-10-01T02:50:02.668Z"
+}

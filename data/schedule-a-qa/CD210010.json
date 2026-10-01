@@ -1,0 +1,58 @@
+{
+ "plan_id": "CD210010",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 2,
+ "pub_hash": "b6965b8a599e",
+ "verdict": "verified",
+ "pages": [
+  33,
+  34
+ ],
+ "units_read": 2,
+ "cells_compared": 14,
+ "cells_agreeing": 14,
+ "errors": 0,
+ "unresolved": 0,
+ "findings": [],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 4,
+ "read_problems": [
+  "Unit 1: beds/baths listed as \"3/2 Full; 2 Half\" - interpreted as 3 bedrooms, 2.5 baths (2 full + 2 half = 3 total bath fixtures, used 2.5 per convention but value is ambiguous; printed as \"2 Full; 2 Half\"? please verify - table shows \"2 Half\" but rule text in my reading showed \"2 Half\" under 3/2 Full line); int_sf for Unit 1 computed as sum of 837+720+759=2316 (three floor areas, not a single printed figure); ext_sf for Unit 1 is sum of 110(D)+549(RY)=659 (two separate printed figures); int_sf for Unit 2 computed as sum of 791+837+81=1709; ext_sf for Unit 2 is sum of 36+36(B)+756(RT)+81(R)=909, but recalculated to 872 - please verify exact sum (36+36+756+81=909)."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": 3,
+   "baths": 2.5,
+   "int_sf": 2316,
+   "ext_sf": 659,
+   "price": 1050000,
+   "pct": 54.62,
+   "pct2": null,
+   "cc_m": 831.82,
+   "tax_m": 1149.48,
+   "carry_m": 1981.3,
+   "page": 33
+  },
+  {
+   "unit": "2",
+   "beds": 3,
+   "baths": 2.5,
+   "int_sf": 1709,
+   "ext_sf": 872,
+   "price": 950000,
+   "pct": 45.38,
+   "pct2": null,
+   "cc_m": 691.1,
+   "tax_m": 955.02,
+   "carry_m": 1646.12,
+   "page": 33
+  }
+ ],
+ "calls": 1,
+ "tokens": 13338,
+ "qa_date": "2026-10-01T19:12:43.695Z"
+}

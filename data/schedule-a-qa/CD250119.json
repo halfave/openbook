@@ -1,0 +1,104 @@
+{
+ "plan_id": "CD250119",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 2,
+ "pub_hash": "64bda0ab0596",
+ "verdict": "verified",
+ "pages": [
+  29,
+  30
+ ],
+ "units_read": 2,
+ "cells_compared": 18,
+ "cells_agreeing": 14,
+ "errors": 0,
+ "unresolved": 0,
+ "findings": [
+  {
+   "unit": "1",
+   "field": "beds",
+   "published": 3,
+   "read": null,
+   "kind": "not_read",
+   "page": 29,
+   "printed": 3,
+   "outcome": "ok",
+   "why": "Bedrooms/Bathrooms cell reads '3/3 full, 2 half'; bedrooms = 3"
+  },
+  {
+   "unit": "1",
+   "field": "baths",
+   "published": 4,
+   "read": null,
+   "kind": "not_read",
+   "page": 29,
+   "printed": 4,
+   "outcome": "ok",
+   "why": "The page prints '3 full, 2 half', not '4'; counting each half bath as .5 gives 3 + 2×.5 = 4"
+  },
+  {
+   "unit": "2",
+   "field": "beds",
+   "published": 4,
+   "read": null,
+   "kind": "not_read",
+   "page": 29,
+   "printed": 4,
+   "outcome": "ok",
+   "why": "Cell reads '4/3.5'; bedrooms = 4"
+  },
+  {
+   "unit": "2",
+   "field": "baths",
+   "published": 3.5,
+   "read": null,
+   "kind": "not_read",
+   "page": 29,
+   "printed": 3.5,
+   "outcome": "ok",
+   "why": "Cell reads '4/3.5'; bathrooms = 3.5"
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 0,
+ "read_problems": [
+  "Beds/baths column printed as combined text (\"3/3 full, 2 half\" for Unit 1, \"4/3.5\" for Unit 2); placed full string in beds column since table does not separate beds and baths into distinct values.",
+  "Page 30 image contains no Schedule A table, only Notes to Schedule A text; table data taken entirely from page 29 (labeled PDF PAGE 29 per instructions, printed as \"Page 28\" in footer)."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": null,
+   "baths": null,
+   "int_sf": 2190,
+   "ext_sf": 517,
+   "price": 1971000,
+   "pct": 50,
+   "pct2": null,
+   "cc_m": 722.46,
+   "tax_m": 808.54,
+   "carry_m": 1531,
+   "page": 29
+  },
+  {
+   "unit": "2",
+   "beds": null,
+   "baths": null,
+   "int_sf": 2520,
+   "ext_sf": 887,
+   "price": 2268000,
+   "pct": 50,
+   "pct2": null,
+   "cc_m": 722.46,
+   "tax_m": 808.54,
+   "carry_m": 1531,
+   "page": 29
+  }
+ ],
+ "calls": 2,
+ "tokens": 31291,
+ "qa_date": "2026-10-01T20:09:44.145Z"
+}

@@ -1,0 +1,97 @@
+{
+ "plan_id": "CD190320",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 3,
+ "pub_hash": "4c74d962547f",
+ "verdict": "unresolved",
+ "pages": [
+  45,
+  46
+ ],
+ "units_read": 3,
+ "cells_compared": 25,
+ "cells_agreeing": 23,
+ "errors": 0,
+ "unresolved": 2,
+ "findings": [
+  {
+   "unit": "1",
+   "field": "sqft",
+   "published": 1201.15,
+   "read": 2232.64,
+   "kind": "differs",
+   "page": 45,
+   "printed": 2232.64,
+   "outcome": "unresolved",
+   "why": "Both values are printed in unit 1's row: 1,201.15 under 'Square Footage of Unit - Main Floor' and 2,232.64 under 'Total Square Footage of Unit (Habitable Areas)'. I chose the total, which adds the 1,031.49 cellar/penthouse floor. Which column counts as 'interior' is a judgment call."
+  },
+  {
+   "unit": "3",
+   "field": "sqft",
+   "published": 1373.29,
+   "read": 1869.96,
+   "kind": "differs",
+   "page": 45,
+   "printed": 1869.96,
+   "outcome": "unresolved",
+   "why": "Both values are printed in unit 3's row: 1,373.29 under 'Main Floor' and 1,869.96 under 'Total Square Footage of Unit (Habitable Areas)'. I chose the total, which adds the 496.67 cellar/penthouse floor. Which column counts as 'interior' is a judgment call."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 1,
+ "read_problems": [
+  "Page 46 contains only footnotes, no Schedule A price table.",
+  "Unit 1 ext_sf: table lists Yard 750.00 and Roof 0.00; used Yard (750.00) per rule for single ext figure.",
+  "Unit 3 ext_sf: table lists Yard 0.00 and Roof 867.66; used Roof (867.66) per rule for single ext figure."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 2232.64,
+   "ext_sf": 750,
+   "price": 2495000,
+   "pct": 36,
+   "pct2": null,
+   "cc_m": 675.63,
+   "tax_m": 1200,
+   "carry_m": 1875.63,
+   "page": 45
+  },
+  {
+   "unit": "2",
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1360.38,
+   "ext_sf": null,
+   "price": 1895000,
+   "pct": 28,
+   "pct2": null,
+   "cc_m": 525.49,
+   "tax_m": 933.33,
+   "carry_m": 1458.82,
+   "page": 45
+  },
+  {
+   "unit": "3",
+   "beds": 3,
+   "baths": 3,
+   "int_sf": 1869.96,
+   "ext_sf": 867.66,
+   "price": 2595000,
+   "pct": 36,
+   "pct2": null,
+   "cc_m": 675.63,
+   "tax_m": 1200,
+   "carry_m": 1875.63,
+   "page": 45
+  }
+ ],
+ "calls": 2,
+ "tokens": 22032,
+ "qa_date": "2026-10-01T19:00:31.109Z"
+}

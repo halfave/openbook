@@ -1,0 +1,148 @@
+{
+ "plan_id": "CD230300",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 6,
+ "pub_hash": "4940e525a1cd",
+ "verdict": "verified",
+ "pages": [
+  43,
+  44
+ ],
+ "units_read": 6,
+ "cells_compared": 48,
+ "cells_agreeing": 45,
+ "errors": 0,
+ "unresolved": 0,
+ "findings": [
+  {
+   "unit": "TH",
+   "field": "sqft",
+   "published": 2699,
+   "read": 3699,
+   "kind": "differs",
+   "page": 43,
+   "printed": 2699,
+   "outcome": "ok",
+   "why": "The Approximate Square Footage column prints TH by floor: Cellar 1,206 and 1st Floor 1,493, which total 2,699. 3,699 is the Total Square Footage Including Limited Common Elements column."
+  },
+  {
+   "unit": "PHA",
+   "field": "sqft",
+   "published": 1530,
+   "read": 2348,
+   "kind": "differs",
+   "page": 43,
+   "printed": 1530,
+   "outcome": "ok",
+   "why": "The Approximate Square Footage column prints PHA by floor: 3rd Floor 910 and 4th Floor 620, which total 1,530. 2,348 is the Total Square Footage Including Limited Common Elements column."
+  },
+  {
+   "unit": "PHB",
+   "field": "sqft",
+   "published": 1432,
+   "read": 2741,
+   "kind": "differs",
+   "page": 43,
+   "printed": 1432,
+   "outcome": "ok",
+   "why": "The Approximate Square Footage column prints PHB by floor: 3rd Floor 901 and 4th Floor 531, which total 1,432. 2,741 is the Total Square Footage Including Limited Common Elements column. The column total of 9,453 matches the floor sums."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 1,
+ "read_problems": [
+  "int_sf used is \"Approximate Square Footage\" column (not the \"Total Square Footage Including Limited Common Elements\" column); ext_sf left blank for units with multiple nonzero outdoor area columns (TH: patio 129 + yard 504; PHB: roof 650 + terrace 659) since only single-figure ext_sf is requested."
+ ],
+ "read_units": [
+  {
+   "unit": "1A",
+   "beds": 0,
+   "baths": 2,
+   "int_sf": 1301,
+   "ext_sf": null,
+   "price": 1951500,
+   "pct": 10.342,
+   "pct2": null,
+   "cc_m": 1024.48,
+   "tax_m": 547.01,
+   "carry_m": 1571.49,
+   "page": 43
+  },
+  {
+   "unit": "TH",
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 3699,
+   "ext_sf": null,
+   "price": 4599000,
+   "pct": 29.404,
+   "pct2": null,
+   "cc_m": 2912.76,
+   "tax_m": 1555.25,
+   "carry_m": 4468,
+   "page": 43
+  },
+  {
+   "unit": "2A",
+   "beds": 2,
+   "baths": 1.5,
+   "int_sf": 979,
+   "ext_sf": null,
+   "price": 1566400,
+   "pct": 7.782,
+   "pct2": null,
+   "cc_m": 770.88,
+   "tax_m": 411.61,
+   "carry_m": 1182,
+   "page": 43
+  },
+  {
+   "unit": "2B",
+   "beds": 2,
+   "baths": 1.5,
+   "int_sf": 1512,
+   "ext_sf": null,
+   "price": 2419200,
+   "pct": 12.019,
+   "pct2": null,
+   "cc_m": 1190.6,
+   "tax_m": 635.71,
+   "carry_m": 1826,
+   "page": 43
+  },
+  {
+   "unit": "PHA",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 2348,
+   "ext_sf": 818,
+   "price": 2754000,
+   "pct": 18.665,
+   "pct2": null,
+   "cc_m": 1848.95,
+   "tax_m": 987.24,
+   "carry_m": 2836,
+   "page": 43
+  },
+  {
+   "unit": "PHB",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 2741,
+   "ext_sf": null,
+   "price": 2704700,
+   "pct": 21.788,
+   "pct2": null,
+   "cc_m": 2158.32,
+   "tax_m": 1152.42,
+   "carry_m": 3311,
+   "page": 43
+  }
+ ],
+ "calls": 2,
+ "tokens": 22283,
+ "qa_date": "2026-10-01T05:25:33.854Z"
+}

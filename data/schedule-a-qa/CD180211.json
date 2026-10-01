@@ -1,0 +1,168 @@
+{
+ "plan_id": "CD180211",
+ "source": "pattern",
+ "checked": null,
+ "units_published": 7,
+ "verdict": "errors",
+ "pages": [
+  54,
+  55
+ ],
+ "units_read": 7,
+ "cells_compared": 29,
+ "cells_agreeing": 27,
+ "errors": 3,
+ "unresolved": 0,
+ "findings": [
+  {
+   "unit": "STUDIO/1",
+   "field": "unit",
+   "published": "STUDIO/1",
+   "read": "1A",
+   "kind": "differs",
+   "page": 54,
+   "printed": "1A",
+   "outcome": "published_wrong",
+   "why": "The Unit No. column shows 1A. STUDIO/1.5 BTH is in the #BR/BA column."
+  },
+  {
+   "unit": "2B",
+   "field": "sqft",
+   "published": 624,
+   "read": 624.92,
+   "kind": "differs",
+   "page": 54,
+   "printed": 624.92,
+   "outcome": "published_wrong",
+   "why": "The 2B row's Approx. Floor Area cell reads 624.92."
+  },
+  {
+   "unit": "3B",
+   "field": "sqft",
+   "published": 624,
+   "read": 624.92,
+   "kind": "differs",
+   "page": 54,
+   "printed": 624.92,
+   "outcome": "published_wrong",
+   "why": "The 3B row's Approx. Floor Area cell reads 624.92."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [
+  {
+   "published": "1",
+   "read": "1B"
+  }
+ ],
+ "filled_by_reading": 27,
+ "read_problems": [
+  "Unit 1A and 1B each have two floor area figures printed (e.g., 319.99 and 444.93 for 1A; 589.79 and 636.35 for 1B) — likely interior + duplex cellar/gross; used the first (smaller) figure as int_sf per instructions, second figure not used.",
+  "Table does not explicitly label \"Percent Common Element\" column as having a second pct column, so pct2 set to \"-\" for all units.",
+  "ext_sf not given as a separate numeric column in this Schedule A table (Limited Common Elements listed separately by type, not tied per-unit to a single sq ft figure in the main table), so set to \"-\" for all units."
+ ],
+ "read_units": [
+  {
+   "unit": "1A",
+   "beds": 0,
+   "baths": 1.5,
+   "int_sf": 319.99,
+   "ext_sf": null,
+   "price": 723900,
+   "pct": 13.78,
+   "pct2": null,
+   "cc_m": 397.61,
+   "tax_m": 481.99,
+   "carry_m": 879.6,
+   "page": 54
+  },
+  {
+   "unit": "1B",
+   "beds": 1,
+   "baths": 1.5,
+   "int_sf": 589.79,
+   "ext_sf": null,
+   "price": 1164700,
+   "pct": 22.17,
+   "pct2": null,
+   "cc_m": 637.35,
+   "tax_m": 775.45,
+   "carry_m": 1412.8,
+   "page": 54
+  },
+  {
+   "unit": "2A",
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 637.33,
+   "ext_sf": null,
+   "price": 605150,
+   "pct": 11.52,
+   "pct2": null,
+   "cc_m": 331.29,
+   "tax_m": 402.94,
+   "carry_m": 734.23,
+   "page": 54
+  },
+  {
+   "unit": "2B",
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 624.92,
+   "ext_sf": null,
+   "price": 593750,
+   "pct": 11.31,
+   "pct2": null,
+   "cc_m": 324.84,
+   "tax_m": 395.6,
+   "carry_m": 720.44,
+   "page": 54
+  },
+  {
+   "unit": "3A",
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 637.33,
+   "ext_sf": null,
+   "price": 605150,
+   "pct": 11.52,
+   "pct2": null,
+   "cc_m": 331.29,
+   "tax_m": 402.94,
+   "carry_m": 734.23,
+   "page": 54
+  },
+  {
+   "unit": "3B",
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 624.92,
+   "ext_sf": null,
+   "price": 593750,
+   "pct": 11.31,
+   "pct2": null,
+   "cc_m": 324.84,
+   "tax_m": 395.6,
+   "carry_m": 720.44,
+   "page": 54
+  },
+  {
+   "unit": "4A",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1051.11,
+   "ext_sf": null,
+   "price": 966150,
+   "pct": 18.39,
+   "pct2": null,
+   "cc_m": 546.37,
+   "tax_m": 643.23,
+   "carry_m": 1189.6,
+   "page": 54
+  }
+ ],
+ "calls": 2,
+ "tokens": 21512,
+ "qa_date": "2026-10-01T02:54:34.014Z"
+}

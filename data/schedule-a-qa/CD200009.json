@@ -1,0 +1,105 @@
+{
+ "plan_id": "CD200009",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 3,
+ "verdict": "errors",
+ "pages": [
+  36,
+  37
+ ],
+ "units_read": 3,
+ "cells_compared": 24,
+ "cells_agreeing": 21,
+ "errors": 3,
+ "unresolved": 0,
+ "findings": [
+  {
+   "unit": "A",
+   "field": "baths",
+   "published": 1,
+   "read": 1.5,
+   "kind": "differs",
+   "page": 36,
+   "printed": 1.5,
+   "outcome": "published_wrong",
+   "why": "The column is 'Bedroom/Bathroom/1/2 bath' and row A reads '1 1 1': 1 bedroom, 1 full bath, 1 half bath = 1.5"
+  },
+  {
+   "unit": "B",
+   "field": "baths",
+   "published": 2,
+   "read": 2.5,
+   "kind": "differs",
+   "page": 36,
+   "printed": 2.5,
+   "outcome": "published_wrong",
+   "why": "Row B reads '3 2 1': 3 bedrooms, 2 full baths, 1 half bath = 2.5"
+  },
+  {
+   "unit": "C",
+   "field": "baths",
+   "published": 2,
+   "read": 2.5,
+   "kind": "differs",
+   "page": 36,
+   "printed": 2.5,
+   "outcome": "published_wrong",
+   "why": "Row C reads '3 2 1': 3 bedrooms, 2 full baths, 1 half bath = 2.5"
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 0,
+ "read_problems": [
+  "Square footage column (753.14, 1751.56) is labeled \"Square footage\" without specifying interior vs. gross; used as int_sf per instructions since no second area figure is given. Accessory Use Cellar Space (504.70/0.00) and Limited Common Element square feet are separate columns not matching ext_sf definition (terrace/balcony/yard), so left as - for ext_sf; actual limited common area details (yard/balcony/roof terrace sf) are listed in footnotes, not as a single ext_sf column in the table."
+ ],
+ "read_units": [
+  {
+   "unit": "A",
+   "beds": 1,
+   "baths": 1.5,
+   "int_sf": 753.14,
+   "ext_sf": null,
+   "price": 1375000,
+   "pct": 26.4198,
+   "pct2": null,
+   "cc_m": 712.43,
+   "tax_m": 1119.74,
+   "carry_m": 1832.16,
+   "page": 36
+  },
+  {
+   "unit": "B",
+   "beds": 3,
+   "baths": 2.5,
+   "int_sf": 1751.56,
+   "ext_sf": null,
+   "price": 2400000,
+   "pct": 36.7901,
+   "pct2": null,
+   "cc_m": 992.07,
+   "tax_m": 1559.25,
+   "carry_m": 2551.32,
+   "page": 36
+  },
+  {
+   "unit": "C",
+   "beds": 3,
+   "baths": 2.5,
+   "int_sf": 1751.56,
+   "ext_sf": null,
+   "price": 2550000,
+   "pct": 36.7901,
+   "pct2": null,
+   "cc_m": 992.07,
+   "tax_m": 1559.25,
+   "carry_m": 2551.32,
+   "page": 36
+  }
+ ],
+ "calls": 2,
+ "tokens": 21438,
+ "qa_date": "2026-10-01T03:29:27.896Z"
+}

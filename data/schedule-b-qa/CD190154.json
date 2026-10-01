@@ -1,0 +1,166 @@
+{
+ "plan_id": "CD190154",
+ "verdict": "unresolved",
+ "summary": "11/14 agree, 0 errors, 2 unresolved",
+ "pages": [
+  35
+ ],
+ "items_stored": 13,
+ "items_read": 12,
+ "compared": 14,
+ "agree": 11,
+ "errors": 0,
+ "unresolved": 2,
+ "findings": [
+  {
+   "kind": "amount",
+   "item": "Salaries & Wages",
+   "stored": 0,
+   "read": -1,
+   "page": 35,
+   "printed": 0,
+   "outcome": "ok",
+   "why": "A dash is printed, which means zero. It sits left of the amount column, but it is on this line."
+  },
+  {
+   "kind": "amount",
+   "item": "Management",
+   "stored": 0,
+   "read": -1,
+   "page": 35,
+   "printed": null,
+   "outcome": "unresolved",
+   "why": "The amount column for Management is blank. No dash or number is printed."
+  },
+  {
+   "kind": "amount",
+   "item": "Gas",
+   "stored": 0,
+   "read": -1,
+   "page": 35,
+   "printed": 0,
+   "outcome": "ok",
+   "why": "A dash is printed in the amount column, which means zero."
+  },
+  {
+   "kind": "not_read",
+   "item": "TOTAL",
+   "stored": 26362,
+   "page": 35,
+   "printed": 26362,
+   "outcome": "unresolved",
+   "why": "There is no line labelled 'TOTAL'. An unlabelled total of $26,362 is printed under the rule below the expenses."
+  }
+ ],
+ "read_problems": [
+  "Management line has no amount shown on this page (blank); Salaries & Wages and Gas show \"-\" which was transcribed as -1 per instructions for bracketed/negative amounts, but these may instead represent zero or blank values rather than negative numbers."
+ ],
+ "read": {
+  "items": [
+   {
+    "budget": "Condominium",
+    "section": "Income",
+    "item": "Common Charges",
+    "amount": 26362,
+    "page": 35
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "Salaries & Wages",
+    "amount": -1,
+    "page": 35
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "Management",
+    "amount": -1,
+    "page": 35
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "Gas",
+    "amount": -1,
+    "page": 35
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "Electricity",
+    "amount": 1847,
+    "page": 35
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "Franchise taxes",
+    "amount": 1000,
+    "page": 35
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "Water & sewer",
+    "amount": 6666,
+    "page": 35
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "Repairs, services & supplies",
+    "amount": 8900,
+    "page": 35
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "Insurance",
+    "amount": 2748,
+    "page": 35
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "Legal fees",
+    "amount": 1000,
+    "page": 35
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "Audit fees",
+    "amount": 1500,
+    "page": 35
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "Reserve Fund for Major Repairs",
+    "amount": 2700,
+    "page": 35
+   }
+  ],
+  "totals": [
+   {
+    "budget": "Condominium",
+    "kind": "income",
+    "amount": 26362,
+    "page": 35
+   },
+   {
+    "budget": "Condominium",
+    "kind": "expenses",
+    "amount": 26362,
+    "page": 35
+   }
+  ],
+  "problems": [
+   "Management line has no amount shown on this page (blank); Salaries & Wages and Gas show \"-\" which was transcribed as -1 per instructions for bracketed/negative amounts, but these may instead represent zero or blank values rather than negative numbers."
+  ]
+ },
+ "calls": 2,
+ "tokens": 18487,
+ "qa_date": "2026-10-01T22:36:50.943Z"
+}

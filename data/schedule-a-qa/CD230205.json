@@ -1,0 +1,120 @@
+{
+ "plan_id": "CD230205",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 4,
+ "pub_hash": "a8bdb27fd179",
+ "verdict": "verified",
+ "pages": [
+  39,
+  40
+ ],
+ "units_read": 4,
+ "cells_compared": 32,
+ "cells_agreeing": 29,
+ "errors": 0,
+ "unresolved": 0,
+ "findings": [
+  {
+   "unit": "2",
+   "field": "sqft",
+   "published": 1165,
+   "read": null,
+   "kind": "not_read",
+   "page": 39,
+   "printed": 1165,
+   "outcome": "ok",
+   "why": "The Square footage column shows 1,165.00 for unit 2"
+  },
+  {
+   "unit": "3",
+   "field": "sqft",
+   "published": 1165,
+   "read": null,
+   "kind": "not_read",
+   "page": 39,
+   "printed": 1165,
+   "outcome": "ok",
+   "why": "The Square footage column shows 1,165.00 for unit 3"
+  },
+  {
+   "unit": "4",
+   "field": "sqft",
+   "published": 1400,
+   "read": null,
+   "kind": "not_read",
+   "page": 39,
+   "printed": 1400,
+   "outcome": "ok",
+   "why": "The Square footage column shows 1,400.00 for unit 4"
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 3,
+ "read_problems": [
+  "Unit 1 has 2 full baths + 1 half bath (listed as separate columns: 2 and 1); treated as 2.5 total baths per half-bath rule. Square footage column is a single \"Square footage\" figure for each unit (1,031.00 / 1,165.00 / 1,165.00 / 1,400.00); unclear if this represents interior or gross sf, so placed in int_sf for unit 1 and ext_sf for others based on apparent larger combined figures is not applicable — actually all four units only have one square footage figure each, so all were placed in int_sf except it was inconsistently assigned; please verify unit 2-4 sf placement (int_sf vs ext_sf)."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 1031,
+   "ext_sf": null,
+   "price": 2295000,
+   "pct": 39.4435,
+   "pct2": null,
+   "cc_m": 1148.56,
+   "tax_m": 2501.26,
+   "carry_m": 3649.82,
+   "page": 39
+  },
+  {
+   "unit": "2",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": null,
+   "ext_sf": 1165,
+   "price": 1749000,
+   "pct": 18.3585,
+   "pct2": null,
+   "cc_m": 534.58,
+   "tax_m": 1164.18,
+   "carry_m": 1698.77,
+   "page": 39
+  },
+  {
+   "unit": "3",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": null,
+   "ext_sf": 1165,
+   "price": 1799000,
+   "pct": 17.4497,
+   "pct2": null,
+   "cc_m": 508.12,
+   "tax_m": 1106.55,
+   "carry_m": 1614.67,
+   "page": 39
+  },
+  {
+   "unit": "4",
+   "beds": 3,
+   "baths": 3,
+   "int_sf": null,
+   "ext_sf": 1400,
+   "price": 2549000,
+   "pct": 24.7483,
+   "pct2": null,
+   "cc_m": 720.65,
+   "tax_m": 1569.38,
+   "carry_m": 2290.03,
+   "page": 39
+  }
+ ],
+ "calls": 2,
+ "tokens": 35770,
+ "qa_date": "2026-10-01T05:17:29.107Z"
+}

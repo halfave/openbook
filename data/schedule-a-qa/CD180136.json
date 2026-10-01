@@ -1,0 +1,137 @@
+{
+ "plan_id": "CD180136",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 8,
+ "verdict": "errors",
+ "pages": [
+  31,
+  32
+ ],
+ "units_read": 7,
+ "cells_compared": 49,
+ "cells_agreeing": 49,
+ "errors": 1,
+ "unresolved": 0,
+ "findings": [
+  {
+   "unit": "Cellar*",
+   "kind": "missing",
+   "page": 31,
+   "printed": null,
+   "outcome": "published_unit_not_in_table",
+   "why": "There is no unit called 'Cellar*'. It appears only in the Location column of Unit 1, which reads 'Cellar* / First Floor' with areas 588/1112. That single row has one offering price, $1,275,000.00, and it belongs to Unit 1, not to a separate Cellar row."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 6,
+ "read_problems": [
+  "Unit 1 has two interior floor area figures printed (588 cellar + 1112 first floor); both included in int_sf since no single int_sf figure is given and the note indicates these are the usable/interior area components, not gross vs net.",
+  "Tax_m column used is \"Projected Real Estate Taxes (Monthly)\" as it matches the carrying charge sum with cc_m; annual tax figures also printed but not used per instructions."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": null,
+   "ext_sf": null,
+   "price": 1275000,
+   "pct": 30.17,
+   "pct2": null,
+   "cc_m": 641.62,
+   "tax_m": 575.68,
+   "carry_m": 1217.3,
+   "page": 31
+  },
+  {
+   "unit": "2F",
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 600,
+   "ext_sf": null,
+   "price": 540000,
+   "pct": 11.27,
+   "pct2": null,
+   "cc_m": 239.68,
+   "tax_m": 215.05,
+   "carry_m": 454.73,
+   "page": 31
+  },
+  {
+   "unit": "2R",
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 596,
+   "ext_sf": null,
+   "price": 540000,
+   "pct": 11.26,
+   "pct2": null,
+   "cc_m": 239.46,
+   "tax_m": 214.85,
+   "carry_m": 454.31,
+   "page": 31
+  },
+  {
+   "unit": "3F",
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 600,
+   "ext_sf": null,
+   "price": 540000,
+   "pct": 11.44,
+   "pct2": null,
+   "cc_m": 243.29,
+   "tax_m": 218.29,
+   "carry_m": 461.58,
+   "page": 31
+  },
+  {
+   "unit": "3R",
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 596,
+   "ext_sf": null,
+   "price": 540000,
+   "pct": 11.65,
+   "pct2": null,
+   "cc_m": 247.76,
+   "tax_m": 222.3,
+   "carry_m": 470.06,
+   "page": 31
+  },
+  {
+   "unit": "4F",
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 669,
+   "ext_sf": null,
+   "price": 550000,
+   "pct": 12.15,
+   "pct2": null,
+   "cc_m": 258.39,
+   "tax_m": 231.84,
+   "carry_m": 490.23,
+   "page": 31
+  },
+  {
+   "unit": "4R",
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 665,
+   "ext_sf": null,
+   "price": 550000,
+   "pct": 12.06,
+   "pct2": null,
+   "cc_m": 256.48,
+   "tax_m": 230.12,
+   "carry_m": 486.6,
+   "page": 31
+  }
+ ],
+ "calls": 2,
+ "tokens": 21290,
+ "qa_date": "2026-10-01T02:51:56.421Z"
+}

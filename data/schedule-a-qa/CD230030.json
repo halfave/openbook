@@ -1,0 +1,106 @@
+{
+ "plan_id": "CD230030",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 3,
+ "pub_hash": "e171c3f86403",
+ "verdict": "unresolved",
+ "pages": [
+  33,
+  34
+ ],
+ "units_read": 3,
+ "cells_compared": 23,
+ "cells_agreeing": 20,
+ "errors": 0,
+ "unresolved": 3,
+ "findings": [
+  {
+   "unit": "1",
+   "field": "sqft",
+   "published": 1182,
+   "read": null,
+   "kind": "not_read",
+   "page": 33,
+   "printed": 1182,
+   "outcome": "unresolved",
+   "why": "The cell isn't blank, but it holds two figures, one per floor: 882* (Cellar) and 1182 (First Floor). 1182 is printed, but no single total for the unit is printed."
+  },
+  {
+   "unit": "2",
+   "field": "sqft",
+   "published": 1518,
+   "read": null,
+   "kind": "not_read",
+   "page": 33,
+   "printed": 1518,
+   "outcome": "unresolved",
+   "why": "The cell holds two figures, one per floor: 921 (Second Floor) and 1518 (Third Floor). 1518 is printed, but no single total for the unit is printed."
+  },
+  {
+   "unit": "3",
+   "field": "sqft",
+   "published": 1266,
+   "read": null,
+   "kind": "not_read",
+   "page": 33,
+   "printed": 1266,
+   "outcome": "unresolved",
+   "why": "The cell holds two figures, one per floor: 1505 (Fourth Floor) and 1266 (Fifth Floor). 1266 is printed, but no single total for the unit is printed."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 1,
+ "read_problems": [
+  "Unit 1: floor area shows two numbers \"882* / 1182\" (likely cellar + first floor) with no single combined figure printed; both printed as-is in int_sf with \"/\". Outdoor area for Unit 1 lists four separate components (543 RY, 96 WW, 484 S, 479 RD) with no printed sum; listed combined with \"+\" rather than computed. Unit 2 floor area \"921 / 1518\" (two floors) and outdoor \"590 (RT) + 35 (B)\" similarly not summed. Unit 3 floor area \"1505 / 1266\" and outdoor \"111+45 (B) + 252 (T)\" similarly not summed. Beds/baths column prints \"1/1 Full 2 Half\" for Unit 1 (interpreted as 1 bed / 1 full + 2 half baths = 2.5 baths); \"4/3.5\" for Unit 2; \"1/2.5\" for Unit 3. Projected Real Estate Taxes (Annual) column present but not requested as a field; tax_m used is Monthly column value."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": 1,
+   "baths": 1.5,
+   "int_sf": null,
+   "ext_sf": null,
+   "price": 2350000,
+   "pct": 33.62,
+   "pct2": null,
+   "cc_m": 642,
+   "tax_m": 2167.85,
+   "carry_m": 2809.85,
+   "page": 33
+  },
+  {
+   "unit": "2",
+   "beds": 4,
+   "baths": 3.5,
+   "int_sf": null,
+   "ext_sf": null,
+   "price": 2675000,
+   "pct": 38.32,
+   "pct2": null,
+   "cc_m": 731.75,
+   "tax_m": 2470.92,
+   "carry_m": 3202.67,
+   "page": 33
+  },
+  {
+   "unit": "3",
+   "beds": 1,
+   "baths": 2.5,
+   "int_sf": null,
+   "ext_sf": null,
+   "price": 1325000,
+   "pct": 28.06,
+   "pct2": null,
+   "cc_m": 535.83,
+   "tax_m": 1809.34,
+   "carry_m": 2345.17,
+   "page": 33
+  }
+ ],
+ "calls": 2,
+ "tokens": 22429,
+ "qa_date": "2026-10-01T19:49:46.519Z"
+}

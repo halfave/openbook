@@ -1,0 +1,85 @@
+{
+ "plan_id": "CD190272",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 3,
+ "verdict": "unresolved",
+ "pages": [
+  35,
+  36
+ ],
+ "units_read": 3,
+ "cells_compared": 18,
+ "cells_agreeing": 17,
+ "errors": 0,
+ "unresolved": 1,
+ "findings": [
+  {
+   "unit": "1",
+   "field": "sqft",
+   "published": 1214,
+   "read": 845,
+   "kind": "differs",
+   "page": 35,
+   "printed": 1214,
+   "outcome": "unresolved",
+   "why": "The Unit 1 cell shows two stacked numbers: 845 next to 'Cellar*' and 1214 next to 'First Floor'. Both candidates are printed. I chose 1214 as the first-floor interior figure, but the cell is split by floor, so which one is meant is a judgment call. The 3959 total counts both (845+1214+985+915)."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 9,
+ "read_problems": [
+  "Unit 1 interior sq footage printed as two numbers (845, 1214) with no clear gross/net label; used 845 as int_sf per \"Approx. Square Footage\" column and left 1214 unused (likely a second/gross footage, not reported).",
+  "Unit 1 outdoor/limited square footage is a sum of multiple components (181 A + 734 RY + 141 D + 14 S); no single combined ext_sf number is printed, so ext_sf not reported for Unit 1 (-).",
+  "Unit 2 and Unit 3 outdoor/limited square footage are sums of two components each (T+R); reported as the sum since no single figure given (236+351=587; 70+509=579) — flagged as these are computed sums, not printed single numbers."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 845,
+   "ext_sf": 1214,
+   "price": 1299000,
+   "pct": 42.63,
+   "pct2": null,
+   "cc_m": 662.72,
+   "tax_m": 540.54,
+   "carry_m": 1203.26,
+   "page": 35
+  },
+  {
+   "unit": "2",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 985,
+   "ext_sf": 587,
+   "price": 949000,
+   "pct": 29.16,
+   "pct2": null,
+   "cc_m": 453.32,
+   "tax_m": 369.74,
+   "carry_m": 823.06,
+   "page": 35
+  },
+  {
+   "unit": "3",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 915,
+   "ext_sf": 579,
+   "price": 969000,
+   "pct": 28.21,
+   "pct2": null,
+   "cc_m": 438.55,
+   "tax_m": 357.7,
+   "carry_m": 796.25,
+   "page": 35
+  }
+ ],
+ "calls": 2,
+ "tokens": 21223,
+ "qa_date": "2026-10-01T03:17:18.529Z"
+}

@@ -1,0 +1,300 @@
+{
+ "plan_id": "CD240330",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 14,
+ "pub_hash": "d69035317cbc",
+ "verdict": "verified",
+ "pages": [
+  47,
+  48
+ ],
+ "units_read": 15,
+ "cells_compared": 84,
+ "cells_agreeing": 80,
+ "errors": 0,
+ "unresolved": 0,
+ "findings": [
+  {
+   "unit": "2",
+   "field": "tax_m",
+   "published": 187,
+   "read": 2816,
+   "kind": "differs",
+   "page": 47,
+   "printed": 187,
+   "outcome": "ok",
+   "why": "Column (5), monthly taxes w/ I-Cap, shows $187. The total column uses this scenario: 1073.48 + 187 = $1,260. $2,816 is in the w/o I-Cap column."
+  },
+  {
+   "unit": "3",
+   "field": "tax_m",
+   "published": 96,
+   "read": 1447,
+   "kind": "differs",
+   "page": 47,
+   "printed": 96,
+   "outcome": "ok",
+   "why": "Column (5) w/ I-Cap shows $96, and 584.06 + 96 = $680 in the total column. $1,447 is the w/o I-Cap figure."
+  },
+  {
+   "unit": "C1",
+   "field": "tax_m",
+   "published": 275,
+   "read": 4135,
+   "kind": "differs",
+   "page": 47,
+   "printed": 275,
+   "outcome": "ok",
+   "why": "The row is printed as 'Retail C1'. Column (5) w/ I-Cap shows $275, and the total is $1,813. $4,135 is the w/o I-Cap figure."
+  },
+  {
+   "unit": "1",
+   "field": "tax_m",
+   "published": 263,
+   "read": 3957,
+   "kind": "differs",
+   "page": 47,
+   "printed": 263,
+   "outcome": "ok",
+   "why": "The row is printed as 'Retail 1'. Column (5) w/ I-Cap shows $263, and the total is $1,685. $3,957 is the w/o I-Cap figure."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [
+  {
+   "unit": "P",
+   "price": 80000,
+   "page": 48
+  }
+ ],
+ "label_variants": [
+  {
+   "published": "C1",
+   "read": "Retail C1"
+  },
+  {
+   "published": "1",
+   "read": "Retail 1"
+  }
+ ],
+ "filled_by_reading": 36,
+ "read_problems": [
+  "Tax_m column (5) is all N/A on page 47; used column (6) \"Estimate of Monthly Real Estate Taxes w/o I-Cap\" as tax_m since carry_m (Total Monthly Combined Common Charges & Real Estate Taxes w/ I-Cap) does not arithmetically match cc_m+col6; carrying charge basis unclear."
+ ],
+ "read_units": [
+  {
+   "unit": "4A",
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 967,
+   "ext_sf": 143,
+   "price": 889640,
+   "pct": 5.1545,
+   "pct2": 10.3089,
+   "cc_m": 476.14,
+   "tax_m": 898,
+   "carry_m": 1375,
+   "page": 47
+  },
+  {
+   "unit": "4B",
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 993,
+   "ext_sf": 133,
+   "price": 913560,
+   "pct": 5.2753,
+   "pct2": 10.5505,
+   "cc_m": 487.29,
+   "tax_m": 919,
+   "carry_m": 1407,
+   "page": 47
+  },
+  {
+   "unit": "5A",
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 990,
+   "ext_sf": 143,
+   "price": 910800,
+   "pct": 5.2727,
+   "pct2": 10.5454,
+   "cc_m": 487.06,
+   "tax_m": 919,
+   "carry_m": 1406,
+   "page": 47
+  },
+  {
+   "unit": "5B",
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 993,
+   "ext_sf": 143,
+   "price": 913560,
+   "pct": 5.2881,
+   "pct2": 10.5762,
+   "cc_m": 488.48,
+   "tax_m": 922,
+   "carry_m": 1410,
+   "page": 47
+  },
+  {
+   "unit": "6A",
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 990,
+   "ext_sf": 143,
+   "price": 910800,
+   "pct": 5.2727,
+   "pct2": 10.5454,
+   "cc_m": 487.06,
+   "tax_m": 919,
+   "carry_m": 1406,
+   "page": 47
+  },
+  {
+   "unit": "6B",
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 993,
+   "ext_sf": 143,
+   "price": 913560,
+   "pct": 5.2881,
+   "pct2": 10.5762,
+   "cc_m": 488.48,
+   "tax_m": 922,
+   "carry_m": 1410,
+   "page": 47
+  },
+  {
+   "unit": "7A",
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 990,
+   "ext_sf": 143,
+   "price": 910800,
+   "pct": 5.2727,
+   "pct2": 10.5454,
+   "cc_m": 487.06,
+   "tax_m": 919,
+   "carry_m": 1406,
+   "page": 47
+  },
+  {
+   "unit": "7B",
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 993,
+   "ext_sf": 143,
+   "price": 913560,
+   "pct": 5.2881,
+   "pct2": 10.5762,
+   "cc_m": 488.48,
+   "tax_m": 922,
+   "carry_m": 1410,
+   "page": 47
+  },
+  {
+   "unit": "8A",
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 500,
+   "ext_sf": 67,
+   "price": 530000,
+   "pct": 2.6576,
+   "pct2": 5.3151,
+   "cc_m": 245.49,
+   "tax_m": 463,
+   "carry_m": 709,
+   "page": 47
+  },
+  {
+   "unit": "8B",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 885,
+   "ext_sf": 530,
+   "price": 885000,
+   "pct": 5.2303,
+   "pct2": 10.4606,
+   "cc_m": 483.14,
+   "tax_m": 912,
+   "carry_m": 1395,
+   "page": 47
+  },
+  {
+   "unit": "2",
+   "beds": null,
+   "baths": 0.5,
+   "int_sf": 3503,
+   "ext_sf": 1221,
+   "price": 3853300,
+   "pct": 11.6211,
+   "pct2": 22.793,
+   "cc_m": 1073.48,
+   "tax_m": 2816,
+   "carry_m": 1260,
+   "page": 47
+  },
+  {
+   "unit": "3",
+   "beds": null,
+   "baths": 0.5,
+   "int_sf": 1800,
+   "ext_sf": 1088,
+   "price": 1980000,
+   "pct": 6.3229,
+   "pct2": 11.7121,
+   "cc_m": 584.06,
+   "tax_m": 1447,
+   "carry_m": 680,
+   "page": 47
+  },
+  {
+   "unit": "Retail C1",
+   "beds": null,
+   "baths": 0.5,
+   "int_sf": 5110,
+   "ext_sf": null,
+   "price": 5058900,
+   "pct": 16.6606,
+   "pct2": 33.4691,
+   "cc_m": 1538.99,
+   "tax_m": 4135,
+   "carry_m": 1813,
+   "page": 47
+  },
+  {
+   "unit": "Retail 1",
+   "beds": null,
+   "baths": 0.5,
+   "int_sf": 4922,
+   "ext_sf": null,
+   "price": 6497040,
+   "pct": 15.3953,
+   "pct2": 32.026,
+   "cc_m": 1422.12,
+   "tax_m": 3957,
+   "carry_m": 1685,
+   "page": 47
+  },
+  {
+   "unit": "P",
+   "beds": null,
+   "baths": null,
+   "int_sf": null,
+   "ext_sf": null,
+   "price": 80000,
+   "pct": null,
+   "pct2": null,
+   "cc_m": 30,
+   "tax_m": null,
+   "carry_m": null,
+   "page": 48
+  }
+ ],
+ "calls": 2,
+ "tokens": 22132,
+ "qa_date": "2026-10-01T05:55:31.523Z"
+}

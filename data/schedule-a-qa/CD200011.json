@@ -1,0 +1,61 @@
+{
+ "plan_id": "CD200011",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 2,
+ "pub_hash": "74aae7af5fab",
+ "verdict": "verified",
+ "pages": [
+  39,
+  40
+ ],
+ "units_read": 2,
+ "cells_compared": 14,
+ "cells_agreeing": 14,
+ "errors": 0,
+ "unresolved": 0,
+ "findings": [],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 0,
+ "read_problems": [
+  "Unit 1 baths printed as \"2 full/2 half\" = 2+1.0 = 3.0; I computed 2.5, flagging for review — treating \"2 half\" as 1.0 full-equivalent gives 3.0, but literal reading of \"2 full/2 half\" is 2 full and 2 half baths = 2 + (2*0.5) = 3.0.",
+  "cc_m and tax_m: page prints \"Projected Monthly Real Estate Tax\" before \"Projected Annual Real Estate Tax\" then \"Projected Common Charges (Monthly)\" and \"(Annual)\" — assigned tax_m from monthly tax column and cc_m from monthly common charges column.",
+  "No separate carry_m (total monthly carrying charge) column printed; left as -.",
+  "ext_sf: multiple outdoor area columns (cellar, terrace, deck, roof top, rear yard, storage) printed separately; no single combined ext_sf figure given, so left as -."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": 4,
+   "baths": 2.5,
+   "int_sf": 2036,
+   "ext_sf": null,
+   "price": 3350000,
+   "pct": 58,
+   "pct2": null,
+   "cc_m": 781.12,
+   "tax_m": 303.39,
+   "carry_m": null,
+   "page": 39
+  },
+  {
+   "unit": "2",
+   "beds": 3,
+   "baths": 2.5,
+   "int_sf": 1958,
+   "ext_sf": null,
+   "price": 2995000,
+   "pct": 42,
+   "pct2": null,
+   "cc_m": 565.64,
+   "tax_m": 219.7,
+   "carry_m": null,
+   "page": 39
+  }
+ ],
+ "calls": 1,
+ "tokens": 13346,
+ "qa_date": "2026-10-01T19:05:34.466Z"
+}

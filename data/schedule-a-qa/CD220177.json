@@ -1,0 +1,100 @@
+{
+ "plan_id": "CD220177",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 4,
+ "pub_hash": "0ed2c81f828b",
+ "verdict": "unresolved",
+ "pages": [
+  34,
+  35
+ ],
+ "units_read": 4,
+ "cells_compared": 32,
+ "cells_agreeing": 31,
+ "errors": 0,
+ "unresolved": 1,
+ "findings": [
+  {
+   "unit": "1",
+   "field": "sqft",
+   "published": 1070,
+   "read": 684,
+   "kind": "differs",
+   "page": 34,
+   "printed": 684,
+   "outcome": "unresolved",
+   "why": "The Unit 1 floor-area cell has two numbers on two lines: '684*' (matching the Cellar location line) and '1070' (matching the First Floor line). Both candidates are printed, so the cell can't be reduced to one number. The column total of 5,394 counts both lines."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 4,
+ "read_problems": [
+  "Unit 1 interior area shows two values \"684*\" and \"1070\" (cellar area marked with asterisk per note); used 684 as the first/primary figure, but 1070 may represent combined/gross area - unclear which is the intended int_sf.",
+  "Outdoor/common areas for units 2 and 3 have multiple components listed (e.g. \"51 (T) / 22 (S)\" and \"59 (B) / 22 (S)\"); only the first (largest/primary) figure was used for ext_sf, ambiguous whether a single combined figure was intended.",
+  "Unit 4 outdoor area shows \"1069 (T) / 59 (B)\"; used 1069 as ext_sf, second component 59 omitted since only one ext_sf cell is allowed."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 684,
+   "ext_sf": 657,
+   "price": 2000000,
+   "pct": 28.73,
+   "pct2": null,
+   "cc_m": 544.19,
+   "tax_m": 1260.73,
+   "carry_m": 1804.92,
+   "page": 34
+  },
+  {
+   "unit": "2",
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1153,
+   "ext_sf": 51,
+   "price": 1500000,
+   "pct": 21.04,
+   "pct2": null,
+   "cc_m": 398.53,
+   "tax_m": 923.27,
+   "carry_m": 1321.8,
+   "page": 34
+  },
+  {
+   "unit": "3",
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1178,
+   "ext_sf": 59,
+   "price": 1550000,
+   "pct": 21.66,
+   "pct2": null,
+   "cc_m": 410.28,
+   "tax_m": 950.48,
+   "carry_m": 1360.76,
+   "page": 34
+  },
+  {
+   "unit": "4",
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1309,
+   "ext_sf": 1069,
+   "price": 1700000,
+   "pct": 28.57,
+   "pct2": null,
+   "cc_m": 541.16,
+   "tax_m": 1253.7,
+   "carry_m": 1794.86,
+   "page": 34
+  }
+ ],
+ "calls": 2,
+ "tokens": 27513,
+ "qa_date": "2026-10-01T19:41:31.621Z"
+}

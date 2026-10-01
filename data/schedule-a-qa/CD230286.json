@@ -1,0 +1,91 @@
+{
+ "plan_id": "CD230286",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 5,
+ "pub_hash": "8da2b0461022",
+ "verdict": "errors",
+ "pages": [
+  45,
+  46
+ ],
+ "units_read": 3,
+ "cells_compared": 24,
+ "cells_agreeing": 24,
+ "errors": 2,
+ "unresolved": 0,
+ "findings": [
+  {
+   "unit": "P1",
+   "kind": "missing",
+   "page": 45,
+   "printed": null,
+   "outcome": "published_unit_not_in_table",
+   "why": "The table has only units 1, 2, 3 and TOTAL. P1 appears below the table under 'Two (2) Parking Space Licenses' with the price $75,000.00."
+  },
+  {
+   "unit": "P2 & P3",
+   "kind": "missing",
+   "page": 45,
+   "printed": null,
+   "outcome": "published_unit_not_in_table",
+   "why": "The table has only units 1, 2, 3 and TOTAL. 'P2 & P3' appears below the table under 'Two (2) Parking Space Licenses' with the price $150,000.00."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 0,
+ "read_problems": [
+  "Table lists \"Bathroom(s) per Unit\" and \"1/2 Bathroom(s) per Unit\" as separate columns; baths cell combines full + half per instructions (Unit 1: 2 full + 1 half = 2.5).",
+  "Square footage column is a single figure per unit (not labeled interior vs exterior); limited common areas (balconies, terraces, storage) are listed separately in a footnote, not as a per-unit ext_sf column, so ext_sf left blank.",
+  "Parking space licenses (P1, P2, P3) are listed with flat prices but no beds/baths/sf/pct/charges, so not included as unit rows."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": 1,
+   "baths": 2.5,
+   "int_sf": 921,
+   "ext_sf": null,
+   "price": 1599000,
+   "pct": 41.3354,
+   "pct2": null,
+   "cc_m": 707.75,
+   "tax_m": 631.98,
+   "carry_m": 1339.74,
+   "page": 45
+  },
+  {
+   "unit": "2",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1122,
+   "ext_sf": null,
+   "price": 1349000,
+   "pct": 22.2781,
+   "pct2": null,
+   "cc_m": 381.45,
+   "tax_m": 340.61,
+   "carry_m": 722.06,
+   "page": 45
+  },
+  {
+   "unit": "3",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1122,
+   "ext_sf": null,
+   "price": 1574000,
+   "pct": 36.3865,
+   "pct2": null,
+   "cc_m": 623.01,
+   "tax_m": 556.32,
+   "carry_m": 1179.33,
+   "page": 45
+  }
+ ],
+ "calls": 2,
+ "tokens": 21219,
+ "qa_date": "2026-10-01T05:24:30.970Z"
+}

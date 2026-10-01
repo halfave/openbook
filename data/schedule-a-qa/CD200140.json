@@ -1,0 +1,173 @@
+{
+ "plan_id": "CD200140",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 7,
+ "verdict": "verified",
+ "pages": [
+  34,
+  35
+ ],
+ "units_read": 7,
+ "cells_compared": 52,
+ "cells_agreeing": 48,
+ "errors": 0,
+ "unresolved": 0,
+ "findings": [
+  {
+   "unit": "Cellar",
+   "field": "tax_m",
+   "published": 296.27,
+   "read": 1001.72,
+   "kind": "differs",
+   "page": 34,
+   "printed": 296.27,
+   "outcome": "ok",
+   "why": "Cellar row, 'With ICAP Monthly Real Estate Taxes' column (6) reads $296.27. The without-ICAP figure is $1,027.48 in column (8). 1001.72 is the with-ICAP carrying charge, not a tax."
+  },
+  {
+   "unit": "Cellar",
+   "field": "carry_m",
+   "published": 1001.72,
+   "read": 1732.92,
+   "kind": "differs",
+   "page": 34,
+   "printed": 1001.72,
+   "outcome": "ok",
+   "why": "Cellar row, 'With ICAP Monthly Carrying Charges' column (7) reads $1,001.72. 1732.92 is the without-ICAP carrying charge in column (9)."
+  },
+  {
+   "unit": "First Floor",
+   "field": "tax_m",
+   "published": 344.56,
+   "read": 1164.6,
+   "kind": "differs",
+   "page": 34,
+   "printed": 344.56,
+   "outcome": "ok",
+   "why": "First Floor row, 'With ICAP Monthly Real Estate Taxes' column (6) reads $344.56. 1164.60 is the carrying charge in column (7)."
+  },
+  {
+   "unit": "First Floor",
+   "field": "carry_m",
+   "published": 1164.6,
+   "read": 2014.98,
+   "kind": "differs",
+   "page": 34,
+   "printed": 1164.6,
+   "outcome": "ok",
+   "why": "First Floor row, 'With ICAP Monthly Carrying Charges' column (7) reads $1,164.60. 2014.98 is the without-ICAP carrying charge in column (9)."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 5,
+ "read_problems": [
+  "Page 35 (Schedule A - Exhibit 1) contains only annual real estate tax figures, not a unit price table; no new rows transcribed from it.",
+  "Cellar/First Floor rows on p.34 have two carrying-charge/tax scenarios (With ICAP and Without ICAP); cc_m/tax_m/carry_m values above use the \"With ICAP Tax Ben.\" columns (6-7 in second table)."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1019.83,
+   "ext_sf": 431.61,
+   "price": 700000,
+   "pct": 18.43,
+   "pct2": 31.52,
+   "cc_m": 677.11,
+   "tax_m": 805.57,
+   "carry_m": 1482.69,
+   "page": 34
+  },
+  {
+   "unit": "2",
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 519.4,
+   "ext_sf": 48.33,
+   "price": 330000,
+   "pct": 8.69,
+   "pct2": 14.86,
+   "cc_m": 319.11,
+   "tax_m": 379.65,
+   "carry_m": 698.77,
+   "page": 34
+  },
+  {
+   "unit": "3",
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 500.67,
+   "ext_sf": 48.33,
+   "price": 350000,
+   "pct": 8.38,
+   "pct2": 14.32,
+   "cc_m": 307.87,
+   "tax_m": 365.97,
+   "carry_m": 673.84,
+   "page": 34
+  },
+  {
+   "unit": "4",
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 519.4,
+   "ext_sf": 48.33,
+   "price": 360000,
+   "pct": 8.69,
+   "pct2": 14.86,
+   "cc_m": 319.11,
+   "tax_m": 379.65,
+   "carry_m": 698.77,
+   "page": 34
+  },
+  {
+   "unit": "5",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 772.18,
+   "ext_sf": 408.33,
+   "price": 490000,
+   "pct": 14.29,
+   "pct2": 24.44,
+   "cc_m": 524.92,
+   "tax_m": 624.51,
+   "carry_m": 1149.44,
+   "page": 34
+  },
+  {
+   "unit": "Cellar",
+   "beds": null,
+   "baths": null,
+   "int_sf": 1174.92,
+   "ext_sf": null,
+   "price": 850000,
+   "pct": 19.2,
+   "pct2": 46.23,
+   "cc_m": 705.45,
+   "tax_m": 1001.72,
+   "carry_m": 1732.92,
+   "page": 34
+  },
+  {
+   "unit": "First Floor",
+   "beds": null,
+   "baths": null,
+   "int_sf": 1366.42,
+   "ext_sf": null,
+   "price": 900000,
+   "pct": 22.32,
+   "pct2": 53.77,
+   "cc_m": 820.04,
+   "tax_m": 1164.6,
+   "carry_m": 2014.98,
+   "page": 34
+  }
+ ],
+ "calls": 2,
+ "tokens": 22039,
+ "qa_date": "2026-10-01T03:38:42.110Z"
+}

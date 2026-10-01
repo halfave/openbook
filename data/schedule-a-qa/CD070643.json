@@ -1,0 +1,106 @@
+{
+ "plan_id": "CD070643",
+ "source": "pattern",
+ "checked": null,
+ "units_published": 1,
+ "verdict": "errors",
+ "pages": [
+  18,
+  19
+ ],
+ "units_read": 3,
+ "cells_compared": 0,
+ "cells_agreeing": 0,
+ "errors": 3,
+ "unresolved": 0,
+ "findings": [
+  {
+   "unit": "Z",
+   "kind": "missing",
+   "page": 18,
+   "printed": null,
+   "outcome": "published_unit_not_in_table",
+   "why": "There is no unit Z. The unit numbers are cut off at the left edge, and the 3rd Floor row's label is a clipped '2' that can look like 'Z'."
+  },
+  {
+   "unit": "2",
+   "kind": "extra",
+   "read": 500000,
+   "page": 18,
+   "printed": 500000,
+   "outcome": "unit_missing_from_published",
+   "why": "The 3rd Floor row has a clipped '2' label, and its Offering Price shows 500,000."
+  },
+  {
+   "unit": "3",
+   "kind": "extra",
+   "read": 775000,
+   "page": 18,
+   "printed": 775000,
+   "outcome": "unit_missing_from_published",
+   "why": "The 4th fl/5th fl row has a clipped '3' label, and its Offering Price shows 775,000. The notes refer to Units 1 and 3."
+  }
+ ],
+ "unpriced_rows": [
+  {
+   "unit": "1",
+   "price": null,
+   "page": 18
+  }
+ ],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 0,
+ "read_problems": [
+  "Beds/baths given as combined \"No. of Bedrooms/Bathrooms\" codes (e.g. \"5/2 & 2 halves\") rather than separate beds and baths columns; transcribed as printed into the beds column, baths column set to \"-\" since not separately stated.",
+  "Unit numbers printed only as unclear symbols (e.g. \"⌐\", \"⊐\") in the Unit No. column on page 18; inferred as 1, 2, 3 based on row order and location column.",
+  "Page 19 contains no Schedule A price table (only explanatory notes); no rows transcribed from it."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": null,
+   "baths": null,
+   "int_sf": 2253,
+   "ext_sf": null,
+   "price": null,
+   "pct": 35.46,
+   "pct2": null,
+   "cc_m": 315.16,
+   "tax_m": 569.8,
+   "carry_m": 884.95,
+   "page": 18
+  },
+  {
+   "unit": "2",
+   "beds": null,
+   "baths": null,
+   "int_sf": 1050,
+   "ext_sf": null,
+   "price": 500000,
+   "pct": 23.66,
+   "pct2": null,
+   "cc_m": 210.23,
+   "tax_m": 380.1,
+   "carry_m": 590.33,
+   "page": 18
+  },
+  {
+   "unit": "3",
+   "beds": null,
+   "baths": null,
+   "int_sf": 1888,
+   "ext_sf": null,
+   "price": 775000,
+   "pct": 40.88,
+   "pct2": null,
+   "cc_m": 363.36,
+   "tax_m": 656.94,
+   "carry_m": 1020.3,
+   "page": 18
+  }
+ ],
+ "calls": 2,
+ "tokens": 21534,
+ "qa_date": "2026-10-01T02:02:13.072Z"
+}

@@ -12,7 +12,8 @@
 // Model results (data/schedule-a-llm/<PLAN_ID>.json, from extract-schedule-a-llm.mjs) take precedence per plan:
 // a table that passed its checks replaces the pattern-matched one; a table held by those stricter checks removes
 // it, unless the model read the same prices (then the pattern table stays, except for placeholder prices);
-// "not found" leaves it. Re-run after new plans are loaded or the model pass adds plans, then run build-buildings.mjs.
+// "not found" leaves it. Last, data/schedule-a-corrections.json (cells confirmed wrong against the printed page by
+// scripts/qa-schedule-a.mjs) is applied on top. Re-run after new plans are loaded or the model pass adds plans, then run build-buildings.mjs.
 import { writeFile, mkdir, rm, readdir, readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { all, rpc, money, ROOT } from "./site.mjs";
@@ -173,6 +174,37 @@ if (test) {
       else { files.delete(m.plan_id); llm.held++; }
     }
   }
+  // Corrections confirmed against the printed page by scripts/qa-schedule-a.mjs (built by qa-schedule-a-corrections.mjs).
+  // Each names the value it replaces; if the cell holds something else now (the table was re-read since), it is skipped.
+  const fix = { applied: 0, stale: 0 };
+  const corrections = JSON.parse(await readFile(join(ROOT, "data", "schedule-a-corrections.json"), "utf8").catch(() => "{}"));
+  const same = (a, b) => (a == null && b == null) || (a != null && b != null && Math.abs(a - b) < 0.006);
+  for (const [id, ops] of Object.entries(corrections)) {
+    const t = files.get(id);
+    if (!t) continue;
+    const done = new Set();
+    const find = (op) => t.units.find((u) => !done.has(u) && u.unit === op.unit && ["price", "sqft", "pct"].every((k) => same(u[k], op.match[k])));
+    for (const op of ops) {
+      if (op.add) {
+        if (t.units.some((u) => u.unit === op.add.unit)) { fix.stale++; continue; }
+        const { qa_added, ...row } = op.add;
+        t.units.push(row); fix.applied++; continue;
+      }
+      const u = find(op);
+      if (!u) { fix.stale++; continue; }
+      if (op.remove) { t.units.splice(t.units.indexOf(u), 1); fix.applied++; continue; }
+      done.add(u);
+      for (const [k, [from, to]] of Object.entries(op.set)) {
+        if (k === "unit" ? u.unit !== from : !same(u[k], from)) { fix.stale++; continue; }
+        u[k] = to; fix.applied++;
+      }
+    }
+    t.unit_count = t.units.length;
+    t.price_total = t.units.reduce((s, u) => s + (u.price || 0), 0);
+    t.pages = [...new Set(t.units.map((u) => u.page).filter(Boolean))];
+    t.qa_corrected = true;
+  }
+  console.log(`QA corrections: ${fix.applied} applied, ${fix.stale} skipped (table changed since it was checked)`);
   for (const [id, row] of files) await writeFile(join(DATA, id + ".json"), JSON.stringify(row));
   console.log(`${results.length} plans:`, by, `| pattern ok ${npat}, model published ${llm.published}, model held ${llm.held} (and ${llm.confirmed} pattern tables kept, the model reading the same prices) → ${files.size} files in data/schedule-a/`);
 }

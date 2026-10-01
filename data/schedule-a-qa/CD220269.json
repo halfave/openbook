@@ -1,0 +1,177 @@
+{
+ "plan_id": "CD220269",
+ "source": "model",
+ "checked": "printed_total",
+ "units_published": 4,
+ "pub_hash": "bf357993e555",
+ "verdict": "errors",
+ "pages": [
+  31,
+  32
+ ],
+ "units_read": 5,
+ "cells_compared": 12,
+ "cells_agreeing": 11,
+ "errors": 2,
+ "unresolved": 4,
+ "findings": [
+  {
+   "unit": "3",
+   "field": "unit",
+   "published": "3",
+   "read": "D-1",
+   "kind": "differs",
+   "page": 31,
+   "printed": "3",
+   "outcome": "unresolved",
+   "why": "The page has two tables printed on top of each other. One shows unit 'D' and the other shows unit '3' in the same area. 'D-1' is not printed anywhere."
+  },
+  {
+   "unit": "4",
+   "field": "unit",
+   "published": "4",
+   "read": "D-2",
+   "kind": "differs",
+   "page": 31,
+   "printed": "4",
+   "outcome": "unresolved",
+   "why": "In the overlaid table, '4' is printed below '3', next to row D of the other table. 'D-2' is not printed anywhere."
+  },
+  {
+   "unit": "3",
+   "field": "cc_m",
+   "published": 419.81,
+   "read": 423.67,
+   "kind": "differs",
+   "page": 31,
+   "printed": 419.81,
+   "outcome": "ok",
+   "why": "Unit 3's row clearly shows $419.81. $423.67 belongs to row D of the other table."
+  },
+  {
+   "unit": "1",
+   "kind": "missing",
+   "page": 31,
+   "printed": 2700000,
+   "outcome": "unresolved",
+   "why": "The unit 1 row shows '$2,70...00', partly covered by $2,998.05 from the other table."
+  },
+  {
+   "unit": "2",
+   "kind": "missing",
+   "page": 31,
+   "printed": 2300000,
+   "outcome": "ok",
+   "why": "The unit 2 row shows $2,300,000.00."
+  },
+  {
+   "unit": "A",
+   "kind": "extra",
+   "read": 1100000,
+   "page": 31,
+   "printed": 1100000,
+   "outcome": "unit_missing_from_published",
+   "why": "The unit A row shows $1,100,000.00, with only slight overlap."
+  },
+  {
+   "unit": "B",
+   "kind": "extra",
+   "read": 720000,
+   "page": 31,
+   "printed": 720000,
+   "outcome": "unresolved",
+   "why": "The unit B row shows $720,000.00, partly covered by '364' from the other table."
+  },
+  {
+   "unit": "C",
+   "kind": "extra",
+   "read": 700000,
+   "page": 31,
+   "printed": 700000,
+   "outcome": "unit_missing_from_published",
+   "why": "The unit C row shows $700,000.00, partly covered by '476' but still readable."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 4,
+ "read_problems": [
+  "Page 31 table has heavily overlapping/duplicated text from two overlaid table versions, making several cell values ambiguous (especially cc_m and tax_m for units A, B, and the D rows; \"3792%\" for unit A's pct is likely 37.92% but overlaps with \"99%\"); unit naming (A/B/C/D vs 1/2/3/4) is unclear due to overlap; tax_m annual/monthly figures for units A-D are hard to disambiguate from overlapping digits."
+ ],
+ "read_units": [
+  {
+   "unit": "A",
+   "beds": 3,
+   "baths": 2.5,
+   "int_sf": 973,
+   "ext_sf": 364,
+   "price": 1100000,
+   "pct": 37.92,
+   "pct2": null,
+   "cc_m": 628.19,
+   "tax_m": 604.48,
+   "carry_m": 1128.57,
+   "page": 31
+  },
+  {
+   "unit": "B",
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 674,
+   "ext_sf": 366,
+   "price": 720000,
+   "pct": 18.62,
+   "pct2": null,
+   "cc_m": 308.43,
+   "tax_m": 2700,
+   "carry_m": 558.1,
+   "page": 31
+  },
+  {
+   "unit": "C",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 676,
+   "ext_sf": 476,
+   "price": 700000,
+   "pct": 17.89,
+   "pct2": null,
+   "cc_m": 296.38,
+   "tax_m": 236.07,
+   "carry_m": 532.45,
+   "page": 31
+  },
+  {
+   "unit": "D-1",
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1217,
+   "ext_sf": 540,
+   "price": 2400000,
+   "pct": 24.02,
+   "pct2": null,
+   "cc_m": 423.67,
+   "tax_m": 337.46,
+   "carry_m": 761.13,
+   "page": 31
+  },
+  {
+   "unit": "D-2",
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1194,
+   "ext_sf": 555,
+   "price": 2500000,
+   "pct": 24.06,
+   "pct2": null,
+   "cc_m": 420.51,
+   "tax_m": null,
+   "carry_m": null,
+   "page": 31
+  }
+ ],
+ "calls": 2,
+ "tokens": 22373,
+ "qa_date": "2026-10-01T05:00:04.653Z"
+}

@@ -1,0 +1,208 @@
+{
+ "plan_id": "CD200002",
+ "source": "pattern",
+ "checked": null,
+ "units_published": 6,
+ "verdict": "errors",
+ "pages": [
+  32,
+  33
+ ],
+ "units_read": 6,
+ "cells_compared": 25,
+ "cells_agreeing": 21,
+ "errors": 8,
+ "unresolved": 0,
+ "findings": [
+  {
+   "unit": "900",
+   "field": "unit",
+   "published": "900",
+   "read": "1",
+   "kind": "differs",
+   "page": 32,
+   "printed": "1",
+   "outcome": "published_wrong",
+   "why": "Unit column reads 1; 900 (RY) is in the limited common area column"
+  },
+  {
+   "unit": "15",
+   "field": "unit",
+   "published": "15",
+   "read": "3A",
+   "kind": "differs",
+   "page": 32,
+   "printed": "3A",
+   "outcome": "published_wrong",
+   "why": "Unit column reads 3A; 15 (J) is in the limited common area column"
+  },
+  {
+   "unit": "42",
+   "field": "unit",
+   "published": "42",
+   "read": "3B",
+   "kind": "differs",
+   "page": 32,
+   "printed": "3B",
+   "outcome": "published_wrong",
+   "why": "Unit column reads 3B; 42 (S) is in the limited common area column"
+  },
+  {
+   "unit": "385",
+   "field": "unit",
+   "published": "385",
+   "read": "4",
+   "kind": "differs",
+   "page": 32,
+   "printed": "4",
+   "outcome": "published_wrong",
+   "why": "Unit column reads 4; 385 (T) is in the limited common area column"
+  },
+  {
+   "unit": "900",
+   "field": "beds",
+   "published": 2,
+   "read": null,
+   "kind": "not_read",
+   "page": 32,
+   "printed": null,
+   "outcome": "published_wrong",
+   "why": "There is no unit 900; 900 (RY) belongs to unit 1, which prints 2/2.5"
+  },
+  {
+   "unit": "900",
+   "field": "baths",
+   "published": 2.5,
+   "read": null,
+   "kind": "not_read",
+   "page": 32,
+   "printed": null,
+   "outcome": "published_wrong",
+   "why": "There is no unit 900; 900 (RY) belongs to unit 1, which prints 2/2.5"
+  },
+  {
+   "unit": "385",
+   "field": "beds",
+   "published": 2,
+   "read": null,
+   "kind": "not_read",
+   "page": 32,
+   "printed": null,
+   "outcome": "published_wrong",
+   "why": "There is no unit 385; 385 (T) belongs to unit 4, which prints 2/2"
+  },
+  {
+   "unit": "385",
+   "field": "baths",
+   "published": 2,
+   "read": null,
+   "kind": "not_read",
+   "page": 32,
+   "printed": null,
+   "outcome": "published_wrong",
+   "why": "There is no unit 385; 385 (T) belongs to unit 4, which prints 2/2"
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [
+  {
+   "published": "2",
+   "read": "2B"
+  }
+ ],
+ "filled_by_reading": 23,
+ "read_problems": [
+  "Unit 1 beds/bathrooms printed as \"2/2.5\" (not split into separate beds/baths columns); floor area has two numbers (746 and 1110) under \"Approx. Floor Area Square Footage\" for Unit 1 (Cellar*/First Floor) — used 746 as int_sf, second figure 1110 not used per instructions.",
+  "Unit 4 beds/bathrooms printed as \"2/2\" with no decimal, treated as 2 beds/2 baths."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": null,
+   "baths": null,
+   "int_sf": 746,
+   "ext_sf": null,
+   "price": 1300000,
+   "pct": 32.57,
+   "pct2": null,
+   "cc_m": 628.36,
+   "tax_m": 2199.54,
+   "carry_m": 2827.9,
+   "page": 32
+  },
+  {
+   "unit": "2A",
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 615,
+   "ext_sf": null,
+   "price": 465000,
+   "pct": 11.18,
+   "pct2": null,
+   "cc_m": 215.69,
+   "tax_m": 755.02,
+   "carry_m": 970.71,
+   "page": 32
+  },
+  {
+   "unit": "2B",
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 638,
+   "ext_sf": null,
+   "price": 500000,
+   "pct": 11.81,
+   "pct2": null,
+   "cc_m": 227.84,
+   "tax_m": 797.56,
+   "carry_m": 1025.4,
+   "page": 32
+  },
+  {
+   "unit": "3A",
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 613,
+   "ext_sf": null,
+   "price": 500000,
+   "pct": 11.66,
+   "pct2": null,
+   "cc_m": 224.95,
+   "tax_m": 787.43,
+   "carry_m": 1012.38,
+   "page": 32
+  },
+  {
+   "unit": "3B",
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 636,
+   "ext_sf": null,
+   "price": 535000,
+   "pct": 12.43,
+   "pct2": null,
+   "cc_m": 239.81,
+   "tax_m": 839.43,
+   "carry_m": 1079.24,
+   "page": 32
+  },
+  {
+   "unit": "4",
+   "beds": null,
+   "baths": null,
+   "int_sf": 920,
+   "ext_sf": null,
+   "price": 850000,
+   "pct": 20.35,
+   "pct2": null,
+   "cc_m": 392.6,
+   "tax_m": 1374.29,
+   "carry_m": 1766.89,
+   "page": 32
+  }
+ ],
+ "calls": 2,
+ "tokens": 22123,
+ "qa_date": "2026-10-01T03:29:01.912Z"
+}

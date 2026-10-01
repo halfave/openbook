@@ -1,0 +1,142 @@
+{
+ "plan_id": "CD180478",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 7,
+ "pub_hash": "679a41a2c068",
+ "verdict": "unresolved",
+ "pages": [
+  35,
+  36
+ ],
+ "units_read": 7,
+ "cells_compared": 56,
+ "cells_agreeing": 55,
+ "errors": 0,
+ "unresolved": 1,
+ "findings": [
+  {
+   "unit": "1",
+   "field": "sqft",
+   "published": 1733,
+   "read": 715,
+   "kind": "differs",
+   "page": 35,
+   "printed": 715,
+   "outcome": "unresolved",
+   "why": "Unit 1's square-footage cell has two printed lines: '715*' for the Cellar and '1018' for the First Floor. 1733 is not printed anywhere; it is only the sum of the two. 715 is the first line, but the cell also shows 1018, so neither candidate covers the whole cell."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 7,
+ "read_problems": [
+  "Unit 1 interior sq footage shows two numbers (715* and 1018, cellar/first floor); used 715 as primary interior sf per Approx. Square Footage column, second figure 1018 not used per int_sf rule.",
+  "Table has two parallel sets of tax/carrying-charge columns (with 421-a and w/o 421-a); reported the \"with 421-a\" set (columns 5 and 6, first occurrence) as tax_m/carry_m.",
+  "Outdoor sf for units has multiple components (e.g., Unit 1: 174(A)+1073(RY); 3F: 25(B)+30(S); 4R: 50(B)+281(T)); only first printed outdoor figure used per rules, not combined total."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 715,
+   "ext_sf": 174,
+   "price": 1149000,
+   "pct": 27.71,
+   "pct2": null,
+   "cc_m": 768.49,
+   "tax_m": 568.16,
+   "carry_m": 1336.65,
+   "page": 35
+  },
+  {
+   "unit": "2F",
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 565,
+   "ext_sf": 12,
+   "price": 499000,
+   "pct": 10.58,
+   "pct2": null,
+   "cc_m": 293.42,
+   "tax_m": 12.41,
+   "carry_m": 305.83,
+   "page": 35
+  },
+  {
+   "unit": "2R",
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 564,
+   "ext_sf": 30,
+   "price": 499000,
+   "pct": 10.66,
+   "pct2": null,
+   "cc_m": 295.64,
+   "tax_m": 12.51,
+   "carry_m": 308.15,
+   "page": 35
+  },
+  {
+   "unit": "3F",
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 565,
+   "ext_sf": 25,
+   "price": 529000,
+   "pct": 11.15,
+   "pct2": null,
+   "cc_m": 309.23,
+   "tax_m": 13.08,
+   "carry_m": 322.31,
+   "page": 35
+  },
+  {
+   "unit": "3R",
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 564,
+   "ext_sf": 50,
+   "price": 529000,
+   "pct": 11.29,
+   "pct2": null,
+   "cc_m": 313.11,
+   "tax_m": 13.25,
+   "carry_m": 326.36,
+   "page": 35
+  },
+  {
+   "unit": "4F",
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 548,
+   "ext_sf": 25,
+   "price": 529000,
+   "pct": 11,
+   "pct2": null,
+   "cc_m": 305.07,
+   "tax_m": 12.91,
+   "carry_m": 317.98,
+   "page": 35
+  },
+  {
+   "unit": "4R",
+   "beds": 1,
+   "baths": 2,
+   "int_sf": 877,
+   "ext_sf": 50,
+   "price": 749000,
+   "pct": 17.61,
+   "pct2": null,
+   "cc_m": 488.38,
+   "tax_m": 112.07,
+   "carry_m": 600.45,
+   "page": 35
+  }
+ ],
+ "calls": 2,
+ "tokens": 21458,
+ "qa_date": "2026-10-01T06:26:11.910Z"
+}

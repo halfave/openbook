@@ -1,0 +1,98 @@
+{
+ "plan_id": "CD220120",
+ "source": "pattern",
+ "checked": null,
+ "units_published": 4,
+ "pub_hash": "193dadcb25d9",
+ "verdict": "verified",
+ "pages": [
+  48,
+  49
+ ],
+ "units_read": 4,
+ "cells_compared": 20,
+ "cells_agreeing": 19,
+ "errors": 0,
+ "unresolved": 0,
+ "findings": [
+  {
+   "unit": "1",
+   "field": "sqft",
+   "published": 1894,
+   "read": 1096,
+   "kind": "differs",
+   "page": 48,
+   "printed": 1894,
+   "outcome": "ok",
+   "why": "Unit 1's row has 1,894 under 'Total Unit Square Footage' and 1,096 under 'Habitable Square Footage' (cellar 798; 1,096 + 798 = 1,894). Both readings are printed in different columns. I chose the total unit column as the interior figure; use 1096 if your schema maps interior to habitable."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 12,
+ "read_problems": [
+  "Ext_sf not applicable: table lists separate Limited Common Element square footage (Yard/Storage/Balcony/Terrace) rather than a single exterior sf per unit tied to habitable area; left ext_sf as - per unit."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 1096,
+   "ext_sf": null,
+   "price": 2950000,
+   "pct": 35.62,
+   "pct2": null,
+   "cc_m": 535.86,
+   "tax_m": 1304.17,
+   "carry_m": 1840.03,
+   "page": 48
+  },
+  {
+   "unit": "2",
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1218,
+   "ext_sf": null,
+   "price": 2249000,
+   "pct": 19.29,
+   "pct2": null,
+   "cc_m": 290.19,
+   "tax_m": 706.27,
+   "carry_m": 996.46,
+   "page": 48
+  },
+  {
+   "unit": "3",
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1210,
+   "ext_sf": null,
+   "price": 2350000,
+   "pct": 22.51,
+   "pct2": null,
+   "cc_m": 338.64,
+   "tax_m": 824.17,
+   "carry_m": 1162.81,
+   "page": 48
+  },
+  {
+   "unit": "4",
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1210,
+   "ext_sf": null,
+   "price": 2350000,
+   "pct": 22.58,
+   "pct2": null,
+   "cc_m": 339.69,
+   "tax_m": 826.73,
+   "carry_m": 1166.42,
+   "page": 48
+  }
+ ],
+ "calls": 2,
+ "tokens": 21189,
+ "qa_date": "2026-10-01T04:47:07.387Z"
+}

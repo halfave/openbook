@@ -1,0 +1,158 @@
+{
+ "plan_id": "CD240231",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 7,
+ "pub_hash": "fd6f4e7f0c3b",
+ "verdict": "errors",
+ "pages": [
+  35,
+  36
+ ],
+ "units_read": 6,
+ "cells_compared": 36,
+ "cells_agreeing": 33,
+ "errors": 3,
+ "unresolved": 0,
+ "findings": [
+  {
+   "unit": "1",
+   "field": "baths",
+   "published": 2,
+   "read": 2.5,
+   "kind": "differs",
+   "page": 35,
+   "printed": 2.5,
+   "outcome": "published_wrong",
+   "why": "Bedrooms/Bathrooms column reads 2/2.5"
+  },
+  {
+   "unit": "4F",
+   "field": "baths",
+   "published": 2,
+   "read": 1,
+   "kind": "differs",
+   "page": 35,
+   "printed": 1,
+   "outcome": "published_wrong",
+   "why": "Bedrooms/Bathrooms column reads 2/1"
+  },
+  {
+   "unit": "4R",
+   "field": "baths",
+   "published": 2,
+   "read": 1,
+   "kind": "differs",
+   "page": 35,
+   "printed": 1,
+   "outcome": "published_wrong",
+   "why": "Bedrooms/Bathrooms column reads 2/1"
+  },
+  {
+   "unit": "2R",
+   "kind": "missing",
+   "page": 35,
+   "printed": 995000,
+   "outcome": "ok",
+   "why": "2R row, Second Floor, offering price $995,000.00"
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 12,
+ "read_problems": [
+  "row with 11 cells: U\t2R\t1\t1\t614\t92 (T)\t995000.00\t9.67\t268.66\t250.28\t518.94\t35",
+  "Unit 1 cellar area printed as \"1075*\" (secondary/cellar figure) - used 1101 as int_sf per interior-area rule; outdoor area for Unit 1 has multiple components printed (329 (A), 900 (RY), 60 (FY)) - only first component (329 (A)) recorded since only one ext_sf field allowed.",
+  "2R row cc_m cell \"268.66\" missing a leading tab marker check - verified correct, no issue."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 1101,
+   "ext_sf": null,
+   "price": 2495000,
+   "pct": 29.76,
+   "pct2": null,
+   "cc_m": 826.83,
+   "tax_m": 770.24,
+   "carry_m": 1597.07,
+   "page": 35
+  },
+  {
+   "unit": "2F",
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 635,
+   "ext_sf": null,
+   "price": 895000,
+   "pct": 9.57,
+   "pct2": null,
+   "cc_m": 265.89,
+   "tax_m": 247.69,
+   "carry_m": 513.58,
+   "page": 35
+  },
+  {
+   "unit": "3F",
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 649,
+   "ext_sf": null,
+   "price": 925000,
+   "pct": 9.78,
+   "pct2": null,
+   "cc_m": 271.72,
+   "tax_m": 253.12,
+   "carry_m": 524.84,
+   "page": 35
+  },
+  {
+   "unit": "3R",
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 640,
+   "ext_sf": null,
+   "price": 945000,
+   "pct": 9.71,
+   "pct2": null,
+   "cc_m": 269.78,
+   "tax_m": 251.31,
+   "carry_m": 521.09,
+   "page": 35
+  },
+  {
+   "unit": "4F",
+   "beds": 2,
+   "baths": 1,
+   "int_sf": 850,
+   "ext_sf": null,
+   "price": 1295000,
+   "pct": 15.75,
+   "pct2": null,
+   "cc_m": 437.59,
+   "tax_m": 407.64,
+   "carry_m": 845.23,
+   "page": 35
+  },
+  {
+   "unit": "4R",
+   "beds": 2,
+   "baths": 1,
+   "int_sf": 851,
+   "ext_sf": null,
+   "price": 1295000,
+   "pct": 15.76,
+   "pct2": null,
+   "cc_m": 437.87,
+   "tax_m": 407.9,
+   "carry_m": 845.77,
+   "page": 35
+  }
+ ],
+ "calls": 2,
+ "tokens": 21448,
+ "qa_date": "2026-10-01T05:49:00.669Z"
+}

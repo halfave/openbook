@@ -1,0 +1,106 @@
+{
+ "plan_id": "CD200268",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 3,
+ "pub_hash": "8f0e5f4232e7",
+ "verdict": "verified",
+ "pages": [
+  30,
+  31
+ ],
+ "units_read": 3,
+ "cells_compared": 26,
+ "cells_agreeing": 23,
+ "errors": 0,
+ "unresolved": 0,
+ "findings": [
+  {
+   "unit": "1",
+   "field": "outdoor_sqft",
+   "published": 904,
+   "read": null,
+   "kind": "not_read",
+   "page": 30,
+   "printed": 904,
+   "outcome": "ok",
+   "why": "Unit 1 shows 904 in the 'Approx. Total L.C.E. Area (See Note A)' column. There is no separate terrace/balcony column. Per Note A this is 111 window well + 772 rear yard + 21 front yard."
+  },
+  {
+   "unit": "2",
+   "field": "outdoor_sqft",
+   "published": 172,
+   "read": null,
+   "kind": "not_read",
+   "page": 30,
+   "printed": 172,
+   "outcome": "ok",
+   "why": "Unit 2 shows 172 in the L.C.E. Area column. Per Note A this is 20 + 105 SF balcony plus a 47 SF indoor storage room, so it isn't all outdoor space."
+  },
+  {
+   "unit": "3",
+   "field": "outdoor_sqft",
+   "published": 1637,
+   "read": null,
+   "kind": "not_read",
+   "page": 30,
+   "printed": 1637,
+   "outcome": "ok",
+   "why": "Unit 3 shows 1,637 in the L.C.E. Area column. Per Note A this covers balconies, stairs and a 1334 SF roof, plus a 47 SF storage room."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 1,
+ "read_problems": [
+  "Page 31 contains only Notes to Schedule A text, not a price table; Note 5 tax column is annual not monthly, but tax_m was mapped to that column per carrying-charge match since no separate monthly tax figure is given."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": 1,
+   "baths": 1.5,
+   "int_sf": 1316,
+   "ext_sf": null,
+   "price": 925000,
+   "pct": 39.37,
+   "pct2": null,
+   "cc_m": 563.22,
+   "tax_m": 245.71,
+   "carry_m": 808.92,
+   "page": 30
+  },
+  {
+   "unit": "2",
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1320,
+   "ext_sf": null,
+   "price": 800000,
+   "pct": 27.16,
+   "pct2": null,
+   "cc_m": 388.51,
+   "tax_m": 169.49,
+   "carry_m": 558,
+   "page": 30
+  },
+  {
+   "unit": "3",
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1320,
+   "ext_sf": null,
+   "price": 885000,
+   "pct": 33.47,
+   "pct2": null,
+   "cc_m": 478.77,
+   "tax_m": 208.87,
+   "carry_m": 687.64,
+   "page": 30
+  }
+ ],
+ "calls": 2,
+ "tokens": 21745,
+ "qa_date": "2026-10-01T06:44:26.240Z"
+}

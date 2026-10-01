@@ -1,0 +1,185 @@
+{
+ "plan_id": "CD140317",
+ "verdict": "errors",
+ "summary": "16/17 agree, 1 errors, 1 unresolved",
+ "pages": [
+  58
+ ],
+ "items_stored": 18,
+ "items_read": 15,
+ "compared": 17,
+ "agree": 16,
+ "errors": 1,
+ "unresolved": 1,
+ "findings": [
+  {
+   "kind": "amount",
+   "item": "Common Charges - Garage Unit",
+   "stored": 17056,
+   "read": 17056.6,
+   "page": 58,
+   "printed": 170566,
+   "outcome": "stored_wrong",
+   "why": "Printed as \"$17,0566\", with an extra 6 at the end. Neither 17056.6 nor 17056 matches the print."
+  },
+  {
+   "kind": "not_read",
+   "item": "Total Estimated Common Charges",
+   "stored": 555436,
+   "page": 58,
+   "printed": 555436,
+   "outcome": "ok",
+   "why": "Printed clearly as \"$555,436\"."
+  },
+  {
+   "kind": "not_read",
+   "item": "Reserve for Replacements",
+   "stored": 24000,
+   "page": 58,
+   "printed": 24000,
+   "outcome": "unresolved",
+   "why": "Two amounts are printed on top of each other (\"$$ 24,000\" over \"40,000\"), so the print can't be read reliably. 24000 is only a best guess."
+  },
+  {
+   "kind": "not_read",
+   "item": "Total",
+   "stored": 555436,
+   "page": 58,
+   "printed": 555436,
+   "outcome": "ok",
+   "why": "Printed clearly as \"Total (Note 17) $ 555,436\"."
+  }
+ ],
+ "read_problems": [
+  "Common Charges – Garage Unit amount printed as \"$17,0566\" (likely OCR/typo artifact; transcribed digits as printed: 17056.6); Reserve for Replacements amount is garbled/overlapping text (\"$$ 24,0000\" / \"240,000\") and could not be read reliably"
+ ],
+ "read": {
+  "items": [
+   {
+    "budget": "Condominium",
+    "section": "Income",
+    "item": "Common Charges – Residential Units",
+    "amount": 487407,
+    "page": 58
+   },
+   {
+    "budget": "Condominium",
+    "section": "Income",
+    "item": "Common Charges – Commercial Unit A",
+    "amount": 42010,
+    "page": 58
+   },
+   {
+    "budget": "Condominium",
+    "section": "Income",
+    "item": "Common Charges – Garage Unit",
+    "amount": 17056.6,
+    "page": 58
+   },
+   {
+    "budget": "Condominium",
+    "section": "Income",
+    "item": "License Fees – Storage Units",
+    "amount": 8964,
+    "page": 58
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "Payroll and Related Expenses",
+    "amount": 233490,
+    "page": 58
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "Gas (Cooking/Heat/Hot Water)",
+    "amount": 26705,
+    "page": 58
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "Electricity",
+    "amount": 8395,
+    "page": 58
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "Water Charges and Sewer Rent",
+    "amount": 25796,
+    "page": 58
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "Repairs and Maintenance",
+    "amount": 24500,
+    "page": 58
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "Service Contracts",
+    "amount": 72300,
+    "page": 58
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "Insurance",
+    "amount": 52750,
+    "page": 58
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "Management Fee",
+    "amount": 37500,
+    "page": 58
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "Legal and Audit Fees",
+    "amount": 15000,
+    "page": 58
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "Other Expenses",
+    "amount": 15000,
+    "page": 58
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "Contingencies",
+    "amount": 20000,
+    "page": 58
+   }
+  ],
+  "totals": [
+   {
+    "budget": "Condominium",
+    "kind": "income",
+    "amount": 555436,
+    "page": 58
+   },
+   {
+    "budget": "Condominium",
+    "kind": "expenses",
+    "amount": 555436,
+    "page": 58
+   }
+  ],
+  "problems": [
+   "Common Charges – Garage Unit amount printed as \"$17,0566\" (likely OCR/typo artifact; transcribed digits as printed: 17056.6); Reserve for Replacements amount is garbled/overlapping text (\"$$ 24,0000\" / \"240,000\") and could not be read reliably"
+  ]
+ },
+ "calls": 2,
+ "tokens": 18897,
+ "qa_date": "2026-10-01T21:40:43.812Z"
+}

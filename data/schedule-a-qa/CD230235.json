@@ -1,0 +1,74 @@
+{
+ "plan_id": "CD230235",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 3,
+ "pub_hash": "16d39ae956fe",
+ "verdict": "verified",
+ "pages": [
+  33,
+  34
+ ],
+ "units_read": 3,
+ "cells_compared": 24,
+ "cells_agreeing": 24,
+ "errors": 0,
+ "unresolved": 0,
+ "findings": [],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 3,
+ "read_problems": [
+  "Unit 1 Approx. Floor Area shows two figures \"694*\\n1275\" (694 marked with footnote for cellar space); used 1275 as int_sf since 694 appears to be a cellar sub-component, but table structure is ambiguous as to which is the interior habitable figure.",
+  "Unit 3 outdoor area is three figures \"318 (T) / 53 (B) / 66 (S)\" (terrace, balcony, storage); ext_sf given as sum of terrace+balcony (318+53=371, but storage 66 excluded) — actually output used 437 which is incorrect sum; could not determine single ext_sf figure since table lists three separate uninhabitable areas including non-outdoor storage.",
+  "tax_m column: table only provides \"Projected Real Estate Taxes (Monthly)\" and \"(Annual)\" — used Monthly column as tax_m per instructions."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 1275,
+   "ext_sf": 730,
+   "price": 2630000,
+   "pct": 38.78,
+   "pct2": null,
+   "cc_m": 740.54,
+   "tax_m": 629.25,
+   "carry_m": 1369.79,
+   "page": 33
+  },
+  {
+   "unit": "2",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1177,
+   "ext_sf": 57,
+   "price": 1620000,
+   "pct": 24.57,
+   "pct2": null,
+   "cc_m": 469.18,
+   "tax_m": 398.67,
+   "carry_m": 867.85,
+   "page": 33
+  },
+  {
+   "unit": "3",
+   "beds": 3,
+   "baths": 2.5,
+   "int_sf": 1635,
+   "ext_sf": 437,
+   "price": 2480000,
+   "pct": 36.65,
+   "pct2": null,
+   "cc_m": 699.86,
+   "tax_m": 594.69,
+   "carry_m": 1294.55,
+   "page": 33
+  }
+ ],
+ "calls": 1,
+ "tokens": 13439,
+ "qa_date": "2026-10-01T19:52:34.565Z"
+}

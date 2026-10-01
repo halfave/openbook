@@ -1,0 +1,85 @@
+{
+ "plan_id": "CD140031",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 3,
+ "pub_hash": "7261c9f7aef6",
+ "verdict": "unresolved",
+ "pages": [
+  28,
+  29
+ ],
+ "units_read": 3,
+ "cells_compared": 21,
+ "cells_agreeing": 20,
+ "errors": 0,
+ "unresolved": 1,
+ "findings": [
+  {
+   "unit": "1*",
+   "field": "sqft",
+   "published": 1292,
+   "read": 1226,
+   "kind": "differs",
+   "page": 28,
+   "printed": null,
+   "outcome": "unresolved",
+   "why": "The cell prints two values on two lines, 'Cellar: 1,226' and 'Basement: 1,292', so it holds both candidates and neither is the single printed area. No combined figure for Unit 1 is printed. The column total of 6,339 counts both values."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 0,
+ "read_problems": [
+  "Page 28 \"Bedrooms & Baths\" column shows \"2/3\" for Unit 1, \"3/2.5\" for Units 2 and 3 — interpreted as 2 beds/3 baths and 3 beds/2.5 baths respectively; format unclear.",
+  "Unit 1 area listed as two figures \"Cellar: 1,226\" and \"Basement: 1,292\" with no single interior sf figure clearly separate from these; used 1,226 as int_sf per Cellar label but uncertain which represents main interior area."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": 2,
+   "baths": 3,
+   "int_sf": 1226,
+   "ext_sf": null,
+   "price": 1550000,
+   "pct": 30,
+   "pct2": null,
+   "cc_m": 431.4,
+   "tax_m": 322.2,
+   "carry_m": null,
+   "page": 28
+  },
+  {
+   "unit": "2",
+   "beds": 3,
+   "baths": 2.5,
+   "int_sf": 1993,
+   "ext_sf": null,
+   "price": 2500000,
+   "pct": 36,
+   "pct2": null,
+   "cc_m": 517.68,
+   "tax_m": 386.64,
+   "carry_m": null,
+   "page": 28
+  },
+  {
+   "unit": "3",
+   "beds": 3,
+   "baths": 2.5,
+   "int_sf": 1828,
+   "ext_sf": null,
+   "price": 1750000,
+   "pct": 34,
+   "pct2": null,
+   "cc_m": 488.92,
+   "tax_m": 365.16,
+   "carry_m": null,
+   "page": 28
+  }
+ ],
+ "calls": 2,
+ "tokens": 21279,
+ "qa_date": "2026-10-01T18:39:31.634Z"
+}

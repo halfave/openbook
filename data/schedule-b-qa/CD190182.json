@@ -1,0 +1,313 @@
+{
+ "plan_id": "CD190182",
+ "verdict": "errors",
+ "summary": "11/18 agree, 16 errors, 0 unresolved",
+ "pages": [
+  70
+ ],
+ "items_stored": 25,
+ "items_read": 17,
+ "compared": 18,
+ "agree": 11,
+ "errors": 16,
+ "unresolved": 0,
+ "findings": [
+  {
+   "kind": "amount",
+   "item": "Repairs, Maintenance & Supplies",
+   "stored": 62934.6,
+   "read": 75000,
+   "page": 70,
+   "printed": 75000,
+   "outcome": "stored_wrong",
+   "why": "Total column shows 75,000.00. 62,934.60 is the Residential column."
+  },
+  {
+   "kind": "not_read",
+   "item": "Repairs, Maintenance & Supplies",
+   "stored": 12065.4,
+   "page": 70,
+   "printed": 75000,
+   "outcome": "stored_wrong",
+   "why": "Line (6) is printed. Total 75,000.00, Residential 62,934.60, Non-Residential 12,065.40."
+  },
+  {
+   "kind": "amount",
+   "item": "Service Contracts",
+   "stored": 899169.39,
+   "read": 945205,
+   "page": 70,
+   "printed": 945205,
+   "outcome": "stored_wrong",
+   "why": "Total column shows 945,205.00. 899,169.39 is the Residential column."
+  },
+  {
+   "kind": "not_read",
+   "item": "Service Contracts",
+   "stored": 46035.61,
+   "page": 70,
+   "printed": 945205,
+   "outcome": "stored_wrong",
+   "why": "Line (7) is printed. Total 945,205.00."
+  },
+  {
+   "kind": "amount",
+   "item": "Insurance",
+   "stored": 103212.74,
+   "read": 123000,
+   "page": 70,
+   "printed": 123000,
+   "outcome": "stored_wrong",
+   "why": "Total column shows 123,000.00. 103,212.74 is the Residential column."
+  },
+  {
+   "kind": "not_read",
+   "item": "Insurance",
+   "stored": 19787.26,
+   "page": 70,
+   "printed": 123000,
+   "outcome": "stored_wrong",
+   "why": "Line (8) is printed. Total 123,000.00."
+  },
+  {
+   "kind": "amount",
+   "item": "Management Fee",
+   "stored": 75521.52,
+   "read": 90000,
+   "page": 70,
+   "printed": 90000,
+   "outcome": "stored_wrong",
+   "why": "Total column shows 90,000.00. 75,521.52 is the Residential column."
+  },
+  {
+   "kind": "not_read",
+   "item": "Management Fee",
+   "stored": 14478.48,
+   "page": 70,
+   "printed": 90000,
+   "outcome": "stored_wrong",
+   "why": "Line (9) is printed. Total 90,000.00."
+  },
+  {
+   "kind": "amount",
+   "item": "Legal and Audit Fees",
+   "stored": 20978.2,
+   "read": 25000,
+   "page": 70,
+   "printed": 25000,
+   "outcome": "stored_wrong",
+   "why": "Total column shows 25,000.00. 20,978.20 is the Residential column."
+  },
+  {
+   "kind": "not_read",
+   "item": "Legal and Audit Fees",
+   "stored": 4021.8,
+   "page": 70,
+   "printed": 25000,
+   "outcome": "stored_wrong",
+   "why": "Line (10) is printed. Total 25,000.00."
+  },
+  {
+   "kind": "amount",
+   "item": "Reserve Fund",
+   "stored": 4195.64,
+   "read": 5000,
+   "page": 70,
+   "printed": 5000,
+   "outcome": "stored_wrong",
+   "why": "Total column shows 5,000.00. 4,195.64 is the Residential column."
+  },
+  {
+   "kind": "not_read",
+   "item": "Reserve Fund",
+   "stored": 804.36,
+   "page": 70,
+   "printed": 5000,
+   "outcome": "stored_wrong",
+   "why": "Line (11) is printed. Total 5,000.00."
+  },
+  {
+   "kind": "amount",
+   "item": "Other/Admin",
+   "stored": 20978.2,
+   "read": 25000,
+   "page": 70,
+   "printed": 25000,
+   "outcome": "stored_wrong",
+   "why": "Printed as 'OTHER/ ADMIN' (13). Total column shows 25,000.00. 20,978.20 is the Residential column."
+  },
+  {
+   "kind": "not_read",
+   "item": "Other/Admin",
+   "stored": 4021.8,
+   "page": 70,
+   "printed": 25000,
+   "outcome": "stored_wrong",
+   "why": "Line (13) is printed. Total 25,000.00."
+  },
+  {
+   "kind": "not_read",
+   "item": "Total Operating Expenses (Residential)",
+   "stored": 1676373.15,
+   "page": 70,
+   "printed": null,
+   "outcome": "stored_line_not_in_budget",
+   "why": "There is no separate residential total line. The single TOTAL OPERATING EXPENSES row shows 1,676,373.15 in its Residential column."
+  },
+  {
+   "kind": "not_read",
+   "item": "Total Operating Expenses (Non-Residential)",
+   "stored": 97192.91,
+   "page": 70,
+   "printed": null,
+   "outcome": "stored_line_not_in_budget",
+   "why": "There is no separate non-residential total line. The single TOTAL OPERATING EXPENSES row shows 97,192.91 in its Non-Residential column."
+  }
+ ],
+ "read_problems": [
+  "total_income was not printed on the page; value shown is the sum of the four printed income lines but per instructions totals should not be computed — reporting as PROBLEM since no printed total income line exists"
+ ],
+ "read": {
+  "items": [
+   {
+    "budget": "Condominium",
+    "section": "Income",
+    "item": "COMMON CHARGES - RESIDENTIAL UNITS",
+    "amount": 1586373.15,
+    "page": 70
+   },
+   {
+    "budget": "Condominium",
+    "section": "Income",
+    "item": "COMMON CHARGES - NON-RESIDENTIAL UNITS",
+    "amount": 97192.91,
+    "page": 70
+   },
+   {
+    "budget": "Condominium",
+    "section": "Income",
+    "item": "LICENSE FEES - LICENSED PARKING SPACES",
+    "amount": 90000,
+    "page": 70
+   },
+   {
+    "budget": "Condominium",
+    "section": "Income",
+    "item": "LICENSE FEES - LICENSED STORAGE SPACES",
+    "amount": 11268,
+    "page": 70
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "LABOR",
+    "amount": 0,
+    "page": 70
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "ELECTRICITY",
+    "amount": 186896,
+    "page": 70
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "GAS",
+    "amount": 110095,
+    "page": 70
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "WATER CHARGES & SEWER RENTS",
+    "amount": 114261.6,
+    "page": 70
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "REPAIRS, MAINTENANCE & SUPPLIES",
+    "amount": 75000,
+    "page": 70
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "SERVICE CONTRACTS",
+    "amount": 945205,
+    "page": 70
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "INSURANCE",
+    "amount": 123000,
+    "page": 70
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "MANAGEMENT FEE",
+    "amount": 90000,
+    "page": 70
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "LEGAL AND AUDIT FEES",
+    "amount": 25000,
+    "page": 70
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "RESERVE FUND",
+    "amount": 5000,
+    "page": 70
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "CONDOMINIUM OWNED UNIT",
+    "amount": 78130.26,
+    "page": 70
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "OTHER/ ADMIN",
+    "amount": 25000,
+    "page": 70
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "TOTAL OPERATING EXPENSES",
+    "amount": 1777587.86,
+    "page": 70
+   }
+  ],
+  "totals": [
+   {
+    "budget": "Condominium",
+    "kind": "income",
+    "amount": 1784834.06,
+    "page": 70
+   },
+   {
+    "budget": "Condominium",
+    "kind": "expenses",
+    "amount": 1777587.86,
+    "page": 70
+   }
+  ],
+  "problems": [
+   "total_income was not printed on the page; value shown is the sum of the four printed income lines but per instructions totals should not be computed — reporting as PROBLEM since no printed total income line exists"
+  ]
+ },
+ "calls": 2,
+ "tokens": 26753,
+ "qa_date": "2026-10-01T22:41:52.644Z"
+}

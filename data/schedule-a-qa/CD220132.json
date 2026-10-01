@@ -1,0 +1,131 @@
+{
+ "plan_id": "CD220132",
+ "source": "pattern",
+ "checked": null,
+ "units_published": 4,
+ "pub_hash": "b8c73bad6b55",
+ "verdict": "errors",
+ "pages": [
+  29,
+  30
+ ],
+ "units_read": 4,
+ "cells_compared": 20,
+ "cells_agreeing": 18,
+ "errors": 3,
+ "unresolved": 1,
+ "findings": [
+  {
+   "unit": "1st",
+   "field": "unit",
+   "published": "1st",
+   "read": "1",
+   "kind": "differs",
+   "page": 29,
+   "printed": "1",
+   "outcome": "published_wrong",
+   "why": "The Unit No. column shows '1'. '1st Floor' (under 'Cellar/') is in the Location column."
+  },
+  {
+   "unit": "Penthouse 1293",
+   "field": "unit",
+   "published": "Penthouse 1293",
+   "read": "4",
+   "kind": "differs",
+   "page": 29,
+   "printed": "4",
+   "outcome": "published_wrong",
+   "why": "The Unit No. column shows '4'. '4th Floor/ Penthouse' is in the Location column, and 1293 is the habitable area."
+  },
+  {
+   "unit": "1st",
+   "field": "baths",
+   "published": 1,
+   "read": 1.5,
+   "kind": "differs",
+   "page": 29,
+   "printed": 2,
+   "outcome": "unresolved",
+   "why": "The cell reads '1/1 full, 2 half': 1 bedroom, then 1 full and 2 half baths. With half = .5 that is 2, which matches neither candidate. The cell gives no single printed bathroom number."
+  },
+  {
+   "unit": "Penthouse 1293",
+   "field": "sqft",
+   "published": 941,
+   "read": 1293,
+   "kind": "differs",
+   "page": 29,
+   "printed": 1293,
+   "outcome": "published_wrong",
+   "why": "Unit 4's habitable area is 1293. 941 is its outdoor area."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 16,
+ "read_problems": [
+  "Page image labeled \"Page 28\" at bottom but table content matches PDF page 29 per provided filename; used PDF page number 29 as instructed."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": 1,
+   "baths": 1.5,
+   "int_sf": 1039,
+   "ext_sf": 1238,
+   "price": 2100000,
+   "pct": 30.91,
+   "pct2": null,
+   "cc_m": 689.7,
+   "tax_m": 1402.49,
+   "carry_m": 2092.2,
+   "page": 29
+  },
+  {
+   "unit": "2",
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1171,
+   "ext_sf": 84,
+   "price": 1750000,
+   "pct": 20.78,
+   "pct2": null,
+   "cc_m": 463.63,
+   "tax_m": 942.78,
+   "carry_m": 1406.41,
+   "page": 29
+  },
+  {
+   "unit": "3",
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1171,
+   "ext_sf": 84,
+   "price": 1775000,
+   "pct": 20.95,
+   "pct2": null,
+   "cc_m": 467.34,
+   "tax_m": 950.32,
+   "carry_m": 1417.65,
+   "page": 29
+  },
+  {
+   "unit": "4",
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1293,
+   "ext_sf": 941,
+   "price": 1900000,
+   "pct": 27.36,
+   "pct2": null,
+   "cc_m": 610.45,
+   "tax_m": 1241.33,
+   "carry_m": 1851.77,
+   "page": 29
+  }
+ ],
+ "calls": 2,
+ "tokens": 22180,
+ "qa_date": "2026-10-01T19:37:24.717Z"
+}

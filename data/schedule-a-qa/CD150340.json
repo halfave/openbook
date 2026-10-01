@@ -1,0 +1,181 @@
+{
+ "plan_id": "CD150340",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 6,
+ "pub_hash": "c944432be72a",
+ "verdict": "errors",
+ "pages": [
+  39,
+  40
+ ],
+ "units_read": 6,
+ "cells_compared": 53,
+ "cells_agreeing": 47,
+ "errors": 5,
+ "unresolved": 1,
+ "findings": [
+  {
+   "unit": "FIRST FLOOR",
+   "field": "baths",
+   "published": 0.5,
+   "read": 1.5,
+   "kind": "differs",
+   "page": 39,
+   "printed": 2,
+   "outcome": "unresolved",
+   "why": "BR/BA cell reads '1/1, Two .5' (1 full bath plus two half baths), which is 2 with half = .5. Neither candidate fits; no single bath number is printed."
+  },
+  {
+   "unit": "SECOND FLOOR",
+   "field": "outdoor_sqft",
+   "published": 18,
+   "read": null,
+   "kind": "not_read",
+   "page": 39,
+   "printed": null,
+   "outcome": "published_wrong",
+   "why": "The Limited Common Elements and LCE sq ft cells are blank. The 18 is in the Storage Unit SF column."
+  },
+  {
+   "unit": "THIRD FLOOR",
+   "field": "outdoor_sqft",
+   "published": 18,
+   "read": 77,
+   "kind": "differs",
+   "page": 39,
+   "printed": 77,
+   "outcome": "published_wrong",
+   "why": "BALCONY*** 77. The 18 is storage."
+  },
+  {
+   "unit": "FOURTH FLOOR",
+   "field": "outdoor_sqft",
+   "published": 18,
+   "read": 77,
+   "kind": "differs",
+   "page": 39,
+   "printed": 77,
+   "outcome": "published_wrong",
+   "why": "BALCONY*** 77. The 18 is storage."
+  },
+  {
+   "unit": "FIFTH FLOOR",
+   "field": "outdoor_sqft",
+   "published": 18,
+   "read": 77,
+   "kind": "differs",
+   "page": 39,
+   "printed": 77,
+   "outcome": "published_wrong",
+   "why": "BALCONY*** 77. The 18 is storage."
+  },
+  {
+   "unit": "PENTHOUSE",
+   "field": "outdoor_sqft",
+   "published": 18,
+   "read": 339,
+   "kind": "differs",
+   "page": 39,
+   "printed": 339,
+   "outcome": "published_wrong",
+   "why": "BALCONY***/GARAGE**** 339. This includes the 261.5 sq ft garage; the 18 is storage."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 1,
+ "read_problems": [
+  "BR/BA column for FIRST FLOOR printed as \"1/1, Two .5\" — interpreted as 1 bed/1.5 bath; storage unit SF column (blank for FIRST FLOOR, 18 for others) not included per output format."
+ ],
+ "read_units": [
+  {
+   "unit": "FIRST FLOOR",
+   "beds": 1,
+   "baths": 1.5,
+   "int_sf": 1993,
+   "ext_sf": 644,
+   "price": 2350000,
+   "pct": null,
+   "pct2": 19.8,
+   "cc_m": 2013.54,
+   "tax_m": 2186.25,
+   "carry_m": 4199.79,
+   "page": 39
+  },
+  {
+   "unit": "SECOND FLOOR",
+   "beds": 3,
+   "baths": 2.5,
+   "int_sf": 1705,
+   "ext_sf": null,
+   "price": 2800000,
+   "pct": null,
+   "pct2": 13.7,
+   "cc_m": 1393.21,
+   "tax_m": 1512.71,
+   "carry_m": 2905.92,
+   "page": 39
+  },
+  {
+   "unit": "THIRD FLOOR",
+   "beds": 3,
+   "baths": 2.5,
+   "int_sf": 1705,
+   "ext_sf": 77,
+   "price": 2875000,
+   "pct": null,
+   "pct2": 13.7,
+   "cc_m": 1393.21,
+   "tax_m": 1512.71,
+   "carry_m": 2905.92,
+   "page": 39
+  },
+  {
+   "unit": "FOURTH FLOOR",
+   "beds": 3,
+   "baths": 2.5,
+   "int_sf": 1705,
+   "ext_sf": 77,
+   "price": 2950000,
+   "pct": null,
+   "pct2": 13.7,
+   "cc_m": 1393.21,
+   "tax_m": 1512.71,
+   "carry_m": 2905.92,
+   "page": 39
+  },
+  {
+   "unit": "FIFTH FLOOR",
+   "beds": 3,
+   "baths": 2.5,
+   "int_sf": 1705,
+   "ext_sf": 77,
+   "price": 3400000,
+   "pct": null,
+   "pct2": 18.2,
+   "cc_m": 1850.83,
+   "tax_m": 2009.58,
+   "carry_m": 3860.42,
+   "page": 39
+  },
+  {
+   "unit": "PENTHOUSE",
+   "beds": 3,
+   "baths": 2.5,
+   "int_sf": 1705,
+   "ext_sf": 339,
+   "price": 3700000,
+   "pct": null,
+   "pct2": 20.9,
+   "cc_m": 2125.41,
+   "tax_m": 2307.71,
+   "carry_m": 4433.12,
+   "page": 39
+  }
+ ],
+ "calls": 2,
+ "tokens": 23139,
+ "qa_date": "2026-10-01T18:42:13.115Z"
+}

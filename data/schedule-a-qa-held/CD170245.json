@@ -1,0 +1,107 @@
+{
+ "plan_id": "CD170245",
+ "source": "held",
+ "checked": null,
+ "units_published": 3,
+ "pub_hash": "1dac6cee8328",
+ "verdict": "verified",
+ "pages": [
+  29,
+  30
+ ],
+ "units_read": 3,
+ "cells_compared": 24,
+ "cells_agreeing": 21,
+ "errors": 0,
+ "unresolved": 0,
+ "findings": [
+  {
+   "unit": "1",
+   "field": "carry_m",
+   "published": 13227.31,
+   "read": 1102.28,
+   "kind": "differs",
+   "page": 29,
+   "printed": 13227.31,
+   "outcome": "ok",
+   "why": "Printed as $13,227.31 in the Projected Annual Carrying Charges column. This is an annual figure; no monthly carrying charge is printed. 1102.28 is not on the page."
+  },
+  {
+   "unit": "2",
+   "field": "carry_m",
+   "published": 9381.98,
+   "read": 781.83,
+   "kind": "differs",
+   "page": 29,
+   "printed": 9381.98,
+   "outcome": "ok",
+   "why": "Printed as $9,381.98 in the Projected Annual Carrying Charges column. This is an annual figure; no monthly carrying charge is printed. 781.83 is not on the page."
+  },
+  {
+   "unit": "3",
+   "field": "carry_m",
+   "published": 11492.43,
+   "read": 957.7,
+   "kind": "differs",
+   "page": 29,
+   "printed": 11492.43,
+   "outcome": "ok",
+   "why": "Printed as $11,492.43 in the Projected Annual Carrying Charges column. This is an annual figure; no monthly carrying charge is printed. 957.7 is not on the page."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 0,
+ "read_problems": [
+  "Unit 1 beds/baths printed as \"2/1 w 3 half\" (2 bedrooms/1 bath with 3 half baths); used 2/1 for beds/baths columns rather than computing a combined bath figure, since instructions say not to derive beyond what's stated plainly.",
+  "carry_m for each unit (col 6) is blank/dash in the image except totals row; Projected Annual Carrying Charges column (6) shown is annual, not monthly, so carry_m written as computed sum of cc_m+tax_m(monthly) per convention, but these are not explicitly printed as a monthly carry figure - please verify."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": 2,
+   "baths": 1,
+   "int_sf": 1443,
+   "ext_sf": null,
+   "price": 1000000,
+   "pct": 38.788,
+   "pct2": null,
+   "cc_m": 385.6,
+   "tax_m": 716.68,
+   "carry_m": 1102.28,
+   "page": 29
+  },
+  {
+   "unit": "2",
+   "beds": 4,
+   "baths": 2,
+   "int_sf": 1434,
+   "ext_sf": null,
+   "price": 875000,
+   "pct": 27.512,
+   "pct2": null,
+   "cc_m": 273.5,
+   "tax_m": 508.33,
+   "carry_m": 781.83,
+   "page": 29
+  },
+  {
+   "unit": "3",
+   "beds": 4,
+   "baths": 2,
+   "int_sf": 1434,
+   "ext_sf": null,
+   "price": 875000,
+   "pct": 33.7,
+   "pct2": null,
+   "cc_m": 335.02,
+   "tax_m": 622.68,
+   "carry_m": 957.7,
+   "page": 29
+  }
+ ],
+ "calls": 2,
+ "tokens": 22057,
+ "qa_date": "2026-10-01T23:15:18.181Z"
+}

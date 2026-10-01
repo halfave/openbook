@@ -1,0 +1,95 @@
+{
+ "plan_id": "CD220271",
+ "source": "pattern",
+ "checked": null,
+ "units_published": 3,
+ "pub_hash": "70f67acf22fe",
+ "verdict": "unresolved",
+ "pages": [
+  48,
+  49
+ ],
+ "units_read": 3,
+ "cells_compared": 15,
+ "cells_agreeing": 13,
+ "errors": 0,
+ "unresolved": 2,
+ "findings": [
+  {
+   "unit": "1",
+   "field": "baths",
+   "published": 2,
+   "read": null,
+   "kind": "not_read",
+   "page": 48,
+   "printed": 3,
+   "outcome": "unresolved",
+   "why": "The Bath cell for unit 1 reads '2 & 2x.5': 2 full baths plus 2 half baths, which is 3 when a half counts as .5. Neither candidate matches. Unsure only because the printed text is not a single number."
+  },
+  {
+   "unit": "1",
+   "field": "sqft",
+   "published": 2680,
+   "read": 1954,
+   "kind": "differs",
+   "page": 48,
+   "printed": 2680,
+   "outcome": "unresolved",
+   "why": "Both numbers are printed for unit 1: 'Total Unit Square Footage' is 2,680 and 'Habitable Square Footage' is 1,954. The 2,680 includes 726 sq ft of cellar. Which one counts as interior square feet depends on how the field is defined."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 12,
+ "read_problems": [
+  "Unit 1 ext_sf: table has three limited common areas (Rear Yard sf not shown separately, Storage 47, Storage & Terrace 776); used Cellar Square Footage (726) as ext_sf is ambiguous since no single terrace/yard sf is printed separately from storage."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": 3,
+   "baths": null,
+   "int_sf": 1954,
+   "ext_sf": 726,
+   "price": 4395000,
+   "pct": 52.2114,
+   "pct2": null,
+   "cc_m": 1163.06,
+   "tax_m": 821.33,
+   "carry_m": 1984.39,
+   "page": 48
+  },
+  {
+   "unit": "2",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 910,
+   "ext_sf": 0,
+   "price": 1950000,
+   "pct": 18.2418,
+   "pct2": null,
+   "cc_m": 406.35,
+   "tax_m": 286.96,
+   "carry_m": 693.31,
+   "page": 48
+  },
+  {
+   "unit": "3",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1243,
+   "ext_sf": 0,
+   "price": 2575000,
+   "pct": 29.5468,
+   "pct2": null,
+   "cc_m": 658.18,
+   "tax_m": 464.8,
+   "carry_m": 1122.98,
+   "page": 48
+  }
+ ],
+ "calls": 2,
+ "tokens": 21541,
+ "qa_date": "2026-10-01T05:00:22.711Z"
+}

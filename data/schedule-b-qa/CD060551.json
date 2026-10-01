@@ -1,0 +1,170 @@
+{
+ "plan_id": "CD060551",
+ "verdict": "errors",
+ "summary": "13/14 agree, 1 errors, 2 unresolved",
+ "pages": [
+  42,
+  46
+ ],
+ "items_stored": 16,
+ "items_read": 12,
+ "compared": 14,
+ "agree": 13,
+ "errors": 1,
+ "unresolved": 2,
+ "findings": [
+  {
+   "kind": "not_read",
+   "item": "Total Projected Income",
+   "stored": 602566,
+   "page": 42,
+   "printed": 602566,
+   "outcome": "ok",
+   "why": "PDF p42: 'TOTAL PROJECTED INCOME (Note 1)' is printed as $602,566"
+  },
+  {
+   "kind": "amount",
+   "item": "Water and Sewer",
+   "stored": 36702,
+   "read": 44219,
+   "page": 46,
+   "printed": 44219,
+   "outcome": "stored_wrong",
+   "why": "The Water and Sewer note continues onto PDF p46 with 'Commercial Units: $7,517' and 'TOTAL: $44,219'. The Note 5 line on p42 also shows $44,219. 36,702 is not printed on either page."
+  },
+  {
+   "kind": "not_read",
+   "item": "Water and Sewer",
+   "stored": 7517,
+   "page": 46,
+   "printed": 44219,
+   "outcome": "unresolved",
+   "why": "PDF p46 has no line labelled 'Water and Sewer'. It shows only the end of the note: Commercial Units $7,517 and TOTAL $44,219. The note heading is on an earlier page, so the label match is uncertain."
+  },
+  {
+   "kind": "not_read",
+   "item": "Water and Sewer - Total",
+   "stored": 44219,
+   "page": 42,
+   "printed": 44219,
+   "outcome": "unresolved",
+   "why": "PDF p42 has no line labelled 'Water and Sewer - Total'. The nearest line is 'Water and Sewer (Note 5)' at $44,219, which matches the note TOTAL on p46."
+  },
+  {
+   "kind": "not_read",
+   "item": "Total Expenses",
+   "stored": 602566,
+   "page": 42,
+   "printed": 602566,
+   "outcome": "ok",
+   "why": "The expenses total on PDF p42 is labelled 'TOTAL (Note 12)' and printed as $602,566"
+  }
+ ],
+ "read_problems": [],
+ "read": {
+  "items": [
+   {
+    "budget": "Condominium",
+    "section": "Income",
+    "item": "Residential Unit Common Charge",
+    "amount": 500130,
+    "page": 42
+   },
+   {
+    "budget": "Condominium",
+    "section": "Income",
+    "item": "Commercial Units Common Charge",
+    "amount": 102436,
+    "page": 42
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "Salaries and Wages",
+    "amount": 252515,
+    "page": 42
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "Payroll Taxes and Benefits",
+    "amount": 17124,
+    "page": 42
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "Electric and Gas",
+    "amount": 120605,
+    "page": 42
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "Water and Sewer",
+    "amount": 44219,
+    "page": 42
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "Repairs and Maintenance",
+    "amount": 15000,
+    "page": 42
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "Services and Supplies",
+    "amount": 12000,
+    "page": 42
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "Insurance",
+    "amount": 69500,
+    "page": 42
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "Management Fees",
+    "amount": 53153,
+    "page": 42
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "Legal and Audit",
+    "amount": 6000,
+    "page": 42
+   },
+   {
+    "budget": "Condominium",
+    "section": "Expenses",
+    "item": "Contingency",
+    "amount": 12450,
+    "page": 42
+   }
+  ],
+  "totals": [
+   {
+    "budget": "Condominium",
+    "kind": "income",
+    "amount": 602566,
+    "page": 42
+   },
+   {
+    "budget": "Condominium",
+    "kind": "expenses",
+    "amount": 602566,
+    "page": 42
+   }
+  ],
+  "problems": []
+ },
+ "calls": 2,
+ "tokens": 24800,
+ "qa_date": "2026-10-01T21:20:11.431Z"
+}

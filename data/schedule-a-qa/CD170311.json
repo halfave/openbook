@@ -1,0 +1,151 @@
+{
+ "plan_id": "CD170311",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 7,
+ "verdict": "errors",
+ "pages": [
+  33,
+  34
+ ],
+ "units_read": 7,
+ "cells_compared": 42,
+ "cells_agreeing": 40,
+ "errors": 2,
+ "unresolved": 0,
+ "findings": [
+  {
+   "unit": "1A",
+   "field": "sqft",
+   "published": 793,
+   "read": 411,
+   "kind": "differs",
+   "page": 33,
+   "printed": 411,
+   "outcome": "published_wrong",
+   "why": "The 'Approx. Main Unit Floor Area Sq. Ft.' column shows 411 for 1A. The 793 candidate comes from 'Approx. Total Gross Sq. Ft.', which also counts the 382 sq ft of uninhabitable cellar."
+  },
+  {
+   "unit": "1B",
+   "field": "sqft",
+   "published": 1565,
+   "read": 585,
+   "kind": "differs",
+   "page": 33,
+   "printed": 585,
+   "outcome": "published_wrong",
+   "why": "The 'Approx. Main Unit Floor Area Sq. Ft.' column shows 585 for 1B. The 1565 candidate comes from 'Approx. Total Gross Sq. Ft.', which also counts the 980 sq ft of uninhabitable cellar."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 7,
+ "read_problems": [
+  "Bathrooms column printed as \"Full/Half\" (e.g., 1/1, 1/0, 2/0); baths cell transcribed as printed rather than converted to a decimal count, since table does not state a separate full/half count format matching instructions.",
+  "tax_m: table only provides \"Projected Real Estate Taxes (Monthly)\" column (5) and a separate \"(Annual)\" column (6); used the Monthly column as tax_m per instructions."
+ ],
+ "read_units": [
+  {
+   "unit": "1A",
+   "beds": 0,
+   "baths": null,
+   "int_sf": 411,
+   "ext_sf": null,
+   "price": 841050,
+   "pct": 9.51,
+   "pct2": null,
+   "cc_m": 350.44,
+   "tax_m": 417.62,
+   "carry_m": 768.07,
+   "page": 33
+  },
+  {
+   "unit": "1B",
+   "beds": 1,
+   "baths": null,
+   "int_sf": 585,
+   "ext_sf": null,
+   "price": 1640100,
+   "pct": 19.99,
+   "pct2": null,
+   "cc_m": 736.63,
+   "tax_m": 877.84,
+   "carry_m": 1614.47,
+   "page": 33
+  },
+  {
+   "unit": "2A",
+   "beds": 1,
+   "baths": null,
+   "int_sf": 924,
+   "ext_sf": null,
+   "price": 973350,
+   "pct": 12.66,
+   "pct2": null,
+   "cc_m": 466.52,
+   "tax_m": 555.95,
+   "carry_m": 1022.47,
+   "page": 33
+  },
+  {
+   "unit": "2B",
+   "beds": 1,
+   "baths": null,
+   "int_sf": 917,
+   "ext_sf": null,
+   "price": 957600,
+   "pct": 12.63,
+   "pct2": null,
+   "cc_m": 465.42,
+   "tax_m": 554.63,
+   "carry_m": 1020.05,
+   "page": 33
+  },
+  {
+   "unit": "3A",
+   "beds": 1,
+   "baths": null,
+   "int_sf": 923,
+   "ext_sf": null,
+   "price": 973350,
+   "pct": 12.73,
+   "pct2": null,
+   "cc_m": 469.1,
+   "tax_m": 559.03,
+   "carry_m": 1028.13,
+   "page": 33
+  },
+  {
+   "unit": "3B",
+   "beds": 1,
+   "baths": null,
+   "int_sf": 917,
+   "ext_sf": null,
+   "price": 957600,
+   "pct": 12.63,
+   "pct2": null,
+   "cc_m": 465.42,
+   "tax_m": 554.63,
+   "carry_m": 1020.05,
+   "page": 33
+  },
+  {
+   "unit": "PH",
+   "beds": 2,
+   "baths": null,
+   "int_sf": 1382,
+   "ext_sf": null,
+   "price": 1461600,
+   "pct": 19.85,
+   "pct2": null,
+   "cc_m": 731.47,
+   "tax_m": 871.69,
+   "carry_m": 1603.17,
+   "page": 33
+  }
+ ],
+ "calls": 2,
+ "tokens": 21371,
+ "qa_date": "2026-10-01T02:38:53.777Z"
+}

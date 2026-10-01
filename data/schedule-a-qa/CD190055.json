@@ -1,0 +1,169 @@
+{
+ "plan_id": "CD190055",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 6,
+ "verdict": "verified",
+ "pages": [
+  33,
+  34
+ ],
+ "units_read": 5,
+ "cells_compared": 25,
+ "cells_agreeing": 20,
+ "errors": 0,
+ "unresolved": 0,
+ "findings": [
+  {
+   "unit": "1L",
+   "field": "tax_m",
+   "published": 616.59,
+   "read": 150.36,
+   "kind": "differs",
+   "page": 33,
+   "printed": 616.59,
+   "outcome": "ok",
+   "why": "Unit 1L, 'Real Estate Taxes w/o 421-a (Monthly)' is $616.59. 150.36 is in the with-421-a annual column (12.53 x 12), so it is not a monthly figure."
+  },
+  {
+   "unit": "1R",
+   "field": "tax_m",
+   "published": 609.69,
+   "read": 148.67,
+   "kind": "differs",
+   "page": 33,
+   "printed": 609.69,
+   "outcome": "ok",
+   "why": "Unit 1R, w/o 421-a monthly is $609.69. 148.67 is the with-421-a annual figure."
+  },
+  {
+   "unit": "2R",
+   "field": "tax_m",
+   "published": 707.85,
+   "read": 296.43,
+   "kind": "differs",
+   "page": 33,
+   "printed": 707.85,
+   "outcome": "ok",
+   "why": "Unit 2R, w/o 421-a monthly is $707.85. 296.43 is the with-421-a annual figure."
+  },
+  {
+   "unit": "3L",
+   "field": "tax_m",
+   "published": 440.97,
+   "read": 107.53,
+   "kind": "differs",
+   "page": 33,
+   "printed": 440.97,
+   "outcome": "ok",
+   "why": "Unit 3L, w/o 421-a monthly is $440.97. 107.53 is the with-421-a annual figure."
+  },
+  {
+   "unit": "4",
+   "field": "tax_m",
+   "published": 1042.99,
+   "read": 4318.08,
+   "kind": "differs",
+   "page": 33,
+   "printed": 1042.99,
+   "outcome": "ok",
+   "why": "Unit 4, w/o 421-a monthly is $1,042.99. 4,318.08 is the with-421-a annual figure."
+  },
+  {
+   "unit": "2L",
+   "kind": "missing",
+   "page": 33,
+   "printed": 650000,
+   "outcome": "ok",
+   "why": "There is a 2L row (Second Floor) with an offering price of $650,000.00."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 16,
+ "read_problems": [
+  "row with 13 cells: U\t2L\t1\t1\t-\t560\t-\t650000\t10.86\t-\t318.70\t101.55\t735.13\t33",
+  "1L/1R int_sf: two figures printed (429/517 and 481/481) with asterisk noting cellar+first floor combined; used first (cellar) figure per convention of not using second/gross area, but unclear which is \"interior/habitable\" value intended.",
+  "1L/1R ext_sf: printed as \"481(RY)\" and \"506(RY)\" respectively (Rear Yard), transcribed as given.",
+  "2R/3L int_sf: only single sf figure printed (962, 560) despite two-floor location; ext_sf printed as \"52 (B)\" and \"76 (B)\" (Balcony).",
+  "Unit 4 ext_sf: two outdoor figures printed \"113 (B)\" and \"508 (T)\"; used first (Balcony) figure only, could not combine per instructions.",
+  "tax_m: two monthly tax columns printed (with 421-a and w/o 421-a); used \"w/o 421-a (Monthly)\" column values as cc_m provided and unclear which carry_m corresponds to; please verify which tax/carry columns are intended.",
+  "carry_m: two monthly carrying charge columns printed (w/421-a and w/o 421-a); used \"w/o 421-a (Monthly)\" column; verify selection."
+ ],
+ "read_units": [
+  {
+   "unit": "1L",
+   "beds": null,
+   "baths": null,
+   "int_sf": 429,
+   "ext_sf": 481,
+   "price": 850000,
+   "pct": 16.08,
+   "pct2": null,
+   "cc_m": 471.88,
+   "tax_m": 150.36,
+   "carry_m": 1088.47,
+   "page": 33
+  },
+  {
+   "unit": "1R",
+   "beds": null,
+   "baths": null,
+   "int_sf": 481,
+   "ext_sf": 506,
+   "price": 825000,
+   "pct": 15.9,
+   "pct2": null,
+   "cc_m": 466.6,
+   "tax_m": 148.67,
+   "carry_m": 1076.29,
+   "page": 33
+  },
+  {
+   "unit": "2R",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 962,
+   "ext_sf": 52,
+   "price": 1060000,
+   "pct": 18.46,
+   "pct2": null,
+   "cc_m": 541.72,
+   "tax_m": 296.43,
+   "carry_m": 1249.57,
+   "page": 33
+  },
+  {
+   "unit": "3L",
+   "beds": 1,
+   "baths": 1,
+   "int_sf": 560,
+   "ext_sf": 76,
+   "price": 670000,
+   "pct": 11.5,
+   "pct2": null,
+   "cc_m": 337.48,
+   "tax_m": 107.53,
+   "carry_m": 778.45,
+   "page": 33
+  },
+  {
+   "unit": "4",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1179,
+   "ext_sf": 113,
+   "price": 1495000,
+   "pct": 27.2,
+   "pct2": null,
+   "cc_m": 798.21,
+   "tax_m": 4318.08,
+   "carry_m": 1841.2,
+   "page": 33
+  }
+ ],
+ "calls": 2,
+ "tokens": 22783,
+ "qa_date": "2026-10-01T03:02:07.295Z"
+}

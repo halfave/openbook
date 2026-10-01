@@ -1,0 +1,110 @@
+{
+ "plan_id": "CD230125",
+ "source": "pattern",
+ "checked": null,
+ "units_published": 4,
+ "pub_hash": "573a6494e346",
+ "verdict": "unresolved",
+ "pages": [
+  48,
+  49
+ ],
+ "units_read": 4,
+ "cells_compared": 20,
+ "cells_agreeing": 18,
+ "errors": 0,
+ "unresolved": 2,
+ "findings": [
+  {
+   "unit": "1",
+   "field": "baths",
+   "published": 2,
+   "read": null,
+   "kind": "not_read",
+   "page": 48,
+   "printed": 5,
+   "outcome": "unresolved",
+   "why": "The Bath cell for unit 1 reads '4 and 2(.5)', meaning 4 full and 2 half baths, which is 5 with half = .5. It is not 2 and not blank. The printed text is not a single number, so I've marked this unsure."
+  },
+  {
+   "unit": "1",
+   "field": "sqft",
+   "published": 4889,
+   "read": 3526,
+   "kind": "differs",
+   "page": 48,
+   "printed": 4889,
+   "outcome": "unresolved",
+   "why": "Both numbers are printed for unit 1: Total Unit Square Footage is 4,889 and Habitable Square Footage is 3,526 (4,889 minus 1,363 sq ft of cellar). I chose the total-unit column, but the field could mean either one."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 12,
+ "read_problems": [
+  "Unit 1 bath column prints \"4 and 2(.5)\"; combined beds/baths unclear — transcribed as printed since rule requires exact copy and does not define how to combine mixed entries.",
+  "ext_sf (terrace/yard/storage) not separately broken out per unit in a single square-foot column usable per the ext_sf definition; Limited Common Element square footage column (Yard/Storage/Storage & Terrace) exists but combines multiple element types, so left as -."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": 4,
+   "baths": null,
+   "int_sf": 3526,
+   "ext_sf": null,
+   "price": 7895000,
+   "pct": 46.592,
+   "pct2": null,
+   "cc_m": 1494.87,
+   "tax_m": 3764.83,
+   "carry_m": 5259.7,
+   "page": 48
+  },
+  {
+   "unit": "2",
+   "beds": 4,
+   "baths": 2,
+   "int_sf": 1800,
+   "ext_sf": null,
+   "price": 3750000,
+   "pct": 22.1304,
+   "pct2": null,
+   "cc_m": 710.04,
+   "tax_m": 1788.23,
+   "carry_m": 2498.27,
+   "page": 48
+  },
+  {
+   "unit": "3",
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1100,
+   "ext_sf": null,
+   "price": 2650000,
+   "pct": 15.6388,
+   "pct2": null,
+   "cc_m": 501.76,
+   "tax_m": 1263.68,
+   "carry_m": 1765.44,
+   "page": 48
+  },
+  {
+   "unit": "4",
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1100,
+   "ext_sf": null,
+   "price": 2650000,
+   "pct": 15.6388,
+   "pct2": null,
+   "cc_m": 501.76,
+   "tax_m": 1263.68,
+   "carry_m": 1765.44,
+   "page": 48
+  }
+ ],
+ "calls": 2,
+ "tokens": 21601,
+ "qa_date": "2026-10-01T05:09:26.272Z"
+}

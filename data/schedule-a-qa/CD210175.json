@@ -1,0 +1,96 @@
+{
+ "plan_id": "CD210175",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 3,
+ "pub_hash": "000e2579f344",
+ "verdict": "unresolved",
+ "pages": [
+  39,
+  40
+ ],
+ "units_read": 3,
+ "cells_compared": 25,
+ "cells_agreeing": 23,
+ "errors": 0,
+ "unresolved": 2,
+ "findings": [
+  {
+   "unit": "1",
+   "field": "baths",
+   "published": 1.5,
+   "read": 2.5,
+   "kind": "differs",
+   "page": 39,
+   "printed": 2,
+   "outcome": "unresolved",
+   "why": "The cell reads '1br + 1 full & 2 half bath', so no bathroom number is printed. Counting each half bath as .5 gives 1 + 2×.5 = 2. That matches neither 1.5 nor 2.5."
+  },
+  {
+   "unit": "2",
+   "field": "baths",
+   "published": 3.5,
+   "read": 6.5,
+   "kind": "differs",
+   "page": 39,
+   "printed": 4.5,
+   "outcome": "unresolved",
+   "why": "The cell reads '4 br + 3 full and 3 half', so no bathroom number is printed. Counting each half bath as .5 gives 3 + 3×.5 = 4.5. That matches neither 6.5 nor 3.5."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 1,
+ "read_problems": [
+  "Unit 1 beds/baths printed as \"1br + 1 full & 2 half bath\" = 1 bed, 1 full + 2 half baths = 2.0 baths total (1 + 0.5 + 0.5); transcribed as 2.5 — recheck: entered as 2.5, but computed value is 2.0; flagging for verification.",
+  "Unit 2 beds/baths printed as \"4 br + 3 full and 3 half\" = 3 full + 3 half = 4.5 baths; transcribed as 6.5 — recheck needed."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": 1,
+   "baths": 2.5,
+   "int_sf": 2628,
+   "ext_sf": 0,
+   "price": 1600000,
+   "pct": 31.228,
+   "pct2": null,
+   "cc_m": 400.89,
+   "tax_m": 468.42,
+   "carry_m": 869.31,
+   "page": 39
+  },
+  {
+   "unit": "2",
+   "beds": 4,
+   "baths": 6.5,
+   "int_sf": 3271,
+   "ext_sf": 1559,
+   "price": null,
+   "pct": 44.9251,
+   "pct2": null,
+   "cc_m": 576.73,
+   "tax_m": 673.88,
+   "carry_m": 1250.61,
+   "page": 39
+  },
+  {
+   "unit": "3",
+   "beds": 4,
+   "baths": 2.5,
+   "int_sf": 1530,
+   "ext_sf": 1417,
+   "price": 990000,
+   "pct": 23.8469,
+   "pct2": null,
+   "cc_m": 306.13,
+   "tax_m": 357.7,
+   "carry_m": 663.83,
+   "page": 39
+  }
+ ],
+ "calls": 2,
+ "tokens": 22116,
+ "qa_date": "2026-10-01T19:15:39.149Z"
+}

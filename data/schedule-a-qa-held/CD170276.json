@@ -1,0 +1,192 @@
+{
+ "plan_id": "CD170276",
+ "source": "held",
+ "checked": null,
+ "units_published": 6,
+ "pub_hash": "8878eead7476",
+ "verdict": "errors",
+ "pages": [
+  29,
+  30
+ ],
+ "units_read": 6,
+ "cells_compared": 25,
+ "cells_agreeing": 18,
+ "errors": 7,
+ "unresolved": 0,
+ "findings": [
+  {
+   "unit": "1",
+   "field": "tax_m",
+   "published": 1592.1,
+   "read": 1604.36,
+   "kind": "differs",
+   "page": 29,
+   "printed": 1604.36,
+   "outcome": "published_wrong",
+   "why": "Unit 1 shows 1,604.36 in the monthly 'without 421-a' tax column, and its 19,252.33 annual figure is 12 times that. 1,592.10 is in the next column over, under the 'with 421-a (Annual)' header."
+  },
+  {
+   "unit": "1",
+   "field": "carry_m",
+   "published": 439.35,
+   "read": 1978.69,
+   "kind": "differs",
+   "page": 29,
+   "printed": 1978.69,
+   "outcome": "published_wrong",
+   "why": "Unit 1's carrying charges without 421-a are printed as 1,978.69, which is 374.33 + 1,604.36. 439.35 is the total of the monthly 'with 421-a' tax column, not a Unit 1 cell."
+  },
+  {
+   "unit": "2",
+   "field": "tax_m",
+   "published": 1139.53,
+   "read": 1148.31,
+   "kind": "differs",
+   "page": 29,
+   "printed": 1148.31,
+   "outcome": "published_wrong",
+   "why": "Unit 2's monthly 'without 421-a' tax cell reads 1,148.31."
+  },
+  {
+   "unit": "3F",
+   "field": "tax_m",
+   "published": 527.59,
+   "read": 531.65,
+   "kind": "differs",
+   "page": 29,
+   "printed": 531.65,
+   "outcome": "published_wrong",
+   "why": "Unit 3F's monthly 'without 421-a' tax cell reads 531.65."
+  },
+  {
+   "unit": "3R",
+   "field": "tax_m",
+   "published": 660.82,
+   "read": 665.91,
+   "kind": "differs",
+   "page": 29,
+   "printed": 665.91,
+   "outcome": "published_wrong",
+   "why": "Unit 3R's monthly 'without 421-a' tax cell reads 665.91."
+  },
+  {
+   "unit": "4F",
+   "field": "tax_m",
+   "published": 524.64,
+   "read": 528.68,
+   "kind": "differs",
+   "page": 29,
+   "printed": 528.68,
+   "outcome": "published_wrong",
+   "why": "Unit 4F's monthly 'without 421-a' tax cell reads 528.68. 524.64 is in the 'with 421-a' column."
+  },
+  {
+   "unit": "4R",
+   "field": "tax_m",
+   "published": 827.52,
+   "read": 833.9,
+   "kind": "differs",
+   "page": 29,
+   "printed": 833.9,
+   "outcome": "published_wrong",
+   "why": "Unit 4R's monthly 'without 421-a' tax cell reads 833.90. 827.52 is in the 'with 421-a' column."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 11,
+ "read_problems": [
+  "Table lists \"Approx. Floor Area\" as interior sf but notes it is measured to center line of partitions (not strictly net/habitable); used as int_sf per table. Beds/baths given as combined \"No. of Bedrooms/Bathrooms\" (e.g. 2/2.5) rather than separate beds and baths columns, so beds and baths cells both show the combined value as printed. cc_m/tax_m/carry_m taken from \"with 421-a\" columns (4), (5), (6) since tax_m+cc_m=carry_m reconciles with those; \"without 421-a\" figures also printed but not used."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": null,
+   "baths": null,
+   "int_sf": 1740,
+   "ext_sf": null,
+   "price": 1800000,
+   "pct": 30.2,
+   "pct2": null,
+   "cc_m": 374.33,
+   "tax_m": 1604.36,
+   "carry_m": 1978.69,
+   "page": 29
+  },
+  {
+   "unit": "2",
+   "beds": null,
+   "baths": null,
+   "int_sf": 2143,
+   "ext_sf": null,
+   "price": 1500000,
+   "pct": 21.61,
+   "pct2": null,
+   "cc_m": 267.92,
+   "tax_m": 1148.31,
+   "carry_m": 1416.23,
+   "page": 29
+  },
+  {
+   "unit": "3F",
+   "beds": null,
+   "baths": null,
+   "int_sf": 909,
+   "ext_sf": null,
+   "price": 700000,
+   "pct": 10.01,
+   "pct2": null,
+   "cc_m": 124.05,
+   "tax_m": 531.65,
+   "carry_m": 655.7,
+   "page": 29
+  },
+  {
+   "unit": "3R",
+   "beds": null,
+   "baths": null,
+   "int_sf": 1220,
+   "ext_sf": null,
+   "price": 850000,
+   "pct": 12.53,
+   "pct2": null,
+   "cc_m": 155.37,
+   "tax_m": 665.91,
+   "carry_m": 821.28,
+   "page": 29
+  },
+  {
+   "unit": "4F",
+   "beds": null,
+   "baths": null,
+   "int_sf": 909,
+   "ext_sf": null,
+   "price": 700000,
+   "pct": 9.95,
+   "pct2": null,
+   "cc_m": 123.35,
+   "tax_m": 528.68,
+   "carry_m": 652.03,
+   "page": 29
+  },
+  {
+   "unit": "4R",
+   "beds": null,
+   "baths": null,
+   "int_sf": 1220,
+   "ext_sf": null,
+   "price": 850000,
+   "pct": 15.7,
+   "pct2": null,
+   "cc_m": 194.55,
+   "tax_m": 833.9,
+   "carry_m": 1028.45,
+   "page": 29
+  }
+ ],
+ "calls": 2,
+ "tokens": 23256,
+ "qa_date": "2026-10-01T23:16:11.052Z"
+}

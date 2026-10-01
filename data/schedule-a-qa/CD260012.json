@@ -1,0 +1,120 @@
+{
+ "plan_id": "CD260012",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 4,
+ "pub_hash": "7024f6380780",
+ "verdict": "verified",
+ "pages": [
+  40,
+  41
+ ],
+ "units_read": 4,
+ "cells_compared": 32,
+ "cells_agreeing": 29,
+ "errors": 0,
+ "unresolved": 0,
+ "findings": [
+  {
+   "unit": "2",
+   "field": "sqft",
+   "published": 1151,
+   "read": null,
+   "kind": "not_read",
+   "page": 40,
+   "printed": 1151,
+   "outcome": "ok",
+   "why": "Unit 2 row has 1,151.00 under 'Square footage (note 3)'. This is the table's only unit square-footage column. The table does not label it as interior."
+  },
+  {
+   "unit": "3",
+   "field": "sqft",
+   "published": 1148,
+   "read": null,
+   "kind": "not_read",
+   "page": 40,
+   "printed": 1148,
+   "outcome": "ok",
+   "why": "Unit 3 row has 1,148.00 under 'Square footage (note 3)'. This is the table's only unit square-footage column. The table does not label it as interior."
+  },
+  {
+   "unit": "4",
+   "field": "sqft",
+   "published": 1403,
+   "read": null,
+   "kind": "not_read",
+   "page": 40,
+   "printed": 1403,
+   "outcome": "ok",
+   "why": "Unit 4 row has 1,403.00 under 'Square footage (note 3)'. This is the table's only unit square-footage column. The table does not label it as interior."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 0,
+ "read_problems": [
+  "Unit 1 has beds=2, bath=2, half bath=1 (combined into baths as 2.5 per instructions). Square footage column (1023, 1151, 1148, 1403) is labeled \"Square footage\" with a separate \"Cellar Space square footage\" column; unclear if the main square footage figure represents pure interior/habitable area or includes cellar/other space, so used it as int_sf for unit 1 only (828 cellar) and left int_sf blank for units 2-4 since cellar was 0.00 but ambiguity remains about whether figure is gross or net interior."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 1023,
+   "ext_sf": null,
+   "price": 2650000,
+   "pct": 27.5,
+   "pct2": null,
+   "cc_m": 960.87,
+   "tax_m": 1474.61,
+   "carry_m": 2435.48,
+   "page": 40
+  },
+  {
+   "unit": "2",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": null,
+   "ext_sf": null,
+   "price": 2000000,
+   "pct": 22.5,
+   "pct2": null,
+   "cc_m": 786.17,
+   "tax_m": 1206.5,
+   "carry_m": 1992.67,
+   "page": 40
+  },
+  {
+   "unit": "3",
+   "beds": 3,
+   "baths": 2,
+   "int_sf": null,
+   "ext_sf": null,
+   "price": 2100000,
+   "pct": 22.5,
+   "pct2": null,
+   "cc_m": 786.17,
+   "tax_m": 1206.5,
+   "carry_m": 1992.67,
+   "page": 40
+  },
+  {
+   "unit": "4",
+   "beds": 3,
+   "baths": 3,
+   "int_sf": null,
+   "ext_sf": null,
+   "price": 2600000,
+   "pct": 27.5,
+   "pct2": null,
+   "cc_m": 960.87,
+   "tax_m": 1474.61,
+   "carry_m": 2435.48,
+   "page": 40
+  }
+ ],
+ "calls": 2,
+ "tokens": 21524,
+ "qa_date": "2026-10-01T06:07:56.084Z"
+}

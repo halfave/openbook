@@ -1,0 +1,125 @@
+{
+ "plan_id": "CD220223",
+ "source": "model",
+ "checked": "ag_total",
+ "units_published": 2,
+ "pub_hash": "e3b218679fab",
+ "verdict": "errors",
+ "pages": [
+  73,
+  74
+ ],
+ "units_read": 2,
+ "cells_compared": 12,
+ "cells_agreeing": 6,
+ "errors": 6,
+ "unresolved": 0,
+ "findings": [
+  {
+   "unit": "1",
+   "field": "cc_m",
+   "published": 6165,
+   "read": 513.75,
+   "kind": "differs",
+   "page": 72,
+   "printed": 513.75,
+   "outcome": "published_wrong",
+   "why": "Unit 1 row, monthly column of Common Charges (6), reads $513.75; the annual figure is $6,165.00"
+  },
+  {
+   "unit": "1",
+   "field": "tax_m",
+   "published": 6480,
+   "read": 540,
+   "kind": "differs",
+   "page": 72,
+   "printed": 540,
+   "outcome": "published_wrong",
+   "why": "Unit 1 row, monthly column of First Year Real Estate Taxes (7), reads $540.00; the annual figure is $6,480.00"
+  },
+  {
+   "unit": "1",
+   "field": "carry_m",
+   "published": 12645,
+   "read": 1053.75,
+   "kind": "differs",
+   "page": 72,
+   "printed": 1053.75,
+   "outcome": "published_wrong",
+   "why": "Unit 1 row, monthly column of Carrying Charges (9), reads $1,053.75; the annual figure is $12,645.00"
+  },
+  {
+   "unit": "2",
+   "field": "cc_m",
+   "published": 6165,
+   "read": 513.75,
+   "kind": "differs",
+   "page": 72,
+   "printed": 513.75,
+   "outcome": "published_wrong",
+   "why": "Unit 2 row, monthly column of Common Charges (6), reads $513.75"
+  },
+  {
+   "unit": "2",
+   "field": "tax_m",
+   "published": 6480,
+   "read": 540,
+   "kind": "differs",
+   "page": 72,
+   "printed": 540,
+   "outcome": "published_wrong",
+   "why": "Unit 2 row, monthly column of First Year Real Estate Taxes (7), reads $540.00"
+  },
+  {
+   "unit": "2",
+   "field": "carry_m",
+   "published": 12645,
+   "read": 1053.75,
+   "kind": "differs",
+   "page": 72,
+   "printed": 1053.75,
+   "outcome": "published_wrong",
+   "why": "Unit 2 row, monthly column of Carrying Charges (9), reads $1,053.75"
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 6,
+ "read_problems": [
+  "Page 72 is labeled PDF page 73 per filename (p0073-150.png) but printed page number shown is \"72\"; used printed page number 72. Sq ft column is labeled \"Approx. Gross Square Footage of Unit\" rather than interior/net, but it's the only unit size figure printed so it was used for int_sf."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": 3,
+   "baths": 3.5,
+   "int_sf": 3376,
+   "ext_sf": 1333,
+   "price": 4250000,
+   "pct": 50,
+   "pct2": null,
+   "cc_m": 513.75,
+   "tax_m": 540,
+   "carry_m": 1053.75,
+   "page": 72
+  },
+  {
+   "unit": "2",
+   "beds": 3,
+   "baths": 2.5,
+   "int_sf": 1896,
+   "ext_sf": 184,
+   "price": 3500000,
+   "pct": 50,
+   "pct2": null,
+   "cc_m": 513.75,
+   "tax_m": 540,
+   "carry_m": 1053.75,
+   "page": 72
+  }
+ ],
+ "calls": 2,
+ "tokens": 34078,
+ "qa_date": "2026-10-01T19:43:29.827Z"
+}

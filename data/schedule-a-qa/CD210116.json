@@ -1,0 +1,346 @@
+{
+ "plan_id": "CD210116",
+ "source": "pattern",
+ "checked": null,
+ "units_published": 6,
+ "pub_hash": "7c366119b48c",
+ "verdict": "errors",
+ "pages": [
+  34,
+  35
+ ],
+ "units_read": 11,
+ "cells_compared": 22,
+ "cells_agreeing": 14,
+ "errors": 8,
+ "unresolved": 0,
+ "findings": [
+  {
+   "unit": "2/2",
+   "field": "unit",
+   "published": "2/2",
+   "read": "1",
+   "kind": "differs",
+   "page": 34,
+   "printed": "1",
+   "outcome": "published_wrong",
+   "why": "First row's unit label is printed '1'. '2/2' is a bed/bath value from another row."
+  },
+  {
+   "unit": "572",
+   "field": "unit",
+   "published": "572",
+   "read": "2",
+   "kind": "differs",
+   "page": 34,
+   "printed": "2",
+   "outcome": "published_wrong",
+   "why": "Unit label is printed '2'. '572' comes from the '572 (RY)' outdoor area in that row."
+  },
+  {
+   "unit": "1/1",
+   "field": "unit",
+   "published": "1/1",
+   "read": "4F",
+   "kind": "differs",
+   "page": 34,
+   "printed": "4F",
+   "outcome": "published_wrong",
+   "why": "Unit label is printed '4F'. '1/1' is its bed/bath value."
+  },
+  {
+   "unit": "430",
+   "field": "unit",
+   "published": "430",
+   "read": "4R",
+   "kind": "differs",
+   "page": 34,
+   "printed": "4R",
+   "outcome": "published_wrong",
+   "why": "Unit label is printed '4R'. '430' comes from the '430 (T)' outdoor area."
+  },
+  {
+   "unit": "572",
+   "field": "beds",
+   "published": 3,
+   "read": null,
+   "kind": "not_read",
+   "page": 34,
+   "printed": null,
+   "outcome": "published_wrong",
+   "why": "No unit '572' exists. 572 is unit 2's rear yard area; unit 2 is printed 3/3."
+  },
+  {
+   "unit": "572",
+   "field": "baths",
+   "published": 3,
+   "read": null,
+   "kind": "not_read",
+   "page": 34,
+   "printed": null,
+   "outcome": "published_wrong",
+   "why": "No unit '572' exists. 572 is unit 2's rear yard area; unit 2 is printed 3/3."
+  },
+  {
+   "unit": "3F",
+   "field": "beds",
+   "published": 1,
+   "read": null,
+   "kind": "not_read",
+   "page": 34,
+   "printed": 1,
+   "outcome": "ok",
+   "why": "3F is printed 1/1."
+  },
+  {
+   "unit": "3F",
+   "field": "baths",
+   "published": 1,
+   "read": null,
+   "kind": "not_read",
+   "page": 34,
+   "printed": 1,
+   "outcome": "ok",
+   "why": "3F is printed 1/1."
+  },
+  {
+   "unit": "3R",
+   "field": "beds",
+   "published": 1,
+   "read": null,
+   "kind": "not_read",
+   "page": 34,
+   "printed": 1,
+   "outcome": "ok",
+   "why": "3R is printed 1/1."
+  },
+  {
+   "unit": "3R",
+   "field": "baths",
+   "published": 1,
+   "read": null,
+   "kind": "not_read",
+   "page": 34,
+   "printed": 1,
+   "outcome": "ok",
+   "why": "3R is printed 1/1."
+  },
+  {
+   "unit": "430",
+   "field": "beds",
+   "published": 2,
+   "read": null,
+   "kind": "not_read",
+   "page": 34,
+   "printed": null,
+   "outcome": "published_wrong",
+   "why": "No unit '430' exists. 430 is unit 4R's roof terrace area; 4R is printed 2/2."
+  },
+  {
+   "unit": "430",
+   "field": "baths",
+   "published": 2,
+   "read": null,
+   "kind": "not_read",
+   "page": 34,
+   "printed": null,
+   "outcome": "published_wrong",
+   "why": "No unit '430' exists. 430 is unit 4R's roof terrace area; 4R is printed 2/2."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [
+  {
+   "unit": "S1",
+   "price": 15000,
+   "page": 34
+  },
+  {
+   "unit": "S2",
+   "price": 15000,
+   "page": 34
+  },
+  {
+   "unit": "S3",
+   "price": 15000,
+   "page": 34
+  },
+  {
+   "unit": "S4",
+   "price": 15000,
+   "page": 34
+  },
+  {
+   "unit": "S5",
+   "price": 15000,
+   "page": 34
+  }
+ ],
+ "label_variants": [],
+ "filled_by_reading": 22,
+ "read_problems": [
+  "The \"No. of Bedrooms/Bathrooms\" column shows combined bed/bath as e.g. \"2/2.5\"; placed same value in both beds and baths columns since format is ambiguous as single string rather than separate numbers.",
+  "Unit 1 has a second floor area figure (1057) listed with an asterisk alongside 755; used 755 (marked with *) as int_sf per instructions, but unclear which is the intended \"interior/habitable\" figure since footnote indicates cellar space (1057 total incl. cellar) is not habitable.",
+  "Outdoor/Limited Common Area column (e.g., \"492 (RY) 172 (FY) 172 (AW)\") contains multiple components; could not reduce to single ext_sf number per instructions, so left as -.",
+  "Page 35 contains no Schedule A price table (Notes to Schedule A only); no rows transcribed from that page."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": null,
+   "baths": null,
+   "int_sf": 755,
+   "ext_sf": null,
+   "price": 1950000,
+   "pct": 26.28,
+   "pct2": null,
+   "cc_m": 596.78,
+   "tax_m": 1398.9,
+   "carry_m": 1995.68,
+   "page": 34
+  },
+  {
+   "unit": "2",
+   "beds": null,
+   "baths": null,
+   "int_sf": 1289,
+   "ext_sf": null,
+   "price": 1650000,
+   "pct": 23.27,
+   "pct2": null,
+   "cc_m": 528.42,
+   "tax_m": 1238.67,
+   "carry_m": 1767.09,
+   "page": 34
+  },
+  {
+   "unit": "3F",
+   "beds": null,
+   "baths": null,
+   "int_sf": 631,
+   "ext_sf": null,
+   "price": 795000,
+   "pct": 10.23,
+   "pct2": null,
+   "cc_m": 232.31,
+   "tax_m": 544.55,
+   "carry_m": 776.86,
+   "page": 34
+  },
+  {
+   "unit": "3R",
+   "beds": null,
+   "baths": null,
+   "int_sf": 621,
+   "ext_sf": null,
+   "price": 795000,
+   "pct": 10.16,
+   "pct2": null,
+   "cc_m": 230.72,
+   "tax_m": 540.82,
+   "carry_m": 771.54,
+   "page": 34
+  },
+  {
+   "unit": "4F",
+   "beds": null,
+   "baths": null,
+   "int_sf": 641,
+   "ext_sf": null,
+   "price": 895000,
+   "pct": 13.97,
+   "pct2": null,
+   "cc_m": 317.24,
+   "tax_m": 743.63,
+   "carry_m": 1060.87,
+   "page": 34
+  },
+  {
+   "unit": "4R",
+   "beds": null,
+   "baths": null,
+   "int_sf": 895,
+   "ext_sf": null,
+   "price": 1150000,
+   "pct": 16.09,
+   "pct2": null,
+   "cc_m": 365.38,
+   "tax_m": 856.48,
+   "carry_m": 1221.86,
+   "page": 34
+  },
+  {
+   "unit": "S1",
+   "beds": null,
+   "baths": null,
+   "int_sf": null,
+   "ext_sf": null,
+   "price": 15000,
+   "pct": null,
+   "pct2": null,
+   "cc_m": null,
+   "tax_m": null,
+   "carry_m": null,
+   "page": 34
+  },
+  {
+   "unit": "S2",
+   "beds": null,
+   "baths": null,
+   "int_sf": null,
+   "ext_sf": null,
+   "price": 15000,
+   "pct": null,
+   "pct2": null,
+   "cc_m": null,
+   "tax_m": null,
+   "carry_m": null,
+   "page": 34
+  },
+  {
+   "unit": "S3",
+   "beds": null,
+   "baths": null,
+   "int_sf": null,
+   "ext_sf": null,
+   "price": 15000,
+   "pct": null,
+   "pct2": null,
+   "cc_m": null,
+   "tax_m": null,
+   "carry_m": null,
+   "page": 34
+  },
+  {
+   "unit": "S4",
+   "beds": null,
+   "baths": null,
+   "int_sf": null,
+   "ext_sf": null,
+   "price": 15000,
+   "pct": null,
+   "pct2": null,
+   "cc_m": null,
+   "tax_m": null,
+   "carry_m": null,
+   "page": 34
+  },
+  {
+   "unit": "S5",
+   "beds": null,
+   "baths": null,
+   "int_sf": null,
+   "ext_sf": null,
+   "price": 15000,
+   "pct": null,
+   "pct2": null,
+   "cc_m": null,
+   "tax_m": null,
+   "carry_m": null,
+   "page": 34
+  }
+ ],
+ "calls": 2,
+ "tokens": 23174,
+ "qa_date": "2026-10-01T04:15:34.861Z"
+}

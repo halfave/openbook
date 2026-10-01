@@ -1,0 +1,177 @@
+{
+ "plan_id": "CD180171",
+ "source": "held",
+ "checked": null,
+ "units_published": 4,
+ "pub_hash": "fee3fda0ac24",
+ "verdict": "errors",
+ "pages": [
+  26,
+  27
+ ],
+ "units_read": 4,
+ "cells_compared": 32,
+ "cells_agreeing": 24,
+ "errors": 8,
+ "unresolved": 0,
+ "findings": [
+  {
+   "unit": "1",
+   "field": "tax_m",
+   "published": 854.95,
+   "read": 186.61,
+   "kind": "differs",
+   "page": 26,
+   "printed": 186.61,
+   "outcome": "published_wrong",
+   "why": "The page has two tax scenarios. In the with-J-51 scenario, monthly taxes are 186.61, and 331.74 + 186.61 = 518.35 carrying. Without J-51, taxes are 854.95 and carrying is 1,186.69. Each candidate pairs taxes from one scenario with carrying charges from the other."
+  },
+  {
+   "unit": "1",
+   "field": "carry_m",
+   "published": 1186.69,
+   "read": 518.35,
+   "kind": "differs",
+   "page": 26,
+   "printed": 518.35,
+   "outcome": "published_wrong",
+   "why": "Carrying charges with J-51, the same scenario as answer 1. The without-J-51 column prints 1,186.69."
+  },
+  {
+   "unit": "2",
+   "field": "tax_m",
+   "published": 477.14,
+   "read": 104.12,
+   "kind": "differs",
+   "page": 26,
+   "printed": 104.12,
+   "outcome": "published_wrong",
+   "why": "Monthly taxes with J-51. The without-J-51 column prints 477.14."
+  },
+  {
+   "unit": "2",
+   "field": "carry_m",
+   "published": 662.29,
+   "read": 289.26,
+   "kind": "differs",
+   "page": 26,
+   "printed": 289.26,
+   "outcome": "published_wrong",
+   "why": "Carrying charges with J-51. The without-J-51 column prints 662.29."
+  },
+  {
+   "unit": "3",
+   "field": "tax_m",
+   "published": 559.34,
+   "read": 117.52,
+   "kind": "differs",
+   "page": 26,
+   "printed": 117.52,
+   "outcome": "published_wrong",
+   "why": "Monthly taxes with J-51. The without-J-51 column prints 559.34."
+  },
+  {
+   "unit": "3",
+   "field": "carry_m",
+   "published": 776.37,
+   "read": 334.55,
+   "kind": "differs",
+   "page": 26,
+   "printed": 334.55,
+   "outcome": "published_wrong",
+   "why": "Carrying charges with J-51. The without-J-51 column prints 776.37."
+  },
+  {
+   "unit": "4",
+   "field": "tax_m",
+   "published": 554.2,
+   "read": 123.2,
+   "kind": "differs",
+   "page": 26,
+   "printed": 123.2,
+   "outcome": "published_wrong",
+   "why": "Monthly taxes with J-51. The without-J-51 column prints 554.20."
+  },
+  {
+   "unit": "4",
+   "field": "carry_m",
+   "published": 769.25,
+   "read": 338.25,
+   "kind": "differs",
+   "page": 26,
+   "printed": 338.25,
+   "outcome": "published_wrong",
+   "why": "Carrying charges with J-51. The without-J-51 column prints 769.25."
+  }
+ ],
+ "unpriced_rows": [],
+ "ancillary_rows": [],
+ "label_variants": [],
+ "filled_by_reading": 0,
+ "read_problems": [
+  "Beds/baths given as combined \"No. of Bedrooms/Bathrooms\" column (e.g. \"2/2.5\"), split into beds=2, baths=2.5 for unit 1 and beds=2, baths=2 for units 2-4.",
+  "carry_m taken from \"Projected Monthly Carrying Charges with J-51 Tax Benefits\" column; a second carry column \"without Tax Benefits\" also printed but not included per one-value-per-cell instruction.",
+  "tax_m taken from \"Projected Monthly Real Estate Taxes with J-51 Tax Benefits\" column, matching the with-J-51 carry_m column selected."
+ ],
+ "read_units": [
+  {
+   "unit": "1",
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 926,
+   "ext_sf": null,
+   "price": 1700000,
+   "pct": 34.96,
+   "pct2": null,
+   "cc_m": 331.74,
+   "tax_m": 186.61,
+   "carry_m": 518.35,
+   "page": 26
+  },
+  {
+   "unit": "2",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 812,
+   "ext_sf": null,
+   "price": 1200000,
+   "pct": 19.51,
+   "pct2": null,
+   "cc_m": 185.14,
+   "tax_m": 104.12,
+   "carry_m": 289.26,
+   "page": 26
+  },
+  {
+   "unit": "3",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 844,
+   "ext_sf": null,
+   "price": 1200000,
+   "pct": 22.87,
+   "pct2": null,
+   "cc_m": 217.04,
+   "tax_m": 117.52,
+   "carry_m": 334.55,
+   "page": 26
+  },
+  {
+   "unit": "4",
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 838,
+   "ext_sf": null,
+   "price": 1200000,
+   "pct": 22.66,
+   "pct2": null,
+   "cc_m": 215.04,
+   "tax_m": 123.2,
+   "carry_m": 338.25,
+   "page": 26
+  }
+ ],
+ "calls": 2,
+ "tokens": 32476,
+ "qa_date": "2026-10-01T23:41:46.333Z"
+}
