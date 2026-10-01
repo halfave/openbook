@@ -3,33 +3,6 @@
  "steps": [
   {
    "step": "sonnet-text",
-   "verdict": "hold",
-   "units": 5,
-   "failed": [
-    "printed",
-    "monthlyTotals"
-   ]
-  },
-  {
-   "step": "sonnet-text-retry",
-   "verdict": "hold",
-   "units": 5,
-   "failed": [
-    "printed",
-    "monthlyTotals"
-   ]
-  },
-  {
-   "step": "sonnet-images",
-   "verdict": "hold",
-   "units": 5,
-   "failed": [
-    "printed",
-    "monthlyTotals"
-   ]
-  },
-  {
-   "step": "sonnet-images-think",
    "verdict": "publish_ag",
    "units": 5,
    "failed": [
@@ -37,39 +10,18 @@
    ]
   }
  ],
- "calls": 4,
+ "calls": 1,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4385,
-   "output_tokens": 764,
-   "seconds": 8,
-   "cost_usd": 0.02212
-  },
-  {
-   "model": "sonnet",
-   "tokens": 4507,
-   "output_tokens": 890,
-   "seconds": 9,
-   "cost_usd": 0.023364000000000003
-  },
-  {
-   "model": "sonnet",
-   "tokens": 13874,
-   "output_tokens": 935,
-   "seconds": 10,
-   "cost_usd": 0.037188399999999996
-  },
-  {
-   "model": "sonnet",
-   "tokens": 24529,
-   "output_tokens": 3673,
-   "seconds": 108,
-   "cost_usd": 0.066201
+   "tokens": 4918,
+   "output_tokens": 748,
+   "seconds": 11,
+   "cost_usd": 0.024155999999999997
   }
  ],
- "tokens": 47295,
- "api_equiv_usd": 0.149,
+ "tokens": 4918,
+ "api_equiv_usd": 0.024,
  "located_pages": [
   45
  ],
@@ -87,10 +39,11 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 4747000,
- "step": "sonnet-images-think",
+ "step": "sonnet-text",
  "budget_period": "JULY 1, 2024 TO JUNE 30, 2025",
  "columns_printed": [
   "Unit No.",
@@ -116,10 +69,13 @@
   "cc_m": 1712.21,
   "tax_m": 1528.92,
   "int_sf": 3165,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "\"Limited Common Element square feet\" column has no designated field; recorded per-unit in note. Parking license rows (P1, P2 & P3) list only unit association and price with no other columns; unit numbers shown are those of the associated residential units, transcribed as given."
+  "Row for unit 3 limited common areas text (\"Unit No. 3\" line with no $ amount listed) appears blank in source; row 3 under \"Unit No.\" section has no separate price listed beyond main table - treated as note only."
  ],
  "units": [
   {
@@ -128,7 +84,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 921,
    "sf2": 493,
    "ext_sf": null,
@@ -142,7 +99,8 @@
    "tax2_m": null,
    "carry_m": 1339.74,
    "page": 45,
-   "note": "Storage (46 sf); Areaway (111 sf); Rear yard (1,060 sf); Limited Common Element sf: 1,217.00"
+   "note": "Storage (46 sf); Areaway (111 sf); Rear yard (1,060 sf)",
+   "baths": 2.5
   },
   {
    "unit": "2",
@@ -150,7 +108,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1122,
    "sf2": 0,
    "ext_sf": null,
@@ -164,7 +123,8 @@
    "tax2_m": null,
    "carry_m": 722.06,
    "page": 45,
-   "note": "Storage (47 sf); Balcony (219 sf); Balcony (30 sf); Limited Common Element sf: 296.00"
+   "note": "Storage (47 sf); Balcony (219 sf); Balcony (30 sf)",
+   "baths": 2
   },
   {
    "unit": "3",
@@ -172,7 +132,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1122,
    "sf2": 0,
    "ext_sf": null,
@@ -186,7 +147,8 @@
    "tax2_m": null,
    "carry_m": 1179.33,
    "page": 45,
-   "note": "Storage (49 sf); Balcony (46 sf); Balcony (30 sf); Terrace (1,069 sf); Limited Common Element sf: 1,194.00"
+   "note": "Storage (49 sf); Balcony (46 sf); Balcony (30 sf); Terrace (1,069 sf)",
+   "baths": 2
   },
   {
    "unit": "P1",
@@ -194,7 +156,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -208,7 +171,8 @@
    "tax2_m": null,
    "carry_m": null,
    "page": 45,
-   "note": "Parking space license; associated with Unit 1"
+   "note": "Two (2) Parking Space Licenses",
+   "baths": null
   },
   {
    "unit": "P2 & P3",
@@ -216,7 +180,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -230,7 +195,8 @@
    "tax2_m": null,
    "carry_m": null,
    "page": 45,
-   "note": "Parking space licenses; associated with Unit 2"
+   "note": "Two (2) Parking Space Licenses",
+   "baths": null
   }
  ]
 }

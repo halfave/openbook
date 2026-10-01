@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4553,
-   "output_tokens": 792,
-   "seconds": 8,
-   "cost_usd": 0.02296
+   "tokens": 5176,
+   "output_tokens": 950,
+   "seconds": 85,
+   "cost_usd": 0.0103488
   }
  ],
- "tokens": 4553,
- "api_equiv_usd": 0.023,
+ "tokens": 5176,
+ "api_equiv_usd": 0.01,
  "located_pages": [
   21
  ],
@@ -37,13 +37,14 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 1564000,
  "step": "sonnet-text",
  "budget_period": "10/1/2010",
  "columns_printed": [
-  "Unit No.",
+  "No.",
   "Location",
   "Approx. Area",
   "No. of Bedrooms/Bathrooms",
@@ -58,17 +59,22 @@
   "Projected Monthly Carrying Charges without 421-a Tax Benefits"
  ],
  "tax2": "without 421-a",
- "sf2": null,
+ "sf2": "-",
  "printed_totals": {
   "price": 1564000,
   "pct": 100,
   "cc_m": 1120.67,
   "tax_m": 17.51,
   "int_sf": 3960,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Row for 3A common charge \"150.39\" printed as \"150.39\" (clear); OCR artifact \"13•t26\" for 3A resolved to 134.26 based on annual tax alignment; annual total for with-421-a tax column printed as \"$209.99\" but likely should align to monthly sum (kept as printed)."
+  "Unit 1A bedrooms/baths printed as \"1/1.5\" meaning 1 bedroom, 1 full bath, 1 half bath (not clearly a half-bath column, inferred from \"1.5\" notation per rules).",
+  "Unit 3A approx. area printed as \"48~\" (likely 489), read as 489; low confidence on last digit.",
+  "tax_m and tax_a columns: with-421-a figures used as primary (tax_m/tax_a) since carry_m \"with 421-a\" appears first/leftmost; without-421-a monthly placed in tax2_m per instructions, but carry_m printed both scenarios—only \"with 421-a\" carry_m captured in carry_m field, \"without 421-a\" carry_m not captured (no field for it)."
  ],
  "units": [
   {
@@ -77,7 +83,8 @@
    "floor": "1st Fl/Basement",
    "rooms": null,
    "beds": 1,
-   "baths": 1.5,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": 1290,
    "sf2": null,
    "ext_sf": null,
@@ -91,7 +98,8 @@
    "tax2_m": 554.59,
    "carry_m": 320.28,
    "page": 21,
-   "note": null
+   "note": null,
+   "baths": 1.5
   },
   {
    "unit": "2A",
@@ -99,7 +107,8 @@
    "floor": "2nd Floor",
    "rooms": null,
    "beds": 0,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 485,
    "sf2": null,
    "ext_sf": null,
@@ -113,7 +122,8 @@
    "tax2_m": 258.18,
    "carry_m": 149.11,
    "page": 21,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "2B",
@@ -121,7 +131,8 @@
    "floor": "2nd Floor",
    "rooms": null,
    "beds": 0,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 447,
    "sf2": null,
    "ext_sf": null,
@@ -135,7 +146,8 @@
    "tax2_m": 236.1,
    "carry_m": 136.36,
    "page": 21,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3A",
@@ -143,8 +155,9 @@
    "floor": "3rd Floor",
    "rooms": null,
    "beds": 0,
-   "baths": 1,
-   "int_sf": 484,
+   "full_baths": 1,
+   "half_baths": 0,
+   "int_sf": 489,
    "sf2": null,
    "ext_sf": null,
    "price": 229000,
@@ -157,7 +170,8 @@
    "tax2_m": 264.48,
    "carry_m": 152.74,
    "page": 21,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3B",
@@ -165,7 +179,8 @@
    "floor": "3rd Floor",
    "rooms": null,
    "beds": 0,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 447,
    "sf2": null,
    "ext_sf": null,
@@ -179,7 +194,8 @@
    "tax2_m": 242.41,
    "carry_m": 139.99,
    "page": 21,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "4A",
@@ -187,7 +203,8 @@
    "floor": "4th Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 806,
    "sf2": null,
    "ext_sf": null,
@@ -201,7 +218,8 @@
    "tax2_m": 415.05,
    "carry_m": 239.7,
    "page": 21,
-   "note": null
+   "note": null,
+   "baths": 1
   }
  ]
 }

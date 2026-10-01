@@ -218,11 +218,13 @@ async function locateScan(tally, id, pdf) {
 }
 
 // ---------- 2. transcription ----------
-const COLS = ["unit", "type", "floor", "rooms", "beds", "baths", "int_sf", "sf2", "ext_sf", "price", "pct", "pct2", "cc_m", "cc_a", "tax_m", "tax_a", "tax2_m", "carry_m", "page", "note"];
+// Baths are read as two counts (full, half) and combined in code: a separate half-bath column was the most common error
+// when the model wrote one bath figure.
+const COLS = ["unit", "type", "floor", "rooms", "beds", "full_baths", "half_baths", "int_sf", "sf2", "ext_sf", "price", "pct", "pct2", "cc_m", "cc_a", "tax_m", "tax_a", "tax2_m", "carry_m", "page", "note"];
 const RULES = `Transcribe the Schedule A table (unit prices and related information). Copy numbers exactly as printed; never compute or guess.
 
 Every U line has exactly ${COLS.length} cells after "U", separated by single tabs, in the order below. Write - for any cell that is blank, "N/A", or not in the table. Never leave a cell out; a missing cell shifts every column after it.
-Example: U<TAB>2B<TAB>R<TAB>-<TAB>-<TAB>2<TAB>2<TAB>1235<TAB>-<TAB>223<TAB>1690000<TAB>4.25<TAB>4.41<TAB>536.78<TAB>-<TAB>1193.61<TAB>14323.33<TAB>-<TAB>1730.39<TAB>37<TAB>-
+Example (2 bedrooms, 2 full baths and 1 half bath): U<TAB>2B<TAB>R<TAB>-<TAB>-<TAB>2<TAB>2<TAB>1<TAB>1235<TAB>-<TAB>223<TAB>1690000<TAB>4.25<TAB>4.41<TAB>536.78<TAB>-<TAB>1193.61<TAB>14323.33<TAB>-<TAB>1730.39<TAB>37<TAB>-
 
 Output tab-separated lines only, in this order:
 PERIOD<TAB>first-year budget period as printed
@@ -232,18 +234,35 @@ SF2<TAB>what sf2 holds (e.g. "gross sf", "cellar"), or empty
 then one line per unit:
 U<TAB>${COLS.join("<TAB>")}
 then:
-TOTAL<TAB>price<TAB>pct<TAB>cc_m<TAB>tax_m<TAB>int_sf<TAB>ext_sf   (from the printed total row; - for any not printed)
+TOTAL<TAB>price<TAB>pct<TAB>cc_m<TAB>tax_m<TAB>int_sf<TAB>ext_sf<TAB>beds<TAB>full_baths<TAB>half_baths   (from the printed total row; - for any not printed)
 PROBLEM<TAB>text   (one line per thing you could not read or were unsure of)
 If there is no Schedule A price table on these pages, output only: NOTFOUND
 
 Rules:
-- unit exactly as printed. type: R residential, C commercial or community facility, P parking, S storage, O other.
+- unit: the whole label from the unit column, exactly as printed, including a letter or suffix printed beside the number ("4 A", "81 B", "PH North", "201 Huron St. 1F"). Every row has its own label: if several rows seem to share one ("4", "4", "4"), look again for the letter beside each. Never take a label from another column (square feet, rooms, bedrooms, a footnote number); drop footnote marks (*, **, †). A row with no legible label: write the label you can read and add a PROBLEM line.
+- type: R residential, C commercial or community facility, P parking, S storage, O other.
 - floor and rooms only if the table has them. Never derive bedrooms from rooms.
-- beds/baths only when clearly stated: "2/2", "2BR/2BA", "2 Bedrooms/2 Bathrooms", "3+3-1/2" = 3 beds 3.5 baths. Studio = 0 beds. A half bath counts 0.5 ("2 full & 1 half" = 2.5). Unclear codes: leave empty, put the code in note.
+- Bedrooms and baths, the fields buyers compare most. Read them from the bedroom/bath columns only, never from a neighbouring column (limited common area, rooms, square feet).
+  - beds: the number of bedrooms. "Studio", "Stu" or a printed 0 = 0. Never write 1 for a studio or for a printed 0. "3+" or "3 + den" = 3.
+  - full_baths and half_baths: two separate counts. Many tables have their own "1/2 Bath" or "Half Bath" column: put its number in half_baths and never drop it. "2.5" or "2-1/2" or "2½" = 2 full, 1 half. "3 full, 2 half" = 3 full, 2 half. "Studio/1.5" = beds 0, 1 full, 1 half. "2/2.5" under "Bedrooms/Baths" = beds 2, 2 full, 1 half. No half bath printed: half_baths 0.
+  - "2/1" means bedrooms/baths only when the header says so; if the header says full/half baths, it means 2 full, 1 half.
+  - A single bath figure is never unclear: "1" = 1 full, 0 half; "2" = 2 full, 0 half; "1.5", "1 1/2", "1½" = 1 full, 1 half.
+  - Worked examples by layout (check the header, then copy):
+    "Beds/Baths" (or "No. of Beds / Baths", "Bedrooms/Bathrooms") holding "3.0/4.0": beds 3, full_baths 4, half_baths 0. Holding "2/1": beds 2, full 1, half 0. Holding "2/2.5": beds 2, full 2, half 1. The first figure is always bedrooms, never baths, and a whole second figure has no half bath.
+    Two layouts printed (e.g. "Current" and "Proposed" in a conversion plan): use the proposed layout, the one being offered, and say so in a PROBLEM line.
+    Separate "Bathrooms" and "Half Bathrooms" columns, row "1 | 2 | (blank)": beds 1, full_baths 2, half_baths 0. The Bathrooms figure goes in full_baths, never in half_baths.
+    One column headed "Baths/Half Baths" or "Baths/Half" holding "1": full 1, half 0; holding "2 1/2": full 2, half 1. It is one figure per row, not a pair.
+  - half_baths is rarely more than 1 and never more than 2; a larger number means a figure from another column. full_baths is at least 1 for a home.
+  - A combined cell like "3+3-1/2" = 3 beds, 3 full, 1 half.
+  - Parking, storage, retail, community facility and other rows: leave beds and baths blank (-) unless numbers are printed for that row. A blank or "-" cell is -, never 0.
+  - Unclear codes: leave blank and put the code in note.
 - int_sf: interior/habitable/net square feet. sf2: a second area column (gross, cellar, uninhabitable); say which in SF2. A unit on two levels may print its area as two figures on separate lines (e.g. "406*" for the cellar and "580" for the first floor): put the habitable floor's figure in int_sf and the cellar/lower figure in sf2, never in ext_sf. ext_sf: terrace/balcony/yard/roof area when one number is printed for it ("N/A" or none: -; never the combined interior + outdoor "total" column); several separate areas: leave empty and list them in note.
-- price: offering price. pct: percentage of common interest. pct2: a second percentage column, if any.
-- cc_m / cc_a: monthly / annual common charges. tax_m / tax_a: monthly / annual real estate taxes. If two tax scenarios are printed, tax_m and tax_a are the ones the carrying-charge column uses (else the first), and the other monthly figure goes in tax2_m.
-- carry_m: monthly carrying charges, only if printed.
+- int_sf is the net/interior figure when both net and gross are printed; gross goes in sf2.
+- price: offering price. pct: the percentage of common interest in the whole condominium. pct2: a second percentage column if any (residential-only, a section's or tower's share, "proportionate share").
+- cc_m / cc_a: monthly / annual common charges. tax_m / tax_a: monthly / annual real estate taxes.
+- Monthly vs annual: a figure goes in a monthly field only from a column whose header says monthly, and an annual one only in cc_a / tax_a. If a column headed monthly holds values about 12 times the other monthly columns, add a PROBLEM line saying so and still copy it as printed.
+- Two tax scenarios (with and without a 421-a, J-51 or other abatement, exemption or subsidy): tax_m and tax_a are the first-year figures WITH the abatement in effect (normally the lower ones); the other monthly figure goes in tax2_m, and TAX2 says what it is.
+- carry_m: monthly carrying charges (also headed "Total monthly", "Total of estimated common charges and real estate taxes, monthly"), only if printed, and only the figure that uses tax_m. If the table prints carrying charges only for the other tax scenario, write -.
 - page: the PDF PAGE number of the row.
 - Combine continuation pages and separate parking/storage tables into one list.
 - Write numbers without $ , or % (1690000, 4.25).`;
@@ -261,14 +280,17 @@ function parse(text) {
       // A row with the wrong number of cells has shifted columns; it is dropped and reported, never guessed at.
       if (c.length !== COLS.length + 1) { o.bad_rows = (o.bad_rows || 0) + 1; o.problems.push(`row with ${c.length - 1} cells dropped: ${line.slice(0, 80)}`); continue; }
       const u = Object.fromEntries(COLS.map((name, i) => [name, (c[i + 1] ?? "").trim().replace(/^-$/, "")]));
-      const num = ["rooms", "beds", "baths", "int_sf", "sf2", "ext_sf", "price", "pct", "pct2", "cc_m", "cc_a", "tax_m", "tax_a", "tax2_m", "carry_m", "page"];
+      const num = ["rooms", "beds", "full_baths", "half_baths", "int_sf", "sf2", "ext_sf", "price", "pct", "pct2", "cc_m", "cc_a", "tax_m", "tax_a", "tax2_m", "carry_m", "page"];
       for (const n of num) u[n] = numOrNull(u[n]);
       u.type = TYPES[String(u.type).toUpperCase()[0]] || "other";
       // Bedrooms are whole numbers; "3+" (a den) must not become 3.5.
       if (u.beds != null && !Number.isInteger(u.beds)) { u.note = [u.note, `beds as printed: ${c[5]}`].filter(Boolean).join("; "); u.beds = null; }
+      // Baths = full + half / 2. A half count with no full count printed (a powder room only) still counts.
+      u.baths = u.full_baths == null && u.half_baths == null ? null : (u.full_baths || 0) + (u.half_baths || 0) / 2;
       u.floor = u.floor || null; u.note = u.note || null;
       if (u.unit) o.units.push(u);
-    } else if (k === "TOTAL") o.printed_totals = { price: numOrNull(c[1]), pct: numOrNull(c[2]), cc_m: numOrNull(c[3]), tax_m: numOrNull(c[4]), int_sf: numOrNull(c[5]), ext_sf: numOrNull(c[6]) };
+    } else if (k === "TOTAL") o.printed_totals = { price: numOrNull(c[1]), pct: numOrNull(c[2]), cc_m: numOrNull(c[3]), tax_m: numOrNull(c[4]), int_sf: numOrNull(c[5]), ext_sf: numOrNull(c[6]),
+      beds: numOrNull(c[7]), full_baths: numOrNull(c[8]), half_baths: numOrNull(c[9]) };
     else if (k === "PROBLEM" && c[1]) o.problems.push(c.slice(1).join(" ").trim());
     else if (k === "PERIOD") o.budget_period = c[1]?.trim() || null;
     else if (k === "COLS") o.columns_printed = c.slice(1).join(" ").split(" | ").map((x) => x.trim()).filter(Boolean);
@@ -276,14 +298,20 @@ function parse(text) {
     else if (k === "SF2") o.sf2 = c[1]?.trim() || null;
   }
   if (!o.units.length) o.found = false;
-  // Two tax scenarios (with / without an abatement): the main figure is the one the carrying charges use.
-  // If the model put the other one first, swap them; the annual figure belongs to the other scenario, so it is dropped.
-  const swap = o.units.filter((u) => u.carry_m != null && u.cc_m != null && u.tax_m != null && u.tax2_m != null
-    && Math.abs(u.carry_m - u.cc_m - u.tax_m) > 2 && Math.abs(u.carry_m - u.cc_m - u.tax2_m) <= 2);
-  if (swap.length && swap.length === o.units.filter((u) => u.carry_m != null && u.tax2_m != null).length) {
-    for (const u of swap) { [u.tax_m, u.tax2_m] = [u.tax2_m, u.tax_m]; u.tax_a = null; }
+  // Two tax scenarios (with / without an abatement): the site shows the first-year figure with the abatement, the lower
+  // one. If the model put the higher one in tax_m, swap them (the annual figure belongs to the other scenario, so it is
+  // dropped). Carrying charges printed only for the other scenario don't go with tax_m, so they are left out.
+  const two = o.units.filter((u) => u.tax_m != null && u.tax2_m != null);
+  if (two.length && two.every((u) => u.tax2_m <= u.tax_m) && two.some((u) => u.tax2_m < u.tax_m)) {
+    for (const u of two) { [u.tax_m, u.tax2_m] = [u.tax2_m, u.tax_m]; u.tax_a = null; }
     if (o.printed_totals) o.printed_totals.tax_m = null;
-    o.problems.push("tax columns swapped so the main tax is the one used in the carrying charges");
+    o.problems.push("tax columns swapped so the main tax is the first-year figure with the abatement");
+  }
+  const offCarry = o.units.filter((u) => u.carry_m != null && u.cc_m != null && u.tax_m != null && u.tax2_m != null
+    && Math.abs(u.carry_m - u.cc_m - u.tax_m) > 2 && Math.abs(u.carry_m - u.cc_m - u.tax2_m) <= 2);
+  if (offCarry.length) {
+    for (const u of offCarry) u.carry_m = null;
+    o.problems.push("carrying charges left out: they were printed for the other tax scenario");
   }
   return o;
 }
@@ -320,6 +348,17 @@ function check(o, agPrices) {
   const rp = res.map((u) => u.price).filter((x) => x != null);
   c.notPlaceholder = !(rp.length >= 4 && new Set(rp).size === 1 && new Set(res.map((u) => u.int_sf).filter(Boolean)).size > 1);
   c.allRowsParsed = !o.bad_rows;
+  // A label on two rows is almost always a dropped letter ("4" for 4A, 4B, 4C); QA found 159 such labels on the site.
+  const labels = U.map((u) => String(u.unit).toUpperCase().replace(/\s+/g, " ").trim());
+  c.uniqueLabels = new Set(labels).size === labels.length;
+  // Bedrooms and baths (homes only): plausible on every row, and adding up to the printed totals when the table has them.
+  const bb = res.filter((u) => u.price != null);
+  const sane = bb.every((u) => (u.beds == null || (Number.isInteger(u.beds) && u.beds >= 0 && u.beds <= 8))
+    && (u.baths == null || (u.baths >= 0.5 && u.baths <= 10 && (u.beds == null || u.baths <= u.beds + 3)))
+    // A shifted bath cell shows up as half baths with no full baths, or more than two half baths.
+    && (u.half_baths == null || (u.half_baths <= 2 && u.full_baths >= 1)));
+  const tie = (k, t) => t == null || !bb.some((u) => u[k] != null) || Math.abs(sum(U.map((u) => u[k])) - t) < 0.01;
+  c.bedsBaths = sane && tie("beds", pt.beds) && tie("full_baths", pt.full_baths) && tie("half_baths", pt.half_baths);
   // Outdoor space: a unit's outdoor figure equal to its interior figure is a neighbouring "total area" column read into
   // the wrong cell; and when a printed outdoor total exists, the rows must add up to it.
   const ext = U.filter((u) => u.ext_sf != null);
@@ -327,7 +366,7 @@ function check(o, agPrices) {
   c.outdoor = !ext.length || (!ext.some((u) => u.int_sf && u.ext_sf === u.int_sf)
     && (!pt.ext_sf || Math.abs(sum(ext.map((u) => u.ext_sf)) - pt.ext_sf) <= Math.max(2, pt.ext_sf * 0.002)));
   const internal = c.pct100 !== false && c.ccProportional !== false && c.carrying !== false && c.psf !== false && c.notPlaceholder
-    && c.sqftTotal !== false && c.monthlyTotals && c.allRowsParsed && c.outdoor;
+    && c.sqftTotal !== false && c.monthlyTotals && c.allRowsParsed && c.outdoor && c.bedsBaths && c.uniqueLabels;
   const verdict = !o.found ? "not_found" : !internal ? "hold" : c.ag ? "publish_ag" : c.printed ? "publish_printed" : "hold";
   return { checks: c, verdict, price_total: total };
 }

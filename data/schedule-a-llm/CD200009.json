@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4408,
-   "output_tokens": 642,
-   "seconds": 10,
-   "cost_usd": 0.02148
+   "tokens": 4752,
+   "output_tokens": 522,
+   "seconds": 9,
+   "cost_usd": 0.022136
   }
  ],
- "tokens": 4408,
- "api_equiv_usd": 0.021,
+ "tokens": 4752,
+ "api_equiv_usd": 0.022,
  "located_pages": [
   36
  ],
@@ -37,6 +37,7 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 6325000,
@@ -64,10 +65,13 @@
   "cc_m": 2696.56,
   "tax_m": 4238.25,
   "int_sf": 4256.3,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Limited Common Element square feet column values (656.02, 428.42, 475.13, 1559.57) not mapped to any output field; ext_sf left blank per rule since multiple separate areas listed in notes; Unit A's limited common area (Balcony 48.13 sf and Roof Terrace 380.29 sf) also not placed in ext_sf due to multiple values."
+  "Bedroom/Bathroom/1/2 bath header has unlabeled sub-columns; order inferred as Bedrooms, Full Baths, Half Baths based on example row pattern."
  ],
  "units": [
   {
@@ -76,10 +80,11 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": 753.14,
    "sf2": 504.7,
-   "ext_sf": null,
+   "ext_sf": 656.02,
    "price": 1375000,
    "pct": 26.4198,
    "pct2": null,
@@ -90,7 +95,8 @@
    "tax2_m": null,
    "carry_m": 1832.16,
    "page": 36,
-   "note": null
+   "note": null,
+   "baths": 1.5
   },
   {
    "unit": "B",
@@ -98,10 +104,11 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1751.56,
    "sf2": 0,
-   "ext_sf": null,
+   "ext_sf": 428.42,
    "price": 2400000,
    "pct": 36.7901,
    "pct2": null,
@@ -112,7 +119,8 @@
    "tax2_m": null,
    "carry_m": 2551.32,
    "page": 36,
-   "note": "Limited common areas: Rear yard (490.16 sf), Area Way (126.86 sf) and Exterior stair area (39.00 sf)"
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "C",
@@ -120,10 +128,11 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1751.56,
    "sf2": 0,
-   "ext_sf": null,
+   "ext_sf": 475.13,
    "price": 2550000,
    "pct": 36.7901,
    "pct2": null,
@@ -134,7 +143,8 @@
    "tax2_m": null,
    "carry_m": 2551.32,
    "page": 36,
-   "note": "Limited common areas: Balcony (48.13 sf) and Roof Terrace (427 sf)"
+   "note": null,
+   "baths": 2.5
   }
  ]
 }

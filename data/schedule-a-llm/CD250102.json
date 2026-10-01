@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4083,
-   "output_tokens": 533,
-   "seconds": 6,
-   "cost_usd": 0.019526
+   "tokens": 4581,
+   "output_tokens": 487,
+   "seconds": 8,
+   "cost_usd": 0.021242
   }
  ],
- "tokens": 4083,
- "api_equiv_usd": 0.02,
+ "tokens": 4581,
+ "api_equiv_usd": 0.021,
  "located_pages": [
   38
  ],
@@ -37,6 +37,7 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 9450000,
@@ -66,10 +67,13 @@
   "cc_m": 2660,
   "tax_m": 4598.83,
   "int_sf": 4631,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Bathroom columns for units 2 and Penthouse show \"2\" bathrooms and \"1\" half-bathroom, interpreted as 2.5 baths per rules; Garden shows \"2\" bathrooms and \"2\" half-bathrooms, interpreted as 3 baths."
+  "Limited Common Element square feet column present (1157.00, 278.00, 709.00; total 2144.00) but not included in requested output format."
  ],
  "units": [
   {
@@ -78,7 +82,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 2,
    "int_sf": 1510,
    "sf2": 631,
    "ext_sf": null,
@@ -92,7 +97,8 @@
    "tax2_m": null,
    "carry_m": 2758.36,
    "page": 38,
-   "note": null
+   "note": null,
+   "baths": 3
   },
   {
    "unit": "2",
@@ -100,7 +106,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1556,
    "sf2": 0,
    "ext_sf": null,
@@ -114,7 +121,8 @@
    "tax2_m": null,
    "carry_m": 2032.47,
    "page": 38,
-   "note": null
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "Penthouse",
@@ -122,7 +130,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1565,
    "sf2": 0,
    "ext_sf": null,
@@ -136,7 +145,8 @@
    "tax2_m": null,
    "carry_m": 2468,
    "page": 38,
-   "note": null
+   "note": null,
+   "baths": 2.5
   }
  ]
 }

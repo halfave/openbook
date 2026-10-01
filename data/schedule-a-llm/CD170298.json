@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4593,
-   "output_tokens": 1007,
-   "seconds": 10,
-   "cost_usd": 0.02441
+   "tokens": 5022,
+   "output_tokens": 966,
+   "seconds": 14,
+   "cost_usd": 0.02588
   }
  ],
- "tokens": 4593,
- "api_equiv_usd": 0.024,
+ "tokens": 5022,
+ "api_equiv_usd": 0.026,
  "located_pages": [
   26
  ],
@@ -37,6 +37,7 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 28975000,
@@ -49,7 +50,7 @@
   "Square Footage of Limited Common Elements",
   "Total Square Feet",
   "Estimated Offering Price",
-  "Percentage of Common Interest",
+  "Percentage of Common Interest 100%",
   "Estimated Projected Common Charges Annual",
   "Estimated Projected Common Charges Monthly",
   "Estimated Projected 2017/2018 Real Estate Tax Annual",
@@ -67,10 +68,14 @@
   "cc_m": 6259.25,
   "tax_m": 22662.5,
   "int_sf": 13590,
-  "ext_sf": null
+  "ext_sf": 3045,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "tax_m/tax_a assigned to 2018/2019 figures (matching carrying charges) and tax2_m to 2017/2018 monthly; TOTAL tax_m taken as 2018/2019 annual figure's monthly total (22662.50); ext_sf left blank as no separate terrace/yard figures were broken out per unit (combined into Limited Common Elements column, placed in sf2 per instructions)."
+  "tax_m/tax_a assigned to 2018/2019 figures (used in carrying charges); 2017/2018 monthly figure placed in tax2_m. Bedrooms/Baths column combines beds and baths (e.g. \"4 Bedroom/3.5 Baths\") without separate headers.",
+  "outdoor space left out: its column did not add up to the printed total"
  ],
  "units": [
   {
@@ -79,10 +84,11 @@
    "floor": null,
    "rooms": null,
    "beds": 4,
-   "baths": 4,
+   "full_baths": 4,
+   "half_baths": null,
    "int_sf": 2793,
    "sf2": 1075,
-   "ext_sf": 3868,
+   "ext_sf": null,
    "price": 5575000,
    "pct": 21.3344,
    "pct2": null,
@@ -93,7 +99,8 @@
    "tax2_m": 1335.37,
    "carry_m": 6170.28,
    "page": 26,
-   "note": "Duplex; 4 Bedroom/4 Baths; + Rear Yard + Cellar Storage"
+   "note": "Duplex; + Rear Yard + Cellar Storage",
+   "baths": 4
   },
   {
    "unit": "2",
@@ -101,10 +108,11 @@
    "floor": null,
    "rooms": null,
    "beds": 4,
-   "baths": 3.5,
+   "full_baths": 3,
+   "half_baths": 1,
    "int_sf": 2066,
    "sf2": 319,
-   "ext_sf": 2385,
+   "ext_sf": null,
    "price": 4200000,
    "pct": 14.9517,
    "pct2": null,
@@ -115,7 +123,8 @@
    "tax2_m": 935.86,
    "carry_m": 4324.28,
    "page": 26,
-   "note": "+ Cellar Storage"
+   "note": "+ Cellar Storage",
+   "baths": 3.5
   },
   {
    "unit": "3",
@@ -123,10 +132,11 @@
    "floor": null,
    "rooms": null,
    "beds": 4,
-   "baths": 3.5,
+   "full_baths": 3,
+   "half_baths": 1,
    "int_sf": 2066,
    "sf2": 347,
-   "ext_sf": 2413,
+   "ext_sf": null,
    "price": 4300000,
    "pct": 15.0004,
    "pct2": null,
@@ -137,7 +147,8 @@
    "tax2_m": 938.91,
    "carry_m": 4338.39,
    "page": 26,
-   "note": "+ Cellar Storage"
+   "note": "+ Cellar Storage",
+   "baths": 3.5
   },
   {
    "unit": "4",
@@ -145,10 +156,11 @@
    "floor": null,
    "rooms": null,
    "beds": 4,
-   "baths": 3.5,
+   "full_baths": 3,
+   "half_baths": 1,
    "int_sf": 2066,
    "sf2": 296,
-   "ext_sf": 2362,
+   "ext_sf": null,
    "price": 4400000,
    "pct": 14.9116,
    "pct2": null,
@@ -159,7 +171,8 @@
    "tax2_m": 933.35,
    "carry_m": 4312.69,
    "page": 26,
-   "note": "+ Balcony + Roof Terrace + Cellar Storage"
+   "note": "+ Balcony + Roof Terrace + Cellar Storage",
+   "baths": 3.5
   },
   {
    "unit": "5",
@@ -167,10 +180,11 @@
    "floor": null,
    "rooms": null,
    "beds": 4,
-   "baths": 3.5,
+   "full_baths": 3,
+   "half_baths": 1,
    "int_sf": 2066,
    "sf2": 360,
-   "ext_sf": 2426,
+   "ext_sf": null,
    "price": 4500000,
    "pct": 15.0231,
    "pct2": null,
@@ -181,7 +195,8 @@
    "tax2_m": 940.33,
    "carry_m": 4344.94,
    "page": 26,
-   "note": "+ Balcony + Roof Terrace + Cellar Storage"
+   "note": "+ Balcony + Roof Terrace + Cellar Storage",
+   "baths": 3.5
   },
   {
    "unit": "6",
@@ -189,10 +204,11 @@
    "floor": null,
    "rooms": null,
    "beds": 4,
-   "baths": 4.5,
+   "full_baths": 4,
+   "half_baths": 1,
    "int_sf": 2533,
    "sf2": 648,
-   "ext_sf": 3181,
+   "ext_sf": null,
    "price": 6000000,
    "pct": 18.7789,
    "pct2": null,
@@ -203,7 +219,8 @@
    "tax2_m": 1175.42,
    "carry_m": 5431.17,
    "page": 26,
-   "note": "Duplex; + Roof Terrace + Cellar Storage"
+   "note": "Duplex; + Roof Terrace + Cellar Storage",
+   "baths": 4.5
   }
  ]
 }

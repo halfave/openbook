@@ -3,69 +3,63 @@
  "steps": [
   {
    "step": "sonnet-images",
-   "verdict": "hold",
-   "units": 2,
-   "failed": [
-    "ag",
-    "printed",
-    "pct100",
-    "sqftTotal",
-    "monthlyTotals",
-    "allRowsParsed"
-   ]
+   "verdict": "publish_ag",
+   "units": 3,
+   "failed": []
   }
  ],
  "calls": 4,
  "call_log": [
   {
    "model": "haiku",
-   "tokens": 5176,
-   "output_tokens": 16,
-   "seconds": 75,
-   "cost_usd": 0.012792
+   "tokens": 12662,
+   "output_tokens": 574,
+   "seconds": 7,
+   "cost_usd": 0.024613000000000003
   },
   {
    "model": "haiku",
-   "tokens": 4935,
+   "tokens": 5007,
    "output_tokens": 97,
    "seconds": 3,
-   "cost_usd": 0.005323
+   "cost_usd": 0.0053950000000000005
   },
   {
    "model": "haiku",
-   "tokens": 8733,
-   "output_tokens": 576,
-   "seconds": 6,
-   "cost_usd": 0.016805
+   "tokens": 8993,
+   "output_tokens": 771,
+   "seconds": 9,
+   "cost_usd": 0.017876999999999997
   },
   {
    "model": "sonnet",
-   "tokens": 11438,
-   "output_tokens": 757,
-   "seconds": 9,
-   "cost_usd": 0.030754
+   "tokens": 12383,
+   "output_tokens": 780,
+   "seconds": 11,
+   "cost_usd": 0.0329202
   }
  ],
- "tokens": 30282,
- "api_equiv_usd": 0.066,
+ "tokens": 39045,
+ "api_equiv_usd": 0.081,
  "located_pages": [],
  "text_layer": true,
  "found": true,
- "verdict": "hold",
+ "verdict": "publish_ag",
  "checks": {
-  "ag": false,
-  "printed": false,
-  "pct100": false,
-  "ccProportional": null,
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
   "carrying": true,
-  "sqftTotal": false,
-  "monthlyTotals": false,
+  "sqftTotal": true,
+  "monthlyTotals": true,
   "psf": true,
   "notPlaceholder": true,
-  "allRowsParsed": false,
+  "allRowsParsed": true,
+  "bedsBaths": true,
   "outdoor": true
  },
- "price_total": 500000,
+ "price_total": 1275000,
  "step": "sonnet-images",
  "budget_period": "March 1, 2008",
  "columns_printed": [
@@ -89,11 +83,14 @@
   "cc_m": 888.75,
   "tax_m": 1606.83,
   "int_sf": 5191,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "row with 21 cells dropped: U\t3\tR\t4th fl/5th fl\t-\t-\t5\t3\t1888\t-\t-\t775000\t40.88\t-\t363.36\t4360.29\t656.94\t7883.2",
-  "Unit 1 and Unit 2 bedroom/bathroom counts printed as \"5/2 & 2 halves\" and \"3/2& 1 half\" (not a simple beds/baths code); interpreted as 5 bed/2.5 bath and 3 bed/2.5 bath respectively and placed in note rather than beds/baths columns per unclear-code rule. Unit 3 \"No. of Bedrooms/Bathrooms\" printed as \"5/3\" placed in beds/baths columns as 5 beds/3 baths."
+  "\"No. of Bedrooms/Bathrooms\" is a combined column printed as e.g. \"5/2 & 2 halves\", \"3/2& 1 half\", \"5/3\"; interpreted first number as rooms (bedrooms count unclear) — put first number in rooms and remainder parsed as full/half baths; beds column left same as rooms value since no separate bedroom count is distinguishable from rooms in this combined header.",
+  "Unit numbers printed as \"1\", faint \"2\", faint \"3\" (partially obscured by marginal marks) in Unit No. column; transcribed as 1, 2, 3 based on row order and Location/Price matching."
  ],
  "units": [
   {
@@ -101,8 +98,9 @@
    "type": "residential",
    "floor": "1st fl/2nd fl/Cellar",
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 5,
+   "full_baths": 2,
+   "half_baths": 2,
    "int_sf": 2253,
    "sf2": null,
    "ext_sf": null,
@@ -116,15 +114,17 @@
    "tax2_m": null,
    "carry_m": 884.95,
    "page": 18,
-   "note": "5 bedrooms, 2 full baths & 2 half baths; yard allocated to unit"
+   "note": "Unit 1 allocated rear yard, part of unit; allocated balcony per note",
+   "baths": 3
   },
   {
    "unit": "2",
    "type": "residential",
    "floor": "3rd Floor",
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 3,
+   "full_baths": 3,
+   "half_baths": 1,
    "int_sf": 1050,
    "sf2": null,
    "ext_sf": null,
@@ -138,7 +138,32 @@
    "tax2_m": null,
    "carry_m": 590.33,
    "page": 18,
-   "note": "3 bedrooms, 2 full baths & 1 half bath; balcony allocated to unit"
+   "note": null,
+   "baths": 3.5
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": "4th fl/5th fl",
+   "rooms": null,
+   "beds": 5,
+   "full_baths": 5,
+   "half_baths": 3,
+   "int_sf": 1888,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 775000,
+   "pct": 40.88,
+   "pct2": null,
+   "cc_m": 363.36,
+   "cc_a": 4360.29,
+   "tax_m": 656.94,
+   "tax_a": 7883.26,
+   "tax2_m": null,
+   "carry_m": 1020.3,
+   "page": 18,
+   "note": "Unit 3 allocated balcony per note",
+   "baths": 6.5
   }
  ]
 }

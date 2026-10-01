@@ -3,29 +3,6 @@
  "steps": [
   {
    "step": "sonnet-text",
-   "verdict": "hold",
-   "units": 8,
-   "failed": [
-    "ag",
-    "printed",
-    "sqftTotal"
-   ]
-  },
-  {
-   "step": "sonnet-text-retry",
-   "verdict": "hold",
-   "units": 7,
-   "failed": [
-    "ag",
-    "printed",
-    "pct100",
-    "sqftTotal",
-    "monthlyTotals",
-    "allRowsParsed"
-   ]
-  },
-  {
-   "step": "sonnet-images",
    "verdict": "publish_printed",
    "units": 8,
    "failed": [
@@ -33,32 +10,18 @@
    ]
   }
  ],
- "calls": 3,
+ "calls": 1,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 5367,
-   "output_tokens": 1270,
+   "tokens": 5450,
+   "output_tokens": 804,
    "seconds": 12,
-   "cost_usd": 0.029084
-  },
-  {
-   "model": "sonnet",
-   "tokens": 9348,
-   "output_tokens": 1154,
-   "seconds": 82,
-   "cost_usd": 0.028747
-  },
-  {
-   "model": "sonnet",
-   "tokens": 23241,
-   "output_tokens": 975,
-   "seconds": 84,
-   "cost_usd": 0.0412662
+   "cost_usd": 0.026619999999999998
   }
  ],
- "tokens": 37956,
- "api_equiv_usd": 0.099,
+ "tokens": 5450,
+ "api_equiv_usd": 0.027,
  "located_pages": [
   39
  ],
@@ -76,10 +39,11 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 15050000,
- "step": "sonnet-images",
+ "step": "sonnet-text",
  "budget_period": "JANUARY 1, 2025 TO DECEMBER 31, 2025",
  "columns_printed": [
   "Unit No.",
@@ -98,18 +62,19 @@
   "Total Monthly Carrying Charges"
  ],
  "tax2": null,
- "sf2": "cellar space",
+ "sf2": "Cellar Space square footage",
  "printed_totals": {
   "price": 15050000,
   "pct": 100,
   "cc_m": 3869.25,
   "tax_m": 11467.42,
   "int_sf": 8578,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
- "problems": [
-  "Bathroom(s) per Unit and 1/2 Bathroom(s) per Unit are separate printed columns; baths combined as integer + 0.5 per half-bath (e.g. Garden 2: 2 bathrooms + 2 half baths = 2.2 per instruction's literal half-bath-as-.5 rule, though this yields an unusual .2/.5 mix — transcribed per printed note columns)."
- ],
+ "problems": [],
  "units": [
   {
    "unit": "Garden 1",
@@ -117,7 +82,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1149,
    "sf2": 635,
    "ext_sf": null,
@@ -131,7 +97,8 @@
    "tax2_m": null,
    "carry_m": 3009.05,
    "page": 39,
-   "note": null
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "Garden 2",
@@ -139,7 +106,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2.2,
+   "full_baths": 2,
+   "half_baths": 2,
    "int_sf": 1337,
    "sf2": 527,
    "ext_sf": null,
@@ -153,7 +121,8 @@
    "tax2_m": null,
    "carry_m": 3578.04,
    "page": 39,
-   "note": null
+   "note": null,
+   "baths": 3
   },
   {
    "unit": "3",
@@ -161,7 +130,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 913,
    "sf2": 0,
    "ext_sf": null,
@@ -175,7 +145,8 @@
    "tax2_m": null,
    "carry_m": 1197.79,
    "page": 39,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "4",
@@ -183,7 +154,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1160,
    "sf2": 0,
    "ext_sf": null,
@@ -197,7 +169,8 @@
    "tax2_m": null,
    "carry_m": 1680.9,
    "page": 39,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "5",
@@ -205,7 +178,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 882,
    "sf2": 0,
    "ext_sf": null,
@@ -219,7 +193,8 @@
    "tax2_m": null,
    "carry_m": 1099.64,
    "page": 39,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "6",
@@ -227,7 +202,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 623,
    "sf2": 0,
    "ext_sf": null,
@@ -241,7 +217,8 @@
    "tax2_m": null,
    "carry_m": 881.86,
    "page": 39,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "7",
@@ -249,7 +226,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1120,
    "sf2": 0,
    "ext_sf": null,
@@ -263,7 +241,8 @@
    "tax2_m": null,
    "carry_m": 1524.46,
    "page": 39,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "Penthouse",
@@ -271,7 +250,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1394,
    "sf2": 0,
    "ext_sf": null,
@@ -285,7 +265,8 @@
    "tax2_m": null,
    "carry_m": 2364.91,
    "page": 39,
-   "note": null
+   "note": null,
+   "baths": 2
   }
  ]
 }

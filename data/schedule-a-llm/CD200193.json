@@ -3,23 +3,43 @@
  "steps": [
   {
    "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 9,
+   "failed": [
+    "ag",
+    "printed",
+    "pct100",
+    "sqftTotal",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
    "verdict": "publish_ag",
    "units": 11,
    "failed": []
   }
  ],
- "calls": 1,
+ "calls": 2,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 7796,
-   "output_tokens": 1411,
-   "seconds": 12,
-   "cost_usd": 0.039646
+   "tokens": 8206,
+   "output_tokens": 1357,
+   "seconds": 16,
+   "cost_usd": 0.040962
+  },
+  {
+   "model": "sonnet",
+   "tokens": 15163,
+   "output_tokens": 1465,
+   "seconds": 95,
+   "cost_usd": 0.0434154
   }
  ],
- "tokens": 7796,
- "api_equiv_usd": 0.04,
+ "tokens": 23369,
+ "api_equiv_usd": 0.084,
  "located_pages": [
   42
  ],
@@ -37,17 +57,18 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 25300000,
- "step": "sonnet-text",
+ "step": "sonnet-text-retry",
  "budget_period": "May 1, 2021 through April 30, 2022",
  "columns_printed": [
   "UNIT NUMBER",
   "NUMBER OF BEDROOMS AND BATHS",
   "OFFERING PRICE",
   "APPROX. SQUARE FOOTAGE OF HABITABLE SPACE",
-  "APPROX. CELLAR SQUARE FOOTAGE**",
+  "APPROX. CELLAR SPACE SQUARE FOOTAGE**",
   "APPROX. TERRACE SQUARE FOOTAGE**",
   "APPROX. BALCONY SQUARE FOOTAGE**",
   "APPROX. ROOFTOP TERRACE SQUARE FOOTAGE**",
@@ -61,17 +82,20 @@
   "PROJECTED MONTHLY CARRYING CHARGES"
  ],
  "tax2": null,
- "sf2": "cellar",
+ "sf2": "cellar space",
  "printed_totals": {
   "price": 25300000,
   "pct": 100,
   "cc_m": 10837.17,
   "tax_m": 12424.09,
   "int_sf": 12215,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Column headers reconstructed from split/rotated header text across two printings of the same table; order inferred from data alignment. Footnote markers (1)-(5) omitted from column names. PHA and 4B/PHB have multiple non-interior area figures (cellar/terrace/balcony/roof/yard); only single ext_sf values fit per row, others listed in note. Yard/court/patio and rooftop figures appear in same column region as balcony; exact sub-column attribution for PHA (64 vs 536) inferred from position (cellar=64, roof=536) but placement between terrace/balcony/rooftop/yard columns uncertain."
+  "Unit type column \"NUMBER OF BEDROOMS AND BATHS\" gives combined bed/bath (e.g. \"1/1.5\"); interpreted as beds/baths with .5 as half bath. Half-bath counts not separately columned, so half_baths derived from the .5 in combined cell. Totals row: bedroom/bath counts not printed as totals; ext_sf and sf2 totals shown in COLS as separate terrace/balcony/rooftop/yard columns (326 terrace, 659 balcony, 536 rooftop, 561 yard) not mapped to single TOTAL fields since multiple ext categories exist; cellar total 1205."
  ],
  "units": [
   {
@@ -80,10 +104,11 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1.5,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": 836,
-   "sf2": null,
-   "ext_sf": 463,
+   "sf2": 463,
+   "ext_sf": 204,
    "price": 1975000,
    "pct": 8.3974,
    "pct2": null,
@@ -94,7 +119,8 @@
    "tax2_m": null,
    "carry_m": 1953.34,
    "page": 42,
-   "note": "yard/court/patio 204"
+   "note": null,
+   "baths": 1.5
   },
   {
    "unit": "1B",
@@ -102,10 +128,11 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1046,
-   "sf2": null,
-   "ext_sf": 742,
+   "sf2": 742,
+   "ext_sf": 357,
    "price": 2425000,
    "pct": 11.2133,
    "pct2": null,
@@ -116,7 +143,8 @@
    "tax2_m": null,
    "carry_m": 2608.35,
    "page": 42,
-   "note": "yard/court/patio 357"
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "2A",
@@ -124,7 +152,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 544,
    "sf2": null,
    "ext_sf": null,
@@ -138,7 +167,8 @@
    "tax2_m": null,
    "carry_m": 976.76,
    "page": 42,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "2B",
@@ -146,7 +176,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 692,
    "sf2": null,
    "ext_sf": null,
@@ -160,7 +191,8 @@
    "tax2_m": null,
    "carry_m": 1242.5,
    "page": 42,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "2C",
@@ -168,7 +200,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1046,
    "sf2": null,
    "ext_sf": null,
@@ -182,7 +215,8 @@
    "tax2_m": null,
    "carry_m": 1878.11,
    "page": 42,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3A",
@@ -190,7 +224,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1211,
    "sf2": null,
    "ext_sf": null,
@@ -204,7 +239,8 @@
    "tax2_m": null,
    "carry_m": 2174.37,
    "page": 42,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3B",
@@ -212,7 +248,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1044,
    "sf2": null,
    "ext_sf": null,
@@ -226,7 +263,8 @@
    "tax2_m": null,
    "carry_m": 1874.51,
    "page": 42,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "4A",
@@ -234,7 +272,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 763,
    "sf2": null,
    "ext_sf": null,
@@ -248,7 +287,8 @@
    "tax2_m": null,
    "carry_m": 1369.98,
    "page": 42,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "4B",
@@ -256,7 +296,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1006,
    "sf2": null,
    "ext_sf": 493,
@@ -270,7 +311,8 @@
    "tax2_m": null,
    "carry_m": 1894.81,
    "page": 42,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "PHB",
@@ -278,10 +320,11 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1997,
    "sf2": null,
-   "ext_sf": 83,
+   "ext_sf": null,
    "price": 3800000,
    "pct": 15.681,
    "pct2": null,
@@ -292,7 +335,8 @@
    "tax2_m": null,
    "carry_m": 3647.6,
    "page": 42,
-   "note": "roof 262"
+   "note": "262 terrace, 83 balcony",
+   "baths": 2
   },
   {
    "unit": "PHA",
@@ -300,10 +344,11 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 2030,
    "sf2": null,
-   "ext_sf": 536,
+   "ext_sf": null,
    "price": 3975000,
    "pct": 15.6523,
    "pct2": null,
@@ -314,7 +359,8 @@
    "tax2_m": null,
    "carry_m": 3640.93,
    "page": 42,
-   "note": "cellar 64, roof 83"
+   "note": "64 terrace, 83 balcony, 536 rooftop terrace",
+   "baths": 2
   }
  ]
 }

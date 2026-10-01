@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4849,
-   "output_tokens": 1000,
-   "seconds": 11,
-   "cost_usd": 0.025392
+   "tokens": 5476,
+   "output_tokens": 1160,
+   "seconds": 14,
+   "cost_usd": 0.02886
   }
  ],
- "tokens": 4849,
- "api_equiv_usd": 0.025,
+ "tokens": 5476,
+ "api_equiv_usd": 0.029,
  "located_pages": [
   33
  ],
@@ -37,6 +37,7 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 7804650,
@@ -50,7 +51,7 @@
   "Approx. Total Gross Sq. Ft.",
   "Approx. Limited Common Elements Sq.Ft.",
   "Bedrooms",
-  "Bathrooms Full/Half",
+  "Bathrooms Full / Half",
   "Offering Price",
   "Percent Common Interest",
   "Projected Common Charges (Monthly)",
@@ -59,17 +60,24 @@
   "Projected Monthly Carrying Charges (Monthly)"
  ],
  "tax2": null,
- "sf2": "uninhabitable floor area",
+ "sf2": "uninhabitable (cellar)",
  "printed_totals": {
   "price": 7804650,
   "pct": 100,
   "cc_m": 3685,
   "tax_m": 4391.4,
   "int_sf": 7421,
-  "ext_sf": 1049
+  "ext_sf": 1049,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Unit 1A \"Sq. Ft,\" column heading has a comma in source (transcribed as printed); floor area for 1A/1B split across Cellar and 1st Floor lines in source table with single combined figures shown (411/382 and 585/980 in first fragment vs 793/1565 main area in second fragment) — used the Main Floor Area and Uninhabitable Area figures from the second (SCHEDULE A) table as int_sf/sf2 per instructions."
+  "Rooms column not present in printed table (only Main Floor Area, Uninhabitable Floor Area, Gross SF); left rooms as -.",
+  "Unit table header (page 33 top) and Schedule A table header appear to be two separate tables with slightly different column sets; merged into one COLS line reflecting the Schedule A table used for pricing.",
+  "Half baths are printed as 0 in all \"1/0\" and \"2/0\" entries; unclear if this indicates no half bath or OCR artifact, but transcribed as printed.",
+  "\"1,049\" total for limited common elements sq.ft. does not map to a single ext_sf column cleanly; left TOTAL ext_sf as - since no single ext_sf column total is clearly printed separate from pct/price totals.",
+  "outdoor space left out: its column did not add up to the printed total"
  ],
  "units": [
   {
@@ -77,8 +85,9 @@
    "type": "residential",
    "floor": "Cellar/1st Floor",
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 0,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": 793,
    "sf2": 382,
    "ext_sf": null,
@@ -92,15 +101,17 @@
    "tax2_m": null,
    "carry_m": 768.07,
    "page": 33,
-   "note": null
+   "note": "cellar area 411 sq.ft. per unit table",
+   "baths": 1.5
   },
   {
    "unit": "1B",
    "type": "residential",
    "floor": "Cellar/1st Floor",
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": 2,
    "int_sf": 1565,
    "sf2": 980,
    "ext_sf": null,
@@ -114,15 +125,17 @@
    "tax2_m": null,
    "carry_m": 1614.47,
    "page": 33,
-   "note": "Also allocated a courtyard (C); ext area printed as 418 (C) and 148 (T)"
+   "note": "limited common elements: 418 (C) + 148 (T); cellar area 585 sq.ft.",
+   "baths": 2
   },
   {
    "unit": "2A",
    "type": "residential",
    "floor": "2nd Floor, Mezzanine",
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 924,
    "sf2": null,
    "ext_sf": null,
@@ -136,15 +149,17 @@
    "tax2_m": null,
    "carry_m": 1022.47,
    "page": 33,
-   "note": null
+   "note": "limited common element 22 (B)",
+   "baths": 1
   },
   {
    "unit": "2B",
    "type": "residential",
    "floor": "2nd Floor, Mezzanine",
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 917,
    "sf2": null,
    "ext_sf": null,
@@ -158,15 +173,17 @@
    "tax2_m": null,
    "carry_m": 1020.05,
    "page": 33,
-   "note": null
+   "note": "limited common element 47 (B)",
+   "baths": 1
   },
   {
    "unit": "3A",
    "type": "residential",
    "floor": "3rd Floor, Mezzanine",
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 923,
    "sf2": null,
    "ext_sf": null,
@@ -180,15 +197,17 @@
    "tax2_m": null,
    "carry_m": 1028.13,
    "page": 33,
-   "note": null
+   "note": "limited common element 39 (B)",
+   "baths": 1
   },
   {
    "unit": "3B",
    "type": "residential",
    "floor": "3rd Floor, Mezzanine",
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 917,
    "sf2": null,
    "ext_sf": null,
@@ -202,15 +221,17 @@
    "tax2_m": null,
    "carry_m": 1020.05,
    "page": 33,
-   "note": null
+   "note": "limited common element 47 (B)",
+   "baths": 1
   },
   {
    "unit": "PH",
    "type": "residential",
    "floor": "Penthouse, Mezzanine",
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1382,
    "sf2": null,
    "ext_sf": null,
@@ -224,7 +245,8 @@
    "tax2_m": null,
    "carry_m": 1603.17,
    "page": 33,
-   "note": "Two terraces per note"
+   "note": "limited common elements: two terraces totaling 328 (T)",
+   "baths": 2
   }
  ]
 }
