@@ -54,7 +54,7 @@ A **figure** is `{ "value": 1450, "prefix": "$", "unit": "/sqft", "basis": "medi
 
 | Template | Required |
 |---|---|
-| metric | answer, figure, pivot, scope, asked, shown (optional: asked_unavailable, cross_check, derived, breakdown) |
+| metric | answer, figure, pivot, scope, asked, shown (optional: pivots — required when the question asks for more than one cut; asked_unavailable, cross_check, derived, breakdown) |
 | answer-card | answer, figure, covers (optional: change, breakdown, breakdown_label, metric_label) |
 | range | answer, low, high, scope (optional: typical, components) |
 | side-by-side | answer, items, rows (optional: winner) |

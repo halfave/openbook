@@ -17,6 +17,8 @@ Questions asking for one number cut along a dimension: avg/median price, $/sqft,
 ## Fields for the template
 `asked`: { statistic, scope } exactly as the question puts them ("average", "condos only"). `shown`: the same for the headline figure you picked ("median", "all home types"). `asked_unavailable`: one sentence on why the asked version isn't shown, if it isn't. A figure a source shows only rounded ("$1K") gets `"exact": false` with the value as displayed; never expand it into a precise number.
 
+`pivots`: when the question asks for several cuts ("per bedroom and per square foot"), one row per cut, in the question's order: `{ label, figure, note }`. Label is the cut as asked; note flags a scope that differs from the headline ("large buildings only"). A cut with no usable figure still gets a row, with `note` saying why. Keep the headline `basis` under ~12 words; contradictions in a source's labelling go in `notes`, not the basis.
+
 ## Fields to pull (per source; each becomes a figure)
 `value` (number), `prefix`/`unit`, `basis` (median/average + sale or asking), `n` (sample size if published), `source`, `url`, `as_of` (the period the data covers, not the page's publish date if they differ — say which), `scope` as the source defines it.
 

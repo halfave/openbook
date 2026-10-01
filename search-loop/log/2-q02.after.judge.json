@@ -1,0 +1,13 @@
+{
+  "directness": 8,
+  "number_extraction": 7,
+  "precision": 7,
+  "sourcing": 9,
+  "completeness": 6,
+  "template_fit": 7,
+  "overall": 7,
+  "user_would_need_to_click_through": false,
+  "top_fix": "Require every pivot row to use the same basis as the headline, or flag the mismatch in the row itself: here the per-sqft row ($8.00) comes from RentCafe's $9,055 large-building average while the per-unit and per-bedroom rows come from Zumper's $7,200, so the three cuts do not describe the same apartments.",
+  "second_fix": "Remove the duplication: the conflict paragraph repeats the cross-check table, and 'Computed here' repeats a per-bedroom cut. Also either drop the confusing 'average (Zumper's method note says median)' callout or resolve it to a single clear statistic label.",
+  "template_change_suggested": "In the metric template's `pivots` table, add a required `same_basis_as_headline: bool` column and render a bridging row when it is false (e.g. 'Zumper $7,200 / RentCafe avg 1,132 sq ft = $6.36/sqft/mo'). Add a required `n` (sample size) field to the headline figure. Fold the 'Where sources disagree' section into a single 'Why they differ' column on the sources table instead of a separate prose block."
+}

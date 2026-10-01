@@ -1,0 +1,170 @@
+{
+  "question_id": "q02",
+  "question": "Average rent for a 2 bedroom apartment on the Upper West Side, per bedroom and per square foot",
+  "type": "pivot",
+  "extractor": "pivot",
+  "template": "metric",
+  "answer": "A 2-bedroom on the Upper West Side lists for about $7,200 a month (Zumper, last 30 days to Sep 30, 2026), which is $3,600 per bedroom. Rent per square foot isn't published for 2-bedrooms by any listing source; the only source with 2-bedroom size is RentCafe (large buildings only): $9,055 for 1,132 sq ft, or $8.00 per sq ft per month ($95.99 a year).",
+  "figure": {
+    "value": 7200,
+    "prefix": "$",
+    "unit": "/mo",
+    "basis": "average asking rent, 2-bedroom listings (Zumper's methodology note says median)",
+    "source": "Zumper, Upper West Side rent research",
+    "url": "https://www.zumper.com/rent-research/new-york-ny/upper-west-side",
+    "as_of": "listings from the 30 days to 2026-09-30"
+  },
+  "pivot": "per month, per 2-bedroom unit",
+  "scope": "Upper West Side, Manhattan · 2-bedroom asking rents · all listings on Zumper",
+  "asked": {
+    "statistic": "average",
+    "scope": "2-bedroom apartments"
+  },
+  "shown": {
+    "statistic": "average by Zumper's label (its method note says median)",
+    "scope": "2-bedroom asking rents on current listings"
+  },
+  "derived": [
+    {
+      "label": "Per bedroom, all listings",
+      "figure": {
+        "value": 3600,
+        "prefix": "$",
+        "unit": "/bedroom/mo",
+        "basis": "computed",
+        "source": "Zumper",
+        "url": "https://www.zumper.com/rent-research/new-york-ny/upper-west-side",
+        "as_of": "30 days to 2026-09-30"
+      },
+      "formula": "$7,200 ÷ 2 bedrooms"
+    },
+    {
+      "label": "Per square foot, large buildings (50+ units)",
+      "figure": {
+        "value": 8,
+        "prefix": "$",
+        "unit": "/sqft/mo",
+        "basis": "computed from average rent and average size",
+        "source": "RentCafe (Yardi Matrix)",
+        "url": "https://www.rentcafe.com/average-rent-market-trends/us/ny/manhattan/upper-west-side/",
+        "as_of": "updated 2026-08-31"
+      },
+      "formula": "$9,055 ÷ 1,132 sq ft"
+    },
+    {
+      "label": "Per square foot per year, large buildings (50+ units)",
+      "figure": {
+        "value": 95.99,
+        "prefix": "$",
+        "unit": "/sqft/yr",
+        "basis": "computed",
+        "source": "RentCafe (Yardi Matrix)",
+        "url": "https://www.rentcafe.com/average-rent-market-trends/us/ny/manhattan/upper-west-side/",
+        "as_of": "updated 2026-08-31"
+      },
+      "formula": "$8.00 × 12 (unrounded: $9,055 × 12 ÷ 1,132)"
+    },
+    {
+      "label": "Per bedroom, large buildings (50+ units)",
+      "figure": {
+        "value": 4527.5,
+        "prefix": "$",
+        "unit": "/bedroom/mo",
+        "basis": "computed",
+        "source": "RentCafe (Yardi Matrix)",
+        "url": "https://www.rentcafe.com/average-rent-market-trends/us/ny/manhattan/upper-west-side/",
+        "as_of": "updated 2026-08-31"
+      },
+      "formula": "$9,055 ÷ 2 bedrooms"
+    }
+  ],
+  "cross_check": [
+    {
+      "value": 9055,
+      "prefix": "$",
+      "unit": "/mo",
+      "basis": "average rent, 2-bedroom, buildings with 50+ units; average size 1,132 sq ft",
+      "source": "RentCafe (Yardi Matrix)",
+      "url": "https://www.rentcafe.com/average-rent-market-trends/us/ny/manhattan/upper-west-side/",
+      "as_of": "updated 2026-08-31"
+    },
+    {
+      "value": 7185,
+      "prefix": "$",
+      "unit": "/mo",
+      "basis": "median asking rent, 2-bedroom (site calls it \"average\")",
+      "source": "ApartmentAdvisor",
+      "url": "https://www.apartmentadvisor.com/market-reports/upper-west-side-new-york-ny",
+      "as_of": "no date on page; read 2026-09-30"
+    },
+    {
+      "value": 6500,
+      "prefix": "$",
+      "unit": "/mo",
+      "basis": "median asking rent, 2-bedroom; 721 listings of all sizes",
+      "source": "FirstMover",
+      "url": "https://www.firstmovernyc.com/neighborhoods/upper-west-side",
+      "as_of": "listings from the past 30 days; read 2026-09-30"
+    },
+    {
+      "value": 5500,
+      "prefix": "$",
+      "unit": "/mo",
+      "basis": "median rent, 2-bedroom",
+      "n": 1862,
+      "source": "RentReboot",
+      "url": "https://rentreboot.com/average/upper-west-side",
+      "as_of": "September 2026"
+    }
+  ],
+  "conflicts": [
+    {
+      "label": "Average 2-bedroom rent: all listings vs large buildings vs median",
+      "figures": [
+        {
+          "value": 7200,
+          "prefix": "$",
+          "unit": "/mo",
+          "basis": "average asking, all listings",
+          "source": "Zumper",
+          "url": "https://www.zumper.com/rent-research/new-york-ny/upper-west-side",
+          "as_of": "30 days to 2026-09-30"
+        },
+        {
+          "value": 9055,
+          "prefix": "$",
+          "unit": "/mo",
+          "basis": "average, 50+ unit buildings",
+          "source": "RentCafe",
+          "url": "https://www.rentcafe.com/average-rent-market-trends/us/ny/manhattan/upper-west-side/",
+          "as_of": "2026-08-31"
+        },
+        {
+          "value": 5500,
+          "prefix": "$",
+          "unit": "/mo",
+          "basis": "median",
+          "n": 1862,
+          "source": "RentReboot",
+          "url": "https://rentreboot.com/average/upper-west-side",
+          "as_of": "September 2026"
+        }
+      ],
+      "resolution": "RentCafe counts only large professionally managed buildings, which on the UWS are mostly newer doorman rentals with bigger units, so it runs high. Medians ($5,500–$7,185) run below averages because a few very expensive listings pull the average up. Zumper is the headline because it covers all listings in the asked neighborhood and is the most recent."
+    }
+  ],
+  "caveats": [
+    "Per-square-foot rent for 2-bedrooms is only available for large (50+ unit) buildings: RentCafe is the only source that publishes 2-bedroom unit size. Applying its 1,132 sq ft to Zumper's all-listings rent would mix two sources, so it isn't done here.",
+    "These are asking rents on listed apartments, not rents paid by sitting tenants (rent-stabilized leases are far lower)."
+  ],
+  "notes": [
+    "RentHop's UWS page (the likely origin of a search snippet saying 2-bedrooms are $83/sqft) returned HTTP 403, so that figure couldn't be read and isn't used. Its basis (monthly? annual? asking?) is unknown.",
+    "Zumper labels $7,200 'Average rent' in its table, but its methodology line says 'Median rent is calculated across all available listings'. Shown as average with the contradiction in the basis.",
+    "Zumper's '$16.05 average price per square foot' is neighborhood-wide across unit types and inconsistent with its own rents at any plausible unit size; not used.",
+    "The search snippet for RentReboot said $5,300 (July 2026, 10th–90th pct $3,400–$9,750); the fetched page says $5,500 for September 2026 with n = 1,862. Used the fetched page.",
+    "Meraki Realty's $6,500 'average' cites Census ACS 2023 alongside its own data; not counted as current listing data.",
+    "The metric template has one headline figure, but this question asks for three pivots (per unit, per bedroom, per sq ft). The other two went into 'derived'.",
+    "RentReboot also publishes a 30th–70th percentile band for 2-bedrooms; it was dropped from the basis text because the render check only accepts dollar amounts that are figure objects, and the template has no slot for a percentile band."
+  ],
+  "asked_unavailable": "No source publishes an average of rents actually paid; listing sites report asking rents, and Zumper's own page calls the same figure both average and median."
+}

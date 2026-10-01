@@ -9,7 +9,7 @@ export function num(f) {
   // A source that shows only a rounded or partial figure: say so instead of rendering it as a real value.
   if (f.exact === false) return `not published exactly (page shows ${f.prefix || ""}${f.value}${f.unit || ""})`;
   const v = typeof f.value === "number"
-    ? f.value.toLocaleString("en-US", { maximumFractionDigits: f.decimals ?? 2, minimumFractionDigits: f.decimals ?? 0 })
+    ? f.value.toLocaleString("en-US", { maximumFractionDigits: f.decimals ?? 2, minimumFractionDigits: f.decimals ?? (f.prefix === "$" && !Number.isInteger(f.value) ? 2 : 0) })
     : String(f.value);
   return `${f.prefix || ""}${v}${f.unit || ""}`;
 }

@@ -5,6 +5,7 @@ import { esc, num, fig, cite, conflicts } from "./_lib.mjs";
 export const name = "metric";
 export const serves = ["pivot"];
 export const required = ["figure", "pivot", "scope", "asked", "shown"];
+// optional: pivots, asked_unavailable, cross_check, derived, breakdown
 
 // d.figure: the headline figure (value, unit, basis "median"/"average", n, source, url, as_of).
 // d.pivot: "per square foot" / "per bedroom". d.scope: "Carroll Gardens condos, closed sales, Jun–Aug 2026".
@@ -12,6 +13,8 @@ export const required = ["figure", "pivot", "scope", "asked", "shown"];
 // a mismatch line sits right under the number, so nobody reads an all-types median as a condo average.
 // d.cross_check: [figure] from other sources for the same thing. d.derived: [{ label, figure, formula }] — figures computed here
 // from sourced components (formula names its inputs). d.breakdown: [{ label, figure }] — e.g. by bedroom count.
+// d.pivots: [{ label, figure, note }] — when the question asks for several cuts ("per bedroom and per square foot"), one row per
+// cut asked for, in the question's order, rendered directly under the headline; note flags a scope or basis that differs from it.
 // Figures a source shows only rounded carry exact: false and render as "not published exactly".
 export function render(d) {
   const all = [d.figure, ...(d.cross_check || [])];
@@ -24,7 +27,11 @@ export function render(d) {
 # ${num(d.figure)}
 **${esc(d.figure.basis || "")}, ${esc(d.pivot)}** · ${esc(d.scope)}${d.figure.n != null ? ` · n = ${Number(d.figure.n).toLocaleString("en-US")}` : ""}
 Source: ${cite(d.figure)}
-${mismatch}
+${d.pivots?.length ? `
+| You asked for | Figure | Scope / basis | Source |
+|---|---:|---|---|
+${d.pivots.map((p) => `| ${esc(p.label)} | **${num(p.figure)}** | ${esc([p.figure.basis, p.note].filter(Boolean).join("; ") || "—")} | ${cite(p.figure)} |`).join("\n")}
+` : ""}${mismatch}
 ${esc(d.answer)}
 ${d.caveats?.length ? `\n${d.caveats.map((c) => `- ${esc(c)}`).join("\n")}\n` : ""}${all.length > 1 ? `
 | Source | Figure | Basis | As of |
