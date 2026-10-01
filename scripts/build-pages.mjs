@@ -21,7 +21,7 @@ import { SITE_URL, AG, ROOT, TODAY, all, esc, tc, fileFor, day, month, usDate, m
 import { PROFILE_MIN, isSelf, groupAgents, groupFirms, groupPros, groupCompanies, groupPrincipals, byPlan } from "./pros.mjs";
 
 // ---------- data ----------
-const plans = (await all("plans?select=plan_id,name,address,zip,borough,construction,submitted_date,accepted_date,units_residential,units_parking,units_commercial,units_storage,units_other,category,sponsor,law_firm,meta,fetched_at,lat,lng&order=plan_id"))
+const plans = (await all("plans?select=plan_id,name,address,zip,borough,construction,submitted_date,original_submitted_date,accepted_date,units_residential,units_parking,units_commercial,units_storage,units_other,category,sponsor,law_firm,meta,fetched_at,lat,lng&order=plan_id"))
   .filter((p) => p.address);
 const searchable = new Set((await all("documents?select=plan_id&status=eq.done")).map((d) => d.plan_id));
 const byId = new Map(plans.map((p) => [p.plan_id, p]));
@@ -229,17 +229,17 @@ ${hoverScript}
 }
 
 // ---------- time to approval ----------
-// Days from submission to acceptance for filing. The AG's plan row carries "Submitted Date", but on any plan with
-// amendments that row is amendment 1's and the date is when amendment 1 was submitted, usually after acceptance.
-// Only rows with a blank "Amendment No" hold the original submission, so the page measures those plans alone,
-// and only the RECENT_N most recently accepted of them, since review times decades ago say little about today's.
+// Days from submission to acceptance for filing. The AG overwrites a plan's "Submitted Date" with each amendment's,
+// so the database keeps the date first crawled, before any amendment, in original_submitted_date (a trigger never
+// overwrites it). Every plan with that date counts, amended or not, but only the RECENT_N most recently accepted,
+// since review times decades ago say little about today's, and only waits under two years, as a sanity check.
 // Rows that aren't a real offering ("*Resubmit*") and plans with no residential units are skipped: CD160125, an
 // all-commercial plan submitted in 2016 and accepted in 2026, would otherwise add two months to the average.
-const DAY_MS = 864e5, RECENT_N = 50;
+const DAY_MS = 864e5, RECENT_N = 50, MAX_DAYS = 730;
 const timed = accepted.filter(NYC).filter(realPlan).filter((p) => p.units_residential > 0)
-  .filter((p) => p.submitted_date && !String(p.meta?.plan?.["Amendment No"] ?? "").trim())
-  .map((p) => ({ ...p, days: Math.round((Date.parse(p.accepted_date) - Date.parse(p.submitted_date)) / DAY_MS) }))
-  .filter((p) => p.days >= 0)
+  .filter((p) => p.original_submitted_date)
+  .map((p) => ({ ...p, days: Math.round((Date.parse(p.accepted_date) - Date.parse(p.original_submitted_date)) / DAY_MS) }))
+  .filter((p) => p.days >= 0 && p.days < MAX_DAYS)
   .sort((a, b) => b.accepted_date.localeCompare(a.accepted_date) || b.plan_id.localeCompare(a.plan_id))
   .slice(0, RECENT_N);
 const avgOf = (ds) => Math.round(ds.reduce((s, d) => s + d, 0) / ds.length);
@@ -269,7 +269,7 @@ const dur = (d) => d > 30 ? `${mo(d)} month${mo(d) === "1" ? "" : "s"}` : plural
     }).join("")}</tbody></table></div>`;
 }
 const SIZES = [[1, 10, "1–10"], [11, 25, "11–25"], [26, 50, "26–50"], [51, Infinity, "51 or more"]];
-const BINS = [[0, 90, "Under 3 months"], [90, 180, "3–6 months"], [180, 270, "6–9 months"], [270, 365, "9–12 months"], [365, 548, "12–18 months"], [548, 730, "18–24 months"], [730, Infinity, "Over 2 years"]];
+const BINS = [[0, 90, "Under 3 months"], [90, 180, "3–6 months"], [180, 270, "6–9 months"], [270, 365, "9–12 months"], [365, 548, "12–18 months"], [548, 730, "18–24 months"]];
 // The homepage stat strip: each data page leaves its headline figure here, so the strip quotes the page it links to.
 const HOME = {};
 const FAST = `<svg class="ic" viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>`;
@@ -312,7 +312,7 @@ function approvalPage() {
 
   const recent = timed;
   const recentTable = `<div class="tscroll"><table><thead><tr><th>CD number</th><th>Condominium</th><th>Submitted</th><th>Accepted</th><th>Time</th></tr></thead><tbody>${recent.map((p) =>
-    `<tr><td>${esc(p.plan_id)}</td><td><a href="buildings/${esc(fileFor(p))}">${esc(tc(p.name))}</a></td><td>${esc(day(p.submitted_date))}</td><td>${esc(day(p.accepted_date))}</td><td>${dur(p.days)}</td></tr>`).join("")}</tbody></table></div>`;
+    `<tr><td>${esc(p.plan_id)}</td><td><a href="buildings/${esc(fileFor(p))}">${esc(tc(p.name))}</a></td><td>${esc(day(p.original_submitted_date))}</td><td>${esc(day(p.accepted_date))}</td><td>${dur(p.days)}</td></tr>`).join("")}</tbody></table></div>`;
 
   return HEAD(P, { image: OG_SITE, title, description, canonical: url }) + `
 ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
@@ -322,7 +322,7 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
 <main class="post approval split">
   <div class="aside">
   <h1>How Long Does Condo Offering Plan Approval Take?</h1>
-  <p class="anote">The time from when a sponsor submits a New York City condominium offering plan to when the Attorney General accepts it for filing, across the ${n(timed.length)} most recent plans accepted since ${esc(day(oldest))}. Only plans not yet amended can be timed from the AG's records, so read the figures as a guide.</p>
+  <p class="anote">The time from when a sponsor submits a New York City condominium offering plan to when the Attorney General accepts it for filing, across the ${n(timed.length)} most recent plans accepted since ${esc(day(oldest))}. The AG replaces a plan's submission date with each amendment's, so the original date is captured when a plan is first crawled and kept, and amended plans stay in the sample. Waits of two years or more are left out as likely record errors, so read the figures as a guide.</p>
   <div class="hero-stat">
     <p class="hs-k">Average time to approval</p>
     <p class="hs-v">${mo(mean)} <span>month${mo(mean) === "1" ? "" : "s"}</span></p>
