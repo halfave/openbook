@@ -3,21 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Top NYC Condo Architects by Building | The Condo Book Project</title>
+<title>Top NYC Condo Building Architects | The Condo Book Project</title>
 <meta name="description" content="426 architects named in 1,372 NYC condominium offering plans, with the buildings each one designed. Top: Demerara Engineering (72).">
 <link rel="canonical" href="https://www.condobooknyc.com/architects.html">
 <meta property="og:site_name" content="The Condo Book Project">
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Top NYC Condo Architects by Building | The Condo Book Project">
+<meta property="og:title" content="Top NYC Condo Building Architects | The Condo Book Project">
 <meta property="og:description" content="426 architects named in 1,372 NYC condominium offering plans, with the buildings each one designed. Top: Demerara Engineering (72).">
 <meta property="og:url" content="https://www.condobooknyc.com/architects.html">
 <meta property="og:image" content="https://www.condobooknyc.com/img/og/site.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Top NYC Condo Architects by Building | The Condo Book Project">
+<meta property="og:image:alt" content="Top NYC Condo Building Architects | The Condo Book Project">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Top NYC Condo Architects by Building | The Condo Book Project">
+<meta name="twitter:title" content="Top NYC Condo Building Architects | The Condo Book Project">
 <meta name="twitter:description" content="426 architects named in 1,372 NYC condominium offering plans, with the buildings each one designed. Top: Demerara Engineering (72).">
 <meta name="theme-color" content="#879CB4">
 <script src="analytics.js"></script>
@@ -33,7 +33,7 @@
 <header class="mast compact">
   <div class="mast-in">
     <a class="wordmark" href="index.html" target="_self" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
-    <nav class="mastnav" aria-label="Main"><a href="about.html">About</a><span aria-hidden="true">|</span><a href="faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="new-condo-filings.html">New Construction</a><a href="time-to-approval.html">Approval Times</a><a href="common-charges.html">Common Charges</a><a href="property-taxes.html">Property Taxes</a><a href="developers.html">Developers</a><a href="managing-agents.html">Property Managers</a><a href="offering-plan-attorneys.html">OP Attorneys</a><a href="architects.html">Architects</a><a href="selling-agents.html">Selling Agents</a><a href="tax-consultants.html">Tax Consultants</a></div></details></nav>
+    <nav class="mastnav" aria-label="Main"><a href="about.html">About</a><span aria-hidden="true">|</span><a href="faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="new-condo-filings.html">New Construction</a><a href="time-to-approval.html">Approval Times</a><a href="common-charges.html">Common Charges</a><a href="property-taxes.html">Property Taxes</a><a href="developers.html">Developers</a><a href="managing-agents.html">Property Managers</a><a href="offering-plan-attorneys.html">OP Attorneys</a><a href="architects.html">Architects</a><a href="selling-agents.html">Sales Teams</a><a href="tax-consultants.html">Tax Consultants</a></div></details></nav>
   </div>
 </header>
 <div class="mast-rule"></div><div class="hairline"></div>
@@ -54,7 +54,7 @@
       <a href="managing-agents.html">Property Managers</a>
       <a href="offering-plan-attorneys.html">OP Attorneys</a>
       <a href="architects.html">Architects</a>
-      <a href="selling-agents.html">Selling Agents</a>
+      <a href="selling-agents.html">Sales Teams</a>
       <a href="tax-consultants.html">Tax Consultants</a>
     </div>
     <hr>
@@ -2644,6 +2644,8 @@
   const show = () => {
     const q = box ? box.value.trim().toLowerCase() : "";
     cards.forEach((c) => { c.hidden = q ? !c.dataset.name.includes(q) : !all && c.hasAttribute("data-more"); });
+    // A section whose only card doesn't match the search hides with it.
+    document.querySelectorAll(".aself").forEach((s) => { s.hidden = !!q && !s.querySelector("details.agent:not([hidden])"); });
     if (btn) { btn.parentNode.hidden = !!q; btn.textContent = all ? btn.dataset.top : btn.dataset.all; }
   };
   if (box) box.addEventListener("input", show);

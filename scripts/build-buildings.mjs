@@ -37,8 +37,17 @@ function buildingPage(p, ctx) {
 
   // The plan ID keeps two plans at one address apart, and is what people search the AG site by.
   // Titles use the first address of an "A/K/A" pair; the description keeps the full one.
-  const tAddr = (addr || name).replace(/\s*[(,]?\s*\b(a\/k\/a|aka)\b.*$/i, "") || addr || name;
-  const title = firstFit(`${tAddr} Condo Offering Plan (${p.plan_id})`, `${tAddr} Offering Plan (${p.plan_id})`, `${tAddr} (${p.plan_id})`);
+  // With no address the name stands in, minus a trailing "Condominium" ("… Condominium Condo Offering Plan").
+  const tAddr = ((addr || name).replace(/\s*[(,]?\s*\b(a\/k\/a|aka)\b.*$/i, "") || addr || name).replace(/,?\s+condo(minium)?s?$/i, "");
+  // A building with its own name ("London Clay Townhouse", not "406 Midwood Street Condominium") leads with it, since
+  // people search by that name; address-named buildings add the borough, as address searches usually include it.
+  // "Kings Place Condominium" is shown as "Kings Place" so the address still fits.
+  // A/K/A and F/K/A names and parentheticals are dropped; a name that still doesn't fit falls back to the address.
+  const tName = name.replace(/\s*[(,]?\s*\b(a\/k\/a|f\/k\/a|aka|fka)\b.*$/i, "").replace(/\s*\(.*$/, "").replace(/,?\s+(a\s+)?condo(minium)?s?$/i, "").trim();
+  const named = tName && !/^\d/.test(tName.replace(/^the\s+/i, "")) && tName.toLowerCase() !== tAddr.toLowerCase();
+  const byName = named ? [`${tName}, ${tAddr} Offering Plan (${p.plan_id})`, `${tName} Condo Offering Plan (${p.plan_id})`, `${tName} Offering Plan (${p.plan_id})`, `${tName} (${p.plan_id})`] : [];
+  const byAddr = b ? [`${tAddr}, ${b} Condo Offering Plan (${p.plan_id})`, `${tAddr}, ${b} Offering Plan (${p.plan_id})`] : [];
+  const title = firstFit(...byName, ...byAddr, `${tAddr} Condo Offering Plan (${p.plan_id})`, `${tAddr} Offering Plan (${p.plan_id})`, `${tAddr} (${p.plan_id})`);
   const bits = [];
   if (p.units_residential != null) bits.push(plural(p.units_residential, "residential unit"));
   if (p.units_parking) bits.push(plural(p.units_parking, "parking unit"));

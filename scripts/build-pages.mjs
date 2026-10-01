@@ -281,7 +281,7 @@ function approvalPage() {
   const days = timed.map((p) => p.days);
   const mean = avgOf(days), median = medianOf(days), fastest = Math.min(...days), slowest = Math.max(...days);
   const oldest = timed.at(-1).accepted_date;
-  const title = "How Long Does AG Approval Take for NYC Condos?";
+  const title = "NYC Condo Offering Plan Approval Times (AG Data)";
   const description = `How long the NY Attorney General takes to accept an NYC condo offering plan: ${dur(mean)} on average across the ${timed.length} most recent plans that can be timed.`;
   HOME.approval = { href: "time-to-approval.html", k: "Avg. time to AG approval", v: mo(mean), u: `month${mo(mean) === "1" ? "" : "s"}` };
 
@@ -681,7 +681,7 @@ function agentsPage() {
   const url = `${SITE_URL}/managing-agents.html`;
   const groups = AGENTS;
   const namedPlans = groups.reduce((s, g) => s + g.plans.length, 0);
-  const title = `NYC Condo Property Managers by Building`;
+  const title = `Top NYC Condo Property Managers`;
   const description = withTop(`${n(groups.length)} property managers named in ${n(namedPlans)} NYC condo offering plans, with the buildings each manages and the first-year fee per unit.`, groups.slice(0, 3).map((g) => `${g.name} (${g.plans.length})`));
   const bldg = (p) => `<li><a href="buildings/${esc(fileFor(p))}">${esc(tc(p.name))}</a><span>${esc(tc(p.address))} · ${esc(boro(p.borough))}${p.units_residential != null ? ` · ${p.units_residential} units` : ""}${p.accepted_date ? ` · ${p.accepted_date.slice(0, 4)}` : ""}${feeText(p)}</span></li>`;
   const card = (g, i) => `<details class="agent" id="${esc(g.slug)}" data-name="${esc(g.name.toLowerCase())}"${more(i)}>
@@ -790,7 +790,7 @@ const PRO_DIRS = {
   },
   architect: {
     groups: ARCHITECTS, dir: "architects", crumb: "Architects", noun: "architects", find: "Find an architect",
-    title: "Top NYC Condo Architects by Building",
+    title: "Top NYC Condo Building Architects",
     h1: "Top NYC Condo Architects",
     listName: "Architects most often named in NYC condominium offering plans",
     description: (g, planCount) => withTop(`${n(g.length)} architects named in ${n(planCount)} NYC condominium offering plans, with the buildings each one designed.`, g.slice(0, 3).map((x) => `${x.name} (${x.plans.length})`)),
@@ -798,17 +798,17 @@ const PRO_DIRS = {
     src: "Named in the offering plan as filed; for conversions and rehabs this is often the architect who certified the building's condition rather than its designer. Different spellings of one firm's name are counted together, and a person named alone is counted apart from their firm unless the plans name them together. Plans whose pages aren't searchable yet, or that don't name an architect, aren't included.",
   },
   seller: {
-    groups: SELLERS, dir: "selling-agents", crumb: "Selling agents", noun: "selling agents", find: "Find a brokerage",
-    title: "Top NYC New Development Condo Selling Agents",
-    h1: "Top NYC Condo Selling Agents",
-    listName: "Selling agents most often named in NYC condominium offering plans",
+    groups: SELLERS, dir: "selling-agents", crumb: "Sales teams", noun: "sales teams", find: "Find a brokerage",
+    title: "Top NYC Condo Building Sales Teams",
+    h1: "Top NYC Condo Building Sales Teams",
+    listName: "Sales teams (selling agents) most often named in NYC condominium offering plans",
     description: (g, planCount) => withTop(`${n(g.length)} brokerages named as selling agent in ${n(planCount)} NYC condo offering plans, with the new developments each was hired to sell.`, g.slice(0, 3).map((x) => `${x.name} (${x.plans.length})`)),
     note: (g, planCount) => `The selling agent each New York City condominium offering plan names to market and sell the units for the sponsor. ${n(g.length)} brokerages across ${n(planCount)} buildings. Ranked by the number of offering plans naming each firm, not by sales or quality.`,
     src: "Named in the offering plan as filed; a sponsor can change selling agents later, so this may not reflect who is selling a building today. Plans where the sponsor or an affiliate sells its own units aren't counted. Different spellings of one brokerage's name are counted together. Plans whose pages aren't searchable yet, or that don't name a selling agent, aren't included.",
   },
   taxer: {
     groups: TAXERS, dir: "tax-consultants", crumb: "Tax consultants", noun: "firms", find: "Find a firm",
-    title: "Top NYC Condo Real Estate Tax Consultants",
+    title: "Top NYC Condo Tax Opinion Firms",
     h1: "Top NYC Condo Real Estate Tax Consultants",
     listName: "Firms most often named as preparing the real estate tax estimate in NYC condominium offering plans",
     description: (g, planCount) => withTop(`${n(g.length)} firms that prepared the real estate tax estimate in ${n(planCount)} NYC condo offering plans, with the buildings for each.`, g.slice(0, 3).map((x) => `${x.name} (${x.plans.length})`)),
@@ -893,15 +893,15 @@ const DEV = byPrice(DEVELOPERS, "developers", SITES.developers);
 // What differs between the four $/unit profile kinds.
 const ROLE = {
   developer: { pool: DEV, list: "Developers", as: "the company behind the sponsor", on: "in", other: "company", Other: "Developers", count: "building", type: "Organization",
-    title: "NYC Condo Buildings Developed", short: "Condo Developer", source: "in the plan's text; each building below cites the page. The sponsor, which develops and sells the condominium, is usually a company formed for the one building." },
+    title: "NYC Condo Developers", short: "Condo Developers", source: "in the plan's text; each building below cites the page. The sponsor, which develops and sells the condominium, is usually a company formed for the one building." },
   attorney: { pool: ATT, list: "Offering plan attorneys", as: "sponsor's counsel", on: "on", other: "firm", Other: "Firms", count: "plan", type: "LegalService",
-    title: "NYC Condo Sponsor's Counsel", short: "Sponsor's Counsel", source: "as recorded by the Attorney General. This may not reflect current representation." },
+    title: "NYC Offering Plan Attorneys", short: "Offering Plan Attorneys", source: "as recorded by the Attorney General. This may not reflect current representation." },
   architect: { pool: ARCH, list: "Architects", as: "the architect", on: "in", other: "architect", Other: "Architects", count: "building", type: "ProfessionalService",
-    title: "NYC Condo Buildings Designed", short: "Condo Architect", source: "in the plan's text. For conversions this is often the architect who certified the existing building." },
-  seller: { pool: SELL, list: "Selling agents", as: "selling agent", on: "in", other: "brokerage", Other: "Brokerages", count: "building", type: "RealEstateAgent",
-    title: "NYC Condo Selling Agent", short: "Selling Agent", source: "in the plan's text. A sponsor can change selling agents, so this may not reflect who is selling each building today." },
+    title: "NYC Condo Building Architects", short: "Condo Building Architects", source: "in the plan's text. For conversions this is often the architect who certified the existing building." },
+  seller: { pool: SELL, list: "Sales teams", as: "selling agent", on: "in", other: "brokerage", Other: "Brokerages", count: "building", type: "RealEstateAgent",
+    title: "NYC Condo Building Sales Team", short: "Condo Sales Team", source: "in the plan's text. A sponsor can change selling agents, so this may not reflect who is selling each building today." },
   taxer: { pool: TAX, list: "Tax consultants", as: "preparing the real estate tax estimate", on: "in", other: "firm", Other: "Firms", count: "plan", type: "ProfessionalService",
-    title: "NYC Condo Real Estate Tax Estimates", short: "Tax Consultant", source: "in the plan's text. The estimate projects the building's first-year real estate taxes; the Department of Finance sets the actual assessment." },
+    title: "NYC Condo Tax Opinion Letter", short: "Condo Tax Opinion Letter", source: "in the plan's text. The estimate projects the building's first-year real estate taxes; the Department of Finance sets the actual assessment." },
 };
 const profileHref = (x, P) => `${P}${x.dir}/${x.slug}.html`;
 const hoverScript = `<script>
@@ -932,7 +932,9 @@ function profilePage(x, kind) {
   const named = x.plans.slice(0, 3).map((p) => tc(p.name));
   const pricing = mgr ? x.fee : x.perUnit;
   const pricingText = pricing == null ? null : mgr ? `${perYear(pricing)}/unit/yr` : fmtMoney(pricing);
-  const title = firstFit(`${x.display}: ${mgr ? "NYC Condo Buildings Managed" : r.title}`, `${x.display}: ${mgr ? "Condo Manager" : r.short}`, x.display);
+  const title = mgr
+    ? firstFit(`${x.display} | NYC Condo Property Managers`, `${x.display} | Condo Property Managers`, x.display)
+    : firstFit(`${x.display} | ${r.title}`, `${x.display} | ${r.short}`, x.display);
   // As many of the first three building names as fit, then (managers) the fee if there's room.
   const including = named.map((s, i) => (i ? ", " : ", including ") + s);
   const description = mgr

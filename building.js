@@ -240,7 +240,7 @@
     if (html) last ? last.insertAdjacentHTML("beforebegin", html) : sheet.insertAdjacentHTML("beforeend", html);
     // The rest of the team goes in its own box, after sponsor and counsel and before the tax estimate.
     const team = document.getElementById("teamsheet");
-    const pros = [["Managing agent", "managing_agent"], ["Selling agent", "selling_agent"], ["Architect", "architect"]].map(([l, f]) => row(l, f)).join("");
+    const pros = [["Managing agent", "managing_agent"], ["Sales team", "selling_agent"], ["Architect", "architect"]].map(([l, f]) => row(l, f)).join("");
     if (!team || !pros) return;
     const tax = [...team.children].find((d) => d.querySelector("dt")?.textContent === "Tax estimate");
     tax ? tax.insertAdjacentHTML("beforebegin", pros) : team.insertAdjacentHTML("beforeend", pros);
