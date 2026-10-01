@@ -1,0 +1,210 @@
+{
+ "plan_id": "CD190402",
+ "checked_at": "2026-10-01T21:01:43.938Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 10078,
+   "page_no": 1,
+   "why": [
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 10078,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 10078,
+   "page_no": 6,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 10078,
+   "page_no": 10,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 10078,
+   "page_no": 70,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 10078,
+   "page_no": 88,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 10078,
+   "page_no": 90,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 10078,
+   "page_no": 120,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 10078,
+   "page_no": 123,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 10078,
+   "page_no": 137,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P11",
+   "file_id": 10078,
+   "page_no": 235,
+   "why": [
+    "selling_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": null,
+  "selling_agent": {
+   "value": "BARTLETT ESTATES LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SPONSOR AND SELLING AGENT: BARTLETT ESTATES LLC"
+  },
+  "managing_agent": {
+   "value": "Bartlett Estates LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [
+    "AYC Management, LLC"
+   ],
+   "page": "P10",
+   "quote": "the Board shall enter into an agreement to manage the property with the Sponsor, Bartlett Estates LLC, 320 Roebling Street, Unit 316, Brooklyn, New York 11211, for the first year of Condominium Operations"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "JEFFREY ZWICK & ASSOCIATES, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "ATTORNEYS FOR SPONSOR: JEFFREY ZWICK & ASSOCIATES, P.C."
+  },
+  "sponsor": {
+   "value": "BARTLETT ESTATES LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SPONSOR AND SELLING AGENT: BARTLETT ESTATES LLC"
+  },
+  "sponsor_address": {
+   "value": "320 ROEBLING STREET, UNIT 316, BROOKLYN, NEW YORK 11211",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "320 ROEBLING STREET, UNIT 316 BROOKLYN, NEW YORK 11211"
+  }
+ },
+ "quote_checks": [],
+ "results": [
+  {
+   "table": "plans",
+   "id": "CD190402",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "BARTLETT ESTATES LLC",
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "BARTLETT ESTATES LLC",
+    "why": "Matches cover page exactly."
+   },
+   "blind": {
+    "value": "BARTLETT ESTATES LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "SPONSOR AND SELLING AGENT: BARTLETT ESTATES LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD190402",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "JEFFREY ZWICK & ASSOCIATES, P.C.",
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "JEFFREY ZWICK & ASSOCIATES, P.C.",
+    "why": "Matches cover page exactly."
+   },
+   "blind": {
+    "value": "JEFFREY ZWICK & ASSOCIATES, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "ATTORNEYS FOR SPONSOR: JEFFREY ZWICK & ASSOCIATES, P.C."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 4140,
+   "field": "principal",
+   "method": "ag-site",
+   "stored": {
+    "name": "Yitzchok Schwartz",
+    "kind": "person",
+    "role": "Principal",
+    "parent_entity": null
+   },
+   "quote": null,
+   "verdict": "not_from_plan"
+  }
+ ],
+ "calls": 2,
+ "tokens": 30070
+}

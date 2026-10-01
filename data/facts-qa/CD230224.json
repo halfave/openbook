@@ -1,0 +1,443 @@
+{
+ "plan_id": "CD230224",
+ "checked_at": "2026-10-01T23:13:13.354Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 25024,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 25024,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 25024,
+   "page_no": 9,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 25024,
+   "page_no": 15,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 25024,
+   "page_no": 89,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 25024,
+   "page_no": 90,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 25024,
+   "page_no": 95,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 25024,
+   "page_no": 102,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 25024,
+   "page_no": 103,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 25024,
+   "page_no": 105,
+   "why": [
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P11",
+   "file_id": 25024,
+   "page_no": 141,
+   "why": [
+    "cited",
+    "architect"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "HENRY RADUSKY, R.A.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P11",
+   "quote": "ARCHITECT'S REPORT ... Prepared By: HENRY RADUSKY, R.A."
+  },
+  "selling_agent": {
+   "value": "171 Luquer LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "The Sponsor is currently the se lling agent for the plan."
+  },
+  "managing_agent": {
+   "value": "171 Luquer LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P4",
+   "quote": "The Sponsor will manage the condominium during the control period."
+  },
+  "tax_consultant": {
+   "value": "Metropolitan Realty Exemptions, Inc.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P5",
+   "quote": "The Sponsor has received an estimate from Metropolitan Realty Exemptions, Inc. (“MRE”)"
+  },
+  "sponsor_attorney": {
+   "value": "The Law Office of Claudia V. Murdoch, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P7",
+   "quote": "THE LAW OFFICE OF CLAUDIA V. MURDOCH P.C. ATTORNEY AT LAW"
+  },
+  "sponsor": {
+   "value": "171 Luquer LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "The Sponsor of this project is 1 71 Luquer LLC, a New York l imited l iability c ompany formed on May 18, 2022"
+  },
+  "sponsor_address": {
+   "value": "295 Columbia Street, #9, Brooklyn, New York 11231",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "with offices located at 295 Columbia Street, #9, Brooklyn, New York 11231"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 9638,
+   "field": "selling_agent",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 9639,
+   "field": "working_capital",
+   "page_no": 102,
+   "score": 1
+  },
+  {
+   "id": 9640,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 10889,
+   "field": "architect",
+   "page_no": 141,
+   "score": 1
+  },
+  {
+   "id": 11189,
+   "field": "managing_agent",
+   "page_no": 15,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 9638,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "171 Luquer LLC (Sponsor, self-sold)",
+   "page_no": 1,
+   "file_id": 25024,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "The Sponsor (171 Luquer LLC)",
+    "page": "P1",
+    "quote": "SPONSOR AND SELLING AGENT: 171 LUQUER LLC",
+    "why": "P1 and P10 identify the selling agent as the Sponsor itself; claim adds a qualifier '(Sponsor, self-sold)' which is partially supported but 'self-sold' is not a term used in the plan — however the core fact 'Sponsor is selling agent' is correct, the added phrase 'self-sold' is not stated. Treating as wrong since it adds unsupported characterization."
+   },
+   "blind": {
+    "value": "171 Luquer LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "The Sponsor is currently the se lling agent for the plan."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "171 Luquer LLC (Sponsor and Selling Agent)",
+    "page": "P1",
+    "quote": "SPONSOR AND SELLING AGENT: 1 71 LUQUER LLC",
+    "sure": true,
+    "why": "The cover names 171 Luquer LLC as both Sponsor and Selling Agent. P10 confirms that the Sponsor is currently the selling agent. All three candidates state this."
+   },
+   "candidates": [
+    "171 Luquer LLC (Sponsor, self-sold)",
+    "The Sponsor (171 Luquer LLC)",
+    "171 Luquer LLC (the Sponsor itself)"
+   ],
+   "stored_letter": "A",
+   "printed": "171 Luquer LLC (Sponsor and Selling Agent)",
+   "printed_page": {
+    "file_id": 25024,
+    "page_no": 1
+   },
+   "printed_quote": "SPONSOR AND SELLING AGENT: 1 71 LUQUER LLC",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 9639,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "Two (2) months' common charges per unit as a Working Capital Fund contribution at Closing",
+   "page_no": 102,
+   "file_id": 25024,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "an amount equal to two month s’ common charges",
+    "why": "Matches P8 and P3."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 9640,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "295 Columbia Street, #9, Brooklyn, New York 11231",
+   "page_no": 1,
+   "file_id": 25024,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "295 COLUMBIA STREET , #9, BROOKLYN, NEW YORK 1 12 31",
+    "why": "Matches P1 and P9."
+   },
+   "blind": {
+    "value": "295 Columbia Street, #9, Brooklyn, New York 11231",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "with offices located at 295 Columbia Street, #9, Brooklyn, New York 11231"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 10889,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "HENRY RADUSKY, R.A",
+   "page_no": 141,
+   "file_id": 25024,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P11",
+    "quote": "HENRY RADUSKY, R.A.",
+    "why": "Matches P11 architect's report byline."
+   },
+   "blind": {
+    "value": "HENRY RADUSKY, R.A.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P11",
+    "quote": "ARCHITECT'S REPORT ... Prepared By: HENRY RADUSKY, R.A."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11189,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "Self-managed",
+   "page_no": 15,
+   "file_id": 25024,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P4",
+    "quote": "it is anticipated that the building will be self - managing",
+    "why": "Matches P4 statement about no managing agent in first year budget."
+   },
+   "blind": {
+    "value": "171 Luquer LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P4",
+    "quote": "The Sponsor will manage the condominium during the control period."
+   },
+   "blind_agrees": false,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "No managing agent; self-managing, with the Sponsor (171 Luquer LLC) managing the condominium during the control period",
+    "page": "P4",
+    "quote": "it is anticipated that the building will be self - managing. The Sponsor will manage the condominium during the control period.",
+    "sure": true,
+    "why": "The first-year budget has no managing agent and the building is to be self-managing. The Sponsor manages it during the control period, which covers the first year (control lasts up to 3 years per P3). Both candidates are supported."
+   },
+   "candidates": [
+    "Self-managed",
+    "171 Luquer LLC (the Sponsor itself)"
+   ],
+   "stored_letter": "A",
+   "printed": "No managing agent; self-managing, with the Sponsor (171 Luquer LLC) managing the condominium during the control period",
+   "printed_page": {
+    "file_id": 25024,
+    "page_no": 15
+   },
+   "printed_quote": "it is anticipated that the building will be self - managing. The Sponsor will manage the condominium during the control period.",
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 2197,
+   "field": "principal",
+   "stored": {
+    "name": "Gino Vitale",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 103,
+   "file_id": 25024,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "The principal of the Sponsor is Gino Vitale",
+    "why": "Matches P9 exactly."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD230224",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "171 LUQUER LLC",
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "1 71 LUQUER LLC",
+    "why": "Matches cover page sponsor name."
+   },
+   "blind": {
+    "value": "171 Luquer LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "The Sponsor of this project is 1 71 Luquer LLC, a New York l imited l iability c ompany formed on May 18, 2022"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD230224",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "THE LAW OFFICE OF CLAUDIA V. MURDOCH, P.C.",
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "The Law Office of Claudia V. Murdoch , P.C .",
+    "why": "Matches cover page 'Prepared By' and P7 letterhead."
+   },
+   "blind": {
+    "value": "The Law Office of Claudia V. Murdoch, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P7",
+    "quote": "THE LAW OFFICE OF CLAUDIA V. MURDOCH P.C. ATTORNEY AT LAW"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 43816
+}

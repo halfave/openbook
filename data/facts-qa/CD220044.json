@@ -1,0 +1,450 @@
+{
+ "plan_id": "CD220044",
+ "checked_at": "2026-10-01T22:22:36.864Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 16956,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 16956,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 16956,
+   "page_no": 8,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 16956,
+   "page_no": 21,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 16956,
+   "page_no": 33,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 16956,
+   "page_no": 96,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 16956,
+   "page_no": 104,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 16956,
+   "page_no": 105,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 16956,
+   "page_no": 106,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Paul Lombardi, R.A., of Design Studio Associates",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "The architect, Paul Lombardi , R.A., of Design Studio Associates, 527 Court Street, Bklyn 11231"
+  },
+  "selling_agent": {
+   "value": "102 Summit Street LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "The Sponsor is currently the se lling agent for the plan."
+  },
+  "managing_agent": {
+   "value": "102 Summit Street LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "The Sponsor shall manage the Building without charge for the first year of operation ."
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "The Law Office of Claudia V. Murdoch, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [
+    "Sylvester J. Sichenze, Esq."
+   ],
+   "page": "P8",
+   "quote": "Sponsor has retain ed Claudia Villanella Murdoch, Esq. of The Law Office of Claudia V. Murdoch , P.C ., 117 Seventh Avenue , Brooklyn, Ne w York 11215 , to represent it in the conversion of the premises to co ndominium ownership."
+  },
+  "sponsor": {
+   "value": "102 Summit Street LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "The Sponsor of this project is 102 Summit Street LLC, a New York Limited Liability Company formed January 9, 2020"
+  },
+  "sponsor_address": {
+   "value": "2152 59th Street, Brooklyn, NY 11204",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "with offices located at 2152 59 th Street, Brooklyn, NY 11204"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 8558,
+   "field": "selling_agent",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 8559,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 8560,
+   "field": "architect",
+   "page_no": 106,
+   "score": 0,
+   "found_on": 105,
+   "found_score": 1
+  },
+  {
+   "id": 8561,
+   "field": "managing_agent",
+   "page_no": 106,
+   "score": 1
+  },
+  {
+   "id": 8562,
+   "field": "working_capital",
+   "page_no": 104,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 8558,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "102 Summit Street LLC",
+   "page_no": 1,
+   "file_id": 16956,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "SPONSOR AND SELLING AGENT: 102 SUMMIT STREET LLC",
+    "why": "Matches cover page"
+   },
+   "blind": {
+    "value": "102 Summit Street LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "The Sponsor is currently the se lling agent for the plan."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8559,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "2152 59th Street, Brooklyn, New York 11204",
+   "page_no": 1,
+   "file_id": 16956,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "2152 59 TH STREET BROOKLYN, NEW YORK 1 12 04",
+    "why": "Matches cover page"
+   },
+   "blind": {
+    "value": "2152 59th Street, Brooklyn, NY 11204",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "with offices located at 2152 59 th Street, Brooklyn, NY 11204"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8560,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Paul Lombardi, R.A., Design Studio Associates",
+   "page_no": 106,
+   "file_id": 16956,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "The architect, Paul Lombardi , R.A., of Design Studio Associates",
+    "why": "Matches identity of parties"
+   },
+   "blind": {
+    "value": "Paul Lombardi, R.A., of Design Studio Associates",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "The architect, Paul Lombardi , R.A., of Design Studio Associates, 527 Court Street, Bklyn 11231"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8561,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "102 Summit Street LLC (Sponsor)",
+   "page_no": 106,
+   "file_id": 16956,
+   "check": {
+    "n": 4,
+    "verdict": "wrong",
+    "fix": "Sponsor (102 Summit Street LLC) manages for first year; no managing fee charged — not '0' as a stored number, no such figure stated",
+    "page": "P9",
+    "quote": "The Sponsor shall manage the Building without charge for the first year of operation",
+    "why": "Pages confirm Sponsor manages without charge, but there is no numeric value '0' stated in the pages to support the stored number claim"
+   },
+   "blind": {
+    "value": "102 Summit Street LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "The Sponsor shall manage the Building without charge for the first year of operation ."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "The Sponsor (102 Summit Street LLC) manages the Building without charge for the first year of operation",
+    "page": "P9",
+    "quote": "The Sponsor shall manage the Building without charge for the first year of operation",
+    "sure": true,
+    "why": "P9 says the Sponsor manages the building free of charge in year one, and P8 names the Sponsor as 102 Summit Street LLC. A and B both name the right party. C adds 'no fee charged', which matches 'without charge'; its note about no stored figure is commentary, not a contradiction."
+   },
+   "candidates": [
+    "102 Summit Street LLC (Sponsor)",
+    "102 Summit Street LLC (the Sponsor itself)",
+    "Sponsor (102 Summit Street LLC) manages for first year; no managing fee charged — not '0' as a stored number, no such figure stated"
+   ],
+   "stored_letter": "A",
+   "printed": "The Sponsor (102 Summit Street LLC) manages the Building without charge for the first year of operation",
+   "printed_page": {
+    "file_id": 16956,
+    "page_no": 106
+   },
+   "printed_quote": "The Sponsor shall manage the Building without charge for the first year of operation",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8562,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 104,
+   "file_id": 16956,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P7",
+    "quote": "an amount equal to two month s' common charges",
+    "why": "Matches working capital fund section"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 2125,
+   "field": "principal",
+   "stored": {
+    "name": "Anthony Prestigiacomo",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 105,
+   "file_id": 16956,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "The principa l s of the Sponsor are Anthony Prestigiacomo, Salvatore Prestigiacomo , and John Prestigiacomo",
+    "why": "Matches identity of parties"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 2126,
+   "field": "principal",
+   "stored": {
+    "name": "Salvatore Prestigiacomo",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 105,
+   "file_id": 16956,
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "The principa l s of the Sponsor are Anthony Prestigiacomo, Salvatore Prestigiacomo , and John Prestigiacomo",
+    "why": "Matches identity of parties"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 2127,
+   "field": "principal",
+   "stored": {
+    "name": "John Prestigiacomo",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 105,
+   "file_id": 16956,
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "The principa l s of the Sponsor are Anthony Prestigiacomo, Salvatore Prestigiacomo , and John Prestigiacomo",
+    "why": "Matches identity of parties"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD220044",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "102 SUMMIT STREET LLC",
+   "check": {
+    "n": 9,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "102 SUMMIT STREET LLC",
+    "why": "Matches cover page"
+   },
+   "blind": {
+    "value": "102 Summit Street LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "The Sponsor of this project is 102 Summit Street LLC, a New York Limited Liability Company formed January 9, 2020"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD220044",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "THE LAW OFFICE OF CLAUDIA V. MURDOCH, P.C.",
+   "check": {
+    "n": 10,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "The Law Office of Claudia V. Murdoch , P.C .",
+    "why": "Matches cover page"
+   },
+   "blind": {
+    "value": "The Law Office of Claudia V. Murdoch, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [
+     "Sylvester J. Sichenze, Esq."
+    ],
+    "page": "P8",
+    "quote": "Sponsor has retain ed Claudia Villanella Murdoch, Esq. of The Law Office of Claudia V. Murdoch , P.C ., 117 Seventh Avenue , Brooklyn, Ne w York 11215 , to represent it in the conversion of the premises to co ndominium ownership."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 68233
+}

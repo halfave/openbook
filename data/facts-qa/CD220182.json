@@ -1,0 +1,241 @@
+{
+ "plan_id": "CD220182",
+ "checked_at": "2026-10-01T22:37:53.577Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 21093,
+   "page_no": 125,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 21093,
+   "page_no": 127,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 21093,
+   "page_no": 130,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 21093,
+   "page_no": 264,
+   "why": [
+    "tax_consultant"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": null,
+  "selling_agent": null,
+  "managing_agent": null,
+  "tax_consultant": null,
+  "sponsor_attorney": null,
+  "sponsor": {
+   "value": "303 W113 LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "303 W113 LLC , a New York limited liability company, with an address at 159 Columbus Avenue, 4 th floor , NY , NY 10023 ( “ Seller ” )"
+  },
+  "sponsor_address": {
+   "value": "159 Columbus Avenue, 4th floor, NY, NY 10023",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "with an address at 159 Columbus Avenue, 4 th floor , NY , NY 10023"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 7827,
+   "field": "working_capital",
+   "page_no": 127,
+   "score": 1
+  },
+  {
+   "id": 7828,
+   "field": "reserve_fund",
+   "page_no": 127,
+   "score": 1
+  },
+  {
+   "id": 11680,
+   "field": "sponsor_address",
+   "page_no": 125,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 7827,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 127,
+   "file_id": 21093,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P2",
+    "quote": "tw o ( 2 ) months of common charges for the working capital fu nd",
+    "why": "matches claim"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7828,
+   "field": "reserve_fund",
+   "column": "value_text",
+   "stored": "1 month's common charges contributed at closing",
+   "page_no": 127,
+   "file_id": 21093,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P2",
+    "quote": "one month ’ s common charges for the Condominium ’ s R e serve Fund",
+    "why": "matches claim"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11680,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "159 Columbus Avenue, 4th Floor, New York, NY 10023",
+   "page_no": 125,
+   "file_id": 21093,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "159 Columbus Avenue, 4 th floor , NY , NY 10023",
+    "why": "matches claim"
+   },
+   "blind": {
+    "value": "159 Columbus Avenue, 4th floor, NY, NY 10023",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "with an address at 159 Columbus Avenue, 4 th floor , NY , NY 10023"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD220182",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "303W113 LLC**",
+   "check": {
+    "n": 4,
+    "verdict": "minor",
+    "fix": "303 W113 LLC",
+    "page": "P1",
+    "quote": "303 W113 LLC , a New York limited liability company",
+    "why": "printed as '303 W113 LLC' not '303W113 LLC'"
+   },
+   "blind": {
+    "value": "303 W113 LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "303 W113 LLC , a New York limited liability company, with an address at 159 Columbus Avenue, 4 th floor , NY , NY 10023 ( “ Seller ” )"
+   },
+   "blind_agrees": false,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "B"
+    ],
+    "close": [
+     "A"
+    ],
+    "printed": "303 W113 LLC",
+    "page": "P1",
+    "quote": "303 W113 LLC , a New York limited liability company",
+    "sure": true,
+    "why": "The Seller, which promulgated the Plan, is printed as '303 W113 LLC'. B matches. A drops the space and adds stray asterisks."
+   },
+   "candidates": [
+    "303W113 LLC**",
+    "303 W113 LLC"
+   ],
+   "stored_letter": "A",
+   "printed": "303 W113 LLC",
+   "printed_page": {
+    "file_id": 21093,
+    "page_no": 125
+   },
+   "printed_quote": "303 W113 LLC , a New York limited liability company",
+   "verdict": "minor"
+  },
+  {
+   "table": "plans",
+   "id": "CD220182",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "SMITH BUSS & JACOBS, LLP",
+   "check": {
+    "n": 5,
+    "verdict": "minor",
+    "fix": "Smith, Buss & Jacobs LLP",
+    "page": "P3",
+    "quote": "S mith, Buss & Jacobs LLP is the escro w agent",
+    "why": "page identifies them as escrow agent, printed with commas; also not explicitly labeled 'attorneys for Sponsor' on these pages"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [],
+    "close": [],
+    "printed": null,
+    "page": "P3",
+    "quote": "Smith, Buss & Jacobs LLP is the escrow agent under this Agreement (\"Escrow Agent\")",
+    "sure": false,
+    "why": "These pages name Smith, Buss & Jacobs LLP only as the escrow agent. P3 also mentions 'Counsel for the Sponsor' and P1 mentions 'Seller's Counsel', but no page names the Sponsor's counsel or says the escrow agent is that counsel. Candidate A may be right, but the pages provided don't confirm it.",
+    "from_images": true
+   },
+   "candidates": [
+    "SMITH BUSS & JACOBS, LLP"
+   ],
+   "stored_letter": "A",
+   "printed": null,
+   "printed_page": {
+    "file_id": 21093,
+    "page_no": 130
+   },
+   "printed_quote": "Smith, Buss & Jacobs LLP is the escrow agent under this Agreement (\"Escrow Agent\")",
+   "verdict": "unresolved"
+  }
+ ],
+ "calls": 4,
+ "tokens": 39428
+}

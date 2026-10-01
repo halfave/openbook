@@ -1,0 +1,420 @@
+{
+ "plan_id": "CD070742",
+ "checked_at": "2026-10-01T18:49:09.635Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 18738,
+   "page_no": 110,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 18738,
+   "page_no": 119,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 18738,
+   "page_no": 196,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 18738,
+   "page_no": 197,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 18738,
+   "page_no": 202,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 18738,
+   "page_no": 208,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 18738,
+   "page_no": 215,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 18738,
+   "page_no": 216,
+   "why": [
+    "cited"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "M. Bazac Architect",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "M.BAZAC ARCHITECT"
+  },
+  "selling_agent": null,
+  "managing_agent": null,
+  "tax_consultant": {
+   "value": "Tuchman, Korngold, Weiss, Lippman & Gelles, LLP",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P3",
+   "quote": "TUCHMAN. KORNGOLD, WEISS, LIPPMAN 8 GELLES, LLP"
+  },
+  "sponsor_attorney": {
+   "value": "Lawrence F. DiGiovanna, Esq.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P2",
+   "quote": "with a copy to Lawrence F. DiGiovanna, Esq., 357 Bay Ridge Parkway, Brooklyn, New York 11209"
+  },
+  "sponsor": {
+   "value": "Bronx Park South LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P6",
+   "quote": "Bronx Park South LLC"
+  },
+  "sponsor_address": {
+   "value": "220 52nd Street, Brooklyn, New York 11220",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P6",
+   "quote": "Bronx Park South LLC \n220 52nd Street \nBrooklyn, New York 11220"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 584,
+   "field": "tax_program",
+   "page_no": 197,
+   "score": 1
+  },
+  {
+   "id": 585,
+   "field": "working_capital",
+   "page_no": 119,
+   "score": 1
+  },
+  {
+   "id": 11273,
+   "field": "architect",
+   "page_no": 216,
+   "score": 1
+  },
+  {
+   "id": 11660,
+   "field": "sponsor_address",
+   "page_no": 208,
+   "score": 1
+  },
+  {
+   "id": 11732,
+   "field": "tax_consultant",
+   "page_no": 196,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 584,
+   "field": "tax_program",
+   "column": "value_text",
+   "stored": "421-a",
+   "page_no": 197,
+   "file_id": 18738,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P4",
+    "quote": "it is anticipated that this building will receive 421-a tax exemption benefits",
+    "why": "Pages confirm 421-a program is the one discussed"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 585,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "1 month's common charges at closing",
+   "page_no": 119,
+   "file_id": 18738,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P2",
+    "quote": "a sum equal to one month's Common Charges with respect to the Unit purchased as initial working capital",
+    "why": "Matches exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11273,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "M. Bazac Architect (Mircea Bazac, R.A.)",
+   "page_no": 216,
+   "file_id": 18738,
+   "check": {
+    "n": 3,
+    "verdict": "wrong",
+    "fix": "M. Bazac Architect",
+    "page": "P8",
+    "quote": "M.BAZAC ARCHITECT",
+    "why": "The individual's name is not given on these pages; only the firm name 'M. Bazac Architect' appears, no 'Mircea Bazac, R.A.' is stated"
+   },
+   "blind": {
+    "value": "M. Bazac Architect",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "M.BAZAC ARCHITECT"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A"
+    ],
+    "close": [
+     "B"
+    ],
+    "printed": "M. Bazac Architect",
+    "page": "P8",
+    "quote": "M.BAZAC ARCHITECT",
+    "sure": true,
+    "why": "The letterhead of the architect's certification reads 'M.BAZAC ARCHITECT', and the letter refers to the Report the architect prepared. The pages never print 'Mircea Bazac, R.A.', so B adds detail they do not support."
+   },
+   "candidates": [
+    "M. Bazac Architect",
+    "M. Bazac Architect (Mircea Bazac, R.A.)"
+   ],
+   "stored_letter": "B",
+   "printed": "M. Bazac Architect",
+   "printed_page": {
+    "file_id": 18738,
+    "page_no": 216
+   },
+   "printed_quote": "M.BAZAC ARCHITECT",
+   "verdict": "minor"
+  },
+  {
+   "table": "facts",
+   "id": 11660,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "220 52nd Street, Brooklyn, NY 11220",
+   "page_no": 208,
+   "file_id": 18738,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P6",
+    "quote": "Bronx Park South LLC 220 52nd Street Brooklyn, New York 11220",
+    "why": "Matches exactly"
+   },
+   "blind": {
+    "value": "220 52nd Street, Brooklyn, New York 11220",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P6",
+    "quote": "Bronx Park South LLC \n220 52nd Street \nBrooklyn, New York 11220"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11732,
+   "field": "tax_consultant",
+   "column": "value_text",
+   "stored": "Tuchman, Korngold, Weiss, Lippman & Gelles, LLP",
+   "page_no": 196,
+   "file_id": 18738,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P3",
+    "quote": "TUCHMAN. KORNGOLD, WEISS, LIPPMAN 8 GELLES, LLP",
+    "why": "This firm issued the tax opinion letter supporting projected taxes"
+   },
+   "blind": {
+    "value": "Tuchman, Korngold, Weiss, Lippman & Gelles, LLP",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P3",
+    "quote": "TUCHMAN. KORNGOLD, WEISS, LIPPMAN 8 GELLES, LLP"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 22,
+   "field": "principal",
+   "stored": {
+    "name": "NOT STATED",
+    "kind": "entity",
+    "role": null,
+    "parent_entity": null
+   },
+   "page_no": 215,
+   "file_id": 18738,
+   "check": {
+    "n": 6,
+    "verdict": "wrong",
+    "fix": "LAKIS",
+    "page": "P7",
+    "quote": "Sponsor's Principals: LAKIS",
+    "why": "A principal name is stated (LAKIS), contradicting 'NOT STATED'"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [],
+    "close": [
+     "A"
+    ],
+    "printed": "JOHN FOUNDOULAKIS, Sponsor's Principal (Bronx Park South LLC, Sponsor)",
+    "page": "P7",
+    "quote": "Sponsor's Principals: JOHN FOUNDOULAKIS",
+    "sure": true,
+    "why": "P7 names John Foundoulakis as the Sponsor's principal of Bronx Park South LLC. Candidate A gives only the end of his surname, so it is not accurate. Candidate B is wrong because the principal is stated.",
+    "from_images": true
+   },
+   "candidates": [
+    "LAKIS",
+    "NOT STATED"
+   ],
+   "stored_letter": "B",
+   "printed": "JOHN FOUNDOULAKIS, Sponsor's Principal (Bronx Park South LLC, Sponsor)",
+   "printed_page": {
+    "file_id": 18738,
+    "page_no": 215
+   },
+   "printed_quote": "Sponsor's Principals: JOHN FOUNDOULAKIS",
+   "verdict": "wrong"
+  },
+  {
+   "table": "plans",
+   "id": "CD070742",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "BRONX PARK SOUTH, LLC",
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P6",
+    "quote": "SPONSOR: Bronx Park South LLC",
+    "why": "Matches exactly"
+   },
+   "blind": {
+    "value": "Bronx Park South LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P6",
+    "quote": "Bronx Park South LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD070742",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "LAW OFFICES OF LAWRENCE F. DIGIOVANNA",
+   "check": {
+    "n": 8,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": null,
+    "quote": null,
+    "why": "Pages show Lawrence F. DiGiovanna, Esq. as Sponsor's counsel/escrow agent but do not state a firm name 'Law Offices of Lawrence F. DiGiovanna'"
+   },
+   "blind": {
+    "value": "Lawrence F. DiGiovanna, Esq.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P2",
+    "quote": "with a copy to Lawrence F. DiGiovanna, Esq., 357 Bay Ridge Parkway, Brooklyn, New York 11209"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "A"
+    ],
+    "close": [
+     "B"
+    ],
+    "printed": "Lawrence F. DiGiovanna, Esq.",
+    "page": "P2",
+    "quote": "with a copy to Lawrence F. DiGiovanna, Esq., 357 Bay Ridge Parkway, Brooklyn, New York 11209",
+    "sure": false,
+    "why": "On P2, notices to the Seller go with a copy to Lawrence F. DiGiovanna, Esq., who 'may give notice on behalf of the Seller'. P5 names him as Escrow Agent. P1 mentions 'Sponsor's attorney' but gives no name. None of these pages directly calls him the Sponsor's counsel, and 'LAW OFFICES OF' does not appear on them.",
+    "from_images": true
+   },
+   "candidates": [
+    "Lawrence F. DiGiovanna, Esq.",
+    "LAW OFFICES OF LAWRENCE F. DIGIOVANNA"
+   ],
+   "stored_letter": "B",
+   "printed": "Lawrence F. DiGiovanna, Esq.",
+   "printed_page": {
+    "file_id": 18738,
+    "page_no": 119
+   },
+   "printed_quote": "with a copy to Lawrence F. DiGiovanna, Esq., 357 Bay Ridge Parkway, Brooklyn, New York 11209",
+   "verdict": "unresolved"
+  }
+ ],
+ "calls": 4,
+ "tokens": 75337
+}

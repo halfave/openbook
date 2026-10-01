@@ -1,0 +1,421 @@
+{
+ "plan_id": "CD200029",
+ "checked_at": "2026-10-01T21:11:15.933Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 11951,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 11951,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 11951,
+   "page_no": 9,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 11951,
+   "page_no": 17,
+   "why": [
+    "cited",
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 11951,
+   "page_no": 39,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 11951,
+   "page_no": 59,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 11951,
+   "page_no": 115,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 11951,
+   "page_no": 129,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 11951,
+   "page_no": 130,
+   "why": [
+    "cited"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Suresh Manchanda, L & C Associates",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "Suresh Manchanda a registered architect from the firm L & C Associates with an address at 36-54 Main Street, Suite 2A, Flushing, New York 11354"
+  },
+  "selling_agent": {
+   "value": "Inspired Properties NY LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+  },
+  "managing_agent": {
+   "value": "Inspired Properties NY LLC",
+   "by_sponsor": false,
+   "by_board": true,
+   "others": [],
+   "page": "P5",
+   "quote": "The Condominium Board will be responsible for managing the condominium, including but not limited to, writing checks, payment of bills, such as water and sewer charges, insurance premiums, repairs, snow removal, etc."
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "The Law Office of Jay Lichtman, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "The Sponsor is represented by The Law Office of Jay Lichtman P.C., 68 Jay Street, Suite 420, Brooklyn, New York 11201"
+  },
+  "sponsor": {
+   "value": "Inspired Properties NY LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "The Sponsor of this project is Inspired Properties NY LLC a New York Limited Liability Company"
+  },
+  "sponsor_address": {
+   "value": "277 Northern Boulevard Suite 100, Great Neck, New York 11021",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "with an address at 277 Northern Boulevard Suite 100, Great Neck 11021"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 5595,
+   "field": "selling_agent",
+   "page_no": 129,
+   "score": 1
+  },
+  {
+   "id": 5596,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 0.71
+  },
+  {
+   "id": 5597,
+   "field": "architect",
+   "page_no": 130,
+   "score": 1
+  },
+  {
+   "id": 5598,
+   "field": "working_capital",
+   "page_no": 9,
+   "score": 1
+  },
+  {
+   "id": 11074,
+   "field": "managing_agent",
+   "page_no": 17,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 5595,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "Inspired Properties NY LLC",
+   "page_no": 129,
+   "file_id": 11951,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "Sponsor will act as selling agent (no separate Selling Agent used)",
+    "page": "P8",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent",
+    "why": "Inspired Properties NY LLC is identified as Sponsor, and pages state Sponsor itself acts as selling agent rather than a distinct 'selling agent' entity; though P1 cover page does list it as Sponsor & Selling Agent."
+   },
+   "blind": {
+    "value": "Inspired Properties NY LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "Inspired Properties NY LLC (the Sponsor acts as its own selling agent; no separate Selling Agent)",
+    "page": "P8",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent",
+    "sure": true,
+    "why": "P1 lists 'SPONSOR & SELLING AGENT: INSPIRED PROPERTIES NY LLC'. P8 says the Sponsor acts as selling agent. All three candidates state this."
+   },
+   "candidates": [
+    "Inspired Properties NY LLC",
+    "Inspired Properties NY LLC (the Sponsor itself)",
+    "Sponsor will act as selling agent (no separate Selling Agent used)"
+   ],
+   "stored_letter": "A",
+   "printed": "Inspired Properties NY LLC (the Sponsor acts as its own selling agent; no separate Selling Agent)",
+   "printed_page": {
+    "file_id": 11951,
+    "page_no": 129
+   },
+   "printed_quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5596,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "277 Northern Blvd, Ste 100, Great Neck, New York 11021",
+   "page_no": 1,
+   "file_id": 11951,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "277 NORTHERN BLVD, SJE 100, GREAT NECK, NEW YORK 11021",
+    "why": "Matches address on cover page (minor OCR 'SJE' for 'Ste')."
+   },
+   "blind": {
+    "value": "277 Northern Boulevard Suite 100, Great Neck, New York 11021",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "with an address at 277 Northern Boulevard Suite 100, Great Neck 11021"
+   },
+   "blind_agrees": false,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "277 Northern Blvd, Ste 100, Great Neck, New York 11021",
+    "page": "P1",
+    "quote": "277 NORTHERN BLVD, SJE 100 GREAT NECK, NEW YORK 11021",
+    "sure": true,
+    "why": "P1 reads 'Blvd, SJE 100', where SJE is an OCR error for Ste. P8 gives '277 Northern Boulevard Suite 100, Great Neck 11021'. Both candidates are the same address with only abbreviation differences."
+   },
+   "candidates": [
+    "277 Northern Boulevard Suite 100, Great Neck, New York 11021",
+    "277 Northern Blvd, Ste 100, Great Neck, New York 11021"
+   ],
+   "stored_letter": "B",
+   "printed": "277 Northern Blvd, Ste 100, Great Neck, New York 11021",
+   "printed_page": {
+    "file_id": 11951,
+    "page_no": 1
+   },
+   "printed_quote": "277 NORTHERN BLVD, SJE 100 GREAT NECK, NEW YORK 11021",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5597,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "L & C Associates (Suresh Manchanda)",
+   "page_no": 130,
+   "file_id": 11951,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "Suresh Manchanda a registered architect from the firm L & C Associates",
+    "why": "Matches engineer/architect section."
+   },
+   "blind": {
+    "value": "Suresh Manchanda, L & C Associates",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "Suresh Manchanda a registered architect from the firm L & C Associates with an address at 36-54 Main Street, Suite 2A, Flushing, New York 11354"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5598,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 9,
+   "file_id": 11951,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P3",
+    "quote": "deposit with the Condominium Board two (2) months' Common Charges for his Unit to be used as working capital",
+    "why": "Matches exactly."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11074,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "Self-managed",
+   "page_no": 17,
+   "file_id": 11951,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P4",
+    "quote": "the Condominium Board will be responsible for managing the condominium",
+    "why": "No outside managing agent; Board self-manages."
+   },
+   "blind": {
+    "value": "Inspired Properties NY LLC",
+    "by_sponsor": false,
+    "by_board": true,
+    "others": [],
+    "page": "P5",
+    "quote": "The Condominium Board will be responsible for managing the condominium, including but not limited to, writing checks, payment of bills, such as water and sewer charges, insurance premiums, repairs, snow removal, etc."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 711,
+   "field": "principal",
+   "stored": {
+    "name": "Rafael Reihanian",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 129,
+   "file_id": 11951,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "The Principal of the is Rafael Reihanian.",
+    "why": "Matches identity of parties section."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD200029",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "INSPIRED PROPERTIES NY LLC",
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "SPONSOR & SELLING AGENT: INSPIRED PROPERTIES NY LLC",
+    "why": "Matches cover page."
+   },
+   "blind": {
+    "value": "Inspired Properties NY LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "The Sponsor of this project is Inspired Properties NY LLC a New York Limited Liability Company"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD200029",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+    "why": "Matches cover page."
+   },
+   "blind": {
+    "value": "The Law Office of Jay Lichtman, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "The Sponsor is represented by The Law Office of Jay Lichtman P.C., 68 Jay Street, Suite 420, Brooklyn, New York 11201"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 64311
+}

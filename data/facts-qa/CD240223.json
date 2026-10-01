@@ -1,0 +1,288 @@
+{
+ "plan_id": "CD240223",
+ "checked_at": "2026-10-01T23:47:45.451Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 28838,
+   "page_no": 115,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Robert Pia, R.A.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "Robert Pia, R.A., a Registered Architect in the State of New York with an address at 295 West 150th Street # 34, New York, NY 10039, has prepared the description of property report"
+  },
+  "selling_agent": {
+   "value": "4402 12 LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "The Sponsor and Selling Agent is 4402 12 LLC"
+  },
+  "managing_agent": null,
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "Law Office of Anton Wercberger, Esq",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [
+    "Hershy Itzkowitz, Esq. of the Law Office of Hershy Itzkowitz, P.C."
+   ],
+   "page": "P1",
+   "quote": "The Sponsor is represented by the Law Office of Anton Wercberger, Esq located at 3611 14th Avenue, Suite 514, Brooklyn NY 11218"
+  },
+  "sponsor": {
+   "value": "4402 12 LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "The Sponsor and Selling Agent is 4402 12 LLC, a domestic limited liability with an address at 5001 14th Avenue, Brooklyn NY, 11219"
+  },
+  "sponsor_address": {
+   "value": "5001 14th Avenue, Brooklyn NY, 11219",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "a domestic limited liability with an address at 5001 14th Avenue, Brooklyn NY, 11219"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 9284,
+   "field": "selling_agent",
+   "page_no": 115,
+   "score": 1
+  },
+  {
+   "id": 9285,
+   "field": "sponsor_address",
+   "page_no": 115,
+   "score": 1
+  },
+  {
+   "id": 10949,
+   "field": "architect",
+   "page_no": 115,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 9284,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "4402 12 LLC",
+   "page_no": 115,
+   "file_id": 28838,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "The Sponsor and Selling Agent is 4402 12 LLC",
+    "why": "4402 12 LLC is named as Sponsor and Selling Agent"
+   },
+   "blind": {
+    "value": "4402 12 LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "The Sponsor and Selling Agent is 4402 12 LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 9285,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "5001 14th Avenue, Brooklyn NY, 11219",
+   "page_no": 115,
+   "file_id": 28838,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "an address at 5001 14th Avenue, Brooklyn NY, 11219",
+    "why": "matches Sponsor's address"
+   },
+   "blind": {
+    "value": "5001 14th Avenue, Brooklyn NY, 11219",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "a domestic limited liability with an address at 5001 14th Avenue, Brooklyn NY, 11219"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 10949,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Hershy Itzkowitz, Esq. of the Law Office of Hershy Itzkowitz, P.C",
+   "page_no": 115,
+   "file_id": 28838,
+   "check": {
+    "n": 3,
+    "verdict": "wrong",
+    "fix": "Robert Pia, R.A.",
+    "page": "P1",
+    "quote": "Robert Pia, R.A., a Registered Architect in the State of New York... has prepared the description of property report",
+    "why": "Hershy Itzkowitz is the attorney who prepared the Offering Plan, not the architect; Robert Pia is the architect"
+   },
+   "blind": {
+    "value": "Robert Pia, R.A.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "Robert Pia, R.A., a Registered Architect in the State of New York with an address at 295 West 150th Street # 34, New York, NY 10039, has prepared the description of property report"
+   },
+   "blind_agrees": false,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "B"
+    ],
+    "close": [],
+    "printed": "Robert Pia, R.A.",
+    "page": "P1",
+    "quote": "Robert Pia, R.A., a Registered Architect in the State of New York ... has prepared the description of property report",
+    "sure": true,
+    "why": "Under the Engineer/Architect heading, Robert Pia is named as the preparer of the description of property report. Itzkowitz is the attorney who prepared the Offering Plan, not the architect."
+   },
+   "candidates": [
+    "Hershy Itzkowitz, Esq. of the Law Office of Hershy Itzkowitz, P.C",
+    "Robert Pia, R.A."
+   ],
+   "stored_letter": "A",
+   "printed": "Robert Pia, R.A.",
+   "printed_page": {
+    "file_id": 28838,
+    "page_no": 115
+   },
+   "printed_quote": "Robert Pia, R.A., a Registered Architect in the State of New York ... has prepared the description of property report",
+   "verdict": "wrong"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 2669,
+   "field": "principal",
+   "stored": {
+    "name": "Benyamin Melber",
+    "kind": "person",
+    "role": "sole principal",
+    "parent_entity": null
+   },
+   "page_no": 115,
+   "file_id": 28838,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "The sole principal of the Sponsor is Benyamin Melber",
+    "why": "matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD240223",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "4402 12 LLC",
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "The Sponsor and Selling Agent is 4402 12 LLC",
+    "why": "matches"
+   },
+   "blind": {
+    "value": "4402 12 LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "The Sponsor and Selling Agent is 4402 12 LLC, a domestic limited liability with an address at 5001 14th Avenue, Brooklyn NY, 11219"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD240223",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "LAW OFFICES OF HERSHY ITZKOWITZ, P.C.",
+   "check": {
+    "n": 6,
+    "verdict": "wrong",
+    "fix": "Law Office of Anton Wercberger, Esq",
+    "page": "P1",
+    "quote": "The Sponsor is represented by the Law Office of Anton Wercberger, Esq",
+    "why": "Hershy Itzkowitz prepared the Offering Plan but is not identified as Sponsor's counsel; Anton Wercberger represents the Sponsor"
+   },
+   "blind": {
+    "value": "Law Office of Anton Wercberger, Esq",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [
+     "Hershy Itzkowitz, Esq. of the Law Office of Hershy Itzkowitz, P.C."
+    ],
+    "page": "P1",
+    "quote": "The Sponsor is represented by the Law Office of Anton Wercberger, Esq located at 3611 14th Avenue, Suite 514, Brooklyn NY 11218"
+   },
+   "blind_agrees": false,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "A"
+    ],
+    "close": [],
+    "printed": "Law Office of Anton Wercberger, Esq",
+    "page": "P1",
+    "quote": "The Sponsor is represented by the Law Office of Anton Wercberger, Esq",
+    "sure": true,
+    "why": "The page says Wercberger represents the Sponsor. Itzkowitz is described only as having prepared the Offering Plan, and the page never calls him the Sponsor's counsel. Candidate B also prints the name as 'Law Offices', while the page has 'Law Office'."
+   },
+   "candidates": [
+    "Law Office of Anton Wercberger, Esq",
+    "LAW OFFICES OF HERSHY ITZKOWITZ, P.C."
+   ],
+   "stored_letter": "B",
+   "printed": "Law Office of Anton Wercberger, Esq",
+   "printed_page": {
+    "file_id": 28838,
+    "page_no": 115
+   },
+   "printed_quote": "The Sponsor is represented by the Law Office of Anton Wercberger, Esq",
+   "verdict": "wrong"
+  }
+ ],
+ "calls": 3,
+ "tokens": 10864
+}

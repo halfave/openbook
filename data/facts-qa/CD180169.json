@@ -1,0 +1,307 @@
+{
+ "plan_id": "CD180169",
+ "checked_at": "2026-10-01T20:07:09.562Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 7970,
+   "page_no": 2,
+   "why": [
+    "cover",
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 7970,
+   "page_no": 249,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 7970,
+   "page_no": 299,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 7970,
+   "page_no": 310,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 7970,
+   "page_no": 315,
+   "why": [
+    "cited"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": null,
+  "selling_agent": {
+   "value": "4102 8th Ave, LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P2",
+   "quote": "Selling Agent - 4102 8th Ave , LLC with an office at 4205 8th Avenue , Brooklyn, N.Y. 11232"
+  },
+  "managing_agent": null,
+  "tax_consultant": null,
+  "sponsor_attorney": null,
+  "sponsor": {
+   "value": "4102 8th Ave LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P2",
+   "quote": "Sponsor - 4102 8th Ave LLC with an office at 4205 8 th Avenue, Brooklyn , N.Y. 11232 ."
+  },
+  "sponsor_address": {
+   "value": "4205 8th Avenue, Brooklyn, N.Y. 11232",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P2",
+   "quote": "Sponsor - 4102 8th Ave LLC with an office at 4205 8 th Avenue, Brooklyn , N.Y. 11232 ."
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 4450,
+   "field": "parking_arrangement",
+   "page_no": 299,
+   "score": 0.71
+  },
+  {
+   "id": 4451,
+   "field": "selling_agent",
+   "page_no": 249,
+   "score": 1
+  },
+  {
+   "id": 11672,
+   "field": "sponsor_address",
+   "page_no": 249,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 4450,
+   "field": "parking_arrangement",
+   "column": "value_text",
+   "stored": "sold",
+   "page_no": 299,
+   "file_id": 7970,
+   "check": {
+    "n": 1,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": "P3",
+    "quote": "Parking Space15 has been designated as a handicapped parking space",
+    "why": "P3 discusses only Parking Space 15 and its handicap transfer rules; no statement of total number of spaces or whether sold/licensed/leased for the whole arrangement."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A"
+    ],
+    "close": [],
+    "printed": "sold (number of spaces not stated; Parking Space 15 is designated handicapped)",
+    "page": "P3",
+    "quote": "will be the last parking space sold if it has not previously been sold to a purchaser",
+    "sure": true,
+    "why": "P3 says parking spaces are sold and deeded. It names only Parking Space 15 and never gives a total count."
+   },
+   "candidates": [
+    "sold"
+   ],
+   "stored_letter": "A",
+   "printed": "sold (number of spaces not stated; Parking Space 15 is designated handicapped)",
+   "printed_page": {
+    "file_id": 7970,
+    "page_no": 299
+   },
+   "printed_quote": "will be the last parking space sold if it has not previously been sold to a purchaser",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 4451,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "4102 8th Ave, LLC",
+   "page_no": 249,
+   "file_id": 7970,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P2",
+    "quote": "Selling Agent - 4102 8th Ave , LLC with an office at 4205 8th Avenue , Brooklyn, N.Y. 11232",
+    "why": "Matches printed name."
+   },
+   "blind": {
+    "value": "4102 8th Ave, LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P2",
+    "quote": "Selling Agent - 4102 8th Ave , LLC with an office at 4205 8th Avenue , Brooklyn, N.Y. 11232"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11672,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "4205 8th Avenue, Brooklyn, NY 11232",
+   "page_no": 249,
+   "file_id": 7970,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P2",
+    "quote": "Sponsor - 4102 8th Ave LLC with an office at 4205 8 th Avenue, Brooklyn , N.Y. 11232",
+    "why": "Matches printed address."
+   },
+   "blind": {
+    "value": "4205 8th Avenue, Brooklyn, N.Y. 11232",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P2",
+    "quote": "Sponsor - 4102 8th Ave LLC with an office at 4205 8 th Avenue, Brooklyn , N.Y. 11232 ."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 868,
+   "field": "principal",
+   "stored": {
+    "name": "NOT STATED",
+    "kind": "entity",
+    "role": null,
+    "parent_entity": null
+   },
+   "page_no": 315,
+   "file_id": 7970,
+   "check": {
+    "n": 4,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": "P5",
+    "quote": "We are the sponsor and the principals of Sponsor",
+    "why": "Page does not name the principal(s); only refers to 'the undersigned' without listing names on this excerpt."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "A"
+    ],
+    "close": [],
+    "printed": null,
+    "page": "P5",
+    "quote": "We are the sponsor and the principals of Sponsor of the Condominium Offering Plan",
+    "sure": true,
+    "why": "The certification page shown names no individual principal. P2 names the Sponsor as 4102 8th Ave LLC but gives no principal."
+   },
+   "candidates": [
+    "NOT STATED"
+   ],
+   "stored_letter": "A",
+   "printed": null,
+   "printed_page": {
+    "file_id": 7970,
+    "page_no": 315
+   },
+   "printed_quote": "We are the sponsor and the principals of Sponsor of the Condominium Offering Plan",
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD180169",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "4102 8TH AVE LLC",
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P2",
+    "quote": "Sponsor - 4102 8th Ave LLC",
+    "why": "Matches printed sponsor name."
+   },
+   "blind": {
+    "value": "4102 8th Ave LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P2",
+    "quote": "Sponsor - 4102 8th Ave LLC with an office at 4205 8 th Avenue, Brooklyn , N.Y. 11232 ."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD180169",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "THOMAS E. BERINATO, ATTORNEY AT LAW",
+   "check": {
+    "n": 6,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": null,
+    "quote": null,
+    "why": "No page provided states Sponsor's counsel/attorney name."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [],
+    "close": [],
+    "printed": null,
+    "page": "P2",
+    "quote": "Sponsor - 4102 8th Ave LLC with an office at 4205 8th Avenue, Brooklyn, N.Y. 11232.",
+    "sure": false,
+    "why": "None of these pages names the Sponsor's counsel. They show the table of contents, definitions (Sponsor, Selling Agent), by-laws, rules and the Sponsor certification. The name Thomas E. Berinato does not appear on them, so candidate A can't be confirmed.",
+    "from_images": true
+   },
+   "candidates": [
+    "THOMAS E. BERINATO, ATTORNEY AT LAW"
+   ],
+   "stored_letter": "A",
+   "printed": null,
+   "printed_page": {
+    "file_id": 7970,
+    "page_no": 249
+   },
+   "printed_quote": "Sponsor - 4102 8th Ave LLC with an office at 4205 8th Avenue, Brooklyn, N.Y. 11232.",
+   "verdict": "unresolved"
+  }
+ ],
+ "calls": 4,
+ "tokens": 41148
+}

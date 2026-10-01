@@ -1,0 +1,637 @@
+{
+ "plan_id": "CD210018",
+ "checked_at": "2026-10-01T21:41:41.291Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 14671,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 14671,
+   "page_no": 2,
+   "why": [
+    "cover",
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 14671,
+   "page_no": 4,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 14671,
+   "page_no": 8,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 14671,
+   "page_no": 12,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 14671,
+   "page_no": 29,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 14671,
+   "page_no": 61,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 14671,
+   "page_no": 95,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 14671,
+   "page_no": 97,
+   "why": [
+    "cited",
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 14671,
+   "page_no": 98,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": null,
+  "selling_agent": {
+   "value": "Wei Chen",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "The Selling Agent is the Sponsor's principal, Mr. Wei Chen"
+  },
+  "managing_agent": {
+   "value": "Wei Chen",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "Managing Agent will be the Sponsor's principal, Mr. Wei Chen"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "Thomas E. Berinato",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "Sponsor has retained the law firm of Thomas E. Berinato, with offices at 123-40 83rd Avenue, Kew Gardens, New York 11415"
+  },
+  "sponsor": {
+   "value": "Rise Up Realty LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "Rise Up Realty LLC is the sponsor"
+  },
+  "sponsor_address": {
+   "value": "135-11 Northern Boulevard, Flushing, NY 11354",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "RISE UP REALTY LLC \n135 - 11 Northern Boulevard \nFlushing, NY 1135 4"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 7717,
+   "field": "tax_program",
+   "page_no": 29,
+   "score": 1
+  },
+  {
+   "id": 7718,
+   "field": "managing_agent",
+   "page_no": 97,
+   "score": 1
+  },
+  {
+   "id": 7719,
+   "field": "selling_agent",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 7720,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 7721,
+   "field": "reserve_fund",
+   "page_no": 95,
+   "score": 1
+  },
+  {
+   "id": 7722,
+   "field": "working_capital",
+   "page_no": 61,
+   "score": 1
+  },
+  {
+   "id": 11414,
+   "field": "architect",
+   "page_no": 98,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 7717,
+   "field": "tax_program",
+   "column": "value_text",
+   "stored": "ICAP",
+   "page_no": 29,
+   "file_id": 14671,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P6",
+    "quote": "Industrial & Commercial Abatement Program (\"ICAP\")",
+    "why": "matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7718,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "Rise Up Realty LLC",
+   "page_no": 97,
+   "file_id": 14671,
+   "check": {
+    "n": 2,
+    "verdict": "wrong",
+    "fix": "Sponsor (Rise Up Realty LLC), $6,000",
+    "page": "P9",
+    "quote": "an annual charge of $6,000",
+    "why": "the fee stored is $6,000, not $6,000 matches but the entity managing is Sponsor itself at $6,000/year; number given (6000) actually matches, but claim mislabels - actually checking: P9 says annual charge $6,000, not 6000 mismatch. Re-evaluate: number matches so correct"
+   },
+   "blind": {
+    "value": "Wei Chen",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "Managing Agent will be the Sponsor's principal, Mr. Wei Chen"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "C"
+    ],
+    "close": [
+     "B"
+    ],
+    "printed": "Sponsor (Rise Up Realty LLC), annual charge of $6,000; Sponsor's principal Wei Chen named as Managing Agent",
+    "page": "P9",
+    "quote": "the Sponsor shall undertake to manage the building for a minimum of two years at an annual charge of $6,000",
+    "sure": true,
+    "why": "P9 names the Sponsor, Rise Up Realty LLC, as manager. P10 says the Managing Agent is the Sponsor's principal Wei Chen, but he is a principal, not 'the Sponsor itself', so B's wording is off."
+   },
+   "candidates": [
+    "Sponsor (Rise Up Realty LLC), $6,000",
+    "Wei Chen (the Sponsor itself)",
+    "Rise Up Realty LLC"
+   ],
+   "stored_letter": "C",
+   "printed": "Sponsor (Rise Up Realty LLC), annual charge of $6,000; Sponsor's principal Wei Chen named as Managing Agent",
+   "printed_page": {
+    "file_id": 14671,
+    "page_no": 97
+   },
+   "printed_quote": "the Sponsor shall undertake to manage the building for a minimum of two years at an annual charge of $6,000",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7719,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "Rise Up Realty LLC",
+   "page_no": 1,
+   "file_id": 14671,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "SPONSOR & SELLING AGENT \nRISE UP REALTY LLC",
+    "why": "matches"
+   },
+   "blind": {
+    "value": "Wei Chen",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "The Selling Agent is the Sponsor's principal, Mr. Wei Chen"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7720,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "135-11 Northern Boulevard, Flushing, NY 11354",
+   "page_no": 1,
+   "file_id": 14671,
+   "check": {
+    "n": 4,
+    "verdict": "minor",
+    "fix": "135-11 Northern Boulevard, Flushing, NY 11354",
+    "page": "P1",
+    "quote": "135 - 11 Northern Boulevard \nFlushing, NY 1135 4",
+    "why": "OCR shows '1135 4' likely a typo for 11354; printed form has a space/OCR artifact but intended zip is 11354"
+   },
+   "blind": {
+    "value": "135-11 Northern Boulevard, Flushing, NY 11354",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "RISE UP REALTY LLC \n135 - 11 Northern Boulevard \nFlushing, NY 1135 4"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "A"
+    ],
+    "close": [],
+    "printed": "135-11 Northern Boulevard, Flushing, NY 11354",
+    "page": "P10",
+    "quote": "The principal office of the Sponsor is 135 - 11 Northern Boulevard, Flushing, NY 11354",
+    "sure": true,
+    "why": "P1 has the same address with OCR spacing ('1135 4'). P10 confirms it."
+   },
+   "candidates": [
+    "135-11 Northern Boulevard, Flushing, NY 11354"
+   ],
+   "stored_letter": "A",
+   "printed": "135-11 Northern Boulevard, Flushing, NY 11354",
+   "printed_page": {
+    "file_id": 14671,
+    "page_no": 98
+   },
+   "printed_quote": "The principal office of the Sponsor is 135 - 11 Northern Boulevard, Flushing, NY 11354",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7721,
+   "field": "reserve_fund",
+   "column": "value_text",
+   "stored": "Reserve fund for capital expenditures accumulated through common charges",
+   "page_no": 95,
+   "file_id": 14671,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "The amount of the reserve fund is $6,500.00",
+    "why": "matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7722,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "$500 per unit at closing",
+   "page_no": 61,
+   "file_id": 14671,
+   "check": {
+    "n": 6,
+    "verdict": "wrong",
+    "fix": "$500.00 per Unit payable to the Board of Managers (timing not specified as 'at closing' in this excerpt)",
+    "page": "P7",
+    "quote": "Contribution to working capital fund in the amount of $500.00 per Unit payable to the Board of Managers",
+    "why": "pages state $500 per unit but do not specify 'at closing' in the quoted text"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 3,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "$500.00 per Unit payable to the Board of Managers",
+    "page": "P7",
+    "quote": "Contribution to working capital fund in the amount of $500.00 per Unit payable to the Board of Managers",
+    "sure": true,
+    "why": "The item appears in the Unit Closing Costs list, so 'at closing' is consistent with the page. B's wording is also accurate."
+   },
+   "candidates": [
+    "$500 per unit at closing",
+    "$500.00 per Unit payable to the Board of Managers (timing not specified as 'at closing' in this excerpt)"
+   ],
+   "stored_letter": "A",
+   "printed": "$500.00 per Unit payable to the Board of Managers",
+   "printed_page": {
+    "file_id": 14671,
+    "page_no": 61
+   },
+   "printed_quote": "Contribution to working capital fund in the amount of $500.00 per Unit payable to the Board of Managers",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11414,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Robert H. Lin, P.E. (engineer)",
+   "page_no": 98,
+   "file_id": 14671,
+   "check": {
+    "n": 7,
+    "verdict": "wrong",
+    "fix": "Robert H. Lin is identified as the Engineer, not architect",
+    "page": "P10",
+    "quote": "The engineer is Robert H. Lin",
+    "why": "claim conflates architect with engineer; pages only identify an engineer, not an architect who prepared the description of property/floor plans"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A"
+    ],
+    "close": [
+     "B"
+    ],
+    "printed": null,
+    "page": "P10",
+    "quote": "The engineer is Robert H. Lin of 164-09 Northern Boulevard, Flushing, NY 11358. Mr. Lin is a licensed professional engineer",
+    "sure": true,
+    "why": "Identity of Parties lists Robert H. Lin under 'Engineer', and none of the 10 pages names an architect. A matches the page. B has the right person and role, but 'P.E.' is not printed and it is offered as the architect answer.",
+    "from_images": true
+   },
+   "candidates": [
+    "Robert H. Lin is identified as the Engineer, not architect",
+    "Robert H. Lin, P.E. (engineer)"
+   ],
+   "stored_letter": "B",
+   "printed": null,
+   "printed_page": {
+    "file_id": 14671,
+    "page_no": 98
+   },
+   "printed_quote": "The engineer is Robert H. Lin of 164-09 Northern Boulevard, Flushing, NY 11358. Mr. Lin is a licensed professional engineer",
+   "verdict": "minor"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1502,
+   "field": "principal",
+   "stored": {
+    "name": "Wei Chen",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 98,
+   "file_id": 14671,
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P10",
+    "quote": "three principals: Wei Chen, Choi Yui Chan and Ba Shun Chen",
+    "why": "matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1503,
+   "field": "principal",
+   "stored": {
+    "name": "Choi Yui Chan",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 98,
+   "file_id": 14671,
+   "check": {
+    "n": 9,
+    "verdict": "minor",
+    "fix": "Choi Yui Chan",
+    "page": "P10",
+    "quote": "Choi Yui Chan and Ba Shun Chen",
+    "why": "claim spells it 'Choi Yui Chan' vs claim text 'Choi Yui Chan' - matches actually; but earlier pages spell 'Choi Yun Chen' - inconsistent across document"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 5,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "Choi Yui Chan — principal of Rise Up Realty LLC (Sponsor)",
+    "page": "P10",
+    "quote": "has three principals: Wei Chen, Choi Yui Chan and Ba Shun Chen",
+    "sure": true,
+    "why": "P10 spells it 'Choi Yui Chan'. P4 and P9 spell it 'Choi Yun Chen', so the plan is inconsistent."
+   },
+   "candidates": [
+    "Choi Yui Chan",
+    "Choi Yui Chan — principal"
+   ],
+   "stored_letter": "B",
+   "printed": "Choi Yui Chan — principal of Rise Up Realty LLC (Sponsor)",
+   "printed_page": {
+    "file_id": 14671,
+    "page_no": 98
+   },
+   "printed_quote": "has three principals: Wei Chen, Choi Yui Chan and Ba Shun Chen",
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1504,
+   "field": "principal",
+   "stored": {
+    "name": "Ba Shun Chen",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 98,
+   "file_id": 14671,
+   "check": {
+    "n": 10,
+    "verdict": "minor",
+    "fix": "Ba Shun Chen",
+    "page": "P10",
+    "quote": "Ba Shun Chen",
+    "why": "claim says 'Ba Shun Chen' which matches P10, but P4/P9 spell it 'Bao Shun Chen' - inconsistent spelling in document; P10 (cited) matches exactly so this is correct per citation"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 6,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "Ba Shun Chen — principal of Rise Up Realty LLC (Sponsor)",
+    "page": "P10",
+    "quote": "Wei Chen, Choi Yui Chan and Ba Shun Chen",
+    "sure": true,
+    "why": "P10 spells it 'Ba Shun Chen'. P4 and P9 spell it 'Bao Shun Chen', so the plan is inconsistent."
+   },
+   "candidates": [
+    "Ba Shun Chen — principal",
+    "Ba Shun Chen"
+   ],
+   "stored_letter": "A",
+   "printed": "Ba Shun Chen — principal of Rise Up Realty LLC (Sponsor)",
+   "printed_page": {
+    "file_id": 14671,
+    "page_no": 98
+   },
+   "printed_quote": "Wei Chen, Choi Yui Chan and Ba Shun Chen",
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD210018",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "RISE UP REALTY LLC",
+   "check": {
+    "n": 11,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "RISE UP REALTY LLC",
+    "why": "matches cover page"
+   },
+   "blind": {
+    "value": "Rise Up Realty LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "Rise Up Realty LLC is the sponsor"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD210018",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "THOMAS E. BERINATO, ATTORNEY AT LAW",
+   "check": {
+    "n": 12,
+    "verdict": "minor",
+    "fix": "Thomas E. Berinato",
+    "page": "P10",
+    "quote": "the law firm of Thomas E. Berinato",
+    "why": "pages identify him as an individual attorney, not a named firm 'Thomas E. Berinato, Attorney at Law'; printed form is just his name as counsel"
+   },
+   "blind": {
+    "value": "Thomas E. Berinato",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "Sponsor has retained the law firm of Thomas E. Berinato, with offices at 123-40 83rd Avenue, Kew Gardens, New York 11415"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 7,
+    "accurate": [
+     "A"
+    ],
+    "close": [
+     "B"
+    ],
+    "printed": "Thomas E. Berinato",
+    "page": "P10",
+    "quote": "Sponsor has retained the law firm of Thomas E. Berinato",
+    "sure": true,
+    "why": "'Attorney at Law' is not printed on these pages."
+   },
+   "candidates": [
+    "Thomas E. Berinato",
+    "THOMAS E. BERINATO, ATTORNEY AT LAW"
+   ],
+   "stored_letter": "B",
+   "printed": "Thomas E. Berinato",
+   "printed_page": {
+    "file_id": 14671,
+    "page_no": 98
+   },
+   "printed_quote": "Sponsor has retained the law firm of Thomas E. Berinato",
+   "verdict": "minor"
+  }
+ ],
+ "calls": 4,
+ "tokens": 138520
+}

@@ -1,0 +1,436 @@
+{
+ "plan_id": "CD230281",
+ "checked_at": "2026-10-01T23:20:34.281Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 24166,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 24166,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 24166,
+   "page_no": 47,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 24166,
+   "page_no": 49,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 24166,
+   "page_no": 129,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 24166,
+   "page_no": 135,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 24166,
+   "page_no": 136,
+   "why": [
+    "cited",
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 24166,
+   "page_no": 137,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 24166,
+   "page_no": 138,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 24166,
+   "page_no": 311,
+   "why": [
+    "cited"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": null,
+  "selling_agent": {
+   "value": "7616 LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SPONSOR /SELLING AGENT 7616 LLC"
+  },
+  "managing_agent": {
+   "value": "ENEL Management Corp.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P7",
+   "quote": "enter into a management agreement wit h ENEL Management Corp. (“ENEL”)"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "Moritt Hock & Hamroff LLP",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SPONSOR’S ATTORNEY Moritt Hock Hamroff LLP"
+  },
+  "sponsor": {
+   "value": "7616 LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "The Sponsor is 7616 LLC , a New York limited liability company"
+  },
+  "sponsor_address": {
+   "value": "1419 East 2nd Street, Brooklyn, NY 11230",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "7616 LLC 1419 East 2nd Street Brooklyn, NY 11230"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 9304,
+   "field": "managing_agent",
+   "page_no": 136,
+   "score": 1
+  },
+  {
+   "id": 9305,
+   "field": "selling_agent",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 9306,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 9307,
+   "field": "tax_program",
+   "page_no": 49,
+   "score": 1
+  },
+  {
+   "id": 9308,
+   "field": "architect",
+   "page_no": 311,
+   "score": 1
+  },
+  {
+   "id": 9309,
+   "field": "working_capital",
+   "page_no": 135,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 9304,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "ENEL Management Corp.",
+   "page_no": 136,
+   "file_id": 24166,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P7",
+    "quote": "ENEL Management Corp. ... annual fee of $12,000",
+    "why": "Name and annual fee match"
+   },
+   "blind": {
+    "value": "ENEL Management Corp.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P7",
+    "quote": "enter into a management agreement wit h ENEL Management Corp. (“ENEL”)"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 9305,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "7616 LLC",
+   "page_no": 1,
+   "file_id": 24166,
+   "check": {
+    "n": 2,
+    "verdict": "wrong",
+    "fix": "7616 LLC",
+    "page": "P1",
+    "quote": "SPONSOR /SELLING AGENT \n7616 LLC",
+    "why": "7616 LLC is listed as both Sponsor and Selling Agent, so this is correct as to name but claim role label 'selling agent' is accurate too - actually matches"
+   },
+   "blind": {
+    "value": "7616 LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "SPONSOR /SELLING AGENT 7616 LLC"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "7616 LLC",
+    "page": "P1",
+    "quote": "SPONSOR /SELLING AGENT 7616 LLC",
+    "sure": true,
+    "why": "The cover page lists 7616 LLC under a combined Sponsor/Selling Agent heading, so the Sponsor is its own selling agent. Both candidates match."
+   },
+   "candidates": [
+    "7616 LLC (the Sponsor itself)",
+    "7616 LLC"
+   ],
+   "stored_letter": "B",
+   "printed": "7616 LLC",
+   "printed_page": {
+    "file_id": 24166,
+    "page_no": 1
+   },
+   "printed_quote": "SPONSOR /SELLING AGENT 7616 LLC",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 9306,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "1419 East 2nd Street, Brooklyn, NY 11230",
+   "page_no": 1,
+   "file_id": 24166,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "1419 East 2nd Street \nBrooklyn, NY 11230",
+    "why": "Matches cover page address"
+   },
+   "blind": {
+    "value": "1419 East 2nd Street, Brooklyn, NY 11230",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "7616 LLC 1419 East 2nd Street Brooklyn, NY 11230"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 9307,
+   "field": "tax_program",
+   "column": "value_text",
+   "stored": "ICAP",
+   "page_no": 49,
+   "file_id": 24166,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P4",
+    "quote": "Industrial and Commercial Abatement Program (ICAP)",
+    "why": "ICAP is named as the abatement program"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 9308,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Jian Deng",
+   "page_no": 311,
+   "file_id": 24166,
+   "check": {
+    "n": 5,
+    "verdict": "wrong",
+    "fix": null,
+    "page": "P10",
+    "quote": "building plans and specifications that were prepared by Jian Deng",
+    "why": "Jian Deng prepared the building plans/specifications, but the certification letter itself is signed by an unnamed engineer/architect who prepared the Report; the claim conflates the plans preparer with the report certifier role"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A"
+    ],
+    "close": [],
+    "printed": "Jian Deng",
+    "page": "P10",
+    "quote": "building plans and specifications that were prepared by Jian Deng dated 11-28-23",
+    "sure": false,
+    "why": "P10 names Jian Deng only as the person who prepared the building plans and specifications dated 11-28-23. The architect who signed the certification and wrote the Report dated 12-28-23 is not named on these pages; the signature is probably on the next page. Jian Deng fits the plans-author role, but these pages don't show whether Jian Deng also wrote the Report.",
+    "from_images": true
+   },
+   "candidates": [
+    "Jian Deng"
+   ],
+   "stored_letter": "A",
+   "printed": "Jian Deng",
+   "printed_page": {
+    "file_id": 24166,
+    "page_no": 311
+   },
+   "printed_quote": "building plans and specifications that were prepared by Jian Deng dated 11-28-23",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 9309,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 135,
+   "file_id": 24166,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P6",
+    "quote": "an amount equal to two (2) months Common Charges from each Purchaser",
+    "why": "Matches exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 2597,
+   "field": "principal",
+   "stored": {
+    "name": "Yousef Lati",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 137,
+   "file_id": 24166,
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "The Principal of the Sponsor is Yousef Lati",
+    "why": "Matches exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD230281",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "7616 LLC",
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "SPONSOR /SELLING AGENT \n7616 LLC",
+    "why": "Matches cover page"
+   },
+   "blind": {
+    "value": "7616 LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "The Sponsor is 7616 LLC , a New York limited liability company"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD230281",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "MORITT HOCK & HAMROFF, LLP",
+   "check": {
+    "n": 9,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "Moritt Hock Hamroff LLP",
+    "why": "Matches cover page (minor spacing in print, but name matches)"
+   },
+   "blind": {
+    "value": "Moritt Hock & Hamroff LLP",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "SPONSOR’S ATTORNEY Moritt Hock Hamroff LLP"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 4,
+ "tokens": 133076
+}

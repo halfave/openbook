@@ -1,0 +1,421 @@
+{
+ "plan_id": "CD220033",
+ "checked_at": "2026-10-01T22:21:59.859Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 16729,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 16729,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 16729,
+   "page_no": 8,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 16729,
+   "page_no": 14,
+   "why": [
+    "cited",
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 16729,
+   "page_no": 35,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 16729,
+   "page_no": 37,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 16729,
+   "page_no": 57,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 16729,
+   "page_no": 123,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 16729,
+   "page_no": 247,
+   "why": [
+    "managing_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Nataliya Donskoy, R.A., ND Architecture & Design P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "Nataliya Donskoy, R.A ., with an address at ND Architecture & Design P.C. ... has rendered the Floor Plans of the Property"
+  },
+  "selling_agent": {
+   "value": "Bedford Clymer LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+  },
+  "managing_agent": {
+   "value": "Condominium Board",
+   "by_sponsor": false,
+   "by_board": true,
+   "others": [],
+   "page": "P6",
+   "quote": "The Condominium Board will be responsible for managing the condominium, including but not limited to, writing checks, payment of bills..."
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "The Law Office of Jay Lichtman, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "The Sponsor is represented by The Law Office of Jay Lichtman P.C., 68 Jay Street, Suite 420, Brooklyn, New York 11201"
+  },
+  "sponsor": {
+   "value": "Bedford Clymer LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "The Sponsor of this project is Bedford Clymer LLC , a New York Limited Liability Company"
+  },
+  "sponsor_address": {
+   "value": "238 Skillman Street, Brooklyn, NY 11205",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "with an address at 238 Skillman Street, Brooklyn, NY 11205"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 8315,
+   "field": "selling_agent",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 8316,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 8317,
+   "field": "managing_agent",
+   "page_no": 14,
+   "score": 1
+  },
+  {
+   "id": 8318,
+   "field": "working_capital",
+   "page_no": 8,
+   "score": 1
+  },
+  {
+   "id": 11465,
+   "field": "architect",
+   "page_no": 123,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 8315,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "Bedford Clymer LLC",
+   "page_no": 1,
+   "file_id": 16729,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "Bedford Clymer LLC is the Sponsor and Selling Agent per P1, but P8 states Sponsor will not use a Selling Agent and will act as its own selling agent",
+    "page": "P1",
+    "quote": "SPONSOR & SELLING AGENT: BEDFORD CLYMER LLC",
+    "why": "P1 lists Bedford Clymer LLC as Sponsor & Selling Agent, but P8 clarifies Sponsor itself acts as selling agent rather than retaining a separate selling agent; claim's framing as 'the selling agent' is technically correct per P1 but P8 shows there is no distinct selling agent entity - treating as correct since P1 explicitly labels it that way"
+   },
+   "blind": {
+    "value": "Bedford Clymer LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "Bedford Clymer LLC (Sponsor acts as its own selling agent)",
+    "page": "P8",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+    "sure": true,
+    "why": "P1 lists 'Sponsor & Selling Agent: Bedford Clymer LLC'. P8 says the Sponsor acts as its own selling agent. All three candidates match this."
+   },
+   "candidates": [
+    "Bedford Clymer LLC",
+    "Bedford Clymer LLC (the Sponsor itself)",
+    "Bedford Clymer LLC is the Sponsor and Selling Agent per P1, but P8 states Sponsor will not use a Selling Agent and will act as its own selling agent"
+   ],
+   "stored_letter": "A",
+   "printed": "Bedford Clymer LLC (Sponsor acts as its own selling agent)",
+   "printed_page": {
+    "file_id": 16729,
+    "page_no": 123
+   },
+   "printed_quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8316,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "238 Skillman Street, Brooklyn, New York 11205",
+   "page_no": 1,
+   "file_id": 16729,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "238 SKILLMAN STREET, BROOKLYN, NEW YORK 11205",
+    "why": "Matches Sponsor's address on cover page"
+   },
+   "blind": {
+    "value": "238 Skillman Street, Brooklyn, NY 11205",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "with an address at 238 Skillman Street, Brooklyn, NY 11205"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8317,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "Self-managed by Condominium Board",
+   "page_no": 14,
+   "file_id": 16729,
+   "check": {
+    "n": 3,
+    "verdict": "wrong",
+    "fix": "The Condominium Board manages the condominium (self-managed); if an outside managing agent is retained, fees are approximately $7,200.00-$9,000.00 annually, but no managing agent is designated for the first year specifically",
+    "page": "P4",
+    "quote": "The Condominium Board will be responsible for managing the condominium, including but not limited to, writing checks, payment of bills...In the event that an outside managing agent is retained, the Common Charges will need to be increased.",
+    "why": "P4 states the Board manages the condominium with no outside agent by default, which matches the claim's parenthetical, but does not specifically say 'first year' - claim is substantively correct though not framed with that specificity; marking correct since the plan describes self-management as the default state"
+   },
+   "blind": {
+    "value": "Condominium Board",
+    "by_sponsor": false,
+    "by_board": true,
+    "others": [],
+    "page": "P6",
+    "quote": "The Condominium Board will be responsible for managing the condominium, including but not limited to, writing checks, payment of bills..."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "The Condominium Board (self-managed)",
+    "page": "P4",
+    "quote": "The Condominium Board will be responsible for managing the condominium",
+    "sure": true,
+    "why": "P4 and P6 say the Board manages the condominium. An outside agent would cost about $7,200.00-$9,000.00 a year. No outside managing agent is named."
+   },
+   "candidates": [
+    "the Board / self-managed",
+    "Self-managed by Condominium Board",
+    "The Condominium Board manages the condominium (self-managed); if an outside managing agent is retained, fees are approximately $7,200.00-$9,000.00 annually, but no managing agent is designated for the first year specifically"
+   ],
+   "stored_letter": "B",
+   "printed": "The Condominium Board (self-managed)",
+   "printed_page": {
+    "file_id": 16729,
+    "page_no": 14
+   },
+   "printed_quote": "The Condominium Board will be responsible for managing the condominium",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8318,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 8,
+   "file_id": 16729,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P3",
+    "quote": "deposit with the Condominium Board two (2) months' Common Charges for his Unit to be used as working capital",
+    "why": "Matches exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11465,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Nataliya Donskoy, R.A. of ND Architecture & Design P.C.",
+   "page_no": 123,
+   "file_id": 16729,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "Nataliya Donskoy, R.A., with an address at ND Architecture & Design P.C....has rendered the Floor Plans of the Property and has rendered the report thereof",
+    "why": "Matches exactly"
+   },
+   "blind": {
+    "value": "Nataliya Donskoy, R.A., ND Architecture & Design P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "Nataliya Donskoy, R.A ., with an address at ND Architecture & Design P.C. ... has rendered the Floor Plans of the Property"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 2046,
+   "field": "principal",
+   "stored": {
+    "name": "Israel Neiman",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 123,
+   "file_id": 16729,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "The only Principal of the Sponsor is Israel Neiman",
+    "why": "Matches exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD220033",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "BEDFORD CLYMER LLC",
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "BEDFORD CLYMER LLC",
+    "why": "Matches Sponsor name on cover page"
+   },
+   "blind": {
+    "value": "Bedford Clymer LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "The Sponsor of this project is Bedford Clymer LLC , a New York Limited Liability Company"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD220033",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "THE LAW OFFICE OF JAY LICHTMAN, PC",
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+    "why": "Matches Attorneys for Sponsor on cover page"
+   },
+   "blind": {
+    "value": "The Law Office of Jay Lichtman, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "The Sponsor is represented by The Law Office of Jay Lichtman P.C., 68 Jay Street, Suite 420, Brooklyn, New York 11201"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 68269
+}

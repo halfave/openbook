@@ -1,0 +1,419 @@
+{
+ "plan_id": "CD220193",
+ "checked_at": "2026-10-01T22:39:15.422Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 19552,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 19552,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 19552,
+   "page_no": 16,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 19552,
+   "page_no": 119,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 19552,
+   "page_no": 132,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 19552,
+   "page_no": 133,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 19552,
+   "page_no": 134,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 19552,
+   "page_no": 135,
+   "why": [
+    "cited",
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 19552,
+   "page_no": 197,
+   "why": [
+    "selling_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Leandro Nils Dickson, R.A. of LND ARCHITECT",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "Leandro Nils Dickson, R.A. of LND ARCHITECT , with an address at 3 - 53 26th Street , Fair Lawn, New Jersey 07410 , a Registered Architect, has rendered the Floor Plans"
+  },
+  "selling_agent": {
+   "value": "590 Myrtle LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "Sponsor will not be using a S elling Agent for this project. Sponsor will act as selling agent for the condominium."
+  },
+  "managing_agent": {
+   "value": "Waterfront Property Management",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P6",
+   "quote": "an agreement to manage the property with Waterfront Property Management , (“Managing Agent”), an affiliate of the Sponsor"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "The Law Office of Jay Lichtman, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "The Sponsor is represented by The Law Office of Jay Lichtman P.C., 68 Jay Street, Suite 420, Brooklyn, New York 11201"
+  },
+  "sponsor": {
+   "value": "590 Myrtle LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "The Sponsor of this project is 590 Myrtle LLC, a New York Limited Liability Company"
+  },
+  "sponsor_address": {
+   "value": "320 Roebling Street #106 Brooklyn, New York 11211",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "with an address at 320 Roebling Street #106 Brooklyn, New York 11211"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 8073,
+   "field": "managing_agent",
+   "page_no": 133,
+   "score": 1
+  },
+  {
+   "id": 8074,
+   "field": "selling_agent",
+   "page_no": 135,
+   "score": 1
+  },
+  {
+   "id": 8075,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 8076,
+   "field": "working_capital",
+   "page_no": 132,
+   "score": 1
+  },
+  {
+   "id": 11486,
+   "field": "architect",
+   "page_no": 135,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 8073,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "Waterfront Property Management",
+   "page_no": 133,
+   "file_id": 19552,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P6",
+    "quote": "Waterfront Property Management ... for a fee of $12,600.00",
+    "why": "Matches managing agent and fee"
+   },
+   "blind": {
+    "value": "Waterfront Property Management",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P6",
+    "quote": "an agreement to manage the property with Waterfront Property Management , (“Managing Agent”), an affiliate of the Sponsor"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8074,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "590 Myrtle LLC",
+   "page_no": 135,
+   "file_id": 19552,
+   "check": {
+    "n": 2,
+    "verdict": "wrong",
+    "fix": "Sponsor (590 Myrtle LLC will act as selling agent)",
+    "page": "P8",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent",
+    "why": "Sponsor itself is acting as selling agent; claim is not contradicted in substance but role label should reflect Sponsor acting as selling agent, which is correct per P1 too - actually P1 lists '590 MYRTLE LLC' as Sponsor & Selling Agent, so this is correct"
+   },
+   "blind": {
+    "value": "590 Myrtle LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "Sponsor will not be using a S elling Agent for this project. Sponsor will act as selling agent for the condominium."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "590 Myrtle LLC",
+    "page": "P8",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+    "sure": true,
+    "why": "P8 says the Sponsor acts as selling agent, and the Sponsor is 590 Myrtle LLC. The P1 cover also lists 'SPONSOR & SELLING AGENT: 590 MYRTLE LLC', so all three candidates name the right party."
+   },
+   "candidates": [
+    "590 Myrtle LLC",
+    "Sponsor (590 Myrtle LLC will act as selling agent)",
+    "590 Myrtle LLC (the Sponsor itself)"
+   ],
+   "stored_letter": "A",
+   "printed": "590 Myrtle LLC",
+   "printed_page": {
+    "file_id": 19552,
+    "page_no": 135
+   },
+   "printed_quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8075,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "320 Roebling Street #106, Brooklyn, New York 11211",
+   "page_no": 1,
+   "file_id": 19552,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "320 ROEBLING STREET #106, BROOKLYN, NEW YORK 11211",
+    "why": "Matches cover page address"
+   },
+   "blind": {
+    "value": "320 Roebling Street #106 Brooklyn, New York 11211",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "with an address at 320 Roebling Street #106 Brooklyn, New York 11211"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8076,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 132,
+   "file_id": 19552,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P5",
+    "quote": "equal to two (2) months' estimated common charges",
+    "why": "Matches working capital fund description"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11486,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Leandro Nils Dickson, R.A. of LND Architect",
+   "page_no": 135,
+   "file_id": 19552,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "Leandro Nils Dickson, R.A. of LND ARCHITECT",
+    "why": "Matches architect name and role"
+   },
+   "blind": {
+    "value": "Leandro Nils Dickson, R.A. of LND ARCHITECT",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "Leandro Nils Dickson, R.A. of LND ARCHITECT , with an address at 3 - 53 26th Street , Fair Lawn, New Jersey 07410 , a Registered Architect, has rendered the Floor Plans"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1881,
+   "field": "principal",
+   "stored": {
+    "name": "Moses Karpen",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 135,
+   "file_id": 19552,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "The Principals of the Sponsor are Moses Karpen",
+    "why": "Matches named principal"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1882,
+   "field": "principal",
+   "stored": {
+    "name": "Jacob Kohn",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 135,
+   "file_id": 19552,
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "and Jacob Kohn, with a business address at 461 Bedford Avenue",
+    "why": "Matches named principal"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD220193",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "590 MYRTLE LLC",
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "590 MYRTLE LLC",
+    "why": "Matches cover page sponsor name"
+   },
+   "blind": {
+    "value": "590 Myrtle LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "The Sponsor of this project is 590 Myrtle LLC, a New York Limited Liability Company"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD220193",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+   "check": {
+    "n": 9,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+    "why": "Matches cover page attorneys for sponsor"
+   },
+   "blind": {
+    "value": "The Law Office of Jay Lichtman, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "The Sponsor is represented by The Law Office of Jay Lichtman P.C., 68 Jay Street, Suite 420, Brooklyn, New York 11201"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 34961
+}

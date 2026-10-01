@@ -1,0 +1,438 @@
+{
+ "plan_id": "CD230155",
+ "checked_at": "2026-10-01T23:05:58.978Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 28825,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 28825,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 28825,
+   "page_no": 9,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 28825,
+   "page_no": 16,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 28825,
+   "page_no": 92,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 28825,
+   "page_no": 93,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 28825,
+   "page_no": 98,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 28825,
+   "page_no": 105,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 28825,
+   "page_no": 106,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 28825,
+   "page_no": 107,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Henry Radusky, R.A.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "The architect, Henry Radusky , R.A., 6321 New Utrecht Avenue, 2 nd Floor, Brooklyn, NY 11219 , has examined the physical condition of the property"
+  },
+  "selling_agent": {
+   "value": "112 Luquer LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "The Sponsor is currently the se lling agent for the plan."
+  },
+  "managing_agent": {
+   "value": "112 Luquer LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "The Sponsor shall manage the Building without charge for the first year of operation"
+  },
+  "tax_consultant": {
+   "value": "Metropolitan Realty Exemptions, Inc.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P5",
+   "quote": "The Sponsor has received an estimate from Metropolitan Realty Exemptions, Inc. (“MRE”) , 118 Middleton Street, Brooklyn, NY 112 06"
+  },
+  "sponsor_attorney": {
+   "value": "The Law Office of Claudia V. Murdoch, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [
+    "Sylvester J. Sichenze, Esq."
+   ],
+   "page": "P10",
+   "quote": "Sponsor has retain ed Claudia V . Murdoch, Esq. of The Law Office of Claudia V. Murdoch , P.C ., 117 Seventh Avenue , Brooklyn, Ne w York 11215 , to represent it in the conversion"
+  },
+  "sponsor": {
+   "value": "112 Luquer LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "The Sponsor of this project is 11 2 Luquer LLC, a New York l imited l iability c ompany formed on December 16, 2021"
+  },
+  "sponsor_address": {
+   "value": "295 Columbia Street, #9, Brooklyn, New York 11231",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "with offices located at 295 Columbia Street, #9, Brooklyn, New York 11231"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 9045,
+   "field": "selling_agent",
+   "page_no": 107,
+   "score": 1
+  },
+  {
+   "id": 9046,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 9047,
+   "field": "architect",
+   "page_no": 107,
+   "score": 1
+  },
+  {
+   "id": 9048,
+   "field": "working_capital",
+   "page_no": 105,
+   "score": 1
+  },
+  {
+   "id": 11180,
+   "field": "managing_agent",
+   "page_no": 16,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 9045,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "112 Luquer LLC",
+   "page_no": 107,
+   "file_id": 28825,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "112 Luquer LLC (Sponsor is currently the selling agent)",
+    "page": "P10",
+    "quote": "The Sponsor is currently the se lling agent for the plan.",
+    "why": "Selling agent is the Sponsor itself; claim labels '112 Luquer LLC' as 'the selling agent' which matches P1 cover page and P10 confirms Sponsor is selling agent, so this is actually correct in substance"
+   },
+   "blind": {
+    "value": "112 Luquer LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "The Sponsor is currently the se lling agent for the plan."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "112 Luquer LLC (Sponsor is the selling agent)",
+    "page": "P10",
+    "quote": "The Sponsor is currently the se lling agent for the plan.",
+    "sure": true,
+    "why": "P10 says the Sponsor is the selling agent, and P1 lists '1 1 2 LUQUER LLC' under 'SPONSOR AND SELLING AGENT'. All three candidates name that entity."
+   },
+   "candidates": [
+    "112 Luquer LLC (the Sponsor itself)",
+    "112 Luquer LLC (Sponsor is currently the selling agent)",
+    "112 Luquer LLC"
+   ],
+   "stored_letter": "C",
+   "printed": "112 Luquer LLC (Sponsor is the selling agent)",
+   "printed_page": {
+    "file_id": 28825,
+    "page_no": 107
+   },
+   "printed_quote": "The Sponsor is currently the se lling agent for the plan.",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 9046,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "295 Columbia Street, #9, Brooklyn, New York 11231",
+   "page_no": 1,
+   "file_id": 28825,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "295 COLUMBIA STREET , #9, BROOKLYN, NEW YORK 1 12 31",
+    "why": "Matches address on cover page"
+   },
+   "blind": {
+    "value": "295 Columbia Street, #9, Brooklyn, New York 11231",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "with offices located at 295 Columbia Street, #9, Brooklyn, New York 11231"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 9047,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Henry Radusky, R.A.",
+   "page_no": 107,
+   "file_id": 28825,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P10",
+    "quote": "The architect, Henry Radusky , R.A., ... has examined the physical condition of the property and has rendered his report thereof",
+    "why": "Matches architect named in Identity of Parties"
+   },
+   "blind": {
+    "value": "Henry Radusky, R.A.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "The architect, Henry Radusky , R.A., 6321 New Utrecht Avenue, 2 nd Floor, Brooklyn, NY 11219 , has examined the physical condition of the property"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 9048,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 105,
+   "file_id": 28825,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "an amount equal to two month s’ common charges",
+    "why": "Matches Working Capital Fund section"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11180,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "Self-managed",
+   "page_no": 16,
+   "file_id": 28825,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P4",
+    "quote": "it is anticipated that the building will be self - managing. The Sponsor will manage the condominium during the control period.",
+    "why": "Matches self-managed designation, no managing agent in first year budget"
+   },
+   "blind": {
+    "value": "112 Luquer LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "The Sponsor shall manage the Building without charge for the first year of operation"
+   },
+   "blind_agrees": false,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "B"
+    ],
+    "close": [],
+    "printed": "112 Luquer LLC (the Sponsor manages the Building without charge for the first year)",
+    "page": "P10",
+    "quote": "The Sponsor shall manage the Building without charge for the first year of operation",
+    "sure": true,
+    "why": "P10 says the Sponsor manages in the first year, and P4 says the Sponsor manages during the control period. 'Self-managing' is only the expected arrangement afterward, so A is not the first-year manager."
+   },
+   "candidates": [
+    "Self-managed",
+    "112 Luquer LLC (the Sponsor itself)"
+   ],
+   "stored_letter": "A",
+   "printed": "112 Luquer LLC (the Sponsor manages the Building without charge for the first year)",
+   "printed_page": {
+    "file_id": 28825,
+    "page_no": 107
+   },
+   "printed_quote": "The Sponsor shall manage the Building without charge for the first year of operation",
+   "verdict": "wrong"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 2094,
+   "field": "principal",
+   "stored": {
+    "name": "Gino Vitale",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 106,
+   "file_id": 28825,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "The principal of the Sponsor is Gino Vitale of the same address",
+    "why": "Matches identity of parties section"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD230155",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "112 LUQUER LLC",
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "SPONSOR AND SELLING AGENT: 1 1 2 LUQUER LLC",
+    "why": "Matches sponsor name on cover page"
+   },
+   "blind": {
+    "value": "112 Luquer LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "The Sponsor of this project is 11 2 Luquer LLC, a New York l imited l iability c ompany formed on December 16, 2021"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD230155",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "THE LAW OFFICE OF CLAUDIA V. MURDOCH, P.C.",
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "Prepared By: The Law Office of Claudia V. Murdoch , P.C .",
+    "why": "Matches counsel named on cover page and confirmed in Identity of Parties"
+   },
+   "blind": {
+    "value": "The Law Office of Claudia V. Murdoch, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [
+     "Sylvester J. Sichenze, Esq."
+    ],
+    "page": "P10",
+    "quote": "Sponsor has retain ed Claudia V . Murdoch, Esq. of The Law Office of Claudia V. Murdoch , P.C ., 117 Seventh Avenue , Brooklyn, Ne w York 11215 , to represent it in the conversion"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 45660
+}

@@ -1,0 +1,440 @@
+{
+ "plan_id": "CD210066",
+ "checked_at": "2026-10-01T21:46:31.977Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 13629,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 13629,
+   "page_no": 4,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 13629,
+   "page_no": 13,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 13629,
+   "page_no": 24,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 13629,
+   "page_no": 40,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 13629,
+   "page_no": 45,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 13629,
+   "page_no": 74,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 13629,
+   "page_no": 122,
+   "why": [
+    "cited"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Demerara Engineering, PLLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [
+    "HPL Engineering P.C."
+   ],
+   "page": "P8",
+   "quote": "Demerara Engineering, PLLC, by Oscar P. Walters has prepared the Floor Plans of the property and the report"
+  },
+  "selling_agent": {
+   "value": "Corcoran",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "Selling Agent : Corcoran"
+  },
+  "managing_agent": {
+   "value": "460 ENY Ave LLC",
+   "by_sponsor": true,
+   "by_board": true,
+   "others": [],
+   "page": "P3",
+   "quote": "Until the Sponsor relinquishes control of the Condominium, the Board shall manage the Condominium"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "Eial Girtz, Esq.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P4",
+   "quote": "the opinion of Eial Girtz, Esq., counsel to Sponsor"
+  },
+  "sponsor": {
+   "value": "460 ENY Ave LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "The Sponsor is 460 ENY Ave LLC , a New York limited liability company"
+  },
+  "sponsor_address": {
+   "value": "1445 Geneva Loop, Apt. 8B, Brooklyn, NY 11239",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "a New York limited liability company with an address at 1445 Geneva Loop, Apt. 8B, Brooklyn, NY 11239"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 7407,
+   "field": "selling_agent",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 7408,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 0.3
+  },
+  {
+   "id": 7409,
+   "field": "reserve_fund",
+   "page_no": 45,
+   "score": 1
+  },
+  {
+   "id": 7410,
+   "field": "working_capital",
+   "page_no": 74,
+   "score": 1
+  },
+  {
+   "id": 11104,
+   "field": "managing_agent",
+   "page_no": 13,
+   "score": 1
+  },
+  {
+   "id": 11426,
+   "field": "architect",
+   "page_no": 122,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 7407,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "Corcoran",
+   "page_no": 1,
+   "file_id": 13629,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "Corcoran",
+    "why": "Matches selling agent listed"
+   },
+   "blind": {
+    "value": "Corcoran",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "Selling Agent : Corcoran"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7408,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "1445 Geneva Loop, Apt 8B, Brooklyn, NY 11239",
+   "page_no": 1,
+   "file_id": 13629,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "1445 Geneva Loop, Apt 8 B\nBrooklyn, NY 1123 9",
+    "why": "Matches Sponsor address"
+   },
+   "blind": {
+    "value": "1445 Geneva Loop, Apt. 8B, Brooklyn, NY 11239",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "a New York limited liability company with an address at 1445 Geneva Loop, Apt. 8B, Brooklyn, NY 11239"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7409,
+   "field": "reserve_fund",
+   "column": "value_text",
+   "stored": "First-year budget reserve line item",
+   "page_no": 45,
+   "file_id": 13629,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P6",
+    "quote": "Reserve Fund (see n ote 1 2 ) ................................ .................... $ 2, 4 00 .00",
+    "why": "Reserve fund line item matches $2,400"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7410,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' aggregate common charges",
+   "page_no": 74,
+   "file_id": 13629,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P7",
+    "quote": "the Worki ng Capital fund will contain two months ag g reg ate C omm o n Charges",
+    "why": "Matches working capital fund description"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11104,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "Self-managed",
+   "page_no": 13,
+   "file_id": 13629,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P3",
+    "quote": "Un t il the Sponsor r elinquishes c ontrol of the Condominium, the Board shall manage the Cond ominiu m",
+    "why": "Confirms self-management by Board until relinquished, with $0 management fee implied by budget"
+   },
+   "blind": {
+    "value": "460 ENY Ave LLC",
+    "by_sponsor": true,
+    "by_board": true,
+    "others": [],
+    "page": "P3",
+    "quote": "Until the Sponsor relinquishes control of the Condominium, the Board shall manage the Condominium"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11426,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Demerara Engineering, PLLC (engineer)",
+   "page_no": 122,
+   "file_id": 13629,
+   "check": {
+    "n": 6,
+    "verdict": "wrong",
+    "fix": "HPL Engineering P.C. (Fran Huang)",
+    "page": "P8",
+    "quote": "The Sponsor als o retai ned Fran H uang o f HPL E n gineer ing P.C. ... a rchite ct in conne cti on with the Buildin g P l a ns filed wi th the N e w Y ork C i ty Depa rtment of Bui l dings",
+    "why": "Demerara Engineering is identified as engineer who prepared floor plans/report, but HPL Engineering (Fran Huang) is named as the architect for building plans"
+   },
+   "blind": {
+    "value": "Demerara Engineering, PLLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [
+     "HPL Engineering P.C."
+    ],
+    "page": "P8",
+    "quote": "Demerara Engineering, PLLC, by Oscar P. Walters has prepared the Floor Plans of the property and the report"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "C"
+    ],
+    "close": [
+     "B"
+    ],
+    "printed": "Demerara Engineering, PLLC",
+    "page": "P8",
+    "quote": "Demerara Engineering, PLLC, by Oscar P. Walters has prepared the Floor Plans of the property and the report included in Part II",
+    "sure": true,
+    "why": "Demerara is named as the Sponsor's engineers and architects and prepared the floor plans and report. B labels it only 'engineer', which is a wording difference. HPL Engineering (A) was the architect only for the Building Plans filed with the DOB."
+   },
+   "candidates": [
+    "HPL Engineering P.C. (Fran Huang)",
+    "Demerara Engineering, PLLC (engineer)",
+    "Demerara Engineering, PLLC"
+   ],
+   "stored_letter": "B",
+   "printed": "Demerara Engineering, PLLC",
+   "printed_page": {
+    "file_id": 13629,
+    "page_no": 122
+   },
+   "printed_quote": "Demerara Engineering, PLLC, by Oscar P. Walters has prepared the Floor Plans of the property and the report included in Part II",
+   "verdict": "minor"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1915,
+   "field": "principal",
+   "stored": {
+    "name": "Arkadiy Nagorev",
+    "kind": "person",
+    "role": "member and principal",
+    "parent_entity": null
+   },
+   "page_no": 122,
+   "file_id": 13629,
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "The m e mbe r an d pri n c ipal of the Sponsor i s Arkadiy N agorev",
+    "why": "Matches name and role"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD210066",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "460 ENY AVE LLC",
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "460 ENY Ave LLC",
+    "why": "Matches Sponsor name on cover page"
+   },
+   "blind": {
+    "value": "460 ENY Ave LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "The Sponsor is 460 ENY Ave LLC , a New York limited liability company"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD210066",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "EIAL GIRTZ, PC",
+   "check": {
+    "n": 9,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": null,
+    "quote": null,
+    "why": "Cover page (P1) lists Sponsor and Selling Agent only; no attorney/counsel is named on P1, so this claim cannot be verified against the cited page"
+   },
+   "blind": {
+    "value": "Eial Girtz, Esq.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P4",
+    "quote": "the opinion of Eial Girtz, Esq., counsel to Sponsor"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "Eial Girtz, Esq.",
+    "page": "P4",
+    "quote": "Refer to the opinion of Eial Girtz, Esq., counsel to Sponsor",
+    "sure": true,
+    "why": "P4 names Eial Girtz, Esq. as counsel to Sponsor. The escrow account on P3 is the 'Eial Girtz PC Condominium Attorney Escrow IOLA Account', so A differs from B only by the PC suffix."
+   },
+   "candidates": [
+    "EIAL GIRTZ, PC",
+    "Eial Girtz, Esq."
+   ],
+   "stored_letter": "A",
+   "printed": "Eial Girtz, Esq.",
+   "printed_page": {
+    "file_id": 13629,
+    "page_no": 24
+   },
+   "printed_quote": "Refer to the opinion of Eial Girtz, Esq., counsel to Sponsor",
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 52942
+}

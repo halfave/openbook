@@ -1,0 +1,223 @@
+{
+ "plan_id": "CD000135",
+ "checked_at": "2026-10-01T18:31:21.262Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 14694,
+   "page_no": 1,
+   "why": [
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 14694,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 14694,
+   "page_no": 4,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 14694,
+   "page_no": 25,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 14694,
+   "page_no": 54,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 14694,
+   "page_no": 58,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 14694,
+   "page_no": 73,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 14694,
+   "page_no": 76,
+   "why": [
+    "architect",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 14694,
+   "page_no": 111,
+   "why": [
+    "architect"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Bricolage Designs, A.I.A.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "The architect, Douglas Pulaski, principal of Bricolage Designs, A.I.A. has offices at 1333 60th Street"
+  },
+  "selling_agent": {
+   "value": "Garg Development Inc.",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "The Sponsor is the selling agent for the plan."
+  },
+  "managing_agent": {
+   "value": null,
+   "by_sponsor": false,
+   "by_board": true,
+   "others": [],
+   "page": "P3",
+   "quote": "it is contemplated that the building will be self-managing, and that no managing agent will be employed"
+  },
+  "tax_consultant": {
+   "value": "Ben Rottenstein Associates LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [
+    "The Mazursky Group, Inc."
+   ],
+   "page": "P5",
+   "quote": "attached letter from Ben Rottenstein Associates LLC"
+  },
+  "sponsor_attorney": {
+   "value": "Harold L. Gruber, Esq.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "Sponsor has engaged Harold Gruber, Esq., 563 10th Street, Brooklyn, New York, 11215, to represent him"
+  },
+  "sponsor": {
+   "value": "Garg Development Inc.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "The Sponsor of the conversion is Garg Development Inc., a New York Corporation"
+  },
+  "sponsor_address": {
+   "value": "8311 Ridge Boulevard, Brooklyn, New York",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "with offices at 8311 Ridge Boulevard, Brooklyn, New York"
+  }
+ },
+ "quote_checks": [],
+ "results": [
+  {
+   "table": "plans",
+   "id": "CD000135",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "GARG DEVELOPMENT INC.",
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "GARG DEVELOPMENT INC.",
+    "why": "Matches cover page sponsor name exactly."
+   },
+   "blind": {
+    "value": "Garg Development Inc.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "The Sponsor of the conversion is Garg Development Inc., a New York Corporation"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD000135",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "HAROLD L. GRUBER",
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "Sponsor has engaged Harold Gruber, Esq.",
+    "why": "Identity of Parties page confirms Harold Gruber as Sponsor's counsel; name is consistently 'Harold L. Gruber' elsewhere (P1, P7)."
+   },
+   "blind": {
+    "value": "Harold L. Gruber, Esq.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "Sponsor has engaged Harold Gruber, Esq., 563 10th Street, Brooklyn, New York, 11215, to represent him"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 3332,
+   "field": "principal",
+   "method": "ag-site",
+   "stored": {
+    "name": "Michael Gargano",
+    "kind": "person",
+    "role": "President",
+    "parent_entity": null
+   },
+   "quote": null,
+   "verdict": "not_from_plan"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 3333,
+   "field": "principal",
+   "method": "ag-site",
+   "stored": {
+    "name": "Gerardo Gargano",
+    "kind": "person",
+    "role": "Vice President",
+    "parent_entity": null
+   },
+   "quote": null,
+   "verdict": "not_from_plan"
+  }
+ ],
+ "calls": 2,
+ "tokens": 18836
+}

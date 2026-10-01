@@ -1,0 +1,311 @@
+{
+ "plan_id": "CD210079",
+ "checked_at": "2026-10-01T21:48:00.191Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 13759,
+   "page_no": 133,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 13759,
+   "page_no": 138,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 13759,
+   "page_no": 171,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 13759,
+   "page_no": 313,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 13759,
+   "page_no": 314,
+   "why": [
+    "cited"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "GMH Architecture PLLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P5",
+   "quote": "the building plans and specifications that were prepared by GMH Architecture PLLC"
+  },
+  "selling_agent": null,
+  "managing_agent": null,
+  "tax_consultant": null,
+  "sponsor_attorney": null,
+  "sponsor": {
+   "value": "103 HOLDING LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "Seller: 103 HOLDING LLC"
+  },
+  "sponsor_address": {
+   "value": "33-54 Farrington Street Queens, New York 11354",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "Address: 33-54 Farrington Street Queens, New York 11354"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 6621,
+   "field": "parking_arrangement",
+   "page_no": 171,
+   "score": 1
+  },
+  {
+   "id": 6622,
+   "field": "architect",
+   "page_no": 314,
+   "score": 1
+  },
+  {
+   "id": 6623,
+   "field": "sponsor_address",
+   "page_no": 133,
+   "score": 1
+  },
+  {
+   "id": 11699,
+   "field": "working_capital",
+   "page_no": 138,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 6621,
+   "field": "parking_arrangement",
+   "column": "value_text",
+   "stored": "sold",
+   "page_no": 171,
+   "file_id": 13759,
+   "check": {
+    "n": 1,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": null,
+    "quote": null,
+    "why": "P3 is an escrow deposit receipt form mentioning a Parking Space Unit, but does not state the arrangement is 'sold' vs leased/licensed, nor the number of spaces."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A"
+    ],
+    "close": [],
+    "printed": "Parking Space Unit (purchased with an escrow deposit to Sponsor; number of spaces not stated)",
+    "page": "P3",
+    "quote": "for Unit _____ and Parking Space Unit ____ at 103 Condominium",
+    "sure": false,
+    "why": "P3 is a blank deposit form for a 'Unit and Parking Space Unit' paid to the Sponsor, which suggests parking spaces are sold as separate units. The page never says 'sold' outright and gives no number of spaces.",
+    "from_images": true
+   },
+   "candidates": [
+    "sold"
+   ],
+   "stored_letter": "A",
+   "printed": "Parking Space Unit (purchased with an escrow deposit to Sponsor; number of spaces not stated)",
+   "printed_page": {
+    "file_id": 13759,
+    "page_no": 171
+   },
+   "printed_quote": "for Unit _____ and Parking Space Unit ____ at 103 Condominium",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 6622,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "GMH Architecture PLLC",
+   "page_no": 314,
+   "file_id": 13759,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P5",
+    "quote": "building plans and specifications that were prepared by GMH Architecture PLLC",
+    "why": "Matches printed text."
+   },
+   "blind": {
+    "value": "GMH Architecture PLLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P5",
+    "quote": "the building plans and specifications that were prepared by GMH Architecture PLLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 6623,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "33-54 Farrington Street, Queens, New York 11354",
+   "page_no": 133,
+   "file_id": 13759,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "Address: 33-54 Farrington Street Queens, New York 11354",
+    "why": "Matches Seller's address on purchase agreement."
+   },
+   "blind": {
+    "value": "33-54 Farrington Street Queens, New York 11354",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "Address: 33-54 Farrington Street Queens, New York 11354"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11699,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 138,
+   "file_id": 13759,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P2",
+    "quote": "an initial non-reimbursable capital contribution in an amount equal to two (2) months Common Charges, payable to the Condominium",
+    "why": "Matches claim."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 2075,
+   "field": "principal",
+   "stored": {
+    "name": "Zhong Hui Chen",
+    "kind": "person",
+    "role": "member; principal",
+    "parent_entity": null
+   },
+   "page_no": 313,
+   "file_id": 13759,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P4",
+    "quote": "Zhong Hui Chen, Member\nSPONSOR'S PRINCIPAL:\nZhong Hui Chen",
+    "why": "Named as Member and listed as Sponsor's Principal."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD210079",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "103 HOLDING LLC",
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "Seller: 103 HOLDING LLC",
+    "why": "Matches entity name on purchase agreement/receipt pages."
+   },
+   "blind": {
+    "value": "103 HOLDING LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "Seller: 103 HOLDING LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD210079",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "MORITT HOCK & HAMROFF, LLP",
+   "check": {
+    "n": 7,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": null,
+    "quote": null,
+    "why": "None of the provided pages mention Sponsor's counsel or any law firm name."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 2,
+    "accurate": [],
+    "close": [],
+    "printed": null,
+    "page": "P2",
+    "quote": "$2,000 to Seller's attorney for the preparation of the closing documents",
+    "sure": false,
+    "why": "P2 mentions 'Seller's attorney' but does not name the firm. Moritt Hock & Hamroff does not appear on any of the five pages provided.",
+    "from_images": true
+   },
+   "candidates": [
+    "MORITT HOCK & HAMROFF, LLP"
+   ],
+   "stored_letter": "A",
+   "printed": null,
+   "printed_page": {
+    "file_id": 13759,
+    "page_no": 138
+   },
+   "printed_quote": "$2,000 to Seller's attorney for the preparation of the closing documents",
+   "verdict": "unresolved"
+  }
+ ],
+ "calls": 4,
+ "tokens": 55496
+}

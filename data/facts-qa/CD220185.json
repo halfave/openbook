@@ -1,0 +1,435 @@
+{
+ "plan_id": "CD220185",
+ "checked_at": "2026-10-01T22:41:03.516Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 19142,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 19142,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 19142,
+   "page_no": 37,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 19142,
+   "page_no": 57,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 19142,
+   "page_no": 113,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 19142,
+   "page_no": 124,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 19142,
+   "page_no": 125,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 19142,
+   "page_no": 126,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 19142,
+   "page_no": 135,
+   "why": [
+    "cited",
+    "architect"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 19142,
+   "page_no": 136,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P11",
+   "file_id": 19142,
+   "page_no": 220,
+   "why": [
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P12",
+   "file_id": 19142,
+   "page_no": 290,
+   "why": [
+    "managing_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Karim Ahmed, R.A. (Reform Architecture PLLC)",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "Karim Ahmed, R.A., with an address at Reform Architecture PLLC, 728 East 136th Street, 6th Floor, #7, Bronx, NY 10454, a Registered Architect, has rendered the Floor Plans of the Property"
+  },
+  "selling_agent": {
+   "value": "Hinsdale Holdings LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+  },
+  "managing_agent": {
+   "value": "Condominium Board",
+   "by_sponsor": false,
+   "by_board": true,
+   "others": [],
+   "page": "P3",
+   "quote": "The Condominium Board will be responsible for managing the condominium, including but not limited to, writing checks, payment of bills, such as water and sewer charges, insurance premiums, repairs, snow removal, etc."
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "The Law Office of Jay Lichtman, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "The Sponsor is represented by The Law Office of Jay Lichtman P.C., 68 Jay Street, Suite 420, Brooklyn, New York 11201 in connection with this Offering Plan"
+  },
+  "sponsor": {
+   "value": "Hinsdale Holdings LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P7",
+   "quote": "The Sponsor of this project is Hinsdale Holdings LLC a New York Limited Liability Company, with an address at 874 Hancock Street, Brooklyn, NY 11233"
+  },
+  "sponsor_address": {
+   "value": "874 Hancock Street, Brooklyn, NY 11233",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P7",
+   "quote": "with an address at 874 Hancock Street, Brooklyn, NY 11233"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 7905,
+   "field": "selling_agent",
+   "page_no": 126,
+   "score": 1
+  },
+  {
+   "id": 7906,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 7907,
+   "field": "working_capital",
+   "page_no": 124,
+   "score": 1
+  },
+  {
+   "id": 10847,
+   "field": "architect",
+   "page_no": 135,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 7905,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "Hinsdale Holdings LLC",
+   "page_no": 126,
+   "file_id": 19142,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "Sponsor will act as selling agent; no separate Selling Agent",
+    "page": "P8",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent",
+    "why": "P8 states Sponsor acts as its own selling agent, not that Hinsdale Holdings LLC is a distinct 'selling agent' role separate from Sponsor; P1 lists Sponsor & Selling Agent as the same entity so calling it 'the selling agent' alone omits that it's the Sponsor itself acting in that capacity, but since P1 does list 'Sponsor & Selling Agent: Hinsdale Holdings LLC' this is actually supported."
+   },
+   "blind": {
+    "value": "Hinsdale Holdings LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "Hinsdale Holdings LLC (Sponsor acts as its own selling agent)",
+    "page": "P8",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+    "sure": true,
+    "why": "P8 says the Sponsor acts as its own selling agent. P1 and P7 name the Sponsor as Hinsdale Holdings LLC ('SPONSOR & SELLING AGENT: HINSDALE HOLDINGS LLC'). A, B and C all match this."
+   },
+   "candidates": [
+    "Hinsdale Holdings LLC",
+    "Sponsor will act as selling agent; no separate Selling Agent",
+    "Hinsdale Holdings LLC (the Sponsor itself)"
+   ],
+   "stored_letter": "A",
+   "printed": "Hinsdale Holdings LLC (Sponsor acts as its own selling agent)",
+   "printed_page": {
+    "file_id": 19142,
+    "page_no": 126
+   },
+   "printed_quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7906,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "874 Hancock Street, Brooklyn, NY 11233",
+   "page_no": 1,
+   "file_id": 19142,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "874 H ANCOCK S TREET B ROOKLYN , NY 11233",
+    "why": "matches cover page"
+   },
+   "blind": {
+    "value": "874 Hancock Street, Brooklyn, NY 11233",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P7",
+    "quote": "with an address at 874 Hancock Street, Brooklyn, NY 11233"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7907,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 124,
+   "file_id": 19142,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P6",
+    "quote": "an “ Initial Capital Payment ” equal to two (2) months ’ estimated common charges for each Unit",
+    "why": "matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 10847,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "REFORM Architecture PLLC",
+   "page_no": 135,
+   "file_id": 19142,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "Prepared By: REFORM Architecture PLLC",
+    "why": "matches"
+   },
+   "blind": {
+    "value": "Karim Ahmed, R.A. (Reform Architecture PLLC)",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "Karim Ahmed, R.A., with an address at Reform Architecture PLLC, 728 East 136th Street, 6th Floor, #7, Bronx, NY 10454, a Registered Architect, has rendered the Floor Plans of the Property"
+   },
+   "blind_agrees": false,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "Karim Ahmed, R.A., Reform Architecture PLLC",
+    "page": "P8",
+    "quote": "Karim Ahmed, R.A., with an address at Reform Architecture PLLC, 728 East 136th Street, 6th Floor, #7, Bronx, NY 10454, a Registered Architect, has rendered the Floor Plans",
+    "sure": true,
+    "why": "P9 says the architect report was 'Prepared By: REFORM Architecture PLLC'. P8 names Karim Ahmed, R.A. of Reform Architecture PLLC as the architect who rendered the floor plans and report. Both candidates match."
+   },
+   "candidates": [
+    "REFORM Architecture PLLC",
+    "Karim Ahmed, R.A. (Reform Architecture PLLC)"
+   ],
+   "stored_letter": "A",
+   "printed": "Karim Ahmed, R.A., Reform Architecture PLLC",
+   "printed_page": {
+    "file_id": 19142,
+    "page_no": 126
+   },
+   "printed_quote": "Karim Ahmed, R.A., with an address at Reform Architecture PLLC, 728 East 136th Street, 6th Floor, #7, Bronx, NY 10454, a Registered Architect, has rendered the Floor Plans",
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1771,
+   "field": "principal",
+   "stored": {
+    "name": "Ariel Sholomov",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 125,
+   "file_id": 19142,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P7",
+    "quote": "The Principal s of the Sponsor are Ariel Sholomov and Yair Yaish",
+    "why": "matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1772,
+   "field": "principal",
+   "stored": {
+    "name": "Yair Yaish",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 125,
+   "file_id": 19142,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P7",
+    "quote": "The Principal s of the Sponsor are Ariel Sholomov and Yair Yaish",
+    "why": "matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD220185",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "HINSDALE HOLDINGS LLC",
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "H INSDALE H OLDI NGS LLC",
+    "why": "matches cover page"
+   },
+   "blind": {
+    "value": "Hinsdale Holdings LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P7",
+    "quote": "The Sponsor of this project is Hinsdale Holdings LLC a New York Limited Liability Company, with an address at 874 Hancock Street, Brooklyn, NY 11233"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD220185",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "T HE L AW O FFICE OF J AY L ICHTMAN , P.C.",
+    "why": "matches cover page"
+   },
+   "blind": {
+    "value": "The Law Office of Jay Lichtman, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "The Sponsor is represented by The Law Office of Jay Lichtman P.C., 68 Jay Street, Suite 420, Brooklyn, New York 11201 in connection with this Offering Plan"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 59851
+}

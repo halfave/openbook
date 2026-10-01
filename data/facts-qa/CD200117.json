@@ -1,0 +1,460 @@
+{
+ "plan_id": "CD200117",
+ "checked_at": "2026-10-01T21:15:00.884Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 17162,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 17162,
+   "page_no": 12,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 17162,
+   "page_no": 35,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 17162,
+   "page_no": 78,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 17162,
+   "page_no": 89,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 17162,
+   "page_no": 118,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 17162,
+   "page_no": 129,
+   "why": [
+    "cited",
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 17162,
+   "page_no": 131,
+   "why": [
+    "cited",
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 17162,
+   "page_no": 132,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 17162,
+   "page_no": 154,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P11",
+   "file_id": 17162,
+   "page_no": 201,
+   "why": [
+    "architect"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "George Restivo, R.A.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "The Sponsor's certifying architect is George Restivo, R.A."
+  },
+  "selling_agent": {
+   "value": "Halstead Manhattan, LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "The selling agent is Halstead Manhattan, LLC"
+  },
+  "managing_agent": {
+   "value": "D&D Management Services Corp.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "D&D Management Services Corp. ... will manage the Building for the first year of Condominium operations"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "Marcus Attorneys PLLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "Marcus Attorneys PLLC , with an office at 13 Greene Avenue, Brooklyn, New York , represents the Sponsor in connection with this Plan"
+  },
+  "sponsor": {
+   "value": "206 Powers Management LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "The Sponsor is 206 Powers Management LLC , a New York limited liability company"
+  },
+  "sponsor_address": {
+   "value": "243 West 30th Street, Suite 400, New York, New York 10001",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "243 West 30th Street, Suite 400 \nNew York, New York 10001"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 5641,
+   "field": "selling_agent",
+   "page_no": 132,
+   "score": 1
+  },
+  {
+   "id": 5642,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 5643,
+   "field": "managing_agent",
+   "page_no": 129,
+   "score": 1
+  },
+  {
+   "id": 5644,
+   "field": "architect",
+   "page_no": 132,
+   "score": 1
+  },
+  {
+   "id": 5645,
+   "field": "reserve_fund",
+   "page_no": 12,
+   "score": 1
+  },
+  {
+   "id": 5646,
+   "field": "working_capital",
+   "page_no": 12,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 5641,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "Halstead Manhattan, LLC",
+   "page_no": 132,
+   "file_id": 17162,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "The selling agent is Halstead Manhattan, LLC",
+    "why": "Matches exactly"
+   },
+   "blind": {
+    "value": "Halstead Manhattan, LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "The selling agent is Halstead Manhattan, LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5642,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "243 West 30th Street, Suite 400, New York, New York 10001",
+   "page_no": 1,
+   "file_id": 17162,
+   "check": {
+    "n": 2,
+    "verdict": "wrong",
+    "fix": "243 West 30th Street, Suite 400, Brooklyn, New York",
+    "page": "P8",
+    "quote": "an office at 243 West 30th Street, Suite 400 , Brooklyn, New York",
+    "why": "P1 lists New York, NY 10001 but P8's Identity of Parties section (the operative address) gives Brooklyn, New York; claim's city/state conflicts with P8"
+   },
+   "blind": {
+    "value": "243 West 30th Street, Suite 400, New York, New York 10001",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "243 West 30th Street, Suite 400 \nNew York, New York 10001"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A"
+    ],
+    "close": [],
+    "printed": "243 West 30th Street, Suite 400, New York, New York 10001",
+    "page": "P1",
+    "quote": "243 West 30th Street, Suite 400 New York, New York 10001",
+    "sure": true,
+    "why": "The cover page gives the Sponsor's (206 Powers Management LLC) address as New York, NY 10001. B puts the address in Brooklyn, which is the condominium's city, not the Sponsor's.",
+    "from_images": true
+   },
+   "candidates": [
+    "243 West 30th Street, Suite 400, New York, New York 10001",
+    "243 West 30th Street, Suite 400, Brooklyn, New York"
+   ],
+   "stored_letter": "A",
+   "printed": "243 West 30th Street, Suite 400, New York, New York 10001",
+   "printed_page": {
+    "file_id": 17162,
+    "page_no": 1
+   },
+   "printed_quote": "243 West 30th Street, Suite 400 New York, New York 10001",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5643,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "D&D Management Services Corp.",
+   "page_no": 129,
+   "file_id": 17162,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P7",
+    "quote": "D&D Management Services Corp. , with an address at 6725 13 th Avenue , Brooklyn, New York 11219 , will manage the Building for the first year",
+    "why": "Matches"
+   },
+   "blind": {
+    "value": "D&D Management Services Corp.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "D&D Management Services Corp. ... will manage the Building for the first year of Condominium operations"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5644,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "George Restivo, R.A.",
+   "page_no": 132,
+   "file_id": 17162,
+   "check": {
+    "n": 4,
+    "verdict": "minor",
+    "fix": "George Restivo, R.A.",
+    "page": "P9",
+    "quote": "The Sponsor's certifying architect is George Restivo, R.A.",
+    "why": "Cited page P9 is correct but claim cites P9 as source — actually matches; name spelled same, just confirming page is right not P1/P11. No discrepancy found, should be correct"
+   },
+   "blind": {
+    "value": "George Restivo, R.A.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "The Sponsor's certifying architect is George Restivo, R.A."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "A"
+    ],
+    "close": [],
+    "printed": "George Restivo, R.A.",
+    "page": "P9",
+    "quote": "The Sponsor’s certifying architect is George Restivo, R.A.",
+    "sure": true,
+    "why": "P9 names George Restivo, R.A. as the Sponsor's certifying architect. The architect's report certification on P11 is consistent with this."
+   },
+   "candidates": [
+    "George Restivo, R.A."
+   ],
+   "stored_letter": "A",
+   "printed": "George Restivo, R.A.",
+   "printed_page": {
+    "file_id": 17162,
+    "page_no": 132
+   },
+   "printed_quote": "The Sponsor’s certifying architect is George Restivo, R.A.",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5645,
+   "field": "reserve_fund",
+   "column": "value_text",
+   "stored": "No reserve fund provided",
+   "page_no": 12,
+   "file_id": 17162,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P2",
+    "quote": "No reserve fund is provided under this Plan",
+    "why": "Matches exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5646,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "3 months' common charges at closing",
+   "page_no": 12,
+   "file_id": 17162,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P2",
+    "quote": "each Purchaser will contribute three months' Common Charges to the Condominium's working capital fund",
+    "why": "Matches exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1534,
+   "field": "principal",
+   "stored": {
+    "name": "Anthony Morena",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 131,
+   "file_id": 17162,
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "The principal of the Sponsor is Anthony Morena",
+    "why": "Matches exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD200117",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "206 POWERS MANAGEMENT LLC",
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "206 POWERS MANAGEMENT LLC",
+    "why": "Matches cover page"
+   },
+   "blind": {
+    "value": "206 Powers Management LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "The Sponsor is 206 Powers Management LLC , a New York limited liability company"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD200117",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "MARCUS ATTORNEYS PLLC",
+   "check": {
+    "n": 9,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "Marcus Attorneys PLLC , with an office at 13 Greene Avenue, Brooklyn, New York",
+    "why": "Matches P9; note cover page (P1) does not list attorney, but P9 confirms name"
+   },
+   "blind": {
+    "value": "Marcus Attorneys PLLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "Marcus Attorneys PLLC , with an office at 13 Greene Avenue, Brooklyn, New York , represents the Sponsor in connection with this Plan"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 4,
+ "tokens": 49721
+}

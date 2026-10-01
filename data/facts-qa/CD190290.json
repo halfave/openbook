@@ -1,0 +1,445 @@
+{
+ "plan_id": "CD190290",
+ "checked_at": "2026-10-01T20:53:33.202Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 10311,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 10311,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 10311,
+   "page_no": 16,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 10311,
+   "page_no": 34,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 10311,
+   "page_no": 75,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 10311,
+   "page_no": 81,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 10311,
+   "page_no": 82,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 10311,
+   "page_no": 83,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 10311,
+   "page_no": 89,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 10311,
+   "page_no": 91,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P11",
+   "file_id": 10311,
+   "page_no": 92,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Jeffrey McMahon, R.A.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P11",
+   "quote": "Registered architect Jeffrey McMahon , R.A., 488 9 th Street, Brooklyn, New York 11215 , has examined the physical condition of the property"
+  },
+  "selling_agent": {
+   "value": "486 First Holdings, LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P11",
+   "quote": "The Sponsor is currently the se lling agent for the plan."
+  },
+  "managing_agent": {
+   "value": "486 First Holdings, LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "Sponsor is not entering into any management agreement with a managing agent. While Sponsor controls the Board of Managers, the Sponsor will de facto manage the condominium."
+  },
+  "tax_consultant": {
+   "value": "Jerome Mazursky, MAI, CAE (The Mazursky Group, Inc.)",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P6",
+   "quote": "Jerome Mazursky, MAl, CAE\nPage 4 \nThe IVlazursky Group, Inc\" 42 Broadway, Suite 1744"
+  },
+  "sponsor_attorney": {
+   "value": "The Law Office of Claudia V. Murdoch, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P11",
+   "quote": "Sponsor has engaged The Law Office of Claudia V. Murdoch , P.C. , 117 Seventh Avenue, Brooklyn, Ne w York 11215 , to represent it in the conversion of the premises to co ndominium ownership."
+  },
+  "sponsor": {
+   "value": "486 First Holdings, LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P11",
+   "quote": "The Sponsor of this offering is 486 First Holdings , LLC, a New York limited liability company formed December 19, 2012"
+  },
+  "sponsor_address": {
+   "value": "488 1st Street, Brooklyn, NY 11215",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P11",
+   "quote": "a New York limited liability company formed December 19, 2012 , with a principal address at 488 1 st Street, Brooklyn, NY 11215"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 6414,
+   "field": "selling_agent",
+   "page_no": 1,
+   "score": 0.75
+  },
+  {
+   "id": 6415,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 6416,
+   "field": "architect",
+   "page_no": 92,
+   "score": 1
+  },
+  {
+   "id": 6417,
+   "field": "working_capital",
+   "page_no": 91,
+   "score": 1
+  },
+  {
+   "id": 11064,
+   "field": "managing_agent",
+   "page_no": 16,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 6414,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "486 First Holdings, LLC",
+   "page_no": 1,
+   "file_id": 10311,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "486 First Holdings, LLC is Sponsor and Selling Agent; P11 states 'The Sponsor is currently the selling agent for the plan', so the selling agent is the Sponsor, not a separately named entity under 'selling agent' claim distinct from sponsor — but since the name matches the Sponsor's name exactly and pages confirm Sponsor is selling agent, this is actually correct",
+    "page": "P1",
+    "quote": "SPONSOR AND SELLING AGENT: 486 FIRST HOLDINGS , LLC",
+    "why": "P1 lists 486 First Holdings, LLC as Sponsor and Selling Agent, and P11 confirms Sponsor is currently the selling agent"
+   },
+   "blind": {
+    "value": "486 First Holdings, LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P11",
+    "quote": "The Sponsor is currently the se lling agent for the plan."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "B",
+     "C"
+    ],
+    "close": [
+     "A"
+    ],
+    "printed": "486 FIRST HOLDINGS, LLC",
+    "page": "P1",
+    "quote": "SPONSOR AND SELLING AGENT: 486 FIRST HOLDINGS , LLC",
+    "sure": true,
+    "why": "P1 names 486 First Holdings, LLC as Sponsor and Selling Agent, and P11 says the Sponsor is the selling agent. A names the right party, but it is commentary rather than a clean value."
+   },
+   "candidates": [
+    "486 First Holdings, LLC is Sponsor and Selling Agent; P11 states 'The Sponsor is currently the selling agent for the plan', so the selling agent is the Sponsor, not a separately named entity under 'selling agent' claim distinct from sponsor — but since the name matches the Sponsor's name exactly and pages confirm Sponsor is selling agent, this is actually correct",
+    "486 First Holdings, LLC (the Sponsor itself)",
+    "486 First Holdings, LLC"
+   ],
+   "stored_letter": "C",
+   "printed": "486 FIRST HOLDINGS, LLC",
+   "printed_page": {
+    "file_id": 10311,
+    "page_no": 1
+   },
+   "printed_quote": "SPONSOR AND SELLING AGENT: 486 FIRST HOLDINGS , LLC",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 6415,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "488 1st Street, Brooklyn, New York 11215",
+   "page_no": 1,
+   "file_id": 10311,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "488 1ST STREET BROOKYN , NEW YORK 1 1 215",
+    "why": "Matches address on cover page (P11 also confirms 488 1st Street, Brooklyn, NY 11215)"
+   },
+   "blind": {
+    "value": "488 1st Street, Brooklyn, NY 11215",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P11",
+    "quote": "a New York limited liability company formed December 19, 2012 , with a principal address at 488 1 st Street, Brooklyn, NY 11215"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 6416,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Jeffrey McMahon, R.A.",
+   "page_no": 92,
+   "file_id": 10311,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P11",
+    "quote": "Registered architect Jeffrey McMahon , R.A., 488 9 th Street, Brooklyn, New York 11215 , has examined the physical condition of the property and has rendered his report thereof",
+    "why": "Pages confirm Jeffrey McMahon, R.A. as the architect"
+   },
+   "blind": {
+    "value": "Jeffrey McMahon, R.A.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P11",
+    "quote": "Registered architect Jeffrey McMahon , R.A., 488 9 th Street, Brooklyn, New York 11215 , has examined the physical condition of the property"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 6417,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 91,
+   "file_id": 10311,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P10",
+    "quote": "the unit owner for such u nit will contribute to the working capital fund of the Condomini um an amount equal to two month s’ common charges",
+    "why": "Matches claim exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11064,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "Self-managed",
+   "page_no": 16,
+   "file_id": 10311,
+   "check": {
+    "n": 5,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": "P3",
+    "quote": "It is anticipated that the Condominium will be self - managed by the unit owners",
+    "why": "Pages confirm self-managed status but do not mention a stored number '0' associated with it; the claim's numeric component is not addressed by the pages"
+   },
+   "blind": {
+    "value": "486 First Holdings, LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "Sponsor is not entering into any management agreement with a managing agent. While Sponsor controls the Board of Managers, the Sponsor will de facto manage the condominium."
+   },
+   "blind_agrees": false,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "B"
+    ],
+    "close": [
+     "A"
+    ],
+    "printed": "Self-managed by the unit owners (no managing agent; Sponsor de facto manages while it controls the Board)",
+    "page": "P3",
+    "quote": "It is anticipated that the Condominium will be self - managed by the unit owners",
+    "sure": true,
+    "why": "P3, P4 and P9 say no managing agent is engaged and the building will be self-managed. P9 adds that the Sponsor will de facto manage while it controls the Board. A reflects only that interim de facto role, not a named managing agent."
+   },
+   "candidates": [
+    "486 First Holdings, LLC (the Sponsor itself)",
+    "Self-managed"
+   ],
+   "stored_letter": "B",
+   "printed": "Self-managed by the unit owners (no managing agent; Sponsor de facto manages while it controls the Board)",
+   "printed_page": {
+    "file_id": 10311,
+    "page_no": 16
+   },
+   "printed_quote": "It is anticipated that the Condominium will be self - managed by the unit owners",
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1357,
+   "field": "principal",
+   "stored": {
+    "name": "Bleecker Wheeler",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 92,
+   "file_id": 10311,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P11",
+    "quote": "The principal of the Sponsor is Blee c ker Wheeler",
+    "why": "Matches claim exactly (OCR spacing artifact aside)"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD190290",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "486 FIRST HOLDINGS, LLC",
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "486 FIRST HOLDINGS , LLC",
+    "why": "Matches the Sponsor name on the cover page"
+   },
+   "blind": {
+    "value": "486 First Holdings, LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P11",
+    "quote": "The Sponsor of this offering is 486 First Holdings , LLC, a New York limited liability company formed December 19, 2012"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD190290",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "THE LAW OFFICE OF CLAUDIA V. MURDOCH, P.C.",
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "The Law Office of Claudia V. Murdoch , P.C .",
+    "why": "Matches Sponsor's counsel name on the cover page"
+   },
+   "blind": {
+    "value": "The Law Office of Claudia V. Murdoch, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P11",
+    "quote": "Sponsor has engaged The Law Office of Claudia V. Murdoch , P.C. , 117 Seventh Avenue, Brooklyn, Ne w York 11215 , to represent it in the conversion of the premises to co ndominium ownership."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 46283
+}

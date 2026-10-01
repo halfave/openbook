@@ -1,0 +1,428 @@
+{
+ "plan_id": "CD210159",
+ "checked_at": "2026-10-01T21:57:14.053Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 19765,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 19765,
+   "page_no": 2,
+   "why": [
+    "cover",
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 19765,
+   "page_no": 9,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 19765,
+   "page_no": 15,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 19765,
+   "page_no": 31,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 19765,
+   "page_no": 91,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 19765,
+   "page_no": 94,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 19765,
+   "page_no": 95,
+   "why": [
+    "cited",
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 19765,
+   "page_no": 96,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 19765,
+   "page_no": 97,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Sheming Tam",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "The architect is Sheming Tam whose address is 5816 Fort Hamilton Parkway"
+  },
+  "selling_agent": {
+   "value": "San Mei NY Inc.",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "The Selling Agent is the sponsor."
+  },
+  "managing_agent": {
+   "value": "San Mei NY, Inc.",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "The Managing Agent is the Sponsor with an address at at 738 53 rd Street, Brooklyn, N.Y. 11220"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "Thomas E. Berinato",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "Sponsor has retained the law firm of Thomas E. Berinato, with offices at 123 - 40 83 rd Avenue, Kew Gardens, New York 11415"
+  },
+  "sponsor": {
+   "value": "San Mei NY, Inc.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "The Sponsor is San Mei NY, Inc. Inc. a New York Corporation with an address of 738 53 rd Street, Brooklyn, N.Y. 11220"
+  },
+  "sponsor_address": {
+   "value": "738 53rd Street, Brooklyn, N.Y. 11220",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "with an address of 738 53 rd Street, Brooklyn, N.Y. 11220"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 7379,
+   "field": "selling_agent",
+   "page_no": 97,
+   "score": 1
+  },
+  {
+   "id": 7380,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 7381,
+   "field": "managing_agent",
+   "page_no": 95,
+   "score": 1
+  },
+  {
+   "id": 7382,
+   "field": "architect",
+   "page_no": 96,
+   "score": 1
+  },
+  {
+   "id": 7383,
+   "field": "working_capital",
+   "page_no": 94,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 7379,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "San Mei NY Inc.",
+   "page_no": 97,
+   "file_id": 19765,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P10",
+    "quote": "The Selling Agent is the sponsor.",
+    "why": "P10 confirms sponsor is selling agent; P1 names Sponsor & Selling Agent as San Mei NY Inc."
+   },
+   "blind": {
+    "value": "San Mei NY Inc.",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "The Selling Agent is the sponsor."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7380,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "738 53rd Street, Brooklyn, N.Y. 11220",
+   "page_no": 1,
+   "file_id": 19765,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "738 53 rd Street Brooklyn, N.Y. 11220",
+    "why": "Matches sponsor address on cover page."
+   },
+   "blind": {
+    "value": "738 53rd Street, Brooklyn, N.Y. 11220",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "with an address of 738 53 rd Street, Brooklyn, N.Y. 11220"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7381,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "San Mei NY Inc. (Sponsor, no compensation first year)",
+   "page_no": 95,
+   "file_id": 19765,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "Sponsor shall undertake to manage the building for a minimum of one year at no compensation",
+    "why": "Matches claim that Sponsor manages first year at no cost."
+   },
+   "blind": {
+    "value": "San Mei NY, Inc.",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "The Managing Agent is the Sponsor with an address at at 738 53 rd Street, Brooklyn, N.Y. 11220"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7382,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Sheming Tam",
+   "page_no": 96,
+   "file_id": 19765,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "The architect is Sheming Tam",
+    "why": "Matches exactly."
+   },
+   "blind": {
+    "value": "Sheming Tam",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "The architect is Sheming Tam whose address is 5816 Fort Hamilton Parkway"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7383,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "$500 per unit at closing",
+   "page_no": 94,
+   "file_id": 19765,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P7",
+    "quote": "such Purchaser shall pay the sum of $500 to the Board of Managers for its working capital",
+    "why": "Matches $500 per unit at closing."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1806,
+   "field": "principal",
+   "stored": {
+    "name": "Yang Jin Yun",
+    "kind": "person",
+    "role": "sole principal",
+    "parent_entity": null
+   },
+   "page_no": 96,
+   "file_id": 19765,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "Mrs. Yang Jin Yun is the sole principal of Sponsor",
+    "why": "Matches name and role exactly."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD210159",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "SAN MEI NY INC.",
+   "check": {
+    "n": 7,
+    "verdict": "minor",
+    "fix": "San Mei NY Inc. (no comma before Inc.)",
+    "page": "P1",
+    "quote": "San Mei NY Inc.",
+    "why": "Cover page prints as 'San Mei NY Inc.' without comma, while claim uses 'SAN MEI NY INC.' with comma-implied spacing difference; P9 also has a typo 'San Mei NY, Inc. Inc.' The core name matches but comma placement in claim differs from printed cover page form."
+   },
+   "blind": {
+    "value": "San Mei NY, Inc.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "The Sponsor is San Mei NY, Inc. Inc. a New York Corporation with an address of 738 53 rd Street, Brooklyn, N.Y. 11220"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "San Mei NY Inc.",
+    "page": "P1",
+    "quote": "NAME& ADDRESS OF SPONSOR & SELLING AGENT San Mei NY Inc.",
+    "sure": true,
+    "why": "The cover names San Mei NY Inc. as Sponsor. P9 gives 'San Mei NY, Inc. Inc.', which differs only in punctuation and suffix. B differs only in capitalization."
+   },
+   "candidates": [
+    "San Mei NY Inc. (no comma before Inc.)",
+    "SAN MEI NY INC."
+   ],
+   "stored_letter": "B",
+   "printed": "San Mei NY Inc.",
+   "printed_page": {
+    "file_id": 19765,
+    "page_no": 1
+   },
+   "printed_quote": "NAME& ADDRESS OF SPONSOR & SELLING AGENT San Mei NY Inc.",
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD210159",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "THOMAS E. BERINATO, ATTORNEY AT LAW",
+   "check": {
+    "n": 8,
+    "verdict": "minor",
+    "fix": "Thomas E. Berinato",
+    "page": "P10",
+    "quote": "Sponsor has retained the law firm of Thomas E. Berinato",
+    "why": "Pages identify him as sponsor's counsel/attorney but do not print the title 'ATTORNEY AT LAW' as part of his name; also pages call it a 'law firm' not naming a firm name distinct from his personal name."
+   },
+   "blind": {
+    "value": "Thomas E. Berinato",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "Sponsor has retained the law firm of Thomas E. Berinato, with offices at 123 - 40 83 rd Avenue, Kew Gardens, New York 11415"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "A"
+    ],
+    "close": [
+     "B"
+    ],
+    "printed": "Thomas E. Berinato",
+    "page": "P10",
+    "quote": "Sponsor has retained the law firm of Thomas E. Berinato",
+    "sure": true,
+    "why": "Counsel is printed as Thomas E. Berinato. The phrase 'Attorney at Law' in B does not appear on these pages."
+   },
+   "candidates": [
+    "Thomas E. Berinato",
+    "THOMAS E. BERINATO, ATTORNEY AT LAW"
+   ],
+   "stored_letter": "B",
+   "printed": "Thomas E. Berinato",
+   "printed_page": {
+    "file_id": 19765,
+    "page_no": 97
+   },
+   "printed_quote": "Sponsor has retained the law firm of Thomas E. Berinato",
+   "verdict": "minor"
+  }
+ ],
+ "calls": 3,
+ "tokens": 31698
+}

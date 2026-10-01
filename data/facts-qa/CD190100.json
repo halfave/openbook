@@ -1,0 +1,398 @@
+{
+ "plan_id": "CD190100",
+ "checked_at": "2026-10-01T20:32:14.117Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 11986,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 11986,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 11986,
+   "page_no": 15,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 11986,
+   "page_no": 26,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 11986,
+   "page_no": 27,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 11986,
+   "page_no": 36,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 11986,
+   "page_no": 56,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 11986,
+   "page_no": 59,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 11986,
+   "page_no": 112,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 11986,
+   "page_no": 124,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P11",
+   "file_id": 11986,
+   "page_no": 125,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P12",
+   "file_id": 11986,
+   "page_no": 135,
+   "why": [
+    "cited"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": null,
+  "selling_agent": {
+   "value": "196 Devoe ST LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P11",
+   "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+  },
+  "managing_agent": {
+   "value": "196 Devoe ST LLC",
+   "by_sponsor": false,
+   "by_board": true,
+   "others": [],
+   "page": "P6",
+   "quote": "The Condominium Board will be responsible for managing the condominium"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "ATTORNEYS FOR SPONSOR: THE LAW OFFICE OF JAY LICHTMAN, P.C."
+  },
+  "sponsor": {
+   "value": "196 DEVOE ST LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SPONSOR & SELLING AGENT: 196 DEVOE ST LLC"
+  },
+  "sponsor_address": {
+   "value": "289 Meserole Street, Brooklyn, NY 11206",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "289 MESEROLE STREET BROOKLYN, NY 11206"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 4441,
+   "field": "selling_agent",
+   "page_no": 125,
+   "score": 1
+  },
+  {
+   "id": 4442,
+   "field": "working_capital",
+   "page_no": 124,
+   "score": 1
+  },
+  {
+   "id": 5979,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 11374,
+   "field": "architect",
+   "page_no": 135,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 4441,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "196 Devoe St LLC (Sponsor)",
+   "page_no": 125,
+   "file_id": 11986,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "Sponsor will not be using a Selling Agent; Sponsor will act as selling agent for the condominium",
+    "page": "P11",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent",
+    "why": "P11 states Sponsor acts as selling agent itself, not that '196 Devoe St LLC (Sponsor)' is formally designated 'selling agent' with that label as a distinct role; however P1 cover page does list '196 DEVOE ST LLC' under 'SPONSOR & SELLING AGENT' so this is actually supported."
+   },
+   "blind": {
+    "value": "196 Devoe ST LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P11",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "196 Devoe ST LLC (Sponsor acts as selling agent)",
+    "page": "P11",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+    "sure": true,
+    "why": "P11 says the Sponsor, 196 Devoe ST LLC, acts as its own selling agent, and P1 lists '196 DEVOE ST LLC' under 'SPONSOR & SELLING AGENT'. All three candidates state this correctly."
+   },
+   "candidates": [
+    "196 Devoe ST LLC (the Sponsor itself)",
+    "Sponsor will not be using a Selling Agent; Sponsor will act as selling agent for the condominium",
+    "196 Devoe St LLC (Sponsor)"
+   ],
+   "stored_letter": "C",
+   "printed": "196 Devoe ST LLC (Sponsor acts as selling agent)",
+   "printed_page": {
+    "file_id": 11986,
+    "page_no": 125
+   },
+   "printed_quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 4442,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 124,
+   "file_id": 11986,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P10",
+    "quote": "Initial Capital Payment\" equal to two (2) months' estimated common charges",
+    "why": "matches P10"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5979,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "289 Meserole Street, Brooklyn, NY 11206",
+   "page_no": 1,
+   "file_id": 11986,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "289 MESEROLE STREET \nBROOKLYN, NY 11206",
+    "why": "matches P1"
+   },
+   "blind": {
+    "value": "289 Meserole Street, Brooklyn, NY 11206",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "289 MESEROLE STREET BROOKLYN, NY 11206"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11374,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Wu Chen, P.E. of Infocus (engineer)",
+   "page_no": 135,
+   "file_id": 11986,
+   "check": {
+    "n": 4,
+    "verdict": "wrong",
+    "fix": "Wu Chen, P.E. is the engineer who prepared the Engineer's Report, not the architect",
+    "page": "P12",
+    "quote": "ENGINEER'S REPORT\nTHE 196 DEVOE STREET CONDOMINIUM \nPrepared By:",
+    "why": "P12 identifies Wu Chen as engineer preparing the Engineer's Report; claim mislabels this as the architect/architect's report despite correctly parenthesizing (engineer)"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "Wu Chen, P.E., Infocus (prepared the Engineer's Report, including Section 20.7: Description of Property and Specifications)",
+    "page": "P12",
+    "quote": "ENGINEER'S REPORT ... Prepared By: INFOCUS Wu Chen, P.E.",
+    "sure": true,
+    "why": "P12 shows that the description of property was prepared by Wu Chen, P.E. of Infocus, and the report is titled Engineer's Report. None of the pages I read names an architect, so both candidates match the pages. I did not open P4–P9.",
+    "from_images": true
+   },
+   "candidates": [
+    "Wu Chen, P.E. of Infocus (engineer)",
+    "Wu Chen, P.E. is the engineer who prepared the Engineer's Report, not the architect"
+   ],
+   "stored_letter": "A",
+   "printed": "Wu Chen, P.E., Infocus (prepared the Engineer's Report, including Section 20.7: Description of Property and Specifications)",
+   "printed_page": {
+    "file_id": 11986,
+    "page_no": 135
+   },
+   "printed_quote": "ENGINEER'S REPORT ... Prepared By: INFOCUS Wu Chen, P.E.",
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 482,
+   "field": "principal",
+   "stored": {
+    "name": "Arie Bar Chaim",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 125,
+   "file_id": 11986,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P11",
+    "quote": "The Principal of the is Arie Bar Chaim",
+    "why": "matches P11, identifying Arie Bar Chaim as Principal of Sponsor"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD190100",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "196 DEVOE ST LLC",
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "SPONSOR & SELLING AGENT:\n196 DEVOE ST LLC",
+    "why": "matches P1 cover page"
+   },
+   "blind": {
+    "value": "196 DEVOE ST LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "SPONSOR & SELLING AGENT: 196 DEVOE ST LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD190100",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "ATTORNEYS FOR SPONSOR:\nTHE LAW OFFICE OF JAY LICHTMAN, P.C.",
+    "why": "matches P1 cover page"
+   },
+   "blind": {
+    "value": "THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "ATTORNEYS FOR SPONSOR: THE LAW OFFICE OF JAY LICHTMAN, P.C."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 4,
+ "tokens": 107045
+}

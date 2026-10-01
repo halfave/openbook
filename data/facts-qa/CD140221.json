@@ -1,0 +1,211 @@
+{
+ "plan_id": "CD140221",
+ "checked_at": "2026-10-01T19:07:08.126Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 28141,
+   "page_no": 1,
+   "why": [
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 28141,
+   "page_no": 3,
+   "why": [
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 28141,
+   "page_no": 8,
+   "why": [
+    "cited",
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 28141,
+   "page_no": 11,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 28141,
+   "page_no": 24,
+   "why": [
+    "tax_consultant"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": null,
+  "selling_agent": {
+   "value": "Citi Habitats",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [
+    "Aptsandlofts.com"
+   ],
+   "page": "P2",
+   "quote": "All references in the Plan to the Selling Agent are hereby amended to reflect Citi Habitats as the Selling Agent under the Plan."
+  },
+  "managing_agent": {
+   "value": "Choice NY Property Management, LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P3",
+   "quote": "Any reference to the Managing Agent in the Plan shall be replaced with Choice NY Property Management, LLC."
+  },
+  "tax_consultant": {
+   "value": "Metropolitan Realty Exemptions",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P5",
+   "quote": "The real estate tax projection has been updated by Sponsor's real estate tax valuation consultant, Metropolitan Realty Exemptions."
+  },
+  "sponsor_attorney": null,
+  "sponsor": {
+   "value": "Bergen Upreal LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "Sponsor: Bergen Upreal LLC"
+  },
+  "sponsor_address": {
+   "value": "306a – 308 Malcolm X Blvd, Brooklyn, New York 11233",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "Bergen Upreal LLC\n306a – 308 Malcolm X Blvd\nBrooklyn, New York 11233"
+  }
+ },
+ "quote_checks": [],
+ "results": [
+  {
+   "table": "sponsor_principals",
+   "id": 376,
+   "field": "principal",
+   "stored": {
+    "name": "NOT STATED",
+    "kind": "entity",
+    "role": null,
+    "parent_entity": null
+   },
+   "page_no": 8,
+   "file_id": 28141,
+   "check": {
+    "n": 1,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": "P3",
+    "quote": null,
+    "why": "P3 discusses managing agent change, not sponsor principal; no principal named anywhere in pages"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A"
+    ],
+    "close": [],
+    "printed": null,
+    "page": "P2",
+    "quote": "An affidavit of Sponsor's principal setting forth the basis for declaring the Plan effective",
+    "sure": true,
+    "why": "The pages mention a Sponsor's principal only generically and never name one. P3 is about the Managing Agent and says its principals have no relationship to the Sponsor."
+   },
+   "candidates": [
+    "NOT STATED"
+   ],
+   "stored_letter": "A",
+   "printed": null,
+   "printed_page": {
+    "file_id": 28141,
+    "page_no": 3
+   },
+   "printed_quote": "An affidavit of Sponsor's principal setting forth the basis for declaring the Plan effective",
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD140221",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "BERGEN UPREAL LLC",
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "Bergen Upreal LLC",
+    "why": "matches cover page sponsor name"
+   },
+   "blind": {
+    "value": "Bergen Upreal LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "Sponsor: Bergen Upreal LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD140221",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "MARANS, WEISZ & NEWMAN LLC",
+   "check": {
+    "n": 3,
+    "verdict": "minor",
+    "fix": "Marans Weisz, & Newman LLC",
+    "page": "P1",
+    "quote": "Marans Weisz, & Newman LLC",
+    "why": "printed form has comma after Weisz and no comma before LLC, differing from claim's formatting"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A"
+    ],
+    "close": [],
+    "printed": "Marans Weisz, & Newman LLC",
+    "page": "P1",
+    "quote": "Prepared by: Marans Weisz, & Newman LLC 29 Broadway, Suite 2400 New York, New York 10006",
+    "sure": false,
+    "why": "The cover names this firm only as the plan's preparer. None of the five pages calls it Sponsor's counsel or attorneys for the Sponsor. The name matches candidate A except for punctuation.",
+    "from_images": true
+   },
+   "candidates": [
+    "MARANS, WEISZ & NEWMAN LLC"
+   ],
+   "stored_letter": "A",
+   "printed": "Marans Weisz, & Newman LLC",
+   "printed_page": {
+    "file_id": 28141,
+    "page_no": 1
+   },
+   "printed_quote": "Prepared by: Marans Weisz, & Newman LLC 29 Broadway, Suite 2400 New York, New York 10006",
+   "verdict": "verified"
+  }
+ ],
+ "calls": 4,
+ "tokens": 50458
+}

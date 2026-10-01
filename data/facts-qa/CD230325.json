@@ -1,0 +1,470 @@
+{
+ "plan_id": "CD230325",
+ "checked_at": "2026-10-01T23:26:19.034Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 26971,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 26971,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 26971,
+   "page_no": 16,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 26971,
+   "page_no": 34,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 26971,
+   "page_no": 39,
+   "why": [
+    "cited",
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 26971,
+   "page_no": 60,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 26971,
+   "page_no": 128,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 26971,
+   "page_no": 129,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 26971,
+   "page_no": 131,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 26971,
+   "page_no": 142,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P11",
+   "file_id": 26971,
+   "page_no": 203,
+   "why": [
+    "selling_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": null,
+  "selling_agent": {
+   "value": "353 6TH LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+  },
+  "managing_agent": {
+   "value": "Sunrise Real Estate Corp.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "The building will be managed by the Managing Agent, Sunrise Real Estate Corp. , a management company with an address at 247 Prospect Ave, 4th Floor Brooklyn, NY 11215 , for the first year of condominium operation"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "The Law Office of Jay Lichtman P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "ATTORNEYS FOR SPONSOR: THE LAW OFFICE OF JAY LICHTMAN P.C. 68 JAY STREET, SUITE 420 BROOKLYN, NY 11201"
+  },
+  "sponsor": {
+   "value": "353 6th LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "The Sponsor of this project is 353 6th LLC a New York Limited Liability Company, with an address at 315 Flatbush Avenue #172 Brooklyn NY 11217 ."
+  },
+  "sponsor_address": {
+   "value": "315 Flatbush Avenue, #172, Brooklyn, NY 11217",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "353 6TH LLC 315 FLATBUSH AVENUE, # 172 BROOKLYN, NY 11217"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 9817,
+   "field": "managing_agent",
+   "page_no": 39,
+   "score": 0.91
+  },
+  {
+   "id": 9818,
+   "field": "selling_agent",
+   "page_no": 131,
+   "score": 1
+  },
+  {
+   "id": 9819,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 9820,
+   "field": "working_capital",
+   "page_no": 128,
+   "score": 1
+  },
+  {
+   "id": 11539,
+   "field": "architect",
+   "page_no": 142,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 9817,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "Sunrise Real Estate Corp.",
+   "page_no": 39,
+   "file_id": 26971,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P5",
+    "quote": "managed by the Managing Agent, Sunrise Real Estate Corp.",
+    "why": "Matches P5/P8, $9,960.00 annual fee confirmed."
+   },
+   "blind": {
+    "value": "Sunrise Real Estate Corp.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "The building will be managed by the Managing Agent, Sunrise Real Estate Corp. , a management company with an address at 247 Prospect Ave, 4th Floor Brooklyn, NY 11215 , for the first year of condominium operation"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 9818,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "353 6th LLC (Sponsor is also the Selling Agent)",
+   "page_no": 131,
+   "file_id": 26971,
+   "check": {
+    "n": 2,
+    "verdict": "wrong",
+    "fix": "Sponsor will not be using a Selling Agent; Sponsor will act as selling agent",
+    "page": "P9",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+    "why": "Cover page lists 353 6th LLC as Sponsor & Selling Agent, but P9 clarifies no separate selling agent is used and Sponsor acts in that capacity itself—claim's parenthetical framing is supported, but P9 explicitly states no Selling Agent is retained, which is a nuance the claim as phrased captures correctly; however since pages confirm this exact meaning, verdict should be correct."
+   },
+   "blind": {
+    "value": "353 6TH LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "353 6th LLC (the Sponsor acts as its own selling agent)",
+    "page": "P9",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+    "sure": true,
+    "why": "P9 says the Sponsor, 353 6th LLC, acts as selling agent. The cover (P1) lists '353 6TH LLC' under 'Sponsor & Selling Agent'. All three candidates state this correctly."
+   },
+   "candidates": [
+    "353 6TH LLC (the Sponsor itself)",
+    "353 6th LLC (Sponsor is also the Selling Agent)",
+    "Sponsor will not be using a Selling Agent; Sponsor will act as selling agent"
+   ],
+   "stored_letter": "B",
+   "printed": "353 6th LLC (the Sponsor acts as its own selling agent)",
+   "printed_page": {
+    "file_id": 26971,
+    "page_no": 131
+   },
+   "printed_quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 9819,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "315 Flatbush Avenue #172, Brooklyn, NY 11217",
+   "page_no": 1,
+   "file_id": 26971,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "315 F LATBUSH A VENUE , # 172 \nB ROOKLYN , NY 11217",
+    "why": "Matches cover page exactly."
+   },
+   "blind": {
+    "value": "315 Flatbush Avenue, #172, Brooklyn, NY 11217",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "353 6TH LLC 315 FLATBUSH AVENUE, # 172 BROOKLYN, NY 11217"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 9820,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' estimated common charges contribution at closing",
+   "page_no": 128,
+   "file_id": 26971,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P7",
+    "quote": "an “ Initial Capital Payment ” equal to two (2) months ’ estimated common charges for each Unit",
+    "why": "Matches P7 exactly."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11539,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Wu Chen, P.E. of Infocus (engineer)",
+   "page_no": 142,
+   "file_id": 26971,
+   "check": {
+    "n": 5,
+    "verdict": "wrong",
+    "fix": "Wu Chen, P.E. of Infocus prepared the Engineer's Report, not an architect's report",
+    "page": "P10",
+    "quote": "ENGINEER'S REPORT \nTHE 353 6th AVENUE CONDOMINIUM \nPrepared By: \nINFOCUS \nWu Chen , P.E.",
+    "why": "Pages show Wu Chen as engineer preparing the Engineer's Report, not an architect or floor plans; claim mislabels the document type as 'description of property/architect's report/floor plans.'"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "Wu Chen, P.E., INFOCUS (Engineer's Report)",
+    "page": "P10",
+    "quote": "ENGINEER'S REPORT ... Prepared By: INFOCUS Wu Chen , P.E.",
+    "sure": true,
+    "why": "The pages name no architect. The Description of Property (Section 20.7) appears in an Engineer's Report prepared by Wu Chen, P.E. of Infocus. Both candidates correctly identify him as the engineer."
+   },
+   "candidates": [
+    "Wu Chen, P.E. of Infocus prepared the Engineer's Report, not an architect's report",
+    "Wu Chen, P.E. of Infocus (engineer)"
+   ],
+   "stored_letter": "B",
+   "printed": "Wu Chen, P.E., INFOCUS (Engineer's Report)",
+   "printed_page": {
+    "file_id": 26971,
+    "page_no": 142
+   },
+   "printed_quote": "ENGINEER'S REPORT ... Prepared By: INFOCUS Wu Chen , P.E.",
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 2399,
+   "field": "principal",
+   "stored": {
+    "name": "Old Stone House LLC",
+    "kind": "entity",
+    "role": "managing member",
+    "parent_entity": null
+   },
+   "page_no": 131,
+   "file_id": 26971,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "The managing member of the Sponsor is Old Stone House LLC",
+    "why": "Matches P9 exactly."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 2400,
+   "field": "principal",
+   "stored": {
+    "name": "Alex Maroni",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": "Old Stone House LLC"
+   },
+   "page_no": 131,
+   "file_id": 26971,
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "the Principals of the managing member being Alex Maroni and Bren Salamon",
+    "why": "Matches P9; Alex Maroni is a Principal of Old Stone House LLC (the managing member)."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 2401,
+   "field": "principal",
+   "stored": {
+    "name": "Bren Salamon",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": "Old Stone House LLC"
+   },
+   "page_no": 131,
+   "file_id": 26971,
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "the Principals of the managing member being Alex Maroni and Bren Salamon",
+    "why": "Matches P9; Bren Salamon is a Principal of Old Stone House LLC (the managing member)."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD230325",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "353 6TH LLC",
+   "check": {
+    "n": 9,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "353 6 TH LL C",
+    "why": "Matches cover page (spelling/format aside, same entity)."
+   },
+   "blind": {
+    "value": "353 6th LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "The Sponsor of this project is 353 6th LLC a New York Limited Liability Company, with an address at 315 Flatbush Avenue #172 Brooklyn NY 11217 ."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD230325",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+   "check": {
+    "n": 10,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "T HE L AW O FFICE OF J AY L ICHTMAN P.C.",
+    "why": "Matches cover page exactly."
+   },
+   "blind": {
+    "value": "The Law Office of Jay Lichtman P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "ATTORNEYS FOR SPONSOR: THE LAW OFFICE OF JAY LICHTMAN P.C. 68 JAY STREET, SUITE 420 BROOKLYN, NY 11201"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 59900
+}

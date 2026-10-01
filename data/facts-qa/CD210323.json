@@ -1,0 +1,416 @@
+{
+ "plan_id": "CD210323",
+ "checked_at": "2026-10-01T22:15:48.917Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 15559,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 15559,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 15559,
+   "page_no": 19,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 15559,
+   "page_no": 38,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 15559,
+   "page_no": 149,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 15559,
+   "page_no": 153,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 15559,
+   "page_no": 157,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 15559,
+   "page_no": 158,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 15559,
+   "page_no": 159,
+   "why": [
+    "cited",
+    "selling_agent",
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 15559,
+   "page_no": 160,
+   "why": [
+    "cited"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Paul Christakos of Paul Christakos Architecture, PLLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "The architectural firm that prepared the report in Part II and which executed the Certification in Part II is Paul Christakos of Paul Christakos Architecture, PLLC"
+  },
+  "selling_agent": {
+   "value": "184 Ventures LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "The Sponsor and Selling Agent is 184 Ventures LLC"
+  },
+  "managing_agent": {
+   "value": "184 Ventures LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "While Sponsor is in control of the Board of Managers, Sponsor shall manage the Condominium."
+  },
+  "tax_consultant": {
+   "value": "Metropolitan Realty Exemptions, Inc.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P7",
+   "quote": "Metropolitan Realty Exemptions, Inc"
+  },
+  "sponsor_attorney": {
+   "value": "Certilman Balin Adler & Hyman, LLP",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [
+    "Romanick & Skolnick, PLLC"
+   ],
+   "page": "P4",
+   "quote": "“Sponsor’s Counsel” – Certilman Balin Adler & Hyman LLP, 90 Merrick Avenue, East Meadow, New York 11554 (Offering Plan) and Romanick & Skolnick, PLLC, 142 Joralemon Street, Suite 5C, Brooklyn, New York 11201 (Closing Attorney)."
+  },
+  "sponsor": {
+   "value": "184 Ventures LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SPONSOR AND SELLING AGENT \n184 Ventures LLC"
+  },
+  "sponsor_address": {
+   "value": "190 5th Avenue, Brooklyn, New York 11217",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "190 5 th Avenue \nBrooklyn , New York 112 17"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 8250,
+   "field": "managing_agent",
+   "page_no": 159,
+   "score": 1
+  },
+  {
+   "id": 8251,
+   "field": "selling_agent",
+   "page_no": 159,
+   "score": 1
+  },
+  {
+   "id": 8252,
+   "field": "architect",
+   "page_no": 160,
+   "score": 1
+  },
+  {
+   "id": 8253,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 8254,
+   "field": "working_capital",
+   "page_no": 158,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 8250,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "184 Ventures LLC",
+   "page_no": 159,
+   "file_id": 15559,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "Sponsor (no outside managing agent has been hired; Sponsor manages while in control)",
+    "page": "P9",
+    "quote": "The Sponsor has not entered into any management contract to provide for management of the Condominium. While Sponsor is in control of the Board of Managers, Sponsor shall manage the Condominium.",
+    "why": "Pages say Sponsor itself manages (no agent hired), not that '184 Ventures LLC' is a managing agent per se, but since Sponsor is 184 Ventures LLC this is functionally correct — however the claim's number '0' and framing as 'managing agent' is misleading since pages state no management contract/agent exists; Sponsor manages directly."
+   },
+   "blind": {
+    "value": "184 Ventures LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "While Sponsor is in control of the Board of Managers, Sponsor shall manage the Condominium."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [
+     "C"
+    ],
+    "printed": "No management contract; while Sponsor (184 Ventures LLC) is in control of the Board of Managers, Sponsor shall manage the Condominium",
+    "page": "P9",
+    "quote": "While Sponsor is in control of the Board of Managers, Sponsor shall manage the Condominium.",
+    "sure": true,
+    "why": "P9 says no management contract has been entered into and the Sponsor manages while it controls the Board. P9 also names the Sponsor as 184 Ventures LLC. C names the right entity but does not say it is the Sponsor managing in place of an outside agent. P3 adds that the Board of Managers is responsible for management in the first year."
+   },
+   "candidates": [
+    "Sponsor (no outside managing agent has been hired; Sponsor manages while in control)",
+    "184 Ventures LLC (the Sponsor itself)",
+    "184 Ventures LLC"
+   ],
+   "stored_letter": "C",
+   "printed": "No management contract; while Sponsor (184 Ventures LLC) is in control of the Board of Managers, Sponsor shall manage the Condominium",
+   "printed_page": {
+    "file_id": 15559,
+    "page_no": 159
+   },
+   "printed_quote": "While Sponsor is in control of the Board of Managers, Sponsor shall manage the Condominium.",
+   "verdict": "minor"
+  },
+  {
+   "table": "facts",
+   "id": 8251,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "184 Ventures LLC",
+   "page_no": 159,
+   "file_id": 15559,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "The Sponsor and Selling Agent is 184 Ventures LLC",
+    "why": "Matches exactly."
+   },
+   "blind": {
+    "value": "184 Ventures LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "The Sponsor and Selling Agent is 184 Ventures LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8252,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Paul Christakos Architecture, PLLC",
+   "page_no": 160,
+   "file_id": 15559,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P10",
+    "quote": "Paul Christakos of Paul Christakos Architecture, PLLC",
+    "why": "Matches exactly."
+   },
+   "blind": {
+    "value": "Paul Christakos of Paul Christakos Architecture, PLLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "The architectural firm that prepared the report in Part II and which executed the Certification in Part II is Paul Christakos of Paul Christakos Architecture, PLLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8253,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "190 5th Avenue, Brooklyn, New York 11217",
+   "page_no": 1,
+   "file_id": 15559,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "190 5 th Avenue \nBrooklyn , New York 112 17",
+    "why": "Matches address."
+   },
+   "blind": {
+    "value": "190 5th Avenue, Brooklyn, New York 11217",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "190 5 th Avenue \nBrooklyn , New York 112 17"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8254,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 158,
+   "file_id": 15559,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "At Closing the Sponsor will collect the equivalent of two (2) months Common Charges from each Purchaser to be paid to the Condominium as initial Working Capital.",
+    "why": "Matches exactly."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1601,
+   "field": "principal",
+   "stored": {
+    "name": "Aran Scott",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 159,
+   "file_id": 15559,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "The principal of the Sponsor is Aran Scott",
+    "why": "Matches exactly."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD210323",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "184 VENTURES LLC",
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "184 Ventures LLC",
+    "why": "Matches cover page."
+   },
+   "blind": {
+    "value": "184 Ventures LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "SPONSOR AND SELLING AGENT \n184 Ventures LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD210323",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "CERTILMAN BALIN ADLER & HYMAN, LLP",
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "CERTILMAN BALIN ADLER & HYMAN, LLP",
+    "why": "Matches cover page."
+   },
+   "blind": {
+    "value": "Certilman Balin Adler & Hyman, LLP",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [
+     "Romanick & Skolnick, PLLC"
+    ],
+    "page": "P4",
+    "quote": "“Sponsor’s Counsel” – Certilman Balin Adler & Hyman LLP, 90 Merrick Avenue, East Meadow, New York 11554 (Offering Plan) and Romanick & Skolnick, PLLC, 142 Joralemon Street, Suite 5C, Brooklyn, New York 11201 (Closing Attorney)."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 61055
+}

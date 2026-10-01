@@ -1,0 +1,176 @@
+{
+ "plan_id": "CD130238",
+ "checked_at": "2026-10-01T18:59:03.641Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 13958,
+   "page_no": 1,
+   "why": [
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 13958,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 13958,
+   "page_no": 3,
+   "why": [
+    "cited"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": null,
+  "selling_agent": {
+   "value": "Stribling Marketing Associates, LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SELLING AGENT: Stribling Marketing Associates, LLC"
+  },
+  "managing_agent": null,
+  "tax_consultant": null,
+  "sponsor_attorney": null,
+  "sponsor": {
+   "value": "360 CPW LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SPONSOR: 360 CPW LLC"
+  },
+  "sponsor_address": {
+   "value": "c/o Argo Real Estate LLC, 50 West 17th Street, New York, NY 10011",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "360 CPW LLC c/o Argo Real Estate LLC 50 West 17 th Street New York, NY 10011"
+  }
+ },
+ "quote_checks": [],
+ "results": [
+  {
+   "table": "sponsor_principals",
+   "id": 789,
+   "field": "principal",
+   "stored": {
+    "name": "NOT STATED",
+    "kind": "entity",
+    "role": null,
+    "parent_entity": null
+   },
+   "page_no": 3,
+   "file_id": 13958,
+   "check": {
+    "n": 1,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": "P3",
+    "quote": "(i) Sponsor and Sponsor's Principals",
+    "why": "P3 only shows a certification section title; no entity name for a Sponsor's Principal is given on these pages."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A"
+    ],
+    "close": [],
+    "printed": null,
+    "page": "P3",
+    "quote": "(i) Sponsor and Sponsor’s Principals",
+    "sure": true,
+    "why": "P3 has only a table-of-contents heading for the certification. No principal's name or role is printed. P1 names only the Sponsor entity, 360 CPW LLC c/o Argo Real Estate LLC."
+   },
+   "candidates": [
+    "NOT STATED"
+   ],
+   "stored_letter": "A",
+   "printed": null,
+   "printed_page": {
+    "file_id": 13958,
+    "page_no": 3
+   },
+   "printed_quote": "(i) Sponsor and Sponsor’s Principals",
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD130238",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "360 CPW LLC",
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "SPONSOR: 360 CPW LLC",
+    "why": "Cover page lists 360 CPW LLC as Sponsor."
+   },
+   "blind": {
+    "value": "360 CPW LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "SPONSOR: 360 CPW LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD130238",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "HERRICK, FEINSTEIN LLP",
+   "check": {
+    "n": 3,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": null,
+    "quote": null,
+    "why": "The pages do not mention Sponsor's counsel/attorneys at all."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [],
+    "close": [],
+    "printed": null,
+    "page": "P1",
+    "quote": "SPONSOR: 360 CPW LLC c/o Argo Real Estate LLC",
+    "sure": false,
+    "why": "None of the three pages names the Sponsor's counsel. The cover page lists only the Sponsor and the Selling Agent (Stribling Marketing Associates, LLC). The table of contents on P2–P3 does not name any law firm, so Herrick, Feinstein can't be confirmed or ruled out here. Counsel is likely named in the Identity of Parties section (plan page 177), which isn't among these pages.",
+    "from_images": true
+   },
+   "candidates": [
+    "HERRICK, FEINSTEIN LLP"
+   ],
+   "stored_letter": "A",
+   "printed": null,
+   "printed_page": {
+    "file_id": 13958,
+    "page_no": 1
+   },
+   "printed_quote": "SPONSOR: 360 CPW LLC c/o Argo Real Estate LLC",
+   "verdict": "unresolved"
+  }
+ ],
+ "calls": 4,
+ "tokens": 30744
+}

@@ -1,0 +1,428 @@
+{
+ "plan_id": "CD190007",
+ "checked_at": "2026-10-01T20:25:43.790Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 5195,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 5195,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 5195,
+   "page_no": 16,
+   "why": [
+    "cited",
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 5195,
+   "page_no": 28,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 5195,
+   "page_no": 31,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 5195,
+   "page_no": 37,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 5195,
+   "page_no": 38,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 5195,
+   "page_no": 40,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 5195,
+   "page_no": 62,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 5195,
+   "page_no": 64,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P11",
+   "file_id": 5195,
+   "page_no": 132,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P12",
+   "file_id": 5195,
+   "page_no": 133,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "ZH Architects",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P12",
+   "quote": "Stas Zakrzewski, a Registered Architect with the firm of ZH Architects"
+  },
+  "selling_agent": {
+   "value": "St Johns BC, LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P12",
+   "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+  },
+  "managing_agent": {
+   "value": "St Johns BC, LLC",
+   "by_sponsor": false,
+   "by_board": true,
+   "others": [],
+   "page": "P8",
+   "quote": "The Condominium Board will be responsible for managing the condominium, including but not limited to, writing checks, payment of bills"
+  },
+  "tax_consultant": {
+   "value": "The Mazursky Group, Inc.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P6",
+   "quote": "based on the opinion letter by The Mazursky Group, Inc. the Sponsor's tax expert"
+  },
+  "sponsor_attorney": {
+   "value": "The Law Office of Jay Lichtman, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P12",
+   "quote": "The Sponsor is represented by The Law Office of Jay Lichtman, P.C., 68 Jay Street, Suite 420, Brooklyn, New York 11201"
+  },
+  "sponsor": {
+   "value": "St Johns BC, LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P12",
+   "quote": "The Sponsor of this project is St Johns BC, LLC, a New York limited liability company"
+  },
+  "sponsor_address": {
+   "value": "925 Bergen Street, Suite 203, Brooklyn, NY 11238",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P12",
+   "quote": "with an address 925 Bergen Street, Suite 203, Brooklyn, NY 11238"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 4739,
+   "field": "selling_agent",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 4740,
+   "field": "working_capital",
+   "page_no": 132,
+   "score": 1
+  },
+  {
+   "id": 5832,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 11043,
+   "field": "managing_agent",
+   "page_no": 16,
+   "score": 1
+  },
+  {
+   "id": 11368,
+   "field": "architect",
+   "page_no": 133,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 4739,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "St Johns BC LLC",
+   "page_no": 1,
+   "file_id": 5195,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "Sponsor will not be using a Selling Agent; Sponsor will act as selling agent",
+    "page": "P12",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent",
+    "why": "P1 lists St Johns BC LLC as Sponsor & Selling Agent, but P12 clarifies no separate Selling Agent is used and Sponsor itself acts as selling agent - this nuance is consistent, not contradictory, so actually correct"
+   },
+   "blind": {
+    "value": "St Johns BC, LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P12",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "ST JOHNS BC LLC (Sponsor acts as its own selling agent)",
+    "page": "P1",
+    "quote": "SPONSOR & SELLING AGENT: ST JOHNS BC LLC",
+    "sure": true,
+    "why": "P1 names St Johns BC LLC as both sponsor and selling agent. P12 confirms that no separate selling agent is used: 'Sponsor will act as selling agent.' Each candidate states the same fact."
+   },
+   "candidates": [
+    "St Johns BC, LLC (the Sponsor itself)",
+    "St Johns BC LLC",
+    "Sponsor will not be using a Selling Agent; Sponsor will act as selling agent"
+   ],
+   "stored_letter": "B",
+   "printed": "ST JOHNS BC LLC (Sponsor acts as its own selling agent)",
+   "printed_page": {
+    "file_id": 5195,
+    "page_no": 1
+   },
+   "printed_quote": "SPONSOR & SELLING AGENT: ST JOHNS BC LLC",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 4740,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 132,
+   "file_id": 5195,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P11",
+    "quote": "initial capital payment equal to two (2) months' estimated common charges for each Unit",
+    "why": "matches claim"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5832,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "925 Bergen Street, Suite 203, Brooklyn, NY 11238",
+   "page_no": 1,
+   "file_id": 5195,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "925 BERGEN STREET, SUITE 203 BROOKLYN, NY 11238",
+    "why": "matches claim"
+   },
+   "blind": {
+    "value": "925 Bergen Street, Suite 203, Brooklyn, NY 11238",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P12",
+    "quote": "with an address 925 Bergen Street, Suite 203, Brooklyn, NY 11238"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11043,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "Self-managed",
+   "page_no": 16,
+   "file_id": 5195,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P3",
+    "quote": "the Condominium Board will be responsible for managing the condominium",
+    "why": "no outside managing agent, board self-manages, matches claim"
+   },
+   "blind": {
+    "value": "St Johns BC, LLC",
+    "by_sponsor": false,
+    "by_board": true,
+    "others": [],
+    "page": "P8",
+    "quote": "The Condominium Board will be responsible for managing the condominium, including but not limited to, writing checks, payment of bills"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11368,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Stas Zakrzewski, R.A. of ZH Architects",
+   "page_no": 133,
+   "file_id": 5195,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P12",
+    "quote": "Stas Zakrzewski, a Registered Architect with the firm of ZH Architects",
+    "why": "matches claim"
+   },
+   "blind": {
+    "value": "ZH Architects",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P12",
+    "quote": "Stas Zakrzewski, a Registered Architect with the firm of ZH Architects"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1308,
+   "field": "principal",
+   "stored": {
+    "name": "R. Justin Stewart",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 133,
+   "file_id": 5195,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P12",
+    "quote": "The Principal of the Sponsor is R. Justin Stewart.",
+    "why": "matches claim"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD190007",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "ST JOHNS BC LLC",
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "ST JOHNS BC LLC",
+    "why": "matches claim"
+   },
+   "blind": {
+    "value": "St Johns BC, LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P12",
+    "quote": "The Sponsor of this project is St Johns BC, LLC, a New York limited liability company"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD190007",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+    "why": "matches claim"
+   },
+   "blind": {
+    "value": "The Law Office of Jay Lichtman, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P12",
+    "quote": "The Sponsor is represented by The Law Office of Jay Lichtman, P.C., 68 Jay Street, Suite 420, Brooklyn, New York 11201"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 44756
+}

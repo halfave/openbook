@@ -1,0 +1,527 @@
+{
+ "plan_id": "CD190025",
+ "checked_at": "2026-10-01T20:26:30.994Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 10973,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 10973,
+   "page_no": 32,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 10973,
+   "page_no": 79,
+   "why": [
+    "cited",
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 10973,
+   "page_no": 87,
+   "why": [
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 10973,
+   "page_no": 131,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 10973,
+   "page_no": 164,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 10973,
+   "page_no": 165,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 10973,
+   "page_no": 178,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 10973,
+   "page_no": 180,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 10973,
+   "page_no": 184,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P11",
+   "file_id": 10973,
+   "page_no": 186,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P12",
+   "file_id": 10973,
+   "page_no": 191,
+   "why": [
+    "cited"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": null,
+  "selling_agent": {
+   "value": "KELLER WILLIAMS NYC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "KELLER WILLIAMS NYC\n99 PARK A VENUE, 10 th FL"
+  },
+  "managing_agent": {
+   "value": "Pinnacle Managing Co., LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P3",
+   "quote": "the Condominium will enter into a Management Agreement with Pinnacle\nManaging Co., LLC (the \"Managing Agent\")"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "Pryor Cashman LLP",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P7",
+   "quote": "the Attorney's Income Tax Opinion prepared by Pryor Cashman LLP, counsel to Sponsor"
+  },
+  "sponsor": {
+   "value": "64 Avenue LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "Sponsor is 64 Avenue LLC, a New York limited liability company"
+  },
+  "sponsor_address": {
+   "value": "One Penn Plaza, Suite 4000, New York, New York 10119",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "having an office at One Penn\nPlaza, Suite 4000, New York, New York 10119"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 4877,
+   "field": "managing_agent",
+   "page_no": 79,
+   "score": 1
+  },
+  {
+   "id": 4878,
+   "field": "selling_agent",
+   "page_no": 186,
+   "score": 1
+  },
+  {
+   "id": 4879,
+   "field": "reserve_fund",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 4880,
+   "field": "working_capital",
+   "page_no": 178,
+   "score": 1
+  },
+  {
+   "id": 5881,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 11369,
+   "field": "architect",
+   "page_no": 191,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 4877,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "Pinnacle Managing Co., LLC",
+   "page_no": 79,
+   "file_id": 10973,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P3",
+    "quote": "Pinnacle Managing Co., LLC (the \"Managing Agent\")...annual fee of $46,000",
+    "why": "Matches name and fee"
+   },
+   "blind": {
+    "value": "Pinnacle Managing Co., LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P3",
+    "quote": "the Condominium will enter into a Management Agreement with Pinnacle\nManaging Co., LLC (the \"Managing Agent\")"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 4878,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "Keller Williams NYC",
+   "page_no": 186,
+   "file_id": 10973,
+   "check": {
+    "n": 2,
+    "verdict": "wrong",
+    "fix": "P11 is Identity of Parties, not relevant citation issue; name itself matches 'Keller Williams NYC'",
+    "page": "P11",
+    "quote": "The Selling Agent is Keller Williams NYC",
+    "why": "Name correct but marking as wrong due to citation check — actually re-evaluate"
+   },
+   "blind": {
+    "value": "KELLER WILLIAMS NYC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "KELLER WILLIAMS NYC\n99 PARK A VENUE, 10 th FL"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "B"
+    ],
+    "close": [
+     "A"
+    ],
+    "printed": "Keller Williams NYC",
+    "page": "P11",
+    "quote": "The Selling Agent is Keller Williams NYC, having an office at 99 Park Avenue",
+    "sure": true,
+    "why": "P11 and the cover page (P1) both name Keller Williams NYC as selling agent. A reaches the same name but is commentary, not a clean value."
+   },
+   "candidates": [
+    "P11 is Identity of Parties, not relevant citation issue; name itself matches 'Keller Williams NYC'",
+    "Keller Williams NYC"
+   ],
+   "stored_letter": "B",
+   "printed": "Keller Williams NYC",
+   "printed_page": {
+    "file_id": 10973,
+    "page_no": 186
+   },
+   "printed_quote": "The Selling Agent is Keller Williams NYC, having an office at 99 Park Avenue",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 4879,
+   "field": "reserve_fund",
+   "column": "value_text",
+   "stored": "Estimated minimum sponsor-funded reserve under NYC Reserve Fund Law (conversion)",
+   "page_no": 1,
+   "file_id": 10973,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "RESERVE FUND** ... $ 1,774,347",
+    "why": "Matches amount and description of estimate under NYC reserve fund law"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 4880,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 178,
+   "file_id": 10973,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "Such contribution shall be in an amount equal to 2 months' Common Charges",
+    "why": "Matches exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5881,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "One Penn Plaza, Suite 4000, New York, New York 10119",
+   "page_no": 1,
+   "file_id": 10973,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "ONE PENN PLAZA, SUITE 4000, NEW YORK, NEW YORK 10119",
+    "why": "Matches sponsor address"
+   },
+   "blind": {
+    "value": "One Penn Plaza, Suite 4000, New York, New York 10119",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "having an office at One Penn\nPlaza, Suite 4000, New York, New York 10119"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11369,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Jean Lin, P.E. of Lingineering Consulting (engineer)",
+   "page_no": 191,
+   "file_id": 10973,
+   "check": {
+    "n": 6,
+    "verdict": "wrong",
+    "fix": "Jean Lin, PE, is an engineer (not architect), engineering firm Lingineering Consulting",
+    "page": "P12",
+    "quote": "Sponsor adopts the reports prepared by the engineering firm of Jean Lin, PE, Lingineering Consulting",
+    "why": "Claim labels as 'architect' but pages identify as engineer/engineering firm; role label is wrong even though parenthetical says engineer"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "Jean Lin, PE, Lingineering Consulting",
+    "page": "P12",
+    "quote": "Sponsor adopts the reports prepared by the engineering firm of Jean Lin, PE, Lingineering Consulting",
+    "sure": true,
+    "why": "The Description of Property was prepared by an engineering firm, not an architect: Jean Lin, PE, of Lingineering Consulting. Both candidates name that party and describe the role as engineer."
+   },
+   "candidates": [
+    "Jean Lin, PE, is an engineer (not architect), engineering firm Lingineering Consulting",
+    "Jean Lin, P.E. of Lingineering Consulting (engineer)"
+   ],
+   "stored_letter": "B",
+   "printed": "Jean Lin, PE, Lingineering Consulting",
+   "printed_page": {
+    "file_id": 10973,
+    "page_no": 191
+   },
+   "printed_quote": "Sponsor adopts the reports prepared by the engineering firm of Jean Lin, PE, Lingineering Consulting",
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1315,
+   "field": "principal",
+   "stored": {
+    "name": "The Zarasai Group LLC",
+    "kind": "entity",
+    "role": "sole member",
+    "parent_entity": null
+   },
+   "page_no": 184,
+   "file_id": 10973,
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P10",
+    "quote": "The sole member of Sponsor is The Zarasai Group LLC",
+    "why": "Matches entity and role"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1316,
+   "field": "principal",
+   "stored": {
+    "name": "The Zarasai Group Ltd.",
+    "kind": "entity",
+    "role": "managing member",
+    "parent_entity": "The Zarasai Group LLC"
+   },
+   "page_no": 184,
+   "file_id": 10973,
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P10",
+    "quote": "The managing member of Zarasai Group is The Zarasai Group Ltd.",
+    "why": "Matches entity, role, and parent"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1317,
+   "field": "principal",
+   "stored": {
+    "name": "Joel Wiener",
+    "kind": "person",
+    "role": "President and Chairman of the Board; >10% shareholder",
+    "parent_entity": "The Zarasai Group Ltd."
+   },
+   "page_no": 184,
+   "file_id": 10973,
+   "check": {
+    "n": 9,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P10",
+    "quote": "JW, the President and Chairman of the Board of Zarasai Ltd...Joel Wiener (\"JW\") and Sherry Wiener each own in excess of 10% of the shares of Zarasai Ltd",
+    "why": "Matches role and shareholding"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1318,
+   "field": "principal",
+   "stored": {
+    "name": "Sherry Wiener",
+    "kind": "person",
+    "role": ">10% shareholder",
+    "parent_entity": "The Zarasai Group Ltd."
+   },
+   "page_no": 184,
+   "file_id": 10973,
+   "check": {
+    "n": 10,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P10",
+    "quote": "Joel Wiener (\"JW\") and Sherry Wiener each own in excess of 10% of the shares of Zarasai Ltd",
+    "why": "Matches shareholding claim"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD190025",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "64 AVENUE LLC",
+   "check": {
+    "n": 11,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "SPONSOR\n64 AVENUE LLC",
+    "why": "Matches cover page sponsor name"
+   },
+   "blind": {
+    "value": "64 Avenue LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "Sponsor is 64 Avenue LLC, a New York limited liability company"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD190025",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "PRYOR CASHMAN LLP",
+   "check": {
+    "n": 12,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P7",
+    "quote": "the Attorney's Income Tax Opinion prepared by Pryor Cashman LLP, counsel to Sponsor",
+    "why": "Matches identification as Sponsor's counsel"
+   },
+   "blind": {
+    "value": "Pryor Cashman LLP",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P7",
+    "quote": "the Attorney's Income Tax Opinion prepared by Pryor Cashman LLP, counsel to Sponsor"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 55520
+}

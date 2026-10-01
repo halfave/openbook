@@ -1,0 +1,257 @@
+{
+ "plan_id": "CD120125",
+ "checked_at": "2026-10-01T18:53:58.377Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 4240,
+   "page_no": 1,
+   "why": [
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 4240,
+   "page_no": 4,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 4240,
+   "page_no": 17,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 4240,
+   "page_no": 23,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 4240,
+   "page_no": 36,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 4240,
+   "page_no": 101,
+   "why": [
+    "tax_consultant",
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 4240,
+   "page_no": 104,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 4240,
+   "page_no": 108,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 4240,
+   "page_no": 110,
+   "why": [
+    "selling_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Christopher V. Papa, R.A.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "prepared by Christopher V. Papa, R.A., with office at 248-52 Northern Blvd., Suite 2H, Little Neck, N.Y. 11362"
+  },
+  "selling_agent": {
+   "value": "SING WAH REALTY LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "The Sponsor will also act as the Selling Agent for the Condominium."
+  },
+  "managing_agent": {
+   "value": "Sing Wah Realty LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "The Board of Managers will enter into a Management Agreement with the Sponsor, Sing Wah Realty LLC (\"the Managing Agent\")."
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "Albert M. Swift, Esq. of Swift & Associates, PLLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [
+    "Fong & Wong, P.C."
+   ],
+   "page": "P9",
+   "quote": "Albert M. Swift, Esq. of Swift & Associates, PLLC prepared the plan, the declaration, the By-Laws and the forms of Purchase Agreement"
+  },
+  "sponsor": {
+   "value": "SING WAH REALTY LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "Sponsor & Selling Agent: SING WAH REALTY LLC"
+  },
+  "sponsor_address": {
+   "value": "189-31 44th Avenue, Flushing, N.Y. 11358",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "189-31 44th Avenue \nFlushing, N.Y. 11358"
+  }
+ },
+ "quote_checks": [],
+ "results": [
+  {
+   "table": "plans",
+   "id": "CD120125",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "SING WAH REALTY LLC",
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "SING WAH REALTY LLC",
+    "why": "Matches cover page sponsor name exactly."
+   },
+   "blind": {
+    "value": "SING WAH REALTY LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "Sponsor & Selling Agent: SING WAH REALTY LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD120125",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "S. SETH YAVNE ESQ",
+   "check": {
+    "n": 2,
+    "verdict": "wrong",
+    "fix": "Albert M. Swift, Esq.",
+    "page": "P9",
+    "quote": "Albert M. Swift, Esq. of Swift & Associates, PLLC prepared the plan, the declaration, the By-Laws",
+    "why": "Pages name Albert M. Swift as Sponsor's counsel; no mention of S. Seth Yavne."
+   },
+   "blind": {
+    "value": "Albert M. Swift, Esq. of Swift & Associates, PLLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [
+     "Fong & Wong, P.C."
+    ],
+    "page": "P9",
+    "quote": "Albert M. Swift, Esq. of Swift & Associates, PLLC prepared the plan, the declaration, the By-Laws and the forms of Purchase Agreement"
+   },
+   "blind_agrees": false,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "Albert M. Swift, Esq. of Swift & Associates, PLLC",
+    "page": "P9",
+    "quote": "Albert M. Swift, Esq. of Swift & Associates, PLLC prepared the plan, the declaration, the By-Laws",
+    "sure": false,
+    "why": "P9 says Swift & Associates prepared the plan documents and gave the tax opinion. The start of that paragraph, which likely names the counsel role, is cut off. P9 also says the Sponsor 'will be represented by Fong & Wong, P.C.' for contract and closing, so the counsel role is not stated outright. 'S. Seth Yavne' does not appear on these pages."
+   },
+   "candidates": [
+    "Albert M. Swift, Esq. of Swift & Associates, PLLC",
+    "Albert M. Swift, Esq.",
+    "S. SETH YAVNE ESQ"
+   ],
+   "stored_letter": "C",
+   "printed": "Albert M. Swift, Esq. of Swift & Associates, PLLC",
+   "printed_page": {
+    "file_id": 4240,
+    "page_no": 110
+   },
+   "printed_quote": "Albert M. Swift, Esq. of Swift & Associates, PLLC prepared the plan, the declaration, the By-Laws",
+   "verdict": "unresolved"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 4017,
+   "field": "principal",
+   "method": "ag-site",
+   "stored": {
+    "name": "Xing Hua Lin",
+    "kind": "person",
+    "role": "Member",
+    "parent_entity": null
+   },
+   "quote": null,
+   "verdict": "not_from_plan"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 4018,
+   "field": "principal",
+   "method": "ag-site",
+   "stored": {
+    "name": "For Jiao Lin",
+    "kind": "person",
+    "role": null,
+    "parent_entity": null
+   },
+   "quote": null,
+   "verdict": "not_from_plan"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 4019,
+   "field": "principal",
+   "method": "ag-site",
+   "stored": {
+    "name": "For Jiao Lin",
+    "kind": "person",
+    "role": "Member",
+    "parent_entity": null
+   },
+   "quote": null,
+   "verdict": "not_from_plan"
+  }
+ ],
+ "calls": 3,
+ "tokens": 31280
+}

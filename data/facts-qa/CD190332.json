@@ -1,0 +1,511 @@
+{
+ "plan_id": "CD190332",
+ "checked_at": "2026-10-01T20:57:18.613Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 10118,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 10118,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 10118,
+   "page_no": 17,
+   "why": [
+    "cited",
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 10118,
+   "page_no": 38,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 10118,
+   "page_no": 62,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 10118,
+   "page_no": 121,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 10118,
+   "page_no": 135,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 10118,
+   "page_no": 136,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 10118,
+   "page_no": 146,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 10118,
+   "page_no": 260,
+   "why": [
+    "managing_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "DEMERARA ENGINEERING, PLLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "DEMERARA ENGINEERING, PLLC ... ENGINEER'S DESCRIPTION OF PROPERTY"
+  },
+  "selling_agent": {
+   "value": "149 Quincy Development LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+  },
+  "managing_agent": {
+   "value": "149 Quincy Development LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "The Sponsor shall act as Managing Agent for the first year of the condominium's operation."
+  },
+  "tax_consultant": {
+   "value": "Metropolitan Realty Exemptions, Inc.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P4",
+   "quote": "based on the opinion letter, dated June 12, 2019, by Metropolitan Realty Exemptions, Inc., the Sponsor's tax expert"
+  },
+  "sponsor_attorney": {
+   "value": "The Law Office of Jay Lichtman, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "ATTORNEYS FOR SPONSOR: THE LAW OFFICE OF JAY LICHTMAN, P.C."
+  },
+  "sponsor": {
+   "value": "149 Quincy Development LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SPONSOR & SELLING AGENT: 149 QUINCY DEVELOPMENT LLC"
+  },
+  "sponsor_address": {
+   "value": "1803 Atlantic Avenue, Brooklyn, New York 11233",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "1803 ATLANTIC AVENUE BROOKLYN, NEW YORK 11233"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 5849,
+   "field": "selling_agent",
+   "page_no": 136,
+   "score": 1
+  },
+  {
+   "id": 5850,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 5851,
+   "field": "working_capital",
+   "page_no": 135,
+   "score": 1
+  },
+  {
+   "id": 11069,
+   "field": "managing_agent",
+   "page_no": 17,
+   "score": 1
+  },
+  {
+   "id": 11393,
+   "field": "architect",
+   "page_no": 146,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 5849,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "149 Quincy Development LLC (Sponsor)",
+   "page_no": 136,
+   "file_id": 10118,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "Sponsor will not be using a Selling Agent; Sponsor will act as selling agent",
+    "page": "P8",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+    "why": "P8 states Sponsor acts as its own selling agent, not that '149 Quincy Development LLC' holds a distinct 'Selling Agent' role separate from Sponsor; P1 also lists SPONSOR & SELLING AGENT as the same entity, so calling it a parenthetical '(Sponsor)' role distinct from selling agent is misleading - actually this matches. Reconsider."
+   },
+   "blind": {
+    "value": "149 Quincy Development LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent (149 Quincy Development LLC)",
+    "page": "P8",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent",
+    "sure": true,
+    "why": "P8 says the Sponsor acts as selling agent. The P1 cover lists 'SPONSOR & SELLING AGENT: 149 QUINCY DEVELOPMENT LLC', so all three candidates match."
+   },
+   "candidates": [
+    "Sponsor will not be using a Selling Agent; Sponsor will act as selling agent",
+    "149 Quincy Development LLC (Sponsor)",
+    "149 Quincy Development LLC (the Sponsor itself)"
+   ],
+   "stored_letter": "B",
+   "printed": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent (149 Quincy Development LLC)",
+   "printed_page": {
+    "file_id": 10118,
+    "page_no": 136
+   },
+   "printed_quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5850,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "1803 Atlantic Avenue, Brooklyn, New York 11233",
+   "page_no": 1,
+   "file_id": 10118,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "1803 ATLANTIC AVENUE BROOKLYN, NEW YORK 11233",
+    "why": "Matches cover page address."
+   },
+   "blind": {
+    "value": "1803 Atlantic Avenue, Brooklyn, New York 11233",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "1803 ATLANTIC AVENUE BROOKLYN, NEW YORK 11233"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5851,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 135,
+   "file_id": 10118,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P7",
+    "quote": "an initial capital payment equal to two (2) months' estimated Common Charges",
+    "why": "Matches."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11069,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "Self-managed",
+   "page_no": 17,
+   "file_id": 10118,
+   "check": {
+    "n": 4,
+    "verdict": "wrong",
+    "fix": "The Sponsor shall act as Managing Agent for the first year of the condominium's operation",
+    "page": "P10",
+    "quote": "The Sponsor shall act as Managing Agent for the first year of the condominium's operation.",
+    "why": "P10 states Sponsor is Managing Agent for first year, not self-managed by the board; P3 only discusses what happens if no outside agent is retained, not a definitive 'self-managed' status."
+   },
+   "blind": {
+    "value": "149 Quincy Development LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "The Sponsor shall act as Managing Agent for the first year of the condominium's operation."
+   },
+   "blind_agrees": false,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "The Sponsor shall act as Managing Agent for the first year of the condominium's operation",
+    "page": "P10",
+    "quote": "The Sponsor shall act as Managing Agent for the first year of the condominium's operation",
+    "sure": true,
+    "why": "The By-Laws (P10) name the Sponsor as Managing Agent for the first year. P3 says the budget has no management fee and the Board will be responsible for managing, which supports 'Self-managed'. For the first year specifically, though, P10 names the Sponsor, so A does not answer that."
+   },
+   "candidates": [
+    "Self-managed",
+    "The Sponsor shall act as Managing Agent for the first year of the condominium's operation",
+    "149 Quincy Development LLC (the Sponsor itself)"
+   ],
+   "stored_letter": "A",
+   "printed": "The Sponsor shall act as Managing Agent for the first year of the condominium's operation",
+   "printed_page": {
+    "file_id": 10118,
+    "page_no": 260
+   },
+   "printed_quote": "The Sponsor shall act as Managing Agent for the first year of the condominium's operation",
+   "verdict": "wrong"
+  },
+  {
+   "table": "facts",
+   "id": 11393,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Demerara Engineering, PLLC (engineer)",
+   "page_no": 146,
+   "file_id": 10118,
+   "check": {
+    "n": 5,
+    "verdict": "wrong",
+    "fix": "Demerara Engineering, PLLC prepared the Engineer's Description of Property; no architect is named on this page",
+    "page": "P9",
+    "quote": "DEMERARA ENGINEERING, PLLC ... ENGINEER'S DESCRIPTION OF PROPERTY",
+    "why": "Demerara is identified as the engineer who prepared the Engineer's Description of Property, not as the architect; claim mislabels the role but the parenthetical '(engineer)' actually matches the page's label, so this is correct as engineer."
+   },
+   "blind": {
+    "value": "DEMERARA ENGINEERING, PLLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "DEMERARA ENGINEERING, PLLC ... ENGINEER'S DESCRIPTION OF PROPERTY"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 3,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "Demerara Engineering, PLLC",
+    "page": "P9",
+    "quote": "DEMERARA ENGINEERING, PLLC ... ENGINEER'S DESCRIPTION OF PROPERTY",
+    "sure": true,
+    "why": "The description of property (page AR-1) was prepared by Demerara Engineering, PLLC, an engineering firm. No separate architect is named on these pages."
+   },
+   "candidates": [
+    "Demerara Engineering, PLLC prepared the Engineer's Description of Property; no architect is named on this page",
+    "Demerara Engineering, PLLC (engineer)",
+    "DEMERARA ENGINEERING, PLLC"
+   ],
+   "stored_letter": "B",
+   "printed": "Demerara Engineering, PLLC",
+   "printed_page": {
+    "file_id": 10118,
+    "page_no": 146
+   },
+   "printed_quote": "DEMERARA ENGINEERING, PLLC ... ENGINEER'S DESCRIPTION OF PROPERTY",
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 598,
+   "field": "principal",
+   "stored": {
+    "name": "Rotem Cohen",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 136,
+   "file_id": 10118,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "The Principals of the Sponsor, Rotem Cohen, Raanan Noy and Yehuda Biniamin",
+    "why": "Matches."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 599,
+   "field": "principal",
+   "stored": {
+    "name": "Raanan Noy",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 136,
+   "file_id": 10118,
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "The Principals of the Sponsor, Rotem Cohen, Raanan Noy and Yehuda Biniamin",
+    "why": "Matches."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 600,
+   "field": "principal",
+   "stored": {
+    "name": "Yehuda Biniamin",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 136,
+   "file_id": 10118,
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "The Principals of the Sponsor, Rotem Cohen, Raanan Noy and Yehuda Biniamin",
+    "why": "Matches."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD190332",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "149 QUINCY DEVELOPMENT LLC",
+   "check": {
+    "n": 9,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "149 QUINCY DEVELOPMENT LLC",
+    "why": "Matches cover page."
+   },
+   "blind": {
+    "value": "149 Quincy Development LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "SPONSOR & SELLING AGENT: 149 QUINCY DEVELOPMENT LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD190332",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+   "check": {
+    "n": 10,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+    "why": "Matches cover page."
+   },
+   "blind": {
+    "value": "The Law Office of Jay Lichtman, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "ATTORNEYS FOR SPONSOR: THE LAW OFFICE OF JAY LICHTMAN, P.C."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 42018
+}

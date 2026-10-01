@@ -1,0 +1,393 @@
+{
+ "plan_id": "CD160013",
+ "checked_at": "2026-10-01T19:21:51.250Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 1122,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 1122,
+   "page_no": 6,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 1122,
+   "page_no": 26,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 1122,
+   "page_no": 29,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 1122,
+   "page_no": 47,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 1122,
+   "page_no": 91,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 1122,
+   "page_no": 101,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 1122,
+   "page_no": 104,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 1122,
+   "page_no": 152,
+   "why": [
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 1122,
+   "page_no": 208,
+   "why": [
+    "managing_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Adam Kushner, RA, Kushner Studios",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "Adam Kushner , RA, a registered architect, of Kushner Studios 390 Broadway 4 th Floor New York, NY has prepared the Architect's Report and the Floor Plans"
+  },
+  "selling_agent": {
+   "value": "Decatur Opportunity LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SPONSOR AND SELLING AGENT: D ECA TUR O PPORTUNITY LLC"
+  },
+  "managing_agent": {
+   "value": null,
+   "by_sponsor": false,
+   "by_board": true,
+   "others": [],
+   "page": "P4",
+   "quote": "The unit owners will be responsible for managing the cond ominium, including, among other things : writing checks, payment of bills"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "Jeffrey Zwick & Associates, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "ATTORNEYS FOR SPONSOR: J EFFREY Z WICK & A SSOCIATES , P.C. 266 B ROADWAY , S UITE 403 B ROOKLYN , N EW Y ORK 11211"
+  },
+  "sponsor": {
+   "value": "Decatur Opportunity LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P7",
+   "quote": "The Sponsor of this offering plan is Decatur Opportunity LLC, a limited liability company (“Sponsor”) with an address at 308 Malcolm X Blvd Floor, Brooklyn, NY 11233"
+  },
+  "sponsor_address": {
+   "value": "308 Malcolm X Blvd, Brooklyn, NY 11233",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P7",
+   "quote": "with an address at 308 Malcolm X Blvd Floor, Brooklyn, NY 11233"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 350,
+   "field": "selling_agent",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 351,
+   "field": "working_capital",
+   "page_no": 101,
+   "score": 1
+  },
+  {
+   "id": 5838,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 11289,
+   "field": "architect",
+   "page_no": 104,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 350,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "Decatur Opportunity LLC",
+   "page_no": 1,
+   "file_id": 1122,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "Decatur Opportunity LLC is the Sponsor AND Selling Agent; no separate selling agent named",
+    "page": "P1",
+    "quote": "SPONSOR AND SELLING AGENT: DECATUR OPPORTUNITY LLC",
+    "why": "P1 lists Decatur Opportunity LLC under 'SPONSOR AND SELLING AGENT' as one combined role, which supports the name but the claim's framing matches the text; however this is actually correct since the entity does serve as selling agent too"
+   },
+   "blind": {
+    "value": "Decatur Opportunity LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "SPONSOR AND SELLING AGENT: D ECA TUR O PPORTUNITY LLC"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "Decatur Opportunity LLC (Sponsor and Selling Agent)",
+    "page": "P1",
+    "quote": "SPONSOR AND SELLING AGENT: D ECA TUR O PPORTUNITY LLC",
+    "sure": true,
+    "why": "P1 names Decatur Opportunity LLC as both Sponsor and Selling Agent. P7 says the same ('Sponsor and Selling Agent'). No separate selling agent is named."
+   },
+   "candidates": [
+    "Decatur Opportunity LLC is the Sponsor AND Selling Agent; no separate selling agent named",
+    "Decatur Opportunity LLC (the Sponsor itself)",
+    "Decatur Opportunity LLC"
+   ],
+   "stored_letter": "C",
+   "printed": "Decatur Opportunity LLC (Sponsor and Selling Agent)",
+   "printed_page": {
+    "file_id": 1122,
+    "page_no": 1
+   },
+   "printed_quote": "SPONSOR AND SELLING AGENT: D ECA TUR O PPORTUNITY LLC",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 351,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 101,
+   "file_id": 1122,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P7",
+    "quote": "an \"Initial Capital Payment\" equal to two (2) months' estimated common charges for each unit",
+    "why": "matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5838,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "308 Malcolm X Blvd, Brooklyn, NY 11233",
+   "page_no": 1,
+   "file_id": 1122,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "308 MALCOLM X BLVD BROOKLYN, NY 11233",
+    "why": "matches"
+   },
+   "blind": {
+    "value": "308 Malcolm X Blvd, Brooklyn, NY 11233",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P7",
+    "quote": "with an address at 308 Malcolm X Blvd Floor, Brooklyn, NY 11233"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11289,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Adam Kushner, R.A. of Kushner Studios",
+   "page_no": 104,
+   "file_id": 1122,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "Adam Kushner, RA, a registered architect, of Kushner Studios",
+    "why": "matches"
+   },
+   "blind": {
+    "value": "Adam Kushner, RA, Kushner Studios",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "Adam Kushner , RA, a registered architect, of Kushner Studios 390 Broadway 4 th Floor New York, NY has prepared the Architect's Report and the Floor Plans"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 362,
+   "field": "principal",
+   "stored": {
+    "name": "Boaz Gilad",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 101,
+   "file_id": 1122,
+   "check": {
+    "n": 5,
+    "verdict": "wrong",
+    "fix": "P5 cited but Boaz Gilad as principal appears on P7, not P5-equivalent; claim cites P7 which does state this",
+    "page": "P7",
+    "quote": "The principal of the Sponsor is Boaz Gilad",
+    "why": "actually matches P7 as cited"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "A"
+    ],
+    "close": [],
+    "printed": "Boaz Gilad — principal of the Sponsor (Decatur Opportunity LLC)",
+    "page": "P7",
+    "quote": "The principal of the Sponsor i s Boaz Gilad",
+    "sure": true,
+    "why": "P7 names Boaz Gilad as principal of the Sponsor, Decatur Opportunity LLC. Candidate B is a comment about citations, not a description of the principal."
+   },
+   "candidates": [
+    "Boaz Gilad — principal",
+    "P5 cited but Boaz Gilad as principal appears on P7, not P5-equivalent; claim cites P7 which does state this"
+   ],
+   "stored_letter": "A",
+   "printed": "Boaz Gilad — principal of the Sponsor (Decatur Opportunity LLC)",
+   "printed_page": {
+    "file_id": 1122,
+    "page_no": 101
+   },
+   "printed_quote": "The principal of the Sponsor i s Boaz Gilad",
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD160013",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "DECATUR OPPORTUNITY LLC",
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "DECATUR OPPORTUNITY LLC",
+    "why": "matches cover page"
+   },
+   "blind": {
+    "value": "Decatur Opportunity LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P7",
+    "quote": "The Sponsor of this offering plan is Decatur Opportunity LLC, a limited liability company (“Sponsor”) with an address at 308 Malcolm X Blvd Floor, Brooklyn, NY 11233"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD160013",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "JEFFREY ZWICK & ASSOCIATES, P.C.",
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "JEFFREY ZWICK & ASSOCIATES, P.C.",
+    "why": "matches cover page"
+   },
+   "blind": {
+    "value": "Jeffrey Zwick & Associates, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "ATTORNEYS FOR SPONSOR: J EFFREY Z WICK & A SSOCIATES , P.C. 266 B ROADWAY , S UITE 403 B ROOKLYN , N EW Y ORK 11211"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 42687
+}

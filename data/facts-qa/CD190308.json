@@ -1,0 +1,516 @@
+{
+ "plan_id": "CD190308",
+ "checked_at": "2026-10-01T20:54:48.137Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 10315,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 10315,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 10315,
+   "page_no": 3,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 10315,
+   "page_no": 6,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 10315,
+   "page_no": 27,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 10315,
+   "page_no": 41,
+   "why": [
+    "cited",
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 10315,
+   "page_no": 99,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 10315,
+   "page_no": 108,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 10315,
+   "page_no": 109,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 10315,
+   "page_no": 110,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P11",
+   "file_id": 10315,
+   "page_no": 112,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Gerald J. Caliendo, Architect, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "The architect is Gerald J. Caliendo, of Gerald J. Caliendo, Architect, P.C."
+  },
+  "selling_agent": {
+   "value": "Best Luck Realty LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P11",
+   "quote": "The Selling Agent is the Sponsor Best Luck Realty LLC."
+  },
+  "managing_agent": {
+   "value": "Best Luck Realty LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "The Sponsor, Best Luck Realty LLC, will be the Management Company to manage the building"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": null,
+  "sponsor": {
+   "value": "Best Luck Realty LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "Best Luck Realty LLC, the Sponsor, is a New York Limited Liability Company"
+  },
+  "sponsor_address": {
+   "value": "10 Monroe Street, New York, New York 10002, APT 5H",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "The principal office of Sponsor is 10 Monroe Street, New York, New York 10002, APT 5H."
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 5137,
+   "field": "tax_program",
+   "page_no": 6,
+   "score": 1
+  },
+  {
+   "id": 5138,
+   "field": "managing_agent",
+   "page_no": 41,
+   "score": 1
+  },
+  {
+   "id": 5139,
+   "field": "selling_agent",
+   "page_no": 112,
+   "score": 1
+  },
+  {
+   "id": 5140,
+   "field": "architect",
+   "page_no": 110,
+   "score": 1
+  },
+  {
+   "id": 5141,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 5142,
+   "field": "working_capital",
+   "page_no": 108,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 5137,
+   "field": "tax_program",
+   "column": "value_text",
+   "stored": "421-a",
+   "page_no": 6,
+   "file_id": 10315,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P4",
+    "quote": "applying for 421-a real estate tax benefits",
+    "why": "Matches plan text"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5138,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "Best Luck Realty LLC (Sponsor)",
+   "page_no": 41,
+   "file_id": 10315,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "Best Luck Realty LLC, will be the Management Company ... $20,000.00 per year",
+    "why": "Matches name, role, and figure"
+   },
+   "blind": {
+    "value": "Best Luck Realty LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "The Sponsor, Best Luck Realty LLC, will be the Management Company to manage the building"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5139,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "Best Luck Realty LLC (Sponsor)",
+   "page_no": 112,
+   "file_id": 10315,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P11",
+    "quote": "The Selling Agent is the Sponsor Best Luck Realty LLC",
+    "why": "Matches"
+   },
+   "blind": {
+    "value": "Best Luck Realty LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P11",
+    "quote": "The Selling Agent is the Sponsor Best Luck Realty LLC."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5140,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Gerald J. Caliendo, Architect, P.C.",
+   "page_no": 110,
+   "file_id": 10315,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P10",
+    "quote": "The architect is Gerald J. Caliendo, of Gerald J. Caliendo, Architect, P.C.",
+    "why": "Matches"
+   },
+   "blind": {
+    "value": "Gerald J. Caliendo, Architect, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "The architect is Gerald J. Caliendo, of Gerald J. Caliendo, Architect, P.C."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5141,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "10 Monroe Street, #5H, New York, NY 10002",
+   "page_no": 1,
+   "file_id": 10315,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "10 Monroe Street, #5H New York, NY 10002",
+    "why": "Matches cover page"
+   },
+   "blind": {
+    "value": "10 Monroe Street, New York, New York 10002, APT 5H",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "The principal office of Sponsor is 10 Monroe Street, New York, New York 10002, APT 5H."
+   },
+   "blind_agrees": false,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "10 Monroe Street, #5H, New York, NY 10002",
+    "page": "P1",
+    "quote": "Best Luck Realty LLC. 10 Monroe Street, #5H New York, NY 10002",
+    "sure": true,
+    "why": "P1 prints B's form. P9 and P10 print A's form: '10 Monroe Street, New York, New York 10002, APT 5H'. Both are the same address as printed."
+   },
+   "candidates": [
+    "10 Monroe Street, New York, New York 10002, APT 5H",
+    "10 Monroe Street, #5H, New York, NY 10002"
+   ],
+   "stored_letter": "B",
+   "printed": "10 Monroe Street, #5H, New York, NY 10002",
+   "printed_page": {
+    "file_id": 10315,
+    "page_no": 1
+   },
+   "printed_quote": "Best Luck Realty LLC. 10 Monroe Street, #5H New York, NY 10002",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5142,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "1 month's common charges at closing",
+   "page_no": 108,
+   "file_id": 10315,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "such Purchaser shall pay a sum equal to one month's common charges to the Board of Managers for its working capital",
+    "why": "Matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1512,
+   "field": "principal",
+   "stored": {
+    "name": "Xing Hua Lin",
+    "kind": "person",
+    "role": "President, Managing Member, Member",
+    "parent_entity": null
+   },
+   "page_no": 110,
+   "file_id": 10315,
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P10",
+    "quote": "Xing Hua Lin is the President, a Managing Member, and Member of the Sponsor.",
+    "why": "Matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1513,
+   "field": "principal",
+   "stored": {
+    "name": "Dong Hua Chen",
+    "kind": "person",
+    "role": "Secretary and Managing Member",
+    "parent_entity": null
+   },
+   "page_no": 110,
+   "file_id": 10315,
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P10",
+    "quote": "Dong Hua Chen is the Secretary and Managing member of the Sponsor.",
+    "why": "Matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1514,
+   "field": "principal",
+   "stored": {
+    "name": "Pik Wan Lam",
+    "kind": "person",
+    "role": "member",
+    "parent_entity": null
+   },
+   "page_no": 110,
+   "file_id": 10315,
+   "check": {
+    "n": 9,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P10",
+    "quote": "Pik Wan Lam is a member of the Sponsor.",
+    "why": "Matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1515,
+   "field": "principal",
+   "stored": {
+    "name": "Qiang Chen",
+    "kind": "person",
+    "role": "Treasurer and Managing Member",
+    "parent_entity": null
+   },
+   "page_no": 110,
+   "file_id": 10315,
+   "check": {
+    "n": 10,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P10",
+    "quote": "Qiang Chen is the Treasurer and Managing Member of the Sponsor.",
+    "why": "Matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD190308",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "BEST LUCK REALTY LLC",
+   "check": {
+    "n": 11,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "Best Luck Realty LLC.",
+    "why": "Matches cover page sponsor name"
+   },
+   "blind": {
+    "value": "Best Luck Realty LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "Best Luck Realty LLC, the Sponsor, is a New York Limited Liability Company"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD190308",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "LAW OFFICES OF WILLIAM X. ZOU",
+   "check": {
+    "n": 12,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": null,
+    "quote": null,
+    "why": "No pages provided mention Sponsor's counsel or a law firm name"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [],
+    "close": [],
+    "printed": null,
+    "page": "P10",
+    "quote": "2. Architect",
+    "sure": false,
+    "why": "None of the pages provided name Sponsor's counsel or mention William X. Zou. Identity of Parties (P10, plan p.106) covers the Sponsor and the Architect. P11 (p.108) starts at item 5, Selling Agent, and then the Engineer. Items 3–4 are on plan p.107 (PDF page 111), which wasn't provided. The cover page (P1) lists only the Sponsor & Selling Agent.",
+    "from_images": true
+   },
+   "candidates": [
+    "LAW OFFICES OF WILLIAM X. ZOU"
+   ],
+   "stored_letter": "A",
+   "printed": null,
+   "printed_page": {
+    "file_id": 10315,
+    "page_no": 110
+   },
+   "printed_quote": "2. Architect",
+   "verdict": "unresolved"
+  }
+ ],
+ "calls": 4,
+ "tokens": 145193
+}

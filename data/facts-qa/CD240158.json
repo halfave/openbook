@@ -1,0 +1,356 @@
+{
+ "plan_id": "CD240158",
+ "checked_at": "2026-10-01T23:43:16.097Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 27459,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 27459,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 27459,
+   "page_no": 21,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 27459,
+   "page_no": 40,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 27459,
+   "page_no": 42,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 27459,
+   "page_no": 79,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 27459,
+   "page_no": 122,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 27459,
+   "page_no": 134,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 27459,
+   "page_no": 136,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": null,
+  "selling_agent": {
+   "value": "4298 LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SPONSOR /SELLING AGENT 4298 LLC"
+  },
+  "managing_agent": {
+   "value": "Board of Managers",
+   "by_sponsor": false,
+   "by_board": true,
+   "others": [],
+   "page": "P3",
+   "quote": "The Board of Managers will manage the Condominium and will be responsible for the collection of Common Charges"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "MORITT HOCK & HAMROFF LLP",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "Moritt Hock & Hamroff LLP, 1407 Broadway , 3 9 th Floor, New York, NY 100 18 , counsel to the Sponsor"
+  },
+  "sponsor": {
+   "value": "4298 LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "The Sponsor is 4298 LLC , a New York limited liability company"
+  },
+  "sponsor_address": {
+   "value": "201 46th Street, 1st Floor, Brooklyn, New York 11220",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "a New York limited liability company with an address at 201 46th Street, 1st Floor, Brooklyn, New York 11220"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 9217,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 9218,
+   "field": "selling_agent",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 9219,
+   "field": "working_capital",
+   "page_no": 134,
+   "score": 1
+  },
+  {
+   "id": 11229,
+   "field": "managing_agent",
+   "page_no": 21,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 9217,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "201 46th Street, 1st Floor, Brooklyn, New York 11220",
+   "page_no": 1,
+   "file_id": 27459,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "201 46 th S treet , 1 st F loor",
+    "why": "Matches Sponsor address on cover page"
+   },
+   "blind": {
+    "value": "201 46th Street, 1st Floor, Brooklyn, New York 11220",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "a New York limited liability company with an address at 201 46th Street, 1st Floor, Brooklyn, New York 11220"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 9218,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "4298 LLC (Sponsor)",
+   "page_no": 1,
+   "file_id": 27459,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "SPONSOR /SELLING AGENT 4298 LLC",
+    "why": "4298 LLC is listed as Sponsor/Selling Agent"
+   },
+   "blind": {
+    "value": "4298 LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "SPONSOR /SELLING AGENT 4298 LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 9219,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 134,
+   "file_id": 27459,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "collect an amount equal to two (2) months Common Charges from each Purchaser",
+    "why": "Matches working capital fund description"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11229,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "Self-managed",
+   "page_no": 21,
+   "file_id": 27459,
+   "check": {
+    "n": 4,
+    "verdict": "wrong",
+    "fix": "The Condominium will not employ any labor; Board of Managers manages it; may self-manage or retain outside management company after Sponsor no longer owns units",
+    "page": "P3",
+    "quote": "Once the Sponsor no longer owns any Units, the Condominium Board may either self - manage the Condominium or retain an outside management company",
+    "why": "Pages do not state the condominium is self-managed for the first year; self-management is only a future option after Sponsor no longer owns units, and no definitive choice is stated"
+   },
+   "blind": {
+    "value": "Board of Managers",
+    "by_sponsor": false,
+    "by_board": true,
+    "others": [],
+    "page": "P3",
+    "quote": "The Board of Managers will manage the Condominium and will be responsible for the collection of Common Charges"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [
+     "C"
+    ],
+    "printed": "The Board of Managers will manage the Condominium (no outside managing agent; once Sponsor no longer owns any Units, the Board may self-manage or retain an outside management company)",
+    "page": "P3",
+    "quote": "The Board of Managers will manage the Condominium and will be responsible for the collection of Common Charges",
+    "sure": true,
+    "why": "P3 names the Board of Managers as manager and mentions no managing agent. A matches the text. B gives the right party. C is close only: the plan uses 'self-manage' for the period after the Sponsor no longer owns Units, not for the first year."
+   },
+   "candidates": [
+    "The Condominium will not employ any labor; Board of Managers manages it; may self-manage or retain outside management company after Sponsor no longer owns units",
+    "the Board / self-managed",
+    "Self-managed"
+   ],
+   "stored_letter": "C",
+   "printed": "The Board of Managers will manage the Condominium (no outside managing agent; once Sponsor no longer owns any Units, the Board may self-manage or retain an outside management company)",
+   "printed_page": {
+    "file_id": 27459,
+    "page_no": 21
+   },
+   "printed_quote": "The Board of Managers will manage the Condominium and will be responsible for the collection of Common Charges",
+   "verdict": "minor"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 2017,
+   "field": "principal",
+   "stored": {
+    "name": "Yousef Lati",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 136,
+   "file_id": 27459,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "The Principal of the Sponsor is Yousef Lati",
+    "why": "Matches text"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD240158",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "4298 LLC",
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "4298 LLC",
+    "why": "Matches cover page"
+   },
+   "blind": {
+    "value": "4298 LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "The Sponsor is 4298 LLC , a New York limited liability company"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD240158",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "MORITT HOCK & HAMROFF, LLP",
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "MORITT HOCK & HAMROFF LLP",
+    "why": "Matches cover page"
+   },
+   "blind": {
+    "value": "MORITT HOCK & HAMROFF LLP",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "Moritt Hock & Hamroff LLP, 1407 Broadway , 3 9 th Floor, New York, NY 100 18 , counsel to the Sponsor"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 40442
+}

@@ -1,0 +1,231 @@
+{
+ "plan_id": "CD020131",
+ "checked_at": "2026-10-01T18:32:39.536Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 527,
+   "page_no": 1,
+   "why": [
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 527,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 527,
+   "page_no": 15,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 527,
+   "page_no": 26,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 527,
+   "page_no": 56,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 527,
+   "page_no": 61,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 527,
+   "page_no": 77,
+   "why": [
+    "architect",
+    "selling_agent",
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 527,
+   "page_no": 126,
+   "why": [
+    "architect"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Douglas Pulaski, principal of Bricolage Designs, A.I.A.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P7",
+   "quote": "The architect, Douglas Pulaski, principal of Bricolage Designs, A.I.A. has offices-at 1333 60th Street"
+  },
+  "selling_agent": {
+   "value": "CONTEMPO DEVELOPMENT LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P7",
+   "quote": "The Sponsor is the selling agent for this plan"
+  },
+  "managing_agent": null,
+  "tax_consultant": {
+   "value": "Moseson and Associates",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P5",
+   "quote": "as set forth in the attached letter from Moseson and Associates"
+  },
+  "sponsor_attorney": {
+   "value": "Harold L. Gruber, Esq.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P7",
+   "quote": "Sponsor has engaged Harold Gruber, Esq., 563 10th Street, Brooklyn, New .York, 11215, to represent him in all matters"
+  },
+  "sponsor": {
+   "value": "CONTEMPO DEVELOPMENT LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SPONSOR AND SELLING AGENT: CONTEMPO DEVELOPMENT LLC"
+  },
+  "sponsor_address": {
+   "value": "7024 18th Avenue, Brooklyn, New York 11204",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "7024 18th·Avenue Brooklyn, New Yo·rk · 11204"
+  }
+ },
+ "quote_checks": [],
+ "results": [
+  {
+   "table": "plans",
+   "id": "CD020131",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "CONTEMPO DEVELOPMENT LLC",
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "CONTEMPO DEVELOPMENT LLC",
+    "why": "Matches cover page sponsor name exactly."
+   },
+   "blind": {
+    "value": "CONTEMPO DEVELOPMENT LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "SPONSOR AND SELLING AGENT: CONTEMPO DEVELOPMENT LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD020131",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "HAROLD GRUBER, P.C.",
+   "check": {
+    "n": 2,
+    "verdict": "minor",
+    "fix": "Harold L. Gruber, Esq.",
+    "page": "P1",
+    "quote": "Harold L. Gruber, Esq.",
+    "why": "Counsel is named Harold L. Gruber, referred to as Esq./attorney, not 'P.C.'; P4 shows 'HAROLD L. GRUBER, P.O.' (likely P.C.) as his firm designation, but the printed name differs from 'Harold Gruber, P.C.'"
+   },
+   "blind": {
+    "value": "Harold L. Gruber, Esq.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P7",
+    "quote": "Sponsor has engaged Harold Gruber, Esq., 563 10th Street, Brooklyn, New .York, 11215, to represent him in all matters"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "Harold Gruber, Esq.",
+    "page": "P7",
+    "quote": "Sponsor has engaged Harold Gruber, Esq., 563 10th Street, Brooklyn",
+    "sure": true,
+    "why": "P7 names Harold Gruber, Esq. as the Sponsor's counsel and says he prepared the plan. P1 prints the preparer as 'Harold L. Gruber, Esq.', so A matches. P4's letterhead reads 'HAROLD L~ GRUBER, P.O.', which is OCR for P.C. B matches the P7 name apart from an entity-type suffix."
+   },
+   "candidates": [
+    "Harold L. Gruber, Esq.",
+    "HAROLD GRUBER, P.C."
+   ],
+   "stored_letter": "B",
+   "printed": "Harold Gruber, Esq.",
+   "printed_page": {
+    "file_id": 527,
+    "page_no": 77
+   },
+   "printed_quote": "Sponsor has engaged Harold Gruber, Esq., 563 10th Street, Brooklyn",
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 3592,
+   "field": "principal",
+   "method": "ag-site",
+   "stored": {
+    "name": "Michael Calabrese",
+    "kind": "person",
+    "role": "Principal",
+    "parent_entity": null
+   },
+   "quote": null,
+   "verdict": "not_from_plan"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 3593,
+   "field": "principal",
+   "method": "ag-site",
+   "stored": {
+    "name": "Salvatore Calabrese",
+    "kind": "person",
+    "role": null,
+    "parent_entity": null
+   },
+   "quote": null,
+   "verdict": "not_from_plan"
+  }
+ ],
+ "calls": 3,
+ "tokens": 25202
+}

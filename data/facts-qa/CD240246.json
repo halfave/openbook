@@ -1,0 +1,220 @@
+{
+ "plan_id": "CD240246",
+ "checked_at": "2026-10-01T23:51:53.391Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 32865,
+   "page_no": 171,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 32865,
+   "page_no": 173,
+   "why": [
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 32865,
+   "page_no": 177,
+   "why": [
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 32865,
+   "page_no": 304,
+   "why": [
+    "cited"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Noel Wong, R.A.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P4",
+   "quote": "the building plans and specifications that were prepared by Noel Wong , R.A . dated March 15, 2024"
+  },
+  "selling_agent": null,
+  "managing_agent": null,
+  "tax_consultant": null,
+  "sponsor_attorney": null,
+  "sponsor": null,
+  "sponsor_address": null
+ },
+ "quote_checks": [
+  {
+   "id": 10250,
+   "field": "working_capital",
+   "page_no": 171,
+   "score": 1
+  },
+  {
+   "id": 10958,
+   "field": "architect",
+   "page_no": 304,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 10250,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' estimated monthly common charges deposited as working capital fund",
+   "page_no": 171,
+   "file_id": 32865,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "two (2) months' estimated monthly common charges",
+    "why": "matches claim"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 10958,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Noel Wong , R.A",
+   "page_no": 304,
+   "file_id": 32865,
+   "check": {
+    "n": 2,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": "P4",
+    "quote": "Noel Wong , R.A . dated March 15, 2024",
+    "why": "Noel Wong is named as preparer of building plans/specifications, but P4 is a certification by an engineer/architect whose own name is not given in the excerpt; the claim conflates the plans' author with the certifying architect/engineer without clear confirmation they are the same role described in the claim"
+   },
+   "blind": {
+    "value": "Noel Wong, R.A.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P4",
+    "quote": "the building plans and specifications that were prepared by Noel Wong , R.A . dated March 15, 2024"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A"
+    ],
+    "close": [],
+    "printed": "Noel Wong, R.A.",
+    "page": "P4",
+    "quote": "the building plans and specifications that were prepared by Noel Wong, R.A. dated March 15, 2024",
+    "sure": false,
+    "why": "P4 says Noel Wong, R.A. prepared the building plans. The architect who signed this certification and wrote the Report is not named on this page, so it may be a different person.",
+    "from_images": true
+   },
+   "candidates": [
+    "Noel Wong , R.A"
+   ],
+   "stored_letter": "A",
+   "printed": "Noel Wong, R.A.",
+   "printed_page": {
+    "file_id": 32865,
+    "page_no": 304
+   },
+   "printed_quote": "the building plans and specifications that were prepared by Noel Wong, R.A. dated March 15, 2024",
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD240246",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "128 FT GREENE LLC",
+   "check": {
+    "n": 3,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": null,
+    "quote": null,
+    "why": "no cover page or sponsor identification provided in these pages"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 2,
+    "accurate": [],
+    "close": [],
+    "printed": null,
+    "page": "P4",
+    "quote": "The Sponsor of the Offering Plan to convert the captioned property",
+    "sure": false,
+    "why": "None of the pages name the sponsoring entity. P4 only names the property: The 128 Ft Greene Place Condominium.",
+    "from_images": true
+   },
+   "candidates": [
+    "128 FT GREENE LLC"
+   ],
+   "stored_letter": "A",
+   "printed": null,
+   "printed_page": {
+    "file_id": 32865,
+    "page_no": 304
+   },
+   "printed_quote": "The Sponsor of the Offering Plan to convert the captioned property",
+   "verdict": "unresolved"
+  },
+  {
+   "table": "plans",
+   "id": "CD240246",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "LAW OFFICES OF HERSHY ITZKOWITZ, P.C.",
+   "check": {
+    "n": 4,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": null,
+    "quote": null,
+    "why": "no cover page or sponsor's counsel identification provided in these pages"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 3,
+    "accurate": [],
+    "close": [],
+    "printed": null,
+    "page": "P1",
+    "quote": "Purchaser shall be obligated to pay the following fees to sponsors attorney",
+    "sure": false,
+    "why": "The sponsor's attorney is mentioned on P1 but never named. No page names the attorneys for the Sponsor.",
+    "from_images": true
+   },
+   "candidates": [
+    "LAW OFFICES OF HERSHY ITZKOWITZ, P.C."
+   ],
+   "stored_letter": "A",
+   "printed": null,
+   "printed_page": {
+    "file_id": 32865,
+    "page_no": 171
+   },
+   "printed_quote": "Purchaser shall be obligated to pay the following fees to sponsors attorney",
+   "verdict": "unresolved"
+  }
+ ],
+ "calls": 4,
+ "tokens": 38891
+}

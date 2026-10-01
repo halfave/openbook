@@ -1,0 +1,248 @@
+{
+ "plan_id": "CD240053",
+ "checked_at": "2026-10-01T23:33:40.022Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 30071,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 30071,
+   "page_no": 40,
+   "why": [
+    "cited"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": null,
+  "selling_agent": {
+   "value": "197 Pulaski LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SPONSOR AND SELLING AGENT: 197 Pulaski LLC"
+  },
+  "managing_agent": {
+   "value": "ALG NY Management LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P2",
+   "quote": "The building will be managed by ALG NY Management LLC for the first three (3) years of condominium operation"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "Law Office of Hershy Itzkowitz, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "ATTORNEYS FOR SPONSOR: LAW OFFICE OF HERSHY ITZKOWITZ, P.C."
+  },
+  "sponsor": {
+   "value": "197 Pulaski LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SPONSOR AND SELLING AGENT: 197 Pulaski LLC"
+  },
+  "sponsor_address": {
+   "value": "151 Cooper Street, Brooklyn NY 11207",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "151 COOPER STREET BROOKLYN NY 11207"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 9920,
+   "field": "selling_agent",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 9921,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 10619,
+   "field": "managing_agent",
+   "page_no": 40,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 9920,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "197 Pulaski LLC (Sponsor is also Selling Agent)",
+   "page_no": 1,
+   "file_id": 30071,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "SPONSOR AND SELLING AGENT: 197 Pulaski LLC",
+    "why": "Page lists 197 Pulaski LLC as both Sponsor and Selling Agent."
+   },
+   "blind": {
+    "value": "197 Pulaski LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "SPONSOR AND SELLING AGENT: 197 Pulaski LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 9921,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "151 Cooper Street, Brooklyn, NY 11207",
+   "page_no": 1,
+   "file_id": 30071,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "151 Cooper Street, Brooklyn NY 11207",
+    "why": "Matches address listed for Sponsor/Selling Agent."
+   },
+   "blind": {
+    "value": "151 Cooper Street, Brooklyn NY 11207",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "151 COOPER STREET BROOKLYN NY 11207"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 10619,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "ALG NY Management LLC",
+   "page_no": 40,
+   "file_id": 30071,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P2",
+    "quote": "managed by ALG NY Management LLC for the first three (3) years",
+    "why": "Named as managing agent, though term is three years not one."
+   },
+   "blind": {
+    "value": "ALG NY Management LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P2",
+    "quote": "The building will be managed by ALG NY Management LLC for the first three (3) years of condominium operation"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD240053",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "197 PULASKI LLC",
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "197 Pulaski LLC",
+    "why": "Matches Sponsor name on cover page."
+   },
+   "blind": {
+    "value": "197 Pulaski LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "SPONSOR AND SELLING AGENT: 197 Pulaski LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD240053",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "LAW OFFICES OF HERSHY ITZKOWITZ, P.C.",
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "LAW OFFICE OF HERSHY ITZKOWITZ, P.C.",
+    "why": "Matches attorneys for Sponsor, minor singular/plural 'Office' vs 'Offices' difference."
+   },
+   "blind": {
+    "value": "Law Office of Hershy Itzkowitz, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "ATTORNEYS FOR SPONSOR: LAW OFFICE OF HERSHY ITZKOWITZ, P.C."
+   },
+   "blind_agrees": false,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "B"
+    ],
+    "close": [
+     "A"
+    ],
+    "printed": "Law Office of Hershy Itzkowitz, P.C.",
+    "page": "P1",
+    "quote": "ATTORNEYS FOR SPONSOR: L AW O FFICE OF H ERSHY I TZKOWITZ , P.C.",
+    "sure": true,
+    "why": "The cover page prints 'Law Office' (singular). B matches apart from capitalization. A says 'Offices' (plural), a wording difference."
+   },
+   "candidates": [
+    "LAW OFFICES OF HERSHY ITZKOWITZ, P.C.",
+    "Law Office of Hershy Itzkowitz, P.C."
+   ],
+   "stored_letter": "A",
+   "printed": "Law Office of Hershy Itzkowitz, P.C.",
+   "printed_page": {
+    "file_id": 30071,
+    "page_no": 1
+   },
+   "printed_quote": "ATTORNEYS FOR SPONSOR: L AW O FFICE OF H ERSHY I TZKOWITZ , P.C.",
+   "verdict": "minor"
+  }
+ ],
+ "calls": 3,
+ "tokens": 12969
+}

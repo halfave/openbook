@@ -1,0 +1,497 @@
+{
+ "plan_id": "CD210291",
+ "checked_at": "2026-10-01T22:10:03.541Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 16737,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 16737,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 16737,
+   "page_no": 19,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 16737,
+   "page_no": 31,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 16737,
+   "page_no": 45,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 16737,
+   "page_no": 83,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 16737,
+   "page_no": 92,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 16737,
+   "page_no": 94,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 16737,
+   "page_no": 95,
+   "why": [
+    "cited",
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 16737,
+   "page_no": 96,
+   "why": [
+    "cited"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Henry Radusky, RA",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "Henry Radusky, RA, prepared the plans and specification for the Building."
+  },
+  "selling_agent": {
+   "value": "2769A EAST 15 TH STREET, LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SPONSOR AND SELLING AGENT \n2769A EAST 15 TH STREET, LLC"
+  },
+  "managing_agent": {
+   "value": "2769A EAST 15 TH STREET LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "The Sponsor shall manage the Condominium for the first year at no charge to the Unit Owners for the first year or until all the Units are sold, whichever comes first."
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "Boris Saks, Esq., PLLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "Law Offices of Boris Saks, Esq., PLLC located at 1 7 3 2 E a s t 1 2 t h S t r e e t , B r o o k l y n , New York, 1 1 2 2 9 , represents the Sponsor in connection with this Plan."
+  },
+  "sponsor": {
+   "value": "2769A EAST 15 TH STREET LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "The Sponsor is 2769A EAST 15 TH STREET LLC, a New York State Limited Liability Company"
+  },
+  "sponsor_address": {
+   "value": "718 3rd Avenue, Brooklyn, NY 11232",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "having an office at 718 3 rd Avenue, Brooklyn, NY 11232"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 7294,
+   "field": "managing_agent",
+   "page_no": 95,
+   "score": 1
+  },
+  {
+   "id": 7295,
+   "field": "selling_agent",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 7296,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 7297,
+   "field": "working_capital",
+   "page_no": 94,
+   "score": 1
+  },
+  {
+   "id": 11439,
+   "field": "architect",
+   "page_no": 96,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 7294,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "2769A East 15th Street, LLC",
+   "page_no": 95,
+   "file_id": 16737,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "Sponsor",
+    "page": "P9",
+    "quote": "The Sponsor shall manage the Condominium for the first year at no charge",
+    "why": "P9 says Sponsor manages, not the entity named; it's the Sponsor (2769A East 15th Street LLC) itself in its role as Sponsor, but claim labels it with the number stored as 0 and cites P9 which only names 'Sponsor', not the LLC name explicitly—however Sponsor is 2769A East 15th Street LLC per P10, so entity matches but role framing differs"
+   },
+   "blind": {
+    "value": "2769A EAST 15 TH STREET LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "The Sponsor shall manage the Condominium for the first year at no charge to the Unit Owners for the first year or until all the Units are sold, whichever comes first."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "Sponsor (2769A East 15th Street, LLC)",
+    "page": "P9",
+    "quote": "The Sponsor shall manage the Condominium for the first year at no charge to the Unit Owners",
+    "sure": true,
+    "why": "The building is self-managing with no managing agent. The Sponsor manages it in year one. All three candidates identify the Sponsor. '15 TH' is a superscript OCR artifact for '15th'."
+   },
+   "candidates": [
+    "Sponsor",
+    "2769A EAST 15 TH STREET LLC (the Sponsor itself)",
+    "2769A East 15th Street, LLC"
+   ],
+   "stored_letter": "C",
+   "printed": "Sponsor (2769A East 15th Street, LLC)",
+   "printed_page": {
+    "file_id": 16737,
+    "page_no": 95
+   },
+   "printed_quote": "The Sponsor shall manage the Condominium for the first year at no charge to the Unit Owners",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7295,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "2769A East 15th Street, LLC",
+   "page_no": 1,
+   "file_id": 16737,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "SPONSOR AND SELLING AGENT \n2769A EAST 15 TH STREET, LLC",
+    "why": "Cover page lists this entity as Sponsor and Selling Agent"
+   },
+   "blind": {
+    "value": "2769A EAST 15 TH STREET, LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "SPONSOR AND SELLING AGENT \n2769A EAST 15 TH STREET, LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7296,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "718 3rd Avenue, Brooklyn, New York 11232",
+   "page_no": 1,
+   "file_id": 16737,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "718 3 rd Avenue \nBrooklyn, New York 11232",
+    "why": "Matches address on cover page"
+   },
+   "blind": {
+    "value": "718 3rd Avenue, Brooklyn, NY 11232",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "having an office at 718 3 rd Avenue, Brooklyn, NY 11232"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7297,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "$750 per unit at closing",
+   "page_no": 94,
+   "file_id": 16737,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "the Unit Owner for such Unit will contribute $750.00 to the capital of the Condominium",
+    "why": "Matches exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11439,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Henry Radusky, R.A.",
+   "page_no": 96,
+   "file_id": 16737,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P10",
+    "quote": "Henry Radusky, RA, prepared the plans and specification for the Building.",
+    "why": "Matches; listed as Registered Architect"
+   },
+   "blind": {
+    "value": "Henry Radusky, RA",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "Henry Radusky, RA, prepared the plans and specification for the Building."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1967,
+   "field": "principal",
+   "stored": {
+    "name": "Rudolf Samandarov",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 96,
+   "file_id": 16737,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P10",
+    "quote": "The principals of the Sponsor are Rudolf Samandarov, Kenneth Murdak and Ocher Aminov",
+    "why": "Matches exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1968,
+   "field": "principal",
+   "stored": {
+    "name": "Kenneth Murdak",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 96,
+   "file_id": 16737,
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P10",
+    "quote": "The principals of the Sponsor are Rudolf Samandarov, Kenneth Murdak and Ocher Aminov",
+    "why": "Matches exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1969,
+   "field": "principal",
+   "stored": {
+    "name": "Ocher Aminov",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 96,
+   "file_id": 16737,
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P10",
+    "quote": "The principals of the Sponsor are Rudolf Samandarov, Kenneth Murdak and Ocher Aminov",
+    "why": "Matches exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD210291",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "2769A EAST 15TH STREET, LLC",
+   "check": {
+    "n": 9,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "2769A EAST 15 TH STREET, LLC",
+    "why": "Matches cover page spelling"
+   },
+   "blind": {
+    "value": "2769A EAST 15 TH STREET LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "The Sponsor is 2769A EAST 15 TH STREET LLC, a New York State Limited Liability Company"
+   },
+   "blind_agrees": false,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "2769A East 15th Street, LLC",
+    "page": "P1",
+    "quote": "SPONSOR AND SELLING AGENT 2769A EAST 15 TH STREET, LLC",
+    "sure": true,
+    "why": "P1 and P10 give the same entity. The spacing in '15 TH' is a superscript OCR artifact, and the comma before LLC is punctuation only."
+   },
+   "candidates": [
+    "2769A EAST 15TH STREET, LLC",
+    "2769A EAST 15 TH STREET LLC"
+   ],
+   "stored_letter": "A",
+   "printed": "2769A East 15th Street, LLC",
+   "printed_page": {
+    "file_id": 16737,
+    "page_no": 1
+   },
+   "printed_quote": "SPONSOR AND SELLING AGENT 2769A EAST 15 TH STREET, LLC",
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD210291",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "BORIS SAKS, ESQ. PLLC",
+   "check": {
+    "n": 10,
+    "verdict": "minor",
+    "fix": "Boris Saks, Esq., PLLC",
+    "page": "P1",
+    "quote": "Prepared By: Boris Saks, Esq., PLLC",
+    "why": "Printed form includes comma before PLLC: 'Boris Saks, Esq., PLLC' not 'BORIS SAKS, ESQ. PLLC'"
+   },
+   "blind": {
+    "value": "Boris Saks, Esq., PLLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "Law Offices of Boris Saks, Esq., PLLC located at 1 7 3 2 E a s t 1 2 t h S t r e e t , B r o o k l y n , New York, 1 1 2 2 9 , represents the Sponsor in connection with this Plan."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 3,
+    "accurate": [
+     "A"
+    ],
+    "close": [],
+    "printed": "Boris Saks, Esq., PLLC",
+    "page": "P10",
+    "quote": "Law Offices of Boris Saks, Esq., PLLC located at 1732 East 12th Street",
+    "sure": true,
+    "why": "P10 names this firm as Sponsor's Attorney. The candidate differs only in a comma."
+   },
+   "candidates": [
+    "BORIS SAKS, ESQ. PLLC"
+   ],
+   "stored_letter": "A",
+   "printed": "Boris Saks, Esq., PLLC",
+   "printed_page": {
+    "file_id": 16737,
+    "page_no": 96
+   },
+   "printed_quote": "Law Offices of Boris Saks, Esq., PLLC located at 1732 East 12th Street",
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 34286
+}

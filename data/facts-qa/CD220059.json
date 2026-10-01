@@ -1,0 +1,564 @@
+{
+ "plan_id": "CD220059",
+ "checked_at": "2026-10-01T22:24:27.331Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 17058,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 17058,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 17058,
+   "page_no": 16,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 17058,
+   "page_no": 17,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 17058,
+   "page_no": 18,
+   "why": [
+    "cited",
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 17058,
+   "page_no": 62,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 17058,
+   "page_no": 78,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 17058,
+   "page_no": 132,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 17058,
+   "page_no": 133,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 17058,
+   "page_no": 134,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P11",
+   "file_id": 17058,
+   "page_no": 136,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P12",
+   "file_id": 17058,
+   "page_no": 146,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P13",
+   "file_id": 17058,
+   "page_no": 223,
+   "why": [
+    "selling_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": null,
+  "selling_agent": {
+   "value": "84 6th, LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P11",
+   "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+  },
+  "managing_agent": {
+   "value": "Sunrise Real Estate Corp.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P5",
+   "quote": "The building will be managed by the Managing Agent , Sunrise Real Estate Corp., a management company with an address at 247 Prospect Ave, 4th Floor Brooklyn, NY 11215"
+  },
+  "tax_consultant": {
+   "value": "Metropolitan Realty Exemptions, Inc.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P4",
+   "quote": "based on the Sponsor ’s expert’s opinion letter of Metropolitan Realty Exemptions, Inc. 118 Middleton Street, Brooklyn, NY 11206, dated March 9, 2022"
+  },
+  "sponsor_attorney": {
+   "value": "The Law Office of Jay Lichtman P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "A TTORNEYS F OR S PONSOR : T HE L AW O FFICE OF J AY L ICHTMAN P.C."
+  },
+  "sponsor": {
+   "value": "84 6th, LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "S PONSOR & S ELLING A GENT : 84 6 TH , LL C"
+  },
+  "sponsor_address": {
+   "value": "315 Flatbush Avenue, #172, Brooklyn, NY 11217",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "315 F LATBUSH A VENUE , # 172 B ROOKLYN , NY 11217"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 8898,
+   "field": "selling_agent",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 8899,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 8900,
+   "field": "managing_agent",
+   "page_no": 18,
+   "score": 1
+  },
+  {
+   "id": 8901,
+   "field": "reserve_fund",
+   "page_no": 132,
+   "score": 1
+  },
+  {
+   "id": 8902,
+   "field": "working_capital",
+   "page_no": 133,
+   "score": 1
+  },
+  {
+   "id": 11471,
+   "field": "architect",
+   "page_no": 146,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 8898,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "84 6th, LLC",
+   "page_no": 1,
+   "file_id": 17058,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "Sponsor will act as selling agent; no separate selling agent used",
+    "page": "P11",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+    "why": "P1 lists 84 6th, LLC as Sponsor & Selling Agent, but P11 clarifies Sponsor itself acts as selling agent, not a separate entity named '84 6th, LLC' as selling agent distinct from sponsor role; however since P1 does state it as printed, this is actually correct per P1"
+   },
+   "blind": {
+    "value": "84 6th, LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P11",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "84 6TH, LLC (Sponsor acts as selling agent)",
+    "page": "P11",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+    "sure": true,
+    "why": "The cover (P1) lists '84 6TH, LLC' under 'SPONSOR & SELLING AGENT'. P11 says the Sponsor acts as its own selling agent. All three candidates match what the pages say."
+   },
+   "candidates": [
+    "84 6th, LLC (the Sponsor itself)",
+    "Sponsor will act as selling agent; no separate selling agent used",
+    "84 6th, LLC"
+   ],
+   "stored_letter": "C",
+   "printed": "84 6TH, LLC (Sponsor acts as selling agent)",
+   "printed_page": {
+    "file_id": 17058,
+    "page_no": 136
+   },
+   "printed_quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8899,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "315 Flatbush Avenue, #172, Brooklyn, NY 11217",
+   "page_no": 1,
+   "file_id": 17058,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "315 Flatbush Avenue, # 172, Brooklyn, NY 11217",
+    "why": "Matches cover page address for Sponsor"
+   },
+   "blind": {
+    "value": "315 Flatbush Avenue, #172, Brooklyn, NY 11217",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "315 F LATBUSH A VENUE , # 172 B ROOKLYN , NY 11217"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8900,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "Sunrise Real Estate Corp.",
+   "page_no": 18,
+   "file_id": 17058,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P5",
+    "quote": "Sunrise Real Estate Corp... for an annual fee of $5,400.00",
+    "why": "Matches managing agent and fee"
+   },
+   "blind": {
+    "value": "Sunrise Real Estate Corp.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P5",
+    "quote": "The building will be managed by the Managing Agent , Sunrise Real Estate Corp., a management company with an address at 247 Prospect Ave, 4th Floor Brooklyn, NY 11215"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8901,
+   "field": "reserve_fund",
+   "column": "value_text",
+   "stored": "Yearly reserve ~10% of budget",
+   "page_no": 132,
+   "file_id": 17058,
+   "check": {
+    "n": 4,
+    "verdict": "wrong",
+    "fix": "approximately 10% of the entire budget (one-time reserve fund basis, not described as 'yearly')",
+    "page": "P8",
+    "quote": "approximately ten percent (10%) of the entire budget",
+    "why": "Pages describe reserve fund basis as 10% of budget but do not call it a 'yearly reserve'; it's a fund established in the budget, not stated as recurring 'yearly' amount"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 2,
+    "accurate": [],
+    "close": [
+     "A",
+     "B"
+    ],
+    "printed": "approximately ten percent (10%) of the entire budget",
+    "page": "P8",
+    "quote": "The basis of the figure projected for this item is approximately ten percent (10%) of the entire budget.",
+    "sure": true,
+    "why": "The plan says the reserve fund is a budget item set at about 10% of the entire budget. A adds 'one-time', which the page does not say, and a budget line item is not described as one-time. B adds 'Yearly', a word the plan does not use."
+   },
+   "candidates": [
+    "approximately 10% of the entire budget (one-time reserve fund basis, not described as 'yearly')",
+    "Yearly reserve ~10% of budget"
+   ],
+   "stored_letter": "B",
+   "printed": "approximately ten percent (10%) of the entire budget",
+   "printed_page": {
+    "file_id": 17058,
+    "page_no": 132
+   },
+   "printed_quote": "The basis of the figure projected for this item is approximately ten percent (10%) of the entire budget.",
+   "verdict": "minor"
+  },
+  {
+   "table": "facts",
+   "id": 8902,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 133,
+   "file_id": 17058,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "equal to two (2) months' estimated common charges for each Unit for the Working Capital Fund",
+    "why": "Matches claim exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11471,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Wu Chen, P.E. of Infocus (engineer)",
+   "page_no": 146,
+   "file_id": 17058,
+   "check": {
+    "n": 6,
+    "verdict": "wrong",
+    "fix": "Wu Chen, P.E. of Infocus is the engineer who prepared the Engineer's Report, not the architect",
+    "page": "P12",
+    "quote": "ENGINEER'S REPORT ... Prepared By: INFOCUS Wu Chen, P.E.",
+    "why": "Pages identify Wu Chen as engineer preparing Engineer's Report, not as architect; claim mislabels role as 'architect' though parenthetical correctly says engineer, creating contradiction within the claim itself"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "INFOCUS, Wu Chen, P.E. (preparer of the Engineer's Report, which contains Section 20.7: Description of Property and Specifications)",
+    "page": "P12",
+    "quote": "ENGINEER'S REPORT ... Prepared By: INFOCUS Wu Chen, P.E.",
+    "sure": true,
+    "why": "P12 is the Engineer's Report, prepared by Wu Chen, P.E. of Infocus. It includes the Description of Property section. None of the pages names a separate architect. Both candidates correctly name Wu Chen of Infocus as the engineer.",
+    "from_images": true
+   },
+   "candidates": [
+    "Wu Chen, P.E. of Infocus is the engineer who prepared the Engineer's Report, not the architect",
+    "Wu Chen, P.E. of Infocus (engineer)"
+   ],
+   "stored_letter": "B",
+   "printed": "INFOCUS, Wu Chen, P.E. (preparer of the Engineer's Report, which contains Section 20.7: Description of Property and Specifications)",
+   "printed_page": {
+    "file_id": 17058,
+    "page_no": 146
+   },
+   "printed_quote": "ENGINEER'S REPORT ... Prepared By: INFOCUS Wu Chen, P.E.",
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 2346,
+   "field": "principal",
+   "stored": {
+    "name": "Alex Maroni",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 136,
+   "file_id": 17058,
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P11",
+    "quote": "The Principals of the Sponsor are Alex Maroni and Bren Salamon",
+    "why": "Matches exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 2347,
+   "field": "principal",
+   "stored": {
+    "name": "Bren Salamon",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 136,
+   "file_id": 17058,
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P11",
+    "quote": "The Principals of the Sponsor are Alex Maroni and Bren Salamon",
+    "why": "Matches exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD220059",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "84 6TH, LLC",
+   "check": {
+    "n": 9,
+    "verdict": "minor",
+    "fix": "84 6TH, LLC",
+    "page": "P1",
+    "quote": "84 6 TH , LL C",
+    "why": "Printed as '84 6th, LLC' with spacing/OCR artifacts; claim capitalizes as '84 6TH, LLC' which a reader would notice differs in casing from the stylized print, though substantively the same name"
+   },
+   "blind": {
+    "value": "84 6th, LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "S PONSOR & S ELLING A GENT : 84 6 TH , LL C"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 4,
+    "accurate": [
+     "A"
+    ],
+    "close": [],
+    "printed": "84 6TH, LLC",
+    "page": "P1",
+    "quote": "S PONSOR & S ELLING A GENT : 84 6 TH , LL C",
+    "sure": true,
+    "why": "The cover names the Sponsor as 84 6TH, LLC, and P11 confirms it."
+   },
+   "candidates": [
+    "84 6TH, LLC"
+   ],
+   "stored_letter": "A",
+   "printed": "84 6TH, LLC",
+   "printed_page": {
+    "file_id": 17058,
+    "page_no": 1
+   },
+   "printed_quote": "S PONSOR & S ELLING A GENT : 84 6 TH , LL C",
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD220059",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+   "check": {
+    "n": 10,
+    "verdict": "minor",
+    "fix": "THE LAW OFFICE OF JAY LICHTMAN P.C.",
+    "page": "P1",
+    "quote": "T HE L AW O FFICE OF J AY L ICHTMAN P.C.",
+    "why": "Printed without comma before P.C.; claim adds a comma not present in the original"
+   },
+   "blind": {
+    "value": "The Law Office of Jay Lichtman P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "A TTORNEYS F OR S PONSOR : T HE L AW O FFICE OF J AY L ICHTMAN P.C."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 5,
+    "accurate": [
+     "A"
+    ],
+    "close": [],
+    "printed": "THE LAW OFFICE OF JAY LICHTMAN P.C.",
+    "page": "P1",
+    "quote": "A TTORNEYS F OR S PONSOR : T HE L AW O FFICE OF J AY L ICHTMAN P.C.",
+    "sure": true,
+    "why": "The cover lists this firm as attorneys for the Sponsor. The candidate matches apart from punctuation."
+   },
+   "candidates": [
+    "THE LAW OFFICE OF JAY LICHTMAN, P.C."
+   ],
+   "stored_letter": "A",
+   "printed": "THE LAW OFFICE OF JAY LICHTMAN P.C.",
+   "printed_page": {
+    "file_id": 17058,
+    "page_no": 1
+   },
+   "printed_quote": "A TTORNEYS F OR S PONSOR : T HE L AW O FFICE OF J AY L ICHTMAN P.C.",
+   "verdict": "verified"
+  }
+ ],
+ "calls": 4,
+ "tokens": 157942
+}

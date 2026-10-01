@@ -1,0 +1,391 @@
+{
+ "plan_id": "CD210305",
+ "checked_at": "2026-10-01T22:10:13.398Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 15125,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 15125,
+   "page_no": 4,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 15125,
+   "page_no": 25,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 15125,
+   "page_no": 41,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 15125,
+   "page_no": 121,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 15125,
+   "page_no": 126,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 15125,
+   "page_no": 276,
+   "why": [
+    "cited"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Alix C. Michel Architect, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P7",
+   "quote": "architectural drawings of the proposed building prepared by Alix C. Michel Architect, P.C."
+  },
+  "selling_agent": {
+   "value": "Sheriff Development Holdings LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P6",
+   "quote": "Sponsor has not retained a Selling Agent for this property. Sponsor will be the Selling Agent."
+  },
+  "managing_agent": null,
+  "tax_consultant": {
+   "value": "MGNY Consulting",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P7",
+   "quote": "MGNY Consulting\n18 Bridge St. Suite 2D\nBrooklyn, NY 11201"
+  },
+  "sponsor_attorney": {
+   "value": "Eial Girtz, PC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P6",
+   "quote": "Eial Girtz, PC has no other relationship with Sponsor other than acting as Sponsor's attorney."
+  },
+  "sponsor": {
+   "value": "Sheriff Development Holdings LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "Sheriff Development Holdings LLC"
+  },
+  "sponsor_address": {
+   "value": "1 Northside Piers, 7B, Brooklyn, NY 11249",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "1 Northside Piers , 7B B roo klyn, NY 11249"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 7693,
+   "field": "selling_agent",
+   "page_no": 126,
+   "score": 1
+  },
+  {
+   "id": 7694,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 7695,
+   "field": "working_capital",
+   "page_no": 121,
+   "score": 1
+  },
+  {
+   "id": 10818,
+   "field": "architect",
+   "page_no": 276,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 7693,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "Sheriff Development Holdings LLC",
+   "page_no": 126,
+   "file_id": 15125,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "Sponsor has not retained a Selling Agent; Sponsor will be the Selling Agent",
+    "page": "P6",
+    "quote": "Sponsor will be the Selling Ag ent",
+    "why": "P6 says Sponsor itself (not a separately named Sheriff Development Holdings LLC as 'selling agent') will act as selling agent; no Selling Agent was retained"
+   },
+   "blind": {
+    "value": "Sheriff Development Holdings LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P6",
+    "quote": "Sponsor has not retained a Selling Agent for this property. Sponsor will be the Selling Agent."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "Sponsor will be the Selling Agent (Sponsor: Sheriff Development Holdings LLC)",
+    "page": "P6",
+    "quote": "Sponsor has not retained a Selling Agent f or this property. Sponsor will b e the Selling Ag ent .",
+    "sure": true,
+    "why": "P6 says the Sponsor is the selling agent. P1 names the Sponsor as Sheriff Development Holdings LLC, so all three candidates name the right party."
+   },
+   "candidates": [
+    "Sponsor has not retained a Selling Agent; Sponsor will be the Selling Agent",
+    "Sheriff Development Holdings LLC",
+    "Sheriff Development Holdings LLC (the Sponsor itself)"
+   ],
+   "stored_letter": "B",
+   "printed": "Sponsor will be the Selling Agent (Sponsor: Sheriff Development Holdings LLC)",
+   "printed_page": {
+    "file_id": 15125,
+    "page_no": 126
+   },
+   "printed_quote": "Sponsor has not retained a Selling Agent f or this property. Sponsor will b e the Selling Ag ent .",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7694,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "1 Northside Piers, 7B, Brooklyn, NY 11249",
+   "page_no": 1,
+   "file_id": 15125,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "1 Northside Piers , 7B B roo klyn, NY 11249",
+    "why": "matches sponsor address"
+   },
+   "blind": {
+    "value": "1 Northside Piers, 7B, Brooklyn, NY 11249",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "1 Northside Piers , 7B B roo klyn, NY 11249"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7695,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 121,
+   "file_id": 15125,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P5",
+    "quote": "pay a sum equa l to two m o n th s Co m m on C h ar ges",
+    "why": "matches working capital fund requirement"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 10818,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Alix C. Michel Architect, P.C",
+   "page_no": 276,
+   "file_id": 15125,
+   "check": {
+    "n": 4,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": null,
+    "quote": null,
+    "why": "P7 shows Alix C. Michel Architect, P.C. supplied architectural drawings for the tax opinion letter, but the pages shown do not confirm this firm prepared the Description of Property/floor plans section of the plan"
+   },
+   "blind": {
+    "value": "Alix C. Michel Architect, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P7",
+    "quote": "architectural drawings of the proposed building prepared by Alix C. Michel Architect, P.C."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "A"
+    ],
+    "close": [],
+    "printed": "Alix C. Michel Architect, P.C.",
+    "page": "P7",
+    "quote": "architectural drawings of the proposed building prepared by Alix C. Michel Architect, P.C.",
+    "sure": true,
+    "why": "The tax letter on P7 names this firm as the one that prepared the architectural drawings. No other architect appears on these pages."
+   },
+   "candidates": [
+    "Alix C. Michel Architect, P.C"
+   ],
+   "stored_letter": "A",
+   "printed": "Alix C. Michel Architect, P.C.",
+   "printed_page": {
+    "file_id": 15125,
+    "page_no": 276
+   },
+   "printed_quote": "architectural drawings of the proposed building prepared by Alix C. Michel Architect, P.C.",
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 2229,
+   "field": "principal",
+   "stored": {
+    "name": "Mr. Paz",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": "MMM Real Estate"
+   },
+   "page_no": 126,
+   "file_id": 15125,
+   "check": {
+    "n": 5,
+    "verdict": "wrong",
+    "fix": "Mr. Paz, principal of the Sponsor, has worked at MMM Real Estate since 2017 (not identified as 'of MMM Real Estate' as an affiliation defining his Sponsor role)",
+    "page": "P6",
+    "quote": "Mr . Paz has worked at MMM R eal E state si nce 201 7 through the present",
+    "why": "Pages state Mr. Paz is principal of the Sponsor; MMM Real Estate is where he has worked, not the entity he is principal of"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 3,
+    "accurate": [
+     "A"
+    ],
+    "close": [],
+    "printed": "Mr. Paz, principal of the Sponsor",
+    "page": "P6",
+    "quote": "Mr. Paz , principal of the Sponsor",
+    "sure": true,
+    "why": "Paz is printed as principal of the Sponsor. MMM Real Estate is only where he has worked since 2017, so B gives the wrong entity."
+   },
+   "candidates": [
+    "Mr. Paz, principal of the Sponsor, has worked at MMM Real Estate since 2017 (not identified as 'of MMM Real Estate' as an affiliation defining his Sponsor role)",
+    "Mr. Paz — principal — of MMM Real Estate"
+   ],
+   "stored_letter": "B",
+   "printed": "Mr. Paz, principal of the Sponsor",
+   "printed_page": {
+    "file_id": 15125,
+    "page_no": 126
+   },
+   "printed_quote": "Mr. Paz , principal of the Sponsor",
+   "verdict": "wrong"
+  },
+  {
+   "table": "plans",
+   "id": "CD210305",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "SHERIFF DEVELOPMENT HOLDINGS LLC",
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "S h er iff Development Holdings LLC",
+    "why": "matches sponsor name on cover page"
+   },
+   "blind": {
+    "value": "Sheriff Development Holdings LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "Sheriff Development Holdings LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD210305",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "EIAL GIRTZ, PC",
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P6",
+    "quote": "E i a l G ir tz , PC h as no other rela tion s h ip with Spons or other than act i ng a s S pon so r ’ s attorne y",
+    "why": "matches counsel identification"
+   },
+   "blind": {
+    "value": "Eial Girtz, PC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P6",
+    "quote": "Eial Girtz, PC has no other relationship with Sponsor other than acting as Sponsor's attorney."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 31903
+}

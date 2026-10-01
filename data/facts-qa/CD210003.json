@@ -1,0 +1,537 @@
+{
+ "plan_id": "CD210003",
+ "checked_at": "2026-10-01T21:39:04.132Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 13736,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 13736,
+   "page_no": 2,
+   "why": [
+    "cover",
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 13736,
+   "page_no": 7,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 13736,
+   "page_no": 17,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 13736,
+   "page_no": 35,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 13736,
+   "page_no": 95,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 13736,
+   "page_no": 96,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 13736,
+   "page_no": 97,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 13736,
+   "page_no": 105,
+   "why": [
+    "sponsor_attorney"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Brendan Coburn, R.A. of CWB Architects",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "The architect, Brendan Coburn, R.A. of CWB Architects"
+  },
+  "selling_agent": {
+   "value": "Brennan Realty Services, LLC (d/b/a Engel & Völkers Brownstone Brooklyn)",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "The Selling Agent is Brennan Realty Services, LLC (d/b/a Engel & Völkers Brownstone Brooklyn)"
+  },
+  "managing_agent": {
+   "value": "16 Second Place, LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "The Sponsor shall manage the Building and perform all janitorial and maintenance functions without charge for the first year of operation"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "The Law Office of Claudia V. Murdoch, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [
+    "Brickner Makow, LLP"
+   ],
+   "page": "P8",
+   "quote": "Sponsor has engaged Claudia V. Murdoch, Esq. of the Law Office of Claudia V. Murdoch, P.C., 117 Seventh Avenue, Brooklyn, New York 11215, to represent it"
+  },
+  "sponsor": {
+   "value": "16 Second Place, LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P7",
+   "quote": "The Sponsor of this offering is 16 Second Place, LLC, a Utah limited liability company"
+  },
+  "sponsor_address": {
+   "value": "303 East Wacker Drive, Ste. 1040, Chicago, IL 60601",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P7",
+   "quote": "with offices located at 303 East Wacker Drive, Ste. 1040, Chicago, IL 60601"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 7473,
+   "field": "managing_agent",
+   "page_no": 97,
+   "score": 1
+  },
+  {
+   "id": 7474,
+   "field": "selling_agent",
+   "page_no": 97,
+   "score": 1
+  },
+  {
+   "id": 7475,
+   "field": "architect",
+   "page_no": 97,
+   "score": 1
+  },
+  {
+   "id": 7476,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 0.36
+  },
+  {
+   "id": 7477,
+   "field": "working_capital",
+   "page_no": 95,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 7473,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "16 Second Place, LLC",
+   "page_no": 97,
+   "file_id": 13736,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "Sponsor (16 Second Place, LLC manages, not a separate managing agent)",
+    "page": "P8",
+    "quote": "The Sponsor shall manage the Building and perform all janitorial and maintenance functions without charge for the first year of operation",
+    "why": "Pages say the Sponsor manages the building; the Sponsor is 16 Second Place, LLC, but it is identified as Sponsor acting as manager, not as a 'managing agent' entity, and the claim's number field (0) is unsupported/irrelevant."
+   },
+   "blind": {
+    "value": "16 Second Place, LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "The Sponsor shall manage the Building and perform all janitorial and maintenance functions without charge for the first year of operation"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "The Sponsor (16 Second Place, LLC) manages the Building without charge for the first year",
+    "page": "P8",
+    "quote": "The Sponsor shall manage the Building and perform all janitorial and maintenance functions without charge for the first year of operation",
+    "sure": true,
+    "why": "P8 says the Sponsor manages for the first year, and P7 names the Sponsor as 16 Second Place, LLC. All three candidates identify that same party."
+   },
+   "candidates": [
+    "16 Second Place, LLC",
+    "16 Second Place, LLC (the Sponsor itself)",
+    "Sponsor (16 Second Place, LLC manages, not a separate managing agent)"
+   ],
+   "stored_letter": "A",
+   "printed": "The Sponsor (16 Second Place, LLC) manages the Building without charge for the first year",
+   "printed_page": {
+    "file_id": 13736,
+    "page_no": 97
+   },
+   "printed_quote": "The Sponsor shall manage the Building and perform all janitorial and maintenance functions without charge for the first year of operation",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7474,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "Brennan Realty Services, LLC (d/b/a Engel & Völkers Brownstone Brooklyn)",
+   "page_no": 97,
+   "file_id": 13736,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "page": "P8",
+    "quote": "The Selling Agent is Brennan Realty Services, LLC (d/b/a Engel & Völkers Brownstone Brooklyn)",
+    "why": "Matches exactly."
+   },
+   "blind": {
+    "value": "Brennan Realty Services, LLC (d/b/a Engel & Völkers Brownstone Brooklyn)",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "The Selling Agent is Brennan Realty Services, LLC (d/b/a Engel & Völkers Brownstone Brooklyn)"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7475,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Brendan Coburn, R.A., CWB Architects",
+   "page_no": 97,
+   "file_id": 13736,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "page": "P8",
+    "quote": "The architect, Brendan Coburn, R.A. of CWB Architects",
+    "why": "Matches exactly."
+   },
+   "blind": {
+    "value": "Brendan Coburn, R.A. of CWB Architects",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "The architect, Brendan Coburn, R.A. of CWB Architects"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7476,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "303 East Wacker Drive, Ste. 1040, Chicago, IL 60601",
+   "page_no": 1,
+   "file_id": 13736,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "page": "P1",
+    "quote": "303 EAST WACKER DRIVE, STE. 1040, CHICAGO, IL 60601",
+    "why": "Matches exactly."
+   },
+   "blind": {
+    "value": "303 East Wacker Drive, Ste. 1040, Chicago, IL 60601",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P7",
+    "quote": "with offices located at 303 East Wacker Drive, Ste. 1040, Chicago, IL 60601"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7477,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 95,
+   "file_id": 13736,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "page": "P6",
+    "quote": "contribute to the working capital fund of the Condominium an amount equal to two months' common charges",
+    "why": "Matches exactly."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1485,
+   "field": "principal",
+   "stored": {
+    "name": "John M. Fife",
+    "kind": "person",
+    "role": "principal; managing member of Iliad Research and Trading, LP",
+    "parent_entity": "Iliad Research and Trading, L.P."
+   },
+   "page_no": 96,
+   "file_id": 13736,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "page": "P7",
+    "quote": "John M. Fife (through Iliad Research and Trading, L.P.)... John M. Fife is the Managing Member of Iliad Research and Trading, LP",
+    "why": "Matches exactly."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1486,
+   "field": "principal",
+   "stored": {
+    "name": "Iliad Research and Trading, L.P.",
+    "kind": "entity",
+    "role": "member",
+    "parent_entity": null
+   },
+   "page_no": 96,
+   "file_id": 13736,
+   "check": {
+    "n": 7,
+    "verdict": "wrong",
+    "fix": "Entity through which principal John M. Fife holds his interest",
+    "page": "P7",
+    "quote": "John M. Fife (through Iliad Research and Trading, L.P.)",
+    "why": "Iliad Research and Trading, L.P. is not itself described as a 'member'; it is the entity through which Fife, a principal, holds his interest. The pages do not call it a member."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "A"
+    ],
+    "close": [
+     "B"
+    ],
+    "printed": "Iliad Research and Trading, L.P. — entity through which principal John M. Fife holds his interest (Fife is its Managing Member)",
+    "page": "P7",
+    "quote": "John M. Fife (through Iliad Research and Trading, L.P.)",
+    "sure": true,
+    "why": "Fife holds his principal interest through Iliad, and he is Iliad's Managing Member. The pages never expressly call Iliad a 'member' of the Sponsor, so B is an inference rather than a printed statement."
+   },
+   "candidates": [
+    "Entity through which principal John M. Fife holds his interest",
+    "Iliad Research and Trading, L.P. — member"
+   ],
+   "stored_letter": "B",
+   "printed": "Iliad Research and Trading, L.P. — entity through which principal John M. Fife holds his interest (Fife is its Managing Member)",
+   "printed_page": {
+    "file_id": 13736,
+    "page_no": 96
+   },
+   "printed_quote": "John M. Fife (through Iliad Research and Trading, L.P.)",
+   "verdict": "minor"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1487,
+   "field": "principal",
+   "stored": {
+    "name": "Donald Brennan",
+    "kind": "person",
+    "role": "principal; sole member of Rise 16 2nd Place, LLC",
+    "parent_entity": "Rise 16 2nd Place, LLC"
+   },
+   "page_no": 96,
+   "file_id": 13736,
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "page": "P7",
+    "quote": "Donald Brennan (through Rise 16 2nd Place, LLC)... Donald Brennan is the sole member of Rise 16 2nd Place, LLC",
+    "why": "Matches exactly."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1488,
+   "field": "principal",
+   "stored": {
+    "name": "Rise 16 2nd Place, LLC",
+    "kind": "entity",
+    "role": "member",
+    "parent_entity": null
+   },
+   "page_no": 96,
+   "file_id": 13736,
+   "check": {
+    "n": 9,
+    "verdict": "wrong",
+    "fix": "Entity through which principal Donald Brennan holds his interest",
+    "page": "P7",
+    "quote": "Donald Brennan (through Rise 16 2nd Place, LLC)",
+    "why": "Rise 16 2nd Place, LLC is not itself described as a 'member' of the Sponsor; Donald Brennan is the principal holding interest through it."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 3,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "Rise 16 2nd Place, LLC — member of the Sponsor; entity through which principal Donald Brennan holds his interest (Brennan is its sole member)",
+    "page": "P8",
+    "quote": "Mr. Brennan is the sole Member of Rise 16 2 nd Place, LLC, a member of the Sponsor",
+    "sure": true,
+    "why": "P7 says Brennan holds his interest through Rise 16 2nd Place, LLC, and P8 calls Rise a member of the Sponsor. Both candidates match the pages."
+   },
+   "candidates": [
+    "Entity through which principal Donald Brennan holds his interest",
+    "Rise 16 2nd Place, LLC — member"
+   ],
+   "stored_letter": "B",
+   "printed": "Rise 16 2nd Place, LLC — member of the Sponsor; entity through which principal Donald Brennan holds his interest (Brennan is its sole member)",
+   "printed_page": {
+    "file_id": 13736,
+    "page_no": 97
+   },
+   "printed_quote": "Mr. Brennan is the sole Member of Rise 16 2 nd Place, LLC, a member of the Sponsor",
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1489,
+   "field": "principal",
+   "stored": {
+    "name": "Carolyn Bever",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 96,
+   "file_id": 13736,
+   "check": {
+    "n": 10,
+    "verdict": "correct",
+    "page": "P7",
+    "quote": "Carolyn Bever, with offices located at 333 Van Sicklen Road, South Burlington, VT 05403",
+    "why": "Listed among the principals of the Sponsor."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD210003",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "16 SECOND PLACE, LLC",
+   "check": {
+    "n": 11,
+    "verdict": "correct",
+    "page": "P1",
+    "quote": "16 SECOND PLACE, LLC d/b/a ENGEL & VÖLKERS BROWNSTONE BROOKLYN",
+    "why": "Note: the d/b/a shown on the cover page actually belongs to the Selling Agent line, but '16 SECOND PLACE, LLC' as Sponsor name matches P7's identification of the Sponsor."
+   },
+   "blind": {
+    "value": "16 Second Place, LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P7",
+    "quote": "The Sponsor of this offering is 16 Second Place, LLC, a Utah limited liability company"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD210003",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "THE LAW OFFICE OF CLAUDIA V. MURDOCH, P.C.",
+   "check": {
+    "n": 12,
+    "verdict": "correct",
+    "page": "P1",
+    "quote": "The Law Office of Claudia V. Murdoch, P.C.",
+    "why": "Matches exactly as Sponsor's counsel/preparer on cover page and P8."
+   },
+   "blind": {
+    "value": "The Law Office of Claudia V. Murdoch, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [
+     "Brickner Makow, LLP"
+    ],
+    "page": "P8",
+    "quote": "Sponsor has engaged Claudia V. Murdoch, Esq. of the Law Office of Claudia V. Murdoch, P.C., 117 Seventh Avenue, Brooklyn, New York 11215, to represent it"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 36801
+}

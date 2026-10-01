@@ -1,0 +1,264 @@
+{
+ "plan_id": "CD070052",
+ "checked_at": "2026-10-01T18:45:42.961Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 15676,
+   "page_no": 1,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 15676,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 15676,
+   "page_no": 8,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 15676,
+   "page_no": 10,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 15676,
+   "page_no": 27,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 15676,
+   "page_no": 56,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 15676,
+   "page_no": 59,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 15676,
+   "page_no": 61,
+   "why": [
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 15676,
+   "page_no": 62,
+   "why": [
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 15676,
+   "page_no": 181,
+   "why": [
+    "architect"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Bricolage Designs",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "The firm of Bricolage Designs A.I.A. 6321 New Utrecht Avenue, Brooklyn, N.Y. 11219 prepared and obtained approval of the condominium plans."
+  },
+  "selling_agent": {
+   "value": "Dyker Beach Realty LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "The Sponsor will act as its own selling agent."
+  },
+  "managing_agent": {
+   "value": null,
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": null,
+   "quote": null
+  },
+  "tax_consultant": {
+   "value": null,
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": null,
+   "quote": null
+  },
+  "sponsor_attorney": {
+   "value": "Morris Flyer, esq.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "The attorney for the sponsor, Morris Flyer, esq., 1406 West 5th Avenue, Brooklyn, N.Y. 11204 will represent the sponsor at all contracts and closings"
+  },
+  "sponsor": {
+   "value": "Dyker Beach Realty LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "Sponsor-Selling Agents DYKER BEACH REALTY LLC"
+  },
+  "sponsor_address": {
+   "value": "203 Bay 8th Street, Brooklyn, N.Y. 11228",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "domestic New York limited liability company having its principal office at 203 Bay 8 Street, Brooklyn, N.Y. 11228"
+  }
+ },
+ "quote_checks": [],
+ "results": [
+  {
+   "table": "plans",
+   "id": "CD070052",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "DYKER BEACH REALTY, LLC",
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "DYKER BEACH REALTY LLC",
+    "why": "Matches cover page Sponsor name (punctuation of comma ignored per instructions)."
+   },
+   "blind": {
+    "value": "Dyker Beach Realty LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "Sponsor-Selling Agents DYKER BEACH REALTY LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD070052",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "PAUL A. LEFF, ESQ.",
+   "check": {
+    "n": 2,
+    "verdict": "wrong",
+    "fix": "Morris Flyer, Esq.",
+    "page": "P9",
+    "quote": "The attorney for the sponsor, Morris Flyer, esq.",
+    "why": "Pages identify Morris Flyer as attorney for the sponsor; Paul A. Leff is a licensed real estate broker (P5), not sponsor's counsel."
+   },
+   "blind": {
+    "value": "Morris Flyer, esq.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "The attorney for the sponsor, Morris Flyer, esq., 1406 West 5th Avenue, Brooklyn, N.Y. 11204 will represent the sponsor at all contracts and closings"
+   },
+   "blind_agrees": false,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "B"
+    ],
+    "close": [],
+    "printed": "Morris Flyer, esq.",
+    "page": "P9",
+    "quote": "The attorney for the sponsor, Morris Flyer, esq., 1406 West 5t:1(Avenue, Brooklyn, N.Y. 11204 will represent the sponsor at all contracts and closings",
+    "sure": true,
+    "why": "P9 names Morris Flyer as the sponsor's attorney. Paul A. Leff appears on P5 as a licensed real estate broker, not as counsel. Edward Delli Paoli prepared the plan and gave the tax opinion, but he is not called the sponsor's attorney."
+   },
+   "candidates": [
+    "PAUL A. LEFF, ESQ.",
+    "Morris Flyer, Esq."
+   ],
+   "stored_letter": "A",
+   "printed": "Morris Flyer, esq.",
+   "printed_page": {
+    "file_id": 15676,
+    "page_no": 62
+   },
+   "printed_quote": "The attorney for the sponsor, Morris Flyer, esq., 1406 West 5t:1(Avenue, Brooklyn, N.Y. 11204 will represent the sponsor at all contracts and closings",
+   "verdict": "wrong"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 3774,
+   "field": "principal",
+   "method": "ag-site",
+   "stored": {
+    "name": "Sabastiano Piccininni",
+    "kind": "person",
+    "role": "President",
+    "parent_entity": null
+   },
+   "quote": null,
+   "verdict": "not_from_plan"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 3775,
+   "field": "principal",
+   "method": "ag-site",
+   "stored": {
+    "name": "Sebastian Piccininni",
+    "kind": "person",
+    "role": null,
+    "parent_entity": null
+   },
+   "quote": null,
+   "verdict": "not_from_plan"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 3776,
+   "field": "principal",
+   "method": "ag-site",
+   "stored": {
+    "name": "Sebastian Piccininni",
+    "kind": "person",
+    "role": null,
+    "parent_entity": null
+   },
+   "quote": null,
+   "verdict": "not_from_plan"
+  }
+ ],
+ "calls": 3,
+ "tokens": 35272
+}

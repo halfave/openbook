@@ -1,0 +1,133 @@
+{
+ "plan_id": "CD200063",
+ "checked_at": "2026-10-01T21:10:54.936Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 10555,
+   "page_no": 295,
+   "why": [
+    "cited"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": null,
+  "selling_agent": null,
+  "managing_agent": null,
+  "tax_consultant": null,
+  "sponsor_attorney": null,
+  "sponsor": null,
+  "sponsor_address": null
+ },
+ "quote_checks": [
+  {
+   "id": 10791,
+   "field": "architect",
+   "page_no": 295,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 10791,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "YUEN DESIGN & ARCHITECTURE PLLC",
+   "page_no": 295,
+   "file_id": 10555,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "YUEN DESIGN & ARCHITECTURE PLLC",
+    "why": "Exact match to text."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD200063",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "BRILLIANT REAL ESTATE DEVELOPMENT LLC",
+   "check": {
+    "n": 2,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": null,
+    "quote": null,
+    "why": "Page provided does not contain a cover page or identify the Sponsor entity."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [],
+    "close": [],
+    "printed": null,
+    "page": "P1",
+    "quote": "The sponsor of the offering plan to convert the captioned property",
+    "sure": false,
+    "why": "This page is the engineer's certification. It mentions 'the sponsor' but never names it.",
+    "from_images": true
+   },
+   "candidates": [
+    "BRILLIANT REAL ESTATE DEVELOPMENT LLC"
+   ],
+   "stored_letter": "A",
+   "printed": null,
+   "printed_page": {
+    "file_id": 10555,
+    "page_no": 295
+   },
+   "printed_quote": "The sponsor of the offering plan to convert the captioned property",
+   "verdict": "unresolved"
+  },
+  {
+   "table": "plans",
+   "id": "CD200063",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "MORITT HOCK & HAMROFF, LLP",
+   "check": {
+    "n": 3,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": null,
+    "quote": null,
+    "why": "Page provided does not mention Sponsor's counsel."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 2,
+    "accurate": [],
+    "close": [],
+    "printed": null,
+    "page": "P1",
+    "quote": "prepared by YUEN DESIGN & ARCHITECTURE PLLC",
+    "sure": false,
+    "why": "No attorneys for the Sponsor are named on this page. The only firm named is the architect who prepared the plans.",
+    "from_images": true
+   },
+   "candidates": [
+    "MORITT HOCK & HAMROFF, LLP"
+   ],
+   "stored_letter": "A",
+   "printed": null,
+   "printed_page": {
+    "file_id": 10555,
+    "page_no": 295
+   },
+   "printed_quote": "prepared by YUEN DESIGN & ARCHITECTURE PLLC",
+   "verdict": "unresolved"
+  }
+ ],
+ "calls": 4,
+ "tokens": 16986
+}

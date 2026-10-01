@@ -1,0 +1,370 @@
+{
+ "plan_id": "CD200119",
+ "checked_at": "2026-10-01T21:15:07.050Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 10972,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 10972,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 10972,
+   "page_no": 16,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 10972,
+   "page_no": 36,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 10972,
+   "page_no": 38,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 10972,
+   "page_no": 58,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 10972,
+   "page_no": 127,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 10972,
+   "page_no": 128,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 10972,
+   "page_no": 184,
+   "why": [
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 10972,
+   "page_no": 255,
+   "why": [
+    "managing_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Oscar P. Walters, Jr., P.E. (Demerara Engineering, PLLC)",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "Oscar P. Walters, Jr., P.E. with an address at Demerara Engineering, PLLC, 37-24 24th Street, Suite 231, Long Island City, New York 11101, a Professional Engineer, has rendered the Floor Plans of the Property"
+  },
+  "selling_agent": {
+   "value": "St Johns Residence LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+  },
+  "managing_agent": {
+   "value": "St Johns Residence LLC",
+   "by_sponsor": false,
+   "by_board": true,
+   "others": [],
+   "page": "P5",
+   "quote": "The Condominium Board will be responsible for managing the condominium, including but not limited to, writing checks, payment of bills, such as water and sewer charges, insurance premiums, repairs, snow removal, etc."
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "The Law Office of Jay Lichtman, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "The Sponsor is represented by The Law Office of Jay Lichtman P.C., 68 Jay Street, Suite 420, Brooklyn, New York 11201 in connection with this Offering Plan"
+  },
+  "sponsor": {
+   "value": "St Johns Residence LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SPONSOR & SELLING AGENT: ST JOHNS RESIDENCE LLC"
+  },
+  "sponsor_address": {
+   "value": "670 Myrtle Avenue #458, Brooklyn, New York 11205",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "670 MYRTLE AVENUE #458 BROOKLYN, NEW YORK 11205"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 5767,
+   "field": "selling_agent",
+   "page_no": 128,
+   "score": 1
+  },
+  {
+   "id": 5768,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 5769,
+   "field": "architect",
+   "page_no": 128,
+   "score": 1
+  },
+  {
+   "id": 5770,
+   "field": "working_capital",
+   "page_no": 127,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 5767,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "St Johns Residence LLC",
+   "page_no": 128,
+   "file_id": 10972,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "Sponsor will not be using a Selling Agent; Sponsor acts as selling agent",
+    "page": "P8",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+    "why": "St Johns Residence LLC is the Sponsor, not a separate selling agent; pages state no separate selling agent is used, though P1 does list Sponsor & Selling Agent as the same entity"
+   },
+   "blind": {
+    "value": "St Johns Residence LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "St Johns Residence LLC (Sponsor acts as its own selling agent)",
+    "page": "P8",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+    "sure": true,
+    "why": "P8 says the Sponsor, St Johns Residence LLC, acts as its own selling agent. P1's cover also lists 'SPONSOR & SELLING AGENT: ST JOHNS RESIDENCE LLC'. All three candidates match this."
+   },
+   "candidates": [
+    "Sponsor will not be using a Selling Agent; Sponsor acts as selling agent",
+    "St Johns Residence LLC",
+    "St Johns Residence LLC (the Sponsor itself)"
+   ],
+   "stored_letter": "B",
+   "printed": "St Johns Residence LLC (Sponsor acts as its own selling agent)",
+   "printed_page": {
+    "file_id": 10972,
+    "page_no": 128
+   },
+   "printed_quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5768,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "670 Myrtle Avenue #458, Brooklyn, New York 11205",
+   "page_no": 1,
+   "file_id": 10972,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "670 M YRTLE A VENUE #458 B ROOKLYN , N EW Y ORK 11205",
+    "why": "Matches exactly"
+   },
+   "blind": {
+    "value": "670 Myrtle Avenue #458, Brooklyn, New York 11205",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "670 MYRTLE AVENUE #458 BROOKLYN, NEW YORK 11205"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5769,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Oscar P. Walters, Jr., P.E. (Demerara Engineering, PLLC)",
+   "page_no": 128,
+   "file_id": 10972,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "Oscar P. Walters, Jr., P.E. with an address at Demerara Engineering, PLLC",
+    "why": "Matches; role described as engineer/architect in that section"
+   },
+   "blind": {
+    "value": "Oscar P. Walters, Jr., P.E. (Demerara Engineering, PLLC)",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "Oscar P. Walters, Jr., P.E. with an address at Demerara Engineering, PLLC, 37-24 24th Street, Suite 231, Long Island City, New York 11101, a Professional Engineer, has rendered the Floor Plans of the Property"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5770,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 127,
+   "file_id": 10972,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P7",
+    "quote": "an “ Initial Capital Payment ” equal to two (2) months ’ estimated Common Charge s for each Unit for the working capital fund",
+    "why": "Matches exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1535,
+   "field": "principal",
+   "stored": {
+    "name": "Sigmund Freund",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 128,
+   "file_id": 10972,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "The Principal of the Sponsor , Sigmund Freund",
+    "why": "Matches exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD200119",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "ST. JOHNS RESIDENCE LLC",
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "S T J OHNS R ESIDENCE LLC",
+    "why": "Matches name ignoring OCR spacing/capitalization"
+   },
+   "blind": {
+    "value": "St Johns Residence LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "SPONSOR & SELLING AGENT: ST JOHNS RESIDENCE LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD200119",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "T HE L AW O FFICE OF J AY L ICHTMAN , P.C.",
+    "why": "Matches name ignoring OCR spacing/capitalization"
+   },
+   "blind": {
+    "value": "The Law Office of Jay Lichtman, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "The Sponsor is represented by The Law Office of Jay Lichtman P.C., 68 Jay Street, Suite 420, Brooklyn, New York 11201 in connection with this Offering Plan"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 43306
+}

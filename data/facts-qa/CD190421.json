@@ -1,0 +1,260 @@
+{
+ "plan_id": "CD190421",
+ "checked_at": "2026-10-01T21:04:53.538Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 11184,
+   "page_no": 1,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 11184,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 11184,
+   "page_no": 11,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 11184,
+   "page_no": 54,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 11184,
+   "page_no": 90,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 11184,
+   "page_no": 95,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 11184,
+   "page_no": 128,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 11184,
+   "page_no": 129,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 11184,
+   "page_no": 141,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 25477,
+   "page_no": 151,
+   "why": [
+    "cited"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": null,
+  "selling_agent": {
+   "value": "JUSTICE AVE TOWER LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SPONSOR/SELLING AGENT JUSTICE AVE TOWER LLC"
+  },
+  "managing_agent": {
+   "value": "Capital Home Realty Inc.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P4",
+   "quote": "the Condominium will enter a management agreement with Capital Home Realty Inc. located at 20 Avenue T, Brooklyn, NY 11223, a real estate management firm"
+  },
+  "tax_consultant": {
+   "value": "Highpoint Incentive, Inc.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P7",
+   "quote": "Per the estimates of Highpoint Incentive, Inc., the Non-Residential Units will have an assessed post construction assessed value of $15,686,188"
+  },
+  "sponsor_attorney": {
+   "value": "MORITT HOCK HAMROFF LLP",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SPONSOR’S ATTORNEY MORITT HOCK HAMROFF LLP"
+  },
+  "sponsor": {
+   "value": "JUSTICE AVE TOWER LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SPONSOR/SELLING AGENT JUSTICE AVE TOWER LLC"
+  },
+  "sponsor_address": {
+   "value": "112-15 Northern Blvd., #2, Corona, New York 11368",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "112-15 Northern Bivd., #2 Corona, New York 11368"
+  }
+ },
+ "quote_checks": [],
+ "results": [
+  {
+   "table": "sponsor_principals",
+   "id": 2792,
+   "field": "principal",
+   "stored": {
+    "name": "Zhidong Wu",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": "ZD Jasper Realty"
+   },
+   "page_no": 151,
+   "file_id": 25477,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "George Xu",
+    "page": "P10",
+    "quote": "Mr. Xu is current with respect to his obligations",
+    "why": "P10 discusses Mr. Wu and George Xu as principals, but no 'Zhidong Wu' or 'ZD Jasper Realty' appears anywhere in the pages."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [],
+    "close": [],
+    "printed": null,
+    "page": "P10",
+    "quote": "George Xu is a principal of Farrington Realty LLC, the Sponsor of The Farrington",
+    "sure": false,
+    "why": "The plan pages P1–P9 belong to Justice Ave Tower LLC and never name a principal of it. P10 comes from a different file (file-25477). It only says 'Mr. Wu', with no first name 'Zhidong' and no 'ZD Jasper Realty' anywhere, so A is unsupported. It calls George Xu a principal of Farrington Realty LLC, which is the Sponsor of The Farrington, not this Sponsor. B gives no role or entity anyway.",
+    "from_images": true
+   },
+   "candidates": [
+    "Zhidong Wu — principal — of ZD Jasper Realty",
+    "George Xu"
+   ],
+   "stored_letter": "A",
+   "printed": null,
+   "printed_page": {
+    "file_id": 25477,
+    "page_no": 151
+   },
+   "printed_quote": "George Xu is a principal of Farrington Realty LLC, the Sponsor of The Farrington",
+   "verdict": "unresolved"
+  },
+  {
+   "table": "plans",
+   "id": "CD190421",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "JUSTICE AVE TOWER LLC",
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "JUSTICE AVE TOWER LLC",
+    "why": "Matches the Sponsor name on the cover page."
+   },
+   "blind": {
+    "value": "JUSTICE AVE TOWER LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "SPONSOR/SELLING AGENT JUSTICE AVE TOWER LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD190421",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "MORITT HOCK & HAMROFF, LLP",
+   "check": {
+    "n": 3,
+    "verdict": "minor",
+    "fix": "MORITT HOCK HAMROFF LLP",
+    "page": "P1",
+    "quote": "MORITT HOCK HAMROFF LLP",
+    "why": "Cover page prints the firm name without an ampersand before HAMROFF, unlike the claim's 'MORITT HOCK & HAMROFF, LLP'."
+   },
+   "blind": {
+    "value": "MORITT HOCK HAMROFF LLP",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "SPONSOR’S ATTORNEY MORITT HOCK HAMROFF LLP"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "A"
+    ],
+    "close": [],
+    "printed": "Moritt Hock & Hamroff LLP",
+    "page": "P8",
+    "quote": "The Sponsor has been advised by its counsel, Moritt Hock & Hamroff LLP",
+    "sure": true,
+    "why": "P8 matches the candidate apart from the comma. P1 lists the Sponsor's attorney as 'MORITT HOCK HAMROFF LLP'."
+   },
+   "candidates": [
+    "MORITT HOCK & HAMROFF, LLP"
+   ],
+   "stored_letter": "A",
+   "printed": "Moritt Hock & Hamroff LLP",
+   "printed_page": {
+    "file_id": 11184,
+    "page_no": 129
+   },
+   "printed_quote": "The Sponsor has been advised by its counsel, Moritt Hock & Hamroff LLP",
+   "verdict": "verified"
+  }
+ ],
+ "calls": 4,
+ "tokens": 108408
+}

@@ -1,0 +1,460 @@
+{
+ "plan_id": "CD220191",
+ "checked_at": "2026-10-01T22:39:04.167Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 20504,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 20504,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 20504,
+   "page_no": 19,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 20504,
+   "page_no": 20,
+   "why": [
+    "cited",
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 20504,
+   "page_no": 43,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 20504,
+   "page_no": 64,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 20504,
+   "page_no": 127,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 20504,
+   "page_no": 136,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 20504,
+   "page_no": 137,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 20504,
+   "page_no": 164,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P11",
+   "file_id": 20504,
+   "page_no": 194,
+   "why": [
+    "selling_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Oscar P. Walters, Jr., P.E.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "Oscar P. Walters, Jr., P.E. with an address at Demerara Engineering, PLLC ... has rendered the Floor Plans of the Property and has rendered the report thereof"
+  },
+  "selling_agent": {
+   "value": "Union Corner LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+  },
+  "managing_agent": {
+   "value": "Union Corner LLC",
+   "by_sponsor": false,
+   "by_board": true,
+   "others": [],
+   "page": "P4",
+   "quote": "The Condominium Board will be responsible for managing the condominium, including but not limited to, writing checks, payment of bills"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "The Law Office of Jay Lichtman, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "The Sponsor is represented by The Law Office of Jay Lichtman P.C., 68 Jay Street, Suite 420, Brooklyn, New York 11201"
+  },
+  "sponsor": {
+   "value": "Union Corner LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "The Sponsor of this project is Union Corner LLC a New York Limited Liability Company"
+  },
+  "sponsor_address": {
+   "value": "505 Flushing Ave. #1-D Brooklyn, NY 11205",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "with an address at 505 Flushing Ave. #1 - D Brooklyn, NY 11205"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 7996,
+   "field": "selling_agent",
+   "page_no": 137,
+   "score": 1
+  },
+  {
+   "id": 7997,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 7998,
+   "field": "working_capital",
+   "page_no": 136,
+   "score": 1
+  },
+  {
+   "id": 10848,
+   "field": "architect",
+   "page_no": 164,
+   "score": 1
+  },
+  {
+   "id": 11142,
+   "field": "managing_agent",
+   "page_no": 20,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 7996,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "Union Corner LLC",
+   "page_no": 137,
+   "file_id": 20504,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "Sponsor will not be using a Selling Agent; Sponsor acts as its own selling agent",
+    "page": "P9",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+    "why": "Union Corner LLC is the Sponsor, not a separate selling agent; P9 states Sponsor acts as selling agent itself rather than there being a distinct named selling agent entity"
+   },
+   "blind": {
+    "value": "Union Corner LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "Union Corner LLC (Sponsor acts as selling agent)",
+    "page": "P9",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+    "sure": true,
+    "why": "The cover (P1) lists Union Corner LLC as 'Sponsor & Selling Agent', and P9 says the Sponsor acts as its own selling agent, so all three candidates are accurate."
+   },
+   "candidates": [
+    "Union Corner LLC (the Sponsor itself)",
+    "Union Corner LLC",
+    "Sponsor will not be using a Selling Agent; Sponsor acts as its own selling agent"
+   ],
+   "stored_letter": "B",
+   "printed": "Union Corner LLC (Sponsor acts as selling agent)",
+   "printed_page": {
+    "file_id": 20504,
+    "page_no": 137
+   },
+   "printed_quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7997,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "505 Flushing Ave. #1-D, Brooklyn, New York 11205",
+   "page_no": 1,
+   "file_id": 20504,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "505 F LUSHING A VE . #1 - D, B ROOKLYN , N EW Y ORK 112 05",
+    "why": "Matches Sponsor's address on cover page"
+   },
+   "blind": {
+    "value": "505 Flushing Ave. #1-D Brooklyn, NY 11205",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "with an address at 505 Flushing Ave. #1 - D Brooklyn, NY 11205"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7998,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 136,
+   "file_id": 20504,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "Initial Capital Payment equal to two (2) months' estimated common charges for each Unit",
+    "why": "Matches claim exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 10848,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "JK Architecture",
+   "page_no": 164,
+   "file_id": 20504,
+   "check": {
+    "n": 4,
+    "verdict": "minor",
+    "fix": "JK Architecture Studio",
+    "page": "P10",
+    "quote": "The architectural plans were prepared by JK Architecture Studio.",
+    "why": "Printed name is JK Architecture Studio, claim truncates to JK Architecture"
+   },
+   "blind": {
+    "value": "Oscar P. Walters, Jr., P.E.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "Oscar P. Walters, Jr., P.E. with an address at Demerara Engineering, PLLC ... has rendered the Floor Plans of the Property and has rendered the report thereof"
+   },
+   "blind_agrees": false,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "C"
+    ],
+    "close": [],
+    "printed": "Oscar P. Walters, Jr., P.E. (Demerara Engineering, PLLC)",
+    "page": "P10",
+    "quote": "This Report was prepared by Oscar P. Walters, Jr., PE",
+    "sure": true,
+    "why": "Per P9, Walters rendered the floor plans and the report, and P9 calls him 'the architect'. JK Architecture Studio only prepared the architectural plans (P10), which is a different role."
+   },
+   "candidates": [
+    "JK Architecture Studio",
+    "JK Architecture",
+    "Oscar P. Walters, Jr., P.E."
+   ],
+   "stored_letter": "B",
+   "printed": "Oscar P. Walters, Jr., P.E. (Demerara Engineering, PLLC)",
+   "printed_page": {
+    "file_id": 20504,
+    "page_no": 164
+   },
+   "printed_quote": "This Report was prepared by Oscar P. Walters, Jr., PE",
+   "verdict": "wrong"
+  },
+  {
+   "table": "facts",
+   "id": 11142,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "Self-managed",
+   "page_no": 20,
+   "file_id": 20504,
+   "check": {
+    "n": 5,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": null,
+    "quote": null,
+    "why": "Pages describe Condominium Board managing (writing checks, bills, etc.) with possibility of outside managing agent, but do not state a 'self-managed' designation or a numeric value of 0 for first year management"
+   },
+   "blind": {
+    "value": "Union Corner LLC",
+    "by_sponsor": false,
+    "by_board": true,
+    "others": [],
+    "page": "P4",
+    "quote": "The Condominium Board will be responsible for managing the condominium, including but not limited to, writing checks, payment of bills"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 3,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "The Condominium Board (self-managed; no outside managing agent)",
+    "page": "P4",
+    "quote": "The Condominium Board will be responsible for managing the condominium",
+    "sure": true,
+    "why": "The Board manages the condominium. An outside managing agent is only discussed as a possible future option."
+   },
+   "candidates": [
+    "the Board / self-managed",
+    "Self-managed"
+   ],
+   "stored_letter": "B",
+   "printed": "The Condominium Board (self-managed; no outside managing agent)",
+   "printed_page": {
+    "file_id": 20504,
+    "page_no": 20
+   },
+   "printed_quote": "The Condominium Board will be responsible for managing the condominium",
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1879,
+   "field": "principal",
+   "stored": {
+    "name": "Rafael Rabinowitz",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 137,
+   "file_id": 20504,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "The Principal of the Sponsor, Rafael Rabinowitz",
+    "why": "Matches exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD220191",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "UNION CORNER LLC",
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "U NION C ORNER LL C",
+    "why": "Matches Sponsor name on cover page"
+   },
+   "blind": {
+    "value": "Union Corner LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "The Sponsor of this project is Union Corner LLC a New York Limited Liability Company"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD220191",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "T HE L AW O FFICE OF J AY L ICHTMAN , P.C.",
+    "why": "Matches attorneys for Sponsor on cover page"
+   },
+   "blind": {
+    "value": "The Law Office of Jay Lichtman, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "The Sponsor is represented by The Law Office of Jay Lichtman P.C., 68 Jay Street, Suite 420, Brooklyn, New York 11201"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 45459
+}

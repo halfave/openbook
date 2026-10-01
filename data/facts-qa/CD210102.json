@@ -1,0 +1,462 @@
+{
+ "plan_id": "CD210102",
+ "checked_at": "2026-10-01T21:50:23.810Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 13519,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 13519,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 13519,
+   "page_no": 17,
+   "why": [
+    "cited",
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 13519,
+   "page_no": 37,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 13519,
+   "page_no": 39,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 13519,
+   "page_no": 65,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 13519,
+   "page_no": 137,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 13519,
+   "page_no": 138,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 13519,
+   "page_no": 190,
+   "why": [
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 13519,
+   "page_no": 260,
+   "why": [
+    "managing_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Oscar P. Walters, Jr., P.E. (Demerara Engineering, PLLC)",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "Oscar P. Walters, Jr., P.E. with an address at Demerara Engineering, PLLC, 37-24 24th Street, Suite 231, Long Island City, New York 11101, a Professional Engineer, has rendered the Floor Plans of the Property and has rendered the report thereof"
+  },
+  "selling_agent": {
+   "value": "361 Macon Street LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+  },
+  "managing_agent": {
+   "value": "361 Macon Street LLC",
+   "by_sponsor": false,
+   "by_board": true,
+   "others": [],
+   "page": "P3",
+   "quote": "the Condominium Board will be responsible for managing the condominium, duties including but not limited to, writing checks, payment of bills"
+  },
+  "tax_consultant": {
+   "value": "Metropolitan Realty Exemptions, Inc.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P5",
+   "quote": "the opinion letter, dated May 31, 2021, by Metropolitan Realty Exemptions, Inc., the Sponsor's tax expert"
+  },
+  "sponsor_attorney": {
+   "value": "The Law Office of Jay Lichtman, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "The Sponsor is represented by The Law Office of Jay Lichtman, P.C., 68 Jay Street, Suite 420, Brooklyn, New York 11201"
+  },
+  "sponsor": {
+   "value": "361 Macon Street LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "The Sponsor of this project is 361 Macon Street LLC a New York Limited Liability Company"
+  },
+  "sponsor_address": {
+   "value": "55 West 47th Street, New York, NY 10036",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "with an address at 55 West 47th Street, New York, NY 10036"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 7127,
+   "field": "selling_agent",
+   "page_no": 138,
+   "score": 1
+  },
+  {
+   "id": 7128,
+   "field": "architect",
+   "page_no": 138,
+   "score": 1
+  },
+  {
+   "id": 7129,
+   "field": "working_capital",
+   "page_no": 137,
+   "score": 1
+  },
+  {
+   "id": 7130,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 11108,
+   "field": "managing_agent",
+   "page_no": 17,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 7127,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "361 Macon Street LLC",
+   "page_no": 138,
+   "file_id": 13519,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "Sponsor will act as selling agent; no separate selling agent used",
+    "page": "P8",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+    "why": "P8 says Sponsor itself acts as selling agent (not a separate entity called '361 Macon Street LLC' in a selling-agent role distinct from sponsor); P1 lists Sponsor & Selling Agent as the same party, so this is consistent with Sponsor acting as its own selling agent, which matches - but claim labels it specifically as 'the selling agent' naming the LLC, which is correct per P1 and P8 confirms Sponsor acts as selling agent."
+   },
+   "blind": {
+    "value": "361 Macon Street LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium (361 Macon Street LLC).",
+    "page": "P8",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+    "sure": true,
+    "why": "P8 says the Sponsor acts as its own selling agent. The cover (P1) lists \"SPONSOR & SELLING AGENT: 361 MACON STREET LLC\", so all three candidates identify the right party."
+   },
+   "candidates": [
+    "361 Macon Street LLC",
+    "Sponsor will act as selling agent; no separate selling agent used",
+    "361 Macon Street LLC (the Sponsor itself)"
+   ],
+   "stored_letter": "A",
+   "printed": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium (361 Macon Street LLC).",
+   "printed_page": {
+    "file_id": 13519,
+    "page_no": 138
+   },
+   "printed_quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7128,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Demerara Engineering, PLLC",
+   "page_no": 138,
+   "file_id": 13519,
+   "check": {
+    "n": 2,
+    "verdict": "wrong",
+    "fix": "Oscar P. Walters, Jr., P.E. (Professional Engineer) of Demerara Engineering, PLLC prepared the floor plans/report; no architect is named",
+    "page": "P8",
+    "quote": "Oscar P. Walters, Jr., P.E. with an address at Demerara Engineering, PLLC ... a Professional Engineer, has rendered the Floor Plans of the Property and has rendered the report thereof",
+    "why": "The firm is an engineering firm and the named individual is a Professional Engineer, not an architect; pages do not identify an architect."
+   },
+   "blind": {
+    "value": "Oscar P. Walters, Jr., P.E. (Demerara Engineering, PLLC)",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "Oscar P. Walters, Jr., P.E. with an address at Demerara Engineering, PLLC, 37-24 24th Street, Suite 231, Long Island City, New York 11101, a Professional Engineer, has rendered the Floor Plans of the Property and has rendered the report thereof"
+   },
+   "blind_agrees": false,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "C"
+    ],
+    "close": [
+     "A",
+     "B"
+    ],
+    "printed": "Oscar P. Walters, Jr., P.E., Demerara Engineering, PLLC",
+    "page": "P8",
+    "quote": "Oscar P. Walters, Jr., P.E. with an address at Demerara Engineering, PLLC",
+    "sure": true,
+    "why": "Under the heading 'Engineer/Architect', Walters rendered the floor plans and report, and the text then calls him 'The architect'. A wrongly says no architect is named. B gives only the firm, not the person."
+   },
+   "candidates": [
+    "Oscar P. Walters, Jr., P.E. (Professional Engineer) of Demerara Engineering, PLLC prepared the floor plans/report; no architect is named",
+    "Demerara Engineering, PLLC",
+    "Oscar P. Walters, Jr., P.E. (Demerara Engineering, PLLC)"
+   ],
+   "stored_letter": "B",
+   "printed": "Oscar P. Walters, Jr., P.E., Demerara Engineering, PLLC",
+   "printed_page": {
+    "file_id": 13519,
+    "page_no": 138
+   },
+   "printed_quote": "Oscar P. Walters, Jr., P.E. with an address at Demerara Engineering, PLLC",
+   "verdict": "minor"
+  },
+  {
+   "table": "facts",
+   "id": 7129,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 137,
+   "file_id": 13519,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P7",
+    "quote": "an initial capital payment equal to two (2) months' estimated Common Charges for each Unit as a Working Capital Fund",
+    "why": "Matches claim."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7130,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "55 West 47th Street, New York, NY 10036",
+   "page_no": 1,
+   "file_id": 13519,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "55 WEST 47TH STREET NEW YORK, NY 10036",
+    "why": "Matches claim."
+   },
+   "blind": {
+    "value": "55 West 47th Street, New York, NY 10036",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "with an address at 55 West 47th Street, New York, NY 10036"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11108,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "Self-managed",
+   "page_no": 17,
+   "file_id": 13519,
+   "check": {
+    "n": 5,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": null,
+    "quote": null,
+    "why": "P3 discusses the Condominium Board managing the condominium if no outside managing agent is retained, but does not identify a 'managing agent for the first year' or a numeric code '0'; this describes a contingent scenario, not a stated fact about who manages in year one."
+   },
+   "blind": {
+    "value": "361 Macon Street LLC",
+    "by_sponsor": false,
+    "by_board": true,
+    "others": [],
+    "page": "P3",
+    "quote": "the Condominium Board will be responsible for managing the condominium, duties including but not limited to, writing checks, payment of bills"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 3,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "No managing agent; the Condominium Board will be responsible for managing the condominium (self-managed)",
+    "page": "P3",
+    "quote": "the Condominium Board will be responsible for managing the condominium",
+    "sure": true,
+    "why": "The budget includes no management fee, and the Board manages the condominium itself. An outside agent is only mentioned as a possibility."
+   },
+   "candidates": [
+    "Self-managed",
+    "the Board / self-managed"
+   ],
+   "stored_letter": "A",
+   "printed": "No managing agent; the Condominium Board will be responsible for managing the condominium (self-managed)",
+   "printed_page": {
+    "file_id": 13519,
+    "page_no": 17
+   },
+   "printed_quote": "the Condominium Board will be responsible for managing the condominium",
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 2453,
+   "field": "principal",
+   "stored": {
+    "name": "Yuval Bitton",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 138,
+   "file_id": 13519,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "The Principal of the Sponsor is Yuval Bitton",
+    "why": "Matches claim."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD210102",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "361 MACON STREET LLC",
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "361 M ACON S TREET LLC",
+    "why": "Matches claim."
+   },
+   "blind": {
+    "value": "361 Macon Street LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "The Sponsor of this project is 361 Macon Street LLC a New York Limited Liability Company"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD210102",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "T HE L AW O FFICE OF J AY L ICHTMAN , P.C.",
+    "why": "Matches claim."
+   },
+   "blind": {
+    "value": "The Law Office of Jay Lichtman, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "The Sponsor is represented by The Law Office of Jay Lichtman, P.C., 68 Jay Street, Suite 420, Brooklyn, New York 11201"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 44363
+}

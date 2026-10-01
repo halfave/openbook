@@ -1,0 +1,298 @@
+{
+ "plan_id": "CD210154",
+ "checked_at": "2026-10-01T21:56:01.210Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 17349,
+   "page_no": 118,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 17349,
+   "page_no": 121,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 17349,
+   "page_no": 128,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 17349,
+   "page_no": 146,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 17349,
+   "page_no": 190,
+   "why": [
+    "cited"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": null,
+  "selling_agent": null,
+  "managing_agent": null,
+  "tax_consultant": null,
+  "sponsor_attorney": null,
+  "sponsor": {
+   "value": "108 KING PARTNERS, LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P3",
+   "quote": "SPONSOR: 1 08 KING PARTNERS , LLC"
+  },
+  "sponsor_address": {
+   "value": "c/o Pinnacle Real Estate Ventures Inc., 18 Main Street, Roslyn, NY 11576, Attn: Joshua Dardashtian",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P3",
+   "quote": "c/o Pinnacle Real Estate Ventures Inc. 1 8 Main Street Roslyn, NY 11576 Attn: Joshua Dardashtian"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 7197,
+   "field": "parking_arrangement",
+   "page_no": 190,
+   "score": 1
+  },
+  {
+   "id": 7198,
+   "field": "working_capital",
+   "page_no": 118,
+   "score": 1
+  },
+  {
+   "id": 11430,
+   "field": "architect",
+   "page_no": 146,
+   "score": 1
+  },
+  {
+   "id": 11677,
+   "field": "sponsor_address",
+   "page_no": 128,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 7197,
+   "field": "parking_arrangement",
+   "column": "value_text",
+   "stored": "limited_common_element",
+   "page_no": 190,
+   "file_id": 17349,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "garage and driveway appurtenant to Unit 1 (not a parking space count/sale arrangement)",
+    "page": "P5",
+    "quote": "Garage and driveway appurtenant to Unit 1",
+    "why": "P5 lists garage/driveway as a Limited Common Element appurtenant to Unit 1, but the claim asserts a specific parking arrangement (sold/licensed/leased with a space count) that the pages do not state; the fact that it's a limited common element is correct but the parenthetical detail about spaces/arrangement type is unverifiable from this text."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "Garage and driveway appurtenant to Unit 1 (a Limited Common Element); no space count given",
+    "page": "P5",
+    "quote": "4 . Garage and driveway appurtenant to Unit 1 ; and",
+    "sure": true,
+    "why": "The garage and driveway are listed among the Limited Common Elements and are appurtenant to Unit 1. The pages give no sale, license or lease of parking and no number of spaces. Both candidates match this."
+   },
+   "candidates": [
+    "limited_common_element",
+    "garage and driveway appurtenant to Unit 1 (not a parking space count/sale arrangement)"
+   ],
+   "stored_letter": "A",
+   "printed": "Garage and driveway appurtenant to Unit 1 (a Limited Common Element); no space count given",
+   "printed_page": {
+    "file_id": 17349,
+    "page_no": 190
+   },
+   "printed_quote": "4 . Garage and driveway appurtenant to Unit 1 ; and",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7198,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 118,
+   "file_id": 17349,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "two (2 ) months of common charges for the working capital fund",
+    "why": "Matches exactly."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11430,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Sion Consulting Engineering P.C. (engineer)",
+   "page_no": 146,
+   "file_id": 17349,
+   "check": {
+    "n": 3,
+    "verdict": "wrong",
+    "fix": "Sion Consulting Engineering P.C. is the engineer, not identified as architect; claim conflates architect with engineer",
+    "page": "P4",
+    "quote": "SION CONSULTING ENGINEERING P.C.",
+    "why": "P4 identifies Sion Consulting Engineering P.C. as preparer of the Engineer's Report, not an architect; claim mislabels role."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "SION CONSULTING ENGINEERING P.C. (Engineer's Report, Description of Property and Proposed Building)",
+    "page": "P4",
+    "quote": "Engineer’s Report Description of Property and Proposed Building ... SION CONSULTING ENGINEERING P.C.",
+    "sure": true,
+    "why": "Sion prepared the description of the property, and it is identified as the engineer. No architect is named on these pages."
+   },
+   "candidates": [
+    "Sion Consulting Engineering P.C. (engineer)",
+    "Sion Consulting Engineering P.C. is the engineer, not identified as architect; claim conflates architect with engineer"
+   ],
+   "stored_letter": "A",
+   "printed": "SION CONSULTING ENGINEERING P.C. (Engineer's Report, Description of Property and Proposed Building)",
+   "printed_page": {
+    "file_id": 17349,
+    "page_no": 146
+   },
+   "printed_quote": "Engineer’s Report Description of Property and Proposed Building ... SION CONSULTING ENGINEERING P.C.",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11677,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "c/o Pinnacle Real Estate Ventures Inc., 18 Main Street, Roslyn, NY 11576",
+   "page_no": 128,
+   "file_id": 17349,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P3",
+    "quote": "c/o Pinnacle Real Estate Ventures Inc.\n1 8 Main Street\nRoslyn, NY 11576",
+    "why": "Matches printed address."
+   },
+   "blind": {
+    "value": "c/o Pinnacle Real Estate Ventures Inc., 18 Main Street, Roslyn, NY 11576, Attn: Joshua Dardashtian",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P3",
+    "quote": "c/o Pinnacle Real Estate Ventures Inc. 1 8 Main Street Roslyn, NY 11576 Attn: Joshua Dardashtian"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD210154",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "108 KING PARTNERS, LLC",
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P3",
+    "quote": "SPONSOR: 1 08 KING PARTNERS , LLC",
+    "why": "Matches printed name."
+   },
+   "blind": {
+    "value": "108 KING PARTNERS, LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P3",
+    "quote": "SPONSOR: 1 08 KING PARTNERS , LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD210154",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "SMITH BUSS & JACOBS, LLP",
+   "check": {
+    "n": 6,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": null,
+    "quote": null,
+    "why": "Pages provided do not mention Sponsor's counsel or any law firm name."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [],
+    "close": [],
+    "printed": null,
+    "page": "P2",
+    "quote": "the Escrow Agent for the Down Payment is also Counsel for the Sponsor",
+    "sure": false,
+    "why": "These pages mention 'Counsel for the Sponsor' (P2) but never name the firm. No page names Smith Buss & Jacobs, LLP or any other law firm.",
+    "from_images": true
+   },
+   "candidates": [
+    "SMITH BUSS & JACOBS, LLP"
+   ],
+   "stored_letter": "A",
+   "printed": null,
+   "printed_page": {
+    "file_id": 17349,
+    "page_no": 121
+   },
+   "printed_quote": "the Escrow Agent for the Down Payment is also Counsel for the Sponsor",
+   "verdict": "unresolved"
+  }
+ ],
+ "calls": 4,
+ "tokens": 41885
+}

@@ -1,0 +1,502 @@
+{
+ "plan_id": "CD180419",
+ "checked_at": "2026-10-01T20:22:02.117Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 8931,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 8931,
+   "page_no": 23,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 8931,
+   "page_no": 32,
+   "why": [
+    "cited",
+    "architect"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 8931,
+   "page_no": 43,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 8931,
+   "page_no": 71,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 8931,
+   "page_no": 129,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 8931,
+   "page_no": 131,
+   "why": [
+    "cited",
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 8931,
+   "page_no": 132,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 8931,
+   "page_no": 134,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 8931,
+   "page_no": 186,
+   "why": [
+    "sponsor_attorney"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Rohan Engineering P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P3",
+   "quote": "Sponsor has engaged Rohan Engineering P.C., an architectural and engineering service company as the architect of record."
+  },
+  "selling_agent": {
+   "value": null,
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "Sponsor has not designated a Selling Agent."
+  },
+  "managing_agent": {
+   "value": "BBM Equities LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "Either Sponsor will initially act as the Managing Agent for the Condominium."
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "Rothkrug Rothkrug & Spector LLP",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "Sponsor has retained the law firm of Rothkrug Rothkrug & Spector LLP, having an office at 55 Watermill Lane, Great Neck, New York 11021 to represent it"
+  },
+  "sponsor": {
+   "value": "BBM EQUITIES LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "Sponsor BBM EQUITIES LLC"
+  },
+  "sponsor_address": {
+   "value": "873 Cherry Lane, Valley Stream, NY 11581",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "873 Cherry Lane, Valley Stream , NY 11 581"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 4078,
+   "field": "managing_agent",
+   "page_no": 131,
+   "score": 1
+  },
+  {
+   "id": 4079,
+   "field": "working_capital",
+   "page_no": 129,
+   "score": 1
+  },
+  {
+   "id": 4080,
+   "field": "reserve_fund",
+   "page_no": 129,
+   "score": 1
+  },
+  {
+   "id": 5784,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 11361,
+   "field": "architect",
+   "page_no": 32,
+   "score": 1
+  },
+  {
+   "id": 11648,
+   "field": "selling_agent",
+   "page_no": 134,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 4078,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "BBM Equities LLC",
+   "page_no": 131,
+   "file_id": 8931,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "Sponsor (unnamed entity) will initially act as Managing Agent; fee is $3,600 annually",
+    "page": "P7/P9",
+    "quote": "Either Sponsor will initially act as the Managing Agent",
+    "why": "P9 says 'Either Sponsor' will act as Managing Agent (likely referring to Sponsor itself, phrasing is odd but it is Sponsor, not a separately named entity distinct from claim) - but the $3600 fee matches P7; however P9 text literally says 'Either Sponsor' not 'BBM Equities LLC' by name as Managing Agent, though Sponsor is BBM Equities LLC so this is effectively correct in substance"
+   },
+   "blind": {
+    "value": "BBM Equities LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "Either Sponsor will initially act as the Managing Agent for the Condominium."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "B",
+     "C"
+    ],
+    "close": [
+     "A"
+    ],
+    "printed": "BBM Equities LLC (the Sponsor)",
+    "page": "P7",
+    "quote": "the Board will enter into a management agreement with the Sponsor, to act as Managing Agent",
+    "sure": true,
+    "why": "P7 names the Sponsor as Managing Agent with a $3,600 annual fee. P1 and P9 identify the Sponsor as BBM Equities LLC. A wrongly calls the Sponsor unnamed."
+   },
+   "candidates": [
+    "Sponsor (unnamed entity) will initially act as Managing Agent; fee is $3,600 annually",
+    "BBM Equities LLC (the Sponsor itself)",
+    "BBM Equities LLC"
+   ],
+   "stored_letter": "C",
+   "printed": "BBM Equities LLC (the Sponsor)",
+   "printed_page": {
+    "file_id": 8931,
+    "page_no": 131
+   },
+   "printed_quote": "the Board will enter into a management agreement with the Sponsor, to act as Managing Agent",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 4079,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 129,
+   "file_id": 8931,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P6",
+    "quote": "equal to two (2) months' Common Charges",
+    "why": "matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 4080,
+   "field": "reserve_fund",
+   "column": "value_text",
+   "stored": "1 month's common charges contributed by purchaser at closing",
+   "page_no": 129,
+   "file_id": 8931,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P6",
+    "quote": "contribute one month's Common Charges to the Reserve Fund",
+    "why": "matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5784,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "873 Cherry Lane, Valley Stream, NY 11581",
+   "page_no": 1,
+   "file_id": 8931,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "873 Cherry Lane, Valley Stream , NY 11 581",
+    "why": "matches"
+   },
+   "blind": {
+    "value": "873 Cherry Lane, Valley Stream, NY 11581",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "873 Cherry Lane, Valley Stream , NY 11 581"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11361,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Rohan Engineering P.C.",
+   "page_no": 32,
+   "file_id": 8931,
+   "check": {
+    "n": 5,
+    "verdict": "wrong",
+    "fix": "Rohan Engineering P.C. is the architect of record, not architect per se—claim's characterization adds detail (architect's report/floor plans) not explicitly tied to this firm beyond 'architect of record'",
+    "page": "P3",
+    "quote": "Sponsor has engaged Rohan Engineering P.C. , an architectural and engineering service company as the architect of record",
+    "why": "name matches but role description in claim conflates multiple roles; still substantively the architect, so reconsidering"
+   },
+   "blind": {
+    "value": "Rohan Engineering P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P3",
+    "quote": "Sponsor has engaged Rohan Engineering P.C., an architectural and engineering service company as the architect of record."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "B"
+    ],
+    "close": [
+     "A"
+    ],
+    "printed": "Rohan Engineering P.C.",
+    "page": "P3",
+    "quote": "Sponsor has engaged Rohan Engineering P.C., an architectural and engineering service company as the architect of record. The Plans and Specifications have been prepared by such firm.",
+    "sure": true,
+    "why": "P3 names Rohan Engineering P.C. as architect of record and preparer of the Plans and Specifications. A names the right firm but adds commentary rather than a clean value."
+   },
+   "candidates": [
+    "Rohan Engineering P.C. is the architect of record, not architect per se—claim's characterization adds detail (architect's report/floor plans) not explicitly tied to this firm beyond 'architect of record'",
+    "Rohan Engineering P.C."
+   ],
+   "stored_letter": "B",
+   "printed": "Rohan Engineering P.C.",
+   "printed_page": {
+    "file_id": 8931,
+    "page_no": 32
+   },
+   "printed_quote": "Sponsor has engaged Rohan Engineering P.C., an architectural and engineering service company as the architect of record. The Plans and Specifications have been prepared by such firm.",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11648,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "None (no selling agent designated)",
+   "page_no": 134,
+   "file_id": 8931,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "Sponsor has not designated a Selling Agent",
+    "why": "matches"
+   },
+   "blind": {
+    "value": null,
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "Sponsor has not designated a Selling Agent."
+   },
+   "blind_agrees": false,
+   "judge": {
+    "n": 3,
+    "accurate": [
+     "A"
+    ],
+    "close": [],
+    "printed": "None; Sponsor has not designated a Selling Agent",
+    "page": "P9",
+    "quote": "Sponsor has not designated a Selling Agent.",
+    "sure": true,
+    "why": "P9 states that no selling agent is designated."
+   },
+   "candidates": [
+    "None (no selling agent designated)"
+   ],
+   "stored_letter": "A",
+   "printed": "None; Sponsor has not designated a Selling Agent",
+   "printed_page": {
+    "file_id": 8931,
+    "page_no": 134
+   },
+   "printed_quote": "Sponsor has not designated a Selling Agent.",
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 916,
+   "field": "principal",
+   "stored": {
+    "name": "Mikhail Musheyev",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 134,
+   "file_id": 8931,
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "The principals of the Sponsor are Mikhail Musheyev and Ilya Berger",
+    "why": "matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 917,
+   "field": "principal",
+   "stored": {
+    "name": "Ilya Berger",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 134,
+   "file_id": 8931,
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "The principals of the Sponsor are Mikhail Musheyev and Ilya Berger",
+    "why": "matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD180419",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "BBM EQUITIES LLC",
+   "check": {
+    "n": 9,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "BBM EQUITIES LLC",
+    "why": "matches cover page"
+   },
+   "blind": {
+    "value": "BBM EQUITIES LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "Sponsor BBM EQUITIES LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD180419",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "ROTHKRUG ROTHKRUG & SPECTOR, LLP",
+   "check": {
+    "n": 10,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "Rothkrug Rothkrug & Spector LLP",
+    "why": "matches"
+   },
+   "blind": {
+    "value": "Rothkrug Rothkrug & Spector LLP",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "Sponsor has retained the law firm of Rothkrug Rothkrug & Spector LLP, having an office at 55 Watermill Lane, Great Neck, New York 11021 to represent it"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 51723
+}

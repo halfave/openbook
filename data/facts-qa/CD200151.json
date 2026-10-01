@@ -1,0 +1,419 @@
+{
+ "plan_id": "CD200151",
+ "checked_at": "2026-10-01T21:18:18.490Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 11561,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 11561,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 11561,
+   "page_no": 15,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 11561,
+   "page_no": 16,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 11561,
+   "page_no": 36,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 11561,
+   "page_no": 56,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 11561,
+   "page_no": 112,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 11561,
+   "page_no": 125,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 11561,
+   "page_no": 126,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 11561,
+   "page_no": 128,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P11",
+   "file_id": 11561,
+   "page_no": 129,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P12",
+   "file_id": 11561,
+   "page_no": 212,
+   "why": [
+    "selling_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Zarina Kindo, R.A.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P11",
+   "quote": "Zarina Kindo , R.A., with an address at 62 Brighton 2 Place PH - B, Brooklyn, NY 11235, a Registered Architect, has rendered the Floor Plans of the Property"
+  },
+  "selling_agent": {
+   "value": "85 Carlton LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+  },
+  "managing_agent": {
+   "value": "East Coast Management Solutions",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "The B uilding will be managed by East Coast Management Solutions , an affiliate of the Sponsor with an address at 766 Lafayette Avenue Suite 200 Brooklyn, NY 11221"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "The Law Office of Jay Lichtman, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "The Sponsor is represented by The Law Office of Jay Lichtman P.C., 68 Jay Street, Suite 420, Brooklyn, New York 11201"
+  },
+  "sponsor": {
+   "value": "85 Carlton LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "The Sponsor of th is project is 85 Carlton LLC, a New York Limited Liability Company"
+  },
+  "sponsor_address": {
+   "value": "303 Merrick Road, Unit 206, Lynbrook NY 11563",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "with an address at 303 Merrick Road, Unit 206, Lynbrook NY 11563"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 6409,
+   "field": "selling_agent",
+   "page_no": 128,
+   "score": 1
+  },
+  {
+   "id": 6410,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 6411,
+   "field": "managing_agent",
+   "page_no": 36,
+   "score": 1
+  },
+  {
+   "id": 6412,
+   "field": "architect",
+   "page_no": 129,
+   "score": 1
+  },
+  {
+   "id": 6413,
+   "field": "working_capital",
+   "page_no": 125,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 6409,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "85 Carlton LLC",
+   "page_no": 128,
+   "file_id": 11561,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "Sponsor will act as selling agent; there is no separate Selling Agent",
+    "page": "P10",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+    "why": "85 Carlton LLC is the Sponsor acting as selling agent, but the claim mislabels this as 'the selling agent' naming an entity as if distinct; P1 also lists 85 Carlton LLC under 'Sponsor & Selling Agent' so role is Sponsor/Selling Agent combined, not simply 'the selling agent'"
+   },
+   "blind": {
+    "value": "85 Carlton LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "85 Carlton LLC",
+    "page": "P10",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+    "sure": true,
+    "why": "P10 says the Sponsor, 85 Carlton LLC, acts as its own selling agent with no separate Selling Agent. The P1 cover lists '85 CARLTON LLC' under 'SPONSOR & SELLING AGENT'. All three candidates match."
+   },
+   "candidates": [
+    "85 Carlton LLC",
+    "85 Carlton LLC (the Sponsor itself)",
+    "Sponsor will act as selling agent; there is no separate Selling Agent"
+   ],
+   "stored_letter": "A",
+   "printed": "85 Carlton LLC",
+   "printed_page": {
+    "file_id": 11561,
+    "page_no": 128
+   },
+   "printed_quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 6410,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "303 Merrick Road, Unit 206, Lynbrook NY 11563",
+   "page_no": 1,
+   "file_id": 11561,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "303 M ERRICK R OAD , U NIT 206 \nL YNBROOK NY 11563",
+    "why": "Matches Sponsor address on cover page"
+   },
+   "blind": {
+    "value": "303 Merrick Road, Unit 206, Lynbrook NY 11563",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "with an address at 303 Merrick Road, Unit 206, Lynbrook NY 11563"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 6411,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "East Coast Management Solutions",
+   "page_no": 36,
+   "file_id": 11561,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P5",
+    "quote": "The building will be managed by East Coast Management Solutions, an affiliate of the Sponsor...for an annual fee of $9,240.00",
+    "why": "Matches managing agent and fee"
+   },
+   "blind": {
+    "value": "East Coast Management Solutions",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "The B uilding will be managed by East Coast Management Solutions , an affiliate of the Sponsor with an address at 766 Lafayette Avenue Suite 200 Brooklyn, NY 11221"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 6412,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Zarina Kindo, R.A.",
+   "page_no": 129,
+   "file_id": 11561,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P11",
+    "quote": "Zarina Kindo , R.A., with an address at 62 Brighton 2 Place PH - B, Brooklyn, NY 11235, a Registered Architect, has rendered the Floor Plans",
+    "why": "Matches architect name and role"
+   },
+   "blind": {
+    "value": "Zarina Kindo, R.A.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P11",
+    "quote": "Zarina Kindo , R.A., with an address at 62 Brighton 2 Place PH - B, Brooklyn, NY 11235, a Registered Architect, has rendered the Floor Plans of the Property"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 6413,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 125,
+   "file_id": 11561,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "an “ Initial Capital Payment ” equal to two (2) months ’ estimated common charges for each Unit",
+    "why": "Matches working capital fund description"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 755,
+   "field": "principal",
+   "stored": {
+    "name": "Segev Nachum",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 128,
+   "file_id": 11561,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P10",
+    "quote": "The only Principal of the Sponsor is Segev Nachum",
+    "why": "Matches principal name and role"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD200151",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "85 CARLTON LLC",
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "85 C ARLTON LLC",
+    "why": "Matches Sponsor name on cover page"
+   },
+   "blind": {
+    "value": "85 Carlton LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "The Sponsor of th is project is 85 Carlton LLC, a New York Limited Liability Company"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD200151",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "T HE L AW O FFICE OF J AY L ICHTMAN , P.C.",
+    "why": "Matches attorneys for Sponsor on cover page"
+   },
+   "blind": {
+    "value": "The Law Office of Jay Lichtman, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "The Sponsor is represented by The Law Office of Jay Lichtman P.C., 68 Jay Street, Suite 420, Brooklyn, New York 11201"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 48069
+}

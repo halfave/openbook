@@ -1,0 +1,573 @@
+{
+ "plan_id": "CD230092",
+ "checked_at": "2026-10-01T23:00:40.426Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 23897,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 23897,
+   "page_no": 4,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 23897,
+   "page_no": 12,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 23897,
+   "page_no": 22,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 23897,
+   "page_no": 32,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 23897,
+   "page_no": 39,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 23897,
+   "page_no": 42,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 23897,
+   "page_no": 66,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 23897,
+   "page_no": 111,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 23897,
+   "page_no": 117,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P11",
+   "file_id": 23897,
+   "page_no": 118,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P12",
+   "file_id": 23897,
+   "page_no": 120,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P13",
+   "file_id": 23897,
+   "page_no": 123,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P14",
+   "file_id": 23897,
+   "page_no": 126,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P15",
+   "file_id": 23897,
+   "page_no": 129,
+   "why": [
+    "cited"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "ARC Architecture + Design Studio",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P5",
+   "quote": "The Sponsor retained ARC Architecture + Design Studio , of 71 - 01 Austin Street, Forest Hills, NY 11375 , as architect"
+  },
+  "selling_agent": {
+   "value": "1222 Putnam Development Inc.",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P13",
+   "quote": "Sponsor has not retained a Selling Agent for this property. Sponsor will be the Selling Agent."
+  },
+  "managing_agent": {
+   "value": "1222 Putnam Development Inc.",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P12",
+   "quote": "there will not be an outside management company during the Sponsor Control Period, during such period the condominium will effectively be managed by the Sponsor, which will control the board"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": null,
+  "sponsor": {
+   "value": "1222 Putnam Development Inc.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "Sponsor : 1222 Putnam Development Inc."
+  },
+  "sponsor_address": {
+   "value": "1529 71st Street, Fl 1, Brooklyn, NY 11228",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "1529 71 st Street, Fl 1 Brooklyn, NY 112 28"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 7863,
+   "field": "selling_agent",
+   "page_no": 123,
+   "score": 1
+  },
+  {
+   "id": 7864,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 7865,
+   "field": "reserve_fund",
+   "page_no": 117,
+   "score": 1
+  },
+  {
+   "id": 7866,
+   "field": "working_capital",
+   "page_no": 118,
+   "score": 1
+  },
+  {
+   "id": 10871,
+   "field": "architect",
+   "page_no": 129,
+   "score": 1
+  },
+  {
+   "id": 11168,
+   "field": "managing_agent",
+   "page_no": 12,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 7863,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "1222 Putnam Development Inc.",
+   "page_no": 123,
+   "file_id": 23897,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "Sponsor has not retained a Selling Agent; Sponsor will be the Selling Agent",
+    "page": "P13",
+    "quote": "Sponsor has not retained a Selling Agent for this property. Sponsor will be the Selling Agent.",
+    "why": "P13 states Sponsor itself is the selling agent, not '1222 Putnam Development Inc.' as a separate selling agent entity; also P1 shows sponsor name is '1222 Putnam Development Inc.' with slightly different spacing but role is Sponsor, not a named Selling Agent."
+   },
+   "blind": {
+    "value": "1222 Putnam Development Inc.",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P13",
+    "quote": "Sponsor has not retained a Selling Agent for this property. Sponsor will be the Selling Agent."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "Sponsor has not retained a Selling Agent for this property. Sponsor will be the Selling Agent. (Sponsor: 1222 Putnam Development Inc.)",
+    "page": "P13",
+    "quote": "Sponsor has not retained a Selling Agent for this property. Sponsor will be the Selling Agent.",
+    "sure": true,
+    "why": "P13 says the Sponsor is the selling agent, and P1 names the Sponsor as 1222 Putnam Development Inc."
+   },
+   "candidates": [
+    "Sponsor has not retained a Selling Agent; Sponsor will be the Selling Agent",
+    "1222 Putnam Development Inc.",
+    "1222 Putnam Development Inc. (the Sponsor itself)"
+   ],
+   "stored_letter": "B",
+   "printed": "Sponsor has not retained a Selling Agent for this property. Sponsor will be the Selling Agent. (Sponsor: 1222 Putnam Development Inc.)",
+   "printed_page": {
+    "file_id": 23897,
+    "page_no": 123
+   },
+   "printed_quote": "Sponsor has not retained a Selling Agent for this property. Sponsor will be the Selling Agent.",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7864,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "1529 71st Street, Fl 1, Brooklyn, NY 11228",
+   "page_no": 1,
+   "file_id": 23897,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "1529 71 st Street, Fl 1 Brooklyn, NY 112 28",
+    "why": "Matches sponsor address on cover page."
+   },
+   "blind": {
+    "value": "1529 71st Street, Fl 1, Brooklyn, NY 11228",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "1529 71 st Street, Fl 1 Brooklyn, NY 112 28"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7865,
+   "field": "reserve_fund",
+   "column": "value_text",
+   "stored": "$3,400 budgeted to reserve for first year via common charges",
+   "page_no": 117,
+   "file_id": 23897,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P10",
+    "quote": "the sum of $ 3, 4 00 .00 has been budgeted towards the reserve account",
+    "why": "Matches stated reserve fund amount."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7866,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 118,
+   "file_id": 23897,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P11",
+    "quote": "such Purchaser shall pay a sum equal to two months Common Charges to the Board of Managers for its working capital",
+    "why": "Matches claim exactly."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 10871,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "ARC Architecture",
+   "page_no": 129,
+   "file_id": 23897,
+   "check": {
+    "n": 5,
+    "verdict": "minor",
+    "fix": "ARC Architecture + Design Studio",
+    "page": "P15",
+    "quote": "Sponsor adopts the report prepared by ARC Architecture + Design Studio",
+    "why": "Name is truncated; full printed name is 'ARC Architecture + Design Studio'."
+   },
+   "blind": {
+    "value": "ARC Architecture + Design Studio",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P5",
+    "quote": "The Sponsor retained ARC Architecture + Design Studio , of 71 - 01 Austin Street, Forest Hills, NY 11375 , as architect"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "B"
+    ],
+    "close": [
+     "A"
+    ],
+    "printed": "ARC Architecture + Design Studio",
+    "page": "P15",
+    "quote": "Sponsor adopts the report prepared by ARC Architecture + Design Studio",
+    "sure": true,
+    "why": "The full name, also on P5, includes '+ Design Studio'. 'ARC Architecture' alone is truncated."
+   },
+   "candidates": [
+    "ARC Architecture",
+    "ARC Architecture + Design Studio"
+   ],
+   "stored_letter": "A",
+   "printed": "ARC Architecture + Design Studio",
+   "printed_page": {
+    "file_id": 23897,
+    "page_no": 129
+   },
+   "printed_quote": "Sponsor adopts the report prepared by ARC Architecture + Design Studio",
+   "verdict": "minor"
+  },
+  {
+   "table": "facts",
+   "id": 11168,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "Self-managed",
+   "page_no": 12,
+   "file_id": 23897,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P3",
+    "quote": "Until the Sponsor relinquishes control of the Condominium, the Board shall manage the Condominium.",
+    "why": "Confirms self-management (by Board/Sponsor) for first year, no outside managing agent."
+   },
+   "blind": {
+    "value": "1222 Putnam Development Inc.",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P12",
+    "quote": "there will not be an outside management company during the Sponsor Control Period, during such period the condominium will effectively be managed by the Sponsor, which will control the board"
+   },
+   "blind_agrees": false,
+   "judge": {
+    "n": 3,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "No managing agent; until Sponsor relinquishes control the Board manages the Condominium (effectively managed by the Sponsor, which controls the Board)",
+    "page": "P3",
+    "quote": "Until the Sponsor relinquishes control of the Condominium, the Board shall manage the Condominium",
+    "sure": true,
+    "why": "P3 and P12 say the Board self-manages. P12 adds that the condominium 'will effectively be managed by the Sponsor, which will control the board' and that no fee is charged."
+   },
+   "candidates": [
+    "1222 Putnam Development Inc. (the Sponsor itself)",
+    "Self-managed"
+   ],
+   "stored_letter": "B",
+   "printed": "No managing agent; until Sponsor relinquishes control the Board manages the Condominium (effectively managed by the Sponsor, which controls the Board)",
+   "printed_page": {
+    "file_id": 23897,
+    "page_no": 12
+   },
+   "printed_quote": "Until the Sponsor relinquishes control of the Condominium, the Board shall manage the Condominium",
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1777,
+   "field": "principal",
+   "stored": {
+    "name": "NOT STATED",
+    "kind": "entity",
+    "role": null,
+    "parent_entity": null
+   },
+   "page_no": 66,
+   "file_id": 23897,
+   "check": {
+    "n": 7,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": "P8",
+    "quote": null,
+    "why": "P8 discusses effectiveness conditions, not sponsor principals; no statement about sponsor principal identity appears on this page."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 4,
+    "accurate": [
+     "A"
+    ],
+    "close": [],
+    "printed": null,
+    "page": "P8",
+    "quote": "is a principal of the Sponsor, the Selling Agent or the Managing Agent",
+    "sure": true,
+    "why": "P8 mentions principals only in general terms. No principal of the Sponsor is named on these pages."
+   },
+   "candidates": [
+    "NOT STATED"
+   ],
+   "stored_letter": "A",
+   "printed": null,
+   "printed_page": {
+    "file_id": 23897,
+    "page_no": 66
+   },
+   "printed_quote": "is a principal of the Sponsor, the Selling Agent or the Managing Agent",
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD230092",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "1222 PUTNAM DEVELOPMENT INC",
+   "check": {
+    "n": 8,
+    "verdict": "minor",
+    "fix": "1222 Putnam Development Inc.",
+    "page": "P1",
+    "quote": "1222 Putnam Development Inc.",
+    "why": "Claim renders name in all caps without punctuation; printed form has mixed case and a period."
+   },
+   "blind": {
+    "value": "1222 Putnam Development Inc.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "Sponsor : 1222 Putnam Development Inc."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 5,
+    "accurate": [
+     "A"
+    ],
+    "close": [],
+    "printed": "1222 Putnam Development Inc.",
+    "page": "P1",
+    "quote": "Sponsor : 1222 Putnam Development Inc.",
+    "sure": true,
+    "why": "The cover page names the Sponsor."
+   },
+   "candidates": [
+    "1222 PUTNAM DEVELOPMENT INC"
+   ],
+   "stored_letter": "A",
+   "printed": "1222 Putnam Development Inc.",
+   "printed_page": {
+    "file_id": 23897,
+    "page_no": 1
+   },
+   "printed_quote": "Sponsor : 1222 Putnam Development Inc.",
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD230092",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "EIAL GIRTZ, PC",
+   "check": {
+    "n": 9,
+    "verdict": "wrong",
+    "fix": "Eial Girtz, Esq.",
+    "page": "P4",
+    "quote": "Refer to the opinion of Eial Girtz, Esq., counsel to Sponsor",
+    "why": "Pages identify sponsor's counsel as Eial Girtz, Esq., not 'Eial Girtz, PC'; no firm name 'PC' is given, and this is from P4 not the cover page P1 which doesn't list counsel."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 6,
+    "accurate": [
+     "B"
+    ],
+    "close": [
+     "A"
+    ],
+    "printed": "Eial Girtz, Esq.",
+    "page": "P4",
+    "quote": "Refer to the opinion of Eial Girtz, Esq., counsel to Sponsor",
+    "sure": true,
+    "why": "Counsel is printed as an individual, 'Esq.'. 'EIAL GIRTZ, PC' names a firm form the pages do not show."
+   },
+   "candidates": [
+    "EIAL GIRTZ, PC",
+    "Eial Girtz, Esq."
+   ],
+   "stored_letter": "A",
+   "printed": "Eial Girtz, Esq.",
+   "printed_page": {
+    "file_id": 23897,
+    "page_no": 22
+   },
+   "printed_quote": "Refer to the opinion of Eial Girtz, Esq., counsel to Sponsor",
+   "verdict": "minor"
+  }
+ ],
+ "calls": 3,
+ "tokens": 45845
+}

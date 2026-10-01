@@ -1,0 +1,173 @@
+{
+ "plan_id": "CD230032",
+ "checked_at": "2026-10-01T22:55:29.146Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 28824,
+   "page_no": 192,
+   "why": [
+    "cited"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "ANINDYA CHAKRABORTY, PE",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "ANINDYA CHAKRABORTY PE 59 HAREN DRIVE. ROCKY HILL, CT 06067"
+  },
+  "selling_agent": null,
+  "managing_agent": null,
+  "tax_consultant": null,
+  "sponsor_attorney": null,
+  "sponsor": {
+   "value": "58-6977, LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "DECLARANT: NAME: 58-6977, LLC"
+  },
+  "sponsor_address": {
+   "value": "58 LEE AVENUE, BROOKLYN, NY 11211",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "ADDRESS: 58 LEE AVENUE, BROOKLYN, NY 11211"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 7852,
+   "field": "architect",
+   "page_no": 192,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 7852,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Anindya Chakraborty PE",
+   "page_no": 192,
+   "file_id": 28824,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "ANINDYA CHAKRABORTY PE",
+    "why": "Matches architect's certification block on the page."
+   },
+   "blind": {
+    "value": "ANINDYA CHAKRABORTY, PE",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "ANINDYA CHAKRABORTY PE 59 HAREN DRIVE. ROCKY HILL, CT 06067"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD230032",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "S8-6977 LLC",
+   "check": {
+    "n": 2,
+    "verdict": "minor",
+    "fix": "58-6977, LLC",
+    "page": "P1",
+    "quote": "58-6977, LLC",
+    "why": "Declarant name printed as '58-6977, LLC' not 'S8-6977 LLC' (digit 5-8, not letters S8)."
+   },
+   "blind": {
+    "value": "58-6977, LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "DECLARANT: NAME: 58-6977, LLC"
+   },
+   "blind_agrees": false,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A"
+    ],
+    "close": [
+     "B"
+    ],
+    "printed": "58-6977, LLC",
+    "page": "P1",
+    "quote": "DECLARANT: NAME: 58-6977, LLC",
+    "sure": true,
+    "why": "The floor-plan title block names the Declarant as 58-6977, LLC. The page doesn't use the word Sponsor for this name, but the Declarant here is the sponsoring entity. Candidate B misreads '58' as 'S8'.",
+    "from_images": true
+   },
+   "candidates": [
+    "58-6977, LLC",
+    "S8-6977 LLC"
+   ],
+   "stored_letter": "B",
+   "printed": "58-6977, LLC",
+   "printed_page": {
+    "file_id": 28824,
+    "page_no": 192
+   },
+   "printed_quote": "DECLARANT: NAME: 58-6977, LLC",
+   "verdict": "minor"
+  },
+  {
+   "table": "plans",
+   "id": "CD230032",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "LAW OFFICES OF HERSHY ITZKOWITZ, P.C.",
+   "check": {
+    "n": 3,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": null,
+    "quote": null,
+    "why": "Page does not mention Sponsor's counsel/attorneys."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 2,
+    "accurate": [],
+    "close": [],
+    "printed": null,
+    "page": "P1",
+    "quote": "",
+    "sure": false,
+    "why": "This floor-plan page doesn't name any attorneys or counsel for the Sponsor, so candidate A can't be confirmed from it.",
+    "from_images": true
+   },
+   "candidates": [
+    "LAW OFFICES OF HERSHY ITZKOWITZ, P.C."
+   ],
+   "stored_letter": "A",
+   "printed": null,
+   "printed_page": {
+    "file_id": 28824,
+    "page_no": 192
+   },
+   "printed_quote": "",
+   "verdict": "unresolved"
+  }
+ ],
+ "calls": 4,
+ "tokens": 42705
+}

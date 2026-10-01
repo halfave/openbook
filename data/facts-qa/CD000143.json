@@ -1,0 +1,212 @@
+{
+ "plan_id": "CD000143",
+ "checked_at": "2026-10-01T18:32:39.569Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 569,
+   "page_no": 1,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 569,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 569,
+   "page_no": 8,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 569,
+   "page_no": 30,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 569,
+   "page_no": 80,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 569,
+   "page_no": 81,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 569,
+   "page_no": 85,
+   "why": [
+    "managing_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": null,
+  "selling_agent": {
+   "value": "FALDAN REALTY CO.",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "NAME AND ADDRESS OF SPONSOR AND SELLING AGENT: FALDAN REALTY CO."
+  },
+  "managing_agent": {
+   "value": "General Property Management Associates, Inc.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P7",
+   "quote": "appoints GeneralProperty Management Associates, Inc. as Managing Agent"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "Ross & Ross, LLP",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P6",
+   "quote": "the income tax opinion of Ross & Ross, LLP, counsel to Sponsor"
+  },
+  "sponsor": {
+   "value": "FALDAN REALTY CO.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "NAME AND ADDRESS OF SPONSOR AND SELLING AGENT: FALDAN REALTY CO."
+  },
+  "sponsor_address": {
+   "value": "33 FARM LANE, GREAT NECK, NEW YORK 11020",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "33 FARM LANE GREAT NECK, NEW YORK 11020"
+  }
+ },
+ "quote_checks": [],
+ "results": [
+  {
+   "table": "plans",
+   "id": "CD000143",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "FALDAN REALTY CO.",
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "FALDAN REALTY CO.",
+    "why": "Matches cover page sponsor name."
+   },
+   "blind": {
+    "value": "FALDAN REALTY CO.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "NAME AND ADDRESS OF SPONSOR AND SELLING AGENT: FALDAN REALTY CO."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD000143",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "SMITH, BUSS & JACOBS, LLP",
+   "check": {
+    "n": 2,
+    "verdict": "wrong",
+    "fix": "Ross & Ross, LLP",
+    "page": "P6",
+    "quote": "counsel to Sponsor",
+    "why": "Pages identify Ross & Ross, LLP as counsel to Sponsor, not Smith, Buss & Jacobs, LLP."
+   },
+   "blind": {
+    "value": "Ross & Ross, LLP",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P6",
+    "quote": "the income tax opinion of Ross & Ross, LLP, counsel to Sponsor"
+   },
+   "blind_agrees": false,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "B"
+    ],
+    "close": [],
+    "printed": "Ross & Ross, LLP",
+    "page": "P6",
+    "quote": "income tax opinion of Ross & Ross, LLP, counsel to Sponsor",
+    "sure": true,
+    "why": "P6 names Ross & Ross, LLP as counsel to Sponsor; Smith, Buss & Jacobs does not appear on these pages."
+   },
+   "candidates": [
+    "SMITH, BUSS & JACOBS, LLP",
+    "Ross & Ross, LLP"
+   ],
+   "stored_letter": "A",
+   "printed": "Ross & Ross, LLP",
+   "printed_page": {
+    "file_id": 569,
+    "page_no": 81
+   },
+   "printed_quote": "income tax opinion of Ross & Ross, LLP, counsel to Sponsor",
+   "verdict": "wrong"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 3352,
+   "field": "principal",
+   "method": "ag-site",
+   "stored": {
+    "name": "Daniel Perla",
+    "kind": "person",
+    "role": "General Partner",
+    "parent_entity": null
+   },
+   "quote": null,
+   "verdict": "not_from_plan"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 3353,
+   "field": "principal",
+   "method": "ag-site",
+   "stored": {
+    "name": "Faleh Hamdan",
+    "kind": "person",
+    "role": "General Partner",
+    "parent_entity": null
+   },
+   "quote": null,
+   "verdict": "not_from_plan"
+  }
+ ],
+ "calls": 3,
+ "tokens": 20706
+}

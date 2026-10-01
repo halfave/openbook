@@ -1,0 +1,169 @@
+{
+ "plan_id": "CD170222",
+ "checked_at": "2026-10-01T19:48:12.962Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 12749,
+   "page_no": 1,
+   "why": [
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 12749,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 12749,
+   "page_no": 4,
+   "why": [
+    "cited"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": null,
+  "selling_agent": {
+   "value": "Douglas Elliman Real Estate",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "Douglas Elliman Real Estate"
+  },
+  "managing_agent": null,
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "Goldstick, Weinberger, Feldman & Grossman, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "Goldstick, Weinberger, Feldman & Grossman, P.C."
+  },
+  "sponsor": {
+   "value": "50 1st Place Development, LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "50 1 Place Development, LLC"
+  },
+  "sponsor_address": {
+   "value": "80 Cuttermill Road, Great Neck, NY 11021",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "80 Cuttermill Road Great Neck, NY 11021"
+  }
+ },
+ "quote_checks": [],
+ "results": [
+  {
+   "table": "sponsor_principals",
+   "id": 340,
+   "field": "principal",
+   "stored": {
+    "name": "NOT STATED",
+    "kind": "entity",
+    "role": null,
+    "parent_entity": null
+   },
+   "page_no": 4,
+   "file_id": 12749,
+   "check": {
+    "n": 1,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": "P3",
+    "quote": "CERTIFICATION OF SPONSOR AND SPONSOR'S PRINCIPALS",
+    "why": "P3 only lists a table of contents entry for this certification section; no principal's name or entity is given on these pages."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A"
+    ],
+    "close": [],
+    "printed": null,
+    "page": "P3",
+    "quote": "CERTIFICATION OF SPONSOR AND SPONSOR'S PRINCIPALS",
+    "sure": false,
+    "why": "P3 is only a table-of-contents entry for the principals' certification and names no individual. No page names a principal of 50 1st Place Development, LLC, so 'NOT STATED' matches the pages. The actual certification on plan page 319 is not included."
+   },
+   "candidates": [
+    "NOT STATED"
+   ],
+   "stored_letter": "A",
+   "printed": null,
+   "printed_page": {
+    "file_id": 12749,
+    "page_no": 4
+   },
+   "printed_quote": "CERTIFICATION OF SPONSOR AND SPONSOR'S PRINCIPALS",
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD170222",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "50 1ST PLACE DEVELOPMENT, LLC",
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "50 1 Place Development, LLC",
+    "why": "Cover page names this as the Sponsor."
+   },
+   "blind": {
+    "value": "50 1st Place Development, LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "50 1 Place Development, LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD170222",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "GOLDSTICK, WEINBERGER, FELDMAN & GROSSMAN, PC",
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "Goldstick, Weinberger, Feldman & Grossman, P.C.",
+    "why": "Cover page lists this as Sponsor's Attorney."
+   },
+   "blind": {
+    "value": "Goldstick, Weinberger, Feldman & Grossman, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "Goldstick, Weinberger, Feldman & Grossman, P.C."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 13459
+}

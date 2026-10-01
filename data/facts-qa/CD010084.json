@@ -1,0 +1,270 @@
+{
+ "plan_id": "CD010084",
+ "checked_at": "2026-10-01T18:31:59.257Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 27872,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 27872,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 27872,
+   "page_no": 68,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 27872,
+   "page_no": 144,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 27872,
+   "page_no": 157,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 27872,
+   "page_no": 178,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 27872,
+   "page_no": 238,
+   "why": [
+    "tax_consultant"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Ismael Leyva Architects P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P3",
+   "quote": "certified by Ismael Leyva Architects P.C."
+  },
+  "selling_agent": {
+   "value": "Related Residential Sales LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "Selling Agent: Related Residential Sales LLC"
+  },
+  "managing_agent": null,
+  "tax_consultant": null,
+  "sponsor_attorney": null,
+  "sponsor": {
+   "value": "Columbus Centre Residential LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "Sponsor: Columbus Centre Residential LLC"
+  },
+  "sponsor_address": {
+   "value": "60 Columbus Circle, New York, New York 10023",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "60 Columbus Circle New York, New York 10023"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 43,
+   "field": "selling_agent",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 44,
+   "field": "architect",
+   "page_no": 68,
+   "score": 1
+  },
+  {
+   "id": 5074,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 0.7
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 43,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "Related Residential Sales LLC",
+   "page_no": 1,
+   "file_id": 27872,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "Related Residential Sales LLC",
+    "why": "Matches printed selling agent name"
+   },
+   "blind": {
+    "value": "Related Residential Sales LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "Selling Agent: Related Residential Sales LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 44,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Ismael Leyva Architects P.C.",
+   "page_no": 68,
+   "file_id": 27872,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P3",
+    "quote": "certified by Ismael Leyva Architects P.C.",
+    "why": "Matches printed architect name and role"
+   },
+   "blind": {
+    "value": "Ismael Leyva Architects P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P3",
+    "quote": "certified by Ismael Leyva Architects P.C."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5074,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "60 Columbus Circle, New York, New York 10023",
+   "page_no": 1,
+   "file_id": 27872,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "60 Columbus Circle, New York, New York 10023",
+    "why": "Matches printed Sponsor address"
+   },
+   "blind": {
+    "value": "60 Columbus Circle, New York, New York 10023",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "60 Columbus Circle New York, New York 10023"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD010084",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "COLUMBUS CENTRE RESIDENTIAL LLC",
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "Columbus Centre Residential LLC",
+    "why": "Matches printed Sponsor name"
+   },
+   "blind": {
+    "value": "Columbus Centre Residential LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "Sponsor: Columbus Centre Residential LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD010084",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "KRAMER LEVIN NAFTALIS & FRANKEL LLP",
+   "check": {
+    "n": 5,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": null,
+    "quote": null,
+    "why": "Pages provided do not mention Sponsor's counsel"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [],
+    "close": [],
+    "printed": null,
+    "page": "P1",
+    "quote": "Sponsor: Columbus Centre Residential LLC",
+    "sure": false,
+    "why": "None of the seven pages names the Sponsor's counsel, and Kramer Levin does not appear on any of them. The cover (P1) lists only the Sponsor and the Selling Agent (Related Residential Sales LLC). The other pages are tables of contents and Declaration/By-Laws text.",
+    "from_images": true
+   },
+   "candidates": [
+    "KRAMER LEVIN NAFTALIS & FRANKEL LLP"
+   ],
+   "stored_letter": "A",
+   "printed": null,
+   "printed_page": {
+    "file_id": 27872,
+    "page_no": 1
+   },
+   "printed_quote": "Sponsor: Columbus Centre Residential LLC",
+   "verdict": "unresolved"
+  }
+ ],
+ "calls": 4,
+ "tokens": 64624
+}

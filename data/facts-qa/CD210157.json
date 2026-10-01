@@ -1,0 +1,483 @@
+{
+ "plan_id": "CD210157",
+ "checked_at": "2026-10-01T21:55:56.969Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 13786,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 13786,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 13786,
+   "page_no": 19,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 13786,
+   "page_no": 42,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 13786,
+   "page_no": 124,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 13786,
+   "page_no": 125,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 13786,
+   "page_no": 126,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 13786,
+   "page_no": 127,
+   "why": [
+    "cited",
+    "sponsor_attorney"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Harry Hong, Engineer, H2 Consulting, PE PC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "The architect who prepared the report in Part II and who executed the Certification in Part II is Harry Hong , Engineer , H2 Consulting, PE PC, 87 Walker Street , 3 rd Floor, N ew Y ork 1 00 1 3"
+  },
+  "selling_agent": {
+   "value": "The Style Development LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SPONSOR/SELLING AGENT \nThe Style Development LLC"
+  },
+  "managing_agent": {
+   "value": "Brickshore Capital Inc.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P6",
+   "quote": "the condominium will enter into a management agreement with Brickshore Capital Inc. (the “Managing Agent”), 5 Chelsea Place, Great Neck, New York 11021"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "Moritt Hock & Hamroff LLP",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "Moritt Hock & Hamroff LLP , 1407 Broadway , 39 th Floor , New York, NY 10018 , counsel to the Sponsor"
+  },
+  "sponsor": {
+   "value": "The Style Development LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P7",
+   "quote": "The Sponsor is The Style Development LLC , a New York l imited l iability c ompany"
+  },
+  "sponsor_address": {
+   "value": "1917 76th Street, Brooklyn, New York 11214",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "The Style Development LLC \n1917 76 th Street \nBrooklyn, New York 112 14"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 7277,
+   "field": "parking_arrangement",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 7278,
+   "field": "selling_agent",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 7279,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 7280,
+   "field": "managing_agent",
+   "page_no": 126,
+   "score": 1
+  },
+  {
+   "id": 7281,
+   "field": "architect",
+   "page_no": 127,
+   "score": 1
+  },
+  {
+   "id": 7282,
+   "field": "working_capital",
+   "page_no": 124,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 7277,
+   "field": "parking_arrangement",
+   "column": "value_text",
+   "stored": "sold",
+   "page_no": 1,
+   "file_id": 13786,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "8 parking space units sold (not clear it's 'sold' vs another arrangement — page says '8 Parking Space Units $560,000' under TOTAL OFFERING, implying sale, but no explicit word 'sold')",
+    "page": "P1",
+    "quote": "8 Parking Space Un it s $ 560,000",
+    "why": "Page lists parking as units with a price under the total offering (consistent with sold), count of 8 matches, so this is actually correct"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A"
+    ],
+    "close": [
+     "B"
+    ],
+    "printed": "8 Parking Space Units offered for sale ($560,000)",
+    "page": "P1",
+    "quote": "8 Parking Space Un it s $ 560,000",
+    "sure": true,
+    "why": "P1 is the offering plan 'FOR THE SALE OF UNITS' and lists 8 Parking Space Units at $560,000, so the spaces are sold as units. A gives the right arrangement and count. Its doubt about the word 'sold' is overcautious, since the title says 'FOR THE SALE OF UNITS'. B says 'sold', which is right, but leaves out the count of 8."
+   },
+   "candidates": [
+    "8 parking space units sold (not clear it's 'sold' vs another arrangement — page says '8 Parking Space Units $560,000' under TOTAL OFFERING, implying sale, but no explicit word 'sold')",
+    "sold"
+   ],
+   "stored_letter": "B",
+   "printed": "8 Parking Space Units offered for sale ($560,000)",
+   "printed_page": {
+    "file_id": 13786,
+    "page_no": 1
+   },
+   "printed_quote": "8 Parking Space Un it s $ 560,000",
+   "verdict": "minor"
+  },
+  {
+   "table": "facts",
+   "id": 7278,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "The Style Development LLC",
+   "page_no": 1,
+   "file_id": 13786,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "SPONSOR/SELLING AGENT \nThe Style Development LLC",
+    "why": "Listed as Sponsor/Selling Agent"
+   },
+   "blind": {
+    "value": "The Style Development LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "SPONSOR/SELLING AGENT \nThe Style Development LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7279,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "1917 76th Street, Brooklyn, New York 11214",
+   "page_no": 1,
+   "file_id": 13786,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "1917 76 th Street \nBrooklyn, New York 112 14",
+    "why": "Matches Sponsor's address"
+   },
+   "blind": {
+    "value": "1917 76th Street, Brooklyn, New York 11214",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "The Style Development LLC \n1917 76 th Street \nBrooklyn, New York 112 14"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7280,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "Brickshore Capital Inc.",
+   "page_no": 126,
+   "file_id": 13786,
+   "check": {
+    "n": 4,
+    "verdict": "wrong",
+    "fix": "annual fee approximately $9,000",
+    "page": "P6",
+    "quote": "The Managing Agent will receive an annual fee approximately $ 9 ,00 0",
+    "why": "Number should be 9000, not 9000 is correct actually — fee is $9,000 annually, matches claim's 9000"
+   },
+   "blind": {
+    "value": "Brickshore Capital Inc.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P6",
+    "quote": "the condominium will enter into a management agreement with Brickshore Capital Inc. (the “Managing Agent”), 5 Chelsea Place, Great Neck, New York 11021"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "B"
+    ],
+    "close": [],
+    "printed": "Brickshore Capital Inc.",
+    "page": "P7",
+    "quote": "management agreement with Brickshore Capital Inc. (the “Managing Agent ”)",
+    "sure": true,
+    "why": "Brickshore Capital Inc. is named as the Managing Agent. A gives the agent's fee, not the agent."
+   },
+   "candidates": [
+    "annual fee approximately $9,000",
+    "Brickshore Capital Inc."
+   ],
+   "stored_letter": "B",
+   "printed": "Brickshore Capital Inc.",
+   "printed_page": {
+    "file_id": 13786,
+    "page_no": 126
+   },
+   "printed_quote": "management agreement with Brickshore Capital Inc. (the “Managing Agent ”)",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7281,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Harry Hong, H2 Consulting, PE PC",
+   "page_no": 127,
+   "file_id": 13786,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "Harry Hong , Engineer , H2 Consulting, PE PC",
+    "why": "Matches architect and firm name, though printed title is Engineer not Architect"
+   },
+   "blind": {
+    "value": "Harry Hong, Engineer, H2 Consulting, PE PC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "The architect who prepared the report in Part II and who executed the Certification in Part II is Harry Hong , Engineer , H2 Consulting, PE PC, 87 Walker Street , 3 rd Floor, N ew Y ork 1 00 1 3"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7282,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 124,
+   "file_id": 13786,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P5",
+    "quote": "an amount equal to two (2) months Common \nCharges from each Purchaser",
+    "why": "Matches working capital fund description"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1801,
+   "field": "principal",
+   "stored": {
+    "name": "Can Hua Li",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 126,
+   "file_id": 13786,
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P7",
+    "quote": "The Principal s of the Sponsor are Can Hua Li, Rong Fang Wu and William Xu.",
+    "why": "Listed as a Principal of the Sponsor"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1802,
+   "field": "principal",
+   "stored": {
+    "name": "Rong Fang Wu",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 126,
+   "file_id": 13786,
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P7",
+    "quote": "The Principal s of the Sponsor are Can Hua Li, Rong Fang Wu and William Xu.",
+    "why": "Listed as a Principal of the Sponsor"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1803,
+   "field": "principal",
+   "stored": {
+    "name": "William Xu",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 126,
+   "file_id": 13786,
+   "check": {
+    "n": 9,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P7",
+    "quote": "The Principal s of the Sponsor are Can Hua Li, Rong Fang Wu and William Xu.",
+    "why": "Listed as a Principal of the Sponsor"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD210157",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "THE STYLE DEVELOPMENT LLC",
+   "check": {
+    "n": 10,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "The Style Development LLC",
+    "why": "Matches Sponsor name on cover page (case difference only)"
+   },
+   "blind": {
+    "value": "The Style Development LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P7",
+    "quote": "The Sponsor is The Style Development LLC , a New York l imited l iability c ompany"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD210157",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "MORITT HOCK & HAMROFF, LLP",
+   "check": {
+    "n": 11,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "MORITT HOCK & HAMROFF LLP",
+    "why": "Matches Sponsor's Attorney on cover page"
+   },
+   "blind": {
+    "value": "Moritt Hock & Hamroff LLP",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "Moritt Hock & Hamroff LLP , 1407 Broadway , 39 th Floor , New York, NY 10018 , counsel to the Sponsor"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 29792
+}

@@ -1,0 +1,146 @@
+{
+ "plan_id": "CD210006",
+ "checked_at": "2026-10-01T21:39:05.691Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 28899,
+   "page_no": 311,
+   "why": [
+    "cited"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": null,
+  "selling_agent": null,
+  "managing_agent": null,
+  "tax_consultant": null,
+  "sponsor_attorney": null,
+  "sponsor": {
+   "value": "OS BUILDERS LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SPONSOR: OS BUILDERS LLC"
+  },
+  "sponsor_address": null
+ },
+ "quote_checks": [],
+ "results": [
+  {
+   "table": "sponsor_principals",
+   "id": 1490,
+   "field": "principal",
+   "stored": {
+    "name": "Aron Katz",
+    "kind": "person",
+    "role": "member",
+    "parent_entity": null
+   },
+   "page_no": 311,
+   "file_id": 28899,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "Aron Katz, Member",
+    "why": "Matches printed text listing Aron Katz as Member/principal of Sponsor"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD210006",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "CON ML LLC",
+   "check": {
+    "n": 2,
+    "verdict": "wrong",
+    "fix": "OS BUILDERS LLC",
+    "page": "P1",
+    "quote": "SPONSOR: OS BUILDERS LLC",
+    "why": "Page names the Sponsor as OS BUILDERS LLC, not CON ML LLC"
+   },
+   "blind": {
+    "value": "OS BUILDERS LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "SPONSOR: OS BUILDERS LLC"
+   },
+   "blind_agrees": false,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A"
+    ],
+    "close": [],
+    "printed": "OS BUILDERS LLC",
+    "page": "P1",
+    "quote": "SPONSOR: OS BUILDERS LLC",
+    "sure": true,
+    "why": "The sponsor certification page names OS BUILDERS LLC as Sponsor, signed by Aron Katz, Member. CON ML LLC does not appear on the page."
+   },
+   "candidates": [
+    "OS BUILDERS LLC",
+    "CON ML LLC"
+   ],
+   "stored_letter": "B",
+   "printed": "OS BUILDERS LLC",
+   "printed_page": {
+    "file_id": 28899,
+    "page_no": 311
+   },
+   "printed_quote": "SPONSOR: OS BUILDERS LLC",
+   "verdict": "wrong"
+  },
+  {
+   "table": "plans",
+   "id": "CD210006",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "LAW OFFICES OF HERSHY ITZKOWITZ, P.C.",
+   "check": {
+    "n": 3,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": "P1",
+    "quote": null,
+    "why": "Page contains notary info, not Sponsor's counsel"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [],
+    "close": [],
+    "printed": null,
+    "page": "P1",
+    "quote": "SPONSOR: OS BUILDERS LLC",
+    "sure": false,
+    "why": "The page is the end of the Sponsor's certification. It shows the sponsor, OS Builders LLC, signed by Aron Katz, Member, and a notary stamp for Padram Fejal. It doesn't name any counsel for the Sponsor, so candidate A can't be confirmed from this page.",
+    "from_images": true
+   },
+   "candidates": [
+    "LAW OFFICES OF HERSHY ITZKOWITZ, P.C."
+   ],
+   "stored_letter": "A",
+   "printed": null,
+   "printed_page": {
+    "file_id": 28899,
+    "page_no": 311
+   },
+   "printed_quote": "SPONSOR: OS BUILDERS LLC",
+   "verdict": "unresolved"
+  }
+ ],
+ "calls": 4,
+ "tokens": 15953
+}

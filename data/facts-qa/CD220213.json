@@ -1,0 +1,378 @@
+{
+ "plan_id": "CD220213",
+ "checked_at": "2026-10-01T22:43:52.767Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 21284,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 21284,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 21284,
+   "page_no": 36,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 21284,
+   "page_no": 38,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 21284,
+   "page_no": 59,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 21284,
+   "page_no": 114,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 21284,
+   "page_no": 127,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 21284,
+   "page_no": 128,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 21284,
+   "page_no": 186,
+   "why": [
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 21284,
+   "page_no": 257,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P11",
+   "file_id": 21284,
+   "page_no": 338,
+   "why": [
+    "cited"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Brent M. Porter Architect and Associates",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "Brent M. Porter Architect and Associates , a Registered Architect , has rendered the Floor Plans of the Property"
+  },
+  "selling_agent": {
+   "value": "Hashem 499 Van Buren Development LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+  },
+  "managing_agent": {
+   "value": "Hashem 499 Van Buren Development LLC",
+   "by_sponsor": false,
+   "by_board": true,
+   "others": [],
+   "page": "P4",
+   "quote": "The Condominium Board will be responsible for managing the condominium, including but not limited to, writing checks, payment of bills"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "The Law Office of Jay Lichtman, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "A TTORNEYS F OR S PONSOR : T HE L AW O FFICE OF J AY L ICHTMAN , P.C."
+  },
+  "sponsor": {
+   "value": "Hashem 499 Van Buren Development LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "S PONSOR & S ELLING A GENT : H ASHEM 499 V AN B UREN D EVELOPMENT LLC"
+  },
+  "sponsor_address": {
+   "value": "139 Stuyvesant Avenue, Brooklyn, New York 11221",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "139 S TUYVESANT A VENUE B ROOKLYN , N EW Y ORK 11221"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 8429,
+   "field": "architect",
+   "page_no": 338,
+   "score": 1
+  },
+  {
+   "id": 8430,
+   "field": "selling_agent",
+   "page_no": 128,
+   "score": 1
+  },
+  {
+   "id": 8431,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 8432,
+   "field": "working_capital",
+   "page_no": 127,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 8429,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Brent M. Porter, Architect and Associates",
+   "page_no": 338,
+   "file_id": 21284,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P11",
+    "quote": "BRENT M. PORTER, ARCHITECT AND ASSOCIATES",
+    "why": "Matches printed firm name and role as architect preparing report/floor plans (also P8)."
+   },
+   "blind": {
+    "value": "Brent M. Porter Architect and Associates",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "Brent M. Porter Architect and Associates , a Registered Architect , has rendered the Floor Plans of the Property"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8430,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "Hashem 499 Van Buren Development LLC",
+   "page_no": 128,
+   "file_id": 21284,
+   "check": {
+    "n": 2,
+    "verdict": "wrong",
+    "fix": "Sponsor will not be using a Selling Agent; Sponsor will act as selling agent",
+    "page": "P8",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+    "why": "P8 says Sponsor itself acts as selling agent, not that the entity is formally named 'Selling Agent' distinct from Sponsor; P1 cover page lists Sponsor & Selling Agent as the same entity, so claim is misleading but technically the name matches P1's joint designation — however P8 clarifies no separate selling agent exists, contradicting treating it as a distinct role claim."
+   },
+   "blind": {
+    "value": "Hashem 499 Van Buren Development LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "Hashem 499 Van Buren Development LLC (Sponsor acts as its own selling agent)",
+    "page": "P8",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+    "sure": true,
+    "why": "P8 says the Sponsor acts as its own selling agent, and P8 names the Sponsor as Hashem 499 Van Buren Development LLC. The P1 cover lists 'Sponsor & Selling Agent: Hashem 499 Van Buren Development LLC'. All three candidates therefore name the right party and role."
+   },
+   "candidates": [
+    "Sponsor will not be using a Selling Agent; Sponsor will act as selling agent",
+    "Hashem 499 Van Buren Development LLC",
+    "Hashem 499 Van Buren Development LLC (the Sponsor itself)"
+   ],
+   "stored_letter": "B",
+   "printed": "Hashem 499 Van Buren Development LLC (Sponsor acts as its own selling agent)",
+   "printed_page": {
+    "file_id": 21284,
+    "page_no": 128
+   },
+   "printed_quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8431,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "139 Stuyvesant Avenue, Brooklyn, New York 11221",
+   "page_no": 1,
+   "file_id": 21284,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "139 S TUYVESANT A VENUE B ROOKLYN , N EW Y ORK 11221",
+    "why": "Matches Sponsor's address on cover page."
+   },
+   "blind": {
+    "value": "139 Stuyvesant Avenue, Brooklyn, New York 11221",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "139 S TUYVESANT A VENUE B ROOKLYN , N EW Y ORK 11221"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8432,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 127,
+   "file_id": 21284,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P7",
+    "quote": "an “ Initial Capital Payment ” equal to two (2) months ’ estimated common charges for each Unit",
+    "why": "Matches working capital fund contribution amount."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 2061,
+   "field": "principal",
+   "stored": {
+    "name": "Daniel Amar",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 128,
+   "file_id": 21284,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "The Principal of the Sponsor, Dani el Amar",
+    "why": "Matches name and role as printed."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD220213",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "HASHEM 499 VAN BUREN DEVELOPMENT LLC",
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "H ASHEM 499 V AN B UREN D EVELOPMENT LLC",
+    "why": "Matches Sponsor name on cover page."
+   },
+   "blind": {
+    "value": "Hashem 499 Van Buren Development LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "S PONSOR & S ELLING A GENT : H ASHEM 499 V AN B UREN D EVELOPMENT LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD220213",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "T HE L AW O FFICE OF J AY L ICHTMAN , P.C.",
+    "why": "Matches attorneys for Sponsor on cover page."
+   },
+   "blind": {
+    "value": "The Law Office of Jay Lichtman, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "A TTORNEYS F OR S PONSOR : T HE L AW O FFICE OF J AY L ICHTMAN , P.C."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 57682
+}

@@ -1,0 +1,421 @@
+{
+ "plan_id": "CD220095",
+ "checked_at": "2026-10-01T22:27:44.339Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 19373,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 19373,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 19373,
+   "page_no": 42,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 19373,
+   "page_no": 44,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 19373,
+   "page_no": 67,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 19373,
+   "page_no": 123,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 19373,
+   "page_no": 134,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 19373,
+   "page_no": 135,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 19373,
+   "page_no": 194,
+   "why": [
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 19373,
+   "page_no": 260,
+   "why": [
+    "managing_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Oscar P. Walters, Jr., P.E. / Demerara Engineering, PLLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "Oscar P. Walters, Jr., P.E. with an address at Demerara Engineering, PLLC, 37 - 24 24th Street, Suite 231, Long Island City, New York 11101, a Professional Engineer, has rendered the Floor Plans of the Property"
+  },
+  "selling_agent": {
+   "value": "Heyward Associates LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+  },
+  "managing_agent": {
+   "value": "Condominium Board",
+   "by_sponsor": false,
+   "by_board": true,
+   "others": [],
+   "page": "P4",
+   "quote": "The Condominium Board will be responsible for managing the condominium, including but not limited to, writing checks, payment of bills"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "The Law Office of Jay Lichtman, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "The Sponsor is represented by The Law Office of Jay Lichtman P.C., 68 Jay Street, Suite 420, Brooklyn, New York 11201"
+  },
+  "sponsor": {
+   "value": "Heyward Associates LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "The Sponsor of this project is Heyward Associates LLC , a New York Limited Liability Company"
+  },
+  "sponsor_address": {
+   "value": "828 Bedford Ave Ste 101, Brooklyn, NY 11205",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "with an address at 828 Bedford Ave Ste 101, Brooklyn, NY 11205"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 8634,
+   "field": "selling_agent",
+   "page_no": 135,
+   "score": 1
+  },
+  {
+   "id": 8635,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 8636,
+   "field": "working_capital",
+   "page_no": 134,
+   "score": 1
+  },
+  {
+   "id": 11474,
+   "field": "architect",
+   "page_no": 135,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 8634,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "Heyward Associates LLC",
+   "page_no": 135,
+   "file_id": 19373,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "Sponsor will act as selling agent; Heyward Associates LLC is the Sponsor, not a separate selling agent",
+    "page": "P8",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+    "why": "P8 states Sponsor acts as its own selling agent, not that there is a distinct 'selling agent' entity; P1 does list Heyward Associates LLC as 'Sponsor & Selling Agent' so this is supported by P1, but claim cites P8 which actually undercuts a separate selling agent framing — however since P1 confirms it, verdict should be correct"
+   },
+   "blind": {
+    "value": "Heyward Associates LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "Heyward Associates LLC (Sponsor acts as selling agent)",
+    "page": "P8",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+    "sure": true,
+    "why": "P8 says the Sponsor, Heyward Associates LLC, acts as its own selling agent. The P1 cover lists 'Sponsor & Selling Agent: Heyward Associates LLC'."
+   },
+   "candidates": [
+    "Sponsor will act as selling agent; Heyward Associates LLC is the Sponsor, not a separate selling agent",
+    "Heyward Associates LLC (the Sponsor itself)",
+    "Heyward Associates LLC"
+   ],
+   "stored_letter": "C",
+   "printed": "Heyward Associates LLC (Sponsor acts as selling agent)",
+   "printed_page": {
+    "file_id": 19373,
+    "page_no": 135
+   },
+   "printed_quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8635,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "828 Bedford Ave Ste 101, Brooklyn, New York 11205",
+   "page_no": 1,
+   "file_id": 19373,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "828 B EDFORD A VE S TE 101, B ROOKLYN , N EW Y ORK 11205",
+    "why": "matches cover page address"
+   },
+   "blind": {
+    "value": "828 Bedford Ave Ste 101, Brooklyn, NY 11205",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "with an address at 828 Bedford Ave Ste 101, Brooklyn, NY 11205"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8636,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 134,
+   "file_id": 19373,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P7",
+    "quote": "equal to two (2) months' estimated common charges for each Unit",
+    "why": "matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11474,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Oscar P. Walters, Jr., P.E. of Demerara Engineering, PLLC (engineer)",
+   "page_no": 135,
+   "file_id": 19373,
+   "check": {
+    "n": 4,
+    "verdict": "wrong",
+    "fix": "Oscar P. Walters, Jr., P.E. is identified as the Engineer/Architect with Demerara Engineering, PLLC, and 'the architect' language is used but his credential given is P.E. (Professional Engineer), not stated as both roles combined as '(engineer)' qualifier matching role is fine",
+    "page": "P8",
+    "quote": "Oscar P. Walters, Jr., P.E. ... a Professional Engineer, has rendered the Floor Plans of the Property and has rendered the report thereof",
+    "why": "the role label matches (engineer/architect) and firm matches; claim appears correct"
+   },
+   "blind": {
+    "value": "Oscar P. Walters, Jr., P.E. / Demerara Engineering, PLLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "Oscar P. Walters, Jr., P.E. with an address at Demerara Engineering, PLLC, 37 - 24 24th Street, Suite 231, Long Island City, New York 11101, a Professional Engineer, has rendered the Floor Plans of the Property"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [
+     "C"
+    ],
+    "printed": "Oscar P. Walters, Jr., P.E., Demerara Engineering, PLLC",
+    "page": "P8",
+    "quote": "Oscar P. Walters, Jr., P.E. with an address at Demerara Engineering, PLLC",
+    "sure": true,
+    "why": "He is listed under the Engineer/Architect heading as a Professional Engineer who rendered the floor plans and report. C names the right party but its wording is garbled."
+   },
+   "candidates": [
+    "Oscar P. Walters, Jr., P.E. / Demerara Engineering, PLLC",
+    "Oscar P. Walters, Jr., P.E. of Demerara Engineering, PLLC (engineer)",
+    "Oscar P. Walters, Jr., P.E. is identified as the Engineer/Architect with Demerara Engineering, PLLC, and 'the architect' language is used but his credential given is P.E. (Professional Engineer), not stated as both roles combined as '(engineer)' qualifier matching role is fine"
+   ],
+   "stored_letter": "B",
+   "printed": "Oscar P. Walters, Jr., P.E., Demerara Engineering, PLLC",
+   "printed_page": {
+    "file_id": 19373,
+    "page_no": 135
+   },
+   "printed_quote": "Oscar P. Walters, Jr., P.E. with an address at Demerara Engineering, PLLC",
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1837,
+   "field": "principal",
+   "stored": {
+    "name": "Joel Ekstein",
+    "kind": "person",
+    "role": "sole principal",
+    "parent_entity": null
+   },
+   "page_no": 135,
+   "file_id": 19373,
+   "check": {
+    "n": 5,
+    "verdict": "minor",
+    "fix": "The only Principal of the Sponsor is Joel Ekstein",
+    "page": "P8",
+    "quote": "The only Principal of the Sponsor is Joel Ekstein",
+    "why": "pages say 'only Principal' not 'sole principal' — same meaning, wording differs slightly but this is not a name/spelling issue so should be correct"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 3,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "Joel Ekstein, the only Principal of Heyward Associates LLC (Sponsor)",
+    "page": "P8",
+    "quote": "The only Principal of the Sponsor is Joel Ekstein",
+    "sure": true,
+    "why": "P8 states he is the sole principal of the Sponsor."
+   },
+   "candidates": [
+    "Joel Ekstein — sole principal",
+    "The only Principal of the Sponsor is Joel Ekstein"
+   ],
+   "stored_letter": "A",
+   "printed": "Joel Ekstein, the only Principal of Heyward Associates LLC (Sponsor)",
+   "printed_page": {
+    "file_id": 19373,
+    "page_no": 135
+   },
+   "printed_quote": "The only Principal of the Sponsor is Joel Ekstein",
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD220095",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "HEYWARD ASSOCIATES LLC",
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "H EYWARD A SSOCIATES LLC",
+    "why": "matches cover page sponsor name"
+   },
+   "blind": {
+    "value": "Heyward Associates LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "The Sponsor of this project is Heyward Associates LLC , a New York Limited Liability Company"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD220095",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "T HE L AW O FFICE OF J AY L ICHTMAN , P.C.",
+    "why": "matches cover page attorneys for sponsor"
+   },
+   "blind": {
+    "value": "The Law Office of Jay Lichtman, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "The Sponsor is represented by The Law Office of Jay Lichtman P.C., 68 Jay Street, Suite 420, Brooklyn, New York 11201"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 45398
+}

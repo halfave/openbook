@@ -1,0 +1,219 @@
+{
+ "plan_id": "CD200317",
+ "checked_at": "2026-10-01T21:37:14.258Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 13810,
+   "page_no": 1,
+   "why": [
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 13810,
+   "page_no": 38,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 13810,
+   "page_no": 171,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 13810,
+   "page_no": 172,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Hollwich Kushner Architecture DPC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P4",
+   "quote": "prepared by Hollwich Kushner Architecture DPC, having an address at One Whitehall Street, New York, New York 10004 (the \"Architect\")"
+  },
+  "selling_agent": {
+   "value": "The Compass Group",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P4",
+   "quote": "The Selling Agent is The Compass Group, having an address at 90 Fifth Avenue, New York, New York 10011."
+  },
+  "managing_agent": null,
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "Belkin Burden Goldman, LLP",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P4",
+   "quote": "Sponsor has retained the law firm of Belkin Burden Goldman, LLP, 60 East 42 nd Street, 16 th Floor, New York, New York 10165, to represent it in connection with the Plan."
+  },
+  "sponsor": {
+   "value": "USD 378 Broome LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P3",
+   "quote": "Sponsor is USD 378 Broome LLC, a New York limited liability company having an office at 233 Broadway, #1470, New York, New York 10279."
+  },
+  "sponsor_address": {
+   "value": "233 Broadway, #1470, New York, New York 10279",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P3",
+   "quote": "a New York limited liability company having an office at 233 Broadway, #1470, New York, New York 10279"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 10794,
+   "field": "architect",
+   "page_no": 172,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 10794,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Hollwich Kushner Architecture DPC",
+   "page_no": 172,
+   "file_id": 13810,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P4",
+    "quote": "Hollwich Kushner Architecture DPC",
+    "why": "Matches printed name and role as architect."
+   },
+   "blind": {
+    "value": "Hollwich Kushner Architecture DPC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P4",
+    "quote": "prepared by Hollwich Kushner Architecture DPC, having an address at One Whitehall Street, New York, New York 10004 (the \"Architect\")"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1131,
+   "field": "principal",
+   "stored": {
+    "name": "Seth Weissman",
+    "kind": "person",
+    "role": "sole principal",
+    "parent_entity": "Urban Standard Development LLC"
+   },
+   "page_no": 171,
+   "file_id": 13810,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P3",
+    "quote": "The sole principal of Sponsor is Seth Weissman, who has an office at Urban Standard Development LLC",
+    "why": "Matches exactly."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD200317",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "USD 378 BROOME LLC",
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "USD 378 BROOME LLC",
+    "why": "Matches cover page sponsor name."
+   },
+   "blind": {
+    "value": "USD 378 Broome LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P3",
+    "quote": "Sponsor is USD 378 Broome LLC, a New York limited liability company having an office at 233 Broadway, #1470, New York, New York 10279."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD200317",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "BELKIN, BURDEN, GOLDMAN, LLP",
+   "check": {
+    "n": 4,
+    "verdict": "minor",
+    "fix": "Belkin Burden Goldman, LLP",
+    "page": "P2",
+    "quote": "the law firm of Belkin Burden Goldman, LLP",
+    "why": "Printed name has no comma between Belkin and Burden; claim adds a comma not in the original."
+   },
+   "blind": {
+    "value": "Belkin Burden Goldman, LLP",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P4",
+    "quote": "Sponsor has retained the law firm of Belkin Burden Goldman, LLP, 60 East 42 nd Street, 16 th Floor, New York, New York 10165, to represent it in connection with the Plan."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A"
+    ],
+    "close": [],
+    "printed": "Belkin Burden Goldman, LLP",
+    "page": "P4",
+    "quote": "Sponsor has retained the law firm of Belkin Burden Goldman, LLP",
+    "sure": true,
+    "why": "P2 and P4 both name Belkin Burden Goldman, LLP as Sponsor's counsel. The candidate differs only in capitalization and commas, which are allowed differences."
+   },
+   "candidates": [
+    "BELKIN, BURDEN, GOLDMAN, LLP"
+   ],
+   "stored_letter": "A",
+   "printed": "Belkin Burden Goldman, LLP",
+   "printed_page": {
+    "file_id": 13810,
+    "page_no": 172
+   },
+   "printed_quote": "Sponsor has retained the law firm of Belkin Burden Goldman, LLP",
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 16617
+}

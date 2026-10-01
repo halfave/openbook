@@ -1,0 +1,402 @@
+{
+ "plan_id": "CD200106",
+ "checked_at": "2026-10-01T21:14:57.812Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 21053,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 21053,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 21053,
+   "page_no": 20,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 21053,
+   "page_no": 48,
+   "why": [
+    "cited",
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 21053,
+   "page_no": 71,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 21053,
+   "page_no": 108,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 21053,
+   "page_no": 116,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 21053,
+   "page_no": 117,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 21053,
+   "page_no": 118,
+   "why": [
+    "managing_agent",
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 21053,
+   "page_no": 278,
+   "why": [
+    "cited"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Michael Kang",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "building plans and specifications that were prepared by Michael Kang"
+  },
+  "selling_agent": {
+   "value": "5-20 51st Avenue LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SPONSOR/SELLING AGENT 5 - 20 51ST AVENUE LLC"
+  },
+  "managing_agent": {
+   "value": "First Management Corp.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "The Managing Agent is First Management Corp., 3 4 - 03 Broadway, Astoria, NY 11106"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "Moritt Hock & Hamroff LLP",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "Moritt Hock & Hamroff LLP, 1407 Broadway, 39th Floor, New York, NY 10018 , counsel to the Sponsor"
+  },
+  "sponsor": {
+   "value": "5-20 51st Avenue LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "The Sponsor is 5 - 20 51st Avenue LLC , a New York limited liability company"
+  },
+  "sponsor_address": {
+   "value": "47-61 Pearson Place, Long Island City, NY 11101",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "47 - 61 Pearson Place Long Island City, NY 11101"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 5434,
+   "field": "selling_agent",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 5435,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 5436,
+   "field": "managing_agent",
+   "page_no": 48,
+   "score": 1
+  },
+  {
+   "id": 5437,
+   "field": "architect",
+   "page_no": 278,
+   "score": 1
+  },
+  {
+   "id": 5438,
+   "field": "working_capital",
+   "page_no": 116,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 5434,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "5-20 51st Avenue LLC",
+   "page_no": 1,
+   "file_id": 21053,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "SPONSOR/SELLING AGENT 5 - 20 51ST AVENUE LLC",
+    "why": "Matches cover page listing as Sponsor/Selling Agent"
+   },
+   "blind": {
+    "value": "5-20 51st Avenue LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "SPONSOR/SELLING AGENT 5 - 20 51ST AVENUE LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5435,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "47-61 Pearson Place, Long Island City, NY 11101",
+   "page_no": 1,
+   "file_id": 21053,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "47 - 61 Pearson Place, Long Island City, NY 11101",
+    "why": "Matches Sponsor's address on cover"
+   },
+   "blind": {
+    "value": "47-61 Pearson Place, Long Island City, NY 11101",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "47 - 61 Pearson Place Long Island City, NY 11101"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5436,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "First Management Corp.",
+   "page_no": 48,
+   "file_id": 21053,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P4",
+    "quote": "First Management Corp. ... annual fee of $6,000",
+    "why": "Matches managing agent and fee"
+   },
+   "blind": {
+    "value": "First Management Corp.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "The Managing Agent is First Management Corp., 3 4 - 03 Broadway, Astoria, NY 11106"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5437,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Michael Kang",
+   "page_no": 278,
+   "file_id": 21053,
+   "check": {
+    "n": 4,
+    "verdict": "minor",
+    "fix": "architect retained for Report certification; plans/specs prepared by Michael Kang (architect)",
+    "page": "P10",
+    "quote": "building plans and specifications that were prepared by Michael Kang",
+    "why": "Michael Kang prepared the plans/specifications, but the certification letter itself is signed by an unnamed engineer/architect who retained Kang's plans to write the Report; the claim conflates the two roles slightly, though Kang is credited with preparing the property description basis"
+   },
+   "blind": {
+    "value": "Michael Kang",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "building plans and specifications that were prepared by Michael Kang"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [],
+    "close": [
+     "A"
+    ],
+    "printed": null,
+    "page": "P10",
+    "quote": "I examined the building plans and specifications that were prepared by Michael Kang dated October 20, 2017, and I prepared the Report dated April 14, 2023",
+    "sure": false,
+    "why": "P10 is the certification of an architect who says they prepared the Report and are 'a registered architect', but that architect is not named on this page. Michael Kang is named only as the person who prepared the building plans and specifications. The page never calls him an architect or says he wrote the Report. A names the plans' author but not the Report's architect. B labels Kang an architect, which the page does not say. The signature and name of the certifying architect are probably on the next page, which wasn't provided. None of the other pages name an architect.",
+    "from_images": true
+   },
+   "candidates": [
+    "Michael Kang",
+    "architect retained for Report certification; plans/specs prepared by Michael Kang (architect)"
+   ],
+   "stored_letter": "A",
+   "printed": null,
+   "printed_page": {
+    "file_id": 21053,
+    "page_no": 278
+   },
+   "printed_quote": "I examined the building plans and specifications that were prepared by Michael Kang dated October 20, 2017, and I prepared the Report dated April 14, 2023",
+   "verdict": "unresolved"
+  },
+  {
+   "table": "facts",
+   "id": 5438,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 116,
+   "file_id": 21053,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P7",
+    "quote": "an amount equal to two (2) months Common Charges from each Purchaser to be paid to the Condominium as initial working capital",
+    "why": "Matches working capital fund description"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1375,
+   "field": "principal",
+   "stored": {
+    "name": "Shahram Nassi",
+    "kind": "person",
+    "role": "sole member",
+    "parent_entity": null
+   },
+   "page_no": 117,
+   "file_id": 21053,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "Shahram Nassi is the sole member of 5 - 20 51st Avenue LLC",
+    "why": "Matches sponsor principal role"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD200106",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "5-20 51ST AVENUE LLC",
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "5 - 20 51ST AVENUE LLC",
+    "why": "Matches cover page Sponsor name"
+   },
+   "blind": {
+    "value": "5-20 51st Avenue LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "The Sponsor is 5 - 20 51st Avenue LLC , a New York limited liability company"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD200106",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "MORITT HOCK & HAMROFF, LLP",
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "MORITT HOCK & HAMROFF LLP",
+    "why": "Matches cover page Sponsor's Attorney"
+   },
+   "blind": {
+    "value": "Moritt Hock & Hamroff LLP",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "Moritt Hock & Hamroff LLP, 1407 Broadway, 39th Floor, New York, NY 10018 , counsel to the Sponsor"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 4,
+ "tokens": 97811
+}

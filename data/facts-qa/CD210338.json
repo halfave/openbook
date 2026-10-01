@@ -1,0 +1,446 @@
+{
+ "plan_id": "CD210338",
+ "checked_at": "2026-10-01T22:14:27.698Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 15860,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 15860,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 15860,
+   "page_no": 16,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 15860,
+   "page_no": 17,
+   "why": [
+    "cited",
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 15860,
+   "page_no": 38,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 15860,
+   "page_no": 61,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 15860,
+   "page_no": 130,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 15860,
+   "page_no": 131,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 15860,
+   "page_no": 133,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 15860,
+   "page_no": 143,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P11",
+   "file_id": 15860,
+   "page_no": 209,
+   "why": [
+    "selling_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": null,
+  "selling_agent": {
+   "value": "88 Herbert Capital LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+  },
+  "managing_agent": {
+   "value": "MRE Property Management LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "the Condominium Board shall enter into an agreement to manage the property with MRE Property Management LLC"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "The Law Office of Jay Lichtman, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "ATTORNEYS FOR SPONSOR: THE LAW OFFICE OF JAY LICHTMAN, P.C."
+  },
+  "sponsor": {
+   "value": "88 Herbert Capital LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "The Sponsor of this project is 88 Herbert Capital LLC a New York Limited Liability Company"
+  },
+  "sponsor_address": {
+   "value": "207 North 6 Street Suite 1B, Brooklyn, New York 11211",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "with an address at 207 North 6 Street Suite 1B, Brooklyn, New York 11211"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 8544,
+   "field": "managing_agent",
+   "page_no": 17,
+   "score": 1
+  },
+  {
+   "id": 8545,
+   "field": "selling_agent",
+   "page_no": 133,
+   "score": 1
+  },
+  {
+   "id": 8546,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 8547,
+   "field": "working_capital",
+   "page_no": 130,
+   "score": 1
+  },
+  {
+   "id": 11450,
+   "field": "architect",
+   "page_no": 143,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 8544,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "MRE Property Management LLC",
+   "page_no": 17,
+   "file_id": 15860,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P4",
+    "quote": "managed by MRE Property Management LLC ... for an annual fee of $6,300.00",
+    "why": "Matches managing agent and fee"
+   },
+   "blind": {
+    "value": "MRE Property Management LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "the Condominium Board shall enter into an agreement to manage the property with MRE Property Management LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8545,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "88 Herbert Capital LLC",
+   "page_no": 133,
+   "file_id": 15860,
+   "check": {
+    "n": 2,
+    "verdict": "wrong",
+    "fix": "Sponsor will not be using a Selling Agent; Sponsor will act as selling agent",
+    "page": "P9",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent",
+    "why": "Pages state Sponsor itself acts as selling agent, not that 88 Herbert Capital LLC is a distinct 'selling agent' role separate from sponsor; though P1 lists '88 Herbert Capital LLC' as Sponsor & Selling Agent so this is actually correct"
+   },
+   "blind": {
+    "value": "88 Herbert Capital LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "88 Herbert Capital LLC (Sponsor & Selling Agent); Sponsor will not be using a Selling Agent and will act as selling agent",
+    "page": "P9",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+    "sure": true,
+    "why": "The cover page (P1) lists 88 Herbert Capital LLC as 'Sponsor & Selling Agent'. P9 says the Sponsor itself acts as selling agent. All three candidates match the pages."
+   },
+   "candidates": [
+    "88 Herbert Capital LLC",
+    "Sponsor will not be using a Selling Agent; Sponsor will act as selling agent",
+    "88 Herbert Capital LLC (the Sponsor itself)"
+   ],
+   "stored_letter": "A",
+   "printed": "88 Herbert Capital LLC (Sponsor & Selling Agent); Sponsor will not be using a Selling Agent and will act as selling agent",
+   "printed_page": {
+    "file_id": 15860,
+    "page_no": 133
+   },
+   "printed_quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8546,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "207 North 6th Street, Suite 1B, Brooklyn, New York 11211",
+   "page_no": 1,
+   "file_id": 15860,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "207 N ORTH 6 TH S TREET , S UITE 1B B ROOKLYN , N EW Y ORK 11211",
+    "why": "Matches address given for Sponsor"
+   },
+   "blind": {
+    "value": "207 North 6 Street Suite 1B, Brooklyn, New York 11211",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "with an address at 207 North 6 Street Suite 1B, Brooklyn, New York 11211"
+   },
+   "blind_agrees": false,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "207 North 6th Street, Suite 1B, Brooklyn, New York 11211",
+    "page": "P1",
+    "quote": "207 N ORTH 6 TH S TREET , S UITE 1B B ROOKLYN , N EW Y ORK 11211",
+    "sure": true,
+    "why": "P1 prints '6th Street' and P9 prints '207 North 6 Street Suite 1B'. Both candidates match one of the two printed forms."
+   },
+   "candidates": [
+    "207 North 6 Street Suite 1B, Brooklyn, New York 11211",
+    "207 North 6th Street, Suite 1B, Brooklyn, New York 11211"
+   ],
+   "stored_letter": "B",
+   "printed": "207 North 6th Street, Suite 1B, Brooklyn, New York 11211",
+   "printed_page": {
+    "file_id": 15860,
+    "page_no": 1
+   },
+   "printed_quote": "207 N ORTH 6 TH S TREET , S UITE 1B B ROOKLYN , N EW Y ORK 11211",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8547,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 130,
+   "file_id": 15860,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P7",
+    "quote": "Initial Capital Payment ... equal to two (2) months' estimated common charges",
+    "why": "Matches working capital fund description"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11450,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Wu Chen, P.E. of Infocus (engineer)",
+   "page_no": 143,
+   "file_id": 15860,
+   "check": {
+    "n": 5,
+    "verdict": "wrong",
+    "fix": "Wu Chen, P.E. of Infocus (engineer) — engineer, not architect",
+    "page": "P10",
+    "quote": "ENGINEER'S REPORT ... Prepared By: INFOCUS Wu Chen , P.E.",
+    "why": "Pages identify Wu Chen as engineer who prepared the Engineer's Report, not an architect; claim mislabels role as architect despite parenthetical saying engineer — the claim's main label contradicts the parenthetical and the page"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 3,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "Wu Chen, P.E., INFOCUS (Engineer's Report)",
+    "page": "P10",
+    "quote": "ENGINEER'S REPORT ... Prepared By: INFOCUS Wu Chen , P.E.",
+    "sure": true,
+    "why": "The description of the property (Section 20.7) sits inside the Engineer's Report prepared by Wu Chen, P.E. of INFOCUS. No architect is named on these pages, and both candidates correctly call him an engineer."
+   },
+   "candidates": [
+    "Wu Chen, P.E. of Infocus (engineer)",
+    "Wu Chen, P.E. of Infocus (engineer) — engineer, not architect"
+   ],
+   "stored_letter": "A",
+   "printed": "Wu Chen, P.E., INFOCUS (Engineer's Report)",
+   "printed_page": {
+    "file_id": 15860,
+    "page_no": 143
+   },
+   "printed_quote": "ENGINEER'S REPORT ... Prepared By: INFOCUS Wu Chen , P.E.",
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1682,
+   "field": "principal",
+   "stored": {
+    "name": "Guy Mor",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 133,
+   "file_id": 15860,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "The Principal of the Sponsor, Guy Mor",
+    "why": "Matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD210338",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "88 HERBERT CAPITAL LLC",
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "88 H ERBERT C APITAL LLC",
+    "why": "Matches cover page sponsor name"
+   },
+   "blind": {
+    "value": "88 Herbert Capital LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "The Sponsor of this project is 88 Herbert Capital LLC a New York Limited Liability Company"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD210338",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "T HE L AW O FFICE OF J AY L ICHTMAN , P.C.",
+    "why": "Matches cover page attorneys for sponsor"
+   },
+   "blind": {
+    "value": "The Law Office of Jay Lichtman, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "ATTORNEYS FOR SPONSOR: THE LAW OFFICE OF JAY LICHTMAN, P.C."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 45993
+}

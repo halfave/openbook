@@ -1,0 +1,523 @@
+{
+ "plan_id": "CD230022",
+ "checked_at": "2026-10-01T22:50:53.196Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 26721,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 26721,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 26721,
+   "page_no": 16,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 26721,
+   "page_no": 17,
+   "why": [
+    "cited",
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 26721,
+   "page_no": 29,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 26721,
+   "page_no": 36,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 26721,
+   "page_no": 38,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 26721,
+   "page_no": 59,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 26721,
+   "page_no": 126,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 26721,
+   "page_no": 127,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P11",
+   "file_id": 26721,
+   "page_no": 184,
+   "why": [
+    "selling_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Naresh K. Mahangu, P.E.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [
+    "NY Building Associates, Inc."
+   ],
+   "page": "P10",
+   "quote": "Naresh K. Mahangu, P.E. ... has rendered the Floor Plans of the Property and has rendered the report thereof"
+  },
+  "selling_agent": {
+   "value": "57 Lynch Street LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+  },
+  "managing_agent": {
+   "value": "57 Lynch Street LLC",
+   "by_sponsor": false,
+   "by_board": true,
+   "others": [],
+   "page": "P4",
+   "quote": "The Condominium Board will be responsible for managing the condominium, including but not limited to, writing checks, payment of bills"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "The Law Office of Jay Lichtman, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "The Sponsor is represented by The Law Office of Jay Lichtman P.C., 68 Jay Street, Suite 420, Brooklyn, New York 11201"
+  },
+  "sponsor": {
+   "value": "57 Lynch Street LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "The Sponsor of this project is 57 Lynch Street LLC, a New York Limited Liability Company"
+  },
+  "sponsor_address": {
+   "value": "143 Division Street, Brooklyn, New York 11211",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [
+    "143 Division Avenue, Brooklyn, New York 11211 (P1)"
+   ],
+   "page": "P10",
+   "quote": "with an address at 143 Division Street, Brooklyn, New York 11211"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 8888,
+   "field": "parking_arrangement",
+   "page_no": 29,
+   "score": 1
+  },
+  {
+   "id": 8889,
+   "field": "selling_agent",
+   "page_no": 127,
+   "score": 1
+  },
+  {
+   "id": 8890,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 8891,
+   "field": "working_capital",
+   "page_no": 126,
+   "score": 1
+  },
+  {
+   "id": 11156,
+   "field": "managing_agent",
+   "page_no": 17,
+   "score": 1
+  },
+  {
+   "id": 11499,
+   "field": "architect",
+   "page_no": 127,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 8888,
+   "field": "parking_arrangement",
+   "column": "value_text",
+   "stored": "limited_common_element",
+   "page_no": 29,
+   "file_id": 26721,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "parking space is a Limited Common Element allocated to Unit 1, not a count of 1 space stored as a number in that sense; also pages don't state it is sold/licensed/leased separately",
+    "page": "P5",
+    "quote": "Unit 1 is allocated a storage, window well, roof deck, parking space and rear yard",
+    "why": "Page shows parking space as a Limited Common Element allocated to Unit 1, not a transaction type with a count attribute as framed by the claim"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "parking space allocated to Unit 1 as a Limited Common Element",
+    "page": "P5",
+    "quote": "Unit 1 is allocated a storage, window well, roof deck, parking space and rear yard",
+    "sure": true,
+    "why": "A single parking space is listed among Unit 1's Limited Common Elements. The pages say nothing about selling, licensing or leasing it separately."
+   },
+   "candidates": [
+    "parking space is a Limited Common Element allocated to Unit 1, not a count of 1 space stored as a number in that sense; also pages don't state it is sold/licensed/leased separately",
+    "limited_common_element"
+   ],
+   "stored_letter": "B",
+   "printed": "parking space allocated to Unit 1 as a Limited Common Element",
+   "printed_page": {
+    "file_id": 26721,
+    "page_no": 29
+   },
+   "printed_quote": "Unit 1 is allocated a storage, window well, roof deck, parking space and rear yard",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8889,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "57 Lynch Street LLC",
+   "page_no": 127,
+   "file_id": 26721,
+   "check": {
+    "n": 2,
+    "verdict": "wrong",
+    "fix": "Sponsor will act as selling agent; no separate Selling Agent is being used",
+    "page": "P10",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor wil l act as selling agent",
+    "why": "P10 states Sponsor is not using a Selling Agent and will act as selling agent itself; P1 lists '57 Lynch Street LLC' as Sponsor & Selling Agent, so claim is consistent with P1 but P10 cited doesn't literally restate '57 Lynch Street LLC' as selling agent name"
+   },
+   "blind": {
+    "value": "57 Lynch Street LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "57 Lynch Street LLC (Sponsor acts as selling agent)",
+    "page": "P10",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor wil l act as selling agent",
+    "sure": true,
+    "why": "The cover (P1) lists 'SPONSOR & SELLING AGENT: 57 LYNCH STREET LLC'. P10 says the Sponsor itself acts as selling agent."
+   },
+   "candidates": [
+    "57 Lynch Street LLC (the Sponsor itself)",
+    "Sponsor will act as selling agent; no separate Selling Agent is being used",
+    "57 Lynch Street LLC"
+   ],
+   "stored_letter": "C",
+   "printed": "57 Lynch Street LLC (Sponsor acts as selling agent)",
+   "printed_page": {
+    "file_id": 26721,
+    "page_no": 127
+   },
+   "printed_quote": "Sponsor will not be using a Selling Agent for this project. Sponsor wil l act as selling agent",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8890,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "143 Division Avenue, Brooklyn, New York 11211",
+   "page_no": 1,
+   "file_id": 26721,
+   "check": {
+    "n": 3,
+    "verdict": "minor",
+    "fix": "143 Division Avenue, Brooklyn, New York 11211 (P10 lists '143 Division Street')",
+    "page": "P1",
+    "quote": "143 D IVISION A VENUE B ROOKLYN , N EW Y ORK 1121 1",
+    "why": "P1 confirms exact address as claimed"
+   },
+   "blind": {
+    "value": "143 Division Street, Brooklyn, New York 11211",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [
+     "143 Division Avenue, Brooklyn, New York 11211 (P1)"
+    ],
+    "page": "P10",
+    "quote": "with an address at 143 Division Street, Brooklyn, New York 11211"
+   },
+   "blind_agrees": false,
+   "judge": {
+    "n": 3,
+    "accurate": [
+     "B",
+     "C"
+    ],
+    "close": [
+     "A"
+    ],
+    "printed": "143 Division Avenue, Brooklyn, New York 11211",
+    "page": "P1",
+    "quote": "143 D IVISION A VENUE B ROOKLYN , N EW Y ORK 1121 1",
+    "sure": true,
+    "why": "The cited page P1 prints 'Avenue'. P10 prints '143 Division Street', so A matches only the inconsistent P10 reading."
+   },
+   "candidates": [
+    "143 Division Street, Brooklyn, New York 11211",
+    "143 Division Avenue, Brooklyn, New York 11211",
+    "143 Division Avenue, Brooklyn, New York 11211 (P10 lists '143 Division Street')"
+   ],
+   "stored_letter": "B",
+   "printed": "143 Division Avenue, Brooklyn, New York 11211",
+   "printed_page": {
+    "file_id": 26721,
+    "page_no": 1
+   },
+   "printed_quote": "143 D IVISION A VENUE B ROOKLYN , N EW Y ORK 1121 1",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8891,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 126,
+   "file_id": 26721,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "an “ Initial Capital Payment ” equal to two (2) months ’ estimated common charges",
+    "why": "matches claim exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11156,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "Self-managed",
+   "page_no": 17,
+   "file_id": 26721,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P4",
+    "quote": "The Condominium Board will be responsible for managing the condominium",
+    "why": "Condominium Board self-manages absent an outside managing agent"
+   },
+   "blind": {
+    "value": "57 Lynch Street LLC",
+    "by_sponsor": false,
+    "by_board": true,
+    "others": [],
+    "page": "P4",
+    "quote": "The Condominium Board will be responsible for managing the condominium, including but not limited to, writing checks, payment of bills"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11499,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Naresh K. Mahangu, P.E. of NY Building Associates, Inc. (engineer)",
+   "page_no": 127,
+   "file_id": 26721,
+   "check": {
+    "n": 6,
+    "verdict": "minor",
+    "fix": "Naresh K. Mahangu, P.E. is identified as Engineer/Architect with address at NY Building Associates, Inc.; printed section header is 'Engineer/Architect', and text calls him 'a Professional Engineer' and later 'The architect' — role is ambiguous/dual, not strictly 'engineer' only",
+    "page": "P10",
+    "quote": "Naresh K. Mahangu, P.E. with an address at NY Building Associates, Inc. , 125 - 15 Metropolitan Avenue, Queens, NY 11415 , a Professional Engineer, has rendered the Floor Plans",
+    "why": "Pages identify him under combined 'Engineer/Architect' heading, calling him both a Professional Engineer and 'the architect'; claim's sole parenthetical '(engineer)' omits that he's referred to as architect too, but this is a minor nuance rather than wrong"
+   },
+   "blind": {
+    "value": "Naresh K. Mahangu, P.E.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [
+     "NY Building Associates, Inc."
+    ],
+    "page": "P10",
+    "quote": "Naresh K. Mahangu, P.E. ... has rendered the Floor Plans of the Property and has rendered the report thereof"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 4,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "Naresh K. Mahangu, P.E.",
+    "page": "P10",
+    "quote": "Naresh K. Mahangu, P.E. with an address at NY Building Associates, Inc.",
+    "sure": true,
+    "why": "He appears under the 'Engineer/Architect' heading as a Professional Engineer who rendered the Floor Plans and the report."
+   },
+   "candidates": [
+    "Naresh K. Mahangu, P.E. of NY Building Associates, Inc. (engineer)",
+    "Naresh K. Mahangu, P.E.",
+    "Naresh K. Mahangu, P.E. is identified as Engineer/Architect with address at NY Building Associates, Inc.; printed section header is 'Engineer/Architect', and text calls him 'a Professional Engineer' and later 'The architect' — role is ambiguous/dual, not strictly 'engineer' only"
+   ],
+   "stored_letter": "A",
+   "printed": "Naresh K. Mahangu, P.E.",
+   "printed_page": {
+    "file_id": 26721,
+    "page_no": 127
+   },
+   "printed_quote": "Naresh K. Mahangu, P.E. with an address at NY Building Associates, Inc.",
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 2135,
+   "field": "principal",
+   "stored": {
+    "name": "Abraham Mandel",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 127,
+   "file_id": 26721,
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P10",
+    "quote": "The Principal of the Sponsor Mr. Abraham Mandel",
+    "why": "matches claim exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD230022",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "57 LYNCH STREET LLC",
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "57 L YNCH S TREET LLC",
+    "why": "matches cover page sponsor name"
+   },
+   "blind": {
+    "value": "57 Lynch Street LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "The Sponsor of this project is 57 Lynch Street LLC, a New York Limited Liability Company"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD230022",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+   "check": {
+    "n": 9,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "T HE L AW O FFICE OF J AY L ICHTMAN , P.C.",
+    "why": "matches cover page attorneys for sponsor"
+   },
+   "blind": {
+    "value": "The Law Office of Jay Lichtman, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "The Sponsor is represented by The Law Office of Jay Lichtman P.C., 68 Jay Street, Suite 420, Brooklyn, New York 11201"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 48781
+}

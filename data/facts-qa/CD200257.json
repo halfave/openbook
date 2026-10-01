@@ -1,0 +1,150 @@
+{
+ "plan_id": "CD200257",
+ "checked_at": "2026-10-01T21:31:08.739Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 14469,
+   "page_no": 1,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 14469,
+   "page_no": 95,
+   "why": [
+    "cited",
+    "selling_agent",
+    "managing_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": null,
+  "selling_agent": {
+   "value": "Seventh Street Capital 494 LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P2",
+   "quote": "The sponsor and selling agent is Seventh Street Capital 494 LLC"
+  },
+  "managing_agent": {
+   "value": "Rey Grabato",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P2",
+   "quote": "The Sponsor while it is in control of the condominium board will appoint Rey Grabato, the principal of the sponsor as the management agent."
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": null,
+  "sponsor": {
+   "value": "Seventh Street Capital 494 LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SEVENTH STREET CAPITAL 494 LLC"
+  },
+  "sponsor_address": {
+   "value": "One Harmon Plaza, 9th Floor, Secaucus, NJ 07094",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "One Har m on Pla z a, 9th Floor Se c a ucu s NJ 07094"
+  }
+ },
+ "quote_checks": [],
+ "results": [
+  {
+   "table": "sponsor_principals",
+   "id": 630,
+   "field": "principal",
+   "stored": {
+    "name": "Rey Grabato",
+    "kind": "person",
+    "role": "sole member, officer and principal",
+    "parent_entity": null
+   },
+   "page_no": 95,
+   "file_id": 14469,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P2",
+    "quote": "The sole member, officer and principal of the LLC is Rey Grabato",
+    "why": "Matches exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD200257",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "SEVENTH STREET CAPITAL 494 LLC**",
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "SEVENTH STREET CAPITAL 494 LLC",
+    "why": "Matches cover page"
+   },
+   "blind": {
+    "value": "Seventh Street Capital 494 LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "SEVENTH STREET CAPITAL 494 LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD200257",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "GABOR & MAROTTA LLC",
+   "check": {
+    "n": 3,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": null,
+    "quote": null,
+    "why": "Pages provided do not mention Sponsor's counsel"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [],
+    "close": [],
+    "printed": null,
+    "page": null,
+    "quote": null,
+    "sure": false,
+    "why": "Neither page names the Sponsor's counsel. P1 is the cover page (Sponsor-Selling Agent only) and P2 covers management and identity of parties without mentioning attorneys. GABOR & MAROTTA LLC does not appear."
+   },
+   "candidates": [
+    "GABOR & MAROTTA LLC"
+   ],
+   "stored_letter": "A",
+   "printed": null,
+   "printed_page": null,
+   "printed_quote": null,
+   "verdict": "unresolved"
+  }
+ ],
+ "calls": 3,
+ "tokens": 11447
+}

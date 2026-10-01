@@ -1,0 +1,482 @@
+{
+ "plan_id": "CD130246",
+ "checked_at": "2026-10-01T18:59:26.792Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 8082,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 8082,
+   "page_no": 16,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 8082,
+   "page_no": 17,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 8082,
+   "page_no": 32,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 8082,
+   "page_no": 52,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 8082,
+   "page_no": 122,
+   "why": [
+    "tax_consultant",
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 8082,
+   "page_no": 124,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 8082,
+   "page_no": 126,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 8082,
+   "page_no": 129,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 8082,
+   "page_no": 130,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P11",
+   "file_id": 8082,
+   "page_no": 131,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P12",
+   "file_id": 8082,
+   "page_no": 336,
+   "why": [
+    "sponsor_attorney"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "BKSK Architects LLP",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P4",
+   "quote": "Sponsor has engaged BKSK Architects LLP, as architect of record"
+  },
+  "selling_agent": {
+   "value": "Corcoran Sunshine Marketing Group",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SELLING AGENT: Corcoran Sunshine Marketing Group"
+  },
+  "managing_agent": {
+   "value": "Halstead Management Company",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [
+    "Halsted Management Co., LLC"
+   ],
+   "page": "P5",
+   "quote": "the Condominium will enter into a management agreement with Halstead Management Company having an office address at 770 Lexington Avenue, New York, NY 10065"
+  },
+  "tax_consultant": {
+   "value": "Leitner Group Inc.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P7",
+   "quote": "the real estate tax projection opinion prepared by Leitner Group Inc. dated January 23, 2014"
+  },
+  "sponsor_attorney": {
+   "value": "Starr Associates LLP",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [
+    "Olshan Frome Wolosky"
+   ],
+   "page": "P11",
+   "quote": "Sponsor has retained the law firm of Starr Associates LLP, having an office at 245 Fifth Avenue, Suite 1102, New York, New York 10016 to represent it in connection with the Plan"
+  },
+  "sponsor": {
+   "value": "155 East 79th Street, LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SPONSOR: 155 East 79th Street, LLC"
+  },
+  "sponsor_address": {
+   "value": "11 East 26th Street, New York, New York 10010",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "11 East 26th Street New York, New York 10010"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 656,
+   "field": "managing_agent",
+   "page_no": 52,
+   "score": 1
+  },
+  {
+   "id": 657,
+   "field": "selling_agent",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 658,
+   "field": "working_capital",
+   "page_no": 126,
+   "score": 1
+  },
+  {
+   "id": 5463,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 10640,
+   "field": "architect",
+   "page_no": 32,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 656,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "Halstead Management Co., LLC",
+   "page_no": 52,
+   "file_id": 8082,
+   "check": {
+    "n": 1,
+    "verdict": "minor",
+    "fix": "Halstead Management Company",
+    "page": "P5",
+    "quote": "management agreement with Halstead Management Company",
+    "why": "P5 prints 'Halstead Management Company' not 'Halstead Management Co., LLC' (P9 uses 'Halsted Management Co., LLC' with different spelling); budget figure 30,000 matches"
+   },
+   "blind": {
+    "value": "Halstead Management Company",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [
+     "Halsted Management Co., LLC"
+    ],
+    "page": "P5",
+    "quote": "the Condominium will enter into a management agreement with Halstead Management Company having an office address at 770 Lexington Avenue, New York, NY 10065"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "Halstead Management Company",
+    "page": "P5",
+    "quote": "management agreement with Halstead Management Company having an office address at 770 Lexington Avenue",
+    "sure": true,
+    "why": "P5 prints 'Halstead Management Company'; P9 prints 'Halsted Management Co., LLC'. 'Co.' is the same word as 'Company' plus an ignored suffix, so both candidates match P5. Note the plan spells the name two ways."
+   },
+   "candidates": [
+    "Halstead Management Co., LLC",
+    "Halstead Management Company"
+   ],
+   "stored_letter": "A",
+   "printed": "Halstead Management Company",
+   "printed_page": {
+    "file_id": 8082,
+    "page_no": 52
+   },
+   "printed_quote": "management agreement with Halstead Management Company having an office address at 770 Lexington Avenue",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 657,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "Corcoran Sunshine Marketing Group",
+   "page_no": 1,
+   "file_id": 8082,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "Corcoran Sunshine Marketing Group",
+    "why": "matches exactly"
+   },
+   "blind": {
+    "value": "Corcoran Sunshine Marketing Group",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "SELLING AGENT: Corcoran Sunshine Marketing Group"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 658,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 126,
+   "file_id": 8082,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "an amount equal to 2 months' Common Charges with respect to the Unit based on the Condominium budget at the time of Closing",
+    "why": "matches exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5463,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "11 East 26th Street, New York, New York 10010",
+   "page_no": 1,
+   "file_id": 8082,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "11 East 26th Street New York, New York 10010",
+    "why": "matches exactly"
+   },
+   "blind": {
+    "value": "11 East 26th Street, New York, New York 10010",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "11 East 26th Street New York, New York 10010"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 10640,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "BKSK Architect",
+   "page_no": 32,
+   "file_id": 8082,
+   "check": {
+    "n": 5,
+    "verdict": "minor",
+    "fix": "BKSK Architects LLP",
+    "page": "P4",
+    "quote": "Sponsor has engaged BKSK Architects LLP, as architect of record",
+    "why": "claim truncates the printed name 'BKSK Architects LLP'"
+   },
+   "blind": {
+    "value": "BKSK Architects LLP",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P4",
+    "quote": "Sponsor has engaged BKSK Architects LLP, as architect of record"
+   },
+   "blind_agrees": false,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "B"
+    ],
+    "close": [
+     "A"
+    ],
+    "printed": "BKSK Architects LLP",
+    "page": "P4",
+    "quote": "Sponsor has engaged BKSK Architects LLP, as architect of record",
+    "sure": true,
+    "why": "B matches the printed name. A drops the 's' in 'Architects'."
+   },
+   "candidates": [
+    "BKSK Architect",
+    "BKSK Architects LLP"
+   ],
+   "stored_letter": "A",
+   "printed": "BKSK Architects LLP",
+   "printed_page": {
+    "file_id": 8082,
+    "page_no": 32
+   },
+   "printed_quote": "Sponsor has engaged BKSK Architects LLP, as architect of record",
+   "verdict": "minor"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 790,
+   "field": "principal",
+   "stored": {
+    "name": "Stephen L. Glascock",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": "Anbau Enterprises, Inc."
+   },
+   "page_no": 131,
+   "file_id": 8082,
+   "check": {
+    "n": 6,
+    "verdict": "wrong",
+    "fix": "managing partner",
+    "page": "P11",
+    "quote": "Stephen L. Glascock is a managing partner of Anbau Enterprises, Inc.",
+    "why": "pages state his role at Anbau is 'managing partner,' not 'principal' (principal is his role at Sponsor)"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 3,
+    "accurate": [],
+    "close": [
+     "B"
+    ],
+    "printed": "Stephen L. Glascock — managing partner — of Anbau Enterprises, Inc.",
+    "page": "P11",
+    "quote": "Stephen L. Glascock is a managing partner of Anbau Enterprises, Inc.",
+    "sure": true,
+    "why": "Glascock is a principal of Sponsor but a managing partner of Anbau, so B pairs the wrong role with the entity. A gives the role alone, without the name or entity."
+   },
+   "candidates": [
+    "managing partner",
+    "Stephen L. Glascock — principal — of Anbau Enterprises, Inc."
+   ],
+   "stored_letter": "B",
+   "printed": "Stephen L. Glascock — managing partner — of Anbau Enterprises, Inc.",
+   "printed_page": {
+    "file_id": 8082,
+    "page_no": 131
+   },
+   "printed_quote": "Stephen L. Glascock is a managing partner of Anbau Enterprises, Inc.",
+   "verdict": "minor"
+  },
+  {
+   "table": "plans",
+   "id": "CD130246",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "155 EAST 79TH STREET, LLC",
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "155 East 79th Street, LLC",
+    "why": "matches cover page"
+   },
+   "blind": {
+    "value": "155 East 79th Street, LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "SPONSOR: 155 East 79th Street, LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD130246",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "STARR ASSOCIATES, LLP",
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P11",
+    "quote": "Sponsor has retained the law firm of Starr Associates LLP",
+    "why": "matches as Sponsor's attorney"
+   },
+   "blind": {
+    "value": "Starr Associates LLP",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [
+     "Olshan Frome Wolosky"
+    ],
+    "page": "P11",
+    "quote": "Sponsor has retained the law firm of Starr Associates LLP, having an office at 245 Fifth Avenue, Suite 1102, New York, New York 10016 to represent it in connection with the Plan"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 48905
+}

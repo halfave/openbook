@@ -1,0 +1,491 @@
+{
+ "plan_id": "CD190418",
+ "checked_at": "2026-10-01T21:05:12.520Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 11000,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 11000,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 11000,
+   "page_no": 7,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 11000,
+   "page_no": 27,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 11000,
+   "page_no": 29,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 11000,
+   "page_no": 36,
+   "why": [
+    "cited",
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 11000,
+   "page_no": 98,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 11000,
+   "page_no": 101,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 11000,
+   "page_no": 103,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 11000,
+   "page_no": 104,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P11",
+   "file_id": 11000,
+   "page_no": 105,
+   "why": [
+    "cited",
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P12",
+   "file_id": 11000,
+   "page_no": 106,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P13",
+   "file_id": 11000,
+   "page_no": 145,
+   "why": [
+    "cited"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": null,
+  "selling_agent": {
+   "value": "Fillmore Real Estate",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "Selling Agent: Fillmore Real Estate"
+  },
+  "managing_agent": {
+   "value": "Crosstown Management Corp.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "a Management Agreement will be entered into between the Board of Managers and Crosstown Management Corp."
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "Chu & Partners",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P11",
+   "quote": "The Sponsor has retained the law firm of Chu & Partners, 183 Centre Street, New York, N.Y. 10013, to represent it"
+  },
+  "sponsor": {
+   "value": "1405-1415 67 Street LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "Sponsor: 1405-1415 67 Street LLC"
+  },
+  "sponsor_address": {
+   "value": "37A Orchard Street, New York, N.Y. 10002",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "37A Orchard Street New York, N.Y. 10002"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 6012,
+   "field": "parking_arrangement",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 6013,
+   "field": "managing_agent",
+   "page_no": 36,
+   "score": 1
+  },
+  {
+   "id": 6014,
+   "field": "selling_agent",
+   "page_no": 106,
+   "score": 1
+  },
+  {
+   "id": 6015,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 6016,
+   "field": "reserve_fund",
+   "page_no": 7,
+   "score": 1
+  },
+  {
+   "id": 6017,
+   "field": "working_capital",
+   "page_no": 103,
+   "score": 1
+  },
+  {
+   "id": 11402,
+   "field": "architect",
+   "page_no": 145,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 6012,
+   "field": "parking_arrangement",
+   "column": "value_text",
+   "stored": "sold",
+   "page_no": 1,
+   "file_id": 11000,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "7 parking units offered for sale (not licensed or leased)",
+    "page": "P1",
+    "quote": "7 PARKING UNITS…………………………..……….……………………. $ 350,000.00",
+    "why": "Parking units are sold (listed with a price under TOTAL OFFERING like residential units), not licensed or leased; only storage lockers are licensed."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A"
+    ],
+    "close": [
+     "B"
+    ],
+    "printed": "7 Parking Units offered for $350,000.00 (storage lockers are offered separately as 6 Storage Locker Licenses)",
+    "page": "P1",
+    "quote": "7 PARKING UNITS…………………………..……….……………………. $ 350,000.00",
+    "sure": true,
+    "why": "The cover lists 7 parking units as offered units, separate from the storage locker licenses. B says 'sold' but omits the count of 7."
+   },
+   "candidates": [
+    "7 parking units offered for sale (not licensed or leased)",
+    "sold"
+   ],
+   "stored_letter": "B",
+   "printed": "7 Parking Units offered for $350,000.00 (storage lockers are offered separately as 6 Storage Locker Licenses)",
+   "printed_page": {
+    "file_id": 11000,
+    "page_no": 1
+   },
+   "printed_quote": "7 PARKING UNITS…………………………..……….……………………. $ 350,000.00",
+   "verdict": "minor"
+  },
+  {
+   "table": "facts",
+   "id": 6013,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "Crosstown Management Corp.",
+   "page_no": 36,
+   "file_id": 11000,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P6",
+    "quote": "Crosstown Management Corp. with offices at 97-77 Queens. Boulevard, Rego Park, N.Y. 11374, will act as Managing Agent with an annual compensation of $6,000.00",
+    "why": "Matches name and fee."
+   },
+   "blind": {
+    "value": "Crosstown Management Corp.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "a Management Agreement will be entered into between the Board of Managers and Crosstown Management Corp."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 6014,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "Fillmore Real Estate",
+   "page_no": 106,
+   "file_id": 11000,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P12",
+    "quote": "The Selling Agent will be Fillmore Real Estate",
+    "why": "Matches."
+   },
+   "blind": {
+    "value": "Fillmore Real Estate",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "Selling Agent: Fillmore Real Estate"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 6015,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "37A Orchard Street, New York, N.Y. 10002",
+   "page_no": 1,
+   "file_id": 11000,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "1405-1415 67 Street LLC\n37A Orchard Street\nNew York, N.Y. 10002",
+    "why": "Matches cover page."
+   },
+   "blind": {
+    "value": "37A Orchard Street, New York, N.Y. 10002",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "37A Orchard Street New York, N.Y. 10002"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 6016,
+   "field": "reserve_fund",
+   "column": "value_text",
+   "stored": "No reserve fund",
+   "page_no": 7,
+   "file_id": 11000,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P3",
+    "quote": "The Condominium will not have a reserve fund.",
+    "why": "Matches; no dollar amount given, 0 consistent with none."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 6017,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 103,
+   "file_id": 11000,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "the Sponsor will collect an amount equal to two (2) months' common charges from each Purchaser, to be paid to the Condominium as initial working capital",
+    "why": "Matches."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11402,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Wu Chen, P.E. of In Focus (engineer)",
+   "page_no": 145,
+   "file_id": 11000,
+   "check": {
+    "n": 7,
+    "verdict": "wrong",
+    "fix": "Wu Chen, P.E. of Infocus Consulting Inc. is the Professional Engineer who prepared the Engineer's Report/Description of Property and Specifications; no architect is named for this role",
+    "page": "P13",
+    "quote": "ENGINEER'S REPORT\nTHE 1405-1415 67th STREET CONDOMINIUM\nPrepared By:\n+IN FOCUS\nWu Chen, P.E.",
+    "why": "The claim mislabels this as 'architect' role despite parenthetical '(engineer)' contradicting itself; pages identify Wu Chen as the Professional Engineer, not an architect, and the section is an Engineer's Report, not an architect's report."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "No architect is named. The Description of Property and Specifications (Engineer's Report) was prepared by Wu Chen, P.E., In Focus (Infocus Consulting Inc.).",
+    "page": "P13",
+    "quote": "Prepared By: +IN FOCUS Wu Chen, P.E.",
+    "sure": true,
+    "why": "P4 mentions only an unnamed 'Sponsor's architect'. The property description was prepared by engineer Wu Chen of In Focus/Infocus Consulting Inc. (P12, P13). Both candidates correctly identify him as the engineer."
+   },
+   "candidates": [
+    "Wu Chen, P.E. of Infocus Consulting Inc. is the Professional Engineer who prepared the Engineer's Report/Description of Property and Specifications; no architect is named for this role",
+    "Wu Chen, P.E. of In Focus (engineer)"
+   ],
+   "stored_letter": "B",
+   "printed": "No architect is named. The Description of Property and Specifications (Engineer's Report) was prepared by Wu Chen, P.E., In Focus (Infocus Consulting Inc.).",
+   "printed_page": {
+    "file_id": 11000,
+    "page_no": 145
+   },
+   "printed_quote": "Prepared By: +IN FOCUS Wu Chen, P.E.",
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1433,
+   "field": "principal",
+   "stored": {
+    "name": "Khanh Mak",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 105,
+   "file_id": 11000,
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P11",
+    "quote": "The principal of the Sponsor is Khanh Mak.",
+    "why": "Matches."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD190418",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "1405-1415 67 STREET LLC",
+   "check": {
+    "n": 9,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "1405-1415 67 Street LLC",
+    "why": "Matches cover page spelling with case-insensitive match."
+   },
+   "blind": {
+    "value": "1405-1415 67 Street LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "Sponsor: 1405-1415 67 Street LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD190418",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "CHU & PARTNERS",
+   "check": {
+    "n": 10,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P11",
+    "quote": "The Sponsor has retained the law firm of Chu & Partners",
+    "why": "Matches; cover page (P1) doesn't list counsel but P11 confirms."
+   },
+   "blind": {
+    "value": "Chu & Partners",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P11",
+    "quote": "The Sponsor has retained the law firm of Chu & Partners, 183 Centre Street, New York, N.Y. 10013, to represent it"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 63429
+}

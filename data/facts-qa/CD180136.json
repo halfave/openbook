@@ -1,0 +1,419 @@
+{
+ "plan_id": "CD180136",
+ "checked_at": "2026-10-01T20:05:31.530Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 4697,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 4697,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 4697,
+   "page_no": 16,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 4697,
+   "page_no": 27,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 4697,
+   "page_no": 28,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 4697,
+   "page_no": 33,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 4697,
+   "page_no": 37,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 4697,
+   "page_no": 58,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 4697,
+   "page_no": 60,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 4697,
+   "page_no": 107,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P11",
+   "file_id": 4697,
+   "page_no": 119,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P12",
+   "file_id": 4697,
+   "page_no": 120,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Wu Chen P.E.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P12",
+   "quote": "Wu Chen P.E., a licensed Professional Engineer with an address at lnfocus... has rendered the Floor Plans of the Property and has rendered the report thereof"
+  },
+  "selling_agent": {
+   "value": "289 Devoe ST LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P12",
+   "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+  },
+  "managing_agent": {
+   "value": "289 Devoe ST LLC",
+   "by_sponsor": false,
+   "by_board": true,
+   "others": [],
+   "page": "P7",
+   "quote": "The Condominium Board will be responsible for managing the condominium, including but not limited to, writing checks, payment of bills"
+  },
+  "tax_consultant": {
+   "value": "Metropolitan Realty Exemptions, Inc.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "the opinion letter dated March 19, 2018 by Metropolitan Realty Exemptions, Inc., the Sponsor's tax expert"
+  },
+  "sponsor_attorney": {
+   "value": "The Law Office of Jay Lichtman, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "ATTORNEYS FOR SPONSOR:\nTHE LAW OFFICE OF JAY LICHTMAN, P.C.\n68 JAY STREET, SUITE 420\nBROOKLYN, NEW YORK 11201"
+  },
+  "sponsor": {
+   "value": "289 Devoe ST LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P12",
+   "quote": "The Sponsor of this project is 289 Devoe ST LLC, a New York Limited Liability Company with an address at 289 Meserole Street, Brooklyn, NY 11206."
+  },
+  "sponsor_address": {
+   "value": "289 Meserole Street, Brooklyn, NY 11206",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P12",
+   "quote": "a New York Limited Liability Company with an address at 289 Meserole Street, Brooklyn, NY 11206"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 4074,
+   "field": "selling_agent",
+   "page_no": 120,
+   "score": 1
+  },
+  {
+   "id": 4075,
+   "field": "working_capital",
+   "page_no": 119,
+   "score": 1
+  },
+  {
+   "id": 5476,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 11335,
+   "field": "architect",
+   "page_no": 120,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 4074,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "289 Devoe St LLC",
+   "page_no": 120,
+   "file_id": 4697,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "Sponsor will not be using a Selling Agent; Sponsor will act as selling agent",
+    "page": "P12",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent",
+    "why": "P12 says Sponsor itself acts as selling agent (not a separately named 'selling agent' entity distinct from role), though P1 cover page does list '289 DEVOE ST LLC' as Sponsor & Selling Agent, so this is actually supported by P1."
+   },
+   "blind": {
+    "value": "289 Devoe ST LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P12",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "289 Devoe ST LLC (Sponsor acts as selling agent)",
+    "page": "P12",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent",
+    "sure": true,
+    "why": "P12 says the Sponsor, 289 Devoe ST LLC, acts as its own selling agent. The P1 cover lists 'SPONSOR & SELLING AGENT: 289 DEVOE ST LLC'. All three candidates match."
+   },
+   "candidates": [
+    "Sponsor will not be using a Selling Agent; Sponsor will act as selling agent",
+    "289 Devoe St LLC",
+    "289 Devoe ST LLC (the Sponsor itself)"
+   ],
+   "stored_letter": "B",
+   "printed": "289 Devoe ST LLC (Sponsor acts as selling agent)",
+   "printed_page": {
+    "file_id": 4697,
+    "page_no": 120
+   },
+   "printed_quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 4075,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 119,
+   "file_id": 4697,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P11",
+    "quote": "Initial Capital Payment\" equal to two (2) months' estimated common charges for each Unit",
+    "why": "Matches exactly."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5476,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "289 Meserole Street, Brooklyn, NY 11206",
+   "page_no": 1,
+   "file_id": 4697,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "289 MESEROLE STREET BROOKLYN, NY 11206",
+    "why": "Matches exactly."
+   },
+   "blind": {
+    "value": "289 Meserole Street, Brooklyn, NY 11206",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P12",
+    "quote": "a New York Limited Liability Company with an address at 289 Meserole Street, Brooklyn, NY 11206"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11335,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Wu Chen, P.E. of Infocus (engineer)",
+   "page_no": 120,
+   "file_id": 4697,
+   "check": {
+    "n": 4,
+    "verdict": "wrong",
+    "fix": "Wu Chen, P.E. is identified as engineer, not architect",
+    "page": "P12",
+    "quote": "Wu Chen P.E., a licensed Professional Engineer with an address at lnfocus",
+    "why": "The section header is 'Engineer/Architect' but Wu Chen is specifically described as a Professional Engineer; claim's parenthetical '(engineer)' is correct but labeling him as 'the architect' role is not supported — pages call him engineer."
+   },
+   "blind": {
+    "value": "Wu Chen P.E.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P12",
+    "quote": "Wu Chen P.E., a licensed Professional Engineer with an address at lnfocus... has rendered the Floor Plans of the Property and has rendered the report thereof"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "A",
+     "C"
+    ],
+    "close": [],
+    "printed": "Wu Chen P.E. (Infocus)",
+    "page": "P12",
+    "quote": "Wu Chen P.E., a licensed Professional Engineer with an address at lnfocus",
+    "sure": true,
+    "why": "Wu Chen P.E. is listed under the heading 'Engineer/Architect' and rendered the floor plans and report. 'lnfocus' is an OCR misreading of Infocus. B is wrong because the heading names him for the architect role too."
+   },
+   "candidates": [
+    "Wu Chen, P.E. of Infocus (engineer)",
+    "Wu Chen, P.E. is identified as engineer, not architect",
+    "Wu Chen P.E."
+   ],
+   "stored_letter": "A",
+   "printed": "Wu Chen P.E. (Infocus)",
+   "printed_page": {
+    "file_id": 4697,
+    "page_no": 120
+   },
+   "printed_quote": "Wu Chen P.E., a licensed Professional Engineer with an address at lnfocus",
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 324,
+   "field": "principal",
+   "stored": {
+    "name": "Arie Bar Chaim",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 120,
+   "file_id": 4697,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P12",
+    "quote": "The Principal of the is Arie Bar Chaim",
+    "why": "Matches; text has a typo omitting 'Sponsor' but name and role are correct."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD180136",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "289 DEVOE ST LLC",
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "289 DEVOE ST LLC",
+    "why": "Matches cover page exactly."
+   },
+   "blind": {
+    "value": "289 Devoe ST LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P12",
+    "quote": "The Sponsor of this project is 289 Devoe ST LLC, a New York Limited Liability Company with an address at 289 Meserole Street, Brooklyn, NY 11206."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD180136",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+    "why": "Matches cover page exactly."
+   },
+   "blind": {
+    "value": "The Law Office of Jay Lichtman, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "ATTORNEYS FOR SPONSOR:\nTHE LAW OFFICE OF JAY LICHTMAN, P.C.\n68 JAY STREET, SUITE 420\nBROOKLYN, NEW YORK 11201"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 60743
+}

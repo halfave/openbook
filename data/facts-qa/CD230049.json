@@ -1,0 +1,446 @@
+{
+ "plan_id": "CD230049",
+ "checked_at": "2026-10-01T22:54:08.196Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 28588,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 28588,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 28588,
+   "page_no": 16,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 28588,
+   "page_no": 37,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 28588,
+   "page_no": 129,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 28588,
+   "page_no": 130,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 28588,
+   "page_no": 131,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 28588,
+   "page_no": 253,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 28588,
+   "page_no": 274,
+   "why": [
+    "cited"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Shahin Badaly, of Badaly Engineering PLLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P7",
+   "quote": "Shahin Badaly, of Badaly Engineering PLLC , a Professional Engineer, has rendered the Floor Plans of the Property"
+  },
+  "selling_agent": {
+   "value": "Evergreen Realty Group LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P6",
+   "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+  },
+  "managing_agent": {
+   "value": "Evergreen Realty Group LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "The Sponsor shall act as Managing Agent for the first year of the condominium's operation."
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "The Law Office of Jay Lichtman, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P6",
+   "quote": "The Sponsor is represented by The Law Office of Jay Lichtman P.C., 68 Jay Street, Suite 420, Brooklyn, New York 11201"
+  },
+  "sponsor": {
+   "value": "Evergreen Realty Group LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P6",
+   "quote": "The Sponsor is Evergreen Realty Group LLC, a New York Limited Liability Company"
+  },
+  "sponsor_address": {
+   "value": "45 N Station Plaza Suite 315, Great Neck, New York 11021",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P6",
+   "quote": "with an address at 45 N Station Plaza Suite 315 Great Neck, New York 11021"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 8205,
+   "field": "managing_agent",
+   "page_no": 274,
+   "score": 1
+  },
+  {
+   "id": 8206,
+   "field": "selling_agent",
+   "page_no": 130,
+   "score": 1
+  },
+  {
+   "id": 8207,
+   "field": "working_capital",
+   "page_no": 129,
+   "score": 1
+  },
+  {
+   "id": 8208,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 11503,
+   "field": "architect",
+   "page_no": 131,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 8205,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "Evergreen Realty Group LLC",
+   "page_no": 274,
+   "file_id": 28588,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "The Sponsor shall act as Managing Agent for the first year of the condominium's operation.",
+    "why": "Sponsor is Evergreen Realty Group LLC per P6"
+   },
+   "blind": {
+    "value": "Evergreen Realty Group LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "The Sponsor shall act as Managing Agent for the first year of the condominium's operation."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8206,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "Evergreen Realty Group LLC",
+   "page_no": 130,
+   "file_id": 28588,
+   "check": {
+    "n": 2,
+    "verdict": "wrong",
+    "fix": "Sponsor will not be using a Selling Agent; Sponsor will act as selling agent",
+    "page": "P6",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+    "why": "Pages say there is no separate Selling Agent; Sponsor itself acts as selling agent, not that an entity called 'Selling Agent' is Evergreen Realty Group LLC per se — though functionally correct, claim's framing contradicts explicit statement of no Selling Agent"
+   },
+   "blind": {
+    "value": "Evergreen Realty Group LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P6",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "Evergreen Realty Group LLC (Sponsor acts as its own selling agent)",
+    "page": "P6",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+    "sure": true,
+    "why": "P6 says the Sponsor acts as selling agent, and P6 names the Sponsor as Evergreen Realty Group LLC. The cover (P1) lists 'Sponsor & Selling Agent: Evergreen Realty Group LLC'. All three candidates match this."
+   },
+   "candidates": [
+    "Evergreen Realty Group LLC",
+    "Sponsor will not be using a Selling Agent; Sponsor will act as selling agent",
+    "Evergreen Realty Group LLC (the Sponsor itself)"
+   ],
+   "stored_letter": "A",
+   "printed": "Evergreen Realty Group LLC (Sponsor acts as its own selling agent)",
+   "printed_page": {
+    "file_id": 28588,
+    "page_no": 130
+   },
+   "printed_quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8207,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 129,
+   "file_id": 28588,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P5",
+    "quote": "an “Initial Capital Payment” equal to two (2) months’ estimated common charges",
+    "why": "matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8208,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "45 N Station Plaza Suite 315, Great Neck, New York 11021",
+   "page_no": 1,
+   "file_id": 28588,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "45 N S TATION P LAZA S UITE 315 G REAT N ECK , N EW Y ORK 11021",
+    "why": "matches"
+   },
+   "blind": {
+    "value": "45 N Station Plaza Suite 315, Great Neck, New York 11021",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P6",
+    "quote": "with an address at 45 N Station Plaza Suite 315 Great Neck, New York 11021"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11503,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Shahin Badaly of Badaly Engineering PLLC (engineer)",
+   "page_no": 131,
+   "file_id": 28588,
+   "check": {
+    "n": 5,
+    "verdict": "wrong",
+    "fix": "Shahin Badaly of Badaly Engineering PLLC is a Professional Engineer, not an architect",
+    "page": "P7",
+    "quote": "Shahin Badaly, of Badaly Engineering PLLC , a Professional Engineer, has rendered the Floor Plans",
+    "why": "Claim's parenthetical says engineer but label calls him 'the architect'; pages identify him only as engineer"
+   },
+   "blind": {
+    "value": "Shahin Badaly, of Badaly Engineering PLLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P7",
+    "quote": "Shahin Badaly, of Badaly Engineering PLLC , a Professional Engineer, has rendered the Floor Plans of the Property"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "A",
+     "C"
+    ],
+    "close": [
+     "B"
+    ],
+    "printed": "Shahin Badaly, of Badaly Engineering PLLC, a Professional Engineer",
+    "page": "P7",
+    "quote": "Shahin Badaly, of Badaly Engineering PLLC , a Professional Engineer, has rendered the Floor Plans of the Property",
+    "sure": true,
+    "why": "This party appears under the 'Engineer/Architect' heading and prepared the floor plans and report. B names the right party, but the plan never says he is 'not an architect'; that part is an inference."
+   },
+   "candidates": [
+    "Shahin Badaly, of Badaly Engineering PLLC",
+    "Shahin Badaly of Badaly Engineering PLLC is a Professional Engineer, not an architect",
+    "Shahin Badaly of Badaly Engineering PLLC (engineer)"
+   ],
+   "stored_letter": "C",
+   "printed": "Shahin Badaly, of Badaly Engineering PLLC, a Professional Engineer",
+   "printed_page": {
+    "file_id": 28588,
+    "page_no": 131
+   },
+   "printed_quote": "Shahin Badaly, of Badaly Engineering PLLC , a Professional Engineer, has rendered the Floor Plans of the Property",
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 2294,
+   "field": "principal",
+   "stored": {
+    "name": "Shahriar Homapour",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 130,
+   "file_id": 28588,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P6",
+    "quote": "two ( 2 ) Principal s of the Sponsor, Shahriar Homapour and Rafael Reihanian",
+    "why": "matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 2295,
+   "field": "principal",
+   "stored": {
+    "name": "Rafael Reihanian",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 130,
+   "file_id": 28588,
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P6",
+    "quote": "two ( 2 ) Principal s of the Sponsor, Shahriar Homapour and Rafael Reihanian",
+    "why": "matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD230049",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "EVERGREEN REALTY GROUP LLC",
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "E VERGREEN R EALTY G ROUP LLC",
+    "why": "matches cover page"
+   },
+   "blind": {
+    "value": "Evergreen Realty Group LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P6",
+    "quote": "The Sponsor is Evergreen Realty Group LLC, a New York Limited Liability Company"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD230049",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+   "check": {
+    "n": 9,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "T HE L AW O FFICE OF J AY L ICHTMAN , P.C.",
+    "why": "matches cover page"
+   },
+   "blind": {
+    "value": "The Law Office of Jay Lichtman, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P6",
+    "quote": "The Sponsor is represented by The Law Office of Jay Lichtman P.C., 68 Jay Street, Suite 420, Brooklyn, New York 11201"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 38452
+}

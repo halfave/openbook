@@ -1,0 +1,307 @@
+{
+ "plan_id": "CD170371",
+ "checked_at": "2026-10-01T19:53:13.270Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 2107,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 2107,
+   "page_no": 4,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 2107,
+   "page_no": 74,
+   "why": [
+    "cited",
+    "managing_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": null,
+  "selling_agent": {
+   "value": "Corcoran Sunshine Marketing Group",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "Corcoran Sunshine Marketing Group"
+  },
+  "managing_agent": {
+   "value": "FirstService Residential",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P3",
+   "quote": "management agreement to be entered into with FirstService Residential (\"Managing Agent\")"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": null,
+  "sponsor": {
+   "value": "537 Greenwich Owner, LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "537 Greenwich Owner, LLC"
+  },
+  "sponsor_address": {
+   "value": "483 Broadway, 5th Floor, New York, New York 10013",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "483 Broadway, 5th Floor \nNew York, New York 10013"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 4955,
+   "field": "managing_agent",
+   "page_no": 74,
+   "score": 1
+  },
+  {
+   "id": 4956,
+   "field": "selling_agent",
+   "page_no": 1,
+   "score": 0.82
+  },
+  {
+   "id": 4957,
+   "field": "parking_arrangement",
+   "page_no": 1,
+   "score": 0.85
+  },
+  {
+   "id": 5311,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 0.91
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 4955,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "FirstService Residential",
+   "page_no": 74,
+   "file_id": 2107,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P3",
+    "quote": "management agreement to be entered into with FirstService Residential (\"Managing Agent\")... annual fee of $73,260",
+    "why": "Matches name and fee"
+   },
+   "blind": {
+    "value": "FirstService Residential",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P3",
+    "quote": "management agreement to be entered into with FirstService Residential (\"Managing Agent\")"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 4956,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "Corcoran Sunshine Marketing Group",
+   "page_no": 1,
+   "file_id": 2107,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "SELLING AGENT: Corcoran Sunshine Marketing Group",
+    "why": "Matches"
+   },
+   "blind": {
+    "value": "Corcoran Sunshine Marketing Group",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "Corcoran Sunshine Marketing Group"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 4957,
+   "field": "parking_arrangement",
+   "column": "value_text",
+   "stored": "licensed",
+   "page_no": 1,
+   "file_id": 2107,
+   "check": {
+    "n": 3,
+    "verdict": "wrong",
+    "fix": "licensed, pursuant to License Agreements (not sold)",
+    "page": "P1",
+    "quote": "30 Parking Spaces* ... * Storage Spaces and Parking Spaces are being sold pursuant to License Agreements.",
+    "why": "Claim says 'licensed' which matches the license agreement mechanism; spaces count 30 matches - actually this is correct"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A"
+    ],
+    "close": [],
+    "printed": "30 Parking Spaces, being sold pursuant to License Agreements",
+    "page": "P1",
+    "quote": "Storage Spaces and Parking Spaces are being sold pursuant to License Agreements.",
+    "sure": true,
+    "why": "The plan offers 30 Parking Spaces under License Agreements, so 'licensed' is accurate though it omits the count. B's '(not sold)' contradicts the plan, which says the spaces are 'being sold' pursuant to License Agreements."
+   },
+   "candidates": [
+    "licensed",
+    "licensed, pursuant to License Agreements (not sold)"
+   ],
+   "stored_letter": "A",
+   "printed": "30 Parking Spaces, being sold pursuant to License Agreements",
+   "printed_page": {
+    "file_id": 2107,
+    "page_no": 1
+   },
+   "printed_quote": "Storage Spaces and Parking Spaces are being sold pursuant to License Agreements.",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5311,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "483 Broadway, 5th Floor, New York, New York 10013",
+   "page_no": 1,
+   "file_id": 2107,
+   "check": {
+    "n": 4,
+    "verdict": "wrong",
+    "fix": "435 Hudson Street, Suite 403, New York, New York 10014",
+    "page": "P1",
+    "quote": "SPONSOR: 537 Greenwich Owner, LLC 483 Broadway, 5th Floor New York, New York 10013",
+    "why": "483 Broadway is the Sales Center address per column layout, not necessarily—checking columns: Sponsor address appears to be 483 Broadway per alignment"
+   },
+   "blind": {
+    "value": "483 Broadway, 5th Floor, New York, New York 10013",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "483 Broadway, 5th Floor \nNew York, New York 10013"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "B"
+    ],
+    "close": [],
+    "printed": "483 Broadway, 5th Floor, New York, New York 10013",
+    "page": "P1",
+    "quote": "537 Greenwich Owner, LLC 483 Broadway, 5th Floor New York, New York 10013",
+    "sure": true,
+    "why": "The cover page lists SPONSOR, SALES CENTER and SELLING AGENT in columns. 483 Broadway is under the Sponsor. 435 Hudson Street, Suite 403 is the Sales Center."
+   },
+   "candidates": [
+    "435 Hudson Street, Suite 403, New York, New York 10014",
+    "483 Broadway, 5th Floor, New York, New York 10013"
+   ],
+   "stored_letter": "B",
+   "printed": "483 Broadway, 5th Floor, New York, New York 10013",
+   "printed_page": {
+    "file_id": 2107,
+    "page_no": 1
+   },
+   "printed_quote": "537 Greenwich Owner, LLC 483 Broadway, 5th Floor New York, New York 10013",
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD170371",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "537 GREENWICH OWNER LLC",
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "SPONSOR: 537 Greenwich Owner, LLC",
+    "why": "Matches name ignoring punctuation/suffix"
+   },
+   "blind": {
+    "value": "537 Greenwich Owner, LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "537 Greenwich Owner, LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD170371",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "STARR ASSOCIATES LLP",
+   "check": {
+    "n": 6,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": null,
+    "quote": null,
+    "why": "No page mentions Sponsor's counsel"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 3,
+    "accurate": [],
+    "close": [],
+    "printed": null,
+    "page": null,
+    "quote": null,
+    "sure": false,
+    "why": "None of the provided pages names the Sponsor's counsel."
+   },
+   "candidates": [
+    "STARR ASSOCIATES LLP"
+   ],
+   "stored_letter": "A",
+   "printed": null,
+   "printed_page": null,
+   "printed_quote": null,
+   "verdict": "unresolved"
+  }
+ ],
+ "calls": 3,
+ "tokens": 17728
+}

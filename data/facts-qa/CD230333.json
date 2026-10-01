@@ -1,0 +1,455 @@
+{
+ "plan_id": "CD230333",
+ "checked_at": "2026-10-01T23:26:33.081Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 28577,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 28577,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 28577,
+   "page_no": 14,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 28577,
+   "page_no": 36,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 28577,
+   "page_no": 38,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 28577,
+   "page_no": 59,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 28577,
+   "page_no": 127,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 28577,
+   "page_no": 128,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 28577,
+   "page_no": 129,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 28577,
+   "page_no": 195,
+   "why": [
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P11",
+   "file_id": 28577,
+   "page_no": 266,
+   "why": [
+    "managing_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Glenn M. Greenberg, P.E.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "has rendered the Floor Plans of the Property and has rendered the report thereof as set forth in Part II"
+  },
+  "selling_agent": {
+   "value": "F3J LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+  },
+  "managing_agent": {
+   "value": "F3J LLC",
+   "by_sponsor": false,
+   "by_board": true,
+   "others": [],
+   "page": "P8",
+   "quote": "The Sponsor , as agent of the Condominium Board , will collect from each original purchaser"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "The Law Office of Jay Lichtman, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "The Sponsor is represented by The Law Office of Jay Lichtman P.C., 68 Jay Street, Suite 420, Brooklyn, New York 11201"
+  },
+  "sponsor": {
+   "value": "F3J LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "The Sponsor of this project is F3J LLC, a New York Limited Liability Company"
+  },
+  "sponsor_address": {
+   "value": "25 Haights Cross Road, Chappaqua, NY 10514",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "with an address at 25 Haights Cross Road, Chappaqua, NY 10514"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 8967,
+   "field": "selling_agent",
+   "page_no": 129,
+   "score": 1
+  },
+  {
+   "id": 8968,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 8969,
+   "field": "working_capital",
+   "page_no": 128,
+   "score": 1
+  },
+  {
+   "id": 8970,
+   "field": "reserve_fund",
+   "page_no": 127,
+   "score": 1
+  },
+  {
+   "id": 11540,
+   "field": "architect",
+   "page_no": 129,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 8967,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "F3J LLC",
+   "page_no": 129,
+   "file_id": 28577,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "Sponsor will act as its own selling agent (no separate Selling Agent)",
+    "page": "P9",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent",
+    "why": "P9 says Sponsor itself acts as selling agent, not that F3J LLC is a separate selling agent entity role distinct from Sponsor; P1 lists F3J LLC as Sponsor & Selling Agent, consistent, so actually correct"
+   },
+   "blind": {
+    "value": "F3J LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "F3J LLC (Sponsor acts as selling agent)",
+    "page": "P9",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+    "sure": true,
+    "why": "P9 says the Sponsor, F3J LLC, acts as its own selling agent and no separate Selling Agent is used. P1 lists 'SPONSOR & SELLING AGENT: F3J LLC'. All three candidates match."
+   },
+   "candidates": [
+    "F3J LLC (the Sponsor itself)",
+    "F3J LLC",
+    "Sponsor will act as its own selling agent (no separate Selling Agent)"
+   ],
+   "stored_letter": "B",
+   "printed": "F3J LLC (Sponsor acts as selling agent)",
+   "printed_page": {
+    "file_id": 28577,
+    "page_no": 129
+   },
+   "printed_quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8968,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "25 Haights Cross Road, Chappaqua, NY 10514",
+   "page_no": 1,
+   "file_id": 28577,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "25 HAIGHTS CROSS ROAD, CHAPPAQUA, NY 10514",
+    "why": "matches cover page"
+   },
+   "blind": {
+    "value": "25 Haights Cross Road, Chappaqua, NY 10514",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "with an address at 25 Haights Cross Road, Chappaqua, NY 10514"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8969,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' estimated common charges at closing",
+   "page_no": 128,
+   "file_id": 28577,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "equal to two (2) months' estimated common charges for each Unit",
+    "why": "matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8970,
+   "field": "reserve_fund",
+   "column": "value_text",
+   "stored": "Budgeted reserve approx. 10% of the budget",
+   "page_no": 127,
+   "file_id": 28577,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P7",
+    "quote": "approximately ten percent (10%) of the entire budget",
+    "why": "matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11540,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Glenn M. Greenberg, P.E. (engineer)",
+   "page_no": 129,
+   "file_id": 28577,
+   "check": {
+    "n": 5,
+    "verdict": "wrong",
+    "fix": "Glenn M. Greenberg, P.E. is identified as the Engineer, not Architect",
+    "page": "P9",
+    "quote": "Engineer/Architect\nGlenn M. Greenberg, P.E. , a Professional Engineer",
+    "why": "pages list him under combined Engineer/Architect heading but identify him specifically as a Professional Engineer (P.E.), consistent with claim's parenthetical (engineer); claim's main label is 'the architect' which is not supported distinctly"
+   },
+   "blind": {
+    "value": "Glenn M. Greenberg, P.E.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "has rendered the Floor Plans of the Property and has rendered the report thereof as set forth in Part II"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [
+     "C"
+    ],
+    "printed": "Glenn M. Greenberg, P.E.",
+    "page": "P9",
+    "quote": "Engineer/Architect Glenn M. Greenberg, P.E. , a Professional Engineer, with an address at 96 Hallock Lane, Rocky Point, New York 11778 , has rendered the Floor Plans",
+    "sure": true,
+    "why": "Greenberg is listed under the heading 'Engineer/Architect' as a Professional Engineer who rendered the floor plans and report. C names the right party, but its claim 'not Architect' goes against the 'Engineer/Architect' heading."
+   },
+   "candidates": [
+    "Glenn M. Greenberg, P.E. (engineer)",
+    "Glenn M. Greenberg, P.E.",
+    "Glenn M. Greenberg, P.E. is identified as the Engineer, not Architect"
+   ],
+   "stored_letter": "A",
+   "printed": "Glenn M. Greenberg, P.E.",
+   "printed_page": {
+    "file_id": 28577,
+    "page_no": 129
+   },
+   "printed_quote": "Engineer/Architect Glenn M. Greenberg, P.E. , a Professional Engineer, with an address at 96 Hallock Lane, Rocky Point, New York 11778 , has rendered the Floor Plans",
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 2402,
+   "field": "principal",
+   "stored": {
+    "name": "Francisco Duque",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 129,
+   "file_id": 28577,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "The Principal of the Sponsor, Francisco Duque",
+    "why": "matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 2403,
+   "field": "principal",
+   "stored": {
+    "name": "Joana Pacheco",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 129,
+   "file_id": 28577,
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "The Principal of the Sponsor, Joana Pacheco",
+    "why": "matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD230333",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "F3J LLC",
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "F3J LLC",
+    "why": "matches cover page"
+   },
+   "blind": {
+    "value": "F3J LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "The Sponsor of this project is F3J LLC, a New York Limited Liability Company"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD230333",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+   "check": {
+    "n": 9,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "THE LAW OFFICE OF JAY LICHTMAN , P.C.",
+    "why": "matches cover page"
+   },
+   "blind": {
+    "value": "The Law Office of Jay Lichtman, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "The Sponsor is represented by The Law Office of Jay Lichtman P.C., 68 Jay Street, Suite 420, Brooklyn, New York 11201"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 44228
+}

@@ -1,0 +1,439 @@
+{
+ "plan_id": "CD200037",
+ "checked_at": "2026-10-01T21:09:28.623Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 11581,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 11581,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 11581,
+   "page_no": 16,
+   "why": [
+    "cited",
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 11581,
+   "page_no": 36,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 11581,
+   "page_no": 56,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 11581,
+   "page_no": 111,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 11581,
+   "page_no": 123,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 11581,
+   "page_no": 124,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Suresh Manchanda / L & C Associates",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "Suresh Manchanda a registered architect from the firm L & C Associates ... has rendered the Floor Plans of the Property"
+  },
+  "selling_agent": {
+   "value": "BKNY USA LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+  },
+  "managing_agent": {
+   "value": "BKNY USA LLC",
+   "by_sponsor": false,
+   "by_board": true,
+   "others": [],
+   "page": "P4",
+   "quote": "The Condominium Board will be responsible for managing the condominium, including but not limited to, writing checks, payment of bills"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "The Law Office of Jay Lichtman, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "The Sponsor is represented by The Law Office of Jay Lichtman P.C., 68 Jay Street, Suite 420, Brooklyn, New York 11201"
+  },
+  "sponsor": {
+   "value": "BKNY USA LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "The Sponsor of this project is BKNY USA LLC a New York Limited Liability Co mpany"
+  },
+  "sponsor_address": {
+   "value": "277 Northern Boulevard Suite 100, Great Neck 11021",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "with an address at 277 Northern Boulevard Suite 100, Great Neck 11021"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 5889,
+   "field": "selling_agent",
+   "page_no": 124,
+   "score": 1
+  },
+  {
+   "id": 5890,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 5891,
+   "field": "architect",
+   "page_no": 124,
+   "score": 1
+  },
+  {
+   "id": 5892,
+   "field": "working_capital",
+   "page_no": 123,
+   "score": 1
+  },
+  {
+   "id": 11075,
+   "field": "managing_agent",
+   "page_no": 16,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 5889,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "BKNY USA LLC",
+   "page_no": 124,
+   "file_id": 11581,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "Sponsor is not using a Selling Agent; Sponsor acts as selling agent itself",
+    "page": "P8",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+    "why": "P8 says there is no separate selling agent; Sponsor itself acts as selling agent, so naming BKNY USA LLC as 'the selling agent' as a distinct role misstates this, though P1 cover lists Sponsor & Selling Agent together as BKNY USA LLC"
+   },
+   "blind": {
+    "value": "BKNY USA LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "Sponsor will not be using a Selling Agent; Sponsor (BKNY USA LLC) will act as selling agent",
+    "page": "P8",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+    "sure": true,
+    "why": "P8 says the Sponsor, BKNY USA LLC, acts as its own selling agent. P1 also lists BKNY USA LLC as 'SPONSOR & SELLING AGENT'."
+   },
+   "candidates": [
+    "BKNY USA LLC",
+    "BKNY USA LLC (the Sponsor itself)",
+    "Sponsor is not using a Selling Agent; Sponsor acts as selling agent itself"
+   ],
+   "stored_letter": "A",
+   "printed": "Sponsor will not be using a Selling Agent; Sponsor (BKNY USA LLC) will act as selling agent",
+   "printed_page": {
+    "file_id": 11581,
+    "page_no": 124
+   },
+   "printed_quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5890,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "277 Northern Blvd, Ste 100, Great Neck, New York 11021",
+   "page_no": 1,
+   "file_id": 11581,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "277 NORTHERN BLVD, STE 100, GREAT NECK, NEW YORK 11021",
+    "why": "matches cover page"
+   },
+   "blind": {
+    "value": "277 Northern Boulevard Suite 100, Great Neck 11021",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "with an address at 277 Northern Boulevard Suite 100, Great Neck 11021"
+   },
+   "blind_agrees": false,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "277 Northern Blvd, Ste 100, Great Neck, New York 11021",
+    "page": "P1",
+    "quote": "277 NORTHERN BLVD, STE 100 GREAT NECK, NEW YORK 11021",
+    "sure": true,
+    "why": "A matches P1 exactly. B matches P8's wording of the same address; the only differences are abbreviations."
+   },
+   "candidates": [
+    "277 Northern Blvd, Ste 100, Great Neck, New York 11021",
+    "277 Northern Boulevard Suite 100, Great Neck 11021"
+   ],
+   "stored_letter": "A",
+   "printed": "277 Northern Blvd, Ste 100, Great Neck, New York 11021",
+   "printed_page": {
+    "file_id": 11581,
+    "page_no": 1
+   },
+   "printed_quote": "277 NORTHERN BLVD, STE 100 GREAT NECK, NEW YORK 11021",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5891,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "L & C Associates (Suresh Manchanda)",
+   "page_no": 124,
+   "file_id": 11581,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "Suresh Manchanda a registered architect from the firm L & C Associates",
+    "why": "matches"
+   },
+   "blind": {
+    "value": "Suresh Manchanda / L & C Associates",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "Suresh Manchanda a registered architect from the firm L & C Associates ... has rendered the Floor Plans of the Property"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5892,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 123,
+   "file_id": 11581,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P7",
+    "quote": "equal to two (2) months' estimated Common Charge s for each Unit",
+    "why": "matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11075,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "Self-managed",
+   "page_no": 16,
+   "file_id": 11581,
+   "check": {
+    "n": 5,
+    "verdict": "wrong",
+    "fix": "Condominium Board manages the condominium (no superintendent/management fee budgeted); no dollar figure of $0 is stated",
+    "page": "P3",
+    "quote": "the Condominium Board will be responsible for managing the condominium",
+    "why": "pages describe board self-management but don't state a number '0' associated with it; claim's stored number is unsupported"
+   },
+   "blind": {
+    "value": "BKNY USA LLC",
+    "by_sponsor": false,
+    "by_board": true,
+    "others": [],
+    "page": "P4",
+    "quote": "The Condominium Board will be responsible for managing the condominium, including but not limited to, writing checks, payment of bills"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 3,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "Condominium Board will be responsible for managing the condominium (no management fee budgeted)",
+    "page": "P3",
+    "quote": "does not include a fee for management or a part time superintendent. As such, the Condominium Board will be responsible for managing the condominium",
+    "sure": true,
+    "why": "No outside managing agent is named. The Board manages the condominium itself, so 'self-managed' is an accurate summary."
+   },
+   "candidates": [
+    "Condominium Board manages the condominium (no superintendent/management fee budgeted); no dollar figure of $0 is stated",
+    "Self-managed",
+    "the Board / self-managed"
+   ],
+   "stored_letter": "B",
+   "printed": "Condominium Board will be responsible for managing the condominium (no management fee budgeted)",
+   "printed_page": {
+    "file_id": 11581,
+    "page_no": 16
+   },
+   "printed_quote": "does not include a fee for management or a part time superintendent. As such, the Condominium Board will be responsible for managing the condominium",
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 720,
+   "field": "principal",
+   "stored": {
+    "name": "Ramin Baratian",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 124,
+   "file_id": 11581,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "The Principal of the is Ramin Baratian",
+    "why": "matches, identified as Principal of Sponsor"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD200037",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "BKNY USA LLC",
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "SPONSOR & SELLING AGENT: BKNYUSALLC",
+    "why": "matches cover page"
+   },
+   "blind": {
+    "value": "BKNY USA LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "The Sponsor of this project is BKNY USA LLC a New York Limited Liability Co mpany"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD200037",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "ATTORNEYS FOR SPONSOR: THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+    "why": "matches cover page"
+   },
+   "blind": {
+    "value": "The Law Office of Jay Lichtman, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "The Sponsor is represented by The Law Office of Jay Lichtman P.C., 68 Jay Street, Suite 420, Brooklyn, New York 11201"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 35403
+}

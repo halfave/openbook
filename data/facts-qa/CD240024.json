@@ -1,0 +1,198 @@
+{
+ "plan_id": "CD240024",
+ "checked_at": "2026-10-01T23:29:43.844Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 27130,
+   "page_no": 33,
+   "why": [
+    "cited",
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 27130,
+   "page_no": 97,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 27130,
+   "page_no": 119,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 27130,
+   "page_no": 295,
+   "why": [
+    "cited"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Alexander Sheyman, P.E",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P4",
+   "quote": "Alexander Sheyman, P.E"
+  },
+  "selling_agent": null,
+  "managing_agent": null,
+  "tax_consultant": null,
+  "sponsor_attorney": null,
+  "sponsor": null,
+  "sponsor_address": null
+ },
+ "quote_checks": [
+  {
+   "id": 9873,
+   "field": "working_capital",
+   "page_no": 33,
+   "score": 1
+  },
+  {
+   "id": 11548,
+   "field": "architect",
+   "page_no": 295,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 9873,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' estimated common charges contribution at closing",
+   "page_no": 33,
+   "file_id": 27130,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "Initial Capital Payment equal to two (2) months' estimated monthly common charges for the unit",
+    "why": "Matches claim exactly."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11548,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Alexander Sheyman, P.E. (engineer)",
+   "page_no": 295,
+   "file_id": 27130,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P4",
+    "quote": "Alexander Sheyman, P.E",
+    "why": "Name and P.E. (engineer) credential match; signed the Architect's Report."
+   },
+   "blind": {
+    "value": "Alexander Sheyman, P.E",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P4",
+    "quote": "Alexander Sheyman, P.E"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD240024",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "258 ST JAMES PL LLC",
+   "check": {
+    "n": 3,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": null,
+    "quote": null,
+    "why": "No cover page or sponsor name is shown in the provided pages."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [],
+    "close": [],
+    "printed": null,
+    "page": "P1",
+    "quote": "258 St. James Place",
+    "sure": false,
+    "why": "None of the four pages names the Sponsor entity. P1 and P3 give only the building address, 258 St. James Place, and P4 says only 'the Sponsor', so candidate A cannot be confirmed.",
+    "from_images": true
+   },
+   "candidates": [
+    "258 ST JAMES PL LLC"
+   ],
+   "stored_letter": "A",
+   "printed": null,
+   "printed_page": {
+    "file_id": 27130,
+    "page_no": 33
+   },
+   "printed_quote": "258 St. James Place",
+   "verdict": "unresolved"
+  },
+  {
+   "table": "plans",
+   "id": "CD240024",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "LAW OFFICES OF HERSHY ITZKOWITZ, P.C.",
+   "check": {
+    "n": 4,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": null,
+    "quote": null,
+    "why": "No cover page or sponsor's counsel information is shown in the provided pages."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 2,
+    "accurate": [],
+    "close": [],
+    "printed": null,
+    "page": "P1",
+    "quote": "for the Sponsor attorney in connection to the closing",
+    "sure": false,
+    "why": "P1 mentions a Sponsor attorney fee but never names the firm, and no other page names Sponsor's counsel. Candidate A cannot be confirmed.",
+    "from_images": true
+   },
+   "candidates": [
+    "LAW OFFICES OF HERSHY ITZKOWITZ, P.C."
+   ],
+   "stored_letter": "A",
+   "printed": null,
+   "printed_page": {
+    "file_id": 27130,
+    "page_no": 33
+   },
+   "printed_quote": "for the Sponsor attorney in connection to the closing",
+   "verdict": "unresolved"
+  }
+ ],
+ "calls": 4,
+ "tokens": 35958
+}

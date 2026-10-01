@@ -1,0 +1,369 @@
+{
+ "plan_id": "CD230151",
+ "checked_at": "2026-10-01T23:04:37.713Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 26951,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 26951,
+   "page_no": 4,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 26951,
+   "page_no": 17,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 26951,
+   "page_no": 19,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 26951,
+   "page_no": 268,
+   "why": [
+    "cited"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": null,
+  "selling_agent": {
+   "value": "Corcoran",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "Corcoran\n125 Seventh Avenue"
+  },
+  "managing_agent": {
+   "value": "1607 Pacific Plaza LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P4",
+   "quote": "Until the Sponsor relinquishes control of the Condominium, the Board shall manage the Condominium"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "Eial Girtz PC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "Prepared by:\nEial Girtz PC, 11 Grace Avenue, Suite 309, Great Neck, NY 11021"
+  },
+  "sponsor": {
+   "value": "1607 Pacific Plaza LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "Sponsor:\n1607 Pacific Plaza LLC"
+  },
+  "sponsor_address": {
+   "value": "989 Halsey Street, Brooklyn, NY 11207",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "989 Halsey Street\nBrooklyn, NY 11207"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 8955,
+   "field": "selling_agent",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 8956,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 8957,
+   "field": "working_capital",
+   "page_no": 17,
+   "score": 1
+  },
+  {
+   "id": 11178,
+   "field": "managing_agent",
+   "page_no": 19,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 8955,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "Corcoran",
+   "page_no": 1,
+   "file_id": 26951,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "Corcoran",
+    "why": "Matches Selling Agent listed"
+   },
+   "blind": {
+    "value": "Corcoran",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "Corcoran\n125 Seventh Avenue"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8956,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "989 Halsey Street, Brooklyn, NY 11207",
+   "page_no": 1,
+   "file_id": 26951,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "989 Halsey Street, Brooklyn, NY 11207",
+    "why": "Matches Sponsor address"
+   },
+   "blind": {
+    "value": "989 Halsey Street, Brooklyn, NY 11207",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "989 Halsey Street\nBrooklyn, NY 11207"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8957,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges",
+   "page_no": 17,
+   "file_id": 26951,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P3",
+    "quote": "minimum working capital fund totaling the aggregate of 2 months of common charges",
+    "why": "Matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11178,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "Self-managed",
+   "page_no": 19,
+   "file_id": 26951,
+   "check": {
+    "n": 4,
+    "verdict": "wrong",
+    "fix": "Board shall manage during Sponsor control period; thereafter Board may self-manage or hire managing agent",
+    "page": "P4",
+    "quote": "Until the Sponsor relinquishes control of the Condominium, the Board shall manage the Condominium. Thereafter, the Condominium Board may either self manage the Condominium or retain an outside management company",
+    "why": "Claim omits that Board manages during Sponsor control period and that self-management is only one option thereafter, not a definite fact for 'first year'"
+   },
+   "blind": {
+    "value": "1607 Pacific Plaza LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P4",
+    "quote": "Until the Sponsor relinquishes control of the Condominium, the Board shall manage the Condominium"
+   },
+   "blind_agrees": false,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "C"
+    ],
+    "close": [
+     "B"
+    ],
+    "printed": "Until the Sponsor relinquishes control, the Board shall manage the Condominium; thereafter the Board may self manage or retain an outside management company",
+    "page": "P4",
+    "quote": "Until the Sponsor relinquishes control of the Condominium, the Board shall manage the Condominium.",
+    "sure": true,
+    "why": "P4 says the first-year budget has no management expense and the Board manages during Sponsor control, then may self-manage or hire an agent. B captures the self-management only roughly. No page names the Sponsor as managing agent, so A is wrong."
+   },
+   "candidates": [
+    "1607 Pacific Plaza LLC (the Sponsor itself)",
+    "Self-managed",
+    "Board shall manage during Sponsor control period; thereafter Board may self-manage or hire managing agent"
+   ],
+   "stored_letter": "B",
+   "printed": "Until the Sponsor relinquishes control, the Board shall manage the Condominium; thereafter the Board may self manage or retain an outside management company",
+   "printed_page": {
+    "file_id": 26951,
+    "page_no": 19
+   },
+   "printed_quote": "Until the Sponsor relinquishes control of the Condominium, the Board shall manage the Condominium.",
+   "verdict": "minor"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 2092,
+   "field": "principal",
+   "stored": {
+    "name": "NOT STATED",
+    "kind": "entity",
+    "role": null,
+    "parent_entity": null
+   },
+   "page_no": 268,
+   "file_id": 26951,
+   "check": {
+    "n": 5,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": "P5",
+    "quote": "We are the sponsor and the principals of sponsor",
+    "why": "Page is cut off before listing names of sponsor/principals"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A"
+    ],
+    "close": [],
+    "printed": null,
+    "page": "P5",
+    "quote": "We are the sponsor and the principals of sponsor of the condominium offering plan",
+    "sure": false,
+    "why": "P5 is the first page of the Sponsor and Principals certification. It names no principal, and the signature block would come on a later page that wasn't provided. No other page names a principal either. P1 gives only the Sponsor entity, 1607 Pacific Plaza LLC. So 'not stated' fits these pages, but the plan probably names principals elsewhere.",
+    "from_images": true
+   },
+   "candidates": [
+    "NOT STATED"
+   ],
+   "stored_letter": "A",
+   "printed": null,
+   "printed_page": {
+    "file_id": 26951,
+    "page_no": 268
+   },
+   "printed_quote": "We are the sponsor and the principals of sponsor of the condominium offering plan",
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD230151",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "1607 PACIFIC PLAZA LLC",
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "1607 Pacific Plaza LLC",
+    "why": "Matches cover page Sponsor name"
+   },
+   "blind": {
+    "value": "1607 Pacific Plaza LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "Sponsor:\n1607 Pacific Plaza LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD230151",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "EIAL GIRTZ, PC",
+   "check": {
+    "n": 7,
+    "verdict": "minor",
+    "fix": "Eial Girtz PC",
+    "page": "P1",
+    "quote": "Eial Girtz PC, 11 Grace Avenue, Suite 309, Great Neck, NY 11021",
+    "why": "Printed as 'Eial Girtz PC' not 'EIAL GIRTZ, PC' with comma; also P1 lists as preparer not explicitly 'Sponsor's counsel', but name casing/punctuation differs"
+   },
+   "blind": {
+    "value": "Eial Girtz PC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "Prepared by:\nEial Girtz PC, 11 Grace Avenue, Suite 309, Great Neck, NY 11021"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "A"
+    ],
+    "close": [],
+    "printed": "Eial Girtz PC",
+    "page": "P1",
+    "quote": "Prepared by: Eial Girtz PC, 11 Grace Avenue, Suite 309, Great Neck, NY 11021",
+    "sure": false,
+    "why": "Eial Girtz PC is named on P1 as the firm that prepared the plan. On P4 it holds the escrow account ('EIAL GIRTZ P.C., IOLA Down Payment Condominium Escrow Account'). None of these pages actually calls it 'attorneys for the Sponsor' or Sponsor's counsel.",
+    "from_images": true
+   },
+   "candidates": [
+    "EIAL GIRTZ, PC"
+   ],
+   "stored_letter": "A",
+   "printed": "Eial Girtz PC",
+   "printed_page": {
+    "file_id": 26951,
+    "page_no": 1
+   },
+   "printed_quote": "Prepared by: Eial Girtz PC, 11 Grace Avenue, Suite 309, Great Neck, NY 11021",
+   "verdict": "verified"
+  }
+ ],
+ "calls": 4,
+ "tokens": 43391
+}

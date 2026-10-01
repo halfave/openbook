@@ -1,0 +1,274 @@
+{
+ "plan_id": "CD080572",
+ "checked_at": "2026-10-01T18:49:50.757Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 21158,
+   "page_no": 1,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 21158,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 21158,
+   "page_no": 22,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 21158,
+   "page_no": 35,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 21158,
+   "page_no": 53,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 21158,
+   "page_no": 60,
+   "why": [
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 21158,
+   "page_no": 64,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 21158,
+   "page_no": 88,
+   "why": [
+    "tax_consultant",
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 21158,
+   "page_no": 91,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 21158,
+   "page_no": 94,
+   "why": [
+    "managing_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "JSL Designs Architecture & P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P3",
+   "quote": "Sponsor has engaged JSL Designs Architecture & P.C. as architect of record"
+  },
+  "selling_agent": null,
+  "managing_agent": {
+   "value": "1973 Holdings, LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "Condominium Board will execute the Management Agreement for the Building with Sponsor (\"Management Agreement\")"
+  },
+  "tax_consultant": {
+   "value": "Rothkrug Rothkrug & Spector LLP",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "the tax opinion of Rothkrug Rothkrug & Spector LLP, tax counsel to Sponsor"
+  },
+  "sponsor_attorney": {
+   "value": "ROTHKRUG ROTHKRUG & SPECTOR, LLP",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SPONSOR'S ATTORNEYS ROTHKRUG ROTHKRUG & SPECTOR, LLP"
+  },
+  "sponsor": {
+   "value": "1973 Holdings, LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SPONSOR 1973 Holdings, LLC"
+  },
+  "sponsor_address": {
+   "value": "214-41 42nd Avenue, Bayside, New York 11361",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "214-41 42\" Avenue, Bayside, New York 11361"
+  }
+ },
+ "quote_checks": [],
+ "results": [
+  {
+   "table": "plans",
+   "id": "CD080572",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "1973 HOLDINGS, LLC",
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "1973 Holdings, LLC",
+    "why": "Matches cover page exactly."
+   },
+   "blind": {
+    "value": "1973 Holdings, LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "SPONSOR 1973 Holdings, LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD080572",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "ROTHKURG ROTHKURG & SPECTOR, ATTORNEYS AT LAW",
+   "check": {
+    "n": 2,
+    "verdict": "wrong",
+    "fix": "ROTHKRUG ROTHKRUG & SPECTOR, LLP",
+    "page": "P1",
+    "quote": "ROTHKRUG ROTHKRUG & SPECTOR, LLP",
+    "why": "Name is misspelled (ROTHKURG vs ROTHKRUG) and the printed designation is 'LLP', not 'ATTORNEYS AT LAW'."
+   },
+   "blind": {
+    "value": "ROTHKRUG ROTHKRUG & SPECTOR, LLP",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "SPONSOR'S ATTORNEYS ROTHKRUG ROTHKRUG & SPECTOR, LLP"
+   },
+   "blind_agrees": false,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A"
+    ],
+    "close": [
+     "B"
+    ],
+    "printed": "ROTHKRUG ROTHKRUG & SPECTOR, LLP",
+    "page": "P1",
+    "quote": "SPONSOR’S ATTORNEYS\nROTHKRUG ROTHKRUG & SPECTOR, LLP",
+    "sure": true,
+    "why": "The cover page lists Rothkrug Rothkrug & Spector, LLP as Sponsor's Attorneys. P6 and P8 use the same spelling. Candidate B misspells it as 'Rothkurg' and adds wording that is not printed."
+   },
+   "candidates": [
+    "ROTHKRUG ROTHKRUG & SPECTOR, LLP",
+    "ROTHKURG ROTHKURG & SPECTOR, ATTORNEYS AT LAW"
+   ],
+   "stored_letter": "B",
+   "printed": "ROTHKRUG ROTHKRUG & SPECTOR, LLP",
+   "printed_page": {
+    "file_id": 21158,
+    "page_no": 1
+   },
+   "printed_quote": "SPONSOR’S ATTORNEYS\nROTHKRUG ROTHKRUG & SPECTOR, LLP",
+   "verdict": "minor"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 3846,
+   "field": "principal",
+   "method": "ag-site",
+   "stored": {
+    "name": "Vincent Peluso",
+    "kind": "person",
+    "role": "Member",
+    "parent_entity": null
+   },
+   "quote": null,
+   "verdict": "not_from_plan"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 3847,
+   "field": "principal",
+   "method": "ag-site",
+   "stored": {
+    "name": "Robinson Eliodromytis",
+    "kind": "person",
+    "role": "Member",
+    "parent_entity": null
+   },
+   "quote": null,
+   "verdict": "not_from_plan"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 3848,
+   "field": "principal",
+   "method": "ag-site",
+   "stored": {
+    "name": "Demetrios K Gianopoulos",
+    "kind": "person",
+    "role": "Member",
+    "parent_entity": null
+   },
+   "quote": null,
+   "verdict": "not_from_plan"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 3849,
+   "field": "principal",
+   "method": "ag-site",
+   "stored": {
+    "name": "Joseph A Sultana",
+    "kind": "person",
+    "role": "Member",
+    "parent_entity": null
+   },
+   "quote": null,
+   "verdict": "not_from_plan"
+  }
+ ],
+ "calls": 3,
+ "tokens": 39374
+}

@@ -1,0 +1,577 @@
+{
+ "plan_id": "CD170114",
+ "checked_at": "2026-10-01T19:43:33.063Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 4769,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 4769,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 4769,
+   "page_no": 65,
+   "why": [
+    "cited",
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 4769,
+   "page_no": 101,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 4769,
+   "page_no": 111,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 4769,
+   "page_no": 161,
+   "why": [
+    "tax_consultant",
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 4769,
+   "page_no": 172,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 4769,
+   "page_no": 173,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 4769,
+   "page_no": 178,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 4769,
+   "page_no": 179,
+   "why": [
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P11",
+   "file_id": 4769,
+   "page_no": 410,
+   "why": [
+    "cited",
+    "architect"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Tahir Demircioglu Architect PLLC (dba builtd)",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P11",
+   "quote": "building plans and specifications that were prepared by Tahir Demircioglu Architect PLLC (dba builtd)"
+  },
+  "selling_agent": {
+   "value": "Stribling Marketing Associates LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "STRIBLING MARKETING ASSOCIATES LLC"
+  },
+  "managing_agent": {
+   "value": "Choice NY Property Management",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "The Sponsor has engaged the services of Choice NY Property Management, (the \"Agent\")"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "Certilman Balin Adler & Hyman, LLP",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "CERTILMAN BALIN ADLER & HYMAN, LLP"
+  },
+  "sponsor": {
+   "value": "Soho Broome Condos LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "The Sponsor is Soho Broome Condos LLC, a New York limited liability company"
+  },
+  "sponsor_address": {
+   "value": "136 North 10th Street, 2nd Floor, Brooklyn, New York 11249",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "with a New York address at 136 North 10th Street, znd Floor, Brooklyn, New York 11249"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 4779,
+   "field": "selling_agent",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 4780,
+   "field": "managing_agent",
+   "page_no": 65,
+   "score": 1
+  },
+  {
+   "id": 4781,
+   "field": "working_capital",
+   "page_no": 172,
+   "score": 1
+  },
+  {
+   "id": 5177,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 0.92
+  },
+  {
+   "id": 10695,
+   "field": "architect",
+   "page_no": 410,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 4779,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "Stribling Marketing Associates LLC",
+   "page_no": 1,
+   "file_id": 4769,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "STRIBLING MARKETING ASSOCIATES LLC",
+    "why": "matches cover page"
+   },
+   "blind": {
+    "value": "Stribling Marketing Associates LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "STRIBLING MARKETING ASSOCIATES LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 4780,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "Choice NY Property Management",
+   "page_no": 65,
+   "file_id": 4769,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P3",
+    "quote": "Choice NY Property Management (\"Managing Agent\")... at an annual fee of $36,000",
+    "why": "matches name and fee"
+   },
+   "blind": {
+    "value": "Choice NY Property Management",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "The Sponsor has engaged the services of Choice NY Property Management, (the \"Agent\")"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 4781,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 172,
+   "file_id": 4769,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P7",
+    "quote": "the equivalent of two (2) months Common Charges from each Purchaser",
+    "why": "matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5177,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "136 North 10th Street, 2nd Floor, Brooklyn, New York 11249",
+   "page_no": 1,
+   "file_id": 4769,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "136 North 1Oth Street, 2nd Floor, Brooklyn, New York 11249",
+    "why": "matches sponsor address on cover"
+   },
+   "blind": {
+    "value": "136 North 10th Street, 2nd Floor, Brooklyn, New York 11249",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "with a New York address at 136 North 10th Street, znd Floor, Brooklyn, New York 11249"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 10695,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Tahir Demircioglu Architect PLLC",
+   "page_no": 410,
+   "file_id": 4769,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P11",
+    "quote": "building plans and specifications that were prepared by Tahir Demircioglu Architect PLLC (dba builtd)",
+    "why": "matches"
+   },
+   "blind": {
+    "value": "Tahir Demircioglu Architect PLLC (dba builtd)",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P11",
+    "quote": "building plans and specifications that were prepared by Tahir Demircioglu Architect PLLC (dba builtd)"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1287,
+   "field": "principal",
+   "stored": {
+    "name": "YNC Equity Partners LLC",
+    "kind": "entity",
+    "role": "member",
+    "parent_entity": null
+   },
+   "page_no": 178,
+   "file_id": 4769,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "The members and principals of the Sponsor are YNC Equity Partners LLC, Murat Agirnasli",
+    "why": "matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1288,
+   "field": "principal",
+   "stored": {
+    "name": "Murat Agirnasli",
+    "kind": "person",
+    "role": "manager",
+    "parent_entity": "YNC Equity Partners LLC"
+   },
+   "page_no": 178,
+   "file_id": 4769,
+   "check": {
+    "n": 7,
+    "verdict": "wrong",
+    "fix": "manager of the Sponsor entity (not of YNC Equity Partners LLC, of which he is managing member)",
+    "page": "P9",
+    "quote": "Murat Agirnasli is the managing member of YNC Equity Partners LLC and the manager of the Sponsor entity",
+    "why": "He is managing member of YNC Equity Partners LLC, but manager of the Sponsor entity, not manager of YNC"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "B"
+    ],
+    "close": [
+     "A"
+    ],
+    "printed": "Murat Agirnasli — managing member of YNC Equity Partners LLC and manager of the Sponsor entity",
+    "page": "P9",
+    "quote": "Murat Agirnasli is the managing member of YNC Equity Partners LLC and the manager of the Sponsor entity",
+    "sure": true,
+    "why": "Agirnasli is managing member of YNC and manager of the Sponsor. A wrongly calls him manager of YNC."
+   },
+   "candidates": [
+    "Murat Agirnasli — manager — of YNC Equity Partners LLC",
+    "manager of the Sponsor entity (not of YNC Equity Partners LLC, of which he is managing member)"
+   ],
+   "stored_letter": "A",
+   "printed": "Murat Agirnasli — managing member of YNC Equity Partners LLC and manager of the Sponsor entity",
+   "printed_page": {
+    "file_id": 4769,
+    "page_no": 178
+   },
+   "printed_quote": "Murat Agirnasli is the managing member of YNC Equity Partners LLC and the manager of the Sponsor entity",
+   "verdict": "minor"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1289,
+   "field": "principal",
+   "stored": {
+    "name": "Erden M. Arkan",
+    "kind": "person",
+    "role": "member",
+    "parent_entity": null
+   },
+   "page_no": 178,
+   "file_id": 4769,
+   "check": {
+    "n": 8,
+    "verdict": "wrong",
+    "fix": "principal (not explicitly called 'member')",
+    "page": "P9",
+    "quote": "Erden M. Arkan, Selim Akyuz and Hilmi Ulgur Aydin each with a business address",
+    "why": "Listed among members and principals collectively but page does not individually assign 'member' role to Arkan specifically distinct from principal"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "A"
+    ],
+    "close": [],
+    "printed": "Erden M. Arkan — member/principal of the Sponsor",
+    "page": "P9",
+    "quote": "The members and principals of the Sponsor are YNC Equity Partners LLC, Murat Agirnasli ... and Erden M. Arkan",
+    "sure": true,
+    "why": "Arkan appears in the list headed 'members and principals', so he is called a member. B's claim that he is not called a member is false."
+   },
+   "candidates": [
+    "Erden M. Arkan — member",
+    "principal (not explicitly called 'member')"
+   ],
+   "stored_letter": "A",
+   "printed": "Erden M. Arkan — member/principal of the Sponsor",
+   "printed_page": {
+    "file_id": 4769,
+    "page_no": 178
+   },
+   "printed_quote": "The members and principals of the Sponsor are YNC Equity Partners LLC, Murat Agirnasli ... and Erden M. Arkan",
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1290,
+   "field": "principal",
+   "stored": {
+    "name": "Selim Akyuz",
+    "kind": "person",
+    "role": "member",
+    "parent_entity": null
+   },
+   "page_no": 178,
+   "file_id": 4769,
+   "check": {
+    "n": 9,
+    "verdict": "wrong",
+    "fix": "principal (not explicitly called 'member')",
+    "page": "P9",
+    "quote": "Erden M. Arkan, Selim Akyuz and Hilmi Ulgur Aydin each with a business address",
+    "why": "Same grouping issue as claim 8"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 3,
+    "accurate": [
+     "B"
+    ],
+    "close": [],
+    "printed": "Selim Akyuz — member/principal of the Sponsor",
+    "page": "P9",
+    "quote": "The members and principals of the Sponsor are ... Erden M. Arkan, Selim Akyuz and Hilmi Ulgur Aydin",
+    "sure": true,
+    "why": "Akyuz appears in the list headed 'members and principals'. A's claim that he is not called a member is false."
+   },
+   "candidates": [
+    "principal (not explicitly called 'member')",
+    "Selim Akyuz — member"
+   ],
+   "stored_letter": "B",
+   "printed": "Selim Akyuz — member/principal of the Sponsor",
+   "printed_page": {
+    "file_id": 4769,
+    "page_no": 178
+   },
+   "printed_quote": "The members and principals of the Sponsor are ... Erden M. Arkan, Selim Akyuz and Hilmi Ulgur Aydin",
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1291,
+   "field": "principal",
+   "stored": {
+    "name": "Hilmi Ulgur Aydin",
+    "kind": "person",
+    "role": "member",
+    "parent_entity": null
+   },
+   "page_no": 178,
+   "file_id": 4769,
+   "check": {
+    "n": 10,
+    "verdict": "wrong",
+    "fix": "principal (not explicitly called 'member')",
+    "page": "P9",
+    "quote": "Erden M. Arkan, Selim Akyuz and Hilmi Ulgur Aydin each with a business address",
+    "why": "Same grouping issue as claim 8"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 4,
+    "accurate": [
+     "B"
+    ],
+    "close": [],
+    "printed": "Hilmi Ulgur Aydin — member/principal of the Sponsor",
+    "page": "P9",
+    "quote": "The members and principals of the Sponsor are ... Erden M. Arkan, Selim Akyuz and Hilmi Ulgur Aydin",
+    "sure": true,
+    "why": "Aydin appears in the list headed 'members and principals'. A's claim that he is not called a member is false."
+   },
+   "candidates": [
+    "principal (not explicitly called 'member')",
+    "Hilmi Ulgur Aydin — member"
+   ],
+   "stored_letter": "B",
+   "printed": "Hilmi Ulgur Aydin — member/principal of the Sponsor",
+   "printed_page": {
+    "file_id": 4769,
+    "page_no": 178
+   },
+   "printed_quote": "The members and principals of the Sponsor are ... Erden M. Arkan, Selim Akyuz and Hilmi Ulgur Aydin",
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD170114",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "SOHO BROOME CONDOS LLC",
+   "check": {
+    "n": 11,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "SOHO BROOME CONDOS LLC",
+    "why": "matches cover page"
+   },
+   "blind": {
+    "value": "Soho Broome Condos LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "The Sponsor is Soho Broome Condos LLC, a New York limited liability company"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD170114",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "CERTILMAN BALIN ADLER & HYMAN, LLP",
+   "check": {
+    "n": 12,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "CERTILMAN BALIN ADLER & HYMAN, LLP",
+    "why": "matches cover page"
+   },
+   "blind": {
+    "value": "Certilman Balin Adler & Hyman, LLP",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "CERTILMAN BALIN ADLER & HYMAN, LLP"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 40765
+}

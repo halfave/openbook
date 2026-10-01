@@ -1,0 +1,509 @@
+{
+ "plan_id": "CD210061",
+ "checked_at": "2026-10-01T21:44:42.518Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 14067,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 14067,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 14067,
+   "page_no": 18,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 14067,
+   "page_no": 34,
+   "why": [
+    "tax_consultant",
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 14067,
+   "page_no": 83,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 14067,
+   "page_no": 96,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 14067,
+   "page_no": 146,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 14067,
+   "page_no": 159,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 14067,
+   "page_no": 160,
+   "why": [
+    "cited",
+    "selling_agent",
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 14067,
+   "page_no": 287,
+   "why": [
+    "cited"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Paul Christakos of Paul Christakos Architecture, PLLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "The architect who prepared and certified the Plans is: Paul Christakos of Paul Christakos Architecture, PLLC with an address at 23-83 33rd Street, Astoria, New York 11105."
+  },
+  "selling_agent": {
+   "value": "617 Warren LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SPONSOR AND SELLING AGENT 617 Warren LLC"
+  },
+  "managing_agent": {
+   "value": "617 Warren, LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P3",
+   "quote": "While Sponsor is in control of the Board of Managers, Sponsor shall manage the Condominium."
+  },
+  "tax_consultant": {
+   "value": "Metropolitan Realty Exemptions, Inc.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P7",
+   "quote": "Real estate tax estimates are based upon information received from Metropolitan Realty Exemptions, Inc., 381 South 5th Street, Brooklyn, New York 11211."
+  },
+  "sponsor_attorney": {
+   "value": "CERTILMAN BALIN ADLER & HYMAN, LLP",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [
+    "Romanick & Skolnick, PLLC (Closing Attorney)"
+   ],
+   "page": "P1",
+   "quote": "SPONSOR'S ATTORNEY CERTILMAN BALIN ADLER & HYMAN, LLP"
+  },
+  "sponsor": {
+   "value": "617 Warren LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SPONSOR AND SELLING AGENT 617 Warren LLC"
+  },
+  "sponsor_address": {
+   "value": "79 Saint Marks Place, Brooklyn, New York 11217",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "79 Saint Marks Place Brooklyn, New York 11217"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 7290,
+   "field": "managing_agent",
+   "page_no": 160,
+   "score": 1
+  },
+  {
+   "id": 7291,
+   "field": "selling_agent",
+   "page_no": 160,
+   "score": 1
+  },
+  {
+   "id": 7292,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 7293,
+   "field": "working_capital",
+   "page_no": 159,
+   "score": 1
+  },
+  {
+   "id": 11424,
+   "field": "architect",
+   "page_no": 287,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 7290,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "617 Warren LLC",
+   "page_no": 160,
+   "file_id": 14067,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "The Board of Managers manages the Condominium (no outside managing agent has been retained)",
+    "page": "P9",
+    "quote": "The Sponsor has not entered into any management contract to provide for management of the Condominium. While Sponsor is in control of the Board of Managers, Sponsor shall manage the Condominium.",
+    "why": "Pages say Sponsor (through its control of the Board) manages, but no entity named '617 Warren LLC' is identified as a managing agent; the claim mischaracterizes the role."
+   },
+   "blind": {
+    "value": "617 Warren, LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P3",
+    "quote": "While Sponsor is in control of the Board of Managers, Sponsor shall manage the Condominium."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "C"
+    ],
+    "close": [],
+    "printed": "617 Warren, LLC (Sponsor shall manage the Condominium while in control of the Board of Managers; no management contract entered into)",
+    "page": "P9",
+    "quote": "While Sponsor is in control of the Board of Managers, Sponsor shall manage the Condominium.",
+    "sure": true,
+    "why": "No management contract has been entered into. The Sponsor manages while it controls the Board. The Board is described as generally responsible, but the plan states that the Sponsor does the managing during control. B names a different party."
+   },
+   "candidates": [
+    "617 Warren, LLC (the Sponsor itself)",
+    "The Board of Managers manages the Condominium (no outside managing agent has been retained)",
+    "617 Warren LLC"
+   ],
+   "stored_letter": "C",
+   "printed": "617 Warren, LLC (Sponsor shall manage the Condominium while in control of the Board of Managers; no management contract entered into)",
+   "printed_page": {
+    "file_id": 14067,
+    "page_no": 160
+   },
+   "printed_quote": "While Sponsor is in control of the Board of Managers, Sponsor shall manage the Condominium.",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7291,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "617 Warren LLC",
+   "page_no": 160,
+   "file_id": 14067,
+   "check": {
+    "n": 2,
+    "verdict": "minor",
+    "fix": "617 Warren, LLC",
+    "page": "P9",
+    "quote": "The Sponsor and Selling Agent is 617 Warren, LLC",
+    "why": "Correct entity and role, but printed name has comma: '617 Warren, LLC'."
+   },
+   "blind": {
+    "value": "617 Warren LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "SPONSOR AND SELLING AGENT 617 Warren LLC"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "617 Warren, LLC",
+    "page": "P9",
+    "quote": "The Sponsor and Selling Agent is 617 Warren, LLC",
+    "sure": true,
+    "why": "The Sponsor is itself the selling agent. Both candidates name it correctly."
+   },
+   "candidates": [
+    "617 Warren LLC",
+    "617 Warren LLC (the Sponsor itself)"
+   ],
+   "stored_letter": "A",
+   "printed": "617 Warren, LLC",
+   "printed_page": {
+    "file_id": 14067,
+    "page_no": 160
+   },
+   "printed_quote": "The Sponsor and Selling Agent is 617 Warren, LLC",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7292,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "79 Saint Marks Place, Brooklyn, New York 11217",
+   "page_no": 1,
+   "file_id": 14067,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "79 Saint Marks Place, Brooklyn, New York 11217",
+    "why": "Matches cover page."
+   },
+   "blind": {
+    "value": "79 Saint Marks Place, Brooklyn, New York 11217",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "79 Saint Marks Place Brooklyn, New York 11217"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7293,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 159,
+   "file_id": 14067,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "At Closing the Sponsor will collect the equivalent of two (2) months Common Charges from each Purchaser to be paid to the Condominium as initial Working Capital.",
+    "why": "Matches exactly."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11424,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Paul Christakos of Paul Christakos Architecture, PLLC",
+   "page_no": 287,
+   "file_id": 14067,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P10",
+    "quote": "The architect who prepared and certified the Plans is: Paul Christakos of Paul Christakos Architecture, PLLC",
+    "why": "Matches exactly."
+   },
+   "blind": {
+    "value": "Paul Christakos of Paul Christakos Architecture, PLLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "The architect who prepared and certified the Plans is: Paul Christakos of Paul Christakos Architecture, PLLC with an address at 23-83 33rd Street, Astoria, New York 11105."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1905,
+   "field": "principal",
+   "stored": {
+    "name": "Aran Scott",
+    "kind": "person",
+    "role": "member",
+    "parent_entity": null
+   },
+   "page_no": 160,
+   "file_id": 14067,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "The members of the Sponsor are Aran Scott, Daniel Ary Ehrlich Goldstein, and Paula Stolowicz Ras",
+    "why": "Matches exactly."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1906,
+   "field": "principal",
+   "stored": {
+    "name": "Daniel Ary Ehrlich Goldstein",
+    "kind": "person",
+    "role": "member",
+    "parent_entity": null
+   },
+   "page_no": 160,
+   "file_id": 14067,
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "The members of the Sponsor are Aran Scott, Daniel Ary Ehrlich Goldstein, and Paula Stolowicz Ras",
+    "why": "Matches exactly."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1907,
+   "field": "principal",
+   "stored": {
+    "name": "Paula Stolowicz Ras",
+    "kind": "person",
+    "role": "member",
+    "parent_entity": null
+   },
+   "page_no": 160,
+   "file_id": 14067,
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "The members of the Sponsor are Aran Scott, Daniel Ary Ehrlich Goldstein, and Paula Stolowicz Ras",
+    "why": "Matches exactly."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD210061",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "617 WARREN LLC",
+   "check": {
+    "n": 9,
+    "verdict": "minor",
+    "fix": "617 Warren LLC",
+    "page": "P1",
+    "quote": "617 Warren LLC",
+    "why": "Correct entity but printed without comma; claim's all-caps 'LLC' spacing differs only in formatting, name itself matches cover page exactly (no issue) — actually matches, so correct."
+   },
+   "blind": {
+    "value": "617 Warren LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "SPONSOR AND SELLING AGENT 617 Warren LLC"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 3,
+    "accurate": [
+     "A"
+    ],
+    "close": [],
+    "printed": "617 Warren, LLC",
+    "page": "P4",
+    "quote": "\"Sponsor\" — 617 Warren, LLC a New York limited liability company",
+    "sure": true,
+    "why": "Matches the cover page and definitions apart from capitalization and punctuation."
+   },
+   "candidates": [
+    "617 WARREN LLC"
+   ],
+   "stored_letter": "A",
+   "printed": "617 Warren, LLC",
+   "printed_page": {
+    "file_id": 14067,
+    "page_no": 34
+   },
+   "printed_quote": "\"Sponsor\" — 617 Warren, LLC a New York limited liability company",
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD210061",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "CERTILMAN BALIN ADLER & HYMAN, LLP",
+   "check": {
+    "n": 10,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "CERTILMAN BALIN ADLER & HYMAN, LLP",
+    "why": "Matches cover page exactly."
+   },
+   "blind": {
+    "value": "CERTILMAN BALIN ADLER & HYMAN, LLP",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [
+     "Romanick & Skolnick, PLLC (Closing Attorney)"
+    ],
+    "page": "P1",
+    "quote": "SPONSOR'S ATTORNEY CERTILMAN BALIN ADLER & HYMAN, LLP"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 66225
+}

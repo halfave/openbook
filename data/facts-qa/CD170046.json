@@ -1,0 +1,437 @@
+{
+ "plan_id": "CD170046",
+ "checked_at": "2026-10-01T19:39:36.172Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 1410,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 1410,
+   "page_no": 7,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 1410,
+   "page_no": 29,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 1410,
+   "page_no": 49,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 1410,
+   "page_no": 92,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 1410,
+   "page_no": 101,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 1410,
+   "page_no": 102,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 1410,
+   "page_no": 103,
+   "why": [
+    "cited",
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 1410,
+   "page_no": 104,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 1410,
+   "page_no": 105,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P11",
+   "file_id": 1410,
+   "page_no": 167,
+   "why": [
+    "selling_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Ira D. Streitfeld, RA",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "Ira D. Streitfeld, RA, 125 Riverside Drive, New York, NY has prepared the Architect's Report and the Floor Plan of the Property"
+  },
+  "selling_agent": {
+   "value": "Gil Holdings LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SPONSOR AND SELLING AGENT: GIL HOLDINGS LLC"
+  },
+  "managing_agent": {
+   "value": "Gil Holdings LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "the Board shall enter into an agreement to manage the property with Sponsor, Gil Holdings LLC, 308 Malcolm X Blvd. Brooklyn, NY until the expiration of the Initial Control Period for no fee"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "Jeffrey Zwick & Associates, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "ATTORNEYS FOR SPONSOR: JEFFREY ZWICK & ASSOCIATES, P.C."
+  },
+  "sponsor": {
+   "value": "Gil Holdings LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SPONSOR AND SELLING AGENT: GIL HOLDINGS LLC"
+  },
+  "sponsor_address": {
+   "value": "308 Malcolm X Blvd., Brooklyn, New York 11233",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "308 Malcolm X Blvd. Brooklyn, New York 11233"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 4313,
+   "field": "selling_agent",
+   "page_no": 104,
+   "score": 1
+  },
+  {
+   "id": 4314,
+   "field": "managing_agent",
+   "page_no": 103,
+   "score": 1
+  },
+  {
+   "id": 4315,
+   "field": "working_capital",
+   "page_no": 102,
+   "score": 1
+  },
+  {
+   "id": 4316,
+   "field": "reserve_fund",
+   "page_no": 101,
+   "score": 1
+  },
+  {
+   "id": 5128,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 11315,
+   "field": "architect",
+   "page_no": 105,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 4313,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "Gil Holdings LLC",
+   "page_no": 104,
+   "file_id": 1410,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "Sponsor and Selling Agent is Gil Holdings LLC",
+    "why": "Matches text"
+   },
+   "blind": {
+    "value": "Gil Holdings LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "SPONSOR AND SELLING AGENT: GIL HOLDINGS LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 4314,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "Gil Holdings LLC",
+   "page_no": 103,
+   "file_id": 1410,
+   "check": {
+    "n": 2,
+    "verdict": "wrong",
+    "fix": "managed for no fee during Initial Control Period, not stated as 0 by number",
+    "page": "P8",
+    "quote": "Sponsor, Gil Holdings LLC ... until the expiration of the Initial Control Period for no fee",
+    "why": "Sponsor manages for no fee; the stored number 0 is not a stated fact from pages, adds unsupported detail"
+   },
+   "blind": {
+    "value": "Gil Holdings LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "the Board shall enter into an agreement to manage the property with Sponsor, Gil Holdings LLC, 308 Malcolm X Blvd. Brooklyn, NY until the expiration of the Initial Control Period for no fee"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "Gil Holdings LLC (Sponsor)",
+    "page": "P8",
+    "quote": "the Board shall enter into an agreement to manage the property with Sponsor, Gil Holdings LLC",
+    "sure": true,
+    "why": "P8 and P10 name the Sponsor, Gil Holdings LLC, as managing agent during the Initial Control Period, for no fee. C describes the fee terms and names no party."
+   },
+   "candidates": [
+    "Gil Holdings LLC (the Sponsor itself)",
+    "Gil Holdings LLC",
+    "managed for no fee during Initial Control Period, not stated as 0 by number"
+   ],
+   "stored_letter": "B",
+   "printed": "Gil Holdings LLC (Sponsor)",
+   "printed_page": {
+    "file_id": 1410,
+    "page_no": 103
+   },
+   "printed_quote": "the Board shall enter into an agreement to manage the property with Sponsor, Gil Holdings LLC",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 4315,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 102,
+   "file_id": 1410,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P7",
+    "quote": "equal to two (2) months' estimated common charges for each unit",
+    "why": "Matches text"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 4316,
+   "field": "reserve_fund",
+   "column": "value_text",
+   "stored": "Initially 10% of working capital contributions collected at closing, then monthly common charges",
+   "page_no": 101,
+   "file_id": 1410,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P6",
+    "quote": "funded initially with 10% of the initial contribution to the working capital fund collected at closing, and by monthly common charges thereafter",
+    "why": "Matches text"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5128,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "308 Malcolm X Blvd., Brooklyn, New York 11233",
+   "page_no": 1,
+   "file_id": 1410,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "308 M ALCOLM X B LVD . BROOKLYN , N EW Y ORK 11233",
+    "why": "Matches text"
+   },
+   "blind": {
+    "value": "308 Malcolm X Blvd., Brooklyn, New York 11233",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "308 Malcolm X Blvd. Brooklyn, New York 11233"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11315,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Ira D. Streitfeld, R.A.",
+   "page_no": 105,
+   "file_id": 1410,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P10",
+    "quote": "Ira D. Streitfeld, RA",
+    "why": "Matches text (RA = R.A.)"
+   },
+   "blind": {
+    "value": "Ira D. Streitfeld, RA",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "Ira D. Streitfeld, RA, 125 Riverside Drive, New York, NY has prepared the Architect's Report and the Floor Plan of the Property"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 958,
+   "field": "principal",
+   "stored": {
+    "name": "Boaz Gilad",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": "Brookland Capital"
+   },
+   "page_no": 104,
+   "file_id": 1410,
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "The principal of the Sponsor is Boaz Gilad , who is in the construction business , as CEO of Brookland Capital",
+    "why": "Matches text"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD170046",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "GIL HOLDINGS LLC",
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "SPONSOR AND SELLING AGENT: G IL H OLDINGS LLC",
+    "why": "Matches cover page"
+   },
+   "blind": {
+    "value": "Gil Holdings LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "SPONSOR AND SELLING AGENT: GIL HOLDINGS LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD170046",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "JEFFREY ZWICK & ASSOCIATES, P.C.",
+   "check": {
+    "n": 9,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "ATTORNEYS FOR SPONSOR: J EFFREY Z WICK & A SSOCIATES , P.C.",
+    "why": "Matches cover page"
+   },
+   "blind": {
+    "value": "Jeffrey Zwick & Associates, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "ATTORNEYS FOR SPONSOR: JEFFREY ZWICK & ASSOCIATES, P.C."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 49943
+}

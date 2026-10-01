@@ -1,0 +1,517 @@
+{
+ "plan_id": "CD220056",
+ "checked_at": "2026-10-01T22:22:42.895Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 16966,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 16966,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 16966,
+   "page_no": 8,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 16966,
+   "page_no": 17,
+   "why": [
+    "cited",
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 16966,
+   "page_no": 37,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 16966,
+   "page_no": 60,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 16966,
+   "page_no": 115,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 16966,
+   "page_no": 129,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 16966,
+   "page_no": 131,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 16966,
+   "page_no": 132,
+   "why": [
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P11",
+   "file_id": 16966,
+   "page_no": 141,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P12",
+   "file_id": 16966,
+   "page_no": 206,
+   "why": [
+    "selling_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Wu Chen, P.E.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "Wu Chen, P.E, a Professional Engineer, has rendered the Floor Plans of the Property and has rendered the report thereof"
+  },
+  "selling_agent": {
+   "value": "112 India LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+  },
+  "managing_agent": {
+   "value": "MRE Property Management LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "The condominium shall be managed by MRE Property Management LLC for the first year of condominium operation."
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "The Law Office of Jay Lichtman, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "The Sponsor is represented by The Law Office of Jay Lichtman P.C., 68 Jay Street, Suite 420, Brooklyn, New York 11201"
+  },
+  "sponsor": {
+   "value": "112 India LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "The Sponsor of this project is 112 India LLC a New York Limited Liability Company"
+  },
+  "sponsor_address": {
+   "value": "1477 Pacific Street, Brooklyn, New York 11216",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "with an address at 1477 Pacific Street , Brooklyn , New York 11216"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 8839,
+   "field": "selling_agent",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 8840,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 8841,
+   "field": "managing_agent",
+   "page_no": 17,
+   "score": 1
+  },
+  {
+   "id": 8842,
+   "field": "working_capital",
+   "page_no": 8,
+   "score": 1
+  },
+  {
+   "id": 11470,
+   "field": "architect",
+   "page_no": 141,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 8839,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "112 India LLC",
+   "page_no": 1,
+   "file_id": 16966,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "112 India LLC is the Sponsor and Selling Agent (same entity, not a separate 'selling agent')",
+    "page": "P1",
+    "quote": "S PONSOR & S ELLING A GENT : 112 I NDIA LLC",
+    "why": "P10 clarifies Sponsor acts as its own selling agent (no separate selling agent used); listing '112 India LLC' simply as 'the selling agent' omits that it is the Sponsor itself, but the pages do state it holds that role jointly"
+   },
+   "blind": {
+    "value": "112 India LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "112 India LLC",
+    "page": "P1",
+    "quote": "SPONSOR & SELLING AGENT: 112 INDIA LLC",
+    "sure": true,
+    "why": "The cover lists 112 India LLC as both Sponsor and Selling Agent. P10 confirms: 'Sponsor will act as selling agent for the condominium.'"
+   },
+   "candidates": [
+    "112 India LLC is the Sponsor and Selling Agent (same entity, not a separate 'selling agent')",
+    "112 India LLC",
+    "112 India LLC (the Sponsor itself)"
+   ],
+   "stored_letter": "B",
+   "printed": "112 India LLC",
+   "printed_page": {
+    "file_id": 16966,
+    "page_no": 1
+   },
+   "printed_quote": "SPONSOR & SELLING AGENT: 112 INDIA LLC",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8840,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "1477 Pacific Street, Brooklyn, New York 11216",
+   "page_no": 1,
+   "file_id": 16966,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "1477 P ACIFIC S TREET BROOKLYN, NEW YORK 1121 6",
+    "why": "matches claim"
+   },
+   "blind": {
+    "value": "1477 Pacific Street, Brooklyn, New York 11216",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "with an address at 1477 Pacific Street , Brooklyn , New York 11216"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8841,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "MRE Property Management LLC",
+   "page_no": 17,
+   "file_id": 16966,
+   "check": {
+    "n": 3,
+    "verdict": "minor",
+    "fix": "$2,700.00 (annual fee stated as $2,700.00 for first year in P4; P8 states $6,240.00 as the management agreement term fee)",
+    "page": "P4",
+    "quote": "for an annual fee of $ 2,7 00.00",
+    "why": "P4 states $2,700 but P8 (Management Agreement section) states $6,240.00 per year for the agreement; conflicting figures in the plan, claim cites the P4 figure which matches but there's a discrepancy worth flagging"
+   },
+   "blind": {
+    "value": "MRE Property Management LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "The condominium shall be managed by MRE Property Management LLC for the first year of condominium operation."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "B"
+    ],
+    "close": [],
+    "printed": "MRE Property Management LLC",
+    "page": "P4",
+    "quote": "The building will be managed by MRE Property Management LLC",
+    "sure": true,
+    "why": "P4, P8 and P10 all name MRE Property Management LLC for the first year. Candidate A gives a fee, not a managing agent."
+   },
+   "candidates": [
+    "$2,700.00 (annual fee stated as $2,700.00 for first year in P4; P8 states $6,240.00 as the management agreement term fee)",
+    "MRE Property Management LLC"
+   ],
+   "stored_letter": "B",
+   "printed": "MRE Property Management LLC",
+   "printed_page": {
+    "file_id": 16966,
+    "page_no": 17
+   },
+   "printed_quote": "The building will be managed by MRE Property Management LLC",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8842,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 8,
+   "file_id": 16966,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P3",
+    "quote": "deposit with the Condominium Board two (2) months ’ Common Charge s",
+    "why": "matches claim"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11470,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Wu Chen, P.E. of Infocus (engineer)",
+   "page_no": 141,
+   "file_id": 16966,
+   "check": {
+    "n": 5,
+    "verdict": "wrong",
+    "fix": "Wu Chen, P.E. is the engineer, not architect; role should be 'engineer'",
+    "page": "P10",
+    "quote": "Wu Chen, P.E, a Professional Engineer, has rendered the Floor Plans of the Property",
+    "why": "pages identify Wu Chen as engineer, not architect; claim's parenthetical '(engineer)' is correct but main label 'architect' is wrong"
+   },
+   "blind": {
+    "value": "Wu Chen, P.E.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "Wu Chen, P.E, a Professional Engineer, has rendered the Floor Plans of the Property and has rendered the report thereof"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 3,
+    "accurate": [
+     "B",
+     "C"
+    ],
+    "close": [
+     "A"
+    ],
+    "printed": "Wu Chen, P.E.",
+    "page": "P10",
+    "quote": "Wu Chen, P.E, a Professional Engineer, has rendered the Floor Plans of the Property",
+    "sure": true,
+    "why": "Wu Chen, P.E. is listed under 'Engineer/Architect' and prepared the floor plans and report. The report on P11 says 'Prepared By: INFOCUS Wu Chen, P.E.' Candidate A names the right person but only argues about the role label."
+   },
+   "candidates": [
+    "Wu Chen, P.E. is the engineer, not architect; role should be 'engineer'",
+    "Wu Chen, P.E. of Infocus (engineer)",
+    "Wu Chen, P.E."
+   ],
+   "stored_letter": "B",
+   "printed": "Wu Chen, P.E.",
+   "printed_page": {
+    "file_id": 16966,
+    "page_no": 132
+   },
+   "printed_quote": "Wu Chen, P.E, a Professional Engineer, has rendered the Floor Plans of the Property",
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 2342,
+   "field": "principal",
+   "stored": {
+    "name": "Itzhak Maman",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 131,
+   "file_id": 16966,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "Itzhak Maman, Lior Barak and Christine Blackburn",
+    "why": "listed as one of three Principals of the Sponsor"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 2343,
+   "field": "principal",
+   "stored": {
+    "name": "Lior Barak",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 131,
+   "file_id": 16966,
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "Lior Barak",
+    "why": "listed as one of three Principals of the Sponsor"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 2344,
+   "field": "principal",
+   "stored": {
+    "name": "Christine Blackburn",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 131,
+   "file_id": 16966,
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "Christine Blackburn",
+    "why": "listed as one of three Principals of the Sponsor"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD220056",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "112 INDIA LLC",
+   "check": {
+    "n": 9,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "S PONSOR & S ELLING A GENT : 112 I NDIA LLC",
+    "why": "matches cover page"
+   },
+   "blind": {
+    "value": "112 India LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "The Sponsor of this project is 112 India LLC a New York Limited Liability Company"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD220056",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "THE LAW OFFICE OF JAY LICHTMAN, PC",
+   "check": {
+    "n": 10,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "T HE L AW O FFICE OF J AY L ICHTMAN , P.C.",
+    "why": "matches cover page"
+   },
+   "blind": {
+    "value": "The Law Office of Jay Lichtman, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "The Sponsor is represented by The Law Office of Jay Lichtman P.C., 68 Jay Street, Suite 420, Brooklyn, New York 11201"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 51241
+}

@@ -1,0 +1,509 @@
+{
+ "plan_id": "CD060616",
+ "checked_at": "2026-10-01T18:45:38.903Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 4171,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 4171,
+   "page_no": 2,
+   "why": [
+    "cover",
+    "architect"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 4171,
+   "page_no": 19,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 4171,
+   "page_no": 23,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 4171,
+   "page_no": 42,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 4171,
+   "page_no": 51,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 4171,
+   "page_no": 54,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 4171,
+   "page_no": 55,
+   "why": [
+    "cited",
+    "architect",
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 4171,
+   "page_no": 60,
+   "why": [
+    "sponsor_attorney"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Herbert Ruderman, Architect PC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "Sponsor's architect is Herbert Ruderman, Architect PC, 74 Rockland Drive, Jericho, New York."
+  },
+  "selling_agent": {
+   "value": "424 Lafayette, LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "Name and Address of Sponsor & Selling Agent 424 Lafayette, LLC"
+  },
+  "managing_agent": {
+   "value": "424 Lafayette, LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [
+    "Alayne Real Estate, Inc."
+   ],
+   "page": "P8",
+   "quote": "The budget does not provide for professional management. As a result, the building will not have a management agent."
+  },
+  "tax_consultant": {
+   "value": "Moseson & Associates",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P6",
+   "quote": "This figure is based on the estimate of Moseson & Associates in a letter dated April 3, 2006."
+  },
+  "sponsor_attorney": {
+   "value": "Stein & Farkas, LLP",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "Sponsor's attorney is Stein & Farkas, LLP, 1639 East 13' Street, Brooklyn, New York 11229."
+  },
+  "sponsor": {
+   "value": "424 Lafayette, LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "Name and Address of Sponsor & Selling Agent 424 Lafayette, LLC"
+  },
+  "sponsor_address": {
+   "value": "944 Fulton Street, Brooklyn, New York",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [
+    "431 Willoughby Avenue, Brooklyn, New York 11205"
+   ],
+   "page": "P8",
+   "quote": "The sponsor is 424 Lafayette, LLC, with a business address at 944 Fulton Street, Brooklyn, New York."
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 999,
+   "field": "selling_agent",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 1000,
+   "field": "architect",
+   "page_no": 55,
+   "score": 1
+  },
+  {
+   "id": 1001,
+   "field": "reserve_fund",
+   "page_no": 54,
+   "score": 1
+  },
+  {
+   "id": 1002,
+   "field": "working_capital",
+   "page_no": 54,
+   "score": 1
+  },
+  {
+   "id": 5226,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 10992,
+   "field": "managing_agent",
+   "page_no": 19,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 999,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "424 Lafayette, LLC (Sponsor)",
+   "page_no": 1,
+   "file_id": 4171,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "424 Lafayette, LLC",
+    "page": "P1",
+    "quote": "Name and Address of Sponsor & Selling Agent",
+    "why": "P1 lists 424 Lafayette, LLC as Sponsor & Selling Agent, not with a '(Sponsor)' qualifier that misrepresents role—actually it is correct that 424 Lafayette, LLC is both; but claim labels it only '(Sponsor)' omitting selling agent role, which changes meaning"
+   },
+   "blind": {
+    "value": "424 Lafayette, LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "Name and Address of Sponsor & Selling Agent 424 Lafayette, LLC"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "424 Lafayette, LLC",
+    "page": "P1",
+    "quote": "Name and Address of Sponsor & Selling Agent 424 Lafayette, LLC",
+    "sure": true,
+    "why": "The cover names 424 Lafayette, LLC as both Sponsor and Selling Agent. The parentheticals in A and C are accurate notes that it is the Sponsor."
+   },
+   "candidates": [
+    "424 Lafayette, LLC (the Sponsor itself)",
+    "424 Lafayette, LLC",
+    "424 Lafayette, LLC (Sponsor)"
+   ],
+   "stored_letter": "C",
+   "printed": "424 Lafayette, LLC",
+   "printed_page": {
+    "file_id": 4171,
+    "page_no": 1
+   },
+   "printed_quote": "Name and Address of Sponsor & Selling Agent 424 Lafayette, LLC",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 1000,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Herbert Ruderman, Architect PC",
+   "page_no": 55,
+   "file_id": 4171,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "Sponsor's architect is Herbert Ruderman, Architect PC",
+    "why": "Matches printed name and role"
+   },
+   "blind": {
+    "value": "Herbert Ruderman, Architect PC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "Sponsor's architect is Herbert Ruderman, Architect PC, 74 Rockland Drive, Jericho, New York."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 1001,
+   "field": "reserve_fund",
+   "column": "value_text",
+   "stored": "2 months' common charges collected from each purchaser at closing",
+   "page_no": 54,
+   "file_id": 4171,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P7",
+    "quote": "the reserve fund will contain $4,520.00 (two months aggregate common charges)",
+    "why": "Matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 1002,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "6 months' common charges at closing",
+   "page_no": 54,
+   "file_id": 4171,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P7",
+    "quote": "the working capital fund will contain $13,560.00, (six months aggregate common charges)",
+    "why": "Matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5226,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "431 Willoughby Avenue, Brooklyn, New York 11205",
+   "page_no": 1,
+   "file_id": 4171,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "431 Willoughby Avenue, Brooklyn, New York 11205",
+    "why": "Matches"
+   },
+   "blind": {
+    "value": "944 Fulton Street, Brooklyn, New York",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [
+     "431 Willoughby Avenue, Brooklyn, New York 11205"
+    ],
+    "page": "P8",
+    "quote": "The sponsor is 424 Lafayette, LLC, with a business address at 944 Fulton Street, Brooklyn, New York."
+   },
+   "blind_agrees": false,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "431 Willoughby Avenue, Brooklyn, New York 11205",
+    "page": "P1",
+    "quote": "424 Lafayette, LLC 431 Willoughby Avenue Brooklyn, New York 11205",
+    "sure": true,
+    "why": "The plan prints two different Sponsor addresses. The cover (P1), under 'Name and Address of Sponsor & Selling Agent', gives 431 Willoughby Avenue, Brooklyn, New York 11205. The Identity of Parties section (P8, plan page 49) says the sponsor 'with a business address at 944 Fulton Street, Brooklyn, New York.' Both candidates match the pages, so both are accurate. B is the value on the cited page P1.",
+    "from_images": true
+   },
+   "candidates": [
+    "944 Fulton Street, Brooklyn, New York",
+    "431 Willoughby Avenue, Brooklyn, New York 11205"
+   ],
+   "stored_letter": "B",
+   "printed": "431 Willoughby Avenue, Brooklyn, New York 11205",
+   "printed_page": {
+    "file_id": 4171,
+    "page_no": 1
+   },
+   "printed_quote": "424 Lafayette, LLC 431 Willoughby Avenue Brooklyn, New York 11205",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 10992,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "Self-managed",
+   "page_no": 19,
+   "file_id": 4171,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P3",
+    "quote": "The building will be self-managed (by unit owners.)",
+    "why": "Matches"
+   },
+   "blind": {
+    "value": "424 Lafayette, LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [
+     "Alayne Real Estate, Inc."
+    ],
+    "page": "P8",
+    "quote": "The budget does not provide for professional management. As a result, the building will not have a management agent."
+   },
+   "blind_agrees": false,
+   "judge": {
+    "n": 3,
+    "accurate": [
+     "B"
+    ],
+    "close": [],
+    "printed": "Self-managed (by unit owners)",
+    "page": "P3",
+    "quote": "The building will be self-managed (by unit owners.)",
+    "sure": true,
+    "why": "The unit owners self-manage the building, and P8 confirms there will be no management agent. The Sponsor is not named as manager."
+   },
+   "candidates": [
+    "424 Lafayette, LLC (the Sponsor itself)",
+    "Self-managed"
+   ],
+   "stored_letter": "B",
+   "printed": "Self-managed (by unit owners)",
+   "printed_page": {
+    "file_id": 4171,
+    "page_no": 19
+   },
+   "printed_quote": "The building will be self-managed (by unit owners.)",
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 904,
+   "field": "principal",
+   "stored": {
+    "name": "Isaac Broyn",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 55,
+   "file_id": 4171,
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "Sponsor's principal is Mr. Isaac Broyn",
+    "why": "Matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD060616",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "424 LAFAYETTE, LLC",
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "424 Lafayette, LLC",
+    "why": "Matches cover page"
+   },
+   "blind": {
+    "value": "424 Lafayette, LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "Name and Address of Sponsor & Selling Agent 424 Lafayette, LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD060616",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "THE LAW OFFICE OF CHARLES MANDELBAUM",
+   "check": {
+    "n": 9,
+    "verdict": "wrong",
+    "fix": "Stein & Farkas, LLP",
+    "page": "P8",
+    "quote": "Sponsor's attorney is Stein & Farkas, LLP",
+    "why": "Pages identify Sponsor's counsel as Stein & Farkas, LLP, not The Law Office of Charles Mandelbaum"
+   },
+   "blind": {
+    "value": "Stein & Farkas, LLP",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "Sponsor's attorney is Stein & Farkas, LLP, 1639 East 13' Street, Brooklyn, New York 11229."
+   },
+   "blind_agrees": false,
+   "judge": {
+    "n": 4,
+    "accurate": [
+     "A"
+    ],
+    "close": [],
+    "printed": "Stein & Farkas, LLP",
+    "page": "P8",
+    "quote": "Sponsor's attorney is Stein & Farkas, LLP, 1639 East 13' Street",
+    "sure": true,
+    "why": "Stein & Farkas, LLP is named as Sponsor's attorney. Charles Mandelbaum does not appear on these pages."
+   },
+   "candidates": [
+    "Stein & Farkas, LLP",
+    "THE LAW OFFICE OF CHARLES MANDELBAUM"
+   ],
+   "stored_letter": "B",
+   "printed": "Stein & Farkas, LLP",
+   "printed_page": {
+    "file_id": 4171,
+    "page_no": 55
+   },
+   "printed_quote": "Sponsor's attorney is Stein & Farkas, LLP, 1639 East 13' Street",
+   "verdict": "wrong"
+  }
+ ],
+ "calls": 4,
+ "tokens": 98602
+}

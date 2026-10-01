@@ -1,0 +1,381 @@
+{
+ "plan_id": "CD190269",
+ "checked_at": "2026-10-01T20:51:42.827Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 9124,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 9124,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 9124,
+   "page_no": 15,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 9124,
+   "page_no": 28,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 9124,
+   "page_no": 36,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 9124,
+   "page_no": 56,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 9124,
+   "page_no": 59,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 9124,
+   "page_no": 111,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 9124,
+   "page_no": 124,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 9124,
+   "page_no": 125,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P11",
+   "file_id": 9124,
+   "page_no": 126,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Demerara Engineering, PLLC (Oscar P. Walters, Jr., P.E.)",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P11",
+   "quote": "Oscar P. Walters, Jr., P.E. with an address at Demerara Engineering, PLLC, ... has rendered the Floor Plans of the Property and has rendered the report thereof"
+  },
+  "selling_agent": {
+   "value": "193 Moffat, LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P11",
+   "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+  },
+  "managing_agent": {
+   "value": "193 Moffat, LLC",
+   "by_sponsor": false,
+   "by_board": true,
+   "others": [],
+   "page": "P5",
+   "quote": "The Condominium Board will be responsible for managing the condominium, including but not limited to, writing checks, payment of bills, such as water and sewer charges, insurance premiums, repairs, snow removal, etc."
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "The Law Office of Jay Lichtman, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [
+    "The Law office of Kenneth Golden, P.C."
+   ],
+   "page": "P1",
+   "quote": "ATTORNEYS FOR SPONSOR: THE LAW OFFICE OF JAY LICHTMAN, P.C."
+  },
+  "sponsor": {
+   "value": "193 Moffat, LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "The Sponsor of this project is 193 Moffat LLC a New York Limited Liability Company"
+  },
+  "sponsor_address": {
+   "value": "700 St. Marks Avenue, Brooklyn, New York 11216",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "with an address at 700 St. Marks A venue, Brooklyn, New York 11216"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 6159,
+   "field": "selling_agent",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 6160,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 6161,
+   "field": "working_capital",
+   "page_no": 124,
+   "score": 1
+  },
+  {
+   "id": 11390,
+   "field": "architect",
+   "page_no": 126,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 6159,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "193 Moffat, LLC",
+   "page_no": 1,
+   "file_id": 9124,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "SPONSOR & SELLING AGENT: 193 MOFFAT, LLC",
+    "why": "Matches cover page listing of sponsor/selling agent"
+   },
+   "blind": {
+    "value": "193 Moffat, LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P11",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 6160,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "700 St. Marks Avenue, Brooklyn, New York 11216",
+   "page_no": 1,
+   "file_id": 9124,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "700 ST. MARKS A VENUE BROOKLYN, NEW YORK 11216",
+    "why": "Matches address printed on cover page"
+   },
+   "blind": {
+    "value": "700 St. Marks Avenue, Brooklyn, New York 11216",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "with an address at 700 St. Marks A venue, Brooklyn, New York 11216"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 6161,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' estimated common charges at closing",
+   "page_no": 124,
+   "file_id": 9124,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "Initial Capital Payment\" equal to two (2) months' estimated common charges for each Unit",
+    "why": "Matches working capital fund description"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11390,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Oscar P. Walters, Jr., P.E. of Demerara Engineering, PLLC (engineer)",
+   "page_no": 126,
+   "file_id": 9124,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P11",
+    "quote": "Oscar P. Walters, Jr., P.E. with an address at Demerara Engineering, PLLC...a Professional Engineer, has rendered the Floor Plans",
+    "why": "Text calls him a Professional Engineer (P.E.) who rendered floor plans/report, matching claim though section header says Engineer/Architect"
+   },
+   "blind": {
+    "value": "Demerara Engineering, PLLC (Oscar P. Walters, Jr., P.E.)",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P11",
+    "quote": "Oscar P. Walters, Jr., P.E. with an address at Demerara Engineering, PLLC, ... has rendered the Floor Plans of the Property and has rendered the report thereof"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1022,
+   "field": "principal",
+   "stored": {
+    "name": "Elad Ben-Kirnon",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 125,
+   "file_id": 9124,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P10",
+    "quote": "The Principals of the Sponsor are Elad Ben-Kirnon and Meir Daus.",
+    "why": "Named as a Principal of Sponsor"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1023,
+   "field": "principal",
+   "stored": {
+    "name": "Meir Daus",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 125,
+   "file_id": 9124,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P10",
+    "quote": "The Principals of the Sponsor are Elad Ben-Kirnon and Meir Daus.",
+    "why": "Named as a Principal of Sponsor"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD190269",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "193 MOFFAT LLC",
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "193 MOFFAT, LLC",
+    "why": "Matches sponsor name on cover page"
+   },
+   "blind": {
+    "value": "193 Moffat, LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "The Sponsor of this project is 193 Moffat LLC a New York Limited Liability Company"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD190269",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "ATTORNEYS FOR SPONSOR: THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+    "why": "Matches attorneys for sponsor listed on cover page"
+   },
+   "blind": {
+    "value": "The Law Office of Jay Lichtman, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [
+     "The Law office of Kenneth Golden, P.C."
+    ],
+    "page": "P1",
+    "quote": "ATTORNEYS FOR SPONSOR: THE LAW OFFICE OF JAY LICHTMAN, P.C."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 2,
+ "tokens": 41468
+}

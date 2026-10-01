@@ -1,0 +1,453 @@
+{
+ "plan_id": "CD190052",
+ "checked_at": "2026-10-01T20:31:21.960Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 7800,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 7800,
+   "page_no": 17,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 7800,
+   "page_no": 36,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 7800,
+   "page_no": 41,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 7800,
+   "page_no": 75,
+   "why": [
+    "cited",
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 7800,
+   "page_no": 81,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 7800,
+   "page_no": 107,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 7800,
+   "page_no": 123,
+   "why": [
+    "cited",
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 7800,
+   "page_no": 124,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 7800,
+   "page_no": 126,
+   "why": [
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P11",
+   "file_id": 7800,
+   "page_no": 127,
+   "why": [
+    "cited"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": null,
+  "selling_agent": {
+   "value": "341 Union LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "Selling Agent for the Property is Sponsor, having an address at 224 Franklin Avenue, Suite 14, Hewlett, NY 11557."
+  },
+  "managing_agent": {
+   "value": "MRE Property Management LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "Managing Agent for the Property is MRE Property Management LLC, 199 Lee Avenue, Suite 873, Brooklyn, NY 11211."
+  },
+  "tax_consultant": {
+   "value": "Metropolitan Realty Exemptions, Inc.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P4",
+   "quote": "the assessed value of the Property estimated by Metropolitan Realty Exemptions, Inc. to be $32,169.00"
+  },
+  "sponsor_attorney": {
+   "value": "TSYNGAUZ & ASSOCIATES, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "TSYNGAUZ & ASSOCIATES, P.C., having an address at 894 6th Avenue, 3rd fl., New York, NY 10001, represents Sponsor in connection with this Plan."
+  },
+  "sponsor": {
+   "value": "341 Union LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SPONSOR & SELLING AGENT: 341 Union LLC"
+  },
+  "sponsor_address": {
+   "value": "224 Franklin Avenue, Suite 14, Hewlett, NY 11557",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "224 Franklin Avenue, Suite 14, Hewlett, NY 11557"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 5016,
+   "field": "managing_agent",
+   "page_no": 123,
+   "score": 1
+  },
+  {
+   "id": 5017,
+   "field": "selling_agent",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 5018,
+   "field": "working_capital",
+   "page_no": 75,
+   "score": 1
+  },
+  {
+   "id": 5887,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 11370,
+   "field": "architect",
+   "page_no": 127,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 5016,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "MRE Property Management LLC",
+   "page_no": 123,
+   "file_id": 7800,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "management agreement with MRE Property Management LLC ... Managing Agent will receive an annual fee of $2,880.00",
+    "why": "Name and fee match."
+   },
+   "blind": {
+    "value": "MRE Property Management LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "Managing Agent for the Property is MRE Property Management LLC, 199 Lee Avenue, Suite 873, Brooklyn, NY 11211."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5017,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "341 Union LLC",
+   "page_no": 1,
+   "file_id": 7800,
+   "check": {
+    "n": 2,
+    "verdict": "wrong",
+    "fix": "341 Union LLC is the Sponsor & Selling Agent, but selling agent claim should cite Selling Agent section",
+    "page": "P10",
+    "quote": "Selling Agent for the Property is Sponsor",
+    "why": "P1 lists 341 Union LLC as Sponsor & Selling Agent, consistent; this is actually correct per P1 cover page."
+   },
+   "blind": {
+    "value": "341 Union LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "Selling Agent for the Property is Sponsor, having an address at 224 Franklin Avenue, Suite 14, Hewlett, NY 11557."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [
+     "C"
+    ],
+    "printed": "341 Union LLC (Sponsor is the Selling Agent)",
+    "page": "P10",
+    "quote": "Selling Agent for the Property is Sponsor, having an address at 224 Franklin Avenue, Suite 14, Hewlett, NY 11557.",
+    "sure": true,
+    "why": "P1 names 341 Union LLC as 'SPONSOR & SELLING AGENT', and P10 confirms the Selling Agent is the Sponsor. C states the right party but adds commentary about citations rather than giving a clean value."
+   },
+   "candidates": [
+    "341 Union LLC (the Sponsor itself)",
+    "341 Union LLC",
+    "341 Union LLC is the Sponsor & Selling Agent, but selling agent claim should cite Selling Agent section"
+   ],
+   "stored_letter": "B",
+   "printed": "341 Union LLC (Sponsor is the Selling Agent)",
+   "printed_page": {
+    "file_id": 7800,
+    "page_no": 126
+   },
+   "printed_quote": "Selling Agent for the Property is Sponsor, having an address at 224 Franklin Avenue, Suite 14, Hewlett, NY 11557.",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5018,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 75,
+   "file_id": 7800,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P5",
+    "quote": "deposit the sum equal to two (2) months' Common Charges",
+    "why": "Matches claim."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5887,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "224 Franklin Avenue, Suite 14, Hewlett, NY 11557",
+   "page_no": 1,
+   "file_id": 7800,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "224 Franklin Avenue, Suite 14, Hewlett, NY 11557",
+    "why": "Matches Sponsor address on cover page."
+   },
+   "blind": {
+    "value": "224 Franklin Avenue, Suite 14, Hewlett, NY 11557",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "224 Franklin Avenue, Suite 14, Hewlett, NY 11557"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11370,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Wu Chen, P.E. (engineer)",
+   "page_no": 127,
+   "file_id": 7800,
+   "check": {
+    "n": 5,
+    "verdict": "wrong",
+    "fix": "Wu Chen, P.E. is Sponsor's Engineer, not architect",
+    "page": "P11",
+    "quote": "Sponsor's Engineer\nWu Chen, P.E.",
+    "why": "Pages identify Wu Chen as Sponsor's Engineer who prepared the engineer's report, not an architect preparing floor plans/description of property."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A"
+    ],
+    "close": [
+     "B"
+    ],
+    "printed": "Wu Chen, P.E. (Sponsor's Engineer)",
+    "page": "P11",
+    "quote": "Wu Chen, P.E., having an address at 86-16 Queens Blvd., Suite 205, Elmhurst, NY 11373, prepared the report included in Part II of the Plan.",
+    "sure": true,
+    "why": "P11 lists Wu Chen, P.E. under 'Sponsor's Engineer' as the person who prepared the Part II report. No other architect is named on these pages, so A is accurate. B gets his role right, but it wrongly suggests he is not the one who prepared the report. The page also says he 'was an architect of record' for other condominium projects.",
+    "from_images": true
+   },
+   "candidates": [
+    "Wu Chen, P.E. (engineer)",
+    "Wu Chen, P.E. is Sponsor's Engineer, not architect"
+   ],
+   "stored_letter": "A",
+   "printed": "Wu Chen, P.E. (Sponsor's Engineer)",
+   "printed_page": {
+    "file_id": 7800,
+    "page_no": 127
+   },
+   "printed_quote": "Wu Chen, P.E., having an address at 86-16 Queens Blvd., Suite 205, Elmhurst, NY 11373, prepared the report included in Part II of the Plan.",
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 297,
+   "field": "principal",
+   "stored": {
+    "name": "NOT STATED",
+    "kind": "entity",
+    "role": null,
+    "parent_entity": null
+   },
+   "page_no": 36,
+   "file_id": 7800,
+   "check": {
+    "n": 6,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": "P3",
+    "quote": "Neither Sponsor, nor any principals of Sponsor, own in whole or in part",
+    "why": "P3 mentions Sponsor's principals generically but does not name them; no page here states the principal's name."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 3,
+    "accurate": [],
+    "close": [],
+    "printed": "Omri Bar-Mashiah, principal of 341 Union LLC (Sponsor, acting as Selling Agent)",
+    "page": "P10",
+    "quote": "The principal of Selling Agent is Omri Bar-Mashiah.",
+    "sure": true,
+    "why": "P3 says nothing about principals, but P10 says the Selling Agent is the Sponsor and names its principal. So 'NOT STATED' is wrong."
+   },
+   "candidates": [
+    "NOT STATED"
+   ],
+   "stored_letter": "A",
+   "printed": "Omri Bar-Mashiah, principal of 341 Union LLC (Sponsor, acting as Selling Agent)",
+   "printed_page": {
+    "file_id": 7800,
+    "page_no": 126
+   },
+   "printed_quote": "The principal of Selling Agent is Omri Bar-Mashiah.",
+   "verdict": "wrong"
+  },
+  {
+   "table": "plans",
+   "id": "CD190052",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "341 UNION LLC",
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "341 Union LLC",
+    "why": "Matches cover page Sponsor name."
+   },
+   "blind": {
+    "value": "341 Union LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "SPONSOR & SELLING AGENT: 341 Union LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD190052",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "TSYNGAUZ & ASSOCIATES, P.C.",
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P10",
+    "quote": "TSYNGAUZ & ASSOCIATES, P.C. ... represents Sponsor in connection with this Plan",
+    "why": "Matches Sponsor's Attorney section."
+   },
+   "blind": {
+    "value": "TSYNGAUZ & ASSOCIATES, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "TSYNGAUZ & ASSOCIATES, P.C., having an address at 894 6th Avenue, 3rd fl., New York, NY 10001, represents Sponsor in connection with this Plan."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 4,
+ "tokens": 79659
+}

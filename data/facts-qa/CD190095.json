@@ -1,0 +1,482 @@
+{
+ "plan_id": "CD190095",
+ "checked_at": "2026-10-01T20:31:31.464Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 17081,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 17081,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 17081,
+   "page_no": 50,
+   "why": [
+    "cited",
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 17081,
+   "page_no": 57,
+   "why": [
+    "cited",
+    "architect"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 17081,
+   "page_no": 80,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 17081,
+   "page_no": 116,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 17081,
+   "page_no": 126,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 17081,
+   "page_no": 130,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 17081,
+   "page_no": 132,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 17081,
+   "page_no": 279,
+   "why": [
+    "tax_consultant"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "In Focus",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P4",
+   "quote": "measurements and calculations of the net square footage made by In Focus, Sponsor's Architect"
+  },
+  "selling_agent": {
+   "value": "2729 Havemeyer Realty LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [
+    "Nest Seekers LLC"
+   ],
+   "page": "P9",
+   "quote": "The Sponsor will be acting as Selling Agent for this offering."
+  },
+  "managing_agent": {
+   "value": "Dimora NYC Inc.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "the Board of Managers will enter into a management agreement with Dimora NYC Inc., 359 16th Street, Brooklyn, NY 11215 (the “Managing Agent”)"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "Turek Roth Grossman LLP",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "Turek Roth Grossman LLP, 377 Fifth Avenue, 6th Floor, New York, New York 10016, represents the Sponsor"
+  },
+  "sponsor": {
+   "value": "2729 Havemeyer Realty LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "The Sponsor is 2729 Havemeyer Realty LLC, a New York limited liability company"
+  },
+  "sponsor_address": {
+   "value": "359 16th Street, Brooklyn, NY 11215",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "2729 HAVEMEYER REALTY LLC 359 16 th Street Brooklyn, NY 11215"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 4417,
+   "field": "managing_agent",
+   "page_no": 50,
+   "score": 1
+  },
+  {
+   "id": 4418,
+   "field": "selling_agent",
+   "page_no": 132,
+   "score": 1
+  },
+  {
+   "id": 4419,
+   "field": "architect",
+   "page_no": 57,
+   "score": 1
+  },
+  {
+   "id": 4420,
+   "field": "working_capital",
+   "page_no": 126,
+   "score": 1
+  },
+  {
+   "id": 5937,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 4417,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "Dimora NYC Inc.",
+   "page_no": 50,
+   "file_id": 17081,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P3",
+    "quote": "Dimora NYC Inc., ... at an annual fee of $3,000.00",
+    "why": "Managing agent and fee match"
+   },
+   "blind": {
+    "value": "Dimora NYC Inc.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "the Board of Managers will enter into a management agreement with Dimora NYC Inc., 359 16th Street, Brooklyn, NY 11215 (the “Managing Agent”)"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 4418,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "2729 Havemeyer Realty LLC (Sponsor)",
+   "page_no": 132,
+   "file_id": 17081,
+   "check": {
+    "n": 2,
+    "verdict": "wrong",
+    "fix": "Sponsor acting as Selling Agent (not cited as a separate entity named '2729 Havemeyer Realty LLC (Sponsor)' on P9; actual selling agent role per P9 is Sponsor itself)",
+    "page": "P9",
+    "quote": "The Sponsor will be acting as Selling Agent for this offering.",
+    "why": "P9 confirms Sponsor is Selling Agent, consistent with claim; however P1 names Nest Seekers as selling agent too — but per P9 cited, claim matches text so should be correct"
+   },
+   "blind": {
+    "value": "2729 Havemeyer Realty LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [
+     "Nest Seekers LLC"
+    ],
+    "page": "P9",
+    "quote": "The Sponsor will be acting as Selling Agent for this offering."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "B",
+     "C"
+    ],
+    "close": [
+     "A"
+    ],
+    "printed": "2729 Havemeyer Realty LLC (Sponsor)",
+    "page": "P9",
+    "quote": "The Sponsor will be acting as Selling Agent for this offering.",
+    "sure": true,
+    "why": "P9 names the Sponsor as Selling Agent, and P9/P1 identify the Sponsor as 2729 Havemeyer Realty LLC (P1: 'SPONSOR and SELLING AGENT 2729 HAVEMEYER REALTY LLC'). A gets the role right, but its wording is garbled and it never names the entity. P4, a broker letter, separately says 'Nest Seekers LLC will act as the sales agent.'"
+   },
+   "candidates": [
+    "Sponsor acting as Selling Agent (not cited as a separate entity named '2729 Havemeyer Realty LLC (Sponsor)' on P9; actual selling agent role per P9 is Sponsor itself)",
+    "2729 Havemeyer Realty LLC (the Sponsor itself)",
+    "2729 Havemeyer Realty LLC (Sponsor)"
+   ],
+   "stored_letter": "C",
+   "printed": "2729 Havemeyer Realty LLC (Sponsor)",
+   "printed_page": {
+    "file_id": 17081,
+    "page_no": 132
+   },
+   "printed_quote": "The Sponsor will be acting as Selling Agent for this offering.",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 4419,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "In Focus",
+   "page_no": 57,
+   "file_id": 17081,
+   "check": {
+    "n": 3,
+    "verdict": "minor",
+    "fix": "In Focus, Sponsor's Architect",
+    "page": "P4",
+    "quote": "In Focus, Sponsor's Architect",
+    "why": "Name is part of a longer title; 'In Focus' alone matches but role omitted"
+   },
+   "blind": {
+    "value": "In Focus",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P4",
+    "quote": "measurements and calculations of the net square footage made by In Focus, Sponsor's Architect"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "In Focus",
+    "page": "P4",
+    "quote": "net square footage made by In Focus, Sponsor's Architect",
+    "sure": true,
+    "why": "P4 names In Focus as the Sponsor's Architect. B adds the role label, which is printed on the page. The page cites In Focus for square footage measurements only, not explicitly for floor plans."
+   },
+   "candidates": [
+    "In Focus",
+    "In Focus, Sponsor's Architect"
+   ],
+   "stored_letter": "A",
+   "printed": "In Focus",
+   "printed_page": {
+    "file_id": 17081,
+    "page_no": 57
+   },
+   "printed_quote": "net square footage made by In Focus, Sponsor's Architect",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 4420,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 126,
+   "file_id": 17081,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P7",
+    "quote": "equal to two (2) month's Common Charges",
+    "why": "Matches exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5937,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "359 16th Street, Brooklyn, NY 11215",
+   "page_no": 1,
+   "file_id": 17081,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "359 16th Street, Brooklyn, NY 11215",
+    "why": "Matches Sponsor address"
+   },
+   "blind": {
+    "value": "359 16th Street, Brooklyn, NY 11215",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "2729 HAVEMEYER REALTY LLC 359 16 th Street Brooklyn, NY 11215"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 479,
+   "field": "principal",
+   "stored": {
+    "name": "Jonathan Glasser",
+    "kind": "person",
+    "role": "managing member",
+    "parent_entity": null
+   },
+   "page_no": 132,
+   "file_id": 17081,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "The managing member of the Sponsor is Jonathan Glasser",
+    "why": "Matches exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 480,
+   "field": "principal",
+   "stored": {
+    "name": "Barrland Holdings LLC",
+    "kind": "entity",
+    "role": "member",
+    "parent_entity": null
+   },
+   "page_no": 132,
+   "file_id": 17081,
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "two members of the Sponsor entity Jonathan Glasser and Barrland Holdings LLC",
+    "why": "Matches exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 481,
+   "field": "principal",
+   "stored": {
+    "name": "Ami Barr",
+    "kind": "person",
+    "role": "sole member",
+    "parent_entity": "Barrland Holdings LLC"
+   },
+   "page_no": 132,
+   "file_id": 17081,
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "Ami Barr, who is the sole member of Barrland Holdings, LLC",
+    "why": "Matches exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD190095",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "2729 HAVEMEYER REALTY LLC",
+   "check": {
+    "n": 9,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "2729 HAVEMEYER REALTY LLC",
+    "why": "Matches cover page exactly"
+   },
+   "blind": {
+    "value": "2729 Havemeyer Realty LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "The Sponsor is 2729 Havemeyer Realty LLC, a New York limited liability company"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD190095",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "TUREK ROTH GROSSMAN LLP",
+   "check": {
+    "n": 10,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "Turek Roth Grossman LLP ... represents the Sponsor",
+    "why": "Matches attorneys for Sponsor"
+   },
+   "blind": {
+    "value": "Turek Roth Grossman LLP",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "Turek Roth Grossman LLP, 377 Fifth Avenue, 6th Floor, New York, New York 10016, represents the Sponsor"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 37789
+}

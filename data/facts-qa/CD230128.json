@@ -1,0 +1,435 @@
+{
+ "plan_id": "CD230128",
+ "checked_at": "2026-10-01T23:03:23.752Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 26820,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 26820,
+   "page_no": 10,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 26820,
+   "page_no": 46,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 26820,
+   "page_no": 127,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 26820,
+   "page_no": 139,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 26820,
+   "page_no": 140,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 26820,
+   "page_no": 142,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 26820,
+   "page_no": 143,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 26820,
+   "page_no": 144,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 26820,
+   "page_no": 321,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P11",
+   "file_id": 26820,
+   "page_no": 322,
+   "why": [
+    "cited"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Brian Caffrey Architect PLLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "building plans and specifications prepared by Brian Caffrey Architect PLLC"
+  },
+  "selling_agent": {
+   "value": "601 Baltic LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "Sponsor and Selling Agent"
+  },
+  "managing_agent": {
+   "value": "First Class Management, Inc.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P7",
+   "quote": "First Class Management, Inc. , with a n a ddres s at 102 - 10 Metropolitan Avenue, Forest Hills, NY 11375 , will manage the Building for th e first ye ar of Condominium operations"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "Marcus Attorneys PLLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "Marcus Attorneys PLLC , wi th an office at 13 Greene Avenue, Brooklyn, New York , repr esents the Sponsor"
+  },
+  "sponsor": {
+   "value": "601 Baltic LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "The Sponsor is 601 Balt ic LLC , a Ne w Yor k limited liability company"
+  },
+  "sponsor_address": {
+   "value": "246 West 16th Street, Suite 1R, New York, NY 10011",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "a New York limited liability company with an office at 246 West 16th Street, Suite 1R , New York, NY 10011"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 8530,
+   "field": "managing_agent",
+   "page_no": 142,
+   "score": 1
+  },
+  {
+   "id": 8531,
+   "field": "selling_agent",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 8532,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 8533,
+   "field": "architect",
+   "page_no": 322,
+   "score": 1
+  },
+  {
+   "id": 8534,
+   "field": "working_capital",
+   "page_no": 140,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 8530,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "First Class Management, Inc.",
+   "page_no": 142,
+   "file_id": 26820,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P7",
+    "quote": "First Class Management, Inc.",
+    "why": "matches"
+   },
+   "blind": {
+    "value": "First Class Management, Inc.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P7",
+    "quote": "First Class Management, Inc. , with a n a ddres s at 102 - 10 Metropolitan Avenue, Forest Hills, NY 11375 , will manage the Building for th e first ye ar of Condominium operations"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8531,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "601 Baltic LLC",
+   "page_no": 1,
+   "file_id": 26820,
+   "check": {
+    "n": 2,
+    "verdict": "wrong",
+    "fix": "601 Baltic LLC is the Sponsor and Selling Agent",
+    "page": "P1",
+    "quote": "Sponsor and Selling Agent: 601 BALTIC LLC",
+    "why": "claim labels it only as selling agent omitting it's also Sponsor, but more importantly this is accurate as to name/role combo on page; however pages show it as both Sponsor and Selling Agent, so calling it just 'selling agent' is not wrong per se—checking: the claim says role is selling agent, which is supported"
+   },
+   "blind": {
+    "value": "601 Baltic LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "Sponsor and Selling Agent"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "601 BALTIC LLC",
+    "page": "P1",
+    "quote": "Sponsor and Selling Agent: \n601 BALTIC LLC",
+    "sure": true,
+    "why": "P1 names 601 Baltic LLC as both Sponsor and Selling Agent, and P9 says the same. All three candidates name the right party in the right role."
+   },
+   "candidates": [
+    "601 Baltic LLC",
+    "601 Baltic LLC is the Sponsor and Selling Agent",
+    "601 Baltic LLC (the Sponsor itself)"
+   ],
+   "stored_letter": "A",
+   "printed": "601 BALTIC LLC",
+   "printed_page": {
+    "file_id": 26820,
+    "page_no": 1
+   },
+   "printed_quote": "Sponsor and Selling Agent: \n601 BALTIC LLC",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8532,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "246 West 16th Street, Suite 1R, New York, NY 10011",
+   "page_no": 1,
+   "file_id": 26820,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "246 West 16th Street, Suite 1R New York, NY 10011",
+    "why": "matches"
+   },
+   "blind": {
+    "value": "246 West 16th Street, Suite 1R, New York, NY 10011",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "a New York limited liability company with an office at 246 West 16th Street, Suite 1R , New York, NY 10011"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8533,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Brian Caffrey Architect PLLC",
+   "page_no": 322,
+   "file_id": 26820,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P11",
+    "quote": "Brian Caffrey Architect PLLC",
+    "why": "matches"
+   },
+   "blind": {
+    "value": "Brian Caffrey Architect PLLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "building plans and specifications prepared by Brian Caffrey Architect PLLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8534,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "3 months' common charges at closing",
+   "page_no": 140,
+   "file_id": 26820,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P6",
+    "quote": "A Purchaser shall contribute three months' Common Charges at the time of Closing",
+    "why": "matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1953,
+   "field": "principal",
+   "stored": {
+    "name": "Yiannes Einhorn",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 144,
+   "file_id": 26820,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "The principals of the Sponsor are Yiannes Einhorn and Harold Einhorn",
+    "why": "matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1954,
+   "field": "principal",
+   "stored": {
+    "name": "Harold Einhorn",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 144,
+   "file_id": 26820,
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "The principals of the Sponsor are Yiannes Einhorn and Harold Einhorn",
+    "why": "matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD230128",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "601 BALTIC LLC",
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "601 BALTIC LLC",
+    "why": "matches"
+   },
+   "blind": {
+    "value": "601 Baltic LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "The Sponsor is 601 Balt ic LLC , a Ne w Yor k limited liability company"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD230128",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "MARCUS ATTORNEYS PLLC",
+   "check": {
+    "n": 9,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "Marcus Attorneys PLLC",
+    "why": "matches"
+   },
+   "blind": {
+    "value": "Marcus Attorneys PLLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "Marcus Attorneys PLLC , wi th an office at 13 Greene Avenue, Brooklyn, New York , repr esents the Sponsor"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 48832
+}

@@ -1,0 +1,174 @@
+{
+ "plan_id": "CD180428",
+ "checked_at": "2026-10-01T20:23:10.209Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 25477,
+   "page_no": 150,
+   "why": [
+    "cited"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": null,
+  "selling_agent": null,
+  "managing_agent": null,
+  "tax_consultant": null,
+  "sponsor_attorney": null,
+  "sponsor": {
+   "value": "33rd Street Ventures, LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "The Sponsor is 33rd Street Ventures, LLC, a New York limited liability company"
+  },
+  "sponsor_address": {
+   "value": "60 Cutter Mill Road, Ste. 405, Great Neck, New York 11021",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "with an address at 60 Cutter Mill Road, Ste. 405, Great Neck, New York 11021"
+  }
+ },
+ "quote_checks": [],
+ "results": [
+  {
+   "table": "sponsor_principals",
+   "id": 2790,
+   "field": "principal",
+   "stored": {
+    "name": "Zhidong Wu",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": "ZD Jasper Realty"
+   },
+   "page_no": 150,
+   "file_id": 25477,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "Z.D. Jasper Realty, Inc.",
+    "page": "P1",
+    "quote": "owns and controls Z.D. Jasper Realty, Inc.",
+    "why": "Pages say Wu owns and controls Z.D. Jasper Realty, Inc., not that he is a principal of it; also name is Z.D. Jasper Realty, not ZD Jasper Realty."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [],
+    "close": [],
+    "printed": "Zhidong Wu — Principal — of 33rd Street Ventures, LLC (Sponsor); George Xu is the other Principal",
+    "page": "P1",
+    "quote": "The Principals of the Sponso r are Zhidong Wu",
+    "sure": true,
+    "why": "Wu is a Principal of the Sponsor, 33rd Street Ventures. The page says he 'owns and controls' Z.D. Jasper Realty, but that is a separate holding company, not the Sponsor, so B names the wrong entity. A is only an entity name, not a person."
+   },
+   "candidates": [
+    "Z.D. Jasper Realty, Inc.",
+    "Zhidong Wu — principal — of ZD Jasper Realty"
+   ],
+   "stored_letter": "B",
+   "printed": "Zhidong Wu — Principal — of 33rd Street Ventures, LLC (Sponsor); George Xu is the other Principal",
+   "printed_page": {
+    "file_id": 25477,
+    "page_no": 150
+   },
+   "printed_quote": "The Principals of the Sponso r are Zhidong Wu",
+   "verdict": "wrong"
+  },
+  {
+   "table": "plans",
+   "id": "CD180428",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "JACKSON 2524, LLC",
+   "check": {
+    "n": 2,
+    "verdict": "wrong",
+    "fix": "33rd Street Ventures, LLC",
+    "page": "P1",
+    "quote": "The Sponsor is 33rd Street Ventures, LLC",
+    "why": "The pages identify the Sponsor of this plan as 33rd Street Ventures, LLC; JACKSON 2524 LLC is listed as sponsor of a different project (5 Court Square)."
+   },
+   "blind": {
+    "value": "33rd Street Ventures, LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "The Sponsor is 33rd Street Ventures, LLC, a New York limited liability company"
+   },
+   "blind_agrees": false,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "B"
+    ],
+    "close": [],
+    "printed": "33rd Street Ventures, LLC",
+    "page": "P1",
+    "quote": "The Sponsor is 33rd Street Ventures , LLC",
+    "sure": true,
+    "why": "JACKSON 2524 LLC is listed only as the Sponsor of Wu's earlier offering, 5 Court Square, not this plan."
+   },
+   "candidates": [
+    "JACKSON 2524, LLC",
+    "33rd Street Ventures, LLC"
+   ],
+   "stored_letter": "A",
+   "printed": "33rd Street Ventures, LLC",
+   "printed_page": {
+    "file_id": 25477,
+    "page_no": 150
+   },
+   "printed_quote": "The Sponsor is 33rd Street Ventures , LLC",
+   "verdict": "wrong"
+  },
+  {
+   "table": "plans",
+   "id": "CD180428",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "MORITT HOCK & HAMROFF, LLP",
+   "check": {
+    "n": 3,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": null,
+    "quote": null,
+    "why": "Pages do not mention Sponsor's counsel or any law firm."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [],
+    "close": [],
+    "printed": null,
+    "page": "P1",
+    "quote": "XXVIII. IDENTITY OF PARTIES",
+    "sure": false,
+    "why": "P1 is the start of Identity of Parties, but it covers only the Sponsor and its principals. Sponsor's counsel is not named, so this page can't confirm or rule out Moritt Hock & Hamroff.",
+    "from_images": true
+   },
+   "candidates": [
+    "MORITT HOCK & HAMROFF, LLP"
+   ],
+   "stored_letter": "A",
+   "printed": null,
+   "printed_page": {
+    "file_id": 25477,
+    "page_no": 150
+   },
+   "printed_quote": "XXVIII. IDENTITY OF PARTIES",
+   "verdict": "unresolved"
+  }
+ ],
+ "calls": 4,
+ "tokens": 18888
+}

@@ -1,0 +1,482 @@
+{
+ "plan_id": "CD230189",
+ "checked_at": "2026-10-01T23:09:01.544Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 26312,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 26312,
+   "page_no": 2,
+   "why": [
+    "cover",
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 26312,
+   "page_no": 8,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 26312,
+   "page_no": 13,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 26312,
+   "page_no": 58,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 26312,
+   "page_no": 80,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 26312,
+   "page_no": 84,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 26312,
+   "page_no": 87,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 26312,
+   "page_no": 89,
+   "why": [
+    "cited",
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 26312,
+   "page_no": 90,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Harry Hong of H2 Engineering, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "The architect is Harry Hong of H2 Engineering, P.C."
+  },
+  "selling_agent": {
+   "value": "QB & Son LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "The Selling Agent is the Sponsor’s principal, Mr. Tran"
+  },
+  "managing_agent": {
+   "value": "QB & Son LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "Managing Agent will be the Sponsor’s principal, Mr. Tran."
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "Thomas E. Berinato",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "Sponsor has retained the law firm of Thomas E. Berinato, with offices at 123-40 83 rd Avenue, Kew Gardens, New York 11415, to represent it in connection with the Offering Plan."
+  },
+  "sponsor": {
+   "value": "QB & SON LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "QB & SON LLC"
+  },
+  "sponsor_address": {
+   "value": "246 51st Street, Brooklyn, N.Y. 11220",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "246 51st Street \nBrooklyn , N.Y. 11220"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 9579,
+   "field": "managing_agent",
+   "page_no": 89,
+   "score": 1
+  },
+  {
+   "id": 9580,
+   "field": "selling_agent",
+   "page_no": 90,
+   "score": 1
+  },
+  {
+   "id": 9581,
+   "field": "reserve_fund",
+   "page_no": 87,
+   "score": 1
+  },
+  {
+   "id": 9582,
+   "field": "working_capital",
+   "page_no": 58,
+   "score": 1
+  },
+  {
+   "id": 9583,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 11518,
+   "field": "architect",
+   "page_no": 90,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 9579,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "QB & Son LLC (Sponsor) manages for a minimum of 5 years",
+   "page_no": 89,
+   "file_id": 26312,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "Sponsor's principal Mr. Tran manages, not QB & Son LLC itself",
+    "page": "P9",
+    "quote": "Sponsor shall undertake to manage the building for a minimum of five years at a cost of $5,000 per year",
+    "why": "P10 says the Managing Agent will be the Sponsor's principal, Mr. Tran, not the entity QB & Son LLC; cost is $5,000 not stated as 5000 mismatched (number matches, but entity is wrong)"
+   },
+   "blind": {
+    "value": "QB & Son LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "Managing Agent will be the Sponsor’s principal, Mr. Tran."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "QB & Son LLC (Sponsor) manages the building for a minimum of five years",
+    "page": "P9",
+    "quote": "the Sponsor shall undertake to manage the building for a minimum of five years at a cost of $ 5,0 00 per year",
+    "sure": true,
+    "why": "P9 and P3 both make the Sponsor the managing agent. P10 also says 'Managing Agent will be the Sponsor's principal, Mr. Tran', but that doesn't support C's claim that QB & Son LLC itself does not manage."
+   },
+   "candidates": [
+    "QB & Son LLC (Sponsor) manages for a minimum of 5 years",
+    "QB & Son LLC (the Sponsor itself)",
+    "Sponsor's principal Mr. Tran manages, not QB & Son LLC itself"
+   ],
+   "stored_letter": "A",
+   "printed": "QB & Son LLC (Sponsor) manages the building for a minimum of five years",
+   "printed_page": {
+    "file_id": 26312,
+    "page_no": 89
+   },
+   "printed_quote": "the Sponsor shall undertake to manage the building for a minimum of five years at a cost of $ 5,0 00 per year",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 9580,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "QB & Son LLC (Sponsor, self-sold via Sponsor's principal Mr. Tran)",
+   "page_no": 90,
+   "file_id": 26312,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P10",
+    "quote": "The Selling Agent is the Sponsor's principal, Mr. Tran",
+    "why": "matches claim that selling agent is self-sold via Sponsor's principal Mr. Tran; P1 also lists QB & Son LLC as Sponsor & Selling Agent"
+   },
+   "blind": {
+    "value": "QB & Son LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "The Selling Agent is the Sponsor’s principal, Mr. Tran"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 9581,
+   "field": "reserve_fund",
+   "column": "value_text",
+   "stored": "Reserve Fund of $3,000",
+   "page_no": 87,
+   "file_id": 26312,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "The amount of the reserve fund is $3,000.00",
+    "why": "matches exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 9582,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "$500 per Unit at Closing",
+   "page_no": 58,
+   "file_id": 26312,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "such Purchaser shall pay the sum of $500 to the Board of Managers for its working capital",
+    "why": "matches exactly; P5 also confirms $500 contribution per unit"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 9583,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "246 51st Street, Brooklyn, N.Y. 11220",
+   "page_no": 1,
+   "file_id": 26312,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "246 51st Street, Brooklyn, N.Y. 11220",
+    "why": "matches exactly"
+   },
+   "blind": {
+    "value": "246 51st Street, Brooklyn, N.Y. 11220",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "246 51st Street \nBrooklyn , N.Y. 11220"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11518,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Harry Hong of H2 Engineering, P.C. (engineer)",
+   "page_no": 90,
+   "file_id": 26312,
+   "check": {
+    "n": 6,
+    "verdict": "wrong",
+    "fix": "Harry Hong of H2 Engineering, P.C. is a licensed engineer, not an architect",
+    "page": "P10",
+    "quote": "The architect is Harry Hong of H2 Engineering, P.C. ... Mr. Hong is a licensed engineer in the State of New York",
+    "why": "claim adds the role label 'architect' as correct while also calling him '(engineer)' - the page itself labels him as 'architect' in the heading but describes him as a licensed engineer, creating an inconsistency; the claim's parenthetical '(engineer)' is supported but the main role claimed matches the page's own heading, however given plan text internally conflates architect/engineer, treat as correct since page explicitly states 'architect' and 'engineer' both"
+   },
+   "blind": {
+    "value": "Harry Hong of H2 Engineering, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "The architect is Harry Hong of H2 Engineering, P.C."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "A",
+     "C"
+    ],
+    "close": [],
+    "printed": "Harry Hong of H2 Engineering, P.C.",
+    "page": "P10",
+    "quote": "The architect is Harry Hong of H2 Engineering, P.C.",
+    "sure": true,
+    "why": "P10 names him as the architect and also says he is a licensed engineer. B is wrong to say he is not the architect, because the plan calls him the architect."
+   },
+   "candidates": [
+    "Harry Hong of H2 Engineering, P.C. (engineer)",
+    "Harry Hong of H2 Engineering, P.C. is a licensed engineer, not an architect",
+    "Harry Hong of H2 Engineering, P.C."
+   ],
+   "stored_letter": "A",
+   "printed": "Harry Hong of H2 Engineering, P.C.",
+   "printed_page": {
+    "file_id": 26312,
+    "page_no": 90
+   },
+   "printed_quote": "The architect is Harry Hong of H2 Engineering, P.C.",
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 2483,
+   "field": "principal",
+   "stored": {
+    "name": "Quang T. Tran",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 90,
+   "file_id": 26312,
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P10",
+    "quote": "QB & Son LLC is the sponsor and has one principal: Mr. Quang T, Tran",
+    "why": "matches, name spelled with stray comma in source but same name"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD230189",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "QB & SON LLC",
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "QB & SON LLC",
+    "why": "matches cover page exactly"
+   },
+   "blind": {
+    "value": "QB & SON LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "QB & SON LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD230189",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "THOMAS E. BERINATO, ATTORNEY AT LAW",
+   "check": {
+    "n": 9,
+    "verdict": "wrong",
+    "fix": "Thomas E. Berinato (law firm name given as Thomas E. Berinato, not styled 'Attorney at Law')",
+    "page": "P10",
+    "quote": "Sponsor has retained the law firm of Thomas E. Berinato, with offices at 123-40 83rd Avenue",
+    "why": "the pages name the firm as 'Thomas E. Berinato' without the designation 'Attorney at Law'; no cover page listing counsel was shown"
+   },
+   "blind": {
+    "value": "Thomas E. Berinato",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "Sponsor has retained the law firm of Thomas E. Berinato, with offices at 123-40 83 rd Avenue, Kew Gardens, New York 11415, to represent it in connection with the Offering Plan."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 3,
+    "accurate": [
+     "A",
+     "C"
+    ],
+    "close": [
+     "B"
+    ],
+    "printed": "Thomas E. Berinato",
+    "page": "P10",
+    "quote": "Sponsor has retained the law firm of Thomas E. Berinato",
+    "sure": true,
+    "why": "The firm is named Thomas E. Berinato. The pages never print 'Attorney at Law'."
+   },
+   "candidates": [
+    "Thomas E. Berinato",
+    "THOMAS E. BERINATO, ATTORNEY AT LAW",
+    "Thomas E. Berinato (law firm name given as Thomas E. Berinato, not styled 'Attorney at Law')"
+   ],
+   "stored_letter": "B",
+   "printed": "Thomas E. Berinato",
+   "printed_page": {
+    "file_id": 26312,
+    "page_no": 90
+   },
+   "printed_quote": "Sponsor has retained the law firm of Thomas E. Berinato",
+   "verdict": "minor"
+  }
+ ],
+ "calls": 3,
+ "tokens": 34964
+}

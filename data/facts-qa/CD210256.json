@@ -1,0 +1,410 @@
+{
+ "plan_id": "CD210256",
+ "checked_at": "2026-10-01T22:03:12.819Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 14474,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 14474,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 14474,
+   "page_no": 36,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 14474,
+   "page_no": 38,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 14474,
+   "page_no": 115,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 14474,
+   "page_no": 127,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 14474,
+   "page_no": 128,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 14474,
+   "page_no": 214,
+   "why": [
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 14474,
+   "page_no": 284,
+   "why": [
+    "managing_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Zarina Kindo, R.A.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P7",
+   "quote": "Zarina Kindo , R.A., with an address at 62 Brighton 2 Place PH - B, Brooklyn, NY 11235, a Registered Architect, has rendered the Floor Plans of the Property"
+  },
+  "selling_agent": {
+   "value": "241 16th ST LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P7",
+   "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+  },
+  "managing_agent": {
+   "value": "241 16th ST LLC",
+   "by_sponsor": false,
+   "by_board": true,
+   "others": [],
+   "page": "P4",
+   "quote": "The Condominium Board will be responsible for managing the condominium, including but not limited to, writing checks, payment of bills"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "The Law Office of Jay Lichtman, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P7",
+   "quote": "The Sponsor is represented by The Law Office of Jay Lichtman P.C., 68 Jay Street, Suite 420, Brooklyn, New York 11201"
+  },
+  "sponsor": {
+   "value": "241 16th ST LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P7",
+   "quote": "The Sponsor of this project is 241 16th ST LLC a New York Limited Liability Company"
+  },
+  "sponsor_address": {
+   "value": "99 West Hawthorne Avenue, Ste 300, Valley Stream, New York 11580",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P7",
+   "quote": "with an address at 99 West Hawthorne Ave nue , Ste 300, Valley Stream, New York 11580"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 7518,
+   "field": "selling_agent",
+   "page_no": 128,
+   "score": 1
+  },
+  {
+   "id": 7519,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 7520,
+   "field": "working_capital",
+   "page_no": 127,
+   "score": 1
+  },
+  {
+   "id": 11435,
+   "field": "architect",
+   "page_no": 128,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 7518,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "241 16th St LLC",
+   "page_no": 128,
+   "file_id": 14474,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "Sponsor will not be using a Selling Agent; Sponsor will act as selling agent itself",
+    "page": "P7",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+    "why": "241 16th ST LLC is the Sponsor, not a separately named Selling Agent; pages say there is no selling agent other than Sponsor itself"
+   },
+   "blind": {
+    "value": "241 16th ST LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P7",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "241 16th ST LLC (the Sponsor acts as its own selling agent)",
+    "page": "P7",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+    "sure": true,
+    "why": "P7 says the Sponsor acts as selling agent. P1 lists 'SPONSOR & SELLING AGENT: 241 16TH ST LLC'. All three candidates identify the Sponsor."
+   },
+   "candidates": [
+    "Sponsor will not be using a Selling Agent; Sponsor will act as selling agent itself",
+    "241 16th ST LLC (the Sponsor itself)",
+    "241 16th St LLC"
+   ],
+   "stored_letter": "C",
+   "printed": "241 16th ST LLC (the Sponsor acts as its own selling agent)",
+   "printed_page": {
+    "file_id": 14474,
+    "page_no": 128
+   },
+   "printed_quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7519,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "99 West Hawthorne Ave, Ste 300, Valley Stream, NY 11580",
+   "page_no": 1,
+   "file_id": 14474,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "99 W EST H AWTHORNE A VE S TE 300 V ALLEY S TREAM , NY 11580",
+    "why": "matches"
+   },
+   "blind": {
+    "value": "99 West Hawthorne Avenue, Ste 300, Valley Stream, New York 11580",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P7",
+    "quote": "with an address at 99 West Hawthorne Ave nue , Ste 300, Valley Stream, New York 11580"
+   },
+   "blind_agrees": false,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "99 West Hawthorne Ave Ste 300, Valley Stream, NY 11580",
+    "page": "P1",
+    "quote": "99 WEST HAWTHORNE AVE STE 300 VALLEY STREAM, NY 11580",
+    "sure": true,
+    "why": "B matches the P1 wording. A matches the fuller form on P7 ('99 West Hawthorne Avenue, Ste 300, Valley Stream, New York 11580'). The two differ only in abbreviations."
+   },
+   "candidates": [
+    "99 West Hawthorne Avenue, Ste 300, Valley Stream, New York 11580",
+    "99 West Hawthorne Ave, Ste 300, Valley Stream, NY 11580"
+   ],
+   "stored_letter": "B",
+   "printed": "99 West Hawthorne Ave Ste 300, Valley Stream, NY 11580",
+   "printed_page": {
+    "file_id": 14474,
+    "page_no": 1
+   },
+   "printed_quote": "99 WEST HAWTHORNE AVE STE 300 VALLEY STREAM, NY 11580",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7520,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 127,
+   "file_id": 14474,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P6",
+    "quote": "an “ Initial Capital Payment ” equal to two (2) months ’ estimated common charges for each Unit",
+    "why": "matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11435,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Zarina Kindo, R.A.",
+   "page_no": 128,
+   "file_id": 14474,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P7",
+    "quote": "Zarina Kindo , R.A., ... has rendered the Floor Plans of the Property",
+    "why": "matches"
+   },
+   "blind": {
+    "value": "Zarina Kindo, R.A.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P7",
+    "quote": "Zarina Kindo , R.A., with an address at 62 Brighton 2 Place PH - B, Brooklyn, NY 11235, a Registered Architect, has rendered the Floor Plans of the Property"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1613,
+   "field": "principal",
+   "stored": {
+    "name": "Avraham Azoulay",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 128,
+   "file_id": 14474,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P7",
+    "quote": "The Principal s of the Sponsor , Avraham Azoulay",
+    "why": "matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1614,
+   "field": "principal",
+   "stored": {
+    "name": "Lior Raviv",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 128,
+   "file_id": 14474,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P7",
+    "quote": "and Lior Raviv with a business address at 188 Bay Drive, Woodmere, NY 11598",
+    "why": "matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD210256",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "241 16TH ST LLC",
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "241 16 TH ST LLC",
+    "why": "matches cover page"
+   },
+   "blind": {
+    "value": "241 16th ST LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P7",
+    "quote": "The Sponsor of this project is 241 16th ST LLC a New York Limited Liability Company"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD210256",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "THE LAW OFFICE OF JAY LICHTMAN, PC",
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "T HE L AW O FFICE OF J AY L ICHTMAN , P.C.",
+    "why": "matches cover page"
+   },
+   "blind": {
+    "value": "The Law Office of Jay Lichtman, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P7",
+    "quote": "The Sponsor is represented by The Law Office of Jay Lichtman P.C., 68 Jay Street, Suite 420, Brooklyn, New York 11201"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 37649
+}

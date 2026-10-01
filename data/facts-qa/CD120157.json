@@ -1,0 +1,220 @@
+{
+ "plan_id": "CD120157",
+ "checked_at": "2026-10-01T18:54:21.574Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 32961,
+   "page_no": 1,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 32961,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 32961,
+   "page_no": 14,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 32961,
+   "page_no": 32,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 32961,
+   "page_no": 84,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 32961,
+   "page_no": 85,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 32961,
+   "page_no": 89,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 32961,
+   "page_no": 93,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 32961,
+   "page_no": 94,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 32961,
+   "page_no": 95,
+   "why": [
+    "selling_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Angelo Ng, Registered Architect, of Architects Studio, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "prepared by Angelo Ng, Registered Architect, of Architects Studio, P.C. with office at 66-00 Long Island Expressway, Maspeth, NY 11378"
+  },
+  "selling_agent": {
+   "value": "8225 Queens Mansion LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "The Sponsor will also act as the selling Agent for the Condominium."
+  },
+  "managing_agent": {
+   "value": "8225 Queens Mansion LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "The Sponsor, 8225 Queens Mansion LLC will be the Managing Agent."
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "Lawrence (Lixin) Yang, Esq./Dai & Associates, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "Sponsor has retained Lawrence Yang, Esq./Dai & Associates, P.C. at 1500 Broadway, 22nd Floor, New York, NY 10036 to represent it in connection with the Plan."
+  },
+  "sponsor": {
+   "value": "8225 Queens Mansion LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "The Sponsor, 8225 Queens Mansion LLC, with its office at 82-25 Queens Blvd., Elmhurst, NY 11373, is a New York limited liability company"
+  },
+  "sponsor_address": {
+   "value": "82-25 Queens Blvd., Elmhurst, NY 11373",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "with its office at 82-25 Queens Blvd., Elmhurst, NY 11373"
+  }
+ },
+ "quote_checks": [],
+ "results": [
+  {
+   "table": "plans",
+   "id": "CD120157",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "8225 QUEENS MANSION, LLC",
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "8225 Queens Mansion, LLC",
+    "why": "Matches cover page sponsor name"
+   },
+   "blind": {
+    "value": "8225 Queens Mansion LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "The Sponsor, 8225 Queens Mansion LLC, with its office at 82-25 Queens Blvd., Elmhurst, NY 11373, is a New York limited liability company"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD120157",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "DAI & ASSOCIATES, P.C.",
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "Dai & Associates, P. C.",
+    "why": "Matches cover page sponsor's attorney"
+   },
+   "blind": {
+    "value": "Lawrence (Lixin) Yang, Esq./Dai & Associates, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "Sponsor has retained Lawrence Yang, Esq./Dai & Associates, P.C. at 1500 Broadway, 22nd Floor, New York, NY 10036 to represent it in connection with the Plan."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 4048,
+   "field": "principal",
+   "method": "ag-site",
+   "stored": {
+    "name": "Wing Fung Chau",
+    "kind": "person",
+    "role": "Principal",
+    "parent_entity": null
+   },
+   "quote": null,
+   "verdict": "not_from_plan"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 4049,
+   "field": "principal",
+   "method": "ag-site",
+   "stored": {
+    "name": "Bo Jin Shu",
+    "kind": "person",
+    "role": "Principal",
+    "parent_entity": null
+   },
+   "quote": null,
+   "verdict": "not_from_plan"
+  }
+ ],
+ "calls": 2,
+ "tokens": 24908
+}

@@ -1,0 +1,275 @@
+{
+ "plan_id": "CD180350",
+ "checked_at": "2026-10-01T20:17:12.664Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 2899,
+   "page_no": 1,
+   "why": [
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 2899,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 2899,
+   "page_no": 4,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 2899,
+   "page_no": 175,
+   "why": [
+    "cited"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": null,
+  "selling_agent": {
+   "value": "Douglas Elliman LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "Selling Agent: Douglas Elliman LLC 575 Madison Avenue New York, New York"
+  },
+  "managing_agent": null,
+  "tax_consultant": null,
+  "sponsor_attorney": null,
+  "sponsor": {
+   "value": "DDG 100 Franklin LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P4",
+   "quote": "The Sponsor is DDG 100 Franklin LLC."
+  },
+  "sponsor_address": {
+   "value": "60 Hudson Street, 18th floor, New York, New York 10013",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P4",
+   "quote": "has an address at 60 Hudson Street, 18 th floor, New York, New York 10013"
+  }
+ },
+ "quote_checks": [],
+ "results": [
+  {
+   "table": "sponsor_principals",
+   "id": 435,
+   "field": "principal",
+   "stored": {
+    "name": "Joseph A. McMillan, Jr.",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": "DDG Partners LLC"
+   },
+   "page_no": 175,
+   "file_id": 2899,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "Sponsor",
+    "page": "P4",
+    "quote": "Joseph A. McMillan, Jr. and Christopher J. Prokop are principals of Sponsor",
+    "why": "Pages say he is a principal of Sponsor, not of DDG Partners LLC; he is Chairman/CEO of DDG Partners."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [],
+    "close": [
+     "B"
+    ],
+    "printed": "Joseph A. McMillan, Jr. — principal — of DDG 100 Franklin LLC (Sponsor); Chairman and Chief Executive Officer of DDG Partners LLC",
+    "page": "P4",
+    "quote": "The sole principals of Sponsor, through ownership of Sponsor, are Joseph A. McMillan, Jr. and Christopher J. Prokop",
+    "sure": true,
+    "why": "P4 names him as a principal of the Sponsor. At DDG Partners LLC the page gives him a different role: Chairman and CEO. Candidate B has the right person but attaches 'principal' to the wrong entity. Candidate A is not a name."
+   },
+   "candidates": [
+    "Sponsor",
+    "Joseph A. McMillan, Jr. — principal — of DDG Partners LLC"
+   ],
+   "stored_letter": "B",
+   "printed": "Joseph A. McMillan, Jr. — principal — of DDG 100 Franklin LLC (Sponsor); Chairman and Chief Executive Officer of DDG Partners LLC",
+   "printed_page": {
+    "file_id": 2899,
+    "page_no": 175
+   },
+   "printed_quote": "The sole principals of Sponsor, through ownership of Sponsor, are Joseph A. McMillan, Jr. and Christopher J. Prokop",
+   "verdict": "minor"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 436,
+   "field": "principal",
+   "stored": {
+    "name": "Christopher J. Prokop",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": "DDG Partners LLC"
+   },
+   "page_no": 175,
+   "file_id": 2899,
+   "check": {
+    "n": 2,
+    "verdict": "wrong",
+    "fix": "Sponsor",
+    "page": "P4",
+    "quote": "Joseph A. McMillan, Jr. and Christopher J. Prokop are principals of Sponsor",
+    "why": "Pages say he is a principal of Sponsor, not of DDG Partners LLC; he is President/COO of DDG Partners."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 2,
+    "accurate": [],
+    "close": [
+     "B"
+    ],
+    "printed": "Christopher J. Prokop — principal — of DDG 100 Franklin LLC (Sponsor); President and Chief Operating Officer of DDG Partners LLC",
+    "page": "P4",
+    "quote": "Christopher J. Prokop is the President and Chief Operating Officer of DDG Partners LLC",
+    "sure": true,
+    "why": "P4 names him as a principal of the Sponsor. At DDG Partners LLC the page gives his role as President and COO. Candidate B has the right person but the wrong entity for 'principal'. Candidate A is not a name."
+   },
+   "candidates": [
+    "Sponsor",
+    "Christopher J. Prokop — principal — of DDG Partners LLC"
+   ],
+   "stored_letter": "B",
+   "printed": "Christopher J. Prokop — principal — of DDG 100 Franklin LLC (Sponsor); President and Chief Operating Officer of DDG Partners LLC",
+   "printed_page": {
+    "file_id": 2899,
+    "page_no": 175
+   },
+   "printed_quote": "Christopher J. Prokop is the President and Chief Operating Officer of DDG Partners LLC",
+   "verdict": "minor"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 437,
+   "field": "principal",
+   "stored": {
+    "name": "DDG Partners LLC",
+    "kind": "entity",
+    "role": "managing member",
+    "parent_entity": null
+   },
+   "page_no": 175,
+   "file_id": 2899,
+   "check": {
+    "n": 3,
+    "verdict": "wrong",
+    "fix": "managing member of Sponsor",
+    "page": "P4",
+    "quote": "DDG Partners, the managing member of Sponsor",
+    "why": "DDG Partners LLC is the managing member of the Sponsor (DDG 100 Franklin LLC), not described as a principal."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 3,
+    "accurate": [
+     "A"
+    ],
+    "close": [
+     "B"
+    ],
+    "printed": "DDG Partners LLC — managing member — of DDG 100 Franklin LLC (Sponsor)",
+    "page": "P4",
+    "quote": "DDG Partners, the managing member of Sponsor",
+    "sure": true,
+    "why": "P4 says DDG Partners is the managing member of the Sponsor, which matches candidate A. Candidate B states the role but does not name the party."
+   },
+   "candidates": [
+    "DDG Partners LLC — managing member",
+    "managing member of Sponsor"
+   ],
+   "stored_letter": "A",
+   "printed": "DDG Partners LLC — managing member — of DDG 100 Franklin LLC (Sponsor)",
+   "printed_page": {
+    "file_id": 2899,
+    "page_no": 175
+   },
+   "printed_quote": "DDG Partners, the managing member of Sponsor",
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD180350",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "DDG 100 FRANKLIN LLC",
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "page": "P1",
+    "quote": "DDG 100 FRANKLIN LLC",
+    "why": "Matches cover page sponsor name."
+   },
+   "blind": {
+    "value": "DDG 100 Franklin LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P4",
+    "quote": "The Sponsor is DDG 100 Franklin LLC."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD180350",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "GOLDFARB & FLEECE, LLP",
+   "check": {
+    "n": 5,
+    "verdict": "unverifiable",
+    "page": null,
+    "quote": null,
+    "why": "Pages provided do not mention Sponsor's counsel or Goldfarb & Fleece, LLP."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 4,
+    "accurate": [],
+    "close": [],
+    "printed": null,
+    "page": "",
+    "quote": "",
+    "sure": false,
+    "why": "None of the provided pages names the Sponsor's counsel."
+   },
+   "candidates": [
+    "GOLDFARB & FLEECE, LLP"
+   ],
+   "stored_letter": "A",
+   "printed": null,
+   "printed_page": null,
+   "printed_quote": "",
+   "verdict": "unresolved"
+  }
+ ],
+ "calls": 3,
+ "tokens": 21296
+}

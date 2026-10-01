@@ -1,0 +1,404 @@
+{
+ "plan_id": "CD220132",
+ "checked_at": "2026-10-01T22:33:10.297Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 19141,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 19141,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 19141,
+   "page_no": 5,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 19141,
+   "page_no": 8,
+   "why": [
+    "cited",
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 19141,
+   "page_no": 61,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 19141,
+   "page_no": 78,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 19141,
+   "page_no": 79,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 19141,
+   "page_no": 107,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 19141,
+   "page_no": 119,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 19141,
+   "page_no": 120,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P11",
+   "file_id": 19141,
+   "page_no": 121,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P12",
+   "file_id": 19141,
+   "page_no": 180,
+   "why": [
+    "selling_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": null,
+  "selling_agent": {
+   "value": "110 Withers Street, LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SPONSOR AND SELLING AGENT: 110 WITHERS STREET, LLC"
+  },
+  "managing_agent": {
+   "value": "110 Withers Street, LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "the Board shall enter into an agreement to manage the property with the Sponsor, 110 Withers Street, LLC"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "Jeffrey Zwick & Associates, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "ATTORNEYS FOR SPONSOR: JEFFREY ZWICK & ASSOCIATES, P.C."
+  },
+  "sponsor": {
+   "value": "110 Withers Street, LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SPONSOR AND SELLING AGENT: 110 WITHERS STREET, LLC"
+  },
+  "sponsor_address": {
+   "value": "134 North 4th Street, 2nd Floor, Brooklyn, New York 11249",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "134 NORTH 4TH STREET, 2ND FLOOR, BROOKLYN, NEW YORK 11249"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 8126,
+   "field": "selling_agent",
+   "page_no": 121,
+   "score": 1
+  },
+  {
+   "id": 8127,
+   "field": "managing_agent",
+   "page_no": 8,
+   "score": 1
+  },
+  {
+   "id": 8128,
+   "field": "working_capital",
+   "page_no": 119,
+   "score": 1
+  },
+  {
+   "id": 8129,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 8126,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "110 Withers Street, LLC",
+   "page_no": 121,
+   "file_id": 19141,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P11",
+    "quote": "Sponsor and Selling Agent is 110 Withers Street, LLC",
+    "why": "Matches P11"
+   },
+   "blind": {
+    "value": "110 Withers Street, LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "SPONSOR AND SELLING AGENT: 110 WITHERS STREET, LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8127,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "110 Withers Street, LLC",
+   "page_no": 8,
+   "file_id": 19141,
+   "check": {
+    "n": 2,
+    "verdict": "wrong",
+    "fix": "Sponsor",
+    "page": "P10",
+    "quote": "the Board shall enter into an agreement to manage the property with the Sponsor, 110 Withers Street, LLC",
+    "why": "Sponsor is managing agent, not a separate entity with 'number stored 0'; claim's numeric annotation is unsupported/nonsensical"
+   },
+   "blind": {
+    "value": "110 Withers Street, LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "the Board shall enter into an agreement to manage the property with the Sponsor, 110 Withers Street, LLC"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "Sponsor, 110 Withers Street, LLC",
+    "page": "P10",
+    "quote": "the Board shall enter into an agreement to manage the property with the Sponsor, 110 Withers Street, LLC",
+    "sure": true,
+    "why": "P10 says the Sponsor, 110 Withers Street, LLC, manages for no fee until the Initial Control Period ends. P4 confirms the Sponsor manages at no charge. All three candidates name that party."
+   },
+   "candidates": [
+    "110 Withers Street, LLC (the Sponsor itself)",
+    "Sponsor",
+    "110 Withers Street, LLC"
+   ],
+   "stored_letter": "C",
+   "printed": "Sponsor, 110 Withers Street, LLC",
+   "printed_page": {
+    "file_id": 19141,
+    "page_no": 120
+   },
+   "printed_quote": "the Board shall enter into an agreement to manage the property with the Sponsor, 110 Withers Street, LLC",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8128,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' estimated common charges at closing (10% to reserve fund)",
+   "page_no": 119,
+   "file_id": 19141,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "Initial Capital Payment equal to two (2) months’ estimated C ommon C harges for the U nit... 10% of this contribution shall be deposited int o the Reserve Fund",
+    "why": "Matches P9"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8129,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "134 North 4th Street, 2nd Floor, Brooklyn, New York 11249",
+   "page_no": 1,
+   "file_id": 19141,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "134 N ORTH 4 TH S TREET , 2 ND F LOOR B ROOKLYN , N EW Y ORK 11249",
+    "why": "Matches P1"
+   },
+   "blind": {
+    "value": "134 North 4th Street, 2nd Floor, Brooklyn, New York 11249",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "134 NORTH 4TH STREET, 2ND FLOOR, BROOKLYN, NEW YORK 11249"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 2174,
+   "field": "principal",
+   "stored": {
+    "name": "Jakov Telyas",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": "Investmates"
+   },
+   "page_no": 121,
+   "file_id": 19141,
+   "check": {
+    "n": 5,
+    "verdict": "wrong",
+    "fix": "Co-Founder of Investmates",
+    "page": "P11",
+    "quote": "involved in real estate development as Co - Founder of Investmates",
+    "why": "Claim labels role as 'principal' of Investmates, but pages say he is Co-Founder of Investmates and principal of Sponsor - different roles conflated"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 2,
+    "accurate": [],
+    "close": [
+     "A",
+     "B"
+    ],
+    "printed": "Jakov Telyas, principal of the Sponsor, Co-Founder of Investmates",
+    "page": "P11",
+    "quote": "The principal of the Sponsor Jakov Telyas",
+    "sure": true,
+    "why": "Jakov Telyas is the Sponsor's principal and Co-Founder of Investmates. A gives the role and entity but leaves out the name. B makes him 'principal' of Investmates, but he is principal of the Sponsor and Co-Founder of Investmates."
+   },
+   "candidates": [
+    "Co-Founder of Investmates",
+    "Jakov Telyas — principal — of Investmates"
+   ],
+   "stored_letter": "B",
+   "printed": "Jakov Telyas, principal of the Sponsor, Co-Founder of Investmates",
+   "printed_page": {
+    "file_id": 19141,
+    "page_no": 121
+   },
+   "printed_quote": "The principal of the Sponsor Jakov Telyas",
+   "verdict": "minor"
+  },
+  {
+   "table": "plans",
+   "id": "CD220132",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "110 WITHERS STREET, LLC",
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "110 W ITHERS S TREET , LLC",
+    "why": "Matches cover page"
+   },
+   "blind": {
+    "value": "110 Withers Street, LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "SPONSOR AND SELLING AGENT: 110 WITHERS STREET, LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD220132",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "JEFFREY ZWICK & ASSOCIATES, P.C.",
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "J EFFREY Z WICK & A SSOCIATES , P.C.",
+    "why": "Matches cover page"
+   },
+   "blind": {
+    "value": "Jeffrey Zwick & Associates, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "ATTORNEYS FOR SPONSOR: JEFFREY ZWICK & ASSOCIATES, P.C."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 48239
+}

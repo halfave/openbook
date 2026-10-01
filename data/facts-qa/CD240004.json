@@ -1,0 +1,166 @@
+{
+ "plan_id": "CD240004",
+ "checked_at": "2026-10-01T23:28:54.519Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 27510,
+   "page_no": 137,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 27510,
+   "page_no": 165,
+   "why": [
+    "cited"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": null,
+  "selling_agent": null,
+  "managing_agent": null,
+  "tax_consultant": null,
+  "sponsor_attorney": null,
+  "sponsor": null,
+  "sponsor_address": null
+ },
+ "quote_checks": [
+  {
+   "id": 9827,
+   "field": "parking_arrangement",
+   "page_no": 165,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 9827,
+   "field": "parking_arrangement",
+   "column": "value_text",
+   "stored": "sold",
+   "page_no": 165,
+   "file_id": 27510,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "18 total spaces (will be sold as separate units), but only 11 reserved for residential, 7 for commercial/residential",
+    "page": "P2",
+    "quote": "Parking spaces will be sold as separate units to the building's occupants only on a first come, first served basis.",
+    "why": "Pages confirm 'sold' and 18 parking units provided, so the count matches, but no cover page info is present to verify other claims; this claim itself about sold/18 is supported by P2."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "B"
+    ],
+    "close": [
+     "A"
+    ],
+    "printed": "Eighteen (18) parking units, sold as separate units to the building's occupants only on a first come, first served basis; eleven (11) must be made available to residential occupants, seven (7) available for the commercial and residential areas",
+    "page": "P2",
+    "quote": "Parking spaces will be sold as separate units to the building's occupants only on a first come, first served basis.",
+    "sure": true,
+    "why": "P2 says 18 spaces are sold as separate units: 11 for residential occupants and 7 for commercial and residential. A says 'sold' but omits the count. P2 also mentions '19 spaces' in the EV charging calculation, which is inconsistent with the 18 stated elsewhere."
+   },
+   "candidates": [
+    "sold",
+    "18 total spaces (will be sold as separate units), but only 11 reserved for residential, 7 for commercial/residential"
+   ],
+   "stored_letter": "A",
+   "printed": "Eighteen (18) parking units, sold as separate units to the building's occupants only on a first come, first served basis; eleven (11) must be made available to residential occupants, seven (7) available for the commercial and residential areas",
+   "printed_page": {
+    "file_id": 27510,
+    "page_no": 165
+   },
+   "printed_quote": "Parking spaces will be sold as separate units to the building's occupants only on a first come, first served basis.",
+   "verdict": "minor"
+  },
+  {
+   "table": "plans",
+   "id": "CD240004",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "65-73 ECKFORD REALTY LLC",
+   "check": {
+    "n": 2,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": null,
+    "quote": null,
+    "why": "No cover page provided in these excerpts naming the Sponsor."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [],
+    "close": [],
+    "printed": null,
+    "page": "P1",
+    "quote": "",
+    "sure": false,
+    "why": "Neither page names a Sponsor. P1 is the first page of the Architect's Report and P2 is page 29 of it, which covers lighting and parking.",
+    "from_images": true
+   },
+   "candidates": [
+    "65-73 ECKFORD REALTY LLC"
+   ],
+   "stored_letter": "A",
+   "printed": null,
+   "printed_page": {
+    "file_id": 27510,
+    "page_no": 137
+   },
+   "printed_quote": "",
+   "verdict": "unresolved"
+  },
+  {
+   "table": "plans",
+   "id": "CD240004",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "LAW OFFICES OF HERSHY ITZKOWITZ, P.C.",
+   "check": {
+    "n": 3,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": null,
+    "quote": null,
+    "why": "No cover page provided in these excerpts naming Sponsor's counsel."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 2,
+    "accurate": [],
+    "close": [],
+    "printed": null,
+    "page": "P1",
+    "quote": "",
+    "sure": false,
+    "why": "Neither page names the Sponsor's attorneys. Both pages are technical sections of the Architect's Report.",
+    "from_images": true
+   },
+   "candidates": [
+    "LAW OFFICES OF HERSHY ITZKOWITZ, P.C."
+   ],
+   "stored_letter": "A",
+   "printed": null,
+   "printed_page": {
+    "file_id": 27510,
+    "page_no": 137
+   },
+   "printed_quote": "",
+   "verdict": "unresolved"
+  }
+ ],
+ "calls": 4,
+ "tokens": 24684
+}

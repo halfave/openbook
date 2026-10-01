@@ -1,0 +1,486 @@
+{
+ "plan_id": "CD220001",
+ "checked_at": "2026-10-01T22:17:07.116Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 16757,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 16757,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 16757,
+   "page_no": 16,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 16757,
+   "page_no": 17,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 16757,
+   "page_no": 37,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 16757,
+   "page_no": 39,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 16757,
+   "page_no": 59,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 16757,
+   "page_no": 125,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 16757,
+   "page_no": 126,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 16757,
+   "page_no": 127,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P11",
+   "file_id": 16757,
+   "page_no": 213,
+   "why": [
+    "selling_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Zarina Kindo, R.A.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "Zarina Kindo, R.A., with an address at 62 Brighton 2 Place PH-B, Brooklyn, NY 11235, a Registered Architect, has rendered the Floor Plans of the Property and has rendered the report thereof"
+  },
+  "selling_agent": {
+   "value": "714 Jefferson LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+  },
+  "managing_agent": {
+   "value": "714 Jefferson LLC",
+   "by_sponsor": false,
+   "by_board": true,
+   "others": [],
+   "page": "P9",
+   "quote": "The Condominium Board will be responsible for managing the condominium, including but not limited to, writing checks, payment of bills"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "The Law Office of Jay Lichtman, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "The Sponsor is represented by The Law Office of Jay Lichtman P.C., 68 Jay Street, Suite 420, Brooklyn, New York 11201"
+  },
+  "sponsor": {
+   "value": "714 Jefferson LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "The Sponsor is 714 Jefferson LLC, a New York Limited Liability Company"
+  },
+  "sponsor_address": {
+   "value": "110 West 40th Street, Suite 2392, New York, NY 10018",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "with an address at 110 West 40th Street, Suite 2392 , New York, NY 10018"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 8947,
+   "field": "selling_agent",
+   "page_no": 127,
+   "score": 1
+  },
+  {
+   "id": 8948,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 8949,
+   "field": "reserve_fund",
+   "page_no": 125,
+   "score": 1
+  },
+  {
+   "id": 8950,
+   "field": "working_capital",
+   "page_no": 126,
+   "score": 1
+  },
+  {
+   "id": 11123,
+   "field": "managing_agent",
+   "page_no": 127,
+   "score": 1
+  },
+  {
+   "id": 11456,
+   "field": "architect",
+   "page_no": 127,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 8947,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "714 Jefferson LLC",
+   "page_no": 127,
+   "file_id": 16757,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "Sponsor will act as selling agent; no separate Selling Agent is used",
+    "page": "P10",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent",
+    "why": "714 Jefferson LLC is the Sponsor acting as selling agent, but pages state no separate Selling Agent is retained; labeling it 'the selling agent' role mischaracterizes this—though P1 does list Sponsor & Selling Agent together as 714 Jefferson LLC, so this is actually correct per cover page"
+   },
+   "blind": {
+    "value": "714 Jefferson LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "714 Jefferson LLC (Sponsor acts as selling agent; no separate Selling Agent)",
+    "page": "P10",
+    "quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+    "sure": true,
+    "why": "P10 says the Sponsor acts as selling agent. The cover page (P1) lists '714 Jefferson LLC' as 'Sponsor & Selling Agent', so all three candidates name the right party."
+   },
+   "candidates": [
+    "714 Jefferson LLC (the Sponsor itself)",
+    "Sponsor will act as selling agent; no separate Selling Agent is used",
+    "714 Jefferson LLC"
+   ],
+   "stored_letter": "C",
+   "printed": "714 Jefferson LLC (Sponsor acts as selling agent; no separate Selling Agent)",
+   "printed_page": {
+    "file_id": 16757,
+    "page_no": 127
+   },
+   "printed_quote": "Sponsor will not be using a Selling Agent for this project. Sponsor will act as selling agent for the condominium.",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8948,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "110 West 40th Street, Suite 2392, New York, New York 10018",
+   "page_no": 1,
+   "file_id": 16757,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "110 West 40th Street, Suite 2392, New York, New York 10018",
+    "why": "Matches cover page address exactly"
+   },
+   "blind": {
+    "value": "110 West 40th Street, Suite 2392, New York, NY 10018",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "with an address at 110 West 40th Street, Suite 2392 , New York, NY 10018"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8949,
+   "field": "reserve_fund",
+   "column": "value_text",
+   "stored": "Reserve fund budgeted at approx. 10% of budget",
+   "page_no": 125,
+   "file_id": 16757,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "approximately ten percent (10%) of the entire budget",
+    "why": "Matches stated reserve fund basis"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 8950,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 126,
+   "file_id": 16757,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "equal to two (2) months' estimated common charges",
+    "why": "Matches working capital fund description"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11123,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "714 Jefferson LLC (Sponsor)",
+   "page_no": 127,
+   "file_id": 16757,
+   "check": {
+    "n": 5,
+    "verdict": "wrong",
+    "fix": "Condominium Board manages the condominium absent an outside managing agent; no managing agent named",
+    "page": "P10",
+    "quote": "Sponsor will not be using a Selling Agent for this project.",
+    "why": "P10 header mentions Managing Agent but no managing agent is identified/named in text; Schedule B1 notes state the Condominium Board manages it, not the Sponsor as managing agent"
+   },
+   "blind": {
+    "value": "714 Jefferson LLC",
+    "by_sponsor": false,
+    "by_board": true,
+    "others": [],
+    "page": "P9",
+    "quote": "The Condominium Board will be responsible for managing the condominium, including but not limited to, writing checks, payment of bills"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "A",
+     "C"
+    ],
+    "close": [],
+    "printed": "The Condominium Board manages the condominium; no outside managing agent is named",
+    "page": "P6",
+    "quote": "The Condominium Board will be responsible for managing the condominium",
+    "sure": true,
+    "why": "P6 and P4 say the Board manages unless an outside managing agent is retained, and no agent is named. P10 is cut off before naming any managing agent. Nothing on these pages makes the Sponsor the managing agent."
+   },
+   "candidates": [
+    "Condominium Board manages the condominium absent an outside managing agent; no managing agent named",
+    "714 Jefferson LLC (Sponsor)",
+    "the Board / self-managed"
+   ],
+   "stored_letter": "B",
+   "printed": "The Condominium Board manages the condominium; no outside managing agent is named",
+   "printed_page": {
+    "file_id": 16757,
+    "page_no": 39
+   },
+   "printed_quote": "The Condominium Board will be responsible for managing the condominium",
+   "verdict": "wrong"
+  },
+  {
+   "table": "facts",
+   "id": 11456,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Zarina Kindo, R.A.",
+   "page_no": 127,
+   "file_id": 16757,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P10",
+    "quote": "Zarina Kindo, R.A.",
+    "why": "Named as Registered Architect who rendered floor plans and report"
+   },
+   "blind": {
+    "value": "Zarina Kindo, R.A.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "Zarina Kindo, R.A., with an address at 62 Brighton 2 Place PH-B, Brooklyn, NY 11235, a Registered Architect, has rendered the Floor Plans of the Property and has rendered the report thereof"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1820,
+   "field": "principal",
+   "stored": {
+    "name": "Ilya Briskin",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 127,
+   "file_id": 16757,
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P10",
+    "quote": "The Principals of the Sponsor are Ilya Briskin",
+    "why": "Matches text"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1821,
+   "field": "principal",
+   "stored": {
+    "name": "Bryan Breslov",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 127,
+   "file_id": 16757,
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P10",
+    "quote": "Bryan Breslov",
+    "why": "Matches text naming him as a Principal of the Sponsor"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD220001",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "714 JEFFERSON LLC",
+   "check": {
+    "n": 9,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "714 JEFFERSON LLC",
+    "why": "Matches cover page sponsor name"
+   },
+   "blind": {
+    "value": "714 Jefferson LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "The Sponsor is 714 Jefferson LLC, a New York Limited Liability Company"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD220001",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+   "check": {
+    "n": 10,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+    "why": "Matches cover page attorneys for Sponsor"
+   },
+   "blind": {
+    "value": "The Law Office of Jay Lichtman, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "The Sponsor is represented by The Law Office of Jay Lichtman P.C., 68 Jay Street, Suite 420, Brooklyn, New York 11201"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 44660
+}

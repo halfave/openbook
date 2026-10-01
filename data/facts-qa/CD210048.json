@@ -1,0 +1,442 @@
+{
+ "plan_id": "CD210048",
+ "checked_at": "2026-10-01T21:43:10.438Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 19834,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 19834,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 19834,
+   "page_no": 72,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 19834,
+   "page_no": 111,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 19834,
+   "page_no": 112,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 19834,
+   "page_no": 122,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 19834,
+   "page_no": 123,
+   "why": [
+    "cited",
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 19834,
+   "page_no": 124,
+   "why": [
+    "cited",
+    "selling_agent",
+    "sponsor_attorney"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": null,
+  "selling_agent": {
+   "value": "QB & Son, LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "The Sponsor will act as its own selling agent."
+  },
+  "managing_agent": {
+   "value": "Quang Tran",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P7",
+   "quote": "The Sponsor while it is in control of the condominium board will appoint Quang Tran, a principal of the sponsor as the management agent."
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "Moritt Hock & Hamroff LLP",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "Moritt Hock & Hamroff LLP , 1407 Broadway, 39 th Floor , New York, NY 10018 , counsel to the Sponsor"
+  },
+  "sponsor": {
+   "value": "QB & Son, LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "The S ponsor and Selling Agent is QB & Son, LLC, a domestic New York limited liability company"
+  },
+  "sponsor_address": {
+   "value": "246 51st Street, Brooklyn, NY 11220",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "having its principal office at 246 5 l51 Street, Brooklyn NY 11220"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 7022,
+   "field": "managing_agent",
+   "page_no": 123,
+   "score": 1
+  },
+  {
+   "id": 7023,
+   "field": "selling_agent",
+   "page_no": 124,
+   "score": 1
+  },
+  {
+   "id": 7024,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 7025,
+   "field": "parking_arrangement",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 7026,
+   "field": "working_capital",
+   "page_no": 122,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 7022,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "Quang Tran (principal of Sponsor)",
+   "page_no": 123,
+   "file_id": 19834,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P7",
+    "quote": "appoint Quang Tran, a principal of the sponsor as the management agent",
+    "why": "matches"
+   },
+   "blind": {
+    "value": "Quang Tran",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P7",
+    "quote": "The Sponsor while it is in control of the condominium board will appoint Quang Tran, a principal of the sponsor as the management agent."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7023,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "QB & Son, LLC",
+   "page_no": 124,
+   "file_id": 19834,
+   "check": {
+    "n": 2,
+    "verdict": "minor",
+    "fix": "QB & Son, LLC",
+    "page": "P8",
+    "quote": "The S ponsor and Selling Agent is QB & Son, LLC",
+    "why": "name printed as QB & Son, LLC, claim matches but check spacing/spelling minor OCR variance; actually matches exactly"
+   },
+   "blind": {
+    "value": "QB & Son, LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "The Sponsor will act as its own selling agent."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "QB & Son, LLC (Sponsor acts as its own selling agent)",
+    "page": "P8",
+    "quote": "The S ponsor and Selling Agent is QB & Son, LLC",
+    "sure": true,
+    "why": "P8 names QB & Son, LLC as Sponsor and Selling Agent and says 'The Sponsor will act as its own selling agent.' Both candidates match."
+   },
+   "candidates": [
+    "QB & Son, LLC (the Sponsor itself)",
+    "QB & Son, LLC"
+   ],
+   "stored_letter": "B",
+   "printed": "QB & Son, LLC (Sponsor acts as its own selling agent)",
+   "printed_page": {
+    "file_id": 19834,
+    "page_no": 124
+   },
+   "printed_quote": "The S ponsor and Selling Agent is QB & Son, LLC",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7024,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "246 51st Street, Brooklyn, New York 11220",
+   "page_no": 1,
+   "file_id": 19834,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "246 51ST STREET Brooklyn, N ew Y ork 11220",
+    "why": "matches"
+   },
+   "blind": {
+    "value": "246 51st Street, Brooklyn, NY 11220",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "having its principal office at 246 5 l51 Street, Brooklyn NY 11220"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7025,
+   "field": "parking_arrangement",
+   "column": "value_text",
+   "stored": "sold",
+   "page_no": 1,
+   "file_id": 19834,
+   "check": {
+    "n": 4,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": "P1",
+    "quote": "3 Parking Space Uni ts - $ 12 0,000",
+    "why": "pages show parking spaces are sold for a price but don't explicitly describe arrangement as 'sold' vs licensed/leased in the provided excerpts"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 2,
+    "accurate": [],
+    "close": [
+     "A"
+    ],
+    "printed": "3 Parking Space Units offered for sale ($120,000)",
+    "page": "P1",
+    "quote": "3 Parking Space Uni ts - $ 12 0,000",
+    "sure": true,
+    "why": "The plan offers 3 parking space units for sale as condominium units. 'sold' is correct but leaves out the count of 3 spaces that the question asks for."
+   },
+   "candidates": [
+    "sold"
+   ],
+   "stored_letter": "A",
+   "printed": "3 Parking Space Units offered for sale ($120,000)",
+   "printed_page": {
+    "file_id": 19834,
+    "page_no": 1
+   },
+   "printed_quote": "3 Parking Space Uni ts - $ 12 0,000",
+   "verdict": "minor"
+  },
+  {
+   "table": "facts",
+   "id": 7026,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 122,
+   "file_id": 19834,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P6",
+    "quote": "collect an amount equal to two months Common Charges from each Purchaser",
+    "why": "matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1723,
+   "field": "principal",
+   "stored": {
+    "name": "Quang Tran",
+    "kind": "person",
+    "role": "sole member, officer and principal",
+    "parent_entity": null
+   },
+   "page_no": 124,
+   "file_id": 19834,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "The sole members, officers and principals of the LLC are Quang Tran and Binh Lam",
+    "why": "matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1724,
+   "field": "principal",
+   "stored": {
+    "name": "Binh Lam",
+    "kind": "person",
+    "role": "sole member, officer and principal",
+    "parent_entity": null
+   },
+   "page_no": 124,
+   "file_id": 19834,
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "The sole members, officers and principals of the LLC are Quang Tran and Binh Lam",
+    "why": "matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD210048",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "QB & SON LLC",
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "QB & S ON LLC",
+    "why": "matches sponsor name on cover page"
+   },
+   "blind": {
+    "value": "QB & Son, LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "The S ponsor and Selling Agent is QB & Son, LLC, a domestic New York limited liability company"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD210048",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "PAUL A. LEFF, ESQ.",
+   "check": {
+    "n": 9,
+    "verdict": "wrong",
+    "fix": "Moritt Hock & Hamroff LLP",
+    "page": "P1",
+    "quote": "MORITT HOCK & HAMROFF LLP",
+    "why": "cover page lists Moritt Hock & Hamroff LLP as Sponsor's Attorney, not Paul A. Leff, Esq."
+   },
+   "blind": {
+    "value": "Moritt Hock & Hamroff LLP",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "Moritt Hock & Hamroff LLP , 1407 Broadway, 39 th Floor , New York, NY 10018 , counsel to the Sponsor"
+   },
+   "blind_agrees": false,
+   "judge": {
+    "n": 3,
+    "accurate": [
+     "A"
+    ],
+    "close": [],
+    "printed": "Moritt Hock & Hamroff LLP",
+    "page": "P1",
+    "quote": "SPONSOR’S ATTORNEY \nMORITT HOCK & HAMROFF LLP",
+    "sure": true,
+    "why": "P1 and P8 both name Moritt Hock & Hamroff LLP as counsel to the Sponsor. Paul A. Leff does not appear on these pages."
+   },
+   "candidates": [
+    "Moritt Hock & Hamroff LLP",
+    "PAUL A. LEFF, ESQ."
+   ],
+   "stored_letter": "B",
+   "printed": "Moritt Hock & Hamroff LLP",
+   "printed_page": {
+    "file_id": 19834,
+    "page_no": 1
+   },
+   "printed_quote": "SPONSOR’S ATTORNEY \nMORITT HOCK & HAMROFF LLP",
+   "verdict": "wrong"
+  }
+ ],
+ "calls": 3,
+ "tokens": 25245
+}

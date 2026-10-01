@@ -1,0 +1,415 @@
+{
+ "plan_id": "CD210039",
+ "checked_at": "2026-10-01T21:43:24.288Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 12437,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 12437,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 12437,
+   "page_no": 6,
+   "why": [
+    "cited",
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 12437,
+   "page_no": 13,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 12437,
+   "page_no": 38,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 12437,
+   "page_no": 60,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 12437,
+   "page_no": 77,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 12437,
+   "page_no": 79,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 12437,
+   "page_no": 109,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 12437,
+   "page_no": 122,
+   "why": [
+    "cited",
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P11",
+   "file_id": 12437,
+   "page_no": 123,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P12",
+   "file_id": 12437,
+   "page_no": 124,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P13",
+   "file_id": 12437,
+   "page_no": 175,
+   "why": [
+    "selling_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": null,
+  "selling_agent": {
+   "value": "Madison 107 LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SPONSOR AND SELLING AGENT: MADISON 107 LLC"
+  },
+  "managing_agent": {
+   "value": "Madison 107 LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "the Board shall enter into an agreement to manage the property with the Sponsor, Madison 107 LLC"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "Jeffrey Zwick & Associates, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "ATTORNEYS FOR SPONSOR: JEFFREY ZWICK & ASSOCIATES, P.C."
+  },
+  "sponsor": {
+   "value": "Madison 107 LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SPONSOR AND SELLING AGENT: MADISON 107 LLC"
+  },
+  "sponsor_address": {
+   "value": "219-10 Stewart Road, Queens Village, New York 11427",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "219-10 STEWART ROAD QUEENS VILLAGE, NEW YORK 11427"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 6906,
+   "field": "selling_agent",
+   "page_no": 123,
+   "score": 1
+  },
+  {
+   "id": 6907,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 6908,
+   "field": "managing_agent",
+   "page_no": 122,
+   "score": 1
+  },
+  {
+   "id": 6909,
+   "field": "working_capital",
+   "page_no": 6,
+   "score": 1
+  },
+  {
+   "id": 11421,
+   "field": "architect",
+   "page_no": 124,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 6906,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "Madison 107 LLC",
+   "page_no": 123,
+   "file_id": 12437,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "Madison 107 LLC is the Sponsor and Selling Agent",
+    "page": "P11",
+    "quote": "Sponsor and Selling Agent is Madison 107 LLC",
+    "why": "The pages identify Madison 107 LLC as Sponsor AND Selling Agent (combined role), not merely 'the selling agent' as a distinct separate role; claim omits the Sponsor role, changing the meaning."
+   },
+   "blind": {
+    "value": "Madison 107 LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "SPONSOR AND SELLING AGENT: MADISON 107 LLC"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "Madison 107 LLC",
+    "page": "P11",
+    "quote": "Sponsor and Selling Agent is Madison 107 LLC",
+    "sure": true,
+    "why": "P11 names Madison 107 LLC as both Sponsor and Selling Agent; P1 also lists 'SPONSOR AND SELLING AGENT: MADISON 107 LLC'. All three candidates state this accurately."
+   },
+   "candidates": [
+    "Madison 107 LLC",
+    "Madison 107 LLC (the Sponsor itself)",
+    "Madison 107 LLC is the Sponsor and Selling Agent"
+   ],
+   "stored_letter": "A",
+   "printed": "Madison 107 LLC",
+   "printed_page": {
+    "file_id": 12437,
+    "page_no": 123
+   },
+   "printed_quote": "Sponsor and Selling Agent is Madison 107 LLC",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 6907,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "219-10 Stewart Road, Queens Village, New York 11427",
+   "page_no": 1,
+   "file_id": 12437,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "219-10 Stewart Road, Queens Village, New York 11427",
+    "why": "Matches cover page address for Sponsor."
+   },
+   "blind": {
+    "value": "219-10 Stewart Road, Queens Village, New York 11427",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "219-10 STEWART ROAD QUEENS VILLAGE, NEW YORK 11427"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 6908,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "Madison 107 LLC",
+   "page_no": 122,
+   "file_id": 12437,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P10",
+    "quote": "Sponsor, Madison 107 LLC ... until the expiration of the Initial Control Period for no fee",
+    "why": "Sponsor Madison 107 LLC manages the condominium as Managing Agent during Initial Control Period."
+   },
+   "blind": {
+    "value": "Madison 107 LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "the Board shall enter into an agreement to manage the property with the Sponsor, Madison 107 LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 6909,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 6,
+   "file_id": 12437,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P3",
+    "quote": "deposit with the Board an amount equal to two (2) months' Common Charges for his Unit to be used as working capital",
+    "why": "Matches claim exactly."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11421,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Oscar Walters, Jr., P.E. of Demerara Engineering PLLC (engineer)",
+   "page_no": 124,
+   "file_id": 12437,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P12",
+    "quote": "Oscar Walters, Jr., P.E., of Demerara Engineering PLLC ... has prepared the Architect's Report and the Floor Plan",
+    "why": "Matches claim including engineer role."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1646,
+   "field": "principal",
+   "stored": {
+    "name": "Amnon Chacham",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 123,
+   "file_id": 12437,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P11",
+    "quote": "The principal of the Sponsor is Amnon Chacham",
+    "why": "Matches claim exactly."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD210039",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "MADISON 107 LLC",
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "SPONSOR AND SELLING AGENT: MADISON 107 LLC",
+    "why": "Matches cover page."
+   },
+   "blind": {
+    "value": "Madison 107 LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "SPONSOR AND SELLING AGENT: MADISON 107 LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD210039",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "JEFFREY ZWICK & ASSOCIATES, P.C.",
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "ATTORNEYS FOR SPONSOR: JEFFREY ZWICK & ASSOCIATES, P.C.",
+    "why": "Matches cover page."
+   },
+   "blind": {
+    "value": "Jeffrey Zwick & Associates, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "ATTORNEYS FOR SPONSOR: JEFFREY ZWICK & ASSOCIATES, P.C."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 54485
+}

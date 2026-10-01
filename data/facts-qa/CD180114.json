@@ -1,0 +1,519 @@
+{
+ "plan_id": "CD180114",
+ "checked_at": "2026-10-01T20:02:26.392Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 30396,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 30396,
+   "page_no": 4,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 30396,
+   "page_no": 16,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 30396,
+   "page_no": 37,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 30396,
+   "page_no": 42,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 30396,
+   "page_no": 43,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 30396,
+   "page_no": 70,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 30396,
+   "page_no": 100,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 30396,
+   "page_no": 112,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 30396,
+   "page_no": 115,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P11",
+   "file_id": 30396,
+   "page_no": 117,
+   "why": [
+    "cited",
+    "selling_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Igor Zaslavskiy, R.A. of Zproekt Architecture, PLLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P11",
+   "quote": "Igor Zaslavskiy, R.A. of Zproekt Architecture, PLLC, having an address at 1817 Emmons Avenue, Brooklyn, NY 11235 is the architect of record for the Building."
+  },
+  "selling_agent": {
+   "value": "528 47th Development LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P11",
+   "quote": "Selling Agent for the Property is Sponsor, having an address at 2425 McDonald Avenue, Brooklyn, NY 11223."
+  },
+  "managing_agent": {
+   "value": "528 47th Development LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P6",
+   "quote": "Sponsor will manage the Condominium while it controls the Board of Managers."
+  },
+  "tax_consultant": {
+   "value": "MGNY Consulting Corp.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "the assessed value of the Units estimated by MGNY Consulting Corp. to be $550,000.00 for the post-construction year of 2019/2020."
+  },
+  "sponsor_attorney": {
+   "value": "TSYNGAUZ & ASSOCIATES, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P11",
+   "quote": "TSYNGAUZ & ASSOCIATES, P.C., having an address at 894 6th Avenue, 3rd fl., New York, NY 10001, represents Sponsor in connection with this Plan."
+  },
+  "sponsor": {
+   "value": "528 47th Development LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "Sponsor is 528 47th Development LLC, having an address at 2425 McDonald Avenue, Brooklyn, NY 11223."
+  },
+  "sponsor_address": {
+   "value": "2425 McDonald Avenue, Brooklyn, NY 11223",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "Sponsor is 528 47th Development LLC, having an address at 2425 McDonald Avenue, Brooklyn, NY 11223."
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 4922,
+   "field": "selling_agent",
+   "page_no": 117,
+   "score": 1
+  },
+  {
+   "id": 4923,
+   "field": "reserve_fund",
+   "page_no": 43,
+   "score": 1
+  },
+  {
+   "id": 4924,
+   "field": "working_capital",
+   "page_no": 112,
+   "score": 1
+  },
+  {
+   "id": 5443,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 11024,
+   "field": "managing_agent",
+   "page_no": 42,
+   "score": 1
+  },
+  {
+   "id": 11333,
+   "field": "architect",
+   "page_no": 117,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 4922,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "528 47th Development LLC (Sponsor)",
+   "page_no": 117,
+   "file_id": 30396,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "Selling Agent is Sponsor (528 47th Development LLC)",
+    "page": "P11",
+    "quote": "Selling Agent for the Property is Sponsor, having an address at 2425 McDonald Avenue, Brooklyn, NY 11223.",
+    "why": "P11 does identify Selling Agent as Sponsor, so the claim is substantively correct; parenthetical 'Sponsor' is supported, but the exact phrasing names the LLC directly rather than quoting 'Sponsor is 528 47th Development LLC' there - this is actually correct, not wrong"
+   },
+   "blind": {
+    "value": "528 47th Development LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P11",
+    "quote": "Selling Agent for the Property is Sponsor, having an address at 2425 McDonald Avenue, Brooklyn, NY 11223."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "Sponsor (528 47th Development LLC)",
+    "page": "P11",
+    "quote": "Selling Agent for the Property is Sponsor, having an address at 2425 McDonald Avenue",
+    "sure": true,
+    "why": "P11 names Sponsor as Selling Agent; P10 and P1 identify Sponsor as 528 47th Development LLC. All three candidates say this."
+   },
+   "candidates": [
+    "528 47th Development LLC (Sponsor)",
+    "Selling Agent is Sponsor (528 47th Development LLC)",
+    "528 47th Development LLC (the Sponsor itself)"
+   ],
+   "stored_letter": "A",
+   "printed": "Sponsor (528 47th Development LLC)",
+   "printed_page": {
+    "file_id": 30396,
+    "page_no": 117
+   },
+   "printed_quote": "Selling Agent for the Property is Sponsor, having an address at 2425 McDonald Avenue",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 4923,
+   "field": "reserve_fund",
+   "column": "value_text",
+   "stored": "No initial contribution; funded through common charges",
+   "page_no": 43,
+   "file_id": 30396,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P6",
+    "quote": "Sponsor will not make an initial contribution to the reserve fund, and the reserve fund will be funded by common charges.",
+    "why": "Matches exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 4924,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 112,
+   "file_id": 30396,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "Purchaser will be required to pay into the Working Capital Fund the sum equal to two (2) months' Common Charges",
+    "why": "Matches exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5443,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "2425 McDonald Avenue, Brooklyn, NY 11223",
+   "page_no": 1,
+   "file_id": 30396,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "2425 McDonald Avenue, Brooklyn, NY 11223",
+    "why": "Matches exactly"
+   },
+   "blind": {
+    "value": "2425 McDonald Avenue, Brooklyn, NY 11223",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "Sponsor is 528 47th Development LLC, having an address at 2425 McDonald Avenue, Brooklyn, NY 11223."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11024,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "Self-managed",
+   "page_no": 42,
+   "file_id": 30396,
+   "check": {
+    "n": 5,
+    "verdict": "minor",
+    "fix": "Building will be self-managing while Sponsor controls the Board; Sponsor manages while it controls the Board",
+    "page": "P5",
+    "quote": "Due to the size of the Building, it is expected that the Building will be self-managing.",
+    "why": "Self-managed is correct but P6 clarifies Sponsor manages while it controls the Board - claim omits this nuance but core fact is right"
+   },
+   "blind": {
+    "value": "528 47th Development LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P6",
+    "quote": "Sponsor will manage the Condominium while it controls the Board of Managers."
+   },
+   "blind_agrees": false,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "Self-managing; Sponsor will manage the Condominium while it controls the Board of Managers",
+    "page": "P5",
+    "quote": "it is expected that the Building will be self-managing",
+    "sure": true,
+    "why": "P5 says there is no outside managing agent (self-managing). P6 says 'Sponsor will manage the Condominium while it controls the Board of Managers.' Self-managed, Sponsor-managed and the combined reading all match."
+   },
+   "candidates": [
+    "528 47th Development LLC (the Sponsor itself)",
+    "Self-managed",
+    "Building will be self-managing while Sponsor controls the Board; Sponsor manages while it controls the Board"
+   ],
+   "stored_letter": "B",
+   "printed": "Self-managing; Sponsor will manage the Condominium while it controls the Board of Managers",
+   "printed_page": {
+    "file_id": 30396,
+    "page_no": 42
+   },
+   "printed_quote": "it is expected that the Building will be self-managing",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11333,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Igor Zaslavskiy, R.A. of Zproekt Architecture, PLLC",
+   "page_no": 117,
+   "file_id": 30396,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P11",
+    "quote": "Igor Zaslavskiy, R.A. of Zproekt Architecture, PLLC",
+    "why": "Matches exactly, identified as architect of record who prepared the report"
+   },
+   "blind": {
+    "value": "Igor Zaslavskiy, R.A. of Zproekt Architecture, PLLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P11",
+    "quote": "Igor Zaslavskiy, R.A. of Zproekt Architecture, PLLC, having an address at 1817 Emmons Avenue, Brooklyn, NY 11235 is the architect of record for the Building."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 87,
+   "field": "principal",
+   "stored": {
+    "name": "Mark Zeldin",
+    "kind": "person",
+    "role": "principal; member",
+    "parent_entity": null
+   },
+   "page_no": 115,
+   "file_id": 30396,
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P10",
+    "quote": "Mark Zeldin, having an address at 2829 Haring Street... All principals are the members of Sponsor.",
+    "why": "Matches exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 88,
+   "field": "principal",
+   "stored": {
+    "name": "Semyon Vays",
+    "kind": "person",
+    "role": "principal; member",
+    "parent_entity": null
+   },
+   "page_no": 115,
+   "file_id": 30396,
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P10",
+    "quote": "Semyon Vays, having an address at 277 Beaumont Street... All principals are the members of Sponsor.",
+    "why": "Matches exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 89,
+   "field": "principal",
+   "stored": {
+    "name": "Leonid Vays",
+    "kind": "person",
+    "role": "principal; member",
+    "parent_entity": null
+   },
+   "page_no": 115,
+   "file_id": 30396,
+   "check": {
+    "n": 9,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P10",
+    "quote": "Leonid Vays, having an address at 107 Indiana Place... All principals are the members of Sponsor.",
+    "why": "Matches exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD180114",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "528 47TH DEVELOPMENT LLC",
+   "check": {
+    "n": 10,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "528 47th Development LLC",
+    "why": "Matches exactly"
+   },
+   "blind": {
+    "value": "528 47th Development LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "Sponsor is 528 47th Development LLC, having an address at 2425 McDonald Avenue, Brooklyn, NY 11223."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD180114",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "TSYNGAUZ & ASSOCIATES, P.C.",
+   "check": {
+    "n": 11,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P11",
+    "quote": "TSYNGAUZ & ASSOCIATES, P.C., having an address at 894 6th Avenue, 3rd fl., New York, NY 10001, represents Sponsor",
+    "why": "Matches exactly"
+   },
+   "blind": {
+    "value": "TSYNGAUZ & ASSOCIATES, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P11",
+    "quote": "TSYNGAUZ & ASSOCIATES, P.C., having an address at 894 6th Avenue, 3rd fl., New York, NY 10001, represents Sponsor in connection with this Plan."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 36048
+}

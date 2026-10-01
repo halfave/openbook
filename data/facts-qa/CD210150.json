@@ -1,0 +1,419 @@
+{
+ "plan_id": "CD210150",
+ "checked_at": "2026-10-01T21:55:08.184Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 13785,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 13785,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 13785,
+   "page_no": 16,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 13785,
+   "page_no": 18,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 13785,
+   "page_no": 112,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 13785,
+   "page_no": 121,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 13785,
+   "page_no": 122,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 13785,
+   "page_no": 123,
+   "why": [
+    "cited",
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 13785,
+   "page_no": 124,
+   "why": [
+    "cited",
+    "sponsor_attorney"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Basic Groups Corp., PCM Architect PLLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "The architect who prepared the report in Part II and who executed the Certification in Part II is Basic Groups Corp., PCM Architect PLLC, 174 Avenue S, Brooklyn, NY, 11223."
+  },
+  "selling_agent": {
+   "value": "W2350 Realty LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SPONSOR/SELLING AGENT W2350 REALTY LLC"
+  },
+  "managing_agent": {
+   "value": "Brickshore Capital Inc.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P7",
+   "quote": "the condominium will enter into a management agreement with Brickshore Capital Inc. (the “Managing Agent”), 5 Chelsea Place, Great Neck, New York 11021"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "Moritt Hock & Hamroff LLP",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P9",
+   "quote": "Moritt Hock & Hamroff LLP, 1407 Broadway, 39th Floor, New York, NY 10018, counsel to the Sponsor"
+  },
+  "sponsor": {
+   "value": "W2350 Realty LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "The Sponsor is W2350 Realty LLC, a New York limited liability company with an address at 2307 W 13th Street, Brooklyn, New York, 11223."
+  },
+  "sponsor_address": {
+   "value": "2307 W 13th Street, Brooklyn, New York, 11223",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P8",
+   "quote": "an address at 2307 W 13th Street, Brooklyn, New York, 11223"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 7093,
+   "field": "parking_arrangement",
+   "page_no": 16,
+   "score": 1
+  },
+  {
+   "id": 7094,
+   "field": "selling_agent",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 7095,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 7096,
+   "field": "managing_agent",
+   "page_no": 123,
+   "score": 1
+  },
+  {
+   "id": 7097,
+   "field": "architect",
+   "page_no": 124,
+   "score": 1
+  },
+  {
+   "id": 7098,
+   "field": "working_capital",
+   "page_no": 121,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 7093,
+   "field": "parking_arrangement",
+   "column": "value_text",
+   "stored": "sold",
+   "page_no": 16,
+   "file_id": 13785,
+   "check": {
+    "n": 1,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P3",
+    "quote": "seven (7) Parking Space Units for sale to Residential Unit Owners",
+    "why": "Parking spaces are sold, 7 units, matches P1 and P3"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7094,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "W2350 Realty LLC",
+   "page_no": 1,
+   "file_id": 13785,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "SPONSOR/SELLING AGENT W2350 REALTY LLC",
+    "why": "Matches cover page exactly"
+   },
+   "blind": {
+    "value": "W2350 Realty LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "SPONSOR/SELLING AGENT W2350 REALTY LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7095,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "2307 W 13th Street, Brooklyn, New York 11223",
+   "page_no": 1,
+   "file_id": 13785,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "2307 W 13th Street Brooklyn, New York, 11223",
+    "why": "Matches cover page address"
+   },
+   "blind": {
+    "value": "2307 W 13th Street, Brooklyn, New York, 11223",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "an address at 2307 W 13th Street, Brooklyn, New York, 11223"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7096,
+   "field": "managing_agent",
+   "column": "value_text",
+   "stored": "Brickshore Capital Inc.",
+   "page_no": 123,
+   "file_id": 13785,
+   "check": {
+    "n": 4,
+    "verdict": "wrong",
+    "fix": "750",
+    "page": "P7",
+    "quote": "annual fee approximately $9,000 payable in equal monthly installments of $750",
+    "why": "The number stored (9000) is the annual fee, but it's attached to the claim ambiguously; however $9,000 is correct as the annual fee - this matches P7/P8"
+   },
+   "blind": {
+    "value": "Brickshore Capital Inc.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P7",
+    "quote": "the condominium will enter into a management agreement with Brickshore Capital Inc. (the “Managing Agent”), 5 Chelsea Place, Great Neck, New York 11021"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "B"
+    ],
+    "close": [],
+    "printed": "Brickshore Capital Inc.",
+    "page": "P8",
+    "quote": "agreement with Brickshore Capital Inc. (the “Managing Agent ”), 5 Chelsea Place, Great Neck, New York 11021",
+    "sure": true,
+    "why": "P8 (and P7) name Brickshore Capital Inc. as Managing Agent for an initial 1-year term; '750' is the monthly fee installment, not the agent."
+   },
+   "candidates": [
+    "750",
+    "Brickshore Capital Inc."
+   ],
+   "stored_letter": "B",
+   "printed": "Brickshore Capital Inc.",
+   "printed_page": {
+    "file_id": 13785,
+    "page_no": 123
+   },
+   "printed_quote": "agreement with Brickshore Capital Inc. (the “Managing Agent ”), 5 Chelsea Place, Great Neck, New York 11021",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7097,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Basic Groups Corp., PCM Architect PLLC",
+   "page_no": 124,
+   "file_id": 13785,
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "Basic Groups Corp., PCM Architect PLLC",
+    "why": "Matches exactly as printed"
+   },
+   "blind": {
+    "value": "Basic Groups Corp., PCM Architect PLLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "The architect who prepared the report in Part II and who executed the Certification in Part II is Basic Groups Corp., PCM Architect PLLC, 174 Avenue S, Brooklyn, NY, 11223."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 7098,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 121,
+   "file_id": 13785,
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P6",
+    "quote": "an amount equal to two (2) months Common Charges from each Purchaser",
+    "why": "Matches exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 1721,
+   "field": "principal",
+   "stored": {
+    "name": "Guan Yu Li",
+    "kind": "person",
+    "role": "sole principal",
+    "parent_entity": null
+   },
+   "page_no": 123,
+   "file_id": 13785,
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P8",
+    "quote": "The sole Principal of the Sponsor is Guan Yu Li",
+    "why": "Matches exactly"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD210150",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "W2350 REALTY LLC",
+   "check": {
+    "n": 8,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "W2350 REALTY LLC",
+    "why": "Matches cover page"
+   },
+   "blind": {
+    "value": "W2350 Realty LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P8",
+    "quote": "The Sponsor is W2350 Realty LLC, a New York limited liability company with an address at 2307 W 13th Street, Brooklyn, New York, 11223."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD210150",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "MORITT HOCK & HAMROFF, LLP",
+   "check": {
+    "n": 9,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "MORITT HOCK & HAMROFF LLP",
+    "why": "Matches cover page (minor comma difference in claim is not a printed spelling issue)"
+   },
+   "blind": {
+    "value": "Moritt Hock & Hamroff LLP",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P9",
+    "quote": "Moritt Hock & Hamroff LLP, 1407 Broadway, 39th Floor, New York, NY 10018, counsel to the Sponsor"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 33342
+}

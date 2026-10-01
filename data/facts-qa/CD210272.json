@@ -1,0 +1,322 @@
+{
+ "plan_id": "CD210272",
+ "checked_at": "2026-10-01T22:06:28.048Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 15456,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 15456,
+   "page_no": 4,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 15456,
+   "page_no": 25,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 15456,
+   "page_no": 41,
+   "why": [
+    "tax_consultant"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 15456,
+   "page_no": 121,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 15456,
+   "page_no": 125,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 15456,
+   "page_no": 126,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 15456,
+   "page_no": 129,
+   "why": [
+    "managing_agent"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": {
+   "value": "Angelo Ng & Anthony Ng Architects Studio, PC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P6",
+   "quote": "Angelo Ng, RA AIA of Angelo Ng & Anthony Ng Architects Studio, PC"
+  },
+  "selling_agent": {
+   "value": "849 Madison Court LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P7",
+   "quote": "Sponsor has not retained a Selling Agent for this property. Sponsor will be the Selling Agent."
+  },
+  "managing_agent": null,
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "Eial Girtz, PC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P6",
+   "quote": "Sponsor has retained the law firm of Eial Girtz, PC, with offices at 11 Grace Avenue, Suite 309, Great Neck, New York 11021"
+  },
+  "sponsor": {
+   "value": "849 Madison Court LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "Sponsor: 849 Madison Court LLC"
+  },
+  "sponsor_address": {
+   "value": "181 Mason Drive, Manhasset, NY 11030",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "181 Mason Drive\nManhasset, NY 11030"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 6910,
+   "field": "selling_agent",
+   "page_no": 126,
+   "score": 1
+  },
+  {
+   "id": 6911,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 6912,
+   "field": "working_capital",
+   "page_no": 121,
+   "score": 1
+  },
+  {
+   "id": 11438,
+   "field": "architect",
+   "page_no": 125,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 6910,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "849 Madison Court LLC",
+   "page_no": 126,
+   "file_id": 15456,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "Sponsor has not retained a Selling Agent; Sponsor will be the Selling Agent",
+    "page": "P7",
+    "quote": "Sponsor has not retained a Se ll ing Agent for t his property. Sp onsor will be the Selling Agent.",
+    "why": "P7 states Sponsor itself is acting as Selling Agent, not that '849 Madison Court LLC' is named as a distinct selling agent role—though same entity, the claim mischaracterizes; pages show no separate selling agent retained"
+   },
+   "blind": {
+    "value": "849 Madison Court LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P7",
+    "quote": "Sponsor has not retained a Selling Agent for this property. Sponsor will be the Selling Agent."
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B",
+     "C"
+    ],
+    "close": [],
+    "printed": "Sponsor (849 Madison Court LLC); Sponsor has not retained a Selling Agent",
+    "page": "P7",
+    "quote": "Sponsor has not retained a Selling Agent for this property. Sponsor will be the Selling Agent.",
+    "sure": true,
+    "why": "P7 says the Sponsor is the Selling Agent, and P6 names the Sponsor as 849 Madison Court LLC. All three candidates name that party correctly."
+   },
+   "candidates": [
+    "849 Madison Court LLC",
+    "Sponsor has not retained a Selling Agent; Sponsor will be the Selling Agent",
+    "849 Madison Court LLC (the Sponsor itself)"
+   ],
+   "stored_letter": "A",
+   "printed": "Sponsor (849 Madison Court LLC); Sponsor has not retained a Selling Agent",
+   "printed_page": {
+    "file_id": 15456,
+    "page_no": 126
+   },
+   "printed_quote": "Sponsor has not retained a Selling Agent for this property. Sponsor will be the Selling Agent.",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 6911,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "181 Mason Drive, Manhasset, NY 11030",
+   "page_no": 1,
+   "file_id": 15456,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "181 Mason Drive, Manhasset, NY 11030",
+    "why": "matches cover page address"
+   },
+   "blind": {
+    "value": "181 Mason Drive, Manhasset, NY 11030",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "181 Mason Drive\nManhasset, NY 11030"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 6912,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 121,
+   "file_id": 15456,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P5",
+    "quote": "such P ur chaser sh all pay a sum equa l to tw o m on th s Co m m on C h ar ges to the Bo ard of Managers f or its wo r ki ng capit a l",
+    "why": "matches"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11438,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Angelo Ng, R.A., AIA of Angelo Ng & Anthony Ng Architects Studio, PC",
+   "page_no": 125,
+   "file_id": 15456,
+   "check": {
+    "n": 4,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P6",
+    "quote": "A ngel o Ng, R A AIA of A ngelo Ng & A n thony Ng A rchi tects Studio, PC",
+    "why": "matches, prepared floor plans and report"
+   },
+   "blind": {
+    "value": "Angelo Ng & Anthony Ng Architects Studio, PC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P6",
+    "quote": "Angelo Ng, RA AIA of Angelo Ng & Anthony Ng Architects Studio, PC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD210272",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "849 MADISON COURT LLC",
+   "check": {
+    "n": 5,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "849 Madi son C ourt LLC",
+    "why": "matches cover page"
+   },
+   "blind": {
+    "value": "849 Madison Court LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "Sponsor: 849 Madison Court LLC"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD210272",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "EIAL GIRTZ, PC",
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P6",
+    "quote": "E ia l Girtz , P C",
+    "why": "matches as Sponsor's counsel"
+   },
+   "blind": {
+    "value": "Eial Girtz, PC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P6",
+    "quote": "Sponsor has retained the law firm of Eial Girtz, PC, with offices at 11 Grace Avenue, Suite 309, Great Neck, New York 11021"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 3,
+ "tokens": 43580
+}

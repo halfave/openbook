@@ -1,0 +1,173 @@
+{
+ "plan_id": "CD230223",
+ "checked_at": "2026-10-01T23:14:29.476Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 27177,
+   "page_no": 1,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 27177,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 27177,
+   "page_no": 344,
+   "why": [
+    "cited"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": null,
+  "selling_agent": null,
+  "managing_agent": null,
+  "tax_consultant": null,
+  "sponsor_attorney": null,
+  "sponsor": null,
+  "sponsor_address": null
+ },
+ "quote_checks": [],
+ "results": [
+  {
+   "table": "sponsor_principals",
+   "id": 2196,
+   "field": "principal",
+   "stored": {
+    "name": "NOT STATED",
+    "kind": "entity",
+    "role": null,
+    "parent_entity": null
+   },
+   "page_no": 344,
+   "file_id": 27177,
+   "check": {
+    "n": 1,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": null,
+    "quote": null,
+    "why": "P3 lists sponsor's principals as certifying parties but no names are given in the OCR text; garbled P1/P2 pages don't clearly state a principal name"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A"
+    ],
+    "close": [],
+    "printed": null,
+    "page": "P3",
+    "quote": "We are the Sponsor and the principals of the Sponsor of the Condominium Offering Plan",
+    "sure": false,
+    "why": "P3 is the first page of the Sponsor certification and names no principal. The signature block is probably on a later page that wasn't provided, so no principal is stated on these pages.",
+    "from_images": true
+   },
+   "candidates": [
+    "NOT STATED"
+   ],
+   "stored_letter": "A",
+   "printed": null,
+   "printed_page": {
+    "file_id": 27177,
+    "page_no": 344
+   },
+   "printed_quote": "We are the Sponsor and the principals of the Sponsor of the Condominium Offering Plan",
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD230223",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "272123 CRESCENT STREET LLC",
+   "check": {
+    "n": 2,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": null,
+    "quote": null,
+    "why": "Cover pages P1 and P2 are heavily garbled OCR with no legible sponsor entity name; P3 does not name the Sponsor entity, only the property address"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 2,
+    "accurate": [
+     "A"
+    ],
+    "close": [],
+    "printed": "272123 Crescent Street LLC",
+    "page": "P1",
+    "quote": "SPONSOR 272123 Crescent Street LLC",
+    "sure": true,
+    "why": "The cover page names the Sponsor as 272123 Crescent Street LLC, which matches the candidate.",
+    "from_images": true
+   },
+   "candidates": [
+    "272123 CRESCENT STREET LLC"
+   ],
+   "stored_letter": "A",
+   "printed": "272123 Crescent Street LLC",
+   "printed_page": {
+    "file_id": 27177,
+    "page_no": 1
+   },
+   "printed_quote": "SPONSOR 272123 Crescent Street LLC",
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD230223",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "HC LAW & ASSOCIATES, P.C.",
+   "check": {
+    "n": 3,
+    "verdict": "unverifiable",
+    "fix": null,
+    "page": null,
+    "quote": null,
+    "why": "No legible attorney/counsel name appears in the garbled P1/P2 cover pages or P3"
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 3,
+    "accurate": [
+     "A"
+    ],
+    "close": [],
+    "printed": "HC Law & Associates P.C.",
+    "page": "P1",
+    "quote": "SPONSOR'S ATTORNEY HC Law & Associates P.C.",
+    "sure": true,
+    "why": "The cover page lists the Sponsor's attorney as HC Law & Associates P.C. The candidate differs only in capitalization and punctuation.",
+    "from_images": true
+   },
+   "candidates": [
+    "HC LAW & ASSOCIATES, P.C."
+   ],
+   "stored_letter": "A",
+   "printed": "HC Law & Associates P.C.",
+   "printed_page": {
+    "file_id": 27177,
+    "page_no": 1
+   },
+   "printed_quote": "SPONSOR'S ATTORNEY HC Law & Associates P.C.",
+   "verdict": "verified"
+  }
+ ],
+ "calls": 4,
+ "tokens": 33383
+}

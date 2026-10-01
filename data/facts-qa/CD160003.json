@@ -1,0 +1,426 @@
+{
+ "plan_id": "CD160003",
+ "checked_at": "2026-10-01T19:23:50.463Z",
+ "pages": [
+  {
+   "tag": "P1",
+   "file_id": 1124,
+   "page_no": 1,
+   "why": [
+    "cited",
+    "cover",
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P2",
+   "file_id": 1124,
+   "page_no": 2,
+   "why": [
+    "cover"
+   ]
+  },
+  {
+   "tag": "P3",
+   "file_id": 1124,
+   "page_no": 23,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P4",
+   "file_id": 1124,
+   "page_no": 25,
+   "why": [
+    "architect"
+   ]
+  },
+  {
+   "tag": "P5",
+   "file_id": 1124,
+   "page_no": 33,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P6",
+   "file_id": 1124,
+   "page_no": 40,
+   "why": [
+    "managing_agent"
+   ]
+  },
+  {
+   "tag": "P7",
+   "file_id": 1124,
+   "page_no": 53,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P8",
+   "file_id": 1124,
+   "page_no": 55,
+   "why": [
+    "sponsor_attorney"
+   ]
+  },
+  {
+   "tag": "P9",
+   "file_id": 1124,
+   "page_no": 120,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P10",
+   "file_id": 1124,
+   "page_no": 121,
+   "why": [
+    "cited"
+   ]
+  },
+  {
+   "tag": "P11",
+   "file_id": 1124,
+   "page_no": 178,
+   "why": [
+    "selling_agent"
+   ]
+  },
+  {
+   "tag": "P12",
+   "file_id": 1124,
+   "page_no": 327,
+   "why": [
+    "cited"
+   ]
+  }
+ ],
+ "blind": {
+  "architect": null,
+  "selling_agent": {
+   "value": "385 JEFFERSON AVENUE LLC",
+   "by_sponsor": true,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "SPONSOR & SELLING AGENT:\n385 JEFFERSON A VENUE LLC"
+  },
+  "managing_agent": {
+   "value": null,
+   "by_sponsor": false,
+   "by_board": true,
+   "others": [],
+   "page": "P5",
+   "quote": "The unit owners will be responsible for managing the condominium"
+  },
+  "tax_consultant": null,
+  "sponsor_attorney": {
+   "value": "THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P1",
+   "quote": "ATTORNEYS FOR SPONSOR:\nTHE LAW OFFICE OF JAY LICHTMAN, P.C."
+  },
+  "sponsor": {
+   "value": "385 Jefferson Avenue LLC",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [],
+   "page": "P10",
+   "quote": "The Sponsor of this project is 385 Jefferson Avenue LLC, a New York Limited Liability Company"
+  },
+  "sponsor_address": {
+   "value": "101 Broadway Suite #500 Brooklyn, New York 11249",
+   "by_sponsor": false,
+   "by_board": false,
+   "others": [
+    "101 BROADWAY STE 500, BROOKLYN, NEW YORK 11232 (P1)"
+   ],
+   "page": "P10",
+   "quote": "a New York Limited Liability Company with an address at 101 Broadway Suite #500 Brooklyn, New York 11249"
+  }
+ },
+ "quote_checks": [
+  {
+   "id": 340,
+   "field": "selling_agent",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 341,
+   "field": "working_capital",
+   "page_no": 120,
+   "score": 1
+  },
+  {
+   "id": 5837,
+   "field": "sponsor_address",
+   "page_no": 1,
+   "score": 1
+  },
+  {
+   "id": 11288,
+   "field": "architect",
+   "page_no": 327,
+   "score": 1
+  }
+ ],
+ "results": [
+  {
+   "table": "facts",
+   "id": 340,
+   "field": "selling_agent",
+   "column": "value_text",
+   "stored": "385 Jefferson Avenue LLC",
+   "page_no": 1,
+   "file_id": 1124,
+   "check": {
+    "n": 1,
+    "verdict": "wrong",
+    "fix": "385 Jefferson Avenue LLC is both Sponsor and Selling Agent, not just selling agent alone — but naming is correct, role label is incomplete/misleading as 'selling agent' omits Sponsor role",
+    "page": "P1",
+    "quote": "SPONSOR & SELLING AGENT:\n385 JEFFERSON A VENUE LLC",
+    "why": "P1 lists this entity as both Sponsor and Selling Agent; claim labels it only as selling agent, omitting the Sponsor role which changes the meaning."
+   },
+   "blind": {
+    "value": "385 JEFFERSON AVENUE LLC",
+    "by_sponsor": true,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "SPONSOR & SELLING AGENT:\n385 JEFFERSON A VENUE LLC"
+   },
+   "blind_agrees": true,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "B",
+     "C"
+    ],
+    "close": [
+     "A"
+    ],
+    "printed": "385 JEFFERSON AVENUE LLC",
+    "page": "P1",
+    "quote": "SPONSOR & SELLING AGENT: 385 JEFFERSON A VENUE LLC",
+    "sure": true,
+    "why": "The cover names 385 Jefferson Avenue LLC as both Sponsor and Selling Agent; 'A VENUE' is an OCR split. B and C name the party correctly. A identifies the right party, but it is commentary rather than a value."
+   },
+   "candidates": [
+    "385 Jefferson Avenue LLC is both Sponsor and Selling Agent, not just selling agent alone — but naming is correct, role label is incomplete/misleading as 'selling agent' omits Sponsor role",
+    "385 Jefferson Avenue LLC",
+    "385 JEFFERSON AVENUE LLC (the Sponsor itself)"
+   ],
+   "stored_letter": "B",
+   "printed": "385 JEFFERSON AVENUE LLC",
+   "printed_page": {
+    "file_id": 1124,
+    "page_no": 1
+   },
+   "printed_quote": "SPONSOR & SELLING AGENT: 385 JEFFERSON A VENUE LLC",
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 341,
+   "field": "working_capital",
+   "column": "value_text",
+   "stored": "2 months' common charges at closing",
+   "page_no": 120,
+   "file_id": 1124,
+   "check": {
+    "n": 2,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P9",
+    "quote": "equal to two (2) months' estimated common charges for each unit",
+    "why": "Matches exactly."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 5837,
+   "field": "sponsor_address",
+   "column": "value_text",
+   "stored": "101 Broadway, Suite 500, Brooklyn, New York 11232",
+   "page_no": 1,
+   "file_id": 1124,
+   "check": {
+    "n": 3,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "101 BROADWAY STE 500\nBROOKLYN, NEW YORK 11232",
+    "why": "Matches exactly."
+   },
+   "blind": {
+    "value": "101 Broadway Suite #500 Brooklyn, New York 11249",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [
+     "101 BROADWAY STE 500, BROOKLYN, NEW YORK 11232 (P1)"
+    ],
+    "page": "P10",
+    "quote": "a New York Limited Liability Company with an address at 101 Broadway Suite #500 Brooklyn, New York 11249"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "facts",
+   "id": 11288,
+   "field": "architect",
+   "column": "value_text",
+   "stored": "Wu Chen, P.E. (engineer)",
+   "page_no": 327,
+   "file_id": 1124,
+   "check": {
+    "n": 4,
+    "verdict": "wrong",
+    "fix": "Wu Chen, P.E. is the engineer who certified the report, not the architect",
+    "page": "P12",
+    "quote": "Affirmed before me this M_ WuChenP.E.",
+    "why": "P12 shows Wu Chen as a P.E. (engineer) affirming a certification, not identified as the architect; claim mislabels role but the parenthetical (engineer) actually matches — however claim's main label 'architect' is wrong."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 1,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "Wu Chen P.E.",
+    "page": "P12",
+    "quote": "Wu Chen P.E.",
+    "sure": true,
+    "why": "None of the pages names an architect. On P12, Wu Chen P.E. signs the certification about his compensation 'for preparing this Report', and his seal reads 'Licensed Professional Engineer' (No. 084996). P4 calls the report in Part II 'the Engineer's Report and floor plans'. So the report's preparer is an engineer, not an architect. Both A and B say this correctly.",
+    "from_images": true
+   },
+   "candidates": [
+    "Wu Chen, P.E. is the engineer who certified the report, not the architect",
+    "Wu Chen, P.E. (engineer)"
+   ],
+   "stored_letter": "B",
+   "printed": "Wu Chen P.E.",
+   "printed_page": {
+    "file_id": 1124,
+    "page_no": 327
+   },
+   "printed_quote": "Wu Chen P.E.",
+   "verdict": "verified"
+  },
+  {
+   "table": "sponsor_principals",
+   "id": 211,
+   "field": "principal",
+   "stored": {
+    "name": "Nadav Hamo",
+    "kind": "person",
+    "role": "principal",
+    "parent_entity": null
+   },
+   "page_no": 121,
+   "file_id": 1124,
+   "check": {
+    "n": 5,
+    "verdict": "wrong",
+    "fix": "Nadav Hamo is 'the Principal of the Sponsor' (singular), not generically 'principal' in a way that changes meaning — but text says 'The Principals of the Sponsor is Nadav Hamo'",
+    "page": "P10",
+    "quote": "The Principals of the Sponsor is Nadav Hamo.",
+    "why": "Actually matches; role of principal is correct."
+   },
+   "blind": null,
+   "blind_agrees": null,
+   "judge": {
+    "n": 3,
+    "accurate": [
+     "A",
+     "B"
+    ],
+    "close": [],
+    "printed": "Nadav Hamo, Principal of 385 Jefferson Avenue LLC (Sponsor)",
+    "page": "P10",
+    "quote": "The Principals of the Sponsor is Nadav Hamo.",
+    "sure": true,
+    "why": "P10 names Nadav Hamo as the Sponsor's principal and also calls him 'the Principal of the Sponsor'. Both candidates match."
+   },
+   "candidates": [
+    "Nadav Hamo — principal",
+    "Nadav Hamo is 'the Principal of the Sponsor' (singular), not generically 'principal' in a way that changes meaning — but text says 'The Principals of the Sponsor is Nadav Hamo'"
+   ],
+   "stored_letter": "A",
+   "printed": "Nadav Hamo, Principal of 385 Jefferson Avenue LLC (Sponsor)",
+   "printed_page": {
+    "file_id": 1124,
+    "page_no": 121
+   },
+   "printed_quote": "The Principals of the Sponsor is Nadav Hamo.",
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD160003",
+   "field": "sponsor",
+   "column": "sponsor",
+   "stored": "385 JEFFERSON AVENUE LLC",
+   "check": {
+    "n": 6,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "385 JEFFERSON A VENUE LLC",
+    "why": "Matches cover page sponsor name."
+   },
+   "blind": {
+    "value": "385 Jefferson Avenue LLC",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P10",
+    "quote": "The Sponsor of this project is 385 Jefferson Avenue LLC, a New York Limited Liability Company"
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  },
+  {
+   "table": "plans",
+   "id": "CD160003",
+   "field": "law_firm",
+   "column": "law_firm",
+   "stored": "THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+   "check": {
+    "n": 7,
+    "verdict": "correct",
+    "fix": null,
+    "page": "P1",
+    "quote": "THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+    "why": "Matches cover page attorneys for Sponsor."
+   },
+   "blind": {
+    "value": "THE LAW OFFICE OF JAY LICHTMAN, P.C.",
+    "by_sponsor": false,
+    "by_board": false,
+    "others": [],
+    "page": "P1",
+    "quote": "ATTORNEYS FOR SPONSOR:\nTHE LAW OFFICE OF JAY LICHTMAN, P.C."
+   },
+   "blind_agrees": true,
+   "verdict": "verified"
+  }
+ ],
+ "calls": 4,
+ "tokens": 159040
+}
