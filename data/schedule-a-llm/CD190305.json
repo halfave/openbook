@@ -1,0 +1,172 @@
+{
+ "plan_id": "CD190305",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 1,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "hold",
+   "units": 14,
+   "failed": [
+    "ag",
+    "printed",
+    "pct100",
+    "sqftTotal",
+    "monthlyTotals",
+    "allRowsParsed",
+    "outdoor"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "hold",
+   "units": 14,
+   "failed": [
+    "ag",
+    "printed",
+    "pct100",
+    "sqftTotal",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 3,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 11621,
+   "output_tokens": 2487,
+   "seconds": 165,
+   "cost_usd": 0.044051
+  },
+  {
+   "model": "sonnet",
+   "tokens": 6855,
+   "output_tokens": 2285,
+   "seconds": 18,
+   "cost_usd": 0.041126
+  },
+  {
+   "model": "sonnet",
+   "tokens": 26046,
+   "output_tokens": 2376,
+   "seconds": 90,
+   "cost_usd": 0.05733540000000001
+  }
+ ],
+ "tokens": 44522,
+ "api_equiv_usd": 0.143,
+ "located_pages": [
+  52
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "hold",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": null,
+  "ccProportional": null,
+  "carrying": true,
+  "sqftTotal": null,
+  "monthlyTotals": false,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": true
+ },
+ "price_total": 14.11,
+ "step": "sonnet-text",
+ "budget_period": "OCTOBER 1, 2020 - SEPTEMBER 30, 2021",
+ "columns_printed": [
+  "Unit",
+  "Bdrm/Off/Bths (Note 1)",
+  "Unit. Sq. Ftg. (Note 2)",
+  "Ext. Sq. Ftg. (Note 2)",
+  "Ext. Sq. Ftg Balcony (Note 2)",
+  "Ext. Sq. Ftg. Terrace (Note 2)",
+  "Unit Sq. Ftg (Cellar Portion) (Note 2)",
+  "Percent of Common Interest (Note 3)",
+  "Percent Residential Common Interest (Note 4)",
+  "Offering Price (Note 5)",
+  "Monthly Common Charges w/o Sponsor Wkg Cap. (Note 6)",
+  "Annual Common Charges w/o Sponsor Wkg. Capital (Note 6)",
+  "Real Estate Taxes (Mthly) First Year (Note 7)",
+  "Real Estate Taxes (Annual) First Year (Note 7)",
+  "First Yr. Monthly Common Charges w/out Sponsor Wkg. Capital and Real Estate Taxes (Note 8)",
+  "First Year Ann. Common Charges w/out Sponsor Wkg. Capital and Real Estate Taxes (Note 8)"
+ ],
+ "tax2": null,
+ "sf2": "cellar portion",
+ "printed_totals": {
+  "price": 59285757,
+  "pct": 100,
+  "cc_m": 28646.34,
+  "tax_m": 26029.87,
+  "int_sf": 26380,
+  "ext_sf": 4546
+ },
+ "problems": [
+  "row with 19 cells dropped: U\tDuplex\t-\t-\t2363\t1343\t-\t1227\t-\t9.83\t11.44\t5350000\t3130.67\t37567.98\t2587.25\t3104",
+  "row with 19 cells dropped: U\t2E\t-\t-\t1288\t-\t-\t-\t-\t4.35\t5.06\t2662225\t1384.72\t16616.61\t1144.36\t13732.35\t-\t2529",
+  "row with 19 cells dropped: U\t3E\t-\t-\t1288\t-\t-\t-\t-\t4.40\t5.12\t2694300\t1401.14\t16813.64\t1157.93\t13895.18\t-\t2559",
+  "row with 19 cells dropped: U\t4W\t-\t-\t1192\t123\t-\t-\t-\t4.11\t4.78\t2515863\t1308.09\t15697.11\t1081.04\t12972.45\t-\t23",
+  "row with 19 cells dropped: U\t4E\t-\t-\t1288\t-\t-\t-\t-\t4.45\t5.18\t2726375\t1417.56\t17010.68\t1171.50\t14058.01\t-\t2589",
+  "row with 19 cells dropped: U\t5W\t-\t-\t1192\t123\t-\t-\t-\t4.16\t4.84\t2546544\t1324.51\t15894.15\t1094.61\t13135.29\t-\t24",
+  "row with 19 cells dropped: U\t5E\t-\t-\t1288\t-\t-\t-\t-\t4.50\t5.24\t2758450\t1433.98\t17207.71\t1185.07\t14220.85\t-\t2619",
+  "row with 19 cells dropped: U\t6W\t-\t-\t1192\t123\t-\t-\t-\t4.21\t4.90\t2577225\t1340.93\t16091.18\t1108.18\t13298.12\t-\t24",
+  "row with 19 cells dropped: U\t6E\t-\t-\t1288\t-\t-\t-\t-\t4.64\t5.41\t2790525\t1480.50\t17765.98\t1223.52\t14682.21\t-\t2704",
+  "row with 19 cells dropped: U\t7\t-\t-\t2374\t375\t116\t259\t-\t9.04\t10.52\t5506600\t2878.90\t34546.78\t2379.19\t28550.25\t",
+  "row with 19 cells dropped: U\t8\t-\t-\t2508\t242\t116\t126\t-\t10.02\t11.66\t6108750\t3190.87\t38290.44\t2637.01\t31644.10",
+  "row with 19 cells dropped: U\t9\t-\t-\t2374\t375\t116\t259\t-\t9.45\t11.02\t5756900\t3015.73\t36188.74\t2492.27\t29907.20\t",
+  "row with 19 cells dropped: U\t10\t-\t-\t2508\t1842\t116\t1726\t-\t12.74\t14.83\t7792000\t4058.37\t48700.45\t3353.93\t40247",
+  "row with 19 cells dropped: U\tST-1\t-\t-\t37\t-\t-\t-\t-\t-\t-\t25900\t-\t-\t-\t-\t-\t-\t52\tstorage unit; license purchase",
+  "row with 19 cells dropped: U\tST-2\t-\t-\t35\t-\t-\t-\t-\t-\t-\t24500\t-\t-\t-\t-\t-\t-\t52\tstorage unit; license purchase",
+  "row with 19 cells dropped: U\tST-3\t-\t-\t35\t-\t-\t-\t-\t-\t-\t24500\t-\t-\t-\t-\t-\t-\t52\tstorage unit; license purchase",
+  "row with 19 cells dropped: U\tST-4\t-\t-\t32\t-\t-\t-\t-\t-\t-\t22400\t-\t-\t-\t-\t-\t-\t52\tstorage unit; license purchase",
+  "row with 19 cells dropped: U\tST-5\t-\t-\t34\t-\t-\t-\t-\t-\t-\t23800\t-\t-\t-\t-\t-\t-\t52\tstorage unit; license purchase",
+  "row with 19 cells dropped: U\tST-6\t-\t-\t35\t-\t-\t-\t-\t-\t-\t24500\t-\t-\t-\t-\t-\t-\t52\tstorage unit; license purchase",
+  "row with 19 cells dropped: U\tST-7\t-\t-\t28\t-\t-\t-\t-\t-\t-\t19600\t-\t-\t-\t-\t-\t-\t52\tstorage unit; license purchase",
+  "row with 19 cells dropped: U\tST-8\t-\t-\t34\t-\t-\t-\t-\t-\t-\t23800\t-\t-\t-\t-\t-\t-\t52\tstorage unit; license purchase",
+  "row with 19 cells dropped: U\tST-9\t-\t-\t98\t-\t-\t-\t-\t-\t-\t78400\t-\t-\t-\t-\t-\t-\t52\tstorage unit; license purchase",
+  "row with 19 cells dropped: U\tST-10\t-\t-\t98\t-\t-\t-\t-\t-\t-\t78400\t-\t-\t-\t-\t-\t-\t52\tstorage unit; license purchase",
+  "row with 19 cells dropped: U\tST-11\t-\t-\t101\t-\t-\t-\t-\t-\t-\t80800\t-\t-\t-\t-\t-\t-\t52\tstorage unit; license purchase",
+  "row with 19 cells dropped: U\tST-12\t-\t-\t103\t-\t-\t-\t-\t-\t-\t82400\t-\t-\t-\t-\t-\t-\t52\tstorage unit; license purchase",
+  "row with 19 cells dropped: U\tST-13\t-\t-\t97\t-\t-\t-\t-\t-\t-\t77600\t-\t-\t-\t-\t-\t-\t52\tstorage unit; license purchase",
+  "Retail unit number not printed (labeled \"Retail\"); used \"Retail\" as unit id. Retail row pct blank in source but pct2 shows 14.11%, uncertain which column it belongs to so placed in pct2. Duplex unit number not printed; used \"Duplex\" as unit id. int_sf column header is ambiguous (labeled \"Unit Sq. Ftg.\" with no distinct interior/gross distinction) — used as int_sf per instructions; cellar column present only for Duplex unit (1227) placed as sf2 but table's only cellar values given match Ext. Sq. Ftg. Terrace column, so cellar portion note may be imprecise. Total row's ext_sf totals (4546, 949, 3597) could not be cleanly mapped to a single ext_sf total field; reported combined figure 4546 as printed total for Ext. Sq. Ftg."
+ ],
+ "units": [
+  {
+   "unit": "Retail",
+   "type": "other",
+   "floor": null,
+   "rooms": 4237,
+   "beds": null,
+   "baths": 2294,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 14.11,
+   "pct": null,
+   "pct2": 7500000,
+   "cc_m": 1280.39,
+   "cc_a": 15364.66,
+   "tax_m": 3414.02,
+   "tax_a": 40968.21,
+   "tax2_m": null,
+   "carry_m": 4694.41,
+   "page": 52,
+   "note": null
+  }
+ ]
+}

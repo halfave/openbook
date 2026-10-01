@@ -1,0 +1,140 @@
+{
+ "plan_id": "CD160329",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "publish_ag",
+   "units": 3,
+   "failed": []
+  }
+ ],
+ "calls": 1,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4107,
+   "output_tokens": 671,
+   "seconds": 9,
+   "cost_usd": 0.02045
+  }
+ ],
+ "tokens": 4107,
+ "api_equiv_usd": 0.02,
+ "located_pages": [
+  28
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": null,
+  "monthlyTotals": true,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 3373999,
+ "step": "sonnet-text",
+ "budget_period": "April 1, 2017",
+ "columns_printed": [
+  "Unit No.",
+  "Floor Location",
+  "Approx. Total Area (I)",
+  "Approx. Outdoor/L.C.E Area (I)",
+  "No.of Bedooms/Bathrooms (2)",
+  "Offering Price (3)",
+  "Percent Common Interest (4)",
+  "Projected Monthly Common Charges (5)",
+  "Projected Real Estate Taxes (Monthly) (5)",
+  "Projected Real Estate Taxes (Annual) (5)",
+  "Projected Carrying Charges (Monthly) (6)"
+ ],
+ "tax2": null,
+ "sf2": "cellar",
+ "printed_totals": {
+  "price": 3373999,
+  "pct": 100,
+  "cc_m": 2020.84,
+  "tax_m": 707.37,
+  "int_sf": 1788,
+  "ext_sf": 1716
+ },
+ "problems": [
+  "Unit 1 floor area line shows \"1782\" then \"/Cellar 654*\" on a separate line; interpreted 1782 as interior (int_sf) and 654 as cellar (sf2). Total area column total \"1788\" vs sum of individual unit areas (1782+894+894=3570) does not match; printed total row area values (1788 and 1716) transcribed as printed without correction. Outdoor/L.C.E. area for Units 2 and 3 not separately itemized (only \"R\" roof code with no numeric area printed), so ext_sf left blank and noted.",
+  "unit sizes left out: the area columns did not add up to the printed totals"
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": "First Floor/Basement/Cellar",
+   "rooms": null,
+   "beds": 4,
+   "baths": 3.5,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 1599999,
+   "pct": 50,
+   "pct2": null,
+   "cc_m": 1010.42,
+   "cc_a": 4244.25,
+   "tax_m": 353.69,
+   "tax_a": null,
+   "tax2_m": null,
+   "carry_m": 1364.11,
+   "page": 28,
+   "note": "Back Yard (BY) and Terrace (61(T)) as L.C.E."
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "2nd Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 1.5,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 875000,
+   "pct": 25,
+   "pct2": null,
+   "cc_m": 505.21,
+   "cc_a": 2122.12,
+   "tax_m": 176.84,
+   "tax_a": null,
+   "tax2_m": null,
+   "carry_m": 682.05,
+   "page": 28,
+   "note": "Roof (R) portion as L.C.E."
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": "3rd Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 899000,
+   "pct": 25,
+   "pct2": null,
+   "cc_m": 505.21,
+   "cc_a": 2122.12,
+   "tax_m": 176.84,
+   "tax_a": null,
+   "tax2_m": null,
+   "carry_m": 682.05,
+   "page": 28,
+   "note": "Roof (R) portion as L.C.E."
+  }
+ ]
+}

@@ -1,0 +1,177 @@
+{
+ "plan_id": "CD240073",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "hold",
+   "units": 3,
+   "failed": [
+    "monthlyTotals",
+    "outdoor"
+   ]
+  },
+  {
+   "step": "sonnet-images-think",
+   "verdict": "hold",
+   "units": 3,
+   "failed": [
+    "monthlyTotals"
+   ]
+  }
+ ],
+ "calls": 3,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 3964,
+   "output_tokens": 487,
+   "seconds": 7,
+   "cost_usd": 0.018774
+  },
+  {
+   "model": "sonnet",
+   "tokens": 13856,
+   "output_tokens": 1205,
+   "seconds": 12,
+   "cost_usd": 0.0392836
+  },
+  {
+   "model": "sonnet",
+   "tokens": 31346,
+   "output_tokens": 3134,
+   "seconds": 201,
+   "cost_usd": 0.06175760000000001
+  }
+ ],
+ "tokens": 49166,
+ "api_equiv_usd": 0.12,
+ "located_pages": [
+  48
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "hold",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": false,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": false
+ },
+ "price_total": 9200000,
+ "step": "sonnet-images",
+ "budget_period": "January 1, 2025 through December 31, 2025",
+ "columns_printed": [
+  "Unit",
+  "Number of Bedrooms",
+  "Number of Baths",
+  "Square Footage of Each Unit Listed by Floor",
+  "Total Square Footage",
+  "*Square Footage Terrace Top Limited Common Element",
+  "*Square Footage Rear Yard Limited Common Element",
+  "*Square Footage Rear Garage Limited Common Element",
+  "Total Square Footage Including Limited Common Elements",
+  "Estimated Offering Price",
+  "Percentage of Common Interest",
+  "**Projected Monthly Real Estate Tax",
+  "**Projected Annual Real Estate Tax",
+  "Projected Monthly Common Charges",
+  "Projected Annual Common Charges",
+  "Total Estimated Monthly Carrying Charges"
+ ],
+ "tax2": null,
+ "sf2": "total sf including limited common elements",
+ "printed_totals": {
+  "price": 9200000,
+  "pct": 100,
+  "cc_m": 1719,
+  "tax_m": 1064.91,
+  "int_sf": 5670,
+  "ext_sf": 927
+ },
+ "problems": [
+  "Table has three separate outdoor LCE columns (Terrace Top, Rear Yard, Rear Garage) rather than one ext_sf column; listed in note per unit instead. \"Total Square Footage\" (interior, incl. terrace/yard/garage subtotal before floor split) used as int_sf; \"Total Square Footage Including Limited Common Elements\" used as sf2 per instructions (second area column). TOTAL ext_sf row uses printed Rear Garage total (927); Terrace Top total (1,481) and Rear Yard total (273) also printed but only one column allowed."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": "Cellar/1st Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 2238,
+   "sf2": 2758,
+   "ext_sf": null,
+   "price": 2850000,
+   "pct": 35,
+   "pct2": null,
+   "cc_m": 372.72,
+   "cc_a": 4472.65,
+   "tax_m": 601.67,
+   "tax_a": 7220,
+   "tax2_m": null,
+   "carry_m": 974.39,
+   "page": 48,
+   "note": "Sq ft by floor: Cellar 1,129, 1st Floor 1,109; Terrace Top 0, Rear Yard 273, Rear Garage 247"
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "2nd Floor",
+   "rooms": null,
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1130,
+   "sf2": 1464,
+   "ext_sf": null,
+   "price": 2100000,
+   "pct": 20,
+   "pct2": null,
+   "cc_m": 212.98,
+   "cc_a": 2555.8,
+   "tax_m": 343.83,
+   "tax_a": 4126,
+   "tax2_m": null,
+   "carry_m": 556.82,
+   "page": 48,
+   "note": "Terrace Top 334, Rear Yard 0, Rear Garage 0"
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": "3rd Floor/4th Floor",
+   "rooms": null,
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 2302,
+   "sf2": 4129,
+   "ext_sf": null,
+   "price": 4250000,
+   "pct": 45,
+   "pct2": null,
+   "cc_m": 479.21,
+   "cc_a": 5750.55,
+   "tax_m": 773.58,
+   "tax_a": 9283,
+   "tax2_m": null,
+   "carry_m": 1252.8,
+   "page": 48,
+   "note": "Sq ft by floor: 3rd Floor 1,278, 4th Floor 1,024; Terrace Top 1,147, Rear Yard 0, Rear Garage 680"
+  }
+ ]
+}

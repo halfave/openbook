@@ -82,8 +82,10 @@
 
 
   // ---------- Units & prices (Schedule A) ----------
-  // Read from the plan's Schedule A table by pattern matching (scripts/extract-schedule-a.mjs); a file exists
-  // only for plans whose unit prices add up to the AG record's total offering price.
+  // Read from the plan's Schedule A table (scripts/extract-schedule-a.mjs by pattern matching, or
+  // scripts/extract-schedule-a-llm.mjs by a model); a file exists only for tables that passed their checks.
+  // Files from the model also carry unit type, floor, outdoor space and first-year monthly charges and taxes;
+  // a column is shown only when the building's file has it.
   const abox = document.getElementById("scheda");
   const aDone = abox ? loadScheduleA(abox) : null;
   async function loadScheduleA(box) {
@@ -101,14 +103,20 @@
     const typeLabel = (b, ba) => b == null ? "Not stated"
       : b === 0 ? (ba == null || ba <= 1 ? "Studio" : `Studio/${ba}BA`)
       : ba == null ? `${b}BD (baths not stated)` : `${b}BD/${ba}BA`;
-    // Parking, storage and commercial rows: a retail / commercial / storage / parking name, no bedroom count and a
-    // P1 / S-2 / G3 / C1-style unit number, or too small or cheap to be a home. Listed after the homes, left out of the summary.
-    const isOther = (u) => /^(retail|commercial|storage|parking|garage)/i.test(u.unit)
+    // Parking, storage and commercial rows are listed after the homes and left out of the summary. Model files say
+    // which is which; for pattern-matched files: a retail / commercial / storage / parking name, no bedroom count and a
+    // P1 / S-2 / G3 / C1-style unit number, or too small or cheap to be a home. Units without a price aren't for sale.
+    const isOther = (u) => u.type ? u.type !== "residential" || u.price == null
+      : /^(retail|commercial|storage|parking|garage)/i.test(u.unit)
       || (u.beds == null && /^(p(?!h)|s|g|c|r|com|stor|park)[\s-]?\d/i.test(u.unit))
       || (u.sqft != null && u.sqft < 400) || u.price < 200000 || (u.sqft == null && u.beds == null);
     const homes = units.filter((u) => !isOther(u));
     const other = units.filter(isOther);
-    const psf = (u) => (u.sqft ? u.price / u.sqft : null);
+    const psf = (u) => (u.sqft && u.price ? u.price / u.sqft : null);
+    // First-year monthly cost: common charges plus real estate taxes, or the printed carrying charge.
+    const monthly = (u) => u.cc_m != null && u.tax_m != null ? u.cc_m + u.tax_m : u.carry_m ?? null;
+    const has = (k) => units.some((u) => u[k] != null);
+    const hasMonthly = homes.some((u) => monthly(u) != null);
 
     // Summary by home type (bedrooms, then baths).
     const groups = new Map();
@@ -120,21 +128,38 @@
     const summary = [...groups].sort((a, b) => { const x = order(a), y = order(b); return x[0] - y[0] || x[1] - y[1]; }).map(([k, list]) => {
       const sizes = list.map((u) => u.sqft).filter((x) => x != null);
       const per = list.map(psf).filter((x) => x != null);
+      const mo = list.map(monthly).filter((x) => x != null);
       return `<tr><th scope="row">${esc(k)}</th><td class="n">${list.length}</td>` +
         `<td class="n">${sizes.length ? fmtRange(range(sizes), sf) + " sf" : "—"}</td>` +
-        `<td class="n">${fmtRange(range(list.map((u) => u.price)), $)}</td><td class="n">${per.length ? $(avg(per)) : "—"}</td></tr>`;
+        `<td class="n">${fmtRange(range(list.map((u) => u.price)), $)}</td><td class="n">${per.length ? $(avg(per)) : "—"}</td>` +
+        (hasMonthly ? `<td class="n">${mo.length ? fmtRange(range(mo), $) : "—"}</td>` : "") + `</tr>`;
     }).join("");
 
     const pdf = box.dataset.pdf;
     const cite = [...new Set(units.map((u) => u.page))].sort((a, b) => a - b)
       .map((p) => pdf ? `<a href="${esc(pdf)}#page=${p}" rel="noopener">p. ${p}</a>` : `p. ${p}`).join(", ");
-    const unitRow = (u) => `<tr><th scope="row">${esc(u.unit)}</th><td>${u.beds == null ? "—" : u.beds === 0 ? "Studio" : u.beds}</td><td>${u.baths ?? "—"}</td>` +
-      `<td class="n">${sf(u.sqft)}</td><td class="n">${$(u.price)}</td><td class="n">${psf(u) ? $(psf(u)) : "—"}</td><td class="n">${u.pct != null ? u.pct + "%" : "—"}</td></tr>`;
+    // Unit table columns: [heading, cell, numeric]; optional ones only when some unit has the value.
+    const cols = [
+      ["Unit", (u) => esc(u.unit), false],
+      has("floor") && ["Floor", (u) => esc(u.floor ?? "—"), false],
+      ["Beds", (u) => u.beds == null ? "—" : u.beds === 0 ? "Studio" : u.beds, false],
+      ["Baths", (u) => u.baths ?? "—", false],
+      ["Sq ft", (u) => sf(u.sqft), true],
+      has("outdoor_sqft") && ["Outdoor sf", (u) => sf(u.outdoor_sqft), true],
+      ["Price", (u) => $(u.price), true],
+      ["$/sf", (u) => psf(u) ? $(psf(u)) : "—", true],
+      ["Common interest", (u) => u.pct != null ? u.pct + "%" : "—", true],
+      has("cc_m") && ["Common charges /mo", (u) => $(u.cc_m), true],
+      has("tax_m") && ["Taxes /mo", (u) => $(u.tax_m), true],
+    ].filter(Boolean);
+    const unitRow = (u) => "<tr>" + cols.map(([, f, n], i) => i === 0 ? `<th scope="row">${f(u)}</th>` : `<td${n ? ' class="n"' : ""}>${f(u)}</td>`).join("") + "</tr>";
+    const otherKinds = [...new Set(other.map((u) => u.type).filter(Boolean))].join(", ") || "parking, storage";
+    const costNote = hasMonthly ? ` Monthly costs are the sponsor's first-year estimates of common charges plus real estate taxes${row.budget_period ? ` (${esc(row.budget_period)})` : ""}.` : "";
 
-    box.innerHTML = `<p class="src">The sponsor's offering prices from Schedule A of the original plan (${cite}). Amendments can change prices; this is the plan as first offered. ${homes.length} homes${other.length ? `, ${other.length} other units (parking, storage)` : ""}, ${$(row.price_total)} in total.</p>` +
-      `<div class="tscroll"><table class="sa-sum"><thead><tr><th>Type</th><th class="n">Units</th><th class="n">Size</th><th class="n">Price</th><th class="n">Avg $/sf</th></tr></thead><tbody>${summary}</tbody></table></div>` +
+    box.innerHTML = `<p class="src">The sponsor's offering prices from Schedule A of the original plan (${cite}). Amendments can change prices; this is the plan as first offered. ${homes.length} homes${other.length ? `, ${other.length} other units (${esc(otherKinds)})` : ""}, ${$(row.price_total)} in total.${costNote}</p>` +
+      `<div class="tscroll"><table class="sa-sum"><thead><tr><th>Type</th><th class="n">Units</th><th class="n">Size</th><th class="n">Price</th><th class="n">Avg $/sf</th>${hasMonthly ? '<th class="n">Monthly costs</th>' : ""}</tr></thead><tbody>${summary}</tbody></table></div>` +
       `<details class="sa-all"${units.length <= 12 ? " open" : ""}><summary>All ${units.length} units</summary>` +
-      `<div class="tscroll"><table class="sa-units"><thead><tr><th>Unit</th><th>Beds</th><th>Baths</th><th class="n">Sq ft</th><th class="n">Price</th><th class="n">$/sf</th><th class="n">Common interest</th></tr></thead>` +
+      `<div class="tscroll"><table class="sa-units"><thead><tr>${cols.map(([h, , n]) => `<th${n ? ' class="n"' : ""}>${h}</th>`).join("")}</tr></thead>` +
       `<tbody>${[...homes, ...other].map(unitRow).join("")}</tbody></table></div></details>`;
     box.closest("section").hidden = false;
   }

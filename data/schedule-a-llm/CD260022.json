@@ -1,0 +1,156 @@
+{
+ "plan_id": "CD260022",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 1,
+   "failed": [
+    "pct100",
+    "sqftTotal",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "hold",
+   "units": 2,
+   "failed": [
+    "carrying"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "publish_ag",
+   "units": 2,
+   "failed": []
+  }
+ ],
+ "calls": 3,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4758,
+   "output_tokens": 747,
+   "seconds": 8,
+   "cost_usd": 0.023510000000000003
+  },
+  {
+   "model": "sonnet",
+   "tokens": 4726,
+   "output_tokens": 719,
+   "seconds": 8,
+   "cost_usd": 0.023214
+  },
+  {
+   "model": "sonnet",
+   "tokens": 14487,
+   "output_tokens": 778,
+   "seconds": 11,
+   "cost_usd": 0.0372354
+  }
+ ],
+ "tokens": 23971,
+ "api_equiv_usd": 0.084,
+ "located_pages": [
+  33
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": null,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 3300000,
+ "step": "sonnet-images",
+ "budget_period": "July 1, 2026 - June 30, 2027",
+ "columns_printed": [
+  "Unit",
+  "Sq. Ftg. (1A)",
+  "Uninhabitable/Other Sq. Ftg. (See Note 1) (1B)",
+  "Bdms/Baths (2)",
+  "% of Common Interest (3)",
+  "Offering Price (4)",
+  "Projected Monthly Common Charges (5)",
+  "Projected 1st Year Monthly Real Es. Taxes (6)",
+  "Projected 1st Year Monthly Carrying Charges (7)",
+  "Projected Post-Completion Monthly Real Es. Taxes (8)",
+  "Projected Post-Completion Monthly Carrying Charges (9)",
+  "Projected Annual Common Charges (10)",
+  "Projected 1st Year Annual Real Es. Taxes (11)",
+  "Projected 1st Year Annual Carrying Charges (12)",
+  "Projected Post-Completion Annual Real Es. Taxes (13)",
+  "Projected Post-Completion Annual Carrying Charges (14)"
+ ],
+ "tax2": "-",
+ "sf2": "Uninhabitable/Other Sq. Ftg.",
+ "printed_totals": {
+  "price": 3300000,
+  "pct": 100,
+  "cc_m": 1463.83,
+  "tax_m": 816.67,
+  "int_sf": 3148,
+  "ext_sf": null
+ },
+ "problems": [
+  "Bdms/Baths column shows codes \"2/2.5\" and \"1/2.5\" of unclear format; left beds/baths blank and could not confidently split into beds/baths, recorded as unclear code (not placed in note per column limits).",
+  "Table has both 1st-year and post-completion tax/carrying-charge columns; used 1st-year monthly tax and carrying charge for tax_m/carry_m; TAX2 field has no separate monthly tax scenario distinct from tax_m in the printed columns, so left as \"-\"."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 1530,
+   "sf2": 1466,
+   "ext_sf": null,
+   "price": 3300000,
+   "pct": 50,
+   "pct2": null,
+   "cc_m": 731.92,
+   "cc_a": 8783,
+   "tax_m": 408.33,
+   "tax_a": 4900,
+   "tax2_m": null,
+   "carry_m": 1140.25,
+   "page": 33,
+   "note": null
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 1618,
+   "sf2": 651,
+   "ext_sf": null,
+   "price": null,
+   "pct": 50,
+   "pct2": null,
+   "cc_m": 731.92,
+   "cc_a": 8783,
+   "tax_m": 408.33,
+   "tax_a": 4900,
+   "tax2_m": null,
+   "carry_m": 1140.25,
+   "page": 33,
+   "note": null
+  }
+ ]
+}

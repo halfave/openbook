@@ -1,0 +1,265 @@
+{
+ "plan_id": "CD230315",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 6,
+   "failed": [
+    "ag",
+    "pct100",
+    "notPlaceholder",
+    "outdoor"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "hold",
+   "units": 6,
+   "failed": [
+    "ag",
+    "pct100",
+    "notPlaceholder",
+    "outdoor"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "hold",
+   "units": 6,
+   "failed": [
+    "ag",
+    "pct100",
+    "notPlaceholder"
+   ]
+  },
+  {
+   "step": "sonnet-images-think",
+   "verdict": "hold",
+   "units": 6,
+   "failed": [
+    "ag",
+    "notPlaceholder"
+   ]
+  }
+ ],
+ "calls": 4,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4693,
+   "output_tokens": 1021,
+   "seconds": 69,
+   "cost_usd": 0.024894
+  },
+  {
+   "model": "sonnet",
+   "tokens": 4757,
+   "output_tokens": 1086,
+   "seconds": 13,
+   "cost_usd": 0.02554
+  },
+  {
+   "model": "sonnet",
+   "tokens": 14148,
+   "output_tokens": 1115,
+   "seconds": 11,
+   "cost_usd": 0.03918580000000001
+  },
+  {
+   "model": "sonnet",
+   "tokens": 19705,
+   "output_tokens": 6658,
+   "seconds": 130,
+   "cost_usd": 0.0801216
+  }
+ ],
+ "tokens": 43303,
+ "api_equiv_usd": 0.17,
+ "located_pages": [
+  55
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "hold",
+ "checks": {
+  "ag": false,
+  "printed": true,
+  "pct100": false,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": false,
+  "allRowsParsed": true,
+  "outdoor": false
+ },
+ "price_total": 59970000,
+ "step": "sonnet-text",
+ "budget_period": "July 1, 2024 - June 30, 2025",
+ "columns_printed": [
+  "Number of Bedrooms & Bathrooms",
+  "Approx. Square Footage of Unit",
+  "Approx. SF of LCE Terrace",
+  "Approx. SF of LCE Bike Storage Room",
+  "Approx. SF of LCE Storage Room",
+  "Offering Price",
+  "Percentage Interest in Residential Common Elements",
+  "Percentage Interest in General Common Elements",
+  "Projected Monthly Common Charges",
+  "Projected Annual Common Charges",
+  "Projected Monthly Real Estate Taxes",
+  "Projected Annual Real Estate Taxes",
+  "Projected Total Monthly Common Charges & Real Estate Taxes",
+  "Projected Total Annual Common Charges & Real Estate Taxes"
+ ],
+ "tax2": null,
+ "sf2": "LCE Bike Storage Room + LCE Storage Room (combined)",
+ "printed_totals": {
+  "price": 59970000,
+  "pct": 100,
+  "cc_m": 20750,
+  "tax_m": 32655,
+  "int_sf": 21740,
+  "ext_sf": 1553
+ },
+ "problems": [
+  "Per-unit columns \"Approx. SF of LCE Bike Storage Room\" and \"Approx. SF of LCE Storage Room\" appear to show the same values (111 / 226) for Units 2-5 and differ for PH (111 / 1553); mapped 4th printed number to ext_sf and left sf2 blank per unit since it's unclear which of the two LCE figures corresponds to bike storage vs. storage room for each row - transcribed as printed but mapping to schema is uncertain.",
+  "\"Residential Total\" and \"Grand Total\" summary rows were not transcribed as unit lines per instructions (only Comm Unit/Comm Total included as U lines); TOTAL line uses Grand Total row values."
+ ],
+ "units": [
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 4,
+   "int_sf": 3912,
+   "sf2": null,
+   "ext_sf": 111,
+   "price": 9995000,
+   "pct": 21.0177,
+   "pct2": 17.5877,
+   "cc_m": 3764.45,
+   "cc_a": 45173.37,
+   "tax_m": 5831.97,
+   "tax_a": 69983.58,
+   "tax2_m": null,
+   "carry_m": 9596.41,
+   "page": 55,
+   "note": null
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 4,
+   "int_sf": 3912,
+   "sf2": null,
+   "ext_sf": 111,
+   "price": 9995000,
+   "pct": 21.0177,
+   "pct2": 17.5877,
+   "cc_m": 3764.45,
+   "cc_a": 45173.37,
+   "tax_m": 5831.97,
+   "tax_a": 69983.58,
+   "tax2_m": null,
+   "carry_m": 9596.41,
+   "page": 55,
+   "note": null
+  },
+  {
+   "unit": "4",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 4,
+   "int_sf": 3912,
+   "sf2": null,
+   "ext_sf": 111,
+   "price": 9995000,
+   "pct": 21.0177,
+   "pct2": 17.5877,
+   "cc_m": 3764.45,
+   "cc_a": 45173.37,
+   "tax_m": 5831.97,
+   "tax_a": 69983.58,
+   "tax2_m": null,
+   "carry_m": 9596.41,
+   "page": 55,
+   "note": null
+  },
+  {
+   "unit": "5",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 4,
+   "int_sf": 3912,
+   "sf2": null,
+   "ext_sf": 111,
+   "price": 9995000,
+   "pct": 21.0177,
+   "pct2": 17.5877,
+   "cc_m": 3764.45,
+   "cc_a": 45173.37,
+   "tax_m": 5831.97,
+   "tax_a": 69983.58,
+   "tax2_m": null,
+   "carry_m": 9596.41,
+   "page": 55,
+   "note": null
+  },
+  {
+   "unit": "PH",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 2412,
+   "sf2": null,
+   "ext_sf": 1553,
+   "price": 9995000,
+   "pct": 15.9292,
+   "pct2": 13.3296,
+   "cc_m": 2853.04,
+   "cc_a": 34236.52,
+   "tax_m": 4420,
+   "tax_a": 53039.98,
+   "tax2_m": null,
+   "carry_m": 7273.04,
+   "page": 55,
+   "note": "Terrace SF 111; Bike Storage SF 226 (printed SF2 columns unclear per-unit; see PROBLEM)"
+  },
+  {
+   "unit": "Comm Unit",
+   "type": "commercial",
+   "floor": null,
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 3680,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 9995000,
+   "pct": 16.3197,
+   "pct2": null,
+   "cc_m": 2839.17,
+   "cc_a": 34070,
+   "tax_m": 4906.89,
+   "tax_a": 58882.68,
+   "tax2_m": null,
+   "carry_m": 7746.06,
+   "page": 55,
+   "note": null
+  }
+ ]
+}

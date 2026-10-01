@@ -1,0 +1,205 @@
+{
+ "plan_id": "CD170022",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 4,
+   "failed": [
+    "ag",
+    "printed",
+    "pct100",
+    "sqftTotal",
+    "monthlyTotals"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "hold",
+   "units": 4,
+   "failed": [
+    "ag",
+    "printed",
+    "pct100",
+    "sqftTotal",
+    "monthlyTotals"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "hold",
+   "units": 4,
+   "failed": [
+    "ag",
+    "printed",
+    "pct100",
+    "sqftTotal",
+    "monthlyTotals"
+   ]
+  }
+ ],
+ "calls": 3,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4416,
+   "output_tokens": 707,
+   "seconds": 8,
+   "cost_usd": 0.021901999999999998
+  },
+  {
+   "model": "sonnet",
+   "tokens": 4418,
+   "output_tokens": 708,
+   "seconds": 66,
+   "cost_usd": 0.021915999999999998
+  },
+  {
+   "model": "sonnet",
+   "tokens": 13924,
+   "output_tokens": 823,
+   "seconds": 10,
+   "cost_usd": 0.0364086
+  }
+ ],
+ "tokens": 22758,
+ "api_equiv_usd": 0.08,
+ "located_pages": [
+  31
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "hold",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": false,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": false,
+  "monthlyTotals": false,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 5420000,
+ "step": "sonnet-text",
+ "budget_period": "January 1, 2018 - December 31, 2018",
+ "columns_printed": [
+  "Unit No.",
+  "Floor Location",
+  "Approx. Area",
+  "Approx. L.C.E Outdoor/Uninhabitable Area",
+  "No. of Bedrooms/Bathrooms",
+  "Offering Price",
+  "Percent Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Real Estate Taxes (Monthly)",
+  "Projected Real Estate Taxes (Annual)",
+  "Projected Carrying Charges (Monthly)"
+ ],
+ "tax2": null,
+ "sf2": "L.C.E outdoor/uninhabitable area",
+ "printed_totals": {
+  "price": 4070000,
+  "pct": 100,
+  "cc_m": 2857.5,
+  "tax_m": 791.71,
+  "int_sf": 4858,
+  "ext_sf": null
+ },
+ "problems": [
+  "Total row percent printed as \"J00.00%\", read as 100.00%. Unit 1 L.C.E area line shows \"608* 150 (LW)\" and floor line shows \"Cellar\" separately with unclear exact pairing of 150 to BY vs LW; both back yard and light well are allocated to Unit 1. Unit 4 has two L.C.E area figures on two lines (48 (B) and 63 (T)); only 48 used in sf2 column, 63 noted separately."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": "First Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 982,
+   "sf2": 608,
+   "ext_sf": null,
+   "price": 1450000,
+   "pct": 35.85,
+   "pct2": null,
+   "cc_m": 1024.41,
+   "cc_a": null,
+   "tax_m": 316.38,
+   "tax_a": 3796.59,
+   "tax2_m": null,
+   "carry_m": 1340.79,
+   "page": 31,
+   "note": "Cellar 608*; L.C.E outdoor area 150 (BY/LW)"
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "2nd Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1075,
+   "sf2": 0,
+   "ext_sf": null,
+   "price": 1285000,
+   "pct": 26.46,
+   "pct2": null,
+   "cc_m": 756.09,
+   "cc_a": null,
+   "tax_m": 233.51,
+   "tax_a": 2802.17,
+   "tax2_m": null,
+   "carry_m": 989.6,
+   "page": 31,
+   "note": null
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": "3rd Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1075,
+   "sf2": 48,
+   "ext_sf": null,
+   "price": 1335000,
+   "pct": 27.4,
+   "pct2": null,
+   "cc_m": 782.96,
+   "cc_a": null,
+   "tax_m": 241.81,
+   "tax_a": 2901.72,
+   "tax2_m": null,
+   "carry_m": 1024.77,
+   "page": 31,
+   "note": "L.C.E outdoor area 48 (B)"
+  },
+  {
+   "unit": "4",
+   "type": "residential",
+   "floor": "4th Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1012,
+   "sf2": 48,
+   "ext_sf": null,
+   "price": 1350000,
+   "pct": 26.87,
+   "pct2": null,
+   "cc_m": 767.81,
+   "cc_a": null,
+   "tax_m": 237.13,
+   "tax_a": 2845.59,
+   "tax2_m": null,
+   "carry_m": 1004.94,
+   "page": 31,
+   "note": "L.C.E outdoor area 63 (T) also printed"
+  }
+ ]
+}

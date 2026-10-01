@@ -1,0 +1,208 @@
+{
+ "plan_id": "CD180171",
+ "steps": [
+  {
+   "step": "sonnet-images",
+   "verdict": "hold",
+   "units": 4,
+   "failed": [
+    "monthlyTotals"
+   ]
+  }
+ ],
+ "calls": 7,
+ "call_log": [
+  {
+   "model": "haiku",
+   "tokens": 12592,
+   "output_tokens": 574,
+   "seconds": 7,
+   "cost_usd": 0.024508000000000002
+  },
+  {
+   "model": "haiku",
+   "tokens": 4937,
+   "output_tokens": 97,
+   "seconds": 3,
+   "cost_usd": 0.005325
+  },
+  {
+   "model": "haiku",
+   "tokens": 4936,
+   "output_tokens": 96,
+   "seconds": 3,
+   "cost_usd": 0.00532
+  },
+  {
+   "model": "haiku",
+   "tokens": 4963,
+   "output_tokens": 109,
+   "seconds": 4,
+   "cost_usd": 0.005399000000000001
+  },
+  {
+   "model": "haiku",
+   "tokens": 4935,
+   "output_tokens": 97,
+   "seconds": 3,
+   "cost_usd": 0.005323
+  },
+  {
+   "model": "haiku",
+   "tokens": 8729,
+   "output_tokens": 574,
+   "seconds": 77,
+   "cost_usd": 0.005835600000000001
+  },
+  {
+   "model": "sonnet",
+   "tokens": 11770,
+   "output_tokens": 1149,
+   "seconds": 16,
+   "cost_usd": 0.0344606
+  }
+ ],
+ "tokens": 52862,
+ "api_equiv_usd": 0.086,
+ "located_pages": [],
+ "text_layer": true,
+ "found": true,
+ "verdict": "hold",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": false,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 5300000,
+ "step": "sonnet-images",
+ "budget_period": "7/1/2019 - 6/30/2020",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approx. Area",
+  "Uninhabitable Area",
+  "No. of Bedrooms / Bathrooms",
+  "Offering Price",
+  "Percent Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Real Estate Taxes with J-51 Tax Benefits (Monthly)",
+  "Projected Real Estate Taxes with J-51 Tax Benefits (Annual)",
+  "Projected Real Estate Taxes without Tax Benefits (Monthly)",
+  "Projected Real Estate Taxes without Tax Benefits (Annual)",
+  "Projected Monthly Carrying Charges with J-51 Tax Benefits",
+  "Projected Monthly Carrying Charges without Tax Benefits"
+ ],
+ "tax2": "with J-51 (monthly)",
+ "sf2": "uninhabitable area",
+ "printed_totals": {
+  "price": 5300000,
+  "pct": 100,
+  "cc_m": 948.96,
+  "tax_m": 6377.37,
+  "int_sf": 3420,
+  "ext_sf": null
+ },
+ "problems": [
+  "Table has two tax scenarios (with J-51 and without J-51 tax benefits) and two carrying-charge columns; tax_m/tax_a/carry_m taken as \"without\" scenario, tax2_m as \"with J-51\" monthly, per convention since it's not stated which the carrying-charge total column corresponds to.",
+  "Unit 1 uninhabitable area code \"c.613\" (cellar) placed in sf2; other codes (a.224 areaway, d.39 deck, y.917 yard, e.42 entry) placed in note since they are not a single ext_sf figure.",
+  "Total row's cc_m and tax_m totals: used \"without\" scenario annual tax total (6377.37) per column order requested (tax_m), though header labels this as \"(Annual)\"; printed monthly total for \"without\" tax scenario not distinctly separated in total row from annual — please verify against source if exact monthly total needed."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": "Basement",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 926,
+   "sf2": 613,
+   "ext_sf": null,
+   "price": 1700000,
+   "pct": 34.96,
+   "pct2": null,
+   "cc_m": 331.74,
+   "cc_a": null,
+   "tax_m": 854.95,
+   "tax_a": 10259.42,
+   "tax2_m": 186.61,
+   "carry_m": 1186.69,
+   "page": 26,
+   "note": "areaway 224, deck 39, yard 917, entry 42; carry_m and tax figures: without J-51 used as primary"
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "1st Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 812,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 1200000,
+   "pct": 19.51,
+   "pct2": null,
+   "cc_m": 185.14,
+   "cc_a": null,
+   "tax_m": 477.14,
+   "tax_a": 5725.73,
+   "tax2_m": 104.12,
+   "carry_m": 662.29,
+   "page": 26,
+   "note": null
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": "2nd Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 844,
+   "sf2": 418,
+   "ext_sf": null,
+   "price": 1200000,
+   "pct": 22.87,
+   "pct2": null,
+   "cc_m": 217.04,
+   "cc_a": null,
+   "tax_m": 559.34,
+   "tax_a": 6712.06,
+   "tax2_m": 117.52,
+   "carry_m": 776.37,
+   "page": 26,
+   "note": "storage r.418"
+  },
+  {
+   "unit": "4",
+   "type": "residential",
+   "floor": "3rd Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 838,
+   "sf2": 397,
+   "ext_sf": null,
+   "price": 1200000,
+   "pct": 22.66,
+   "pct2": null,
+   "cc_m": 215.04,
+   "cc_a": null,
+   "tax_m": 554.2,
+   "tax_a": 6650.43,
+   "tax2_m": 123.2,
+   "carry_m": 769.25,
+   "page": 26,
+   "note": "storage r.397"
+  }
+ ]
+}

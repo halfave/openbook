@@ -1,11 +1,15 @@
 // Reads each plan's Schedule A table with a model, then checks it against facts the model never saw.
-// Runs through the local `claude` CLI (your Claude login, no API key in this repo).
+// Runs through the local `claude` CLI on your Claude subscription login. Any API key in the environment is removed
+// before each call, so it never bills the API.
 //
-//   node scripts/extract-schedule-a-llm.mjs --out DIR PLAN_ID ...      a few plans
-//   node scripts/extract-schedule-a-llm.mjs --out DIR --all            every plan with an offering plan
+//   node scripts/extract-schedule-a-llm.mjs PLAN_ID ...                a few plans (writes data/schedule-a-llm/, or --out DIR)
+//   node scripts/extract-schedule-a-llm.mjs --all                      every plan with an offering plan
 //   options: --concurrency 4   --python PATH (needs PyMuPDF, for scans)   --cache DIR (downloaded PDFs)
-//            --force (redo plans that already have DIR/<ID>.json)
+//            --force (redo plans that already have DIR/<ID>.json)   --call-timeout 600 (seconds per model call)
+//            --no-refresh (skip rebuilding site data and pages afterwards)
+//            --think (a last try with thinking on, for plans that fail everything else; ~113k tokens per plan it rescues)
 //   node scripts/extract-schedule-a-llm.mjs --locate PLAN_ID ...       where Schedule A is, from the text layer (no model)
+//   node scripts/extract-schedule-a-llm.mjs --recheck [PLAN_ID ...]    re-judge saved held results with the current checks (no model)
 //
 // Per plan:
 //  1. Find the Schedule A pages in the text layer: score every page, and follow the table of contents (no model).
@@ -14,35 +18,49 @@
 //     common interest ≈ 100%, common charges proportional to common interest, carrying = charges + taxes,
 //     column sums vs the printed total row, $/sf in range, and not every home at one placeholder price.
 //  4. Only if that fails, or there is no usable text (a scan): Sonnet reads the page images, thinking off,
-//     then once more with thinking if that fails too. Scans are located first with small Haiku looks at the
+//     then (with --think) once more with thinking if that fails too. Scans are located first with small Haiku looks at the
 //     table of contents and printed page numbers.
 // Writes DIR/<ID>.json (units, checks, verdict, tokens used). Nothing is written to the database.
 import { spawn } from "node:child_process";
-import { mkdir, writeFile, readFile, access } from "node:fs/promises";
+import { mkdir, writeFile, readFile, readdir, access } from "node:fs/promises";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
-import { all, rest, money } from "./site.mjs";
+import { all, rest, money, TODAY } from "./site.mjs";
 
 const argv = process.argv.slice(2);
 const opt = (k, d) => { const i = argv.indexOf(k); return i >= 0 ? argv.splice(i, 2)[1] : d; };
 const flag = (k) => { const i = argv.indexOf(k); return i >= 0 ? (argv.splice(i, 1), true) : false; };
-const OUT = opt("--out", null);
+const SITE_OUT = join(import.meta.dirname, "..", "data", "schedule-a-llm");
+const OUT = opt("--out", SITE_OUT);
 const CONC = Number(opt("--concurrency", 4));
 const PY = opt("--python", process.env.PYTHON || "python");
 const CACHE = opt("--cache", join(tmpdir(), "openbook-plans"));
 const EFFORT = opt("--effort", null);
-const FORCE = flag("--force"), ALL = flag("--all"), LOCATE = flag("--locate");
-if (!OUT && !LOCATE) { console.error("--out DIR is required"); process.exit(1); }
+const CALL_TIMEOUT = Number(opt("--call-timeout", 600)) * 1000;
+const FORCE = flag("--force"), ALL = flag("--all"), LOCATE = flag("--locate"), TEXT_ONLY = flag("--text-only"), THINK = flag("--think"), RECHECK = flag("--recheck"), NO_REFRESH = flag("--no-refresh");
+// After a batch that wrote to the site's data folder, the site data and pages are rebuilt (scripts/refresh-data.mjs).
+const refresh = () => new Promise((res) => {
+  if (NO_REFRESH || OUT !== SITE_OUT) return res();
+  console.log("\nRefreshing site data and pages (scripts/refresh-data.mjs)…");
+  spawn(process.execPath, [join(import.meta.dirname, "refresh-data.mjs")], { stdio: "inherit" }).on("close", res);
+});
+
 
 // ---------- helpers ----------
+// A call that runs past `timeout` ms is killed and counts as a failure, so one slow call can't stall a batch.
 // An API key in the environment would take precedence over the claude.ai (Max) login and bill API credits; never pass one on.
 const { ANTHROPIC_API_KEY, ANTHROPIC_AUTH_TOKEN, ...BASE_ENV } = process.env;
-const run = (cmd, args, input, env = {}) => new Promise((res, rej) => {
+const run = (cmd, args, input, env = {}, timeout = 0) => new Promise((res, rej) => {
   const p = spawn(cmd, args, { stdio: ["pipe", "pipe", "pipe"], env: { ...BASE_ENV, ...env } });
-  let o = "", e = "";
+  let o = "", e = "", timedOut = false;
+  const timer = timeout ? setTimeout(() => { timedOut = true; p.kill(); }, timeout) : null;
   p.stdout.on("data", (d) => (o += d)); p.stderr.on("data", (d) => (e += d));
   p.on("error", rej);
-  p.on("close", (c) => (c === 0 ? res(o) : rej(new Error(`${cmd} exited ${c}: ${(e || o).slice(0, 300)}`))));
+  p.on("close", (c) => {
+    if (timer) clearTimeout(timer);
+    if (timedOut) rej(Object.assign(new Error(`timed out after ${timeout / 1000}s`), { timeout: true }));
+    else if (c === 0) res(o); else rej(new Error(`${cmd} exited ${c}: ${(e || o).slice(0, 300)}`));
+  });
   if (input != null) p.stdin.end(input); else p.stdin.end();
 });
 const exists = (f) => access(f).then(() => true, () => false);
@@ -62,8 +80,11 @@ async function ask(tally, model, prompt, { images = [], dirs = [], think = false
   else args.push("--tools", "");
   let j;
   for (let t = 0; ; t++) {
-    try { j = JSON.parse(await run(CLAUDE, args, prompt, think ? {} : { MAX_THINKING_TOKENS: "0" })); break; }
-    catch (e) { if (t === 2) throw e; await new Promise((r) => setTimeout(r, 5000 * (t + 1))); }
+    try { j = JSON.parse(await run(CLAUDE, args, prompt, think ? {} : { MAX_THINKING_TOKENS: "0" }, CALL_TIMEOUT)); break; }
+    catch (e) {
+      if (e.timeout) { tally.calls.push({ model, tokens: 0, timed_out: true }); return ""; } // no retry: treated as no answer
+      if (t === 2) throw e; await new Promise((r) => setTimeout(r, 5000 * (t + 1)));
+    }
   }
   const u = j.usage || {};
   const tok = (u.input_tokens || 0) + (u.cache_read_input_tokens || 0) + (u.cache_creation_input_tokens || 0) + (u.output_tokens || 0);
@@ -179,9 +200,10 @@ async function locateScan(tally, id, pdf) {
       `Read the image ${img}. Reply with JSON only: {"printed": <the page number printed on the page as an integer, or null>}`,
       { images: [img], dirs: [join(CACHE, id)] }));
     if (!Number(b?.printed)) { probe = Math.min(count, probe + 3); continue; }
-    const next = Math.max(1, Math.min(count, probe + (printed - Number(b.printed))));
-    if (next === probe) { target = probe; break; }
-    probe = next;
+    // Close enough: the 8-page window below covers a page or two either way.
+    const diff = printed - Number(b.printed);
+    if (Math.abs(diff) <= 2) { target = Math.max(1, probe + Math.min(diff, 0)); break; }
+    probe = Math.max(1, Math.min(count, probe + diff));
   }
   if (!target) return [];
   // The section can open with pages of text before the table: one look at the next 8 pages picks the table pages.
@@ -210,7 +232,7 @@ SF2<TAB>what sf2 holds (e.g. "gross sf", "cellar"), or empty
 then one line per unit:
 U<TAB>${COLS.join("<TAB>")}
 then:
-TOTAL<TAB>price<TAB>pct<TAB>cc_m<TAB>tax_m<TAB>int_sf   (from the printed total row, empty cells if none)
+TOTAL<TAB>price<TAB>pct<TAB>cc_m<TAB>tax_m<TAB>int_sf<TAB>ext_sf   (from the printed total row; - for any not printed)
 PROBLEM<TAB>text   (one line per thing you could not read or were unsure of)
 If there is no Schedule A price table on these pages, output only: NOTFOUND
 
@@ -218,7 +240,7 @@ Rules:
 - unit exactly as printed. type: R residential, C commercial or community facility, P parking, S storage, O other.
 - floor and rooms only if the table has them. Never derive bedrooms from rooms.
 - beds/baths only when clearly stated: "2/2", "2BR/2BA", "2 Bedrooms/2 Bathrooms", "3+3-1/2" = 3 beds 3.5 baths. Studio = 0 beds. A half bath counts 0.5 ("2 full & 1 half" = 2.5). Unclear codes: leave empty, put the code in note.
-- int_sf: interior/habitable/net square feet. sf2: a second area column (gross, cellar, uninhabitable); say which in SF2. ext_sf: terrace/balcony/yard/roof area when one number is printed for it; several separate areas: leave empty and list them in note.
+- int_sf: interior/habitable/net square feet. sf2: a second area column (gross, cellar, uninhabitable); say which in SF2. A unit on two levels may print its area as two figures on separate lines (e.g. "406*" for the cellar and "580" for the first floor): put the habitable floor's figure in int_sf and the cellar/lower figure in sf2, never in ext_sf. ext_sf: terrace/balcony/yard/roof area when one number is printed for it ("N/A" or none: -; never the combined interior + outdoor "total" column); several separate areas: leave empty and list them in note.
 - price: offering price. pct: percentage of common interest. pct2: a second percentage column, if any.
 - cc_m / cc_a: monthly / annual common charges. tax_m / tax_a: monthly / annual real estate taxes. If two tax scenarios are printed, tax_m and tax_a are the ones the carrying-charge column uses (else the first), and the other monthly figure goes in tax2_m.
 - carry_m: monthly carrying charges, only if printed.
@@ -246,7 +268,7 @@ function parse(text) {
       if (u.beds != null && !Number.isInteger(u.beds)) { u.note = [u.note, `beds as printed: ${c[5]}`].filter(Boolean).join("; "); u.beds = null; }
       u.floor = u.floor || null; u.note = u.note || null;
       if (u.unit) o.units.push(u);
-    } else if (k === "TOTAL") o.printed_totals = { price: numOrNull(c[1]), pct: numOrNull(c[2]), cc_m: numOrNull(c[3]), tax_m: numOrNull(c[4]), int_sf: numOrNull(c[5]) };
+    } else if (k === "TOTAL") o.printed_totals = { price: numOrNull(c[1]), pct: numOrNull(c[2]), cc_m: numOrNull(c[3]), tax_m: numOrNull(c[4]), int_sf: numOrNull(c[5]), ext_sf: numOrNull(c[6]) };
     else if (k === "PROBLEM" && c[1]) o.problems.push(c.slice(1).join(" ").trim());
     else if (k === "PERIOD") o.budget_period = c[1]?.trim() || null;
     else if (k === "COLS") o.columns_printed = c.slice(1).join(" ").split(" | ").map((x) => x.trim()).filter(Boolean);
@@ -254,6 +276,15 @@ function parse(text) {
     else if (k === "SF2") o.sf2 = c[1]?.trim() || null;
   }
   if (!o.units.length) o.found = false;
+  // Two tax scenarios (with / without an abatement): the main figure is the one the carrying charges use.
+  // If the model put the other one first, swap them; the annual figure belongs to the other scenario, so it is dropped.
+  const swap = o.units.filter((u) => u.carry_m != null && u.cc_m != null && u.tax_m != null && u.tax2_m != null
+    && Math.abs(u.carry_m - u.cc_m - u.tax_m) > 2 && Math.abs(u.carry_m - u.cc_m - u.tax2_m) <= 2);
+  if (swap.length && swap.length === o.units.filter((u) => u.carry_m != null && u.tax2_m != null).length) {
+    for (const u of swap) { [u.tax_m, u.tax2_m] = [u.tax2_m, u.tax_m]; u.tax_a = null; }
+    if (o.printed_totals) o.printed_totals.tax_m = null;
+    o.problems.push("tax columns swapped so the main tax is the one used in the carrying charges");
+  }
   return o;
 }
 
@@ -282,17 +313,47 @@ function check(o, agPrices) {
   // Tables differ on whether parking/storage count and whether cellar space (sf2) is included, so any of those sums may match.
   const pt = o.printed_totals || {};
   const sfSums = [U, res].flatMap((set) => [sum(set.map((u) => u.int_sf)), sum(set.map((u) => (u.int_sf || 0) + (u.sf2 || 0)))]);
-  c.sqftTotal = pt.int_sf ? sfSums.some((x) => Math.abs(x - pt.int_sf) <= Math.max(2, pt.int_sf * 0.002)) : null;
+  c.sqftTotal = pt.int_sf && U.some((u) => u.int_sf != null) ? sfSums.some((x) => Math.abs(x - pt.int_sf) <= Math.max(2, pt.int_sf * 0.002)) : null;
   c.monthlyTotals = [["cc_m", pt.cc_m], ["tax_m", pt.tax_m]].every(([k, t]) => !t || Math.abs(sum(U.map((u) => u[k])) - t) <= Math.max(2, t * 0.002));
   const sized = res.filter((u) => u.int_sf && u.price);
   c.psf = sized.length ? sized.every((u) => u.price / u.int_sf >= 150 && u.price / u.int_sf <= 6000) : null;
   const rp = res.map((u) => u.price).filter((x) => x != null);
   c.notPlaceholder = !(rp.length >= 4 && new Set(rp).size === 1 && new Set(res.map((u) => u.int_sf).filter(Boolean)).size > 1);
   c.allRowsParsed = !o.bad_rows;
+  // Outdoor space: a unit's outdoor figure equal to its interior figure is a neighbouring "total area" column read into
+  // the wrong cell; and when a printed outdoor total exists, the rows must add up to it.
+  const ext = U.filter((u) => u.ext_sf != null);
+  // No unit with an outdoor figure: nothing would be shown, so nothing to check.
+  c.outdoor = !ext.length || (!ext.some((u) => u.int_sf && u.ext_sf === u.int_sf)
+    && (!pt.ext_sf || Math.abs(sum(ext.map((u) => u.ext_sf)) - pt.ext_sf) <= Math.max(2, pt.ext_sf * 0.002)));
   const internal = c.pct100 !== false && c.ccProportional !== false && c.carrying !== false && c.psf !== false && c.notPlaceholder
-    && c.sqftTotal !== false && c.monthlyTotals && c.allRowsParsed;
+    && c.sqftTotal !== false && c.monthlyTotals && c.allRowsParsed && c.outdoor;
   const verdict = !o.found ? "not_found" : !internal ? "hold" : c.ag ? "publish_ag" : c.printed ? "publish_printed" : "hold";
   return { checks: c, verdict, price_total: total };
+}
+
+// Checks a reading, with one allowance. Area columns are the ones most often printed with totals that count other
+// areas too (outdoor space with storage, floor area with cellars). When they are the only thing keeping a table from
+// passing, while prices, charges and taxes all tie out, the table is published without them rather than held or
+// escalated: first without outdoor space, then without any area column. Nothing unchecked is shown; sizes and $/sf
+// are left blank. Mutates o when a column is dropped.
+function judge(o, agPrices) {
+  let c = check(o, agPrices);
+  const AREA = { outdoor: ["ext_sf"], all: ["ext_sf", "int_sf", "sf2"] };
+  const onlyArea = (cc) => Object.entries(cc.checks || {}).every(([k, v]) => v !== false || ["outdoor", "sqftTotal", "psf"].includes(k));
+  for (const [what, keys] of Object.entries(AREA)) {
+    if (c.verdict.startsWith("publish") || !onlyArea(c) || !o.units.some((u) => keys.some((k) => u[k] != null))) continue;
+    const saved = o.units.map((u) => keys.map((k) => u[k]));
+    o.units.forEach((u) => keys.forEach((k) => (u[k] = null)));
+    const c2 = check(o, agPrices);
+    if (c2.verdict.startsWith("publish")) {
+      c = c2;
+      o.problems = [...(o.problems || []), what === "outdoor" ? "outdoor space left out: its column did not add up to the printed total" : "unit sizes left out: the area columns did not add up to the printed totals"];
+      break;
+    }
+    o.units.forEach((u, i) => keys.forEach((k, j) => (u[k] = saved[i][j])));
+  }
+  return c;
 }
 
 // ---------- per plan ----------
@@ -303,7 +364,8 @@ async function extract(id, agPrices) {
   let best = null;
   const attempt = async (step, model, prompt, extra) => {
     const o = parse(await ask(tally, model, prompt, extra));
-    const r = { ...o, ...check(o, agPrices), step };
+    const c = judge(o, agPrices);
+    const r = { ...o, ...c, step };
     steps.push({ step, verdict: r.verdict, units: o.units.length, failed: Object.entries(r.checks || {}).filter(([, v]) => v === false).map(([k]) => k) });
     if (!best || rank(r) > rank(best)) best = r;
     return r;
@@ -316,10 +378,27 @@ async function extract(id, agPrices) {
   const settled = (r) => r.verdict.startsWith("publish")
     || (r.checks && !r.checks.notPlaceholder && Object.entries(r.checks).every(([k, v]) => k === "notPlaceholder" || v !== false));
 
-  // 1. Clean text: Sonnet from text only, no thinking (~5k tokens).
+  // 1. Clean text: Sonnet from text only, no thinking (~5k tokens). Answers vary run to run, so one failure gets
+  // one more try at this price before moving to page images (15-65k).
   if (loc.pages.length && loc.clean >= 0.6) {
-    if (settled(await attempt("sonnet-text", "sonnet", `${RULES}\n\nPages:\n\n${textBlock(loc.pages)}`))) return finish(id, best, steps, tally, loc);
+    const reads = [];
+    for (const step of ["sonnet-text", "sonnet-text-retry"]) {
+      const r = await attempt(step, "sonnet", `${RULES}\n\nPages:\n\n${textBlock(loc.pages)}`);
+      if (settled(r)) return finish(id, best, steps, tally, loc);
+      if (r.verdict === "not_found") break;
+      reads.push(r);
+    }
+    // Two readings that agree on every price and percentage and fail only on the plan's own arithmetic (common interest
+    // not adding to 100%, charges out of proportion): the page itself is inconsistent, and images won't change that.
+    if (reads.length === 2) {
+      const sig = (r) => JSON.stringify(r.units.map((u) => [u.unit, u.price, u.pct]));
+      const failed = (r) => Object.entries(r.checks).filter(([, v]) => v === false).map(([k]) => k);
+      const planOnly = (f) => f.length && f.every((k) => ["pct100", "ccProportional", "ag"].includes(k)) && f.some((k) => k !== "ag");
+      if (sig(reads[0]) === sig(reads[1]) && planOnly(failed(reads[0])) && planOnly(failed(reads[1])))
+        return finish(id, best, steps, tally, loc, "held: the plan's own figures don't reconcile (two identical readings)");
+    }
   }
+  if (TEXT_ONLY) return finish(id, best, steps, tally, loc, "text only");
   const pdf = await pdfFor(id).catch(() => null);
   if (!pdf) {
     if (loc.pages.length && !steps.length) await attempt("sonnet-text", "sonnet", `${RULES}\n\nPages (OCR text, may be garbled):\n\n${textBlock(loc.pages)}`);
@@ -334,7 +413,8 @@ async function extract(id, agPrices) {
     `If the table clearly continues onto a page not given here, say so in a PROBLEM line.${hint}`;
   // 2. Page images, no thinking (~15k tokens). 3. Only if that fails too: the same with thinking.
   if (settled(await attempt("sonnet-images", "sonnet", imagePrompt, { images: imgs, dirs: [join(CACHE, id)] }))) return finish(id, best, steps, tally, loc);
-  await attempt("sonnet-images-think", "sonnet", imagePrompt, { images: imgs, dirs: [join(CACHE, id)], think: true });
+  // The thinking retry rescued ~31% of the plans that reached it, at ~113k tokens per rescue; opt in with --think.
+  if (THINK) await attempt("sonnet-images-think", "sonnet", imagePrompt, { images: imgs, dirs: [join(CACHE, id)], think: true });
   return finish(id, best, steps, tally, loc);
 }
 
@@ -344,7 +424,7 @@ function finish(id, r, steps, tally, loc, reason) {
   if (!r) return { ...base, found: false, verdict: "not_found", reason: reason || "no Schedule A found", units: [] };
   return { ...base, found: r.found, verdict: r.verdict, checks: r.checks, price_total: r.price_total, step: r.step,
     budget_period: r.budget_period, columns_printed: r.columns_printed, tax2: r.tax2, sf2: r.sf2,
-    printed_totals: r.printed_totals, problems: r.problems, units: r.units };
+    printed_totals: r.printed_totals, problems: r.problems, units: r.units, ...(reason ? { reason } : {}) };
 }
 
 // ---------- main ----------
@@ -357,17 +437,51 @@ const plans = await all("plans?select=plan_id,meta&order=plan_id");
 const meta = new Map(plans.map((p) => [p.plan_id, p.meta?.plan || {}]));
 let ids = argv;
 if (ALL) ids = [...new Set((await all("documents?select=plan_id&status=eq.done&doc_kind=eq.offering_plan&order=plan_id")).map((d) => d.plan_id))];
+// --recheck: judge saved held results again with the current checks (no model calls). Plans that now pass are updated.
+if (RECHECK) {
+  const files = (await readdir(OUT)).filter((f) => f.endsWith(".json") && (!ids.length || ids.includes(f.slice(0, -5))));
+  let changed = 0;
+  for (const f of files) {
+    const r = JSON.parse(await readFile(join(OUT, f), "utf8"));
+    if (r.verdict !== "hold" || !r.units?.length) continue;
+    const mp = meta.get(r.plan_id) || {};
+    const o = { found: true, units: r.units, printed_totals: r.printed_totals, problems: r.problems || [],
+      bad_rows: (r.problems || []).filter((p) => /^row with \d+ cells dropped/.test(p)).length };
+    const c = judge(o, [money(mp["Initial Price"]), money(mp["Current Price"])].filter(Boolean));
+    if (!c.verdict.startsWith("publish")) continue;
+    await writeFile(join(OUT, f), JSON.stringify({ ...r, ...c, units: o.units, problems: o.problems, rechecked: TODAY }, null, 1));
+    console.log(`${r.plan_id}  hold → ${c.verdict}  (${o.problems.at(-1)})`);
+    changed++;
+  }
+  console.log(`${changed} of ${files.length} saved plans now pass`);
+  if (changed) await refresh();
+  process.exit(0);
+}
 const results = [];
-let i = 0;
+let i = 0, errStreak = 0;
 async function worker() {
   while (i < ids.length) {
+    // Many failures in a row means the network or the CLI is down: stop rather than run through the list.
+    if (errStreak >= 10) { if (i < ids.length) console.log(`stopping: ${errStreak} errors in a row; re-run to resume`); i = ids.length; break; }
     const id = ids[i++];
     const f = join(OUT, id + ".json");
-    if (!FORCE && (await exists(f))) { results.push(JSON.parse(await readFile(f, "utf8"))); continue; }
+    // Finished plans are skipped on a re-run; errors are redone.
+    if (!FORCE && (await exists(f))) {
+      const prev = JSON.parse(await readFile(f, "utf8"));
+      if (prev.verdict !== "error") { results.push(prev); continue; }
+    }
     const mp = meta.get(id) || {};
     const ag = [money(mp["Initial Price"]), money(mp["Current Price"])].filter(Boolean);
     let r;
-    try { r = await extract(id, ag); } catch (e) { r = { plan_id: id, verdict: "error", reason: e.message, units: [], tokens: 0 }; }
+    // Network errors (Supabase, PDF download) are retried with a growing pause before the plan counts as an error.
+    for (let t = 0; ; t++) {
+      try { r = await extract(id, ag); break; }
+      catch (e) {
+        if (t < 2 && /fetch failed|ECONNRESET|ETIMEDOUT|ENOTFOUND|5\d\d/.test(e.message)) { await new Promise((res) => setTimeout(res, 30000 * (t + 1))); continue; }
+        r = { plan_id: id, verdict: "error", reason: e.message, units: [], tokens: 0 }; break;
+      }
+    }
+    errStreak = r.verdict === "error" ? errStreak + 1 : 0;
     await writeFile(f, JSON.stringify(r, null, 1));
     results.push(r);
     console.log(`${id}  ${r.verdict.padEnd(15)} ${String(r.units.length).padStart(4)} units  ${String(r.tokens).padStart(7)} tok  ${(r.steps || []).map((s) => s.step + ":" + s.verdict).join(" → ")}${r.reason ? "  (" + r.reason + ")" : ""}`);
@@ -377,3 +491,4 @@ await Promise.all(Array.from({ length: CONC }, worker));
 const by = results.reduce((m, r) => ((m[r.verdict] = (m[r.verdict] || 0) + 1), m), {});
 const tok = sum(results.map((r) => r.tokens || 0));
 console.log(`\n${results.length} plans:`, by, `| ${tok.toLocaleString()} tokens, ${Math.round(tok / Math.max(results.length, 1)).toLocaleString()} per plan`);
+if (!TEXT_ONLY && results.some((r) => r.verdict !== "error")) await refresh();

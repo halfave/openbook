@@ -1,0 +1,212 @@
+{
+ "plan_id": "CD220156",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 4,
+   "failed": [
+    "monthlyTotals"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "hold",
+   "units": 4,
+   "failed": [
+    "monthlyTotals"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "hold",
+   "units": 4,
+   "failed": [
+    "monthlyTotals"
+   ]
+  },
+  {
+   "step": "sonnet-images-think",
+   "verdict": "hold",
+   "units": 4,
+   "failed": [
+    "monthlyTotals"
+   ]
+  }
+ ],
+ "calls": 4,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4409,
+   "output_tokens": 793,
+   "seconds": 8,
+   "cost_usd": 0.02239
+  },
+  {
+   "model": "sonnet",
+   "tokens": 4408,
+   "output_tokens": 798,
+   "seconds": 8,
+   "cost_usd": 0.022416
+  },
+  {
+   "model": "sonnet",
+   "tokens": 21740,
+   "output_tokens": 953,
+   "seconds": 87,
+   "cost_usd": 0.038877
+  },
+  {
+   "model": "sonnet",
+   "tokens": 23724,
+   "output_tokens": 2911,
+   "seconds": 100,
+   "cost_usd": 0.058515399999999995
+  }
+ ],
+ "tokens": 54281,
+ "api_equiv_usd": 0.142,
+ "located_pages": [
+  43
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "hold",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": false,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 6150000,
+ "step": "sonnet-text",
+ "budget_period": "March 1, 2023 through February 29, 2024",
+ "columns_printed": [
+  "Unit #",
+  "Bedrooms / Bathrooms",
+  "Square Footage of Unit - Main Floor (sq.ft.)",
+  "Cellar Floor Accessory Space (non-habitable) (sq.ft.)",
+  "Total Square Footage of Unit (sq.ft.)",
+  "Areaway - Limited Common Element (sq.ft.)",
+  "Yard - Limited Common Element (sq.ft.)",
+  "Balcony - Limited Common Element (sq.ft.)",
+  "Roof - Limited Common Element (sq.ft.)",
+  "Offering Price",
+  "Percentage of Common Interest",
+  "Estimate of Monthly Common Charges",
+  "Estimate of Monthly Real Estate Taxes - 3/1/2023-2/29/2024",
+  "Estimate of Annual Real Estate Taxes - 3/1/2023-2/29/2024",
+  "Estimated Total Monthly Carrying Charges - 1/1/2023-12/31/2023"
+ ],
+ "tax2": null,
+ "sf2": "Cellar Floor Accessory Space (non-habitable)",
+ "printed_totals": {
+  "price": 6150000,
+  "pct": 100,
+  "cc_m": 2633.58,
+  "tax_m": 1993.01,
+  "int_sf": 4481.39,
+  "ext_sf": 824.33
+ },
+ "problems": [
+  "Areaway/Yard/Balcony/Roof limited common element areas for each unit are separate outdoor area columns (not a single ext_sf); listed only in row data as N/A since multiple columns exist - none consolidated into ext_sf per instructions. Total ext_sf not computed (multiple LCE columns: Areaway 152.21, Yard 623.45, Balcony 201.00, Roof 623.33)."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 1225.25,
+   "sf2": 1075.67,
+   "ext_sf": null,
+   "price": 2150000,
+   "pct": 32,
+   "pct2": null,
+   "cc_m": 848.53,
+   "cc_a": null,
+   "tax_m": 637.76,
+   "tax_a": 7653.17,
+   "tax2_m": null,
+   "carry_m": 1486.3,
+   "page": 43,
+   "note": null
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1386.14,
+   "sf2": 0,
+   "ext_sf": 201,
+   "price": 1650000,
+   "pct": 28,
+   "pct2": null,
+   "cc_m": 742.47,
+   "cc_a": null,
+   "tax_m": 558.04,
+   "tax_a": 6696.52,
+   "tax2_m": null,
+   "carry_m": 1300.51,
+   "page": 43,
+   "note": null
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 3,
+   "int_sf": 1870,
+   "sf2": 0,
+   "ext_sf": 623.33,
+   "price": 2250000,
+   "pct": 35,
+   "pct2": null,
+   "cc_m": 928.08,
+   "cc_a": null,
+   "tax_m": 697.55,
+   "tax_a": 8370.65,
+   "tax2_m": null,
+   "carry_m": 1625.64,
+   "page": 43,
+   "note": null
+  },
+  {
+   "unit": "P1",
+   "type": "parking",
+   "floor": null,
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 0,
+   "sf2": 153,
+   "ext_sf": null,
+   "price": 100000,
+   "pct": 5,
+   "pct2": null,
+   "cc_m": 132.58,
+   "cc_a": null,
+   "tax_m": 99.65,
+   "tax_a": 1195.81,
+   "tax2_m": null,
+   "carry_m": 232.23,
+   "page": 43,
+   "note": null
+  }
+ ]
+}

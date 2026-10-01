@@ -1,0 +1,212 @@
+{
+ "plan_id": "CD240320",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 2,
+   "failed": [
+    "ag",
+    "printed",
+    "pct100",
+    "sqftTotal",
+    "monthlyTotals",
+    "psf",
+    "allRowsParsed",
+    "outdoor"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "hold",
+   "units": 2,
+   "failed": [
+    "ag",
+    "printed",
+    "sqftTotal",
+    "monthlyTotals",
+    "allRowsParsed",
+    "outdoor"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "sqftTotal",
+    "monthlyTotals",
+    "allRowsParsed",
+    "outdoor"
+   ]
+  },
+  {
+   "step": "sonnet-images-think",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "sqftTotal",
+    "monthlyTotals",
+    "allRowsParsed",
+    "outdoor"
+   ]
+  }
+ ],
+ "calls": 4,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 8489,
+   "output_tokens": 2341,
+   "seconds": 18,
+   "cost_usd": 0.047998
+  },
+  {
+   "model": "sonnet",
+   "tokens": 8380,
+   "output_tokens": 2235,
+   "seconds": 18,
+   "cost_usd": 0.046926
+  },
+  {
+   "model": "sonnet",
+   "tokens": 20502,
+   "output_tokens": 2533,
+   "seconds": 20,
+   "cost_usd": 0.0637314
+  },
+  {
+   "model": "sonnet",
+   "tokens": 38645,
+   "output_tokens": 10227,
+   "seconds": 148,
+   "cost_usd": 0.1428294
+  }
+ ],
+ "tokens": 76016,
+ "api_equiv_usd": 0.301,
+ "located_pages": [
+  57
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "hold",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": false,
+  "ccProportional": null,
+  "carrying": true,
+  "sqftTotal": false,
+  "monthlyTotals": false,
+  "psf": false,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": false
+ },
+ "price_total": 31664.940000000002,
+ "step": "sonnet-text",
+ "budget_period": "January 1, 2027 - December 31, 2027",
+ "columns_printed": [
+  "Unit",
+  "(1) Location",
+  "Beds",
+  "Baths",
+  "Approx. Square Footage of Unit (2)",
+  "Approx. Square Footage of Limited Common Element (Terrace/Balcony) (8)**",
+  "Approx. Square Footage of Limited Common Element (Storage) (8)**",
+  "Offering Price (3)",
+  "Common Interest Percentage (4)",
+  "Residential Common Interest Percentage (4)",
+  "Estimated Common Charges (5)",
+  "Estimated Real Estate Taxes First Year (6)",
+  "Estimated Real Estate Taxes Second Year (6)",
+  "Estimated Carrying Charges First Year (7)",
+  "Estimated Carrying Charges Second Year (7)"
+ ],
+ "tax2": null,
+ "sf2": "Limited Common Element (Storage)",
+ "printed_totals": {
+  "price": 163380000,
+  "pct": 100,
+  "cc_m": 907877,
+  "tax_m": 1076063,
+  "int_sf": 65963,
+  "ext_sf": 1347
+ },
+ "problems": [
+  "row with 19 cells dropped: U\t2A\tR\t2nd Floor\t2\t2.5\t1,691\t35\t485\t4250000\t2.9435%\t3.3081%\t2226.95\t31470\t2622.4",
+  "row with 19 cells dropped: U\t2B\tR\t2nd Floor\t2\t2.5\t1,753\t50\t485\t4350000\t3.0498%\t3.4234%\t2307.37\t32606\t2717.1",
+  "row with 19 cells dropped: U\t2C\tR\t2nd Floor\t2\t2\t1,426\t39\t-\t3495000\t2.3208%\t2.1920%\t1755.83\t24812\t2067.68\t28",
+  "row with 19 cells dropped: U\t2D\tR\t2nd Floor\t1\t2\t1,281\t38\t-\t2995000\t2.0860%\t1.9735%\t1578.19\t22302\t1858.48\t26",
+  "row with 19 cells dropped: U\t3A\tR\t3rd floor\t4\t3.5\t2,433\t48\t632\t6450000\t4.2075%\t4.6577%\t3183.24\t44983\t3748.6",
+  "row with 19 cells dropped: U\t3B\tR\t3rd floor\t4\t3.5\t2,498\t47\t700\t6995000\t4.3397%\t4.8552%\t3283.26\t46397\t3866.3",
+  "row with 19 cells dropped: U\t4A\tR\t4th Floor\t4\t3.5\t2,433\t48\t154\t5975000\t4.0144%\t3.9425%\t3037.15\t42919\t3576.5",
+  "row with 19 cells dropped: U\t4B\tR\t4th Floor\t4\t3.5\t2,498\t54\t154\t6595000\t4.1218%\t4.0488%\t3118.41\t44067\t3672.2",
+  "row with 19 cells dropped: U\t5A\tR\t5th Floor\t4\t3.5\t2,433\t57\t154\t6095000\t4.0180%\t3.9560%\t3039.87\t42957\t3579.7",
+  "row with 19 cells dropped: U\t5B\tR\t5th Floor\t4\t3.5\t2,498\t63\t154\t6750000\t4.1255%\t4.0622%\t3121.21\t44106\t3675.5",
+  "row with 19 cells dropped: U\t6A\tR\t6th Floor\t4\t3.5\t2,433\t60\t154\t6250000\t4.0192%\t3.9605%\t3040.78\t42970\t3580.8",
+  "row with 19 cells dropped: U\t6B\tR\t6th Floor\t4\t3.5\t2,498\t62\t154\t6895000\t4.1251%\t4.0607%\t3120.90\t44102\t3675.1",
+  "row with 19 cells dropped: U\t7A\tR\t7th Floor\t4\t3.5\t2,433\t61\t154\t6395000\t4.0196%\t3.9620%\t3041.09\t42974\t3581.1",
+  "row with 19 cells dropped: U\t7B\tR\t7th Floor\t4\t3.5\t2,498\t61\t154\t6995000\t4.1247%\t4.0593%\t3120.60\t44098\t3674.8",
+  "row with 19 cells dropped: U\t8A\tR\t8th Floor\t4\t3.5\t2,433\t69\t154\t6495000\t4.0228%\t3.9740%\t3043.51\t43009\t3584.0",
+  "row with 19 cells dropped: U\t8B\tR\t8th Floor\t4\t3.5\t2,498\t59\t154\t7150000\t4.1239%\t4.0563%\t3119.99\t44089\t3674.1",
+  "row with 19 cells dropped: U\t9A\tR\t9th Floor\t4\t3.5\t2,433\t94\t154\t6650000\t4.0329%\t4.0114%\t3051.15\t43116\t3593.0",
+  "row with 19 cells dropped: U\t9B\tR\t9th Floor\t4\t3.5\t2,498\t99\t154\t7250000\t4.1400%\t4.1161%\t3132.18\t44262\t3688.4",
+  "row with 19 cells dropped: U\tPH10\tR\t10th Floor\t5\t4.5\t4,314\t75\t1,093\t12500000\t7.4452%\t8.2023%\t5632.77\t79598\t",
+  "row with 19 cells dropped: U\tPH11\tR\t11th Floor\t5\t4.5\t4,138\t79\t467\t12850000\t6.9093%\t7.0083%\t5227.33\t73869\t61",
+  "row with 19 cells dropped: U\tPH12\tR\t12th Floor\t5\t4.5\t3,982\t74\t605\t13000000\t6.7109%\t6.9739%\t5077.23\t71747\t59",
+  "row with 19 cells dropped: U\tPH14\tR\t13th Floor, Roof\t5\t4.5\t4,230\t75\t1,841\t17000000\t7.6116%\t9.1958%\t5758.66\t",
+  "Table has two \"Estimated Carrying Charges\" totals (First Year 1983940.00/165328.33 and Second Year 2159102.00/179925.17) and two tax columns (First Year 1076063.00/89671.92 and Second Year 1251225.00/104268.75); TOTAL line uses First Year tax and carrying charge figures per carry_m/tax_m mapping. sf2 total shown as 1,347 is Storage column total; Terrace/Balcony column total (8,156) not captured in TOTAL line per fixed schema. PC and P1 rows have no beds/baths/price/pct/pct2/tax2/carry_m printed - marked as -."
+ ],
+ "units": [
+  {
+   "unit": "PC",
+   "type": "residential",
+   "floor": "Cellar",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 6311,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 23153.59,
+   "pct": 2.5503,
+   "pct2": null,
+   "cc_m": 1929.47,
+   "cc_a": 32438,
+   "tax_m": 2703.17,
+   "tax_a": 35145,
+   "tax2_m": null,
+   "carry_m": 4632.63,
+   "page": 57,
+   "note": null
+  },
+  {
+   "unit": "P1",
+   "type": "residential",
+   "floor": "1st Floor",
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 2320,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 8511.35,
+   "pct": 0.9375,
+   "pct2": null,
+   "cc_m": 709.28,
+   "cc_a": 11795,
+   "tax_m": 982.92,
+   "tax_a": 12780,
+   "tax2_m": null,
+   "carry_m": 1692.2,
+   "page": 57,
+   "note": null
+  }
+ ]
+}

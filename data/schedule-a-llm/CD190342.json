@@ -1,0 +1,81 @@
+{
+ "plan_id": "CD190342",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals"
+   ]
+  }
+ ],
+ "calls": 1,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 20377,
+   "output_tokens": 910,
+   "seconds": 173,
+   "cost_usd": 0.0376548
+  }
+ ],
+ "tokens": 20377,
+ "api_equiv_usd": 0.038,
+ "located_pages": [
+  60
+ ],
+ "text_layer": true,
+ "found": false,
+ "verdict": "not_found",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": null,
+  "ccProportional": null,
+  "carrying": null,
+  "sqftTotal": null,
+  "monthlyTotals": false,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 0,
+ "step": "sonnet-text",
+ "budget_period": "October 1, 2022 through September 30, 2023",
+ "columns_printed": [
+  "UNIT NUMBER",
+  "NUMBER OF BEDROOMS",
+  "NUMBER OF BATHS/HALF BATHS",
+  "APPROX. SQUARE FOOTAGE OF UNIT",
+  "APPROX. EXTERIOR SQUARE FOOTAGE",
+  "OFFERING PRICE",
+  "PROJECTED (6) UNIT PURCHASE PRICE",
+  "SHARE OF COMMON INTEREST",
+  "PROJECTED MONTHLY COMMON CHARGES",
+  "PROJECTED ANNUAL COMMON CHARGES",
+  "PROJECTED MONTHLY REAL ESTATE TAXES",
+  "PROJECTED ANNUAL REAL ESTATE TAXES",
+  "PROJECTED ANNUAL REAL ESTATE TAXES WITH COOP/CONDO ABATEMENT",
+  "TOTAL ANNUAL CARRYING CHARGES",
+  "TOTAL MONTHLY CARRYING CHARGES"
+ ],
+ "tax2": null,
+ "sf2": null,
+ "printed_totals": {
+  "price": 80600000,
+  "pct": 100,
+  "cc_m": 141063.18,
+  "tax_m": 145261.75,
+  "int_sf": 110531,
+  "ext_sf": 6337
+ },
+ "problems": [
+  "The OCR for this table is too garbled/misaligned to transcribe reliably per-column. Column (4) \"APPROX. SQUARE FOOTAGE OF UNIT\" and column (5) \"APPROX. EXTERIOR SQUARE FOOTAGE\" appear merged/shifted with the \"UNIT PURCHASE PRICE\" figures in most rows, and most units show no distinct \"OFFERING PRICE\" (only a few, e.g. 3S, 6E, 8W, PH16W, PH18, have a clear price). Bedroom/bath values for most rows (e.g. \"5.0 5.5\", \"2.0 2.0\") do not match the beds/baths format rules (they read as decimal counts, not \"x/y\" or \"x BR/x BA\" notation), so beds/baths cannot be confidently assigned per the required format. Given the risk of misaligning every subsequent column for ~35 units, I am not transcribing individual U lines for this page; the data would very likely be wrong in ways that could not be verified against the source. Please re-supply a cleaner OCR/extraction of PDF page 60 if per-unit rows are needed."
+ ],
+ "units": [],
+ "reason": "no PDF"
+}

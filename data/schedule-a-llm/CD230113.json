@@ -1,0 +1,209 @@
+{
+ "plan_id": "CD230113",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 4,
+   "failed": [
+    "monthlyTotals",
+    "outdoor"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "hold",
+   "units": 4,
+   "failed": [
+    "monthlyTotals",
+    "outdoor"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "hold",
+   "units": 4,
+   "failed": [
+    "outdoor"
+   ]
+  },
+  {
+   "step": "sonnet-images-think",
+   "verdict": "hold",
+   "units": 4,
+   "failed": [
+    "outdoor"
+   ]
+  }
+ ],
+ "calls": 4,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4178,
+   "output_tokens": 665,
+   "seconds": 7,
+   "cost_usd": 0.020697999999999998
+  },
+  {
+   "model": "sonnet",
+   "tokens": 4147,
+   "output_tokens": 644,
+   "seconds": 7,
+   "cost_usd": 0.020448
+  },
+  {
+   "model": "sonnet",
+   "tokens": 13423,
+   "output_tokens": 720,
+   "seconds": 8,
+   "cost_usd": 0.0345428
+  },
+  {
+   "model": "sonnet",
+   "tokens": 15452,
+   "output_tokens": 2732,
+   "seconds": 29,
+   "cost_usd": 0.054727
+  }
+ ],
+ "tokens": 37200,
+ "api_equiv_usd": 0.13,
+ "located_pages": [
+  33
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "hold",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": false,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": false
+ },
+ "price_total": 8545000,
+ "step": "sonnet-text",
+ "budget_period": "FROM JANUARY 1, 2024 TO DECEMBER 31, 2024",
+ "columns_printed": [
+  "Unit Location",
+  "Bedrooms/Baths (1)",
+  "Unit approx. area (sq. ft.) (2)",
+  "Ltd. Common Element",
+  "Ltd. Common Element approx. area (sq. ft.) (8)",
+  "Offering Price (3)",
+  "Common Interest (4)",
+  "Est. Common Charges monthly/annually (5)",
+  "Est. Real Estate Taxes monthly/annually (6) *",
+  "Est. monthly carrying cost (7)"
+ ],
+ "tax2": null,
+ "sf2": null,
+ "printed_totals": {
+  "price": 8545000,
+  "pct": 100,
+  "cc_m": 2799.95,
+  "tax_m": 33599.35,
+  "int_sf": 5263,
+  "ext_sf": 1208
+ },
+ "problems": [
+  "Ltd. Common Element approx. area (sq. ft.) column contains multiple sub-areas (Roof Terrace and Storage) for Units 2-4, so ext_sf left blank per rules and values listed in note; total ext_sf (1208) is combined Ltd. Common Element total, not a single terrace/balcony figure."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": "Cellar/1st Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 1915,
+   "sf2": null,
+   "ext_sf": 288,
+   "price": 2495000,
+   "pct": 30,
+   "pct2": null,
+   "cc_m": 839.98,
+   "cc_a": 10079.81,
+   "tax_m": 734.53,
+   "tax_a": 8814.3,
+   "tax2_m": null,
+   "carry_m": 1574.51,
+   "page": 33,
+   "note": "Rear Yard"
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "2nd Floor",
+   "rooms": null,
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1116,
+   "sf2": null,
+   "ext_sf": 190,
+   "price": 2025000,
+   "pct": 23,
+   "pct2": null,
+   "cc_m": 643.99,
+   "cc_a": 7727.85,
+   "tax_m": 563.14,
+   "tax_a": 6757.63,
+   "tax2_m": null,
+   "carry_m": 1207.12,
+   "page": 33,
+   "note": "Roof Terrace: 190; Storage: 38"
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": "3rd Floor",
+   "rooms": null,
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1116,
+   "sf2": null,
+   "ext_sf": 211,
+   "price": 1950000,
+   "pct": 22,
+   "pct2": null,
+   "cc_m": 615.99,
+   "cc_a": 7391.86,
+   "tax_m": 538.65,
+   "tax_a": 6463.82,
+   "tax2_m": null,
+   "carry_m": 1154.64,
+   "page": 33,
+   "note": "Roof Terrace: 211; Storage: 49"
+  },
+  {
+   "unit": "4",
+   "type": "residential",
+   "floor": "4th Floor",
+   "rooms": null,
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1116,
+   "sf2": null,
+   "ext_sf": 397,
+   "price": 2075000,
+   "pct": 25,
+   "pct2": null,
+   "cc_m": 699.99,
+   "cc_a": 8399.84,
+   "tax_m": 612.1,
+   "tax_a": 7345.25,
+   "tax2_m": null,
+   "carry_m": 1312.09,
+   "page": 33,
+   "note": "Roof Terrace: 397; Storage: 35"
+  }
+ ]
+}

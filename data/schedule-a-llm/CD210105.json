@@ -1,0 +1,158 @@
+{
+ "plan_id": "CD210105",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "publish_ag",
+   "units": 3,
+   "failed": []
+  }
+ ],
+ "calls": 2,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4378,
+   "output_tokens": 852,
+   "seconds": 9,
+   "cost_usd": 0.02262
+  },
+  {
+   "model": "sonnet",
+   "tokens": 13553,
+   "output_tokens": 814,
+   "seconds": 10,
+   "cost_usd": 0.035558400000000004
+  }
+ ],
+ "tokens": 17931,
+ "api_equiv_usd": 0.058,
+ "located_pages": [
+  39
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 3814000,
+ "step": "sonnet-images",
+ "budget_period": "OCTOBER 1, 2021 TO SEPTEMBER 30, 2022",
+ "columns_printed": [
+  "UNIT",
+  "(1) NUMBER OF BEDROOMS/BATHROOMS",
+  "(2) APPROXIMATE TOTAL SQ. FT. UNIT",
+  "(2) APPROXIMATE TOTAL SQ. FT. BALCONY/TERRACE/YARD",
+  "(3) OFFERING PRICE",
+  "(4) % OF COMMON INTEREST",
+  "(5) PROJECTED MONTHLY COMMON CHARGES",
+  "(6) PROJECTED MONTHLY REAL ESTATE TAXES",
+  "(7) PROJECTED TOTAL MONTHLY CARRYING CHARGES",
+  "(8) PROJECTED ANNUAL REAL ESTATE TAXES",
+  "(9) TOTAL PROJECTED ANNUAL CHARGES"
+ ],
+ "tax2": null,
+ "sf2": null,
+ "printed_totals": {
+  "price": 3814000,
+  "pct": 100,
+  "cc_m": 1349.92,
+  "tax_m": 1250,
+  "int_sf": 4297,
+  "ext_sf": 1701
+ },
+ "problems": [
+  "Unit 1's floor-area note describes 2,551 sf habitable plus terrace 86 sf, yard 766 sf, cellar 697 sf, but the \"BALCONY/TERRACE/YARD\" column prints 852.00, which does not match the sum of those note figures exactly; transcribed as printed (852.00) per instructions to copy numbers exactly.",
+  "Unit 3's \"BALCONY/TERRACE/YARD\" column shows 849.00, matching the rooftop terrace area from note 2; transcribed as printed."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 2.5,
+   "int_sf": 2551,
+   "sf2": null,
+   "ext_sf": 852,
+   "price": 1739000,
+   "pct": 47.4998,
+   "pct2": null,
+   "cc_m": 641.21,
+   "cc_a": 7125,
+   "tax_m": 593.75,
+   "tax_a": null,
+   "tax2_m": null,
+   "carry_m": 1234.96,
+   "page": 39,
+   "note": "see note 1"
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 806,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 875000,
+   "pct": 20.5208,
+   "pct2": null,
+   "cc_m": 277.01,
+   "cc_a": 3078.12,
+   "tax_m": 256.51,
+   "tax_a": null,
+   "tax2_m": null,
+   "carry_m": 533.52,
+   "page": 39,
+   "note": null
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 940,
+   "sf2": null,
+   "ext_sf": 849,
+   "price": 1200000,
+   "pct": 31.9794,
+   "pct2": null,
+   "cc_m": 431.7,
+   "cc_a": 4796.88,
+   "tax_m": 399.74,
+   "tax_a": null,
+   "tax2_m": null,
+   "carry_m": 831.44,
+   "page": 39,
+   "note": "see note 2"
+  }
+ ]
+}

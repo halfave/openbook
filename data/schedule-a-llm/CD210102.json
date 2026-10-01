@@ -1,0 +1,180 @@
+{
+ "plan_id": "CD210102",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "publish_ag",
+   "units": 4,
+   "failed": []
+  }
+ ],
+ "calls": 2,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4408,
+   "output_tokens": 749,
+   "seconds": 9,
+   "cost_usd": 0.022122
+  },
+  {
+   "model": "sonnet",
+   "tokens": 13939,
+   "output_tokens": 926,
+   "seconds": 11,
+   "cost_usd": 0.037253800000000004
+  }
+ ],
+ "tokens": 18347,
+ "api_equiv_usd": 0.059,
+ "located_pages": [
+  37
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": null,
+  "monthlyTotals": true,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 3772000,
+ "step": "sonnet-images",
+ "budget_period": "July 1, 2022- June 30, 2022",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approx. Square Footage (1)",
+  "Approx. Outdoor/Limited Square Footage (1)",
+  "No. of Bedooms/Bathrooms (1)",
+  "Offering Price (2)",
+  "Percent Common Interest (3)",
+  "Projected Monthly Common Charges (4)",
+  "Projected Real Estate Taxes (Monthly) (5)",
+  "Projected Real Estate Taxes (Annual) (5)",
+  "Projected Carrying Charges (Monthly) (6)"
+ ],
+ "tax2": null,
+ "sf2": null,
+ "printed_totals": {
+  "price": 3772000,
+  "pct": 100,
+  "cc_m": 1852.51,
+  "tax_m": 2409.58,
+  "int_sf": 3874,
+  "ext_sf": 1570
+ },
+ "problems": [
+  "Unit 1's square footage is printed as two stacked figures (613 and 1021) without clear labeling of which is cellar vs basement; placed 613 in int_sf and 1021 in sf2 per convention, but both may represent different levels not explicitly \"habitable floor\" vs \"cellar.\" No separate monthly tax_m column besides the one shown (col 5) used for tax_m; no second tax scenario present so TAX2 left empty. tax_a computed cells not shown printed individually beyond annual column - annual figure taken directly from table (col \"Real Estate Taxes (Annual)\"); no tax_m annual-only conversion attempted, values are as printed. The table only has one monthly common charges column, one monthly tax column, and one annual tax column - no cc_a printed, so cc_a is \"-\".",
+  "unit sizes left out: the area columns did not add up to the printed totals"
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": "Cellar/Basement",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 1175000,
+   "pct": 30.68,
+   "pct2": null,
+   "cc_m": 568.35,
+   "cc_a": 6831.2,
+   "tax_m": 739.26,
+   "tax_a": 8871.1,
+   "tax2_m": null,
+   "carry_m": 1307.61,
+   "page": 37,
+   "note": "Cellar*/Basement two figures (613, 1021); outdoor: 54 (A), 576 (RY)"
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "First Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 849000,
+   "pct": 20.62,
+   "pct2": null,
+   "cc_m": 381.99,
+   "cc_a": 4583.88,
+   "tax_m": 496.86,
+   "tax_a": 5962.26,
+   "tax2_m": null,
+   "carry_m": 878.85,
+   "page": 37,
+   "note": null
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": "Second Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 899000,
+   "pct": 22.26,
+   "pct2": null,
+   "cc_m": 412.37,
+   "cc_a": 4948.44,
+   "tax_m": 536.37,
+   "tax_a": 6436.46,
+   "tax2_m": null,
+   "carry_m": 948.74,
+   "page": 37,
+   "note": "Outdoor/Limited sf: 32 (B)"
+  },
+  {
+   "unit": "4",
+   "type": "residential",
+   "floor": "Third Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 1,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 849000,
+   "pct": 26.44,
+   "pct2": null,
+   "cc_m": 489.8,
+   "cc_a": 5877.6,
+   "tax_m": 637.09,
+   "tax_a": 7645.1,
+   "tax2_m": null,
+   "carry_m": 1126.89,
+   "page": 37,
+   "note": "Outdoor/Limited sf: 161 (T)"
+  }
+ ]
+}

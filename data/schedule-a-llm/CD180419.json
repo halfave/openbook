@@ -1,0 +1,154 @@
+{
+ "plan_id": "CD180419",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 3,
+   "failed": [
+    "monthlyTotals"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "publish_ag",
+   "units": 3,
+   "failed": []
+  }
+ ],
+ "calls": 2,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4184,
+   "output_tokens": 687,
+   "seconds": 66,
+   "cost_usd": 0.020853999999999998
+  },
+  {
+   "model": "sonnet",
+   "tokens": 4120,
+   "output_tokens": 622,
+   "seconds": 9,
+   "cost_usd": 0.020208
+  }
+ ],
+ "tokens": 8304,
+ "api_equiv_usd": 0.041,
+ "located_pages": [
+  39
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 2947000,
+ "step": "sonnet-text-retry",
+ "budget_period": "JANUARY 1, 2020 TO DECEMBER 31, 2020",
+ "columns_printed": [
+  "UNIT",
+  "NUMBER OF BEDROOMS/BATHROOMS",
+  "APPROXIMATE TOTAL SQ. FT.",
+  "BALCONY/TERRACE/YARD",
+  "OFFERING PRICE",
+  "% OF COMMON INTEREST",
+  "PROJECTED MONTHLY COMMON CHARGES",
+  "PROJECTED MONTHLY REAL ESTATE TAXES",
+  "PROJECTED TOTAL MONTHLY CARRYING CHARGES",
+  "PROJECTED ANNUAL REAL ESTATE TAXES",
+  "TOTAL PROJECTED ANNUAL CHARGES"
+ ],
+ "tax2": null,
+ "sf2": "balcony/terrace/yard",
+ "printed_totals": {
+  "price": 2947000,
+  "pct": 100,
+  "cc_m": 1212.51,
+  "tax_m": 500,
+  "int_sf": 2365,
+  "ext_sf": 1146
+ },
+ "problems": [
+  "Unit identifiers printed as \"see note 1\" and \"see note 2\" rather than numeric unit numbers; actual unit numbers not given in the table. Total annual real estate taxes column value (6000.00) and total row's annual charges (20550.12) order in source is ambiguous due to layout, but total tax_a=6000.00 and total carry_a=20550.12 were inferred from column position."
+ ],
+ "units": [
+  {
+   "unit": "see note 1",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 813,
+   "sf2": 679,
+   "ext_sf": null,
+   "price": 999000,
+   "pct": 39.16,
+   "pct2": null,
+   "cc_m": 474.82,
+   "cc_a": null,
+   "tax_m": 195.8,
+   "tax_a": 2349.6,
+   "tax2_m": null,
+   "carry_m": 670.62,
+   "page": 39,
+   "note": null
+  },
+  {
+   "unit": "see note 2",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 776,
+   "sf2": 211,
+   "ext_sf": null,
+   "price": 969000,
+   "pct": 29.9595,
+   "pct2": null,
+   "cc_m": 363.26,
+   "cc_a": null,
+   "tax_m": 149.8,
+   "tax_a": 1797.6,
+   "tax2_m": null,
+   "carry_m": 513.06,
+   "page": 39,
+   "note": null
+  },
+  {
+   "unit": "see note 2",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 776,
+   "sf2": 256,
+   "ext_sf": null,
+   "price": 979000,
+   "pct": 30.8805,
+   "pct2": null,
+   "cc_m": 374.43,
+   "cc_a": null,
+   "tax_m": 154.4,
+   "tax_a": 1852.8,
+   "tax2_m": null,
+   "carry_m": 528.83,
+   "page": 39,
+   "note": null
+  }
+ ]
+}

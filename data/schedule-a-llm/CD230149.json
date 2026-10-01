@@ -1,0 +1,185 @@
+{
+ "plan_id": "CD230149",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "sqftTotal",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "publish_printed",
+   "units": 4,
+   "failed": [
+    "ag"
+   ]
+  }
+ ],
+ "calls": 2,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4526,
+   "output_tokens": 777,
+   "seconds": 8,
+   "cost_usd": 0.022761999999999998
+  },
+  {
+   "model": "sonnet",
+   "tokens": 15249,
+   "output_tokens": 706,
+   "seconds": 10,
+   "cost_usd": 0.0408584
+  }
+ ],
+ "tokens": 19775,
+ "api_equiv_usd": 0.064,
+ "located_pages": [
+  39
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_printed",
+ "checks": {
+  "ag": false,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 8100000,
+ "step": "sonnet-images",
+ "budget_period": "JANUARY 1, 2025 TO DECEMBER 31, 2025",
+ "columns_printed": [
+  "Unit No.",
+  "Bedrooms per Unit",
+  "Bathroom(s) per Unit",
+  "1/2 Bathroom(s) per Unit",
+  "Offering Price",
+  "Square footage",
+  "Cellar Space square footage",
+  "Percent of Common Interest",
+  "Limited Common Element square feet",
+  "Annual Common Charges",
+  "Monthly Common Charges",
+  "Annual Real Estate Taxes",
+  "Monthly Real Estate Taxes",
+  "Total Monthly Carrying Charges"
+ ],
+ "tax2": null,
+ "sf2": "Cellar Space square footage",
+ "printed_totals": {
+  "price": 8100000,
+  "pct": 100,
+  "cc_m": 1863.42,
+  "tax_m": 4865.33,
+  "int_sf": 4612,
+  "ext_sf": null
+ },
+ "problems": [
+  "Ext_sf not included: each unit has multiple separate limited common areas (lightwell/rear yard/storage, terrace/roof terrace/storage, balcony/roof terrace/storage, balcony/terrace/storage) listed in the notes rather than a single ext_sf column; not placed in note field per row since areas are listed by unit number in table notes, not per-row note text."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 1045,
+   "sf2": 802,
+   "ext_sf": null,
+   "price": 2500000,
+   "pct": 28.5,
+   "pct2": null,
+   "cc_m": 531.07,
+   "cc_a": 6372.89,
+   "tax_m": 1386.62,
+   "tax_a": 16639.44,
+   "tax2_m": null,
+   "carry_m": 1917.69,
+   "page": 39,
+   "note": null
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1237,
+   "sf2": 0,
+   "ext_sf": null,
+   "price": 1950000,
+   "pct": 24.5,
+   "pct2": null,
+   "cc_m": 456.54,
+   "cc_a": 5478.45,
+   "tax_m": 1192.01,
+   "tax_a": 14304.08,
+   "tax2_m": null,
+   "carry_m": 1648.54,
+   "page": 39,
+   "note": null
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1237,
+   "sf2": 0,
+   "ext_sf": null,
+   "price": 1950000,
+   "pct": 24.5,
+   "pct2": null,
+   "cc_m": 456.54,
+   "cc_a": 5478.45,
+   "tax_m": 1192.01,
+   "tax_a": 14304.08,
+   "tax2_m": null,
+   "carry_m": 1648.54,
+   "page": 39,
+   "note": null
+  },
+  {
+   "unit": "4",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1093,
+   "sf2": 0,
+   "ext_sf": null,
+   "price": 1700000,
+   "pct": 22.5,
+   "pct2": null,
+   "cc_m": 419.27,
+   "cc_a": 5031.23,
+   "tax_m": 1094.7,
+   "tax_a": 13136.4,
+   "tax2_m": null,
+   "carry_m": 1513.97,
+   "page": 39,
+   "note": null
+  }
+ ]
+}

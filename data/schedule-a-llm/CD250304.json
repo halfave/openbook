@@ -1,0 +1,190 @@
+{
+ "plan_id": "CD250304",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 3,
+   "failed": [
+    "outdoor"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "hold",
+   "units": 3,
+   "failed": [
+    "outdoor"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "sqftTotal",
+    "monthlyTotals",
+    "allRowsParsed",
+    "outdoor"
+   ]
+  },
+  {
+   "step": "sonnet-images-think",
+   "verdict": "publish_ag",
+   "units": 3,
+   "failed": []
+  }
+ ],
+ "calls": 4,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 3962,
+   "output_tokens": 768,
+   "seconds": 10,
+   "cost_usd": 0.020451999999999998
+  },
+  {
+   "model": "sonnet",
+   "tokens": 3860,
+   "output_tokens": 667,
+   "seconds": 7,
+   "cost_usd": 0.019437999999999997
+  },
+  {
+   "model": "sonnet",
+   "tokens": 12842,
+   "output_tokens": 763,
+   "seconds": 11,
+   "cost_usd": 0.033662399999999995
+  },
+  {
+   "model": "sonnet",
+   "tokens": 14675,
+   "output_tokens": 2585,
+   "seconds": 25,
+   "cost_usd": 0.051934
+  }
+ ],
+ "tokens": 35339,
+ "api_equiv_usd": 0.125,
+ "located_pages": [
+  47
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 6750000,
+ "step": "sonnet-images-think",
+ "budget_period": "For the Period May 1, 2026 through April 30, 2027",
+ "columns_printed": [
+  "Unit #",
+  "Bedrooms / Bathrooms",
+  "Square Footage of Unit - Main Floor (sq.ft.)",
+  "Rear Yard - Limited Common Element (sq.ft.)",
+  "Roof - Limited Common Element (sq.ft.)",
+  "Total Square Footage of Unit",
+  "Offering Price",
+  "Percentage of Common Interest",
+  "Estimate of Monthly Common Charges",
+  "Projected Monthly Real Estate Taxes for the Period 5/1/2026-4/30/2027",
+  "Projected Annual Real Estate Taxes for the Period 5/1/2026-4/30/2027",
+  "Estimated Total Monthly Carrying Taxes 5/1/2026-4/30/2027"
+ ],
+ "tax2": null,
+ "sf2": null,
+ "printed_totals": {
+  "price": 6750000,
+  "pct": 100,
+  "cc_m": 2846.83,
+  "tax_m": 3481.03,
+  "int_sf": 4106,
+  "ext_sf": null
+ },
+ "problems": [
+  "Table has two separate outdoor-area columns (Rear Yard, Roof); ext_sf left blank and values listed per unit in note. Total row prints separate Rear Yard (801.00) and Roof (850.00) totals, not a single combined ext_sf total, so TOTAL ext_sf is \"-\"."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": "First Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1186,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 2200000,
+   "pct": 35,
+   "pct2": null,
+   "cc_m": 996.39,
+   "cc_a": null,
+   "tax_m": 1218.36,
+   "tax_a": 14620.33,
+   "tax2_m": null,
+   "carry_m": 2214.75,
+   "page": 47,
+   "note": "Rear Yard 801.00 sf; Roof -"
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "Second Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1183,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 2100000,
+   "pct": 25,
+   "pct2": null,
+   "cc_m": 711.71,
+   "cc_a": null,
+   "tax_m": 870.26,
+   "tax_a": 10443.09,
+   "tax2_m": null,
+   "carry_m": 1581.97,
+   "page": 47,
+   "note": "Rear Yard -; Roof -"
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": "Third Floor & Penthouse",
+   "rooms": null,
+   "beds": 3,
+   "baths": 3,
+   "int_sf": 1737,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 2450000,
+   "pct": 40,
+   "pct2": null,
+   "cc_m": 1138.73,
+   "cc_a": null,
+   "tax_m": 1392.41,
+   "tax_a": 16708.95,
+   "tax2_m": null,
+   "carry_m": 2531.15,
+   "page": 47,
+   "note": "Rear Yard -; Roof 850.00 sf"
+  }
+ ]
+}

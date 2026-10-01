@@ -1,0 +1,181 @@
+{
+ "plan_id": "CD220264",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 3,
+   "failed": [
+    "ag",
+    "printed",
+    "carrying",
+    "sqftTotal",
+    "monthlyTotals"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "hold",
+   "units": 3,
+   "failed": [
+    "ag",
+    "carrying",
+    "sqftTotal",
+    "monthlyTotals"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "publish_printed",
+   "units": 3,
+   "failed": [
+    "ag"
+   ]
+  }
+ ],
+ "calls": 3,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4200,
+   "output_tokens": 663,
+   "seconds": 67,
+   "cost_usd": 0.020774
+  },
+  {
+   "model": "sonnet",
+   "tokens": 4109,
+   "output_tokens": 571,
+   "seconds": 6,
+   "cost_usd": 0.019858
+  },
+  {
+   "model": "sonnet",
+   "tokens": 13557,
+   "output_tokens": 794,
+   "seconds": 10,
+   "cost_usd": 0.035408800000000004
+  }
+ ],
+ "tokens": 21866,
+ "api_equiv_usd": 0.076,
+ "located_pages": [
+  39
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_printed",
+ "checks": {
+  "ag": false,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 9400000,
+ "step": "sonnet-images",
+ "budget_period": "JANUARY 1, 2024 TO DECEMBER 31, 2024",
+ "columns_printed": [
+  "Unit No.",
+  "Bedrooms per Unit",
+  "Bathroom(s) per Unit",
+  "1/2 Bathroom(s) per Unit",
+  "Offering Price",
+  "Square footage",
+  "Cellar Space square footage",
+  "Percent of Common Interest",
+  "Limited Common Element square feet",
+  "Annual Common Charges",
+  "Monthly Common Charges",
+  "Annual Real Estate Taxes",
+  "Monthly Real Estate Taxes",
+  "Total Monthly Carrying Charges"
+ ],
+ "tax2": null,
+ "sf2": "Cellar Space square footage",
+ "printed_totals": {
+  "price": 9400000,
+  "pct": 100,
+  "cc_m": 4186.78,
+  "tax_m": 5213.92,
+  "int_sf": 4838,
+  "ext_sf": null
+ },
+ "problems": [
+  "Bathroom(s) per Unit and 1/2 Bathroom(s) per Unit are separate columns; combined into baths (e.g. Unit 1: 1 full + 2 half = 1.5? but note actual half count listed in note); Limited Common Element square feet column and Cellar Space column not mapped to any output field (Limited Common Element sf: 1135.00, -, 1028.00 respectively) — not included since no matching column exists."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 1.5,
+   "int_sf": 1462,
+   "sf2": 844,
+   "ext_sf": null,
+   "price": 3600000,
+   "pct": 43.8623,
+   "pct2": null,
+   "cc_m": 1836.42,
+   "cc_a": 22037.02,
+   "tax_m": 2286.95,
+   "tax_a": 27443.35,
+   "tax2_m": null,
+   "carry_m": 4123.36,
+   "page": 39,
+   "note": "Limited common areas: Areaway (280 sf); Deck (130 sf); Rear Yard (725 sf); 1/2 Bathroom(s) per Unit = 2"
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 2,
+   "int_sf": 1212,
+   "sf2": 0,
+   "ext_sf": null,
+   "price": 1800000,
+   "pct": 15.4493,
+   "pct2": null,
+   "cc_m": 646.83,
+   "cc_a": 7761.95,
+   "tax_m": 805.52,
+   "tax_a": 9666.18,
+   "tax2_m": null,
+   "carry_m": 1452.34,
+   "page": 39,
+   "note": "Limited common areas: -----; 1/2 Bathroom(s) per Unit = 0"
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 4,
+   "baths": 3.5,
+   "int_sf": 2164,
+   "sf2": 0,
+   "ext_sf": null,
+   "price": 4000000,
+   "pct": 40.6883,
+   "pct2": null,
+   "cc_m": 1703.53,
+   "cc_a": 20442.37,
+   "tax_m": 2121.46,
+   "tax_a": 25457.47,
+   "tax2_m": null,
+   "carry_m": 3824.99,
+   "page": 39,
+   "note": "Limited common areas: Terrace (363 sf); Roof* (665 sf)"
+  }
+ ]
+}

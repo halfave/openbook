@@ -1,0 +1,201 @@
+{
+ "plan_id": "CD210070",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 4,
+   "failed": [
+    "carrying",
+    "sqftTotal"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "hold",
+   "units": 3,
+   "failed": [
+    "ag",
+    "printed",
+    "pct100",
+    "carrying",
+    "sqftTotal",
+    "monthlyTotals",
+    "allRowsParsed",
+    "outdoor"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "hold",
+   "units": 4,
+   "failed": [
+    "carrying"
+   ]
+  }
+ ],
+ "calls": 3,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 3997,
+   "output_tokens": 779,
+   "seconds": 8,
+   "cost_usd": 0.020658
+  },
+  {
+   "model": "sonnet",
+   "tokens": 3994,
+   "output_tokens": 779,
+   "seconds": 8,
+   "cost_usd": 0.020646
+  },
+  {
+   "model": "sonnet",
+   "tokens": 12915,
+   "output_tokens": 802,
+   "seconds": 9,
+   "cost_usd": 0.034123799999999996
+  }
+ ],
+ "tokens": 20906,
+ "api_equiv_usd": 0.075,
+ "located_pages": [
+  32
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "hold",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": null,
+  "carrying": false,
+  "sqftTotal": false,
+  "monthlyTotals": true,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 13015400,
+ "step": "sonnet-text",
+ "budget_period": "assuming July 1, 2021 - June 30, 2022",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Limited common area (Balcony and Cellar) Sq. Ft.",
+  "Approx. Unit Gross Area (Sqf.)",
+  "Total Area (Sqf.)",
+  "Offering Price",
+  "% of Common Interest",
+  "No. of Bedrooms/Baths",
+  "Estimated First Year's Common Charges (Annual/Monthly)",
+  "Projected Est. Real Estate Taxes (Annual/Monthly)",
+  "Estimated First Year's Carrying Charges (Annual/Monthly)"
+ ],
+ "tax2": null,
+ "sf2": "Limited common area (Balcony and Cellar)",
+ "printed_totals": {
+  "price": 13015400,
+  "pct": 100,
+  "cc_m": 5978.98,
+  "tax_m": 8212.58,
+  "int_sf": 5385,
+  "ext_sf": 402
+ },
+ "problems": [
+  "CF-2A row spans multiple sub-lines (Cellar/1st/2nd) with separate sq ft and bath figures that don't cleanly map to single int_sf/beds/baths cells; transcribed best-guess values in note. CF-1A row's location, floor, rooms, beds, baths not printed/legible on this page - marked as \"-\". Bedrooms/Baths column values appear to be blank or merged with area figures for all rows; could not isolate distinct bed/bath numbers, left as \"-\"."
+ ],
+ "units": [
+  {
+   "unit": "CF-2A",
+   "type": "commercial",
+   "floor": null,
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 1600,
+   "sf2": 402,
+   "ext_sf": null,
+   "price": 2773100,
+   "pct": 27.65,
+   "pct2": null,
+   "cc_m": 1653.08,
+   "cc_a": 19836.98,
+   "tax_m": 2270.63,
+   "tax_a": 27247.55,
+   "tax2_m": null,
+   "carry_m": 3293.94,
+   "page": 32,
+   "note": "Location: Cellar/1st/2nd; component sq ft: Cellar 0 (0.0 baths), 452; 1st 0.0/2.0, 1339; 2nd 0.0/2.0, 402/1198"
+  },
+  {
+   "unit": "3-A",
+   "type": "commercial",
+   "floor": "3rd",
+   "rooms": null,
+   "beds": null,
+   "baths": 1,
+   "int_sf": 1198,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 3297650,
+   "pct": 20.7,
+   "pct2": null,
+   "cc_m": 1237.74,
+   "cc_a": 14852.94,
+   "tax_m": 1700.13,
+   "tax_a": 20401.61,
+   "tax2_m": null,
+   "carry_m": 2938.05,
+   "page": 32,
+   "note": null
+  },
+  {
+   "unit": "4-A",
+   "type": "commercial",
+   "floor": "4th",
+   "rooms": null,
+   "beds": null,
+   "baths": 1,
+   "int_sf": 1198,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 3297650,
+   "pct": 20.7,
+   "pct2": null,
+   "cc_m": 1237.74,
+   "cc_a": 14852.94,
+   "tax_m": 1700.13,
+   "tax_a": 20401.61,
+   "tax2_m": null,
+   "carry_m": 2938.05,
+   "page": 32,
+   "note": null
+  },
+  {
+   "unit": "CF-1A",
+   "type": "commercial",
+   "floor": null,
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 1791,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 3647000,
+   "pct": 30.95,
+   "pct2": null,
+   "cc_m": 1850.42,
+   "cc_a": 22205.02,
+   "tax_m": 2541.69,
+   "tax_a": 30500.23,
+   "tax2_m": null,
+   "carry_m": 4392.36,
+   "page": 32,
+   "note": null
+  }
+ ]
+}

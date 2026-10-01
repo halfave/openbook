@@ -8,8 +8,11 @@
 // has a price and a percentage. The sum of the prices is checked against the total offering price on the
 // AG record: status "ok" when it matches within 3%, else "mismatch". Plans that pass get a static file
 // the building page reads (data/schedule-a/<PLAN_ID>.json); the rest get nothing, so nothing unchecked is shown.
-// Re-run after new plans are loaded, then run build-buildings.mjs.
-import { writeFile, mkdir, rm } from "node:fs/promises";
+//
+// Model results (data/schedule-a-llm/<PLAN_ID>.json, from extract-schedule-a-llm.mjs) take precedence per plan:
+// a table that passed its checks replaces the pattern-matched one; a table held by those stricter checks removes
+// it; "not found" leaves it. Re-run after new plans are loaded or the model pass adds plans, then run build-buildings.mjs.
+import { writeFile, mkdir, rm, readdir, readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { all, rpc, money, ROOT } from "./site.mjs";
 
@@ -137,7 +140,22 @@ if (test) {
 } else {
   await rm(DATA, { recursive: true, force: true });
   await mkdir(DATA, { recursive: true });
-  const ok = results.filter((r) => r.status === "ok");
-  for (const r of ok) await writeFile(join(DATA, r.plan_id + ".json"), JSON.stringify({ units: r.units, unit_count: r.unit_count, price_total: r.price_total, pages: r.pages }));
-  console.log(`${results.length} plans:`, by, `→ ${ok.length} files in data/schedule-a/`);
+  const files = new Map(results.filter((r) => r.status === "ok")
+    .map((r) => [r.plan_id, { source: "pattern", units: r.units, unit_count: r.unit_count, price_total: r.price_total, pages: r.pages }]));
+  const npat = files.size;
+  const llm = { published: 0, held: 0 };
+  const LLM = join(ROOT, "data", "schedule-a-llm");
+  for (const f of await readdir(LLM).catch(() => [])) {
+    if (!f.endsWith(".json")) continue;
+    const m = JSON.parse(await readFile(join(LLM, f), "utf8"));
+    if (/^publish/.test(m.verdict)) {
+      const units = m.units.map((u) => ({ unit: u.unit, type: u.type, floor: u.floor, beds: u.beds, baths: u.baths, sqft: u.int_sf,
+        outdoor_sqft: u.ext_sf, price: u.price, pct: u.pct, cc_m: u.cc_m, tax_m: u.tax_m, carry_m: u.carry_m, page: u.page }));
+      files.set(m.plan_id, { source: "model", checked: m.verdict === "publish_ag" ? "ag_total" : "printed_total", budget_period: m.budget_period,
+        units, unit_count: units.length, price_total: m.price_total, pages: [...new Set(units.map((u) => u.page).filter(Boolean))] });
+      llm.published++;
+    } else if (m.verdict === "hold") { files.delete(m.plan_id); llm.held++; }
+  }
+  for (const [id, row] of files) await writeFile(join(DATA, id + ".json"), JSON.stringify(row));
+  console.log(`${results.length} plans:`, by, `| pattern ok ${npat}, model published ${llm.published}, model held ${llm.held} → ${files.size} files in data/schedule-a/`);
 }

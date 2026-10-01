@@ -1,0 +1,207 @@
+{
+ "plan_id": "CD230195",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "sqftTotal",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "sqftTotal",
+    "monthlyTotals",
+    "allRowsParsed",
+    "outdoor"
+   ]
+  },
+  {
+   "step": "sonnet-images-think",
+   "verdict": "hold",
+   "units": 4,
+   "failed": [
+    "sqftTotal",
+    "outdoor"
+   ]
+  }
+ ],
+ "calls": 3,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4403,
+   "output_tokens": 829,
+   "seconds": 68,
+   "cost_usd": 0.022582
+  },
+  {
+   "model": "sonnet",
+   "tokens": 13963,
+   "output_tokens": 850,
+   "seconds": 11,
+   "cost_usd": 0.0368102
+  },
+  {
+   "model": "sonnet",
+   "tokens": 17104,
+   "output_tokens": 3982,
+   "seconds": 38,
+   "cost_usd": 0.0681776
+  }
+ ],
+ "tokens": 35470,
+ "api_equiv_usd": 0.128,
+ "located_pages": [
+  34
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": null,
+  "monthlyTotals": true,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 9600000,
+ "step": "sonnet-images-think",
+ "budget_period": "July 1, 2024- June 30, 2025",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approx. Floor Area",
+  "Approx. Outdoor/Uninhabitable/Limited Common Floor Area",
+  "No. of Bedrooms/Bathrooms",
+  "Offering Price",
+  "Percent Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Real Estate Taxes (Monthly)",
+  "Projected Real Estate Taxes (Annual)",
+  "Projected Carrying Charges (Monthly)"
+ ],
+ "tax2": null,
+ "sf2": null,
+ "printed_totals": {
+  "price": 9600000,
+  "pct": 100,
+  "cc_m": 3736.67,
+  "tax_m": 4193.84,
+  "int_sf": 5348,
+  "ext_sf": 1440
+ },
+ "problems": [
+  "The second area column (\"Approx. Outdoor/Uninhabitable/Limited Common Floor Area\") mixes different element types (patio, balcony, terrace, roof terrace, storage) per unit with separate sub-values; these could not be assigned to a single sf2/ext_sf number and were left blank with breakdowns placed in note instead.",
+  "Unit 1's \"Approx. Floor Area\" prints two values (749* for Cellar and 1138 for First Floor); both are given in int_sf as printed rather than a single number.",
+  "No annual common charges column or second tax-scenario column is printed in this table, so cc_a and tax2_m are \"-\".",
+  "unit sizes left out: the area columns did not add up to the printed totals"
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": "Cellar/First Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 2950000,
+   "pct": 30.26,
+   "pct2": null,
+   "cc_m": 1130.72,
+   "cc_a": null,
+   "tax_m": 1269.06,
+   "tax_a": 15228.68,
+   "tax2_m": null,
+   "carry_m": 2399.78,
+   "page": 34,
+   "note": "Cellar 749* + First Floor 1138; Outdoor/Limited Common: 202(P), 100(B); *cellar non-habitable per note"
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "Second Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 2200000,
+   "pct": 23.02,
+   "pct2": null,
+   "cc_m": 860.18,
+   "cc_a": null,
+   "tax_m": 965.42,
+   "tax_a": 11585.07,
+   "tax2_m": null,
+   "carry_m": 1825.6,
+   "page": 34,
+   "note": "Outdoor/Limited Common: 65(S), 89(T), 207(R)"
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": "Third Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 2200000,
+   "pct": 22.99,
+   "pct2": null,
+   "cc_m": 859.06,
+   "cc_a": null,
+   "tax_m": 964.16,
+   "tax_a": 11569.97,
+   "tax2_m": null,
+   "carry_m": 1823.22,
+   "page": 34,
+   "note": "Outdoor/Limited Common: 65(S), 60(B), 235(R)"
+  },
+  {
+   "unit": "4",
+   "type": "residential",
+   "floor": "Fourth Floor/Penthouse",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 2250000,
+   "pct": 23.73,
+   "pct2": null,
+   "cc_m": 886.71,
+   "cc_a": null,
+   "tax_m": 995.2,
+   "tax_a": 11942.38,
+   "tax2_m": null,
+   "carry_m": 1881.91,
+   "page": 34,
+   "note": "Outdoor/Limited Common: 71(S), 60(B), 487(R)"
+  }
+ ],
+ "rechecked": "2026-09-30"
+}

@@ -1,0 +1,245 @@
+{
+ "plan_id": "CD240243",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 5,
+   "failed": [
+    "ag",
+    "printed",
+    "sqftTotal",
+    "monthlyTotals"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "hold",
+   "units": 5,
+   "failed": [
+    "ag",
+    "printed",
+    "sqftTotal",
+    "monthlyTotals"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "hold",
+   "units": 5,
+   "failed": [
+    "ag",
+    "printed",
+    "sqftTotal",
+    "monthlyTotals"
+   ]
+  },
+  {
+   "step": "sonnet-images-think",
+   "verdict": "hold",
+   "units": 5,
+   "failed": [
+    "ag",
+    "printed",
+    "sqftTotal",
+    "monthlyTotals"
+   ]
+  }
+ ],
+ "calls": 4,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4350,
+   "output_tokens": 754,
+   "seconds": 7,
+   "cost_usd": 0.02192
+  },
+  {
+   "model": "sonnet",
+   "tokens": 8026,
+   "output_tokens": 832,
+   "seconds": 73,
+   "cost_usd": 0.023427
+  },
+  {
+   "model": "sonnet",
+   "tokens": 13711,
+   "output_tokens": 842,
+   "seconds": 11,
+   "cost_usd": 0.0361114
+  },
+  {
+   "model": "sonnet",
+   "tokens": 39870,
+   "output_tokens": 3296,
+   "seconds": 283,
+   "cost_usd": 0.065502
+  }
+ ],
+ "tokens": 65957,
+ "api_equiv_usd": 0.147,
+ "located_pages": [
+  54
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "hold",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": false,
+  "monthlyTotals": false,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 25250000,
+ "step": "sonnet-text",
+ "budget_period": "JUNE 1, 2026 - MAY 31,2027",
+ "columns_printed": [
+  "UNIT",
+  "NO. ROOMS",
+  "NO. BED-ROOMS",
+  "BATHS/HALF BATHS",
+  "APPROX UNIT SQUARE FOOTAGE",
+  "APPROX EXTERIOR SQUARE FOOTAGE",
+  "RESIDENTIAL OFFERING PRICE",
+  "COMMON INTEREST",
+  "COMMON INTEREST",
+  "PROJECTED MONTHLY COMMON CHARGES",
+  "PROJECTED ANNUAL COMMON CHARGES",
+  "PROJECTED MONTHLY RE TAXES",
+  "PROJECTED ANNUAL RE TAXES",
+  "TOTAL MONTHLY CARRYING CHARGES"
+ ],
+ "tax2": null,
+ "sf2": null,
+ "printed_totals": {
+  "price": 30750000,
+  "pct": 100,
+  "cc_m": 21450,
+  "tax_m": 16241,
+  "int_sf": 11423,
+  "ext_sf": 0
+ },
+ "problems": [
+  "Row headers \"Residential Total\", \"Non-Residential Total\", and \"Grand Total\" printed as separate summary rows; Grand Total used for TOTAL line. Unit 3's beds/baths marked unclear per footnote (table shows \"2/1\" but footnote says current config is 0 bed/3 half bath)."
+ ],
+ "units": [
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": null,
+   "rooms": 2,
+   "beds": 2,
+   "baths": null,
+   "int_sf": 1867,
+   "sf2": null,
+   "ext_sf": 0,
+   "price": 4750000,
+   "pct": 19.3541,
+   "pct2": 16.1807,
+   "cc_m": 3673.39,
+   "cc_a": 44080.62,
+   "tax_m": 2628,
+   "tax_a": 31535,
+   "tax2_m": null,
+   "carry_m": 6301,
+   "page": 54,
+   "note": null
+  },
+  {
+   "unit": "3*",
+   "type": "residential",
+   "floor": null,
+   "rooms": 2,
+   "beds": null,
+   "baths": null,
+   "int_sf": 1884,
+   "sf2": null,
+   "ext_sf": 0,
+   "price": 5000000,
+   "pct": 19.628,
+   "pct2": 16.4097,
+   "cc_m": 3725.37,
+   "cc_a": 44704.41,
+   "tax_m": 2665,
+   "tax_a": 31981,
+   "tax2_m": null,
+   "carry_m": 6390,
+   "page": 54,
+   "note": "commercial configuration comprises 0 bedrooms and 3 half baths; Sponsor will amend CO to residential"
+  },
+  {
+   "unit": "4",
+   "type": "residential",
+   "floor": null,
+   "rooms": 2,
+   "beds": 2,
+   "baths": null,
+   "int_sf": 1926,
+   "sf2": null,
+   "ext_sf": 0,
+   "price": 4900000,
+   "pct": 20.1654,
+   "pct2": 16.859,
+   "cc_m": 3827.36,
+   "cc_a": 45928.37,
+   "tax_m": 2738,
+   "tax_a": 32857,
+   "tax2_m": null,
+   "carry_m": 6565,
+   "page": 54,
+   "note": null
+  },
+  {
+   "unit": "5",
+   "type": "residential",
+   "floor": null,
+   "rooms": 2,
+   "beds": 2,
+   "baths": null,
+   "int_sf": 1926,
+   "sf2": null,
+   "ext_sf": 0,
+   "price": 5100000,
+   "pct": 20.2653,
+   "pct2": 16.9424,
+   "cc_m": 3846.31,
+   "cc_a": 46155.74,
+   "tax_m": 2752,
+   "tax_a": 33019,
+   "tax2_m": null,
+   "carry_m": 6598,
+   "page": 54,
+   "note": null
+  },
+  {
+   "unit": "6",
+   "type": "residential",
+   "floor": null,
+   "rooms": 2,
+   "beds": 2,
+   "baths": null,
+   "int_sf": 1947,
+   "sf2": null,
+   "ext_sf": 0,
+   "price": 5500000,
+   "pct": 20.5871,
+   "pct2": 17.2115,
+   "cc_m": 3907.4,
+   "cc_a": 46888.85,
+   "tax_m": 2795,
+   "tax_a": 33544,
+   "tax2_m": null,
+   "carry_m": 6703,
+   "page": 54,
+   "note": null
+  }
+ ]
+}

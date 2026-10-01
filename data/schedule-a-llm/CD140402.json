@@ -1,0 +1,217 @@
+{
+ "plan_id": "CD140402",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 5,
+   "failed": [
+    "pct100"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "hold",
+   "units": 5,
+   "failed": [
+    "monthlyTotals"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "hold",
+   "units": 5,
+   "failed": [
+    "monthlyTotals"
+   ]
+  }
+ ],
+ "calls": 3,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4676,
+   "output_tokens": 934,
+   "seconds": 10,
+   "cost_usd": 0.024304
+  },
+  {
+   "model": "sonnet",
+   "tokens": 4546,
+   "output_tokens": 806,
+   "seconds": 10,
+   "cost_usd": 0.023016000000000002
+  },
+  {
+   "model": "sonnet",
+   "tokens": 14165,
+   "output_tokens": 998,
+   "seconds": 11,
+   "cost_usd": 0.0382972
+  }
+ ],
+ "tokens": 23387,
+ "api_equiv_usd": 0.086,
+ "located_pages": [
+  42
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "hold",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": false,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 4380000,
+ "step": "sonnet-text",
+ "budget_period": "OCTOBER 1, 2015 - SEPTEMBER 30, 2016",
+ "columns_printed": [
+  "UNIT",
+  "NUMBER OF BEDROOMS/BATHROOMS (NOTE 1)",
+  "APPROXIMATE UNIT SQUARE FOOTAGE (NOTE 2)",
+  "APPROXIMATE TERRACE/ROOF SQUARE FOOTAGE (NOTE 2)",
+  "RESIDENTIAL PURCHASE PRICE (NOTE 3)",
+  "PROJECTED COMMON INTEREST (NOTE 4)",
+  "COMMON INTEREST (NOTE 4)",
+  "PROJECTED ANNUAL COMMON CHARGES (NOTE 5)",
+  "PROJECTED MONTHLY COMMON CHARGES (NOTE 5)",
+  "PROJECTED ANNUAL REAL ESTATE TAXES (NOTE 6)",
+  "PROJECTED MONTHLY REAL ESTATE TAXES (NOTE 6)",
+  "PROJECTED MONTHLY TOTAL CARRYING CHARGES (NOTE 7)"
+ ],
+ "tax2": null,
+ "sf2": "terrace/roof",
+ "printed_totals": {
+  "price": 4380000,
+  "pct": 100,
+  "cc_m": 4357.83,
+  "tax_m": null,
+  "int_sf": 5292,
+  "ext_sf": 826
+ },
+ "problems": [
+  "Grand total row's monthly tax figure printed as \"$ 6,792.25\" appears to be total common charges, not tax; total real estate tax and total carrying charges are 81507.00 and 11150.08 respectively but TOTAL line format only requests tax_m, so left as - since printed value (6,792.25) is ambiguous/likely mislabeled in source.",
+  "Commercial unit's int_sf (976) vs sf2 (826) placement is inferred from column position; unit has no unit number/name printed other than \"Commercial\"."
+ ],
+ "units": [
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1196,
+   "sf2": 255,
+   "ext_sf": null,
+   "price": 1150000,
+   "pct": 21.7514,
+   "pct2": 26.4456,
+   "cc_m": 1004.27,
+   "cc_a": 12051.24,
+   "tax_m": 1477.42,
+   "tax_a": 17729,
+   "tax2_m": null,
+   "carry_m": 2481.69,
+   "page": 42,
+   "note": null
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1238,
+   "sf2": 571,
+   "ext_sf": null,
+   "price": 1190000,
+   "pct": 22.5152,
+   "pct2": 27.3742,
+   "cc_m": 1039.54,
+   "cc_a": 12474.44,
+   "tax_m": 1529.33,
+   "tax_a": 18352,
+   "tax2_m": null,
+   "carry_m": 2568.87,
+   "page": 42,
+   "note": null
+  },
+  {
+   "unit": "4",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 1,
+   "baths": 1.5,
+   "int_sf": 941,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 965000,
+   "pct": 18.2732,
+   "pct2": 22.2167,
+   "cc_m": 843.68,
+   "cc_a": 10124.15,
+   "tax_m": 1241.17,
+   "tax_a": 14894,
+   "tax2_m": null,
+   "carry_m": 2084.85,
+   "page": 42,
+   "note": null
+  },
+  {
+   "unit": "5",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 1,
+   "baths": 1.5,
+   "int_sf": 941,
+   "sf2": 826,
+   "ext_sf": null,
+   "price": 1075000,
+   "pct": 19.7099,
+   "pct2": 23.9635,
+   "cc_m": 910.01,
+   "cc_a": 10920.17,
+   "tax_m": 1338.67,
+   "tax_a": 16064,
+   "tax2_m": null,
+   "carry_m": 2248.68,
+   "page": 42,
+   "note": null
+  },
+  {
+   "unit": "Commercial",
+   "type": "commercial",
+   "floor": null,
+   "rooms": null,
+   "beds": null,
+   "baths": null,
+   "int_sf": 976,
+   "sf2": 826,
+   "ext_sf": null,
+   "price": null,
+   "pct": null,
+   "pct2": 17.7503,
+   "cc_m": 560.33,
+   "cc_a": 6724,
+   "tax_m": 1205.67,
+   "tax_a": 14468,
+   "tax2_m": null,
+   "carry_m": 1766,
+   "page": 42,
+   "note": null
+  }
+ ]
+}

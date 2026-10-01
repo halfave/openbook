@@ -1,0 +1,168 @@
+{
+ "plan_id": "CD240156",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 2,
+   "failed": [
+    "outdoor"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "hold",
+   "units": 2,
+   "failed": [
+    "monthlyTotals",
+    "outdoor"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "hold",
+   "units": 2,
+   "failed": [
+    "sqftTotal",
+    "outdoor"
+   ]
+  },
+  {
+   "step": "sonnet-images-think",
+   "verdict": "publish_ag",
+   "units": 2,
+   "failed": []
+  }
+ ],
+ "calls": 4,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4469,
+   "output_tokens": 971,
+   "seconds": 11,
+   "cost_usd": 0.023698
+  },
+  {
+   "model": "sonnet",
+   "tokens": 4298,
+   "output_tokens": 804,
+   "seconds": 9,
+   "cost_usd": 0.022012
+  },
+  {
+   "model": "sonnet",
+   "tokens": 13686,
+   "output_tokens": 1003,
+   "seconds": 12,
+   "cost_usd": 0.0373308
+  },
+  {
+   "model": "sonnet",
+   "tokens": 25827,
+   "output_tokens": 5334,
+   "seconds": 139,
+   "cost_usd": 0.0822748
+  }
+ ],
+ "tokens": 48280,
+ "api_equiv_usd": 0.165,
+ "located_pages": [
+  39
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": null,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 6350000,
+ "step": "sonnet-images-think",
+ "budget_period": "FROM JULY 1, 2025 THROUGH JUNE 30, 2026",
+ "columns_printed": [
+  "Unit",
+  "Beds (1)",
+  "Baths (1)",
+  "Location *",
+  "Unit Approx Area sq. ft. (2)",
+  "Limited Common Element (8)*",
+  "Ltd. Common Element Approx. Area sq. ft. (2)",
+  "Offering Price (3)",
+  "Common Interest % (4)",
+  "Est. Common Charges monthly/anually (5)",
+  "Est. RE Taxes monthly/annually First Year (6)",
+  "Est. RE Taxes monthly/annually Second Year (6)",
+  "Est. Carrying Costs monthly/annually First Year (7)",
+  "Est. Carrying Costs monthly/annually Second Year (7)"
+ ],
+ "tax2": "second year",
+ "sf2": "limited common element",
+ "printed_totals": {
+  "price": 6350000,
+  "pct": 100,
+  "cc_m": 1630.92,
+  "tax_m": 1132.67,
+  "int_sf": 5502,
+  "ext_sf": null
+ },
+ "problems": [
+  "Units A and B each span multiple floors (Basement/Floor1 for A; Floor1/2/3 for B), so a single \"floor\" value could not be given; per-floor breakdown is in the note instead.",
+  "The \"Ltd. Common Element Approx. Area sq. ft.\" column combines several distinct outdoor/limited-common areas (rear yard, rear yard steps, roof decks) per unit rather than one ext_sf figure; treated as SF2 (total) with individual areas listed in note, and ext_sf left as -."
+ ],
+ "units": [
+  {
+   "unit": "A",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 3.5,
+   "int_sf": 3101,
+   "sf2": 3102,
+   "ext_sf": null,
+   "price": 3650000,
+   "pct": 68,
+   "pct2": null,
+   "cc_m": 1109.02,
+   "cc_a": 13308.28,
+   "tax_m": 770.21,
+   "tax_a": 9242.56,
+   "tax2_m": 1289.34,
+   "carry_m": 1879.24,
+   "page": 39,
+   "note": "multi-floor: Basement 1828sf + Floor1 1273sf; Ltd Common Elements: Rear Yard 2674, Rear Yard Steps 18, Roof Deck-Fl.1 410"
+  },
+  {
+   "unit": "B",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 5,
+   "baths": 3,
+   "int_sf": 2401,
+   "sf2": 553,
+   "ext_sf": null,
+   "price": 2700000,
+   "pct": 32,
+   "pct2": null,
+   "cc_m": 521.89,
+   "cc_a": 6262.72,
+   "tax_m": 362.45,
+   "tax_a": 4349.44,
+   "tax2_m": 606.75,
+   "carry_m": 884.35,
+   "page": 39,
+   "note": "multi-floor: Floor1 40sf + Floor2 1386sf + Floor3 975sf; Ltd Common Elements: Roof Deck-Fl.3 91, Roof Deck-Roof 462"
+  }
+ ]
+}

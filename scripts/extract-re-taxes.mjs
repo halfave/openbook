@@ -3,6 +3,8 @@
 //   node scripts/extract-re-taxes.mjs            writes data/re-taxes/<PLAN_ID>.json
 //   node scripts/extract-re-taxes.mjs --test out.json PLAN_ID ...   a few plans, report only
 //
+// Tables the model read (source "model" in data/schedule-a) already carry each home's monthly taxes and are used
+// as they are. For the rest, pattern matching:
 // Only plans with a checked Schedule A table (data/schedule-a, from extract-schedule-a.mjs) are read, so the
 // units, their sizes and the page each row sits on are already known. For each unit, the row is found again on
 // its page and the dollar amounts after the offering price are read. Many tables print the projected real
@@ -66,8 +68,29 @@ function pairs(amts) {
   return out;
 }
 
+// Per square foot, from the units with a size. A unit whose rate is more than 2.5 times off the building's
+// median is left out: its size was most likely misread (another area column, or the unit number).
+function perSqft(units) {
+  const sized = units.filter((u) => u.sqft > 0);
+  const med = sized.map((u) => u.monthly / u.sqft).sort((x, y) => x - y)[sized.length >> 1];
+  const used = sized.filter((u) => { const r = u.monthly / u.sqft / med; return r <= 2.5 && r >= 1 / 2.5; });
+  const sqft = used.length && used.length >= units.length / 2 ? used.reduce((s, u) => s + u.sqft, 0) : null;
+  return { perSf: sqft ? used.reduce((s, u) => s + u.monthly, 0) / sqft : null, n: sqft ? used.length : 0 };
+}
+
 async function readPlan(id) {
   const a = schedA.get(id);
+  // Tables read by the model (extract-schedule-a-llm.mjs) already carry each unit's first-year monthly taxes, checked
+  // against the table's printed totals; only the homes count, since the property-tax page counts homes.
+  if (a.source === "model") {
+    const homes = a.units.filter((u) => u.type === "residential" && u.price != null);
+    if (!homes.length || homes.some((u) => !(u.tax_m > 0))) return { plan_id: id, status: "model_no_tax" };
+    const units = homes.map((u) => ({ unit: u.unit, sqft: u.sqft, monthly: u.tax_m }));
+    const { perSf, n } = perSqft(units);
+    if (perSf != null && (perSf < 0.05 || perSf > 6)) return { plan_id: id, status: "implausible", perSf };
+    return { plan_id: id, status: "ok", source: "model", monthly_total: Math.round(units.reduce((s, u) => s + u.monthly, 0) * 100) / 100,
+      per_sf: perSf && Math.round(perSf * 1e4) / 1e4, sf_units: n, units, pages: a.pages };
+  }
   let pages = null;
   for (let t = 0; t < 3; t++) { try { pages = await rpc("schedule_a_pages", { p_plan: id }); break; } catch (e) { if (t === 2) return { plan_id: id, status: "error" }; } }
   const byPage = new Map(pages.map((p) => [p.page_no, p.body]));
@@ -87,15 +110,9 @@ async function readPlan(id) {
   if (left.length !== 1) return { plan_id: id, status: left.length ? "ambiguous" : "only_common_charges", cols: left.map((c) => c.monthly) };
   const col = left[0].k;
   const units = rows.map((r, i) => ({ unit: r.u.unit, sqft: r.u.sqft, monthly: perRow[i].get(col) }));
-  // Per square foot, from the units with a size. A unit whose rate is more than 2.5 times off the building's
-  // median is left out: its size was most likely misread (another area column, or the unit number).
-  const sized = units.filter((u) => u.sqft > 0);
-  const med = sized.map((u) => u.monthly / u.sqft).sort((x, y) => x - y)[sized.length >> 1];
-  const used = sized.filter((u) => { const r = u.monthly / u.sqft / med; return r <= 2.5 && r >= 1 / 2.5; });
-  const sqft = used.length && used.length >= units.length / 2 ? used.reduce((s, u) => s + u.sqft, 0) : null;
-  const perSf = sqft ? used.reduce((s, u) => s + u.monthly, 0) / sqft : null;
+  const { perSf, n } = perSqft(units);
   if (perSf != null && (perSf < 0.05 || perSf > 6)) return { plan_id: id, status: "implausible", perSf };
-  return { plan_id: id, status: "ok", monthly_total: Math.round(left[0].monthly * 100) / 100, per_sf: perSf && Math.round(perSf * 1e4) / 1e4, sf_units: sqft ? used.length : 0, units, pages: [...new Set(a.units.map((u) => u.page))] };
+  return { plan_id: id, status: "ok", monthly_total: Math.round(left[0].monthly * 100) / 100, per_sf: perSf && Math.round(perSf * 1e4) / 1e4, sf_units: n, units, pages: [...new Set(a.units.map((u) => u.page))] };
 }
 
 const ids = only.length ? only : [...schedA.keys()];

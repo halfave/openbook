@@ -1,0 +1,201 @@
+{
+ "plan_id": "CD240245",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "sqftTotal",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "hold",
+   "units": 4,
+   "failed": [
+    "sqftTotal",
+    "psf",
+    "outdoor"
+   ]
+  },
+  {
+   "step": "sonnet-images-think",
+   "verdict": "hold",
+   "units": 4,
+   "failed": [
+    "sqftTotal"
+   ]
+  }
+ ],
+ "calls": 3,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 3903,
+   "output_tokens": 641,
+   "seconds": 7,
+   "cost_usd": 0.019454
+  },
+  {
+   "model": "sonnet",
+   "tokens": 12934,
+   "output_tokens": 729,
+   "seconds": 16,
+   "cost_usd": 0.033587
+  },
+  {
+   "model": "sonnet",
+   "tokens": 30150,
+   "output_tokens": 2768,
+   "seconds": 234,
+   "cost_usd": 0.0697392
+  }
+ ],
+ "tokens": 46987,
+ "api_equiv_usd": 0.123,
+ "located_pages": [
+  31
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": null,
+  "monthlyTotals": true,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 4250000,
+ "step": "sonnet-images",
+ "budget_period": "July 1, 2025 -June 30, 2026",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approx. Floor Area",
+  "Approx. Outdoor/Uninhabitable/Limited Common Element Floor Area",
+  "No. of Bedooms/Bathrooms",
+  "Offering Price",
+  "Percent Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Real Estate Taxes (Monthly)",
+  "Projected Real Estate Taxes (Annual)",
+  "Projected Carrying Charges (Monthly)"
+ ],
+ "tax2": null,
+ "sf2": "Outdoor/Uninhabitable/Limited Common Element floor area",
+ "printed_totals": {
+  "price": 4250000,
+  "pct": 100,
+  "cc_m": 3019.99,
+  "tax_m": 1880.75,
+  "int_sf": 4885,
+  "ext_sf": 82
+ },
+ "problems": [
+  "Unit 1's second sf2 area (796) appears to be a separate \"Basement\" figure alongside 1029 First Floor; only 82 (BY) is captured in sf2 column per column definition, so 796 is noted but not placed in a numbered cell — total int_sf 4,885 as printed already includes both 1029 and 796 for Unit 1.",
+  "unit sizes left out: the area columns did not add up to the printed totals"
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": "First Floor Basement",
+   "rooms": null,
+   "beds": null,
+   "baths": 2,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 1250000,
+   "pct": 29.74,
+   "pct2": null,
+   "cc_m": 898.15,
+   "cc_a": null,
+   "tax_m": 559.34,
+   "tax_a": 6712.05,
+   "tax2_m": null,
+   "carry_m": 1457.49,
+   "page": 31,
+   "note": "Unit 1 is allocated the back yard as a Limited Common Element (82 sf, BY)"
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "Second Floor",
+   "rooms": null,
+   "beds": null,
+   "baths": 3,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 1000000,
+   "pct": 23.42,
+   "pct2": null,
+   "cc_m": 707.28,
+   "cc_a": null,
+   "tax_m": 440.47,
+   "tax_a": 5285.69,
+   "tax2_m": null,
+   "carry_m": 1147.75,
+   "page": 31,
+   "note": null
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": "Third Floor",
+   "rooms": null,
+   "beds": null,
+   "baths": 3,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 1000000,
+   "pct": 23.42,
+   "pct2": null,
+   "cc_m": 707.28,
+   "cc_a": null,
+   "tax_m": 440.47,
+   "tax_a": 5285.69,
+   "tax2_m": null,
+   "carry_m": 1147.75,
+   "page": 31,
+   "note": null
+  },
+  {
+   "unit": "4",
+   "type": "residential",
+   "floor": "Fourth Floor",
+   "rooms": null,
+   "beds": null,
+   "baths": 3,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 1000000,
+   "pct": 23.42,
+   "pct2": null,
+   "cc_m": 707.28,
+   "cc_a": null,
+   "tax_m": 440.47,
+   "tax_a": 5285.69,
+   "tax2_m": null,
+   "carry_m": 1147.75,
+   "page": 31,
+   "note": null
+  }
+ ],
+ "rechecked": "2026-09-30"
+}

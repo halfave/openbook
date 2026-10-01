@@ -1,0 +1,157 @@
+{
+ "plan_id": "CD210035",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "publish_ag",
+   "units": 3,
+   "failed": []
+  }
+ ],
+ "calls": 2,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4209,
+   "output_tokens": 677,
+   "seconds": 7,
+   "cost_usd": 0.020894
+  },
+  {
+   "model": "sonnet",
+   "tokens": 13452,
+   "output_tokens": 705,
+   "seconds": 8,
+   "cost_usd": 0.0344852
+  }
+ ],
+ "tokens": 17661,
+ "api_equiv_usd": 0.055,
+ "located_pages": [
+  32
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_ag",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 2297000,
+ "step": "sonnet-images",
+ "budget_period": "JANUARY 1, 2023 TO DECEMBER 31, 2023",
+ "columns_printed": [
+  "Unit number",
+  "Bedrooms/Bathrooms (1)",
+  "Approx. area sq. ft. (2)",
+  "Limited Common Elements area sq. ft. (8)",
+  "Offering price (3)",
+  "Percent common interest (4)",
+  "Est. common charges monthly/annually (5)",
+  "Est. real estate taxes monthly/annually with Condo Abatement (6)*",
+  "Est. real estate taxes monthly/annually without Condo Abatement (6)*",
+  "Est. carrying costs monthly/annualy with Condo Abatement (7)",
+  "Est. carrying costs monthly/annually without Condo Abatement (7)"
+ ],
+ "tax2": "without Condo Abatement",
+ "sf2": "Limited Common Elements area sq. ft.",
+ "printed_totals": {
+  "price": 2297000,
+  "pct": 100,
+  "cc_m": 1923.42,
+  "tax_m": 551.33,
+  "int_sf": 2423,
+  "ext_sf": null
+ },
+ "problems": [
+  "Est. carrying costs with Condo Abatement (monthly/annually) column present but not mapped to a labeled cell in the fixed schema (carry_m used for \"with Condo Abatement\" monthly figure); \"without Condo Abatement\" carrying costs (1060.94/12731.32, 543.41/6520.92, 983.31/11799.76, total 2587.67/31052.00) also not captured by schema."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 1,
+   "int_sf": 855,
+   "sf2": 848,
+   "ext_sf": null,
+   "price": 899000,
+   "pct": 41,
+   "pct2": null,
+   "cc_m": 788.6,
+   "cc_a": 9463.21,
+   "tax_m": 226.04,
+   "tax_a": 2712.53,
+   "tax2_m": 272.34,
+   "carry_m": 1014.65,
+   "page": 32,
+   "note": null
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 1,
+   "int_sf": 784,
+   "sf2": 0,
+   "ext_sf": null,
+   "price": 649000,
+   "pct": 21,
+   "pct2": null,
+   "cc_m": 403.92,
+   "cc_a": 4847.01,
+   "tax_m": 115.78,
+   "tax_a": 1389.35,
+   "tax2_m": 139.49,
+   "carry_m": 519.7,
+   "page": 32,
+   "note": null
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 1,
+   "int_sf": 784,
+   "sf2": 750,
+   "ext_sf": null,
+   "price": 749000,
+   "pct": 38,
+   "pct2": null,
+   "cc_m": 730.9,
+   "cc_a": 8770.78,
+   "tax_m": 209.5,
+   "tax_a": 2514.05,
+   "tax2_m": 252.42,
+   "carry_m": 940.4,
+   "page": 32,
+   "note": null
+  }
+ ]
+}

@@ -1,0 +1,185 @@
+{
+ "plan_id": "CD160316",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 3,
+   "failed": [
+    "ag",
+    "printed",
+    "pct100",
+    "sqftTotal",
+    "monthlyTotals",
+    "allRowsParsed",
+    "outdoor"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 3,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4164,
+   "output_tokens": 589,
+   "seconds": 8,
+   "cost_usd": 0.020186
+  },
+  {
+   "model": "sonnet",
+   "tokens": 4078,
+   "output_tokens": 499,
+   "seconds": 5,
+   "cost_usd": 0.019302
+  },
+  {
+   "model": "sonnet",
+   "tokens": 13509,
+   "output_tokens": 670,
+   "seconds": 9,
+   "cost_usd": 0.034328399999999995
+  }
+ ],
+ "tokens": 21751,
+ "api_equiv_usd": 0.074,
+ "located_pages": [
+  31
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "hold",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": false,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": false,
+  "monthlyTotals": false,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": false
+ },
+ "price_total": 3398000,
+ "step": "sonnet-text",
+ "budget_period": "April 1, 2017",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approx. Square Footage",
+  "Uninhabitable Cellar Square Footage",
+  "Approx. Uninhabitable/Limited Common",
+  "No. of Bedooms/Bathrooms",
+  "Offering Price",
+  "Percent Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Real Estate Taxes (Monthly)",
+  "Projected Real Estate Taxes (Annual)",
+  "Projected Monthly Carrying Charges"
+ ],
+ "tax2": null,
+ "sf2": "Uninhabitable Cellar Square Footage",
+ "printed_totals": {
+  "price": 4673000,
+  "pct": 100,
+  "cc_m": 1827.08,
+  "tax_m": 2379.33,
+  "int_sf": 4714,
+  "ext_sf": 2347
+ },
+ "problems": [
+  "row with 21 cells dropped: U\t1\tR\tFirst Floor\t-\t-\t1\t1.5\t1077\t523\t1276\t1275000\t29.77\t-\t543.92\t-\t708.33\t8499.9",
+  "Unit 1 beds/baths printed as \"1/1.5\" — interpreted as 1 bed/1.5 baths; int_sf for Unit 1 taken as 1077 (first floor & cellar combined figure), with 523 (uninhabitable cellar) as sf2, since the table does not separately break out first-floor-only area."
+ ],
+ "units": [
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "2nd Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1151,
+   "sf2": 0,
+   "ext_sf": 110,
+   "price": 999000,
+   "pct": 20.36,
+   "pct2": null,
+   "cc_m": 371.99,
+   "cc_a": null,
+   "tax_m": 484.43,
+   "tax_a": 5813.13,
+   "tax2_m": null,
+   "carry_m": 856.42,
+   "page": 31,
+   "note": null
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": "3rd Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1151,
+   "sf2": 0,
+   "ext_sf": 160,
+   "price": 1100000,
+   "pct": 21.7,
+   "pct2": null,
+   "cc_m": 396.48,
+   "cc_a": null,
+   "tax_m": 516.31,
+   "tax_a": 6195.77,
+   "tax2_m": null,
+   "carry_m": 912.79,
+   "page": 31,
+   "note": null
+  },
+  {
+   "unit": "4",
+   "type": "residential",
+   "floor": "4th Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 1335,
+   "sf2": 0,
+   "ext_sf": 801,
+   "price": 1299000,
+   "pct": 28.17,
+   "pct2": null,
+   "cc_m": 514.69,
+   "cc_a": null,
+   "tax_m": 670.26,
+   "tax_a": 8043.06,
+   "tax2_m": null,
+   "carry_m": 1184.95,
+   "page": 31,
+   "note": null
+  }
+ ]
+}

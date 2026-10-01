@@ -1,0 +1,91 @@
+{
+ "plan_id": "CD200076",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag"
+   ]
+  }
+ ],
+ "calls": 2,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 25053,
+   "output_tokens": 1186,
+   "seconds": 13,
+   "cost_usd": 0.107324
+  },
+  {
+   "model": "sonnet",
+   "tokens": 0,
+   "timed_out": true
+  }
+ ],
+ "tokens": 25053,
+ "api_equiv_usd": 0.107,
+ "located_pages": [
+  69,
+  70
+ ],
+ "text_layer": true,
+ "found": false,
+ "verdict": "not_found",
+ "checks": {
+  "ag": false,
+  "printed": null,
+  "pct100": null,
+  "ccProportional": null,
+  "carrying": null,
+  "sqftTotal": null,
+  "monthlyTotals": true,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 0,
+ "step": "sonnet-text",
+ "budget_period": "March 1, 2022 TO February 28, 2023",
+ "columns_printed": [
+  "UNIT",
+  "UNIT TYPE",
+  "# of Bedrooms",
+  "# of BATHS",
+  "APPROX. NET SQUARE FOOTAGE",
+  "APPROX. BALCONY/TERRACE SQUARE FOOTAGE",
+  "OFFERING PRICE",
+  "% OF GENERAL COMMON INTEREST",
+  "% OF RESIDENTIAL COMMON INTEREST",
+  "PROJECTED GENERAL COMMON CHARGES MONTHLY",
+  "PROJECTED GENERAL COMMON CHARGES ANNUAL",
+  "PROJECTED REAL ESTATE TAXES WITH 421-a EXEMPTION MONTHLY",
+  "PROJECTED REAL ESTATE TAXES WITH 421-a EXEMPTION ANNUAL",
+  "PROJECTED REAL ESTATE TAXES WITHOUT 421-a EXEMPTION ANNUAL",
+  "TOTAL PROJECTED CARRYING CHARGES WITH 421-a EXEMPTION MONTHLY",
+  "TOTAL PROJECTED CARRYING CHARGES WITH 421-a EXEMPTION ANNUAL",
+  "PROJECTED REAL ESTATE TAXES WITHOUT 421-a EXEMPTION MONTHLY",
+  "PROJECTED REAL ESTATE TAXES WITHOUT 421-a EXEMPTION ANNUAL",
+  "TOTAL PROJECTED CARRYING CHARGES WITHOUT 421-a EXEMPTION MONTHLY",
+  "TOTAL PROJECTED CARRYING CHARGES WITHOUT 421-a EXEMPTION ANNUAL"
+ ],
+ "tax2": "without 421-a",
+ "sf2": "-",
+ "printed_totals": null,
+ "problems": [
+  "The column order on the page does not map cleanly to a fixed 20-cell schema (there are two tax scenarios, each with monthly/annual, plus two carrying-charge totals, each with monthly/annual — more distinct figures than the template's tax_m/tax_a/tax2_m/carry_m allow); I mapped tax_m/tax_a to the WITH 421-a figures (used for the first carry_m), tax2_m to the WITHOUT 421-a monthly figure, and carry_m to the WITH 421-a total monthly carrying charge, but the WITHOUT-421a annual tax, and both WITHOUT-421a total carrying charge figures (monthly and annual), could not be placed in the template and are omitted from the U lines.",
+  "Unable to reliably parse per-unit rows into the fixed 20-column template given the ambiguity above; requesting guidance before transcribing 190+ unit rows to avoid systematic misalignment."
+ ],
+ "units": []
+}

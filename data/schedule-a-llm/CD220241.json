@@ -1,0 +1,286 @@
+{
+ "plan_id": "CD220241",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 7,
+   "failed": [
+    "ag",
+    "psf",
+    "outdoor"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "hold",
+   "units": 7,
+   "failed": [
+    "ag",
+    "psf",
+    "outdoor"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "hold",
+   "units": 7,
+   "failed": [
+    "ag",
+    "carrying",
+    "monthlyTotals",
+    "psf",
+    "outdoor"
+   ]
+  },
+  {
+   "step": "sonnet-images-think",
+   "verdict": "hold",
+   "units": 7,
+   "failed": [
+    "ag",
+    "psf"
+   ]
+  }
+ ],
+ "calls": 4,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 9453,
+   "output_tokens": 943,
+   "seconds": 86,
+   "cost_usd": 0.0273006
+  },
+  {
+   "model": "sonnet",
+   "tokens": 5537,
+   "output_tokens": 1276,
+   "seconds": 16,
+   "cost_usd": 0.0298
+  },
+  {
+   "model": "sonnet",
+   "tokens": 15402,
+   "output_tokens": 1201,
+   "seconds": 13,
+   "cost_usd": 0.0424986
+  },
+  {
+   "model": "sonnet",
+   "tokens": 35499,
+   "output_tokens": 4193,
+   "seconds": 223,
+   "cost_usd": 0.0759038
+  }
+ ],
+ "tokens": 65891,
+ "api_equiv_usd": 0.176,
+ "located_pages": [
+  61
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "hold",
+ "checks": {
+  "ag": false,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": false,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": false
+ },
+ "price_total": 242900000,
+ "step": "sonnet-text",
+ "budget_period": "JANUARY 1, 2026 TO DECEMBER 31, 2026",
+ "columns_printed": [
+  "UNIT",
+  "APPROXIMATE NUMBER OF BEDROOMS",
+  "APPROXIMATE NUMBER OF BATHROOMS",
+  "NUMBER OF POWDER ROOMS",
+  "APPROXIMATE UNIT SQUARE FOOTAGE",
+  "APPROXIMATE TERRACE/ROOF SQUARE FOOTAGE",
+  "STORAGE BIN SQUARE FOOTAGE",
+  "PURCHASE PRICE",
+  "COMMON INTEREST",
+  "PROJECTED MONTHLY COMMON CHARGES",
+  "PROJECTED ANNUAL COMMON CHARGES",
+  "PROJECTED MONTHLY REAL ESTATE TAXES",
+  "PROJECTED ANNUAL REAL ESTATE TAXES",
+  "TOTAL MONTHLY CARRYING CHARGES & REAL ESTATE TAXES"
+ ],
+ "tax2": null,
+ "sf2": "storage bin square footage",
+ "printed_totals": {
+  "price": 242900000,
+  "pct": 100,
+  "cc_m": 96131,
+  "tax_m": 51113,
+  "int_sf": 38396,
+  "ext_sf": 6817
+ },
+ "problems": [
+  "Unit \"2\" floor not specified in source table; no separate floor column exists. Terrace/Roof SF and Storage Bin SF are both present as separate columns; ext_sf mapped to Terrace/Roof column per instructions, Storage Bin SF placed in SF2 per instructions."
+ ],
+ "units": [
+  {
+   "unit": "TH E a.k.a 740 Greenwich St",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 3,
+   "int_sf": 6683,
+   "sf2": 668,
+   "ext_sf": null,
+   "price": 30000000,
+   "pct": 17.0208,
+   "pct2": null,
+   "cc_m": 16362,
+   "cc_a": 196348,
+   "tax_m": 8700,
+   "tax_a": 104397,
+   "tax2_m": null,
+   "carry_m": 25062,
+   "page": 61,
+   "note": "2 powder rooms"
+  },
+  {
+   "unit": "TH W a.k.a 127 Perry St",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 4,
+   "baths": 4,
+   "int_sf": 6821,
+   "sf2": 954,
+   "ext_sf": null,
+   "price": 32000000,
+   "pct": 17.5742,
+   "pct2": null,
+   "cc_m": 16894,
+   "cc_a": 202732,
+   "tax_m": 8983,
+   "tax_a": 107791,
+   "tax2_m": null,
+   "carry_m": 25877,
+   "page": 61,
+   "note": "3 powder rooms"
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 2264,
+   "sf2": null,
+   "ext_sf": 66,
+   "price": 11950000,
+   "pct": 5.5983,
+   "pct2": null,
+   "cc_m": 5382,
+   "cc_a": 64581,
+   "tax_m": 2861,
+   "tax_a": 34337,
+   "tax2_m": null,
+   "carry_m": 8243,
+   "page": 61,
+   "note": "1 powder room"
+  },
+  {
+   "unit": "3 E",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 4,
+   "int_sf": 4174,
+   "sf2": 47,
+   "ext_sf": 56,
+   "price": 22500000,
+   "pct": 10.356,
+   "pct2": null,
+   "cc_m": 9955,
+   "cc_a": 119464,
+   "tax_m": 5293,
+   "tax_a": 63519,
+   "tax2_m": null,
+   "carry_m": 15249,
+   "page": 61,
+   "note": "1 powder room"
+  },
+  {
+   "unit": "3 W",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 3,
+   "int_sf": 3645,
+   "sf2": null,
+   "ext_sf": 56,
+   "price": 18950000,
+   "pct": 9.0131,
+   "pct2": null,
+   "cc_m": 8664,
+   "cc_a": 103973,
+   "tax_m": 4607,
+   "tax_a": 55282,
+   "tax2_m": null,
+   "carry_m": 13271,
+   "page": 61,
+   "note": "2 powder rooms"
+  },
+  {
+   "unit": "PH E",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 6,
+   "baths": 8,
+   "int_sf": 7700,
+   "sf2": 2837,
+   "ext_sf": 70,
+   "price": 70000000,
+   "pct": 21.1446,
+   "pct2": null,
+   "cc_m": 20327,
+   "cc_a": 243919,
+   "tax_m": 10808,
+   "tax_a": 129690,
+   "tax2_m": null,
+   "carry_m": 31134,
+   "page": 61,
+   "note": "2 powder rooms"
+  },
+  {
+   "unit": "PH W",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 5,
+   "baths": 7,
+   "int_sf": 7109,
+   "sf2": 2311,
+   "ext_sf": 72,
+   "price": 57500000,
+   "pct": 19.293,
+   "pct2": null,
+   "cc_m": 18547,
+   "cc_a": 222560,
+   "tax_m": 9861,
+   "tax_a": 118334,
+   "tax2_m": null,
+   "carry_m": 28408,
+   "page": 61,
+   "note": "1 powder room"
+  }
+ ]
+}

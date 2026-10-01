@@ -1,0 +1,197 @@
+{
+ "plan_id": "CD220269",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 4,
+   "failed": [
+    "monthlyTotals"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "hold",
+   "units": 4,
+   "failed": [
+    "carrying"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "publish_printed",
+   "units": 4,
+   "failed": [
+    "ag"
+   ]
+  }
+ ],
+ "calls": 3,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4174,
+   "output_tokens": 800,
+   "seconds": 9,
+   "cost_usd": 0.021492
+  },
+  {
+   "model": "sonnet",
+   "tokens": 7611,
+   "output_tokens": 855,
+   "seconds": 87,
+   "cost_usd": 0.022737200000000003
+  },
+  {
+   "model": "sonnet",
+   "tokens": 21062,
+   "output_tokens": 977,
+   "seconds": 86,
+   "cost_usd": 0.0380874
+  }
+ ],
+ "tokens": 32847,
+ "api_equiv_usd": 0.082,
+ "located_pages": [
+  31
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_printed",
+ "checks": {
+  "ag": false,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": null,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 9900000,
+ "step": "sonnet-images",
+ "budget_period": "October 1, 2023 – September 30, 2024",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approximate Habitable Area (SF)",
+  "Approximate Uninhabitable Area (SF)",
+  "Approximate Outdoor Area (SF)",
+  "No. of Bedrooms/Bathrooms",
+  "Offering Price",
+  "Percent Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Real Estate Taxes (Annual)",
+  "Projected Real Estate Taxes (Monthly)",
+  "Projected Monthly Carrying Charges"
+ ],
+ "tax2": null,
+ "sf2": "uninhabitable",
+ "printed_totals": {
+  "price": 9900000,
+  "pct": 100,
+  "cc_m": 1747.75,
+  "tax_m": null,
+  "int_sf": 4915,
+  "ext_sf": 1935
+ },
+ "problems": [
+  "The page image overlays two different condominium Schedule A tables (1006 Bergen Street and another unlettered A-D unit table), making the rendered image very hard to read cleanly; transcription for 1006 Bergen Street relies heavily on the text layer.",
+  "Bedrooms/Bathrooms values (\"2/2.5\", \"2/2\", \"3/2\", \"3/2\") are ambiguous as beds/baths format (e.g. \"2/2.5\" could be 2 beds/2.5 baths); left beds/baths blank and noted raw codes here: Unit1 \"2/2.5\", Unit2 \"2/2\", Unit3 \"3/2\", Unit4 \"3/2\".",
+  "Total row's monthly/annual real estate tax figures and carrying charges columns were not clearly visible/printed for the 1006 Bergen Street table in the given image; left as -.",
+  "Cannot confirm whether table continues onto a page not provided (e.g. additional notes/footnotes following the total row)."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": "Cellar/Basement",
+   "rooms": null,
+   "beds": null,
+   "baths": 2.5,
+   "int_sf": 1296,
+   "sf2": 886,
+   "ext_sf": 364,
+   "price": 2700000,
+   "pct": 28.79,
+   "pct2": null,
+   "cc_m": 503.18,
+   "cc_a": null,
+   "tax_m": null,
+   "tax_a": null,
+   "tax2_m": null,
+   "carry_m": null,
+   "page": 31,
+   "note": null
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "1st Floor",
+   "rooms": null,
+   "beds": null,
+   "baths": 2,
+   "int_sf": 1208,
+   "sf2": 23,
+   "ext_sf": 476,
+   "price": 2300000,
+   "pct": 23.13,
+   "pct2": null,
+   "cc_m": 404.25,
+   "cc_a": null,
+   "tax_m": null,
+   "tax_a": null,
+   "tax2_m": null,
+   "carry_m": null,
+   "page": 31,
+   "note": null
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": "2nd Floor",
+   "rooms": null,
+   "beds": null,
+   "baths": 2,
+   "int_sf": 1217,
+   "sf2": 42,
+   "ext_sf": 540,
+   "price": 2400000,
+   "pct": 24.02,
+   "pct2": null,
+   "cc_m": 419.81,
+   "cc_a": null,
+   "tax_m": null,
+   "tax_a": null,
+   "tax2_m": null,
+   "carry_m": null,
+   "page": 31,
+   "note": null
+  },
+  {
+   "unit": "4",
+   "type": "residential",
+   "floor": "3rd Floor",
+   "rooms": null,
+   "beds": null,
+   "baths": 2,
+   "int_sf": 1194,
+   "sf2": 74,
+   "ext_sf": 555,
+   "price": 2500000,
+   "pct": 24.06,
+   "pct2": null,
+   "cc_m": 420.51,
+   "cc_a": null,
+   "tax_m": null,
+   "tax_a": null,
+   "tax2_m": null,
+   "carry_m": null,
+   "page": 31,
+   "note": null
+  }
+ ]
+}

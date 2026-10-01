@@ -1,0 +1,138 @@
+{
+ "plan_id": "CD220231",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 2,
+   "failed": [
+    "ag",
+    "sqftTotal"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "publish_printed",
+   "units": 2,
+   "failed": [
+    "ag"
+   ]
+  }
+ ],
+ "calls": 2,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4026,
+   "output_tokens": 624,
+   "seconds": 9,
+   "cost_usd": 0.019844
+  },
+  {
+   "model": "sonnet",
+   "tokens": 3959,
+   "output_tokens": 559,
+   "seconds": 5,
+   "cost_usd": 0.019186
+  }
+ ],
+ "tokens": 7985,
+ "api_equiv_usd": 0.039,
+ "located_pages": [
+  37
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "publish_printed",
+ "checks": {
+  "ag": false,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": null,
+  "carrying": true,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 8700000,
+ "step": "sonnet-text-retry",
+ "budget_period": "JULY 1, 2024 TO JUNE 30, 2025",
+ "columns_printed": [
+  "Unit No.",
+  "Bedrooms per Unit",
+  "Bathroom(s) per Unit",
+  "1/2 Bathroom(s) per Unit",
+  "Offering Price",
+  "Square footage",
+  "Cellar Space square footage",
+  "Percent of Common Interest",
+  "Limited Common Element square feet",
+  "Annual Common Charges",
+  "Monthly Common Charges",
+  "Annual Real Estate Taxes",
+  "Monthly Real Estate Taxes",
+  "Total Monthly Carrying Charges"
+ ],
+ "tax2": null,
+ "sf2": "cellar space",
+ "printed_totals": {
+  "price": 8700000,
+  "pct": 100,
+  "cc_m": 3480.92,
+  "tax_m": 5561.5,
+  "int_sf": 5647,
+  "ext_sf": null
+ },
+ "problems": [
+  "Ext_sf (terrace/roof) not entered as single number because two separate limited common areas are listed for Unit 2 (Terrace 331 sf; Roof terrace 965 sf); listed in note instead. 1/2 Bathroom(s) column value of 1 for each unit interpreted as 0.5 baths added to 3 baths = 3.5 baths."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 4,
+   "baths": 3.5,
+   "int_sf": 2545,
+   "sf2": 1065,
+   "ext_sf": null,
+   "price": 4350000,
+   "pct": 50,
+   "pct2": null,
+   "cc_m": 1740.46,
+   "cc_a": 20885.53,
+   "tax_m": 2780.75,
+   "tax_a": 33369,
+   "tax2_m": null,
+   "carry_m": 4521.21,
+   "page": 37,
+   "note": "Limited common element sf: 890.00 (Rear yard)"
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 4,
+   "baths": 3.5,
+   "int_sf": 3102,
+   "sf2": 0,
+   "ext_sf": null,
+   "price": 4350000,
+   "pct": 50,
+   "pct2": null,
+   "cc_m": 1740.46,
+   "cc_a": 20885.53,
+   "tax_m": 2780.75,
+   "tax_a": 33369,
+   "tax2_m": null,
+   "carry_m": 4521.21,
+   "page": 37,
+   "note": "Limited common element sf: 1296.00 (Terrace 331 sf; Roof terrace 965 sf)"
+  }
+ ]
+}

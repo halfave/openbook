@@ -1,0 +1,203 @@
+{
+ "plan_id": "CD210017",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 4,
+   "failed": [
+    "ag",
+    "carrying"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "hold",
+   "units": 4,
+   "failed": [
+    "ag",
+    "carrying",
+    "outdoor"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "hold",
+   "units": 4,
+   "failed": [
+    "ag",
+    "monthlyTotals"
+   ]
+  }
+ ],
+ "calls": 3,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 4926,
+   "output_tokens": 858,
+   "seconds": 11,
+   "cost_usd": 0.024848000000000002
+  },
+  {
+   "model": "sonnet",
+   "tokens": 4957,
+   "output_tokens": 892,
+   "seconds": 10,
+   "cost_usd": 0.025176
+  },
+  {
+   "model": "sonnet",
+   "tokens": 16460,
+   "output_tokens": 1273,
+   "seconds": 15,
+   "cost_usd": 0.0478808
+  }
+ ],
+ "tokens": 26343,
+ "api_equiv_usd": 0.098,
+ "located_pages": [
+  38
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "hold",
+ "checks": {
+  "ag": false,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": false,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": true
+ },
+ "price_total": 5050000,
+ "step": "sonnet-text",
+ "budget_period": "JANUARY 1, 2022 TO DECEMBER 31, 2022",
+ "columns_printed": [
+  "Unit No.",
+  "Bedrooms per Unit",
+  "Bathroom(s) per Unit",
+  "1/2 Bathroom(s) per Unit",
+  "Offering Price",
+  "Square footage",
+  "Cellar Space square footage",
+  "Percent of Common Interest",
+  "Limited Common Element square feet",
+  "Annual Common Charges",
+  "Monthly Common Charges",
+  "Annual Real Estate Taxes w/o J51",
+  "Monthly Real Estate Taxes w/o J51",
+  "Annual Real Estate Taxes w/J51",
+  "Monthly Real Estate Taxes w/J51",
+  "Total Monthly Carrying Charges w/o J51",
+  "Total Monthly Carrying Charges w/J51"
+ ],
+ "tax2": "with J51",
+ "sf2": "cellar space square footage",
+ "printed_totals": {
+  "price": 5050000,
+  "pct": 100,
+  "cc_m": 1929.64,
+  "tax_m": 1967.83,
+  "int_sf": 4201,
+  "ext_sf": null
+ },
+ "problems": [
+  "Column headers list \"Total Monthly Carrying Charges w/o J51\" and \"w/J51\" but cc_m/cc_a mapped to Common Charges columns (not carrying charges); carry_m used w/o J51 carrying-charge figure per instructions since tax_m/tax_a = w/o J51 scenario. Unit 4's 1/2 Bathroom(s) column shows 0 but Unit 1 shows 1 half bath (mapped to baths 2.5); beds/baths for units 2-4 taken directly from \"Bathroom(s) per Unit\" column as whole baths. Limited common areas (Areaway, Deck, Rear yard, Balcony, Terrace, Roof Terrace) not assigned to ext_sf per unit since multiple separate areas are listed per unit in a separate table without clear per-unit numeric column match to int_sf rows."
+ ],
+ "units": [
+  {
+   "unit": "1",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 1076,
+   "sf2": 821,
+   "ext_sf": null,
+   "price": 1400000,
+   "pct": 41.0798,
+   "pct2": null,
+   "cc_m": 792.69,
+   "cc_a": 9512.28,
+   "tax_m": 808.38,
+   "tax_a": 9700.58,
+   "tax2_m": 808.38,
+   "carry_m": 1081.41,
+   "page": 38,
+   "note": null
+  },
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 905,
+   "sf2": 0,
+   "ext_sf": null,
+   "price": 1100000,
+   "pct": 12.8241,
+   "pct2": null,
+   "cc_m": 247.46,
+   "cc_a": 2969.51,
+   "tax_m": 252.36,
+   "tax_a": 3028.29,
+   "tax2_m": 252.36,
+   "carry_m": 337.59,
+   "page": 38,
+   "note": null
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "baths": 2,
+   "int_sf": 975,
+   "sf2": 0,
+   "ext_sf": null,
+   "price": 1100000,
+   "pct": 14.9072,
+   "pct2": null,
+   "cc_m": 287.65,
+   "cc_a": 3451.85,
+   "tax_m": 293.35,
+   "tax_a": 3520.18,
+   "tax2_m": 293.35,
+   "carry_m": 392.43,
+   "page": 38,
+   "note": null
+  },
+  {
+   "unit": "4",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 3,
+   "baths": 3,
+   "int_sf": 1245,
+   "sf2": 0,
+   "ext_sf": null,
+   "price": 1450000,
+   "pct": 31.1889,
+   "pct2": null,
+   "cc_m": 601.83,
+   "cc_a": 7221.98,
+   "tax_m": 613.75,
+   "tax_a": 7364.94,
+   "tax2_m": 613.75,
+   "carry_m": 392.43,
+   "page": 38,
+   "note": null
+  }
+ ]
+}

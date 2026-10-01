@@ -1,0 +1,265 @@
+{
+ "plan_id": "CD260030",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 6,
+   "failed": [
+    "sqftTotal",
+    "monthlyTotals",
+    "outdoor"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "hold",
+   "units": 6,
+   "failed": [
+    "monthlyTotals",
+    "outdoor"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "sqftTotal",
+    "monthlyTotals",
+    "allRowsParsed",
+    "outdoor"
+   ]
+  },
+  {
+   "step": "sonnet-images-think",
+   "verdict": "hold",
+   "units": 6,
+   "failed": [
+    "sqftTotal",
+    "monthlyTotals",
+    "outdoor"
+   ]
+  }
+ ],
+ "calls": 4,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 7789,
+   "output_tokens": 1055,
+   "seconds": 84,
+   "cost_usd": 0.024691
+  },
+  {
+   "model": "sonnet",
+   "tokens": 4236,
+   "output_tokens": 867,
+   "seconds": 11,
+   "cost_usd": 0.022142000000000002
+  },
+  {
+   "model": "sonnet",
+   "tokens": 13462,
+   "output_tokens": 1033,
+   "seconds": 12,
+   "cost_usd": 0.0370974
+  },
+  {
+   "model": "sonnet",
+   "tokens": 25375,
+   "output_tokens": 5278,
+   "seconds": 141,
+   "cost_usd": 0.081134
+  }
+ ],
+ "tokens": 50862,
+ "api_equiv_usd": 0.165,
+ "located_pages": [
+  30
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "hold",
+ "checks": {
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": false,
+  "monthlyTotals": false,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": true,
+  "outdoor": false
+ },
+ "price_total": 4800000,
+ "step": "sonnet-text",
+ "budget_period": "October 1, 2026 – September 30. 2027",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approximate Area (SF) (1)",
+  "Uninhabitable LCE Area (SF) (1)",
+  "No. of Bedrooms (1)",
+  "No. of Bathrooms (1)",
+  "Offering Price (2)",
+  "Approximate Percent Common Interest (3)",
+  "Projected Monthly Common Charges (4)",
+  "Projected Monthly Real Estate Taxes (5)",
+  "Projected Real Estate Taxes (Annual) (5)",
+  "Monthly Carrying Charges (6)"
+ ],
+ "tax2": null,
+ "sf2": "Uninhabitable LCE Area (SF)",
+ "printed_totals": {
+  "price": 4800000,
+  "pct": 100,
+  "cc_m": 1823,
+  "tax_m": 3034.92,
+  "int_sf": 6385,
+  "ext_sf": 706
+ },
+ "problems": [
+  "Total row shows int_sf 6385 and sf2 706, but individual unit int_sf/sf2 values as transcribed don't sum to these totals; totals row also includes an unexplained $144,000.00 line and \"Total Offering Price $4,944,000.00\" which appears to include the $36,000.00 storage license total plus something else — could not reconcile exactly.",
+  "Beds/Baths columns for 1R and 1L show \"2\" then \"2.5\" — interpreted as 2 beds, 2.5 baths per column order (No. of Bedrooms, No. of Bathrooms); for 2R/2L/3R/3L an extra \"0\" precedes \"2 2\" (three numbers: Bedrooms column shows two values \"0\" then implied) — transcribed literally as beds=0, baths=2, with the pattern of three numbers per row not fully resolved against the two-column header.",
+  "Storage license table (Schedule A-1, 4 units, $36,000.00) and side/rear yard entries not transcribed as they appear to be separate/referenced schedule, not part of this Schedule A unit table."
+ ],
+ "units": [
+  {
+   "unit": "1R",
+   "type": "residential",
+   "floor": "Basement/1st Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 770,
+   "sf2": 2,
+   "ext_sf": null,
+   "price": 900000,
+   "pct": 23.08,
+   "pct2": null,
+   "cc_m": 420.75,
+   "cc_a": null,
+   "tax_m": 603.35,
+   "tax_a": 7240.2,
+   "tax2_m": null,
+   "carry_m": 1024.1,
+   "page": 30,
+   "note": "int_sf note: Basement 770, 1st Floor 841"
+  },
+  {
+   "unit": "1L",
+   "type": "residential",
+   "floor": "Basement/1st Floor",
+   "rooms": null,
+   "beds": 2,
+   "baths": 2.5,
+   "int_sf": 630,
+   "sf2": 2,
+   "ext_sf": null,
+   "price": 900000,
+   "pct": 22.01,
+   "pct2": null,
+   "cc_m": 401.24,
+   "cc_a": null,
+   "tax_m": 575.38,
+   "tax_a": 6904.54,
+   "tax2_m": null,
+   "carry_m": 976.62,
+   "page": 30,
+   "note": "int_sf note: Basement 630, 1st Floor 836"
+  },
+  {
+   "unit": "2R",
+   "type": "residential",
+   "floor": "2nd Floor",
+   "rooms": null,
+   "beds": 0,
+   "baths": 2,
+   "int_sf": 826,
+   "sf2": 2,
+   "ext_sf": null,
+   "price": 750000,
+   "pct": 13.57,
+   "pct2": null,
+   "cc_m": 247.38,
+   "cc_a": null,
+   "tax_m": 354.74,
+   "tax_a": 4256.91,
+   "tax2_m": null,
+   "carry_m": 602.12,
+   "page": 30,
+   "note": null
+  },
+  {
+   "unit": "2L",
+   "type": "residential",
+   "floor": "2nd Floor",
+   "rooms": null,
+   "beds": 0,
+   "baths": 2,
+   "int_sf": 828,
+   "sf2": 2,
+   "ext_sf": null,
+   "price": 750000,
+   "pct": 13.58,
+   "pct2": null,
+   "cc_m": 247.56,
+   "cc_a": null,
+   "tax_m": 355,
+   "tax_a": 4260.05,
+   "tax2_m": null,
+   "carry_m": 602.57,
+   "page": 30,
+   "note": null
+  },
+  {
+   "unit": "3R",
+   "type": "residential",
+   "floor": "3rd Floor",
+   "rooms": null,
+   "beds": 0,
+   "baths": 2,
+   "int_sf": 826,
+   "sf2": 2,
+   "ext_sf": null,
+   "price": 750000,
+   "pct": 13.87,
+   "pct2": null,
+   "cc_m": 252.85,
+   "cc_a": null,
+   "tax_m": 362.58,
+   "tax_a": 4351.02,
+   "tax2_m": null,
+   "carry_m": 615.44,
+   "page": 30,
+   "note": null
+  },
+  {
+   "unit": "3L",
+   "type": "residential",
+   "floor": "3rd Floor",
+   "rooms": null,
+   "beds": 0,
+   "baths": 2,
+   "int_sf": 828,
+   "sf2": 2,
+   "ext_sf": null,
+   "price": 750000,
+   "pct": 13.89,
+   "pct2": null,
+   "cc_m": 253.21,
+   "cc_a": null,
+   "tax_m": 363.11,
+   "tax_a": 4357.29,
+   "tax2_m": null,
+   "carry_m": 616.32,
+   "page": 30,
+   "note": null
+  }
+ ]
+}

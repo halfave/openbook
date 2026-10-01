@@ -1,0 +1,109 @@
+{
+ "plan_id": "CD210097",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  }
+ ],
+ "calls": 2,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 5754,
+   "output_tokens": 1372,
+   "seconds": 12,
+   "cost_usd": 0.031244
+  },
+  {
+   "model": "sonnet",
+   "tokens": 24559,
+   "output_tokens": 1468,
+   "seconds": 86,
+   "cost_usd": 0.047406199999999996
+  }
+ ],
+ "tokens": 30313,
+ "api_equiv_usd": 0.079,
+ "located_pages": [
+  36
+ ],
+ "text_layer": true,
+ "found": false,
+ "verdict": "not_found",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": null,
+  "ccProportional": null,
+  "carrying": null,
+  "sqftTotal": null,
+  "monthlyTotals": false,
+  "psf": null,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": true
+ },
+ "price_total": 0,
+ "step": "sonnet-text",
+ "budget_period": "July 1, 2022 - June 30, 2023",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approx. Square Footage",
+  "Approx. Outdoor/Limited Square Footage",
+  "General Residential No. of Bedooms/Bathrooms",
+  "Offering Price",
+  "Percent Common Interest",
+  "Percent Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Real Estate Taxes w/ ICAP (Monthly)",
+  "Projected Real Estate Taxes w/ ICAP (Annual)",
+  "Projected Real Estate Taxes w/o ICAP (Monthly)",
+  "Projected Real Estate Taxes w/o ICAP (Annual)",
+  "Projected Carrying Charges Residential Units (Monthly)",
+  "Projected Carrying Charges w/ ICAP (Monthly)",
+  "Projected Carrying Charges w/o ICAP (Monthly)"
+ ],
+ "tax2": "without ICAP",
+ "sf2": "outdoor/limited common square footage",
+ "printed_totals": {
+  "price": 10885000,
+  "pct": 100,
+  "cc_m": 3217.09,
+  "tax_m": 9129.76,
+  "int_sf": 10320,
+  "ext_sf": 2695
+ },
+ "problems": [
+  "row with 21 cells dropped: U\tC1\tC\tCellar*/First Floor\t-\t-\t-\t/2 Halfs\t1176/1715\t-\t316 (AW)/760 (RY)\t2500000.",
+  "row with 21 cells dropped: U\t2F\tR\tSecond Floor\t-\t2\t2\t874\t-\t46 (B)/137 (T)\t925000.00\t8.72\t11.45\t344.08\tN/A\tN",
+  "row with 21 cells dropped: U\t2R\tR\tSecond Floor\t-\t2\t2\t845\t-\t158 (B)\t935000.00\t8.56\t11.24\t337.77\tN/A\tN/A\t780.",
+  "row with 21 cells dropped: U\t3F\tR\tThird Floor\t-\t2\t2\t874\t-\t46 (B)/137 (T)\t940000.00\t8.79\t11.54\t346.80\tN/A\tN/",
+  "row with 21 cells dropped: U\t3R\tR\tThird Floor\t-\t2\t2\t845\t-\t129 (B)\t945000.00\t8.52\t11.18\t336.02\tN/A\tN/A\t775.8",
+  "row with 21 cells dropped: U\t4F\tR\tFourth Floor\t-\t2\t2\t874\t-\t46 (B)/137 (T)\t955000.00\t8.85\t11.62\t349.20\tN/A\tN",
+  "row with 21 cells dropped: U\t4R\tR\tFourth Floor\t-\t2\t2\t845\t-\t60 (B)\t955000.00\t8.35\t10.95\t329.15\tN/A\tN/A\t759.9",
+  "row with 21 cells dropped: U\t5F\tR\tFifth Floor/Penthouse\t-\t3\t2\t1154\t-\t46 (B)/288 (T)\t1385000.00\t12.28\t16.12\t",
+  "row with 21 cells dropped: U\t5R\tR\tFifth Floor/Penthouse\t-\t3\t2\t1118\t-\t129 (B)/260 (T)\t1345000.00\t12.11\t15.90",
+  "Unit C1's beds/baths field prints as \"/2 Halfs\" — unclear code, left blank, noted as-is; unit C1's int_sf/sf2 printed as two figures each (Cellar/First Floor and Areaway/Rear Yard) rather than single interior/outdoor values, so both are placed in int_sf per convention but noted in full."
+ ],
+ "units": []
+}

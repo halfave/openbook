@@ -1,0 +1,231 @@
+{
+ "plan_id": "CD240070",
+ "steps": [
+  {
+   "step": "sonnet-text",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "sqftTotal",
+    "monthlyTotals",
+    "allRowsParsed",
+    "outdoor"
+   ]
+  },
+  {
+   "step": "sonnet-images",
+   "verdict": "hold",
+   "units": 5,
+   "failed": [
+    "ag",
+    "printed",
+    "pct100",
+    "sqftTotal",
+    "monthlyTotals",
+    "allRowsParsed",
+    "outdoor"
+   ]
+  },
+  {
+   "step": "sonnet-images-think",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag"
+   ]
+  }
+ ],
+ "calls": 3,
+ "call_log": [
+  {
+   "model": "sonnet",
+   "tokens": 5280,
+   "output_tokens": 1052,
+   "seconds": 10,
+   "cost_usd": 0.027428
+  },
+  {
+   "model": "sonnet",
+   "tokens": 15551,
+   "output_tokens": 1408,
+   "seconds": 72,
+   "cost_usd": 0.0444468
+  },
+  {
+   "model": "sonnet",
+   "tokens": 0,
+   "timed_out": true
+  }
+ ],
+ "tokens": 20831,
+ "api_equiv_usd": 0.072,
+ "located_pages": [
+  35
+ ],
+ "text_layer": true,
+ "found": true,
+ "verdict": "hold",
+ "checks": {
+  "ag": false,
+  "printed": false,
+  "pct100": false,
+  "ccProportional": true,
+  "carrying": true,
+  "sqftTotal": false,
+  "monthlyTotals": false,
+  "psf": true,
+  "notPlaceholder": true,
+  "allRowsParsed": false,
+  "outdoor": false
+ },
+ "price_total": 20500000,
+ "step": "sonnet-images",
+ "budget_period": "January 1, 2025 - December 30, 2025",
+ "columns_printed": [
+  "Unit No.",
+  "Location",
+  "Approx. Square Footage",
+  "Approx. Outdoor/Limited Square Footage",
+  "No. of Bedooms/Bathrooms",
+  "Offering Price",
+  "Percent Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Real Estate Taxes w/ ICAP (Monthly)",
+  "Projected Real Estate Taxes w/ ICAP (Annual)",
+  "Projected Real Estate Taxes w/o ICAP (Monthly)",
+  "Projected Real Estate Taxes w/o ICAP (Annual)",
+  "Projected Carrying Charges Residential Units (Monthly)",
+  "Projected Carrying Charges w/ ICAP (Monthly)",
+  "Projected Carrying Charges w/o ICAP (Monthly)"
+ ],
+ "tax2": "w/ ICAP (Monthly)",
+ "sf2": "Approx. Outdoor/Limited Square Footage",
+ "printed_totals": {
+  "price": 21500000,
+  "pct": 100,
+  "cc_m": 6166.66,
+  "tax_m": 15736.66,
+  "int_sf": 15446,
+  "ext_sf": 8950
+ },
+ "problems": [
+  "row with 21 cells dropped: U\tC1\tC\tFirst Floor\t-\t-\t0\t0.5\t325\t-\t-\t1000000\t1.62\t-\t99.90\t-\t227.93\t2735.17\t9.33\t",
+  "Unit 2's Approx. Square Footage cell shows two stacked numbers \"58\" and \"2,944\" (First Floor / Second Floor); took 2,944 as int_sf and 58 as ext_sf (outdoor/limited sf), with remaining limited-area breakdown (S/BR/P/RY/T) listed in note since multiple separate areas are given.",
+  "Unit 6's Approx. Square Footage cell shows two stacked numbers \"2,794\" and \"475\"; took 2,794 as int_sf and 475 plus the P/T breakdown as note since sf2/outdoor column has multiple separate areas.",
+  "TAX2 column header is same as tax_m/tax_a header text (\"Projected Real Estate Taxes w/ ICAP (Monthly)\") since w/ICAP figures are mostly N/A except unit C1 and TOTAL; used w/o ICAP figures as primary tax_m/tax_a since carrying charges w/o ICAP equal the \"Carrying Charges Residential Units\" column for all units except C1."
+ ],
+ "units": [
+  {
+   "unit": "2",
+   "type": "residential",
+   "floor": "First Floor Second Floor",
+   "rooms": null,
+   "beds": 5,
+   "baths": 3.5,
+   "int_sf": 2944,
+   "sf2": null,
+   "ext_sf": 58,
+   "price": 4000000,
+   "pct": 19.38,
+   "pct2": null,
+   "cc_m": 1195.1,
+   "cc_a": null,
+   "tax_m": 3055.22,
+   "tax_a": 36662.62,
+   "tax2_m": null,
+   "carry_m": 4250.32,
+   "page": 35,
+   "note": "Approx. Square Footage column lists 58 and 2,944 for this unit; used 2944 as int_sf and 58 as ext_sf per note below"
+  },
+  {
+   "unit": "3",
+   "type": "residential",
+   "floor": "Third Floor",
+   "rooms": null,
+   "beds": 4,
+   "baths": 3.5,
+   "int_sf": 2950,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 4000000,
+   "pct": 18.14,
+   "pct2": null,
+   "cc_m": 1118.63,
+   "cc_a": null,
+   "tax_m": 2859.81,
+   "tax_a": 34317.7,
+   "tax2_m": null,
+   "carry_m": 3978.44,
+   "page": 35,
+   "note": null
+  },
+  {
+   "unit": "4",
+   "type": "residential",
+   "floor": "Fourth Floor",
+   "rooms": null,
+   "beds": 4,
+   "baths": 3.5,
+   "int_sf": 2950,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 4000000,
+   "pct": 17.89,
+   "pct2": null,
+   "cc_m": 1103.22,
+   "cc_a": null,
+   "tax_m": 2819.49,
+   "tax_a": 33833.83,
+   "tax2_m": null,
+   "carry_m": 3922.71,
+   "page": 35,
+   "note": null
+  },
+  {
+   "unit": "5",
+   "type": "residential",
+   "floor": "Fifth Floor",
+   "rooms": null,
+   "beds": 4,
+   "baths": 3.5,
+   "int_sf": 2950,
+   "sf2": null,
+   "ext_sf": null,
+   "price": 4000000,
+   "pct": 18.02,
+   "pct2": null,
+   "cc_m": 1111.23,
+   "cc_a": null,
+   "tax_m": 2841.2,
+   "tax_a": 34094.37,
+   "tax2_m": null,
+   "carry_m": 3952.43,
+   "page": 35,
+   "note": null
+  },
+  {
+   "unit": "6",
+   "type": "residential",
+   "floor": "Sixth Floor Seventh Floor",
+   "rooms": null,
+   "beds": 5,
+   "baths": null,
+   "int_sf": 2794,
+   "sf2": null,
+   "ext_sf": 475,
+   "price": 4500000,
+   "pct": 24.95,
+   "pct2": null,
+   "cc_m": 1538.58,
+   "cc_a": null,
+   "tax_m": 3933.01,
+   "tax_a": 47196.14,
+   "tax2_m": null,
+   "carry_m": 5471.59,
+   "page": 35,
+   "note": "beds/baths printed as \"5/4 full, 2 half\"; treated as 5 beds, 4.5 baths"
+  }
+ ]
+}
