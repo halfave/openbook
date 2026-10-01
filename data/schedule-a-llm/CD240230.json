@@ -3,43 +3,23 @@
  "steps": [
   {
    "step": "sonnet-text",
-   "verdict": "hold",
-   "units": 5,
-   "failed": [
-    "ag",
-    "printed",
-    "pct100",
-    "sqftTotal",
-    "monthlyTotals",
-    "allRowsParsed"
-   ]
-  },
-  {
-   "step": "sonnet-text-retry",
    "verdict": "publish_ag",
    "units": 6,
    "failed": []
   }
  ],
- "calls": 2,
+ "calls": 1,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4582,
-   "output_tokens": 855,
+   "tokens": 6092,
+   "output_tokens": 973,
    "seconds": 10,
-   "cost_usd": 0.023454000000000003
-  },
-  {
-   "model": "sonnet",
-   "tokens": 4604,
-   "output_tokens": 875,
-   "seconds": 12,
-   "cost_usd": 0.023662000000000002
+   "cost_usd": 0.030202
   }
  ],
- "tokens": 9186,
- "api_equiv_usd": 0.047,
+ "tokens": 6092,
+ "api_equiv_usd": 0.03,
  "located_pages": [
   37
  ],
@@ -57,36 +37,43 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 12850000,
- "step": "sonnet-text-retry",
- "budget_period": "July 1, 2025-June 30, 2026",
+ "step": "sonnet-text",
+ "budget_period": "Year Projected to Begin: July 1, 2025-June 30, 2026",
  "columns_printed": [
   "Unit No.",
   "Floor Location",
   "Approx. Floor Area",
-  "Approx. Outdoor/Uninhabitable/Limited Common Floor Area",
+  "Outdoor/Uninhabitable/Limited Common Area",
   "No. of Bedooms/Bathrooms",
   "Offering Price",
   "Percent Common Interest",
   "Common Charges (Monthly)",
   "Projected Real Estate Taxes (Monthly)",
   "Projected Real Estate Taxes (Annual)",
-  "Projected Common Charges (Monthly)"
+  "Projected Carrying Charges (Monthly)"
  ],
  "tax2": null,
- "sf2": "Outdoor/Uninhabitable/Limited Common Area",
+ "sf2": "outdoor/uninhabitable/limited common area",
  "printed_totals": {
   "price": 12850000,
   "pct": 100,
   "cc_m": 4869.58,
   "tax_m": 6387.15,
   "int_sf": 7999,
-  "ext_sf": 2355
+  "ext_sf": 2355,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Beds/Baths for Unit 1 printed as \"2/2.5\"; Units 2-6 printed as \"3/2\" (rooms not separately given, used as beds/baths). Floor area and outdoor area for Unit 1 span multiple lines (Cellar/First Floor/Total); int_sf given as Total 1,714 per instructions (habitable total), sf2 duplicated as table doesn't separate cellar from first floor numerically beyond what's shown."
+  "Unit 1's interior area is printed as two figures (Cellar 732, First Floor 982) with a \"Total\" of 1,714; int_sf uses the combined total 1714 per the printed \"Total\" row, with the cellar figure 732 also listed in sf2/note since it cannot be placed in ext_sf.",
+  "Bedrooms/Bathrooms column prints combined figures like \"2/2.5\" and \"3/2\"; interpreted as beds/baths per header (e.g., 2 beds, 2 full, 1 half; 3 beds, 2 full, 0 half).",
+  "outdoor space left out: its column did not add up to the printed total"
  ],
  "units": [
   {
@@ -94,10 +81,11 @@
    "type": "residential",
    "floor": "Cellar/First Floor",
    "rooms": null,
-   "beds": null,
-   "baths": 2,
+   "beds": 2,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1714,
-   "sf2": 1714,
+   "sf2": 732,
    "ext_sf": null,
    "price": 2250000,
    "pct": 17.65,
@@ -109,7 +97,8 @@
    "tax2_m": null,
    "carry_m": 1986.81,
    "page": 37,
-   "note": "Cellar* 732, First Floor 982, Total 1,714; Outdoor areas: 221 (A), 846 (RY)"
+   "note": "Cellar area 732 sf, First Floor 982 sf; outdoor/limited common area 221 (A), 846 (RY)",
+   "baths": 2.5
   },
   {
    "unit": "2",
@@ -117,7 +106,8 @@
    "floor": "Second Floor",
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1263,
    "sf2": null,
    "ext_sf": null,
@@ -131,7 +121,8 @@
    "tax2_m": null,
    "carry_m": 1858.49,
    "page": 37,
-   "note": "Outdoor areas: 35 (B), 213 (T)"
+   "note": "Outdoor/limited common area 35 (B), 213 (T)",
+   "baths": 2
   },
   {
    "unit": "3",
@@ -139,7 +130,8 @@
    "floor": "Third Floor",
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1263,
    "sf2": null,
    "ext_sf": null,
@@ -153,7 +145,8 @@
    "tax2_m": null,
    "carry_m": 1862.99,
    "page": 37,
-   "note": null
+   "note": "Outdoor/limited common area 260 (B)",
+   "baths": 2
   },
   {
    "unit": "4",
@@ -161,7 +154,8 @@
    "floor": "Fourth Floor",
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1253,
    "sf2": null,
    "ext_sf": null,
@@ -175,7 +169,8 @@
    "tax2_m": null,
    "carry_m": 1849.48,
    "page": 37,
-   "note": null
+   "note": "Outdoor/limited common area 260 (B)",
+   "baths": 2
   },
   {
    "unit": "5",
@@ -183,7 +178,8 @@
    "floor": "Fifth Floor",
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1253,
    "sf2": null,
    "ext_sf": null,
@@ -197,7 +193,8 @@
    "tax2_m": null,
    "carry_m": 1849.48,
    "page": 37,
-   "note": null
+   "note": "Outdoor/limited common area 260 (B)",
+   "baths": 2
   },
   {
    "unit": "6",
@@ -205,7 +202,8 @@
    "floor": "Sixth Floor",
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1253,
    "sf2": null,
    "ext_sf": null,
@@ -219,7 +217,8 @@
    "tax2_m": null,
    "carry_m": 1849.48,
    "page": 37,
-   "note": null
+   "note": "Outdoor/limited common area 260 (B)",
+   "baths": 2
   }
  ]
 }

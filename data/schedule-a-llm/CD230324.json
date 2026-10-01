@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 6289,
-   "output_tokens": 1119,
-   "seconds": 16,
-   "cost_usd": 0.031866
+   "tokens": 7955,
+   "output_tokens": 1392,
+   "seconds": 13,
+   "cost_usd": 0.040168
   }
  ],
- "tokens": 6289,
- "api_equiv_usd": 0.032,
+ "tokens": 7955,
+ "api_equiv_usd": 0.04,
  "located_pages": [
   39
  ],
@@ -37,6 +37,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 10070000,
@@ -58,19 +60,24 @@
   "Monthly Real Estate Taxes",
   "Total Monthly Carrying Charges"
  ],
- "tax2": "without ICAP",
- "sf2": "Cellar Space square footage",
+ "tax2": null,
+ "sf2": "cellar",
  "printed_totals": {
   "price": 10070000,
   "pct": 100,
   "cc_m": 4595.5,
   "tax_m": 7268.56,
   "int_sf": 6414,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Table lists 7 residential + 2 commercial units but only 9 units (all type unclear as R vs C) are shown; unit types not distinguished by R/C in printed table, all assumed residential since bed/bath data is residential-style, but this may be incorrect for some units.",
-  "\"Limited Common Element square feet\" column values (300, 146, 38, 428, 68, 68, 68, 68, 345) placed in note as they don't match any defined cell; not ext_sf per instructions since description text differs (e.g., \"Rear yard garden\")."
+  "1A and 1B rows have no bedroom/bathroom/half-bath figures printed (dashes \"---\" for all three columns); left beds/full_baths/half_baths blank.",
+  "1B's \"Square footage\" column shows \"$ -\" (blank) and Cellar Space shows 1152.00; interpreted int_sf as blank (-) and sf2 (cellar) as 1152.00.",
+  "A separate ICAP abatement table for commercial units 1A/1B (with/w/ ICAP tax figures) is printed below the main table; not transcribed as it reflects a future, not-yet-effective scenario explicitly stated to not be in effect for the first year (2024/2025 and 2025/2026 tax years), so tax_m/tax_a for 1A/1B above reflect the figures without ICAP as printed in the main schedule.",
+  "Storage Unit Licenses section lists \"1A 1 $15,000.00\" and \"1B 2 $15,000.00\" but these appear to be separate storage license fees, not part of the main unit pricing table; not included as separate U lines since they lack full column data."
  ],
  "units": [
   {
@@ -79,7 +86,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 1432,
    "sf2": 0,
    "ext_sf": null,
@@ -93,7 +101,8 @@
    "tax2_m": null,
    "carry_m": 1765.16,
    "page": 39,
-   "note": "Rear yard garden (300 sf)"
+   "note": "Limited common area: Rear yard garden (300 sf)",
+   "baths": null
   },
   {
    "unit": "1B",
@@ -101,7 +110,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": null,
    "sf2": 1152,
    "ext_sf": null,
@@ -115,15 +125,17 @@
    "tax2_m": null,
    "carry_m": 1176.77,
    "page": 39,
-   "note": "Terrace (146 sf)"
+   "note": "Limited common area: Terrace (146 sf); int_sf blank/not printed",
+   "baths": null
   },
   {
    "unit": "2A",
    "type": "residential",
    "floor": null,
-   "rooms": 1,
+   "rooms": null,
    "beds": 1,
-   "baths": 0,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 606,
    "sf2": 0,
    "ext_sf": null,
@@ -137,15 +149,17 @@
    "tax2_m": null,
    "carry_m": 1006.54,
    "page": 39,
-   "note": "Balcony (38 sf)"
+   "note": "Limited common area: Balcony (38 sf)",
+   "baths": 1
   },
   {
    "unit": "2B",
    "type": "residential",
    "floor": null,
-   "rooms": 1,
+   "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": 706,
    "sf2": 0,
    "ext_sf": null,
@@ -159,15 +173,17 @@
    "tax2_m": null,
    "carry_m": 1475.63,
    "page": 39,
-   "note": "Terrace (428 sf)"
+   "note": "Limited common area: Balcony (68 sf); Terrace (428 sf)",
+   "baths": 1.5
   },
   {
    "unit": "3A",
    "type": "residential",
    "floor": null,
-   "rooms": 1,
+   "rooms": null,
    "beds": 1,
-   "baths": 0,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 612,
    "sf2": 0,
    "ext_sf": null,
@@ -181,15 +197,17 @@
    "tax2_m": null,
    "carry_m": 1100.36,
    "page": 39,
-   "note": "Balcony (68 sf)"
+   "note": "Limited common area: Balcony (68 sf)",
+   "baths": 1
   },
   {
    "unit": "3B",
    "type": "residential",
    "floor": null,
-   "rooms": 1,
+   "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": 706,
    "sf2": 0,
    "ext_sf": null,
@@ -203,15 +221,17 @@
    "tax2_m": null,
    "carry_m": 1287.99,
    "page": 39,
-   "note": "Balcony (68 sf)"
+   "note": "Limited common area: Balcony (68 sf)",
+   "baths": 1.5
   },
   {
    "unit": "4A",
    "type": "residential",
    "floor": null,
-   "rooms": 1,
+   "rooms": null,
    "beds": 1,
-   "baths": 0,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 612,
    "sf2": 0,
    "ext_sf": null,
@@ -225,15 +245,17 @@
    "tax2_m": null,
    "carry_m": 1100.36,
    "page": 39,
-   "note": "Balcony (68 sf)"
+   "note": "Limited common area: Balcony (68 sf)",
+   "baths": 1
   },
   {
    "unit": "4B",
    "type": "residential",
    "floor": null,
-   "rooms": 1,
+   "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": 706,
    "sf2": 0,
    "ext_sf": null,
@@ -247,15 +269,17 @@
    "tax2_m": null,
    "carry_m": 1287.99,
    "page": 39,
-   "note": "Balcony (68 sf); Terrace (277 sf)"
+   "note": "Limited common area: Balcony (68 sf); Terrace (277 sf)",
+   "baths": 1.5
   },
   {
    "unit": "5",
    "type": "residential",
    "floor": null,
-   "rooms": 2,
+   "rooms": null,
    "beds": 2,
-   "baths": 0,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1034,
    "sf2": 0,
    "ext_sf": null,
@@ -269,7 +293,8 @@
    "tax2_m": null,
    "carry_m": 1663.26,
    "page": 39,
-   "note": null
+   "note": null,
+   "baths": 2
   }
  ]
 }

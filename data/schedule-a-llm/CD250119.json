@@ -12,49 +12,49 @@
  "call_log": [
   {
    "model": "haiku",
-   "tokens": 12588,
-   "output_tokens": 574,
-   "seconds": 7,
-   "cost_usd": 0.024502
+   "tokens": 12656,
+   "output_tokens": 573,
+   "seconds": 8,
+   "cost_usd": 0.024600000000000004
   },
   {
    "model": "haiku",
-   "tokens": 4941,
+   "tokens": 5009,
    "output_tokens": 97,
    "seconds": 3,
-   "cost_usd": 0.005329
+   "cost_usd": 0.005397000000000001
   },
   {
    "model": "haiku",
-   "tokens": 4943,
+   "tokens": 5011,
    "output_tokens": 97,
    "seconds": 3,
-   "cost_usd": 0.005331000000000001
+   "cost_usd": 0.005399000000000001
   },
   {
    "model": "haiku",
-   "tokens": 4941,
-   "output_tokens": 97,
+   "tokens": 5031,
+   "output_tokens": 110,
    "seconds": 3,
-   "cost_usd": 0.005329
+   "cost_usd": 0.005471
   },
   {
    "model": "haiku",
-   "tokens": 8726,
-   "output_tokens": 569,
-   "seconds": 6,
-   "cost_usd": 0.016769
+   "tokens": 14342,
+   "output_tokens": 449,
+   "seconds": 79,
+   "cost_usd": 0.0203227
   },
   {
    "model": "sonnet",
-   "tokens": 11113,
-   "output_tokens": 652,
-   "seconds": 78,
-   "cost_usd": 0.0182904
+   "tokens": 14093,
+   "output_tokens": 676,
+   "seconds": 10,
+   "cost_usd": 0.0356022
   }
  ],
- "tokens": 47252,
- "api_equiv_usd": 0.076,
+ "tokens": 56142,
+ "api_equiv_usd": 0.097,
  "located_pages": [],
  "text_layer": true,
  "found": true,
@@ -70,6 +70,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 4239000,
@@ -97,11 +99,15 @@
   "cc_m": 1444.92,
   "tax_m": 1617.08,
   "int_sf": 4710,
-  "ext_sf": 1404
+  "ext_sf": 1404,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Unit 1 bedrooms/bathrooms printed as \"3/3 full, 2 half\"; interpreted as 3 beds, 3.5 baths (3 full + 2 half = 3.5... note: \"3 full, 2 half\" literally totals 4 baths, but transcribed as printed code; see note.",
-  "Ext_sf column is Limited Common Element outdoor area (yard/balconies/roof terrace per Note A), printed as single number per unit (517 and 887)."
+  "Table has no \"floor\" column distinct from Location; floor-like info included in Location text, left in that field only.",
+  "Unit 2 outdoor area (887) includes 3 balconies of 34 SF each plus 785 SF roof terrace per Note A; a single combined figure is printed so it was placed in ext_sf as instructed.",
+  "Tax_m/tax_a columns are labeled \"Taxes First Year\" with no explicit abatement scenario stated; treated as the only tax figures (tax2_m left blank)."
  ],
  "units": [
   {
@@ -110,7 +116,8 @@
    "floor": "Cellar/Basement/1st Floor",
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": 2,
    "int_sf": 2190,
    "sf2": 866,
    "ext_sf": 517,
@@ -118,13 +125,14 @@
    "pct": 50,
    "pct2": null,
    "cc_m": 722.46,
-   "cc_a": null,
+   "cc_a": 9702.5,
    "tax_m": 808.54,
-   "tax_a": 9702.5,
+   "tax_a": null,
    "tax2_m": null,
    "carry_m": 1531,
    "page": 29,
-   "note": null
+   "note": null,
+   "baths": 4
   },
   {
    "unit": "2",
@@ -132,7 +140,8 @@
    "floor": "2nd Floor/3rd Floor/Penthouse",
    "rooms": null,
    "beds": 4,
-   "baths": 3.5,
+   "full_baths": 3,
+   "half_baths": 1,
    "int_sf": 2520,
    "sf2": 0,
    "ext_sf": 887,
@@ -140,13 +149,14 @@
    "pct": 50,
    "pct2": null,
    "cc_m": 722.46,
-   "cc_a": null,
+   "cc_a": 9702.5,
    "tax_m": 808.54,
-   "tax_a": 9702.5,
+   "tax_a": null,
    "tax2_m": null,
    "carry_m": 1531,
    "page": 29,
-   "note": null
+   "note": null,
+   "baths": 3.5
   }
  ]
 }
