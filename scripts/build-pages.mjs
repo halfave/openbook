@@ -168,13 +168,14 @@ const realPlan = (p) => !/resubmit|withdrawn|\(\s*\d{1,2}\/\d{1,2}\/\d{2,4}|\bfi
 const GEO = JSON.parse((await all("site_assets?key=eq.boroughs_svg&select=value"))[0].value);
 const BORO_LABELS = { Manhattan: [-73.972, 40.79], Brooklyn: [-73.95, 40.645], Queens: [-73.82, 40.705], Bronx: [-73.865, 40.85], "Staten Island": [-74.15, 40.585] };
 const project = (lat, lng) => { const B = GEO.B, sx = GEO.W / ((B.maxLng - B.minLng) * GEO.k); return [(lng - B.minLng) * GEO.k * sx, (B.maxLat - lat) * sx]; };
-// A static map of the given plans; each dot links to that plan's row on the page.
+// A static map of the given plans; each dot links to that plan's row on the page. The dots are out of the
+// Tab order (keyboard users have the rows themselves); screen readers read them as a labelled group of links.
 function plansMap(list, label) {
   const dots = list.filter((p) => p.lat && p.lng).map((p) => {
     const [x, y] = project(p.lat, p.lng);
-    return `<a href="#${esc(p.plan_id.toLowerCase())}" data-id="${esc(p.plan_id.toLowerCase())}"><circle class="dot" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="15"><title>${esc(tc(p.name))}, ${esc(tc(p.address))}</title></circle></a>`;
+    return `<a href="#${esc(p.plan_id.toLowerCase())}" tabindex="-1" data-id="${esc(p.plan_id.toLowerCase())}"><circle class="dot" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="15"><title>${esc(tc(p.name))}, ${esc(tc(p.address))}</title></circle></a>`;
   });
-  return `<figure class="fmap"><svg viewBox="0 0 ${GEO.W} ${GEO.H}" role="img" aria-label="${esc(label)}">
+  return `<figure class="fmap"><svg viewBox="0 0 ${GEO.W} ${GEO.H}" role="group" aria-label="${esc(label)}">
     ${Object.values(GEO.paths).map((d) => `<path class="boro" d="${d}"/>`).join("")}
     ${Object.entries(BORO_LABELS).map(([name, [lng, lat]]) => { const [x, y] = project(lat, lng); return `<text class="boro-label" x="${x.toFixed(1)}" y="${y.toFixed(1)}" text-anchor="middle">${esc(name)}</text>`; }).join("")}
     <g class="dots">${dots.join("")}</g>
@@ -243,7 +244,6 @@ const timed = accepted.filter(NYC).filter(realPlan).filter((p) => p.units_reside
   .sort((a, b) => b.accepted_date.localeCompare(a.accepted_date) || b.plan_id.localeCompare(a.plan_id))
   .slice(0, RECENT_N);
 const avgOf = (ds) => Math.round(ds.reduce((s, d) => s + d, 0) / ds.length);
-const medianOf = (ds) => { const s = [...ds].sort((a, b) => a - b), m = s.length >> 1; return s.length % 2 ? s[m] : Math.round((s[m - 1] + s[m]) / 2); };
 const mo = (d) => (d / (365.25 / 12)).toFixed(1).replace(/\.0$/, "");
 // Months past 30 days, days up to that.
 const dur = (d) => d > 30 ? `${mo(d)} month${mo(d) === "1" ? "" : "s"}` : plural(d, "day");
@@ -251,21 +251,21 @@ const dur = (d) => d > 30 ? `${mo(d)} month${mo(d) === "1" ? "" : "s"}` : plural
 {
   const quart = (ds, f) => [...ds].sort((a, b) => a - b)[Math.round(f * (ds.length - 1))];
   const ds = timed.map((p) => p.days), by = (f) => timed.filter(f).map((p) => p.days);
-  const mid = (xs) => xs.length ? dur(medianOf(xs)) : "none";
+  const meanDur = (xs) => xs.length ? dur(avgOf(xs)) : "none";
   const neu = by((p) => p.construction === "NEW"), old = by((p) => p.construction !== "NEW"), small = by((p) => p.units_residential <= 10);
   const topBoro = [...count(timed, (p) => boro(p.borough))].sort((a, b) => b[1] - a[1])[0];
   Object.assign(STATS, {
     appr_n: n(timed.length), appr_since: day(timed.at(-1).accepted_date),
-    appr_median_days: n(medianOf(ds)), appr_median: dur(medianOf(ds)), appr_mean: dur(avgOf(ds)),
+    appr_mean_days: n(avgOf(ds)), appr_mean: dur(avgOf(ds)),
     appr_q1: dur(quart(ds, 0.25)), appr_q3: dur(quart(ds, 0.75)), appr_fastest: dur(Math.min(...ds)), appr_slowest: dur(Math.max(...ds)),
-    appr_new_n: n(neu.length), appr_new_median: mid(neu), appr_rehab_n: n(old.length), appr_rehab_median: mid(old),
-    appr_small_n: n(small.length), appr_small_median: mid(small),
-    appr_top_boro: topBoro[0], appr_top_boro_n: n(topBoro[1]), appr_top_boro_median: mid(by((p) => boro(p.borough) === topBoro[0])),
+    appr_new_n: n(neu.length), appr_new_mean: meanDur(neu), appr_rehab_n: n(old.length), appr_rehab_mean: meanDur(old),
+    appr_small_n: n(small.length), appr_small_mean: meanDur(small),
+    appr_top_boro: topBoro[0], appr_top_boro_n: n(topBoro[1]), appr_top_boro_mean: meanDur(by((p) => boro(p.borough) === topBoro[0])),
   });
-  TABLES.appr_by_year = () => `<div class="tscroll"><table><thead><tr><th>Year accepted</th><th>Median time</th><th>Plans</th></tr></thead><tbody>${
+  TABLES.appr_by_year = () => `<div class="tscroll"><table><thead><tr><th>Year accepted</th><th>Average time</th><th>Plans</th></tr></thead><tbody>${
     [...new Set(timed.map((p) => p.accepted_date.slice(0, 4)))].sort().reverse().map((y) => {
       const xs = by((p) => p.accepted_date.startsWith(y));
-      return `<tr><td>${y === thisYear ? `${y} (to date)` : y}</td><td>${dur(medianOf(xs))}</td><td>${n(xs.length)}</td></tr>`;
+      return `<tr><td>${y === thisYear ? `${y} (to date)` : y}</td><td>${dur(avgOf(xs))}</td><td>${n(xs.length)}</td></tr>`;
     }).join("")}</tbody></table></div>`;
 }
 const SIZES = [[1, 10, "1–10"], [11, 25, "11–25"], [26, 50, "26–50"], [51, Infinity, "51 or more"]];
@@ -279,7 +279,7 @@ function approvalPage() {
   const P = "";
   const url = `${SITE_URL}/time-to-approval.html`;
   const days = timed.map((p) => p.days);
-  const mean = avgOf(days), median = medianOf(days), fastest = Math.min(...days), slowest = Math.max(...days);
+  const mean = avgOf(days), fastest = Math.min(...days), slowest = Math.max(...days);
   const oldest = timed.at(-1).accepted_date;
   const title = "NYC Condo Offering Plan Approval Times (AG Data)";
   const description = `How long the NY Attorney General takes to accept an NYC condo offering plan: ${dur(mean)} on average across the ${timed.length} most recent plans that can be timed.`;
@@ -326,7 +326,6 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
   <div class="hero-stat">
     <p class="hs-k">Average time to approval</p>
     <p class="hs-v">${mo(mean)} <span>month${mo(mean) === "1" ? "" : "s"}</span></p>
-    <p class="hs-s">Median ${dur(median)}: half the plans were accepted faster.</p>
   </div>
   <dl class="glance">
     <div><dt>${FAST} Fastest</dt><dd>${dur(fastest)}</dd></div>
@@ -384,17 +383,17 @@ function commonChargesPage() {
   const P = "";
   const url = `${SITE_URL}/common-charges.html`;
   const per = charged.map((p) => p.perUnit), perSf = charged.filter((p) => p.perSf).map((p) => p.perSf);
-  const mid = median(per), mean = per.reduce((s, v) => s + v, 0) / per.length, sfMid = median(perSf);
+  const mean = average(per), sfMean = average(perSf);
   const title = "What Are Common Charges in a New NYC Condo?";
-  const description = fitDesc(`Median monthly common charges in new NYC condos: ${usd(mid)} per unit${sfMid != null ? ` and ${usdSf(sfMid)} per square foot` : ""}`,
+  const description = fitDesc(`Average monthly common charges in new NYC condos: ${usd(mean)} per unit${sfMean != null ? ` and ${usdSf(sfMean)} per square foot` : ""}`,
     [`, from first-year budgets in ${n(charged.length)} plans accepted since ${day(ccSince)}`], ".");
-  HOME.charges = { href: "common-charges.html", k: "Avg. common charges", v: usd(mean), u: "/month", s: perSf.length ? `${usdSf(avgOf(perSf))} /SF` : "" };
+  HOME.charges = { href: "common-charges.html", k: "Avg. common charges", v: usd(mean), u: "/month", s: perSf.length ? `${usdSf(sfMean)} /SF` : "" };
 
   // By building size (residential units on the AG record).
   const sizes = SIZES.map(([a, b, label]) => {
     const ps = charged.filter((p) => p.units_residential >= a && p.units_residential <= b);
     const sf = ps.filter((p) => p.perSf).map((p) => p.perSf);
-    return ps.length ? { label, n: ps.length, unit: median(ps.map((p) => p.perUnit)), lo: Math.min(...ps.map((p) => p.perUnit)), hi: Math.max(...ps.map((p) => p.perUnit)), sf: median(sf), sfN: sf.length } : null;
+    return ps.length ? { label, n: ps.length, unit: average(ps.map((p) => p.perUnit)), lo: Math.min(...ps.map((p) => p.perUnit)), hi: Math.max(...ps.map((p) => p.perUnit)), sf: average(sf), sfN: sf.length } : null;
   }).filter(Boolean);
   const sizeTable = `<div class="tscroll"><table class="dm"><thead><tr><th>Residential units</th><th>Plans</th><th>Per unit / month</th><th>Per SF / month</th><th>Lowest–highest per unit</th></tr></thead><tbody>${sizes.map((s) =>
     `<tr><td>${esc(s.label)}</td><td>${n(s.n)}</td><td><strong>${usd(s.unit)}</strong></td><td>${s.sf != null ? `<strong>${usdSf(s.sf)}</strong><span class="sub">${plural(s.sfN, "plan")} with unit sizes</span>` : "—"}</td><td>${usd(s.lo)}–${usd(s.hi)}</td></tr>`).join("")}</tbody></table></div>`;
@@ -407,10 +406,10 @@ function commonChargesPage() {
       `<div class="col" title="${esc(label)}: ${plural(c, "plan")} (${Math.round(100 * c / charged.length)}%)"><span class="v">${n(c)}</span><span class="b" style="height:${Math.max(1, Math.round(100 * c / binMax))}%"></span><span class="l">${esc(label)}</span></div>`).join("")}</div>
   </figure>`;
 
-  // By borough: the median per unit, with a bar relative to the highest.
+  // By borough: the average per unit, with a bar relative to the highest.
   const boros = [...new Set(charged.map((p) => boro(p.borough)))].map((b) => {
     const ps = charged.filter((p) => boro(p.borough) === b);
-    return { label: b, n: ps.length, v: median(ps.map((p) => p.perUnit)) };
+    return { label: b, n: ps.length, v: average(ps.map((p) => p.perUnit)) };
   }).sort((a, b) => b.v - a.v);
   const boroMax = Math.max(...boros.map((e) => e.v));
   const boroTable = `<div class="tscroll"><table class="bars"><thead><tr><th>Borough</th><th>Per unit / month</th><th aria-hidden="true"></th></tr></thead><tbody>${boros.map((e) =>
@@ -430,12 +429,11 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
   <h1>What Are Common Charges in a New NYC Condo?</h1>
   <p class="anote">The monthly common charges set by the first-year budget (Schedule B) in ${n(charged.length)} New York City condominium offering plans accepted since ${esc(day(ccSince))}. Buildings with commercial units are left out, so the budget falls on the homes (and any parking or storage units). Budgets are the sponsor's projections for the first year, not what owners pay today; real estate taxes are not included (see <a href="property-taxes.html">property taxes</a>).</p>
   <div class="hero-stat">
-    <p class="hs-k">Median common charges per unit</p>
-    <p class="hs-v">${usd(mid)} <span>a month</span></p>
-    <p class="hs-s">Average ${usd(mean)}: a few large luxury buildings pull it up.</p>
+    <p class="hs-k">Average common charges per unit</p>
+    <p class="hs-v">${usd(mean)} <span>a month</span></p>
   </div>
   <dl class="glance">
-    ${sfMid != null ? `<div><dt>Per square foot</dt><dd>${usdSf(sfMid)} a month<span class="sub">median, ${plural(perSf.length, "plan")} with unit sizes</span></dd></div>` : ""}
+    ${sfMean != null ? `<div><dt>Per square foot</dt><dd>${usdSf(sfMean)} a month<span class="sub">average, ${plural(perSf.length, "plan")} with unit sizes</span></dd></div>` : ""}
     <div><dt>Budgets read</dt><dd>${n(charged.length)}</dd></div>
   </dl>
   </div>
@@ -452,7 +450,7 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
   <h2>The ${n(recent.length)} Most Recent Plans</h2>
   ${recentTable}
 
-  <p class="src">Per unit: the budget's estimated total expenses divided by 12 and by the residential units on the AG record, an average across the building's homes; larger homes pay more by their common interest. Per square foot: the same monthly total divided by the unit sizes listed in the plan's Schedule A, used only when the building has no parking or storage units and the price table lists every unit with a size. Medians are shown because a few budgets are far above the rest.</p>
+  <p class="src">Per unit: the budget's estimated total expenses divided by 12 and by the residential units on the AG record, an average across the building's homes; larger homes pay more by their common interest. Per square foot: the same monthly total divided by the unit sizes listed in the plan's Schedule A, used only when the building has no parking or storage units and the price table lists every unit with a size. Averages are pulled up by a few large luxury buildings.</p>
   ${cta(P)}
   </div>
 </main>
@@ -480,22 +478,22 @@ function propertyTaxesPage() {
   const P = "";
   const url = `${SITE_URL}/property-taxes.html`;
   const sfPlans = reTax.filter((p) => p.perSf), sfs = sfPlans.map((p) => p.perSf);
-  const mid = median(sfs), mean = sfs.reduce((s, v) => s + v, 0) / sfs.length, unitMid = median(reTax.map((p) => p.perUnit));
+  const mean = average(sfs), unitMean = average(reTax.map((p) => p.perUnit));
   const since = reTax.at(-1).accepted_date;
   const both = sfPlans.filter((p) => p.ccSf);
   const title = "Property Taxes per Square Foot in New NYC Condos";
-  const description = fitDesc(`Projected first-year real estate taxes in new NYC condos: a median ${usdSf(mid)} per square foot a month`,
-    [` and ${usd(unitMid)} per unit, from the Schedule A tables in ${n(reTax.length)} offering plans`], ".");
-  HOME.taxes = { href: "property-taxes.html", k: "Avg. property taxes", v: usd(avgOf(reTax.map((p) => p.perUnit))), u: "/month", s: `${usdSf(mean)} /SF` };
+  const description = fitDesc(`Projected first-year real estate taxes in new NYC condos: an average ${usdSf(mean)} per square foot a month`,
+    [` and ${usd(unitMean)} per unit, from the Schedule A tables in ${n(reTax.length)} offering plans`], ".");
+  HOME.taxes = { href: "property-taxes.html", k: "Avg. property taxes", v: usd(unitMean), u: "/month", s: `${usdSf(mean)} /SF` };
 
-  // By building size, by year accepted and by borough: the median per square foot, with how many plans it rests on.
+  // By building size, by year accepted and by borough: the average per square foot, with how many plans it rests on.
   const group = (key, order) => [...new Set(sfPlans.map(key))].map((k) => {
     const ps = sfPlans.filter((p) => key(p) === k);
-    return { label: k, n: ps.length, v: median(ps.map((p) => p.perSf)) };
+    return { label: k, n: ps.length, v: average(ps.map((p) => p.perSf)) };
   }).sort(order);
   const sizes = SIZES.map(([a, b, label]) => {
     const all = reTax.filter((p) => p.units_residential >= a && p.units_residential <= b), sf = all.filter((p) => p.perSf).map((p) => p.perSf);
-    return all.length ? { label, n: all.length, unit: median(all.map((p) => p.perUnit)), sf: median(sf), sfN: sf.length, lo: sf.length ? Math.min(...sf) : null, hi: sf.length ? Math.max(...sf) : null } : null;
+    return all.length ? { label, n: all.length, unit: average(all.map((p) => p.perUnit)), sf: average(sf), sfN: sf.length, lo: sf.length ? Math.min(...sf) : null, hi: sf.length ? Math.max(...sf) : null } : null;
   }).filter(Boolean);
   const sizeTable = `<div class="tscroll"><table class="dm"><thead><tr><th>Residential units</th><th>Plans</th><th>Per SF / month</th><th>Per unit / month</th><th>Lowest–highest per SF</th></tr></thead><tbody>${sizes.map((s) =>
     `<tr><td>${esc(s.label)}</td><td>${n(s.n)}</td><td>${s.sf != null ? `<strong>${usdSf(s.sf)}</strong><span class="sub">${plural(s.sfN, "plan")} with unit sizes</span>` : "—"}</td><td>${usd(s.unit)}</td><td>${s.sfN > 1 ? `${usdSf(s.lo)}–${usdSf(s.hi)}` : "—"}</td></tr>`).join("")}</tbody></table></div>`;
@@ -524,15 +522,16 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
   <h1>Property Taxes per Square Foot in New NYC Condos</h1>
   <p class="anote">The projected first-year real estate taxes in the Schedule A price table of ${n(reTax.length)} New York City condominium offering plans accepted since ${esc(day(since))}, ${n(sfPlans.length)} of them with unit sizes. These are the sponsor's projections, often based on an assessment made before construction is finished or with a tax abatement in place, so taxes can rise materially once the building is reassessed or the benefit phases out.</p>
   <div class="hero-stat">
-    <p class="hs-k">Median property taxes per square foot</p>
-    <p class="hs-v">${usdSf(mid)} <span>a month</span></p>
-    <p class="hs-s">Average ${usdSf(mean)}; the middle half of plans fall between ${usdSf(quart(sfs, 0.25))} and ${usdSf(quart(sfs, 0.75))}.</p>
+    <p class="hs-k">Average property taxes per square foot</p>
+    <p class="hs-v">${usdSf(mean)} <span>a month</span></p>
+    <p class="hs-s">The middle half of plans fall between ${usdSf(quart(sfs, 0.25))} and ${usdSf(quart(sfs, 0.75))}.</p>
   </div>
   <dl class="glance">
-    <div><dt>Per unit</dt><dd>${usd(unitMid)} a month<span class="sub">median, ${plural(reTax.length, "plan")}</span></dd></div>
-    ${both.length >= 5 ? `<div><dt>Common charges, same buildings</dt><dd>${usdSf(median(both.map((p) => p.ccSf)))} a month<span class="sub">median per SF, ${plural(both.length, "plan")} with both; taxes ${usdSf(median(both.map((p) => p.perSf)))}</span></dd></div>` : ""}
+    <div><dt>Per unit</dt><dd>${usd(unitMean)} a month<span class="sub">average, ${plural(reTax.length, "plan")}</span></dd></div>
+    ${both.length >= 5 ? `<div><dt>Common charges, same buildings</dt><dd>${usdSf(average(both.map((p) => p.ccSf)))} a month<span class="sub">average per SF, ${plural(both.length, "plan")} with both; taxes ${usdSf(average(both.map((p) => p.perSf)))}</span></dd></div>` : ""}
     <div><dt>Plans with unit sizes</dt><dd>${n(sfPlans.length)}</dd></div>
   </dl>
+  <p class="anote">See the <a href="tax-consultants.html">tax consultants who estimate property taxes</a> in NYC condo offering plans.</p>
   </div>
   <div class="amain">
   <h2>By Building Size</h2>
@@ -550,7 +549,7 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
   <h2>The ${n(reTax.length)} Plans Read</h2>
   ${planTable}
 
-  <p class="src">Taxes are read from the plan's Schedule A only when the table gives each unit's projected real estate taxes both monthly and annually and the two agree, and the tax column can be told apart from the common charges using the Schedule B budget; tables that show abated and unabated taxes side by side are left out. Per square foot: the units' monthly taxes divided by their sizes in the same table, leaving out any unit whose size looks misread (a rate more than 2.5 times off the building's median). Per unit: the building's monthly total divided by its residential units. Common charges per square foot are from the <a href="common-charges.html">common charges</a> page, for plans accepted since ${esc(day(ccSince))}. Medians are shown because a few plans are far from the rest.</p>
+  <p class="src">Taxes are read from the plan's Schedule A only when the table gives each unit's projected real estate taxes both monthly and annually and the two agree, and the tax column can be told apart from the common charges using the Schedule B budget; tables that show abated and unabated taxes side by side are left out. Per square foot: the units' monthly taxes divided by their sizes in the same table, leaving out any unit whose size looks misread (a rate more than 2.5 times off the building's median). Per unit: the building's monthly total divided by its residential units. Common charges per square foot are from the <a href="common-charges.html">common charges</a> page, for plans accepted since ${esc(day(ccSince))}.</p>
   ${cta(P)}
   </div>
 </main>
@@ -576,7 +575,7 @@ for (const r of await all("schedule_b?select=plan_id,line_items&status=eq.ok")) 
   if (pick) mgmtFee.set(p.plan_id, { perUnit: Number(pick.amount) / p.units_residential, page: pick.page });
 }
 const perYear = (v) => `$${Math.round(v).toLocaleString("en-US")}`;
-const median = (a) => { const s = [...a].sort((x, y) => x - y), m = s.length >> 1; return s.length ? (s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2) : null; };
+const average = (a) => a.length ? a.reduce((s, v) => s + v, 0) / a.length : null;
 
 // ---------- budget blog posts ----------
 // The common charges and first-year budget posts quote the same recent plans as common-charges.html (`charged`),
@@ -590,7 +589,7 @@ const median = (a) => { const s = [...a].sort((x, y) => x - y), m = s.length >> 
   const BANDS = [[2, 6, "2–6"], [7, 12, "7–12"], [13, 30, "13–30"], [31, 100, "31–100"], [101, Infinity, "101+"]];
   const bands = BANDS.map(([a, b, label]) => ({ label, ps: charged.filter((p) => p.units_residential >= a && p.units_residential <= b) })).filter((x) => x.ps.length >= 5);
   const boros = [...count(charged, (p) => boro(p.borough))].filter(([, c]) => c >= 10).sort((a, b) => b[1] - a[1]).map(([b]) => ({ label: b, ps: charged.filter((p) => boro(p.borough) === b) }));
-  const perMonth = (ps) => median(ps.map((p) => p.perUnit));
+  const perMonth = (ps) => average(ps.map((p) => p.perUnit));
   const lowest = [...bands].sort((a, b) => perMonth(a.ps) - perMonth(b.ps))[0];
   // Expense lines by kind, first match wins; totals and income lines are skipped. Shares are of total expenses, where the plan has the line.
   const KINDS = [["mgmt", "Management fee", /management|managing agent/], ["elevator", "Elevator (where present)", /elevator/], ["insurance", "Insurance", /insurance/],
@@ -608,7 +607,7 @@ const median = (a) => { const s = [...a].sort((x, y) => x - y), m = s.length >> 
     }
     for (const k in acc) shares[k].push(acc[k] / p.annual);
   }
-  const share = (k) => pct(median(shares[k]) || 0);
+  const share = (k) => pct(average(shares[k]) || 0);
   const fees = charged.filter((p) => mgmtFee.has(p.plan_id)).map((p) => mgmtFee.get(p.plan_id).perUnit);
   const feeTotals = charged.filter((p) => mgmtFee.has(p.plan_id)).map((p) => mgmtFee.get(p.plan_id).perUnit * p.units_residential);
   const managers = (await all("facts?select=plan_id,value_text,value_num&field=eq.managing_agent&value_text=not.is.null")).filter((f) => ids.has(f.plan_id));
@@ -621,9 +620,9 @@ const median = (a) => { const s = [...a].sort((x, y) => x - y), m = s.length >> 
     bud_boro_months: boros.map((b) => `${b.label} ${ten(perMonth(b.ps))}`).join(", "),
     bud_boro_years: boros.map((b) => `${b.label} ${hundred(12 * perMonth(b.ps))}`).join(", "),
     bud_elevator: share("elevator"), bud_staff: share("staff"), bud_insurance: share("insurance"), bud_water: share("water"), bud_reserve: share("reserve"), bud_mgmt: share("mgmt"),
-    bud_fee: hundred(median(feeTotals)), bud_fee_unit: ten(median(fees)),
+    bud_fee: hundred(average(feeTotals)), bud_fee_unit: ten(average(fees)),
     bud_sponsor_mgr: pct(bySponsor.length / managers.length), bud_sponsor_nofee: n(bySponsor.filter((f) => !(f.value_num > 0)).length), bud_sponsor_n: n(bySponsor.length),
-    bud_reserve_median: hundred(median(reserves)), bud_reserve_none: pct(reserves.filter((v) => v === 0).length / reserves.length),
+    bud_reserve_mean: hundred(average(reserves)), bud_reserve_none: pct(reserves.filter((v) => v === 0).length / reserves.length),
   });
   const row = (cells) => `<tr>${cells.map((c) => `<td>${c}</td>`).join("")}</tr>`;
   const table = (head, rows) => `<div class="tscroll"><table><thead><tr>${head.map((h) => `<th>${h}</th>`).join("")}</tr></thead><tbody>${rows.join("")}</tbody></table></div>`;
@@ -631,10 +630,10 @@ const median = (a) => { const s = [...a].sort((x, y) => x - y), m = s.length >> 
     row(["All NYC plans", ten(perMonth(charged)), n(charged.length)]),
     ...boros.map((b) => row([esc(b.label), ten(perMonth(b.ps)), n(b.ps.length)])),
     ...bands.map((b) => row([`${b.label} units`, ten(perMonth(b.ps)), n(b.ps.length)]))]);
-  TABLES.budget_by_size = () => table(["Building size (residential units)", "Median per unit / year", "Median total budget", "Plans"],
-    bands.map((b) => row([b.label, hundred(12 * perMonth(b.ps)), big(median(b.ps.map((p) => p.annual))), n(b.ps.length)])));
-  TABLES.budget_shares = () => table(["Line item", "Median share of budget", "Plans with the line"],
-    KINDS.filter(([k]) => shares[k].length).sort((a, b) => median(shares[b[0]]) - median(shares[a[0]])).map(([k, label]) => row([label, share(k), n(shares[k].length)])));
+  TABLES.budget_by_size = () => table(["Building size (residential units)", "Average per unit / year", "Average total budget", "Plans"],
+    bands.map((b) => row([b.label, hundred(12 * perMonth(b.ps)), big(average(b.ps.map((p) => p.annual))), n(b.ps.length)])));
+  TABLES.budget_shares = () => table(["Line item", "Average share of budget", "Plans with the line"],
+    KINDS.filter(([k]) => shares[k].length).sort((a, b) => average(shares[b[0]]) - average(shares[a[0]])).map(([k, label]) => row([label, share(k), n(shares[k].length)])));
 }
 
 // Gold, silver and bronze trophies for the top three; plain numbers after that.
@@ -664,7 +663,7 @@ const listScript = `<script>
 })();
 </script>`;
 const AGENTS = groupAgents(agentFacts, byId)
-  .map((g) => ({ ...g, fee: median(g.plans.map((p) => mgmtFee.get(p.plan_id)?.perUnit).filter((v) => v != null)) }));
+  .map((g) => ({ ...g, fee: average(g.plans.map((p) => mgmtFee.get(p.plan_id)?.perUnit).filter((v) => v != null)) }));
 // plan_id -> its agent group, or the manager as filed when the sponsor or board manages it.
 const planAgent = new Map();
 for (const g of AGENTS) for (const p of g.plans) planAgent.set(p.plan_id, g);
@@ -685,7 +684,7 @@ function agentsPage() {
   const description = withTop(`${n(groups.length)} property managers named in ${n(namedPlans)} NYC condo offering plans, with the buildings each manages and the first-year fee per unit.`, groups.slice(0, 3).map((g) => `${g.name} (${g.plans.length})`));
   const bldg = (p) => `<li><a href="buildings/${esc(fileFor(p))}">${esc(tc(p.name))}</a><span>${esc(tc(p.address))} · ${esc(boro(p.borough))}${p.units_residential != null ? ` · ${p.units_residential} units` : ""}${p.accepted_date ? ` · ${p.accepted_date.slice(0, 4)}` : ""}${feeText(p)}</span></li>`;
   const card = (g, i) => `<details class="agent" id="${esc(g.slug)}" data-name="${esc(g.name.toLowerCase())}"${more(i)}>
-    <summary>${rank(i)}<span class="an">${g.plans.length >= PROFILE_MIN ? `<a href="managing-agents/${esc(g.slug)}.html">${esc(g.name)}</a>` : esc(g.name)}</span><span class="ac">${plural(g.plans.length, "building")}${g.fee != null ? `<span class="fee" title="Median first-year management fee per residential unit, from Schedule B">${perYear(g.fee)}/unit/yr</span>` : `<span class="fee" aria-hidden="true"></span>`}</span></summary>
+    <summary>${rank(i)}<span class="an">${esc(g.name)}</span><span class="ac">${plural(g.plans.length, "building")}${g.fee != null ? `<span class="fee" title="Average first-year management fee per residential unit, from Schedule B">${perYear(g.fee)}/unit/yr</span>` : `<span class="fee" aria-hidden="true"></span>`}</span></summary>
     <ul class="dir">${g.plans.map(bldg).join("")}</ul>
     ${g.plans.length >= PROFILE_MIN ? `<p class="acts"><a class="btn primary" href="managing-agents/${esc(g.slug)}.html">${esc(g.name)} profile</a></p>` : ""}
   </details>`;
@@ -712,7 +711,7 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
     <summary><span class="an">Sponsor or board managed</span><span class="ac">${plural(selfPlans.length, "building")}</span></summary>
     <ul class="dir">${selfPlans.map(selfRow).join("")}</ul>
   </details></section>` : ""}
-  <p class="src">Named in the offering plan as filed; the board can change managers after the first year. The fee is the management line of the plan's Schedule B first-year budget divided by its residential units; a manager's figure is the median across its buildings with a readable budget. Plans whose pages aren't searchable yet, or that don't name a manager, aren't included.</p>
+  <p class="src">Named in the offering plan as filed; the board can change managers after the first year. The fee is the management line of the plan's Schedule B first-year budget divided by its residential units; a manager's figure is the average across its buildings with a readable budget. Plans whose pages aren't searchable yet, or that don't name a manager, aren't included.</p>
   ${cta(P)}
   </div>
 </main>
@@ -734,7 +733,7 @@ function attorneysPage() {
   const bldg = (p) => `<li><a href="buildings/${esc(fileFor(p))}">${esc(tc(p.name))}</a><span>${esc(tc(p.address))} · ${esc(boro(p.borough))}${p.units_residential != null ? ` · ${p.units_residential} units` : ""}${p.accepted_date ? ` · ${p.accepted_date.slice(0, 4)}` : ""}</span></li>`;
   const span = (f) => f.years.length ? (f.years[0] === f.years.at(-1) ? f.years[0] : `${f.years[0]}–${f.years.at(-1)}`) : "";
   const card = (f, i) => `<details class="agent" id="${esc(f.slug)}" data-name="${esc(tc(f.name).toLowerCase())}"${more(i)}>
-    <summary>${rank(i)}<span class="an">${f.plans.length >= PROFILE_MIN ? `<a href="offering-plan-attorneys/${esc(f.slug)}.html">${esc(tc(f.name))}</a>` : esc(tc(f.name))}</span><span class="ac">${plural(f.plans.length, "plan")}${span(f) ? `<span class="yrs" title="Years the plans were accepted for filing">${span(f)}</span>` : `<span class="yrs" aria-hidden="true"></span>`}</span></summary>
+    <summary>${rank(i)}<span class="an">${esc(tc(f.name))}</span><span class="ac">${plural(f.plans.length, "plan")}${span(f) ? `<span class="yrs" title="Years the plans were accepted for filing">${span(f)}</span>` : `<span class="yrs" aria-hidden="true"></span>`}</span></summary>
     ${f.plans.length > SHOWN ? `<p class="faint">The ${SHOWN} most recent of ${n(f.plans.length)}.</p>` : ""}
     <ul class="dir">${f.plans.slice(0, SHOWN).map(bldg).join("")}</ul>
     ${f.plans.length >= PROFILE_MIN ? `<p class="acts"><a class="btn primary" href="offering-plan-attorneys/${esc(f.slug)}.html">${esc(tc(f.name))} profile</a></p>` : ""}
@@ -825,7 +824,7 @@ function proDirPage(kind) {
   const description = c.description(all, planCount);
   const bldg = (p) => `<li><a href="buildings/${esc(fileFor(p))}">${esc(tc(p.name))}</a><span>${esc(tc(p.address))} · ${esc(boro(p.borough))}${p.units_residential != null ? ` · ${p.units_residential} units` : ""}${p.accepted_date ? ` · ${p.accepted_date.slice(0, 4)}` : ""}</span></li>`;
   const card = (g, i) => `<details class="agent" id="${esc(g.slug)}" data-name="${esc(g.name.toLowerCase())}"${more(i)}>
-    <summary>${rank(i)}<span class="an">${g.plans.length >= PROFILE_MIN ? `<a href="${c.dir}/${esc(g.slug)}.html">${esc(g.name)}</a>` : esc(g.name)}</span><span class="ac">${plural(g.plans.length, "building")}${yearSpan(g.plans) ? `<span class="yrs" title="Years the plans were accepted for filing">${yearSpan(g.plans)}</span>` : `<span class="yrs" aria-hidden="true"></span>`}</span></summary>
+    <summary>${rank(i)}<span class="an">${esc(g.name)}</span><span class="ac">${plural(g.plans.length, "building")}${yearSpan(g.plans) ? `<span class="yrs" title="Years the plans were accepted for filing">${yearSpan(g.plans)}</span>` : `<span class="yrs" aria-hidden="true"></span>`}</span></summary>
     ${g.plans.length > SHOWN ? `<p class="faint">The ${SHOWN} most recent of ${n(g.plans.length)}.</p>` : ""}
     <ul class="dir">${g.plans.slice(0, SHOWN).map(bldg).join("")}</ul>
     ${g.plans.length >= PROFILE_MIN ? `<p class="acts"><a class="btn primary" href="${c.dir}/${esc(g.slug)}.html">${esc(g.name)} profile</a></p>` : ""}
@@ -874,15 +873,15 @@ const lg = (v) => Math.log1p(v);
 const distance = (a, b) => a.dims.reduce((s, v, i) => s + (v != null && b.dims[i] != null ? Math.abs(lg(v) - lg(b.dims[i])) : 1), 0);
 const similarTo = (x, pool, k = 6) => pool.filter((y) => y !== x).map((y) => [y, distance(x, y)]).sort((a, b) => a[1] - b[1] || b[0].plans.length - a[0].plans.length).slice(0, k).map(([y]) => y);
 
-// Managers: buildings, residential units, median first-year fee per unit. Attorneys: plans, units, median offering $/unit.
+// Managers: buildings, residential units, average first-year fee per unit. Attorneys: plans, units, average offering $/unit.
 const MGR = AGENTS.filter((g) => g.plans.length >= PROFILE_MIN).map((g) => {
   const units = sumUnits(g.plans);
   return { ...g, display: g.name, units, dims: [g.plans.length, units, g.fee], dir: "managing-agents", site: SITES.managers?.[g.slug] };
 });
-// Attorneys, architects and selling agents: plans, units, median offering $/unit.
+// Attorneys, architects and selling agents: plans, units, average offering $/unit.
 const byPrice = (list, dir, sites, display = (x) => x.name) => list.filter((f) => f.plans.length >= PROFILE_MIN).map((f) => {
   const units = sumUnits(f.plans);
-  const perUnit = median(f.plans.map((p) => offerPrice(p) && p.units_residential ? offerPrice(p) / p.units_residential : null).filter((v) => v != null));
+  const perUnit = average(f.plans.map((p) => offerPrice(p) && p.units_residential ? offerPrice(p) / p.units_residential : null).filter((v) => v != null));
   return { ...f, display: display(f), units, perUnit, dims: [f.plans.length, units, perUnit], dir, site: sites?.[f.slug] };
 });
 const ATT = byPrice(FIRMS, "offering-plan-attorneys", SITES.attorneys, (f) => tc(f.name));
@@ -939,7 +938,7 @@ function profilePage(x, kind) {
   const including = named.map((s, i) => (i ? ", " : ", including ") + s);
   const description = mgr
     ? fitDesc(fitDesc(`${x.display} is named as first-year managing agent in ${plural(nyc, "NYC condo offering plan")}${x.units ? ` (${plural(x.units, "unit")})` : ""}`, including, "."),
-      [pricingText ? ` Median fee: ${pricingText}.` : ""])
+      [pricingText ? ` Average fee: ${pricingText}.` : ""])
     : fitDesc(`${x.display} is named as ${r.as} ${r.on} ${plural(nyc, "NYC condo offering plan")}${span ? ` (${span})` : ""}`, including, ".");
   const dash = `<span class="faint">—</span>`;
 
@@ -984,7 +983,7 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
   <dl class="glance">
     <div><dt>${mgr ? "Buildings" : r.count === "plan" ? "Plans" : "Buildings"}</dt><dd>${n(nyc)}</dd></div>
     <div><dt>Residential units</dt><dd>${x.units ? n(x.units) : "—"}</dd></div>
-    <div><dt>${mgr ? "Median fee" : "Median $/unit"}</dt><dd>${pricingText ? esc(pricingText) : "—"}</dd></div>
+    <div><dt>${mgr ? "Average fee" : "Average $/unit"}</dt><dd>${pricingText ? esc(pricingText) : "—"}</dd></div>
     <div><dt>${span.includes("–") ? "Years" : "Year"}</dt><dd>${span || "—"}</dd></div>
   </dl>
   </div>
@@ -994,8 +993,8 @@ ${ld({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElem
   <div class="amain">
   <div class="tscroll"><table class="ftable"><thead><tr><th>Condominium</th><th>Accepted</th><th class="num">Units</th><th class="num">${mgr ? "Fee/unit/yr" : "$/unit"}</th></tr></thead><tbody>${x.plans.map(row).join("")}</tbody></table></div>
   <p class="src">${mgr
-    ? "The fee is the management line of each plan's Schedule B first-year budget divided by its residential units; — means the budget hasn't been read or doesn't break it out. The median fee is across the buildings with a figure."
-    : "$/unit is the offering price on the AG record divided by the residential units; the median is across the plans with both."} Different spellings of one ${mgr ? "company" : r.other}'s name are counted together.</p>
+    ? "The fee is the management line of each plan's Schedule B first-year budget divided by its residential units; — means the budget hasn't been read or doesn't break it out. The average fee is across the buildings with a figure."
+    : "$/unit is the offering price on the AG record divided by the residential units; the average is across the plans with both."} Different spellings of one ${mgr ? "company" : r.other}'s name are counted together.</p>
   ${cta(P)}
   </div>
   ${sims.length ? `<aside class="sims" aria-label="Similar ${mgr ? "managers" : r.other + "s"}"><h2>Similar ${mgr ? "Managers" : r.Other}</h2>
@@ -1009,7 +1008,7 @@ ${hoverScript}
 
 // ---------- hand-written pages: stamp the shared SEO tags and structured data between markers ----------
 // Title and description stay hand-written in each page; everything between <!-- seo --> and <!-- /seo --> is replaced.
-const STATIC = { "index.html": "", "about.html": "about.html", "faq.html": "faq.html", "terms.html": "terms.html", "privacy.html": "privacy.html", "disclaimers.html": "disclaimers.html" };
+const STATIC = { "index.html": "", "about.html": "about.html", "faq.html": "faq.html", "terms.html": "terms.html", "privacy.html": "privacy.html", "disclaimers.html": "disclaimers.html", "report-error.html": "report-error.html", "accessibility.html": "accessibility.html" };
 const unhtml = (s) => String(s).replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/\s+/g, " ").trim();
 async function stampStatic(file, path) {
   const html = await readFile(join(ROOT, file), "utf8");
@@ -1031,7 +1030,7 @@ async function stampStatic(file, path) {
     });
   }
   if (file === "faq.html") {
-    // FAQ answers are the <details><summary>Q</summary><p>A</p>… blocks on the page, so the markup can't drift from the text. The masthead Data dropdown is also a <details>; skip it.
+    // FAQ answers are the <details><summary>Q</summary><p>A</p>… blocks on the page, so the markup can't drift from the text. The masthead Data and Rankings dropdowns are also <details>; skip them.
     const qa = [...html.matchAll(/<details(?![^>]*datamenu)[^>]*>\s*<summary>([\s\S]*?)<\/summary>([\s\S]*?)<\/details>/g)]
       .map(([, q, a]) => ({ "@type": "Question", name: unhtml(q), acceptedAnswer: { "@type": "Answer", text: unhtml(a) } }));
     if (qa.length) blocks.push({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: qa });
@@ -1039,7 +1038,7 @@ async function stampStatic(file, path) {
   if (file !== "index.html") {
     blocks.push({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
       { "@type": "ListItem", position: 1, name: SITE_NAME, item: `${SITE_URL}/` },
-      { "@type": "ListItem", position: 2, name: title.replace(/^The Condo Book Project /, "").replace(/ The Condo Book Project$/, ""), item: canonical },
+      { "@type": "ListItem", position: 2, name: title.replace(/^The Condo Book Project /, "").replace(/ (\| )?The Condo Book Project$/, ""), item: canonical },
     ] });
   }
   const block = `<!-- seo -->\n${SEO("", { title, description, canonical, image: OG_SITE })}\n${blocks.map(ld).join("\n")}${blocks.length ? "\n" : ""}<!-- /seo -->`;
@@ -1049,6 +1048,18 @@ async function stampStatic(file, path) {
     const cells = [HOME.approval, HOME.charges, HOME.taxes].map((c) =>
       `<a class="stat" href="${c.href}"><span class="k">${esc(c.k)}</span><span class="v">${esc(c.v)} <small>${esc(c.u)}</small></span>${c.s ? `<span class="s">${esc(c.s)}</span>` : ""}</a>`);
     out = out.replace(/<!-- stats -->[\s\S]*?<!-- \/stats -->/, () => `<!-- stats -->\n      ${cells.join("\n      ")}\n      <!-- /stats -->`);
+    // Rankings tab: the #1 of each ranking page, in the masthead's order.
+    if (!/<!-- leaders -->[\s\S]*?<!-- \/leaders -->/.test(out)) throw new Error("index.html: missing <!-- leaders --> markers");
+    const leaders = [
+      ["developers.html", "Developers", DEVELOPERS[0]?.name, DEVELOPERS[0], "building"],
+      ["managing-agents.html", "Property Managers", AGENTS[0]?.name, AGENTS[0], "building"],
+      ["offering-plan-attorneys.html", "Offering Plan Attorneys", FIRMS[0] && tc(FIRMS[0].name), FIRMS[0], "plan"],
+      ["architects.html", "Architects", ARCHITECTS[0]?.name, ARCHITECTS[0], "building"],
+      ["selling-agents.html", "Sales Teams", SELLERS[0]?.name, SELLERS[0], "building"],
+      ["tax-consultants.html", "Tax Consultants", TAXERS[0]?.name, TAXERS[0], "building"],
+    ].filter(([, , name]) => name).map(([href, k, name, g, noun]) =>
+      `<a class="lead" href="${href}"><span class="k">${esc(k)}</span><span class="nm">${esc(name)}</span><span class="c">${plural(g.plans.length, noun)}</span></a>`);
+    out = out.replace(/<!-- leaders -->[\s\S]*?<!-- \/leaders -->/, () => `<!-- leaders -->\n        ${leaders.join("\n        ")}\n        <!-- /leaders -->`);
   }
   await writeFile(join(ROOT, file), out);
 }
@@ -1122,7 +1133,7 @@ for (const x of TAX) await writeFile(join(ROOT, "tax-consultants", x.slug + ".ht
 for (const x of DEV) await writeFile(join(ROOT, "developers", x.slug + ".html"), profilePage(x, "developer"));
 for (const [file, path] of Object.entries(STATIC)) await stampStatic(file, path);
 
-const pageUrls = [["", TODAY], ["about.html"], ["faq.html", TODAY], ["new-condo-filings.html", TODAY], ["time-to-approval.html", TODAY], ["common-charges.html", TODAY], ["property-taxes.html", TODAY], ["developers.html", TODAY], ["managing-agents.html", TODAY], ["offering-plan-attorneys.html", TODAY], ["architects.html", TODAY], ["selling-agents.html", TODAY], ["tax-consultants.html", TODAY], ["blog/", TODAY], ["terms.html"], ["privacy.html"], ["disclaimers.html"],
+const pageUrls = [["", TODAY], ["about.html"], ["accessibility.html"], ["faq.html", TODAY], ["new-condo-filings.html", TODAY], ["time-to-approval.html", TODAY], ["common-charges.html", TODAY], ["property-taxes.html", TODAY], ["developers.html", TODAY], ["managing-agents.html", TODAY], ["offering-plan-attorneys.html", TODAY], ["architects.html", TODAY], ["selling-agents.html", TODAY], ["tax-consultants.html", TODAY], ["blog/", TODAY], ["terms.html"], ["privacy.html"], ["disclaimers.html"], ["report-error.html"],
   ...[...DEV, ...MGR, ...ATT, ...ARCH, ...SELL, ...TAX].map((x) => [`${x.dir}/${x.slug}.html`, TODAY]),
   ...posts.map((q) => [`blog/${q.slug}.html`, q.updated || q.published])];
 await writeFile(join(ROOT, "sitemap-pages.xml"), urlset(pageUrls));

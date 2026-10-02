@@ -1,6 +1,6 @@
 /* Bureau Modern: color tokens, type, masthead and menu shared by every The Condo Book Project page. */
 :root{
-  --ground:#FAF8F2; --panel:#FFFFFF; --ink:#242828; --muted:#5C605D; --faint:#8C8F8A; --rule:#D6D3C9; --rule-strong:#242828;
+  --ground:#FAF8F2; --panel:#FFFFFF; --ink:#242828; --muted:#5C605D; --faint:#6E716C; --rule:#D6D3C9; --rule-strong:#242828;
   --accent:#65153B; --accent-hover:#4E0F2D; --accent-ink:#FFFFFF; --accent-soft:#F3E7EA;
   --mast:#879CB4; --sky:#2E3D51; --sky-far:#61778F; --lit:#F4E6B8;
   --mark:#F3D98B; --mark-ink:#242828;
@@ -15,7 +15,7 @@
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     color-scheme:dark;
-    --ground:#17191A; --panel:#1F2223; --ink:#ECE8DE; --muted:#A8A69E; --faint:#7A7C77; --rule:#34383A; --rule-strong:#ECE8DE;
+    --ground:#17191A; --panel:#1F2223; --ink:#ECE8DE; --muted:#A8A69E; --faint:#8E908A; --rule:#34383A; --rule-strong:#ECE8DE;
     --accent:#D4789B; --accent-hover:#E595B3; --accent-ink:#17191A; --accent-soft:#34212A;
     --mast:#4A5B70; --sky:#1C2633; --sky-far:#34455A; --lit:#8C7B45;
     --mark:#5B4A12; --mark-ink:#FFF3CC;
@@ -26,7 +26,7 @@
 }
 :root[data-theme="dark"]{
   color-scheme:dark;
-  --ground:#17191A; --panel:#1F2223; --ink:#ECE8DE; --muted:#A8A69E; --faint:#7A7C77; --rule:#34383A; --rule-strong:#ECE8DE;
+  --ground:#17191A; --panel:#1F2223; --ink:#ECE8DE; --muted:#A8A69E; --faint:#8E908A; --rule:#34383A; --rule-strong:#ECE8DE;
   --accent:#D4789B; --accent-hover:#E595B3; --accent-ink:#17191A; --accent-soft:#34212A;
   --mast:#4A5B70; --sky:#1C2633; --sky-far:#34455A; --lit:#8C7B45;
   --mark:#5B4A12; --mark-ink:#FFF3CC;
@@ -52,28 +52,27 @@
 .skyline .wire{stroke:var(--sky);stroke-width:1.4;fill:none}
 .mast-rule{display:none}
 .mast-rule + .hairline{display:none}
-@media (max-width:640px){ .skyline .opt{display:none} .mast-in{padding-right:66px} }
+@media (max-width:640px){ .skyline .opt{display:none} }
 @media (max-width:420px){ .skyline .far{display:none} }
-/* About | FAQ | menu: plain text links split by thin dividers, no boxes */
-.menu{top:17px}
-.menu summary{border:0;border-radius:6px;background:none}
-.menu summary:hover{background:var(--chip)}
-.mastnav{position:absolute;top:17px;right:62px;z-index:3;height:42px;display:flex;gap:14px;align-items:center;font:500 14.5px var(--sans)}
+/* Data | Rankings | Buildings | About | FAQ: plain text links split by thin dividers, no boxes. No menu button: the bar shows on every screen size. */
+.mastnav{position:absolute;top:17px;right:24px;z-index:3;height:42px;display:flex;gap:14px;align-items:center;font:500 14.5px var(--sans)}
 .mastnav a{text-decoration:none;color:var(--ink);padding:4px 0;border-bottom:1.5px solid transparent}
 .mastnav a:hover,.mastnav a[aria-current="page"]{color:var(--accent);border-bottom-color:currentColor}
 .mastnav a:focus-visible{outline:3px solid var(--mast);outline-offset:3px}
-.mastnav span,.mastnav::after{color:var(--faint);font-weight:400}
-.mastnav::after{content:"|"}
-/* Too narrow for the whole bar: its links move into the menu (.menu .barlink in menu.css). */
-@media (max-width:1180px){ .mastnav{display:none} .mast-in{padding-right:66px} }
+.mastnav span{color:var(--faint);font-weight:400}
 /* the logo is retired; hide it on pages generated before it was taken out of the masthead */
 .logo{display:none}
-/* the long name wraps to two lines on phones */
-@media (max-width:760px){ .wordmark{white-space:normal;max-width:58vw} }
-@media (max-width:640px){ .mast-in{padding-left:16px} }
+/* Too narrow for the name and the bar side by side: the bar drops to a second row under the name,
+   and the dropdowns open from their left edge so they stay on screen. */
+@media (max-width:820px){
+  .mast-in{height:auto;flex-wrap:wrap;padding:12px 16px 0}
+  .wordmark{white-space:normal}
+  .mastnav{position:static;width:100%;height:auto;min-height:40px;flex-wrap:wrap;gap:2px 10px;font-size:14px}
+  .datamenu > div{left:-12px;right:auto}
+}
+@media (max-width:360px){ .mastnav{gap:2px 7px;font-size:13.5px} }
 
-/* About | FAQ | Data sit in the masthead; everything else is in the menu, shown on every screen size. */
-/* Data: New Construction, Approval Times, Property Managers and OP Attorneys in a dropdown */
+/* Data and Rankings dropdowns in the masthead */
 .datamenu{position:relative}
 /* pages.css rules every <details> for the FAQ list; not this one. */
 .mastnav details.datamenu{border:0;padding:0}
@@ -90,5 +89,5 @@
 .mastnav .datamenu a[aria-current="page"]{color:var(--accent);font-weight:600}
 
 /* ---------- pinned header ----------
-   The header stays at the top (position:sticky) at one height; the menu button is fixed so it stays beside it. */
+   The header stays at the top (position:sticky) at one height. */
 [id]{scroll-margin-top:calc(var(--head-h,77px) + 16px)}

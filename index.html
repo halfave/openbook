@@ -65,12 +65,6 @@ h1{font:700 clamp(36px,6vw,60px)/1.02 var(--display);letter-spacing:-.012em;marg
 @media (prefers-reduced-motion: reduce){ .lucky .die{animation:none !important} }
 .lucky:hover{color:var(--accent)}
 .lucky:focus-visible{outline:3px solid var(--mast);outline-offset:-3px}
-.disclaim{max-width:720px;margin:0 auto 14px;width:100%;font-size:11.5px;line-height:1.5;color:var(--faint);text-align:justify;text-align-last:left}
-.disclaim strong{font-weight:600;color:var(--muted)}
-.disclaim b{font-weight:500;color:var(--muted)}
-.disclaim a{color:var(--accent)}
-/* Buildings, the blog and Browse by task live in the menu, so the homepage shows it on every screen size. */
-@media (min-width:641px){ .menu{display:block} }
 form.search{display:flex;flex-direction:column;gap:10px}
 .qrow{display:flex;gap:0;align-items:stretch;border:2px solid var(--ink);background:var(--panel)}
 .qrow input{flex:1;min-width:0;border:0;background:transparent;font:19px var(--sans);color:var(--ink);padding:16px 16px}
@@ -107,10 +101,14 @@ form.search{display:flex;flex-direction:column;gap:10px}
 .why{font:500 12px var(--mono);letter-spacing:.02em;padding:3px 8px;border:1px solid var(--rule);align-self:flex-start;color:var(--muted)}
 .why.exact{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
 .why.loose{border-style:dashed}
-.sitefoot{max-width:720px;margin:40px auto 0;padding-top:12px;border-top:1px solid var(--rule);display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;font:12.5px var(--sans)}
-.sitefoot a{color:var(--muted)}
-.sitefoot span{color:var(--faint)}
-body.searched .sitefoot{max-width:1180px;justify-content:flex-start}
+/* footer: one row, the copyright on the left and the links on the right, styled like the masthead links */
+.sitefoot{margin:40px 0 0;padding:14px 0 0;border-top:1px solid var(--rule);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px 16px}
+.sitefoot nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;font:500 14px var(--sans)}
+.sitefoot nav a{text-decoration:none;color:var(--ink);padding:3px 0;border-bottom:1.5px solid transparent}
+.sitefoot nav a:hover{color:var(--accent);border-bottom-color:currentColor}
+.sitefoot nav span{color:var(--faint);font-weight:400}
+.sitefoot small{font:12.5px var(--sans);color:var(--faint)}
+@media (max-width:560px){ .sitefoot nav{gap:6px 18px} .sitefoot nav span{display:none} }
 .answer-box{margin-bottom:14px}
 .ans{background:var(--panel);border:2px solid var(--ink);padding:16px 18px;display:grid;gap:8px}
 .ans-kicker{margin:0;font:500 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
@@ -193,8 +191,36 @@ table.side tr.faint td{color:var(--muted)}
 
 .hero .notice{margin-top:12px}
 
-/* ---------- Top 10 box under the search bar (home only) ---------- */
-/* stat strip: headline figures from the data pages, stamped by scripts/build-pages.mjs between the stats markers */
+/* ---------- Data / Rankings switch under the search bar (home only) ---------- */
+.hometabs{margin:36px auto 0;width:100%;display:flex;flex-direction:column;align-items:center}
+/* a light switch with both words inside: a pill slides behind the side that's on */
+.lswitch{position:relative;display:grid;grid-template-columns:1fr 1fr;padding:3px;border:1px solid var(--rule-strong);border-radius:999px;background:var(--panel);cursor:pointer;
+  font:600 12px var(--sans);letter-spacing:.1em;text-transform:uppercase}
+.lswitch::before{content:"";position:absolute;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);border-radius:999px;background:var(--accent);transition:transform .2s ease}
+.lswitch[aria-checked="true"]::before{transform:translateX(100%)}
+.lswitch span{position:relative;padding:8px 20px;text-align:center;color:var(--muted);transition:color .2s ease}
+.lswitch[aria-checked="false"] span[data-side="data"],.lswitch[aria-checked="true"] span[data-side="rank"]{color:var(--accent-ink)}
+.lswitch:hover span{color:var(--ink)}
+.lswitch[aria-checked="false"]:hover span[data-side="data"],.lswitch[aria-checked="true"]:hover span[data-side="rank"]{color:var(--accent-ink)}
+.lswitch:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media (prefers-reduced-motion: reduce){ .lswitch::before,.lswitch span{transition:none} }
+/* Both panels share one grid cell, so the block is as tall as the taller one and flipping the switch moves nothing on the page. */
+.hometabs .panels{display:grid;width:100%;margin-top:18px}
+.hometabs .panel{grid-area:1/1;align-self:start}
+.hometabs .panel.off{visibility:hidden}
+.homestats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.homestats .stat{align-items:center;text-align:center;padding:12px 16px}
+@media (max-width:560px){ .homestats{grid-template-columns:1fr} .homestats .stat+.stat{border-left:0;border-top:1px solid var(--rule)} }
+.leaders{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:24px;border-top:1px solid var(--rule-strong)}
+.lead{display:flex;flex-direction:column;gap:3px;padding:14px 0;border-bottom:1px solid var(--rule);text-decoration:none;color:var(--ink)}
+.lead .k{font:500 11px/1.4 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lead .nm{font:400 15.5px/1.3 var(--display)}
+.lead .c{font:12px var(--mono);color:var(--faint);font-variant-numeric:tabular-nums}
+.lead:hover .nm{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.lead:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (max-width:640px){ .leaders{grid-template-columns:1fr 1fr} }
+body.searched .hometabs{display:none}
+/* Data tab: headline figures from the data pages, stamped by scripts/build-pages.mjs between the stats markers (.stats is also the results stats view) */
 .stats{margin:36px auto 0;width:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--rule-strong);background:var(--panel)}
 .stat{display:flex;flex-direction:column;gap:2px;padding:12px 16px;color:var(--ink);text-decoration:none}
 .stat+.stat{border-left:1px solid var(--rule)}
@@ -206,24 +232,16 @@ table.side tr.faint td{color:var(--muted)}
 .stat:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
 @media (max-width:560px){ .stats{grid-template-columns:1fr} .stat+.stat{border-left:0;border-top:1px solid var(--rule)} }
 body.searched .stats{display:none}
-.top10{margin:28px auto 0;width:100%}
-.top10 h2{margin:0;padding-bottom:8px;border-bottom:1px solid var(--rule-strong);font:400 17px/1.4 var(--display);color:var(--ink)}
-.top10 ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:24px}
-.top10 li{border-bottom:1px solid var(--rule)}
-.top10 a{display:flex;align-items:center;gap:10px;padding:12px 0;color:var(--ink);text-decoration:none;font:400 15px/1.3 var(--sans)}
-.top10 a span{font-size:17px;line-height:1}
-.top10 a:hover{color:var(--accent)}
-.top10 a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-@media (max-width:560px){ .top10 ul{grid-template-columns:1fr} }
 body.searched .top10{display:none}
 
 /* ---------- after a search: compact header ---------- */
-body.searched .mast-in{height:64px}
+@media (min-width:821px){ body.searched .mast-in{height:64px} }
 body.searched .wordmark{font-size:17px}
-body.searched .mastnav,body.searched .menu{top:11px}
+body.searched .mastnav{top:11px}
 body.searched .hero{max-width:1180px;margin:0;padding:16px 0 4px}
-body.searched h1,body.searched .sub,body.searched .lucky,body.searched .disclaim{display:none}
-body.searched .sitefoot{justify-content:flex-start}
+body.searched .sub,body.searched .lucky{display:none}
+/* the heading stays for screen readers once results take over the page */
+body.searched h1{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0}
 body.searched .qrow input{font-size:16px;padding:10px 14px}
 body.searched .go{padding:0 20px;font-size:13px}
 @media (max-width:560px){ body.searched .hero{padding-right:0} body.searched .go{padding:10px} }
@@ -382,37 +400,14 @@ table.pivot th[scope="row"]{white-space:nowrap}
 <header class="mast">
   <div class="mast-in">
     <a class="wordmark" href="index.html" aria-label="The Condo Book Project, home">THE CONDO BOOK PROJECT</a>
-    <nav class="mastnav" aria-label="Main"><a href="about.html">About</a><span aria-hidden="true">|</span><a href="faq.html">FAQ</a><span aria-hidden="true">|</span><details class="datamenu"><summary>Data</summary><div><a href="new-condo-filings.html">New Construction</a><a href="time-to-approval.html">Approval Times</a><a href="common-charges.html">Common Charges</a><a href="property-taxes.html">Property Taxes</a><a href="developers.html">Developers</a><a href="managing-agents.html">Property Managers</a><a href="offering-plan-attorneys.html">OP Attorneys</a><a href="architects.html">Architects</a><a href="selling-agents.html">Sales Teams</a><a href="tax-consultants.html">Tax Consultants</a></div></details></nav>
+    <nav class="mastnav" aria-label="Main"><details class="datamenu"><summary>Data</summary><div><a href="new-condo-filings.html">New Construction</a><a href="time-to-approval.html">AG Approval Time</a><a href="common-charges.html">Common Charges</a><a href="property-taxes.html">Property Taxes</a></div></details><span aria-hidden="true">|</span><details class="datamenu"><summary>Rankings</summary><div><a href="developers.html">Developers</a><a href="managing-agents.html">Property Managers</a><a href="offering-plan-attorneys.html">OP Attorneys</a><a href="architects.html">Architects</a><a href="selling-agents.html">Sales Teams</a><a href="tax-consultants.html">Tax Consultants</a></div></details><span aria-hidden="true">|</span><a href="buildings/index.html">Buildings</a><span aria-hidden="true">|</span><a href="about.html">About</a><span aria-hidden="true">|</span><a href="faq.html">FAQ</a></nav>
   </div>
 </header>
 <div class="mast-rule"></div><div class="hairline"></div>
-<details class="menu" id="menu">
-  <summary aria-label="Menu"><svg class="bars-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="x-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></summary>
-  <nav aria-label="Site">
-    <a href="buildings/index.html">Buildings</a>
-    <a href="blog/index.html">Blog</a>
-    <div class="barlinks"><hr>
-      <a href="about.html">About</a>
-      <a href="faq.html">FAQ</a>
-      <a href="new-condo-filings.html">New Construction</a>
-      <a href="time-to-approval.html">Approval Times</a>
-      <a href="common-charges.html">Common Charges</a>
-      <a href="property-taxes.html">Property Taxes</a>
-      <a href="developers.html">Developers</a>
-      <a href="managing-agents.html">Property Managers</a>
-      <a href="offering-plan-attorneys.html">OP Attorneys</a>
-      <a href="architects.html">Architects</a>
-      <a href="selling-agents.html">Sales Teams</a>
-      <a href="tax-consultants.html">Tax Consultants</a>
-    </div>
-    <hr>
-    <small>© 2026 Half Ave Company LLC</small>
-  </nav>
-</details>
-<div class="wrap">
+<main class="wrap">
   <section class="hero" id="hero">
     <h1>Find anything across NYC condo offering plans.</h1>
-    <p class="sub">Search across thousands of plans and documents for attorneys, Schedule A prices, floor plans, keywords, and more.</p>
+    <p class="sub">Search <span id="nplans">8,110</span> plans for prices, floor plans, project teams, and more</p>
     <form class="search" id="f" role="search" autocomplete="off">
       <label class="vh" for="q">Search NYC condo offering plans</label>
       <span class="vh" id="qhint">Ask a question, enter an address, or paste a plan ID.</span>
@@ -424,26 +419,30 @@ table.pivot th[scope="row"]{white-space:nowrap}
     </form>
     <div class="read" id="read" hidden></div>
     <div class="notice" id="notice" hidden></div>
-    <nav class="stats" aria-label="Key figures">
+    <div class="hometabs" id="hometabs">
+      <button type="button" class="lswitch" id="homeswitch" role="switch" aria-checked="false" aria-label="Show rankings instead of data"><span data-side="data" aria-hidden="true">Data</span><span data-side="rank" aria-hidden="true">Rankings</span></button>
+      <div class="panels">
+      <div class="panel homestats" id="panel-data" aria-live="polite">
       <!-- stats -->
       <a class="stat" href="time-to-approval.html"><span class="k">Avg. time to AG approval</span><span class="v">7.8 <small>months</small></span></a>
-      <a class="stat" href="common-charges.html"><span class="k">Avg. common charges</span><span class="v">$717 <small>/month</small></span><span class="s">$1.00 /SF</span></a>
+      <a class="stat" href="common-charges.html"><span class="k">Avg. common charges</span><span class="v">$717 <small>/month</small></span><span class="s">$0.57 /SF</span></a>
       <a class="stat" href="property-taxes.html"><span class="k">Avg. property taxes</span><span class="v">$962 <small>/month</small></span><span class="s">$0.78 /SF</span></a>
       <!-- /stats -->
-    </nav>
-    <nav class="top10" aria-label="Directory">
-      <h2>Or Browse the Directory</h2>
-      <ul>
-        <li><a href="new-condo-filings.html"><span aria-hidden="true">🏗️</span>New Construction</a></li>
-        <li><a href="offering-plan-attorneys.html"><span aria-hidden="true">⚖️</span>Offering Plan Attorneys</a></li>
-        <li><a href="developers.html"><span aria-hidden="true">🏗️</span>Developers</a></li>
-        <li><a href="managing-agents.html"><span aria-hidden="true">🏢</span>Property Managers</a></li>
-        <li><a href="architects.html"><span aria-hidden="true">📐</span>Architects</a></li>
-        <li><a href="selling-agents.html"><span aria-hidden="true">🔑</span>Sales Teams</a></li>
-        <li><a href="tax-consultants.html"><span aria-hidden="true">🧾</span>Tax Consultants</a></li>
-      </ul>
-    </nav>
-
+      </div>
+      <div class="panel off" id="panel-rank" aria-live="polite" inert>
+        <div class="leaders">
+        <!-- leaders -->
+        <a class="lead" href="developers.html"><span class="k">Developers</span><span class="nm">Minerva Capital Holdings</span><span class="c">13 buildings</span></a>
+        <a class="lead" href="managing-agents.html"><span class="k">Property Managers</span><span class="nm">FirstService Residential New York, Inc.</span><span class="c">67 buildings</span></a>
+        <a class="lead" href="offering-plan-attorneys.html"><span class="k">Offering Plan Attorneys</span><span class="nm">Harold L. Gruber, P.C.</span><span class="c">754 plans</span></a>
+        <a class="lead" href="architects.html"><span class="k">Architects</span><span class="nm">Demerara Engineering</span><span class="c">72 buildings</span></a>
+        <a class="lead" href="selling-agents.html"><span class="k">Sales Teams</span><span class="nm">Douglas Elliman Real Estate</span><span class="c">122 buildings</span></a>
+        <a class="lead" href="tax-consultants.html"><span class="k">Tax Consultants</span><span class="nm">Marcus &amp; Pollack</span><span class="c">77 buildings</span></a>
+        <!-- /leaders -->
+        </div>
+      </div>
+      </div>
+    </div>
   </section>
 
   <div class="after" id="after" hidden>
@@ -481,15 +480,15 @@ table.pivot th[scope="row"]{white-space:nowrap}
   </div>
 
   </div>
-  <p class="disclaim" id="stats"><strong>Disclaimer.</strong> The Condo Book Project is independent and not affiliated with the City of New York or the NY Attorney General. Plans and plan records come from the Attorney General’s filing record, which does not include documents for every filing, so information here may be incomplete. It includes only initial offering plans filed from 2000 on.</p>
-  <nav class="sitefoot" aria-label="More">
-    <a href="mailto:hello@halfave.co?subject=The%20Condo%20Book%20Project%20error%20report">Report an error</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a><a href="disclaimers.html">Disclaimers</a><span>© 2026 Half Ave Company LLC</span>
-  </nav>
+  <div class="sitefoot">
+    <small>© 2026 Half Ave Company LLC</small>
+    <nav aria-label="More"><a href="disclaimers.html">Disclaimer</a><span aria-hidden="true">|</span><a href="blog/index.html">Blog</a><span aria-hidden="true">|</span><a href="privacy.html">Privacy</a><span aria-hidden="true">|</span><a href="terms.html">Terms</a><span aria-hidden="true">|</span><a href="accessibility.html">Accessibility</a><span aria-hidden="true">|</span><a href="report-error.html">Report an error</a></nav>
+  </div>
   <footer id="foot" hidden>
     <div>Source: NY Attorney General, Real Estate Finance Bureau offering plan database. Offering plans are public filings; download them from the AG record. Unit and parking counts come from AG metadata. The Condo Book Project reads original offering plans only; later filings can change what a plan says. "Offered in the plan" does not mean "available for sale".</div>
     <div>Building images are 3D massing drawings from NYC Building Footprints (NYC Open Data), with the plan's building in green. Locations from NYC Planning GeoSearch.</div>
   </footer>
-</div>
+</main>
 
 <script src="search-intents.js"></script>
 <script>
@@ -505,6 +504,8 @@ table.pivot th[scope="row"]{white-space:nowrap}
   const lit = (s) => (s === null || s === undefined || s === "" ? "null" : "'" + String(s).replace(/'/g, "''") + "'");
   const num = (v) => { const n = parseInt(v, 10); return Number.isFinite(n) && n >= 0 ? String(n) : "null"; };
   const tc = (s) => String(s ?? "").toLowerCase().replace(/\b([a-z])/g, (c) => c.toUpperCase()).replace(/\b(Llc|Ny|Nyc)\b/g, (w) => w.toUpperCase()).replace(/\(The\)/g, "").trim();
+  // A building is titled by its marketing name ("VITA") when the plan has one, else by the AG plan name.
+  const bName = (r) => r.marketing_name || tc(r.name);
   const snipHtml = (t) => esc(t).replace(/&lt;&lt;/g, "<mark>").replace(/&gt;&gt;/g, "</mark>").replace(/\s+/g, " ");
   const docLabel = (f) => { const m = String(f || "").match(/_(Offering Plan|Amendment \d+)[^_]*\.pdf$/i); return m ? m[1] : (f || "Document"); };
   const date = (d) => d ? new Date(d + "T12:00:00").toLocaleDateString("en-US", { month: "short", year: "numeric" }) : "";
@@ -515,7 +516,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
   const slug = (s) => String(s ?? "").toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
   const pageFor = (p) => p.address ? `buildings/${slug(p.address)}-${slug(p.borough)}-${String(p.plan_id).toLowerCase()}.html` : null;
   // Every result template names buildings the same way: a click opens the detail panel, a new-tab click opens the building page.
-  const bLink = (r, cls = "plink") => `<a class="${cls}" href="${esc(pageFor(r) || AG + encodeURIComponent(r.plan_id))}" data-open="${esc(r.plan_id)}">${esc(tc(r.name))}</a>`;
+  const bLink = (r, cls = "plink") => `<a class="${cls}" href="${esc(pageFor(r) || AG + encodeURIComponent(r.plan_id))}" data-open="${esc(r.plan_id)}">${esc(bName(r))}</a>`;
   const street = (p) => p.lat ? `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${p.lat},${p.lng}` : null;
 
   // ---------- data (Supabase REST, public read-only) ----------
@@ -525,11 +526,19 @@ table.pivot th[scope="row"]{white-space:nowrap}
   async function rest(path, body, ttl = 60000) {
     const k = path + JSON.stringify(body || ""); const hit = cache.get(k);
     if (hit && Date.now() - hit.t < ttl) return hit.v;
-    const r = await fetch(SB + "/rest/v1/" + path, {
-      method: body ? "POST" : "GET",
-      headers: { apikey: KEY, "Content-Type": "application/json", Accept: "application/json" },
-      body: body ? JSON.stringify(body) : undefined,
-    });
+    // A 5xx is usually a read that ran past the database's time limit or a brief outage: try again quietly
+    // (the page keeps showing that it's searching) before reporting it.
+    let r;
+    for (let tries = 0; ; tries++) {
+      r = await fetch(SB + "/rest/v1/" + path, {
+        method: body ? "POST" : "GET",
+        headers: { apikey: KEY, "Content-Type": "application/json", Accept: "application/json" },
+        body: body ? JSON.stringify(body) : undefined,
+      }).catch(() => null);
+      if ((r && r.status < 500) || tries >= 2) break;
+      await new Promise((ok) => setTimeout(ok, 600 * (tries + 1)));
+    }
+    if (!r) throw { code: "server_unavailable", message: "network error" };
     if (!r.ok) throw { code: r.status >= 500 ? "server_unavailable" : "tool_error", message: (await r.text()).slice(0, 200) };
     const v = await r.json(); cache.set(k, { t: Date.now(), v }); return v;
   }
@@ -605,8 +614,9 @@ table.pivot th[scope="row"]{white-space:nowrap}
     for (const p of points) {
       const [x, y] = project(p.lat, p.lng);
       const c = document.createElementNS(NS, "circle"); c.setAttribute("cx", x.toFixed(1)); c.setAttribute("cy", y.toFixed(1)); c.setAttribute("r", 6);
-      c.setAttribute("class", "dot " + (p.indexed ? "idx" : "meta")); c.dataset.id = p.plan_id; c.setAttribute("tabindex", "0"); c.setAttribute("role", "button");
-      c.setAttribute("aria-label", `${tc(p.name)}, ${tc(p.address)}`);
+      // Mouse only: the map is one labelled image to screen readers, and keyboard users open the same plans from the results list
+      // (thousands of focusable dots would be thousands of Tab stops).
+      c.setAttribute("class", "dot " + (p.indexed ? "idx" : "meta")); c.dataset.id = p.plan_id;
       dotsG.appendChild(c); p.el = c;
     }
     // draw indexed on top
@@ -661,12 +671,11 @@ table.pivot th[scope="row"]{white-space:nowrap}
       const c = ev.target.closest?.("circle.dot"); const tip = $("tip");
       if (!c) { tip.hidden = true; return; }
       const p = points.find((q) => q.plan_id === c.dataset.id); const r = box.getBoundingClientRect();
-      tip.innerHTML = `<b>${esc(tc(p.name))}</b><br>${esc(tc(p.address))} · ${p.units_residential ?? "?"} units${p.units_parking ? ` · ${p.units_parking} parking` : ""}`;
+      tip.innerHTML = `<b>${esc(bName(p))}</b><br>${esc(tc(p.address))} · ${p.units_residential ?? "?"} units${p.units_parking ? ` · ${p.units_parking} parking` : ""}`;
       tip.style.left = (ev.clientX - r.left) + "px"; tip.style.top = (ev.clientY - r.top) + "px"; tip.hidden = false;
     });
     box.addEventListener("pointerup", (ev) => { const d = drag; drag = null; if (d?.moved) mapUsed("drag"); if (d && !d.moved) { const c = document.elementFromPoint(ev.clientX, ev.clientY)?.closest?.("circle.dot"); if (c) openDetail(c.dataset.id, true); } });
     box.addEventListener("pointerleave", () => { $("tip").hidden = true; });
-    box.addEventListener("keydown", (ev) => { const c = ev.target.closest?.("circle.dot"); if (c && (ev.key === "Enter" || ev.key === " ")) { ev.preventDefault(); openDetail(c.dataset.id, true); } });
   })();
 
   // ---------- cards ----------
@@ -755,10 +764,10 @@ table.pivot th[scope="row"]{white-space:nowrap}
       const d = await rpc("plan_detail", { p_id: id }, 300000); const p = d.plan;
       const docs = d.docs || [];
       box.innerHTML = `<div class="detail">
-        ${d.image ? `<img alt="3D massing of ${esc(tc(p.name))} and neighboring buildings" src="${esc(d.image)}">` : ""}
+        ${d.image ? `<img alt="3D massing of ${esc(bName(p))} and neighboring buildings" src="${esc(d.image)}">` : ""}
         <div class="dbody">
           <div class="ctop"><span class="pid">${esc(p.plan_id)} · ${esc(tc(p.plan_type))} · ${esc(tc(p.construction))}</span><button class="x" type="button" id="dclose">Close</button></div>
-          <h3>${esc(tc(p.name))}</h3>
+          <h3>${esc(bName(p))}</h3>
           <div class="caddr">${esc(tc(p.address))}, ${esc(tc(p.borough))} ${esc(p.zip || "")}</div>
           <dl class="facts">
             <div><dt>Residential</dt><dd>${p.units_residential ?? "—"}</dd></div>
@@ -1119,7 +1128,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
   // ---------- fetching ----------
   const BORO_OF = { MANHATTAN: "MANHATTAN", MANHTTAN: "MANHATTAN", "NEW YORK": "MANHATTAN", NY: "MANHATTAN", BROOKLYN: "BROOKLYN", KINGS: "BROOKLYN",
     QUEENS: "QUEENS", FLUSHING: "QUEENS", BRONX: "BRONX", "STATEN ISLAND": "STATEN ISLAND", RICHMOND: "STATEN ISLAND" };
-  const PLAN_COLS ="plan_id,name,address,borough,zip,units_residential,units_parking,accepted_date,docs_posted,amendments_listed,latest_amendment_no,ag_url";
+  const PLAN_COLS ="plan_id,name,marketing_name,address,borough,zip,units_residential,units_parking,accepted_date,docs_posted,amendments_listed,latest_amendment_no,ag_url";
   const inList = (ids) => `(${ids.map((id) => `"${id}"`).join(",")})`;
 
   // ---------- dates: filed, accepted, or either ----------
@@ -1561,7 +1570,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
     const box = $("answer"), page = pageFor(r);
     box.innerHTML = `<article class="ans">
       <p class="ans-kicker">Plan ${esc(r.plan_id)}</p>
-      <h2>${page ? `<a href="${esc(page)}" class="plink" style="font:inherit">${esc(tc(r.name))}</a>` : esc(tc(r.name))}</h2>
+      <h2>${page ? `<a href="${esc(page)}" class="plink" style="font:inherit">${esc(bName(r))}</a>` : esc(bName(r))}</h2>
       <p class="caddr">${esc(tc(r.address))}, ${esc(tc(r.borough))}${r.accepted_date ? ` · accepted ${esc(date(r.accepted_date))}` : ""} · ${r.units_residential ?? "?"} units</p>
       ${P.topic || P.amendments ? `<div id="ansextra"><p class="vnote">${P.topic ? "Finding passages…" : "Loading the amendments…"}</p></div>` : ""}
       <div class="acts"><a class="btn primary" id="ansdoc" href="${esc(agDocs(r.plan_id))}" target="_blank" rel="noopener">Open plan documents ↗</a></div>
@@ -1642,10 +1651,10 @@ table.pivot th[scope="row"]{white-space:nowrap}
       const self = list.find((r) => r.self), P = current;
       let lead = "";
       if (self && P?.peers) {
-        const mine = each(self), theirs = list.filter((r) => !r.self).map(each).filter((v) => v != null), med = median(theirs);
-        lead = `<p class="vnote">${esc(P.peerNote || "")} ${mine != null && med != null
-          ? `${esc(self.name || self.plan_id)}: ${fmtMoney(mine)} per unit in the AG total. The other ${theirs.length} with a recorded total: median ${fmtMoney(med)} per unit; ${theirs.filter((v) => v < mine).length} of them are lower and ${theirs.filter((v) => v > mine).length} higher.`
-          : mine == null ? `The AG record has no usable total for ${esc(self.name || self.plan_id)}, so there is nothing to compare per unit.` : ""}</p>`;
+        const mine = each(self), theirs = list.filter((r) => !r.self).map(each).filter((v) => v != null), avg = mean(theirs);
+        lead = `<p class="vnote">${esc(P.peerNote || "")} ${mine != null && avg != null
+          ? `${esc(self.marketing_name || self.name || self.plan_id)}: ${fmtMoney(mine)} per unit in the AG total. The other ${theirs.length} with a recorded total: average ${fmtMoney(avg)} per unit; ${theirs.filter((v) => v < mine).length} of them are lower and ${theirs.filter((v) => v > mine).length} higher.`
+          : mine == null ? `The AG record has no usable total for ${esc(self.marketing_name || self.name || self.plan_id)}, so there is nothing to compare per unit.` : ""}</p>`;
       }
       box.innerHTML = lead + `<p class="vnote">Total offering prices as recorded by the NY Attorney General: the sum of every unit at the plan’s prices, not sale prices. Per unit is the latest total divided by residential units. Unit-by-unit Schedule A prices and $/sf are not extracted yet.</p>
         <div class="tscroll"><table class="cmp"><thead><tr><th>Building</th><th>Accepted</th><th class="n">Units</th><th class="n">Initial total</th><th class="n">Current</th><th class="n">Per unit</th></tr></thead><tbody>` +
@@ -1656,9 +1665,8 @@ table.pivot th[scope="row"]{white-space:nowrap}
   }
 
   // ---------- answer card: a number question ----------
-  const STAT_COLS = "plan_id,name,address,borough,zip,units_residential,units_parking,units_commercial,accepted_date,submitted_date,status,construction,sponsor,law_firm,price_current,docs_indexed,total_count";
+  const STAT_COLS = "plan_id,name,marketing_name,address,borough,zip,units_residential,units_parking,units_commercial,accepted_date,submitted_date,status,construction,sponsor,law_firm,price_current,docs_indexed,total_count";
   const STAT_CAP = 10000, THIS_YEAR = String(new Date().getFullYear());
-  const median = (a) => { if (!a.length) return null; const s = [...a].sort((x, y) => x - y), m = s.length >> 1; return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
   const mean = (a) => (a.length ? a.reduce((x, y) => x + y, 0) / a.length : null);
   // The AG record also holds a few plans outside the city (Nassau, Westchester...); they group together.
   const boroName = (b) => { const k = BORO_OF[String(b || "").trim().toUpperCase()]; return k ? titleCase(k) : b ? "Outside NYC" : "Not listed"; };
@@ -1720,7 +1728,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
     const group = st.group || (P.borough || P.zips ? "year" : "borough");
     const [gLabel, keyOf] = group === "year" && P.dateOn === "filed" ? ["Year filed", (r) => String(filedYear(r.plan_id) || "Not dated")] : STAT_GROUPS[group];
     const val = { price: perUnit, units: (r) => (r.units_residential > 0 ? r.units_residential : null), parking: (r) => (Number.isFinite(r.units_parking) ? r.units_parking : null), count: () => null }[metric];
-    const agg = (list) => { const vals = list.map(val).filter((v) => v != null); return { vals, avg: mean(vals), med: median(vals) }; };
+    const agg = (list) => { const vals = list.map(val).filter((v) => v != null); return { vals, avg: mean(vals) }; };
 
     // groups, in an order that reads naturally for each kind
     const by = new Map(); rows.forEach((r) => { const k = keyOf(r); if (!by.has(k)) by.set(k, []); by.get(k).push(r); });
@@ -1735,8 +1743,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
     statGroups = groups; statMetric = metric;
 
     // the headline
-    const whole = agg(rows), useAvg = st.avg || metric === "parking";
-    const head = whole[useAvg ? "avg" : "med"], stat = useAvg ? "Average" : "Median";
+    const whole = agg(rows), head = whole.avg, stat = "Average";
     const totalUnits = rows.reduce((a, r) => a + (r.units_residential || 0), 0);
     const dated = rows.map((r) => r.accepted_date).filter(Boolean).sort();
     const span = dated.length && !filedToo(P) ?` accepted ${date(dated[0])}–${date(dated[dated.length - 1])}` : "";
@@ -1745,15 +1752,15 @@ table.pivot th[scope="row"]{white-space:nowrap}
     if (st.gap === "charges") { kicker = "Common charges"; big = "Not tracked"; sub = `${cover} match the filters above.`; }
     else if (metric === "count") { kicker = "How many"; big = `${fmtN(rows.length)} plan${rows.length === 1 ? "" : "s"}`; sub = `${fmtN(totalUnits)} residential units in all${span ? ` ·${span}` : ""}.`; }
     else if (metric === "price") { kicker = `${stat} total offering price per residential unit`; big = head == null ? "No recorded prices" : fmtMoney(head); sub = `Across ${fmtN(whole.vals.length)} of ${cover} with a recorded total offering price.`; }
-    else if (metric === "units") { kicker = `${stat} building size`; big = head == null ? "—" : `${fmtN(head, useAvg ? 1 : 0)} units`; sub = `Residential units per plan, across ${cover}.`; }
+    else if (metric === "units") { kicker = `${stat} building size`; big = head == null ? "—" : `${fmtN(head, 1)} units`; sub = `Residential units per plan, across ${cover}.`; }
     else { kicker = "Average parking"; big = head == null ? "—" : `${fmtN(head, 1)} parking units`; sub = `Per plan, across ${cover}. ${fmtN(rows.filter((r) => r.units_parking > 0).length)} of them offer any parking.`; }
 
     // Only the caveat that changes what the number means: the count stopped short of every match.
     const notes = data.total > data.fetched ? [`${fmtN(data.total)} plans match; these figures cover the ${fmtN(data.fetched)} most recently accepted.`] : [];
 
     // breakdown columns per metric
-    const cols = metric === "price" ? [["Priced plans", (g) => fmtN(g.vals.length)], ["Median / unit", (g) => fmtMoney(g.med)], ["Average / unit", (g) => fmtMoney(g.avg)]]
-      : metric === "units" ? [["Plans", (g) => fmtN(g.rows.length)], ["Average units", (g) => fmtN(g.avg, 1)], ["Median units", (g) => fmtN(g.med)]]
+    const cols = metric === "price" ? [["Priced plans", (g) => fmtN(g.vals.length)], ["Average / unit", (g) => fmtMoney(g.avg)]]
+      : metric === "units" ? [["Plans", (g) => fmtN(g.rows.length)], ["Average units", (g) => fmtN(g.avg, 1)]]
       : metric === "parking" ? [["Plans", (g) => fmtN(g.rows.length)], ["Average parking", (g) => fmtN(g.avg, 1)], ["With parking", (g) => fmtN(g.rows.filter((r) => r.units_parking > 0).length)]]
       : [["Plans", (g) => fmtN(g.rows.length)], ["Residential units", (g) => fmtN(g.units)]];
     const table = groups.length && !(groups.length === 1 && metric === "count") ? `<div class="tscroll"><table class="cmp"><thead><tr><th>${esc(gLabel)}</th>${cols.map(([h]) => `<th class="n">${h}</th>`).join("")}</tr></thead><tbody>` +
@@ -1765,7 +1772,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
       <p class="ans-kicker">${esc(kicker)}</p>
       ${st.gap ? `<p class="stat-gap">${esc(GAPS[st.gap])}</p>` : ""}
       <p class="stat-num">${esc(big)}<small>${esc(sub)}</small></p>
-      ${group === "year" && groups.length >= 3 ? barsHtml(groups, metric, useAvg) : ""}
+      ${group === "year" && groups.length >= 3 ? barsHtml(groups, metric) : ""}
       ${table}
       ${!table && rows.length ? `<ul class="blist">${buildingItems(rows.slice(0, 50))}</ul>` : ""}
       ${notes.length ? `<ul class="readnotes">${notes.map((n) => `<li>${esc(n)}</li>`).join("")}</ul>` : ""}
@@ -1773,11 +1780,11 @@ table.pivot th[scope="row"]{white-space:nowrap}
     obTrack("answer_card", { search_term: P.text, metric: st.metric, group, plans: rows.length });
   }
   // One bar per year, oldest first, the metric the card is about. Hover or focus shows the value; a click opens that year's row.
-  function barsHtml(groups, metric, useAvg) {
+  function barsHtml(groups, metric) {
     const years = groups.filter((g) => /^\d{4}$/.test(g.key)).map((g) => +g.key);
     if (years.length < 3) return "";
     const byYear = new Map(groups.map((g) => [g.key, g]));
-    const v = (g) => (!g ? 0 : metric === "count" ? g.rows.length : (useAvg ? g.avg : g.med) || 0);
+    const v = (g) => (!g ? 0 : metric === "count" ? g.rows.length : g.avg || 0);
     const lo = Math.min(...years), hi = Math.max(...years), list = [];
     for (let y = lo; y <= hi; y++) list.push([String(y), byYear.get(String(y))]);
     const max = Math.max(...list.map(([, g]) => v(g))) || 1;
@@ -2128,7 +2135,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
     const d = document.createElement("li");
     const reason = (w) => !w ? "" : w.denial && !w.strong ? "says the building has none" : w.offsite ? "bonus floor area or rights from another site" : "mentions the program, no units in this building";
     d.innerHTML = `<details class="excl"><summary>${list.length} more plan${list.length === 1 ? "" : "s"} mention MIH or Inclusionary Housing but don’t put affordable units in the building</summary>
-      <ul>${list.map((p) => `<li><button type="button" class="plink" data-open="${esc(p.plan_id)}">${esc(tc(p.name))}</button> <span class="pid">${esc(p.plan_id)}</span> <span class="why">${esc(reason(p.why))}</span></li>`).join("")}</ul></details>`;
+      <ul>${list.map((p) => `<li><button type="button" class="plink" data-open="${esc(p.plan_id)}">${esc(bName(p))}</button> <span class="pid">${esc(p.plan_id)}</span> <span class="why">${esc(reason(p.why))}</span></li>`).join("")}</ul></details>`;
     return d;
   }
 
@@ -2136,7 +2143,7 @@ table.pivot th[scope="row"]{white-space:nowrap}
   function mentionList(list) {
     const d = document.createElement("li"); d.id = "pmentions";
     d.innerHTML = `<details class="excl"><summary>${list.length} more plan${list.length === 1 ? " mentions" : "s mention"} parking and a license, but the pages don’t show a license offered in the building</summary>
-      <ul>${list.map((p) => { const e = p.why?.evidence?.[0]; return `<li data-id="${esc(p.plan_id)}"><button type="button" class="plink" data-open="${esc(p.plan_id)}">${esc(tc(p.name))}</button> <span class="pid">${esc(p.plan_id)}</span>` +
+      <ul>${list.map((p) => { const e = p.why?.evidence?.[0]; return `<li data-id="${esc(p.plan_id)}"><button type="button" class="plink" data-open="${esc(p.plan_id)}">${esc(bName(p))}</button> <span class="pid">${esc(p.plan_id)}</span>` +
         (p.why?.fact ? ` <span class="why">extracted arrangement: ${esc(p.why.fact.replace(/_/g, " "))}</span>` : "") +
         (e ? `<blockquote>${quoteHtml(e)}</blockquote><div class="cite">${pageLink(e)}</div>` : "") + `</li>`; }).join("")}</ul></details>`;
     return d;
@@ -2189,15 +2196,14 @@ table.pivot th[scope="row"]{white-space:nowrap}
         ${sel("years", "Accepted", [["1", "In the last year"], ["2", "In the last 2 years"], ["3", "In the last 3 years"], ["5", "In the last 5 years"], ["10", "In the last 10 years"], ["all", "All dates"], ...(years === "custom" ? [["custom", "custom"]] : [])], years)}
         ${sel("construction", "Construction", [["NEW", "New construction"], ["CONVERSION", "Conversion"], ["REHAB", "Rehab"], ["", "Any"]], spec.construction || "")}
         ${sel("borough", "Borough", [["", "All boroughs"], ["MANHATTAN", "Manhattan"], ["BROOKLYN", "Brooklyn"], ["QUEENS", "Queens"], ["BRONX", "Bronx"], ["STATEN ISLAND", "Staten Island"]], spec.borough || "")}
-        ${sel("measure", "Measure", [["average", "Average"], ["median", "Median"]], spec.stats.measure)}
       </div>
-      <p class="vnote">Jump to: ${res.tables.map((t) => `<a href="#t-${esc(t.id)}">${esc(t.title.replace(/^(Average|Median) /, ""))}</a>`).join(" · ")}</p>
+      <p class="vnote">Jump to: ${res.tables.map((t) => `<a href="#t-${esc(t.id)}">${esc(t.title.replace(/^Average /, ""))}</a>`).join(" · ")}</p>
       ${res.priceBasis ? `<p class="vnote basisnote"><b>Two price bases.</b> The per-unit and per-plan tables use each plan’s <b>current total offering price in the AG record</b>, which can change when the plan is amended. The bedroom tables use <b>unit prices from the original plan’s Schedule A</b>, before any amendment. The two don’t reconcile${res.priceBasis.changed ? `: for ${res.priceBasis.changed} of ${res.rows.length} plans counted, the current total differs from the initial total on record` : ""}.</p>` : ""}
       ${res.tables.map(table).join("")}
       <details class="excl"><summary>The ${res.rows.length} plans counted</summary>
         <p class="vnote">Per unit = current total ÷ every unit the plan offers: residential, commercial, parking and storage, as counted in the AG record.</p>
         <div class="tscroll"><table class="cmp"><thead><tr><th>Building</th><th>Accepted</th><th class="n">Residential units</th><th class="n">Units divided by</th><th class="n">Initial total</th><th class="n">Current total (used)</th><th class="n">Per unit</th></tr></thead><tbody>
-        ${res.rows.map((r) => `<tr data-id="${esc(r.plan_id)}"><td><button type="button" class="plink" data-open="${esc(r.plan_id)}">${esc(tc(r.name))}</button><span class="pid">${esc(r.plan_id)} · ${esc(tc(r.borough))}</span></td><td class="m">${esc(date(r.accepted_date))}</td><td class="n ures">${r.units_residential ?? "—"}</td><td class="n uused"><b>${r.units_used}</b><span class="sub2">${esc(unitMix(r))}</span></td><td class="n">${Number(r.price_initial) > 0 ? moneyTxt(Number(r.price_initial)) : "—"}</td><td class="n">${moneyTxt(Number(r.price_current))}</td><td class="n">${moneyTxt(r.per_unit)}</td></tr>`).join("")}
+        ${res.rows.map((r) => `<tr data-id="${esc(r.plan_id)}"><td><button type="button" class="plink" data-open="${esc(r.plan_id)}">${esc(bName(r))}</button><span class="pid">${esc(r.plan_id)} · ${esc(tc(r.borough))}</span></td><td class="m">${esc(date(r.accepted_date))}</td><td class="n ures">${r.units_residential ?? "—"}</td><td class="n uused"><b>${r.units_used}</b><span class="sub2">${esc(unitMix(r))}</span></td><td class="n">${Number(r.price_initial) > 0 ? moneyTxt(Number(r.price_initial)) : "—"}</td><td class="n">${moneyTxt(Number(r.price_current))}</td><td class="n">${moneyTxt(r.per_unit)}</td></tr>`).join("")}
         </tbody></table></div></details>
     </div>`;
     highlight(res.rows.map((r) => r.plan_id)); drawRing(null); fitMap(res.rows, null);
@@ -2209,7 +2215,6 @@ table.pivot th[scope="row"]{white-space:nowrap}
     else if (s.dataset.stat === "years" && s.value !== "custom") { const d = new Date(); d.setFullYear(d.getFullYear() - +s.value); spec.since = d.toISOString().slice(0, 10); spec.until = null; spec.window = { n: +s.value, unit: "year" }; }
     if (s.dataset.stat === "construction") spec.construction = s.value || null;
     if (s.dataset.stat === "borough") spec.borough = s.value || null;
-    if (s.dataset.stat === "measure") spec.stats.measure = s.value;
     runIntent(spec, "stats_filter");
   });
 
@@ -2219,19 +2224,29 @@ table.pivot th[scope="row"]{white-space:nowrap}
     const n = parseInt((r.headers.get("content-range") || "").split("/")[1], 10);
     return Number.isFinite(n) ? n : null;
   }
+  // The plan count in the line under the headline: the page ships with the last known number; this keeps it current.
   async function loadStats() {
     try {
       // Counted on the server: a row fetch stops at 1,000.
-      const [plans, full] = await Promise.all([
-        countRows("plans?select=plan_id"),
-        countRows("documents?status=eq.done&select=file_id"),
-      ]);
-      if (plans == null || full == null) return;
-      const f = (n) => `<b>${n.toLocaleString("en-US")}</b>`;
-      $("stats").insertAdjacentHTML("beforeend", ` ${f(plans)} plans, ${f(full)} full-text documents.`);
-    } catch (e) { /* the numbers are optional */ }
+      const plans = await countRows("plans?select=plan_id");
+      if (plans != null) $("nplans").textContent = plans.toLocaleString("en-US");
+    } catch (e) { /* the number is optional */ }
   }
   loadStats();
+
+  // Data / Rankings switch under the search bar: off shows Data, on shows Rankings.
+  (() => {
+    const sw = $("homeswitch");
+    const set = (rank) => {
+      sw.setAttribute("aria-checked", String(rank));
+      [["panel-data", !rank], ["panel-rank", rank]].forEach(([id, on]) => { $(id).classList.toggle("off", !on); $(id).inert = !on; });
+    };
+    // A click on a word picks that side; anywhere else (or Space/Enter) flips it.
+    sw.addEventListener("click", (e) => {
+      const side = e.target.closest("[data-side]")?.dataset.side;
+      set(side ? side === "rank" : sw.getAttribute("aria-checked") !== "true");
+    });
+  })();
 
   ensureMap().catch(() => {}); // warm the map quietly; it only shows after a search
   const startQ = new URLSearchParams(location.search).get("q");

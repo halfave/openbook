@@ -121,26 +121,10 @@ ${noindex ? '<meta name="robots" content="noindex, follow">\n' : ""}${SEO(p, { t
 <link rel="stylesheet" href="${p}menu.css">
 </head>
 <body>
-${MAST(p)}
-${MENU(p)}`;
+${MAST(p)}`;
 };
-// The masthead links (scripts/masthead.html and index.html), repeated in the menu on narrow screens.
-export const BAR = [["about.html", "About"], ["faq.html", "FAQ"], ["new-condo-filings.html", "New Construction"], ["time-to-approval.html", "Approval Times"], ["common-charges.html", "Common Charges"], ["property-taxes.html", "Property Taxes"], ["developers.html", "Developers"], ["managing-agents.html", "Property Managers"], ["offering-plan-attorneys.html", "OP Attorneys"], ["architects.html", "Architects"], ["selling-agents.html", "Sales Teams"], ["tax-consultants.html", "Tax Consultants"]];
-export const MENU = (p, extra = "") => `<details class="menu" id="menu">
-  <summary aria-label="Menu"><svg class="bars-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="x-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></summary>
-  <nav aria-label="Site">
-    <a href="${p}buildings/index.html">Buildings</a>
-    <a href="${p}blog/index.html">Blog</a>
-    <div class="barlinks"><hr>
-${BAR.map(([h, t]) => `      <a href="${p}${h}">${t}</a>`).join("\n")}
-    </div>
-${extra}    <hr>
-    <small>© 2026 Half Ave Company LLC</small>
-  </nav>
-</details>
-`;
 export const FOOT = (p, extraScripts = "") => `<footer>
-  <nav class="footnav" aria-label="More"><a href="mailto:hello@halfave.co?subject=The%20Condo%20Book%20Project%20error%20report">Report an error</a><a href="${p}terms.html">Terms</a><a href="${p}privacy.html">Privacy</a><a href="${p}disclaimers.html">Disclaimers</a></nav>
+  <nav class="footnav" aria-label="More"><a href="${p}blog/index.html">Blog</a><a href="${p}report-error.html">Report an error</a><a href="${p}terms.html">Terms</a><a href="${p}privacy.html">Privacy</a><a href="${p}disclaimers.html">Disclaimers</a><a href="${p}accessibility.html">Accessibility</a></nav>
   <div>© 2026 Half Ave Company LLC. The Condo Book Project is a service of Half Ave Company LLC.</div>
 </footer>
 <script src="${p}menu.js"></script>

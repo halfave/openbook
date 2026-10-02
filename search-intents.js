@@ -72,10 +72,10 @@
       construction: null, borough: null, since: null, until: null, dateOn: dateOnOf(s), stats: null, wantsSales: false, notes: [], categories: categoriesOf(input) };
     const cut = (re) => { s = s.replace(re, " "); };
 
-    // average / median offering (or "sales") price -> a table, not a list
+    // average (or "median", "typical") offering or "sales" price -> a table of averages, not a list
     const statM = s.match(/\b(average|avg|mean|median|typical)\b/);
     if (statM && /\b(price|prices|priced|cost|sales?|sold|ppsf|per square foot|\$\/sf)\b/.test(s)) {
-      spec.stats = { measure: statM[1] === "median" ? "median" : "average" };
+      spec.stats = { measure: "average" };
       spec.wantsSales = /\b(sales?|sold|closings?|closed)\b/.test(s);
     }
 
@@ -158,7 +158,7 @@
   function chipsOf(spec) {
     const c = [];
     const fmt = (v) => (v >= 1e6 ? `$${+(v / 1e6).toFixed(2)}M` : `$${Math.round(v / 1000).toLocaleString("en-US")}K`);
-    if (spec.stats) c.push({ k: "stats", label: `${spec.stats.measure === "median" ? "Median" : "Average"} offering price` });
+    if (spec.stats) c.push({ k: "stats", label: "Average offering price" });
     if (spec.near) c.push({ k: "near", label: `Within ${fmtMiles(spec.near.miles)} of ${spec.near.label || titleCase(spec.near.anchorText)}` });
     if (spec.mih) c.push({ k: "mih", label: "On-site MIH / Inclusionary Housing units" });
     if (spec.beds) c.push({ k: "beds", label: spec.beds.max === 0 ? "Studios" : spec.beds.max == null ? `${spec.beds.min}+ bedrooms` : `${spec.beds.min}-bedroom units` });
@@ -373,8 +373,18 @@
     if (!ids.length) return by;
     const groups = chunk(ids, 60);
     const pages = []; let done = 0;
+    // The three pattern filters scan every page of every plan in the group, so a group with long plans can run past
+    // the database's time limit. Split it and read the halves instead of failing the search.
+    const read = async (g) => {
+      try { return await restAll(io, `pages?select=plan_id,file_id,page_no,body&plan_id=in.${inList(g)}${SA_PAGE_FILTER}`); }
+      catch (e) {
+        if (e?.code !== "server_unavailable" || g.length < 2) throw e;
+        const h = Math.ceil(g.length / 2);
+        return [...await read(g.slice(0, h)), ...await read(g.slice(h))];
+      }
+    };
     await pool(groups.map((g) => async () => {
-      pages.push(...await restAll(io, `pages?select=plan_id,file_id,page_no,body&plan_id=in.${inList(g)}${SA_PAGE_FILTER}`));
+      pages.push(...await read(g));
       done++; onProgress?.(done / groups.length);
     }), 4);
     const docs = await byIds(io, "documents", "file_id,plan_id,doc_kind,amendment_no,pdf_url", [...new Set(pages.map((p) => p.plan_id))]);
@@ -389,7 +399,8 @@
     return by;
   }
   async function pool(tasks, n) {
-    let i = 0; const run = async () => { while (i < tasks.length) { const t = tasks[i++]; await t(); } };
+    // After one task fails the rest stop, so nothing keeps reporting progress for a search that has already failed.
+    let i = 0, failed = false; const run = async () => { while (i < tasks.length && !failed) { const t = tasks[i++]; try { await t(); } catch (e) { failed = true; throw e; } } };
     await Promise.all(Array.from({ length: Math.min(n, tasks.length) }, run));
   }
 
@@ -685,8 +696,7 @@
 
   // ---------- averages ----------
   async function statsTable(res, plans, spec, io, today, step) {
-    const measure = spec.stats.measure;
-    const agg = (vals) => { if (!vals.length) return null; const s = [...vals].sort((a, b) => a - b); return measure === "median" ? (s.length % 2 ? s[(s.length - 1) / 2] : (s[s.length / 2 - 1] + s[s.length / 2]) / 2) : s.reduce((a, b) => a + b, 0) / s.length; };
+    const agg = (vals) => (vals.length ? vals.reduce((a, b) => a + b, 0) / vals.length : null);
     const accepted = plans.filter((p) => p.status === "ACCEPTED");
     const priced = accepted.filter((p) => Number(p.price_current) > 0 && p.units_residential > 0);
     // Per plan: total offering price ÷ units offered (residential + commercial + parking + storage), so a garage or shop doesn't inflate the per-home figure.
@@ -703,7 +713,7 @@
       rows: rowKeys.map((rk) => ({ key: rk, cells: colKeys.map((ck) => cell(list.filter((p) => rowsBy(p) === rk && colBy(p) === ck), fn)), total: cell(list.filter((p) => rowsBy(p) === rk), fn) })),
       totals: colKeys.map((ck) => cell(list.filter((p) => colBy(p) === ck), fn)), grand: cell(list, fn), cols: colKeys,
     });
-    const M = measure === "median" ? "Median" : "Average";
+    const M = "Average";
     // Two price bases: the AG record's current total offering (after any amendments), and the original plan's Schedule A unit prices.
     const changed = priced.filter((p) => Number(p.price_initial) > 0 && Number(p.price_initial) !== Number(p.price_current)).length;
     res.priceBasis = { current: "Current total offering (AG record)", scheduleA: "Original plan’s Schedule A", changed };
@@ -718,7 +728,7 @@
       note: "The whole plan’s current offering price as recorded by the AG.", ...pivot((p) => titleCase(p.borough), boros.map(titleCase), yearOf, years, priced, (p) => Number(p.price_current)) });
     res.pureCount = pure.length;
     res.rows = priced.map((p) => ({ ...p, units_used: unitsUsed(p), per_unit: perUnit(p) })).sort((a, b) => (b.accepted_date || "").localeCompare(a.accepted_date || ""));
-    res.title = `${measure === "median" ? "Median" : "Average"} offering price, ${spec.construction === "NEW" ? "new construction " : ""}condos ${DATE_WORD[spec.dateOn || "accepted"].toLowerCase()} ${spec.window ? `in the last ${spec.window.n} ${spec.window.unit}${spec.window.n === 1 ? "" : "s"}` : spec.since && spec.until ? `${spec.since} to ${spec.until}` : spec.since ? `since ${spec.since}` : spec.until ? `through ${spec.until}` : "at any date"}`;
+    res.title = `Average offering price, ${spec.construction === "NEW" ? "new construction " : ""}condos ${DATE_WORD[spec.dateOn || "accepted"].toLowerCase()} ${spec.window ? `in the last ${spec.window.n} ${spec.window.unit}${spec.window.n === 1 ? "" : "s"}` : spec.since && spec.until ? `${spec.since} to ${spec.until}` : spec.since ? `since ${spec.since}` : spec.until ? `through ${spec.until}` : "at any date"}`;
     if (spec.wantsSales) res.notes.unshift("The Condo Book Project has no closed-sale records, so sale prices can’t be averaged. These are the sponsors’ offering prices from the plans filed with the Attorney General.");
     res.notes.push(`${priced.length} of ${plans.length} plans are counted: accepted by the AG and with a total offering price on record.${spec.since ? ` Window: ${DATE_WORD[spec.dateOn || "accepted"].toLowerCase()} ${spec.since} to ${spec.until || today}.` : spec.until ? ` Window: ${DATE_WORD[spec.dateOn || "accepted"].toLowerCase()} through ${spec.until}.` : " No date limit: plans accepted at any date are counted."}`);
     res.notes.push(`The plan tables use each plan’s current total offering price in the AG record; the bedroom tables use unit prices from the original plan’s Schedule A. They are different price bases and don’t reconcile: for ${changed} of ${priced.length} plans the AG’s current total differs from its initial total.`);
