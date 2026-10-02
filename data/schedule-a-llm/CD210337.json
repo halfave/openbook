@@ -12,56 +12,56 @@
  "call_log": [
   {
    "model": "haiku",
-   "tokens": 7847,
-   "output_tokens": 16,
-   "seconds": 77,
-   "cost_usd": 0.018126999999999997
+   "tokens": 12843,
+   "output_tokens": 604,
+   "seconds": 8,
+   "cost_usd": 0.024989
   },
   {
    "model": "haiku",
-   "tokens": 4939,
+   "tokens": 5163,
    "output_tokens": 97,
-   "seconds": 4,
-   "cost_usd": 0.005327
+   "seconds": 3,
+   "cost_usd": 0.005551
   },
   {
    "model": "haiku",
-   "tokens": 4938,
+   "tokens": 5166,
    "output_tokens": 96,
-   "seconds": 7,
-   "cost_usd": 0.005322
+   "seconds": 6,
+   "cost_usd": 0.00555
   },
   {
    "model": "haiku",
-   "tokens": 4937,
+   "tokens": 5169,
    "output_tokens": 97,
    "seconds": 5,
-   "cost_usd": 0.005325
+   "cost_usd": 0.0055569999999999994
   },
   {
    "model": "haiku",
-   "tokens": 4949,
+   "tokens": 5169,
    "output_tokens": 97,
    "seconds": 4,
-   "cost_usd": 0.005337
+   "cost_usd": 0.0055569999999999994
   },
   {
    "model": "haiku",
-   "tokens": 8720,
-   "output_tokens": 570,
-   "seconds": 11,
-   "cost_usd": 0.016764
+   "tokens": 8954,
+   "output_tokens": 572,
+   "seconds": 6,
+   "cost_usd": 0.017123
   },
   {
    "model": "sonnet",
-   "tokens": 11295,
-   "output_tokens": 654,
-   "seconds": 12,
-   "cost_usd": 0.0295526
+   "tokens": 14337,
+   "output_tokens": 708,
+   "seconds": 10,
+   "cost_usd": 0.036367399999999994
   }
  ],
- "tokens": 47625,
- "api_equiv_usd": 0.086,
+ "tokens": 56801,
+ "api_equiv_usd": 0.101,
  "located_pages": [],
  "text_layer": true,
  "found": true,
@@ -77,6 +77,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 4567050,
@@ -103,11 +105,14 @@
   "cc_m": 1055.57,
   "tax_m": 533.85,
   "int_sf": 3383,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "A stray \"$ -\" line appears below unit 4's carrying charge figure with no associated value; not assigned to any cell.",
-  "Floor/rooms column not present in table; \"floor\" values taken from Location column, \"rooms\" left blank as not printed."
+  "Bedrooms/Bathrooms column printed as combined figures (e.g. \"2/1\", \"2/2\"); treated first figure as beds, second as full baths per header \"No. of Bedrooms/Bathrooms\", half_baths set to 0 since no half-bath figure shown.",
+  "No separate half-baths column exists; \"2/1\" and \"2/2\" interpreted as beds/full baths, not baths with half."
  ],
  "units": [
   {
@@ -116,7 +121,8 @@
    "floor": "1st Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 754,
    "sf2": null,
    "ext_sf": null,
@@ -130,7 +136,8 @@
    "tax2_m": null,
    "carry_m": 415.96,
    "page": 34,
-   "note": "ry. 905"
+   "note": "ry.905",
+   "baths": 1
   },
   {
    "unit": "2",
@@ -138,7 +145,8 @@
    "floor": "2nd Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 879,
    "sf2": null,
    "ext_sf": null,
@@ -152,7 +160,8 @@
    "tax2_m": null,
    "carry_m": 393.37,
    "page": 34,
-   "note": "r. 60"
+   "note": "r.60",
+   "baths": 2
   },
   {
    "unit": "3",
@@ -160,7 +169,8 @@
    "floor": "3rd Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 875,
    "sf2": null,
    "ext_sf": null,
@@ -174,7 +184,8 @@
    "tax2_m": null,
    "carry_m": 390.05,
    "page": 34,
-   "note": "b. 49"
+   "note": "b.49",
+   "baths": 2
   },
   {
    "unit": "4",
@@ -182,7 +193,8 @@
    "floor": "4th Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 875,
    "sf2": null,
    "ext_sf": null,
@@ -196,7 +208,8 @@
    "tax2_m": null,
    "carry_m": 390.05,
    "page": 34,
-   "note": "b. 49"
+   "note": "b.49",
+   "baths": 2
   }
  ]
 }

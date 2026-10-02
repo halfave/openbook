@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 8036,
-   "output_tokens": 768,
-   "seconds": 83,
-   "cost_usd": 0.022942399999999998
+   "tokens": 5964,
+   "output_tokens": 825,
+   "seconds": 13,
+   "cost_usd": 0.028802
   }
  ],
- "tokens": 8036,
- "api_equiv_usd": 0.023,
+ "tokens": 5964,
+ "api_equiv_usd": 0.029,
  "located_pages": [
   43
  ],
@@ -37,6 +37,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 4073000,
@@ -58,17 +60,20 @@
   "Estimated Total Monthly Carrying Charges - 1/1/2021-12/31/2021"
  ],
  "tax2": null,
- "sf2": "yard",
+ "sf2": "yard (limited common element)",
  "printed_totals": {
   "price": 4073000,
   "pct": 100,
   "cc_m": 2201.67,
   "tax_m": 3182.5,
   "int_sf": 3819,
-  "ext_sf": 719
+  "ext_sf": 719,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Roof square footage for unit F (223) placed in ext_sf per single-figure rule; yard figures (799.00 total, 0.00 for most units) placed in sf2 per column header; unit A's roof figure is 0.00 (blank/none) so ext_sf is -."
+  "Square Footage of Unit - Roof is a limited common element column (not a simple ext_sf) and has been placed in ext_sf per instructions since it is the single printed outdoor-area figure; the Yard column was placed in sf2 as the second area column since both could not fit int_sf/sf2/ext_sf cleanly."
  ],
  "units": [
   {
@@ -77,7 +82,8 @@
    "floor": "First and Second Floor",
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1052,
    "sf2": 799,
    "ext_sf": null,
@@ -91,7 +97,8 @@
    "tax2_m": null,
    "carry_m": 1427.08,
    "page": 43,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "B",
@@ -99,7 +106,8 @@
    "floor": "Second Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 523,
    "sf2": 0,
    "ext_sf": null,
@@ -113,7 +121,8 @@
    "tax2_m": null,
    "carry_m": 656,
    "page": 43,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "C",
@@ -121,7 +130,8 @@
    "floor": "Third Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 495,
    "sf2": 0,
    "ext_sf": null,
@@ -135,7 +145,8 @@
    "tax2_m": null,
    "carry_m": 742.75,
    "page": 43,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "D",
@@ -143,7 +154,8 @@
    "floor": "Third Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 469,
    "sf2": 0,
    "ext_sf": null,
@@ -157,7 +169,8 @@
    "tax2_m": null,
    "carry_m": 721.08,
    "page": 43,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "E",
@@ -165,10 +178,11 @@
    "floor": "Fourth Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 495,
-   "sf2": 0,
-   "ext_sf": 496,
+   "sf2": 496,
+   "ext_sf": null,
    "price": 525000,
    "pct": 15,
    "pct2": null,
@@ -179,7 +193,8 @@
    "tax2_m": null,
    "carry_m": 742.75,
    "page": 43,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "F",
@@ -187,10 +202,11 @@
    "floor": "Fourth and Penthouse Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 785,
-   "sf2": 0,
-   "ext_sf": 223,
+   "sf2": 223,
+   "ext_sf": null,
    "price": 875000,
    "pct": 20,
    "pct2": null,
@@ -201,7 +217,8 @@
    "tax2_m": null,
    "carry_m": 1094.5,
    "page": 43,
-   "note": null
+   "note": null,
+   "baths": 2
   }
  ]
 }

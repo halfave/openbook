@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4283,
-   "output_tokens": 759,
-   "seconds": 11,
-   "cost_usd": 0.021682
+   "tokens": 5762,
+   "output_tokens": 736,
+   "seconds": 10,
+   "cost_usd": 0.02746
   }
  ],
- "tokens": 4283,
- "api_equiv_usd": 0.022,
+ "tokens": 5762,
+ "api_equiv_usd": 0.027,
  "located_pages": [
   30
  ],
@@ -37,6 +37,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 4289000,
@@ -46,9 +48,9 @@
   "Unit No.",
   "Location",
   "Approx. Square Footage",
-  "Uninhabitable/Limited Common Square Footage",
+  "Approx. Outdoor/Uninhabitable/Limited Common Square Footage",
   "No. of Bedooms/Bathrooms",
-  "Approx. Offering Price",
+  "Offering Price",
   "Percent Common Interest",
   "Projected Monthly Common Charges",
   "Projected Real Estate Taxes (Monthly)",
@@ -56,18 +58,20 @@
   "Projected Carrying Charges (Monthly)"
  ],
  "tax2": null,
- "sf2": "Uninhabitable/Limited Common Square Footage",
+ "sf2": "Outdoor/Uninhabitable/Limited Common Square Footage",
  "printed_totals": {
   "price": 4289000,
   "pct": 100,
   "cc_m": 1947.5,
   "tax_m": 3058.64,
   "int_sf": 4823,
-  "ext_sf": 1872
+  "ext_sf": 1872,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Unit 1 bedrooms/bathrooms printed as \"2/2\" but location footnote indicates Rear Yard (RY) as limited common element, not an area figure; sf2 for Unit 1 (1017) treated as uninhabitable/limited common sq ft per column header, not a cellar/second-floor area.",
-  "Unit 4 has two separate limited common square footage figures (380(T), 335(T)) for two terraces; placed both in sf2 column as printed since table does not have a distinct ext_sf column, and no single ext_sf number is given."
+  "Unit 1 sq footage second column printed as \"l0I7(RY)\" (OCR garble), read as 1017; Unit 4 outdoor sq footage printed on two lines \"380(T)\" and \"335(T)\", summed as 715 and listed in note-worthy way; no separate rooms/floor-count column beyond \"Location\"; bedroom/bathroom column format \"2/2\" interpreted as beds/baths per header \"No. of Bedooms/Bathrooms\"."
  ],
  "units": [
   {
@@ -76,9 +80,10 @@
    "floor": "1st Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1065,
-   "sf2": null,
+   "sf2": 1017,
    "ext_sf": null,
    "price": 999000,
    "pct": 24.39,
@@ -90,7 +95,8 @@
    "tax2_m": null,
    "carry_m": 1221,
    "page": 30,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "2",
@@ -98,7 +104,8 @@
    "floor": "2nd Floor",
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1218,
    "sf2": null,
    "ext_sf": null,
@@ -112,7 +119,8 @@
    "tax2_m": null,
    "carry_m": 1086.83,
    "page": 30,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3F",
@@ -120,9 +128,10 @@
    "floor": "3rd Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 626,
-   "sf2": null,
+   "sf2": 73,
    "ext_sf": null,
    "price": 650000,
    "pct": 13.47,
@@ -134,7 +143,8 @@
    "tax2_m": null,
    "carry_m": 674.33,
    "page": 30,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3R",
@@ -142,9 +152,10 @@
    "floor": "3rd Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 624,
-   "sf2": null,
+   "sf2": 67,
    "ext_sf": null,
    "price": 650000,
    "pct": 13.42,
@@ -156,7 +167,8 @@
    "tax2_m": null,
    "carry_m": 671.82,
    "page": 30,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "4",
@@ -164,9 +176,10 @@
    "floor": "4th Floor/Penthouse",
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1290,
-   "sf2": null,
+   "sf2": 715,
    "ext_sf": null,
    "price": 1040000,
    "pct": 27.01,
@@ -178,7 +191,8 @@
    "tax2_m": null,
    "carry_m": 1352.16,
    "page": 30,
-   "note": null
+   "note": null,
+   "baths": 2
   }
  ]
 }

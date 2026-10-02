@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4326,
-   "output_tokens": 702,
-   "seconds": 10,
-   "cost_usd": 0.021512
+   "tokens": 5891,
+   "output_tokens": 762,
+   "seconds": 8,
+   "cost_usd": 0.028131999999999997
   }
  ],
- "tokens": 4326,
- "api_equiv_usd": 0.022,
+ "tokens": 5891,
+ "api_equiv_usd": 0.028,
  "located_pages": [
   45
  ],
@@ -37,6 +37,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 6985000,
@@ -65,10 +67,13 @@
   "cc_m": 1876.75,
   "tax_m": 3333.33,
   "int_sf": 3934.82,
-  "ext_sf": 867.66
+  "ext_sf": 867.66,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Yard (750.00/0.00/0.00) and Total Square Footage columns printed but not mapped to any output column; ext_sf used Roof column per unit since each unit shows only one nonzero outdoor figure (Roof) except Unit 1 which has Yard 750.00 and Roof 0.00 - used Roof value (0.00) per rule preferring single printed ext_sf figure; Yard values not captured."
+  "Unit 3's ext_sf (867.66, Roof) printed alongside a Yard column of 0.00; only the nonzero roof figure was used for ext_sf per row. Total row's Yard (750.00) and Roof (867.66) are summed from individual units but unit 1 shows Yard 750.00/Roof 0.00 and unit 3 shows Yard 0.00/Roof 867.66, each taken as single ext_sf value per instructions (two separate limited common element areas exist per row but only one is nonzero in each case, so no ambiguity in extraction)."
  ],
  "units": [
   {
@@ -77,7 +82,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1201.15,
    "sf2": 1031.49,
    "ext_sf": null,
@@ -91,7 +97,8 @@
    "tax2_m": null,
    "carry_m": 1875.63,
    "page": 45,
-   "note": null
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "2",
@@ -99,7 +106,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1360.38,
    "sf2": 0,
    "ext_sf": null,
@@ -113,7 +121,8 @@
    "tax2_m": null,
    "carry_m": 1458.82,
    "page": 45,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3",
@@ -121,7 +130,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": 0,
    "int_sf": 1373.29,
    "sf2": 496.67,
    "ext_sf": 867.66,
@@ -135,7 +145,8 @@
    "tax2_m": null,
    "carry_m": 1875.63,
    "page": 45,
-   "note": null
+   "note": null,
+   "baths": 3
   }
  ]
 }

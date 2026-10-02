@@ -3,15 +3,6 @@
  "steps": [
   {
    "step": "sonnet-text",
-   "verdict": "hold",
-   "units": 2,
-   "failed": [
-    "ag",
-    "sqftTotal"
-   ]
-  },
-  {
-   "step": "sonnet-text-retry",
    "verdict": "publish_printed",
    "units": 2,
    "failed": [
@@ -19,25 +10,18 @@
    ]
   }
  ],
- "calls": 2,
+ "calls": 1,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4026,
-   "output_tokens": 624,
-   "seconds": 9,
-   "cost_usd": 0.019844
-  },
-  {
-   "model": "sonnet",
-   "tokens": 3959,
-   "output_tokens": 559,
-   "seconds": 5,
-   "cost_usd": 0.019186
+   "tokens": 5452,
+   "output_tokens": 460,
+   "seconds": 77,
+   "cost_usd": 0.005601999999999999
   }
  ],
- "tokens": 7985,
- "api_equiv_usd": 0.039,
+ "tokens": 5452,
+ "api_equiv_usd": 0.006,
  "located_pages": [
   37
  ],
@@ -55,10 +39,12 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 8700000,
- "step": "sonnet-text-retry",
+ "step": "sonnet-text",
  "budget_period": "JULY 1, 2024 TO JUNE 30, 2025",
  "columns_printed": [
   "Unit No.",
@@ -77,17 +63,20 @@
   "Total Monthly Carrying Charges"
  ],
  "tax2": null,
- "sf2": "cellar space",
+ "sf2": "cellar",
  "printed_totals": {
   "price": 8700000,
   "pct": 100,
   "cc_m": 3480.92,
   "tax_m": 5561.5,
   "int_sf": 5647,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": 8,
+  "full_baths": 6,
+  "half_baths": 2
  },
  "problems": [
-  "Ext_sf (terrace/roof) not entered as single number because two separate limited common areas are listed for Unit 2 (Terrace 331 sf; Roof terrace 965 sf); listed in note instead. 1/2 Bathroom(s) column value of 1 for each unit interpreted as 0.5 baths added to 3 baths = 3.5 baths."
+  "Limited Common Element square feet column (890.00 and 1296.00) not mapped to any output field; ext_sf left blank because interior units have multiple separate outdoor areas (terrace, roof terrace, rear yard) listed in notes rather than per-unit."
  ],
  "units": [
   {
@@ -96,7 +85,8 @@
    "floor": null,
    "rooms": null,
    "beds": 4,
-   "baths": 3.5,
+   "full_baths": 3,
+   "half_baths": 1,
    "int_sf": 2545,
    "sf2": 1065,
    "ext_sf": null,
@@ -110,7 +100,8 @@
    "tax2_m": null,
    "carry_m": 4521.21,
    "page": 37,
-   "note": "Limited common element sf: 890.00 (Rear yard)"
+   "note": null,
+   "baths": 3.5
   },
   {
    "unit": "2",
@@ -118,7 +109,8 @@
    "floor": null,
    "rooms": null,
    "beds": 4,
-   "baths": 3.5,
+   "full_baths": 3,
+   "half_baths": 1,
    "int_sf": 3102,
    "sf2": 0,
    "ext_sf": null,
@@ -132,7 +124,8 @@
    "tax2_m": null,
    "carry_m": 4521.21,
    "page": 37,
-   "note": "Limited common element sf: 1296.00 (Terrace 331 sf; Roof terrace 965 sf)"
+   "note": null,
+   "baths": 3.5
   }
  ]
 }

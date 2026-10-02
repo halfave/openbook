@@ -14,14 +14,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4178,
-   "output_tokens": 682,
-   "seconds": 8,
-   "cost_usd": 0.0208
+   "tokens": 5514,
+   "output_tokens": 431,
+   "seconds": 5,
+   "cost_usd": 0.024638
   }
  ],
- "tokens": 4178,
- "api_equiv_usd": 0.021,
+ "tokens": 5514,
+ "api_equiv_usd": 0.025,
  "located_pages": [
   38
  ],
@@ -39,6 +39,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 2998000,
@@ -68,10 +70,13 @@
   "cc_m": 701.08,
   "tax_m": 1015.58,
   "int_sf": 3444,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Bathroom(s) per Unit and 1/2 Bathroom(s) per Unit are separate printed columns; baths combined as full+half per rules (Unit1: 2 full+2 half listed as \"2\" and \"1\"? columns show Bathroom(s)=2, 1/2 Bathroom(s)=1 for Unit1 row values \"2\" \"1\" - verify: Unit1 row printed \"3 2 2\" and Unit2 \"4 2 1\" for Bedrooms/Bathrooms/Half-Bathrooms; interpreted Unit1 as 2 full+1 half? but recorded as 2.5 - please verify against original if precision matters."
+  "TAX2/SF2: only one tax scenario and one secondary area column (cellar space) are printed; no 421-a abatement comparison present."
  ],
  "units": [
   {
@@ -80,7 +85,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 2,
    "int_sf": 1655,
    "sf2": 916,
    "ext_sf": null,
@@ -94,7 +100,8 @@
    "tax2_m": null,
    "carry_m": 924.68,
    "page": 38,
-   "note": "Limited common area: Lightwell (22 sf); Rear yard (674 sf); LCE sf 696.00"
+   "note": null,
+   "baths": 3
   },
   {
    "unit": "2",
@@ -102,7 +109,8 @@
    "floor": null,
    "rooms": null,
    "beds": 4,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1789,
    "sf2": 0,
    "ext_sf": null,
@@ -116,7 +124,8 @@
    "tax2_m": null,
    "carry_m": 791.98,
    "page": 38,
-   "note": "Limited common area: Storage (70 sf); Stairs (53 sf); Roof (1,064 sf); Bulkhead roof (63 sf); LCE sf 1250.00"
+   "note": null,
+   "baths": 2.5
   }
  ]
 }

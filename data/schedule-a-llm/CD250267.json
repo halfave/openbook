@@ -3,60 +3,23 @@
  "steps": [
   {
    "step": "sonnet-text",
-   "verdict": "not_found",
-   "units": 0,
-   "failed": [
-    "ag",
-    "printed",
-    "sqftTotal",
-    "monthlyTotals",
-    "allRowsParsed",
-    "outdoor"
-   ]
-  },
-  {
-   "step": "sonnet-images",
-   "verdict": "hold",
+   "verdict": "publish_ag",
    "units": 7,
-   "failed": [
-    "outdoor"
-   ]
-  },
-  {
-   "step": "sonnet-images-think",
-   "verdict": "hold",
-   "units": 7,
-   "failed": [
-    "outdoor"
-   ]
+   "failed": []
   }
  ],
- "calls": 3,
+ "calls": 1,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4825,
-   "output_tokens": 957,
-   "seconds": 11,
-   "cost_usd": 0.025037999999999998
-  },
-  {
-   "model": "sonnet",
-   "tokens": 22721,
-   "output_tokens": 1136,
-   "seconds": 14,
-   "cost_usd": 0.0418774
-  },
-  {
-   "model": "sonnet",
-   "tokens": 16601,
-   "output_tokens": 3161,
-   "seconds": 31,
-   "cost_usd": 0.0605328
+   "tokens": 6536,
+   "output_tokens": 1188,
+   "seconds": 12,
+   "cost_usd": 0.033268
   }
  ],
- "tokens": 44147,
- "api_equiv_usd": 0.127,
+ "tokens": 6536,
+ "api_equiv_usd": 0.033,
  "located_pages": [
   33
  ],
@@ -74,36 +37,42 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 7120000,
- "step": "sonnet-images",
+ "step": "sonnet-text",
  "budget_period": "Year Projected to Begin: July 1, 2026-June 30, 2027",
  "columns_printed": [
   "Unit No.",
-  "Location",
+  "Floor Location",
   "Approx. Floor Area",
-  "Approx. Outdoor/Uninhabitable/Limited Common Floor Area",
+  "Approx. Outdoor/Uninhabitable/Limited Common Area",
   "No. of Bedooms/Bathrooms",
   "Offering Price",
   "Percent Common Interest",
-  "Projected Monthly Common Charges",
+  "Monthly Common Charges",
   "Projected Real Estate Taxes (Monthly)",
   "Projected Real Estate Taxes (Annual)",
   "Projected Carrying Charges (Monthly)"
  ],
  "tax2": null,
- "sf2": "Outdoor/Uninhabitable/Limited Common Floor Area",
+ "sf2": null,
  "printed_totals": {
   "price": 7120000,
   "pct": 100,
   "cc_m": 2894.33,
   "tax_m": 7032.74,
   "int_sf": 6296,
-  "ext_sf": 1976
+  "ext_sf": 1976,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Unit 1, 4F, and 4R have multiple floor-area subtotals (Cellar/First Floor/Total; Fourth Floor/Mezzanine/Total); int_sf given as the printed Total, with breakdown in note. Outdoor/Uninhabitable/Limited Common Floor Area column contains multiple separate figures (storage, terrace, balcony, rear yard, roof) per unit, placed in sf2 as printed rather than split, since it is a single combined column rather than separate ext_sf."
+  "Unit 4R bedroom/bath column prints \"1/1.5\" (ambiguous whether second figure is full+half baths or bath count); interpreted as 1 bedroom, 1 full bath, 1 half bath per combined-figure rules; beds/baths left blank for Unit 1's single \"2/2.5\" entry resolved as 2 beds, 2 full, 1 half.",
+  "int_sf/sf2 split for multi-level units (1, 4F, 4R) assigned habitable floor to int_sf and secondary/mezzanine or cellar area to sf2 per instructions; totals row floor area column shows combined total (6,296) and limited/outdoor area total (1,976), not pure int_sf/ext_sf sums."
  ],
  "units": [
   {
@@ -112,9 +81,10 @@
    "floor": "Cellar/First Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
-   "int_sf": 1878,
-   "sf2": null,
+   "full_baths": 2,
+   "half_baths": 1,
+   "int_sf": 1145,
+   "sf2": 738,
    "ext_sf": null,
    "price": 1600000,
    "pct": 23.98,
@@ -126,7 +96,8 @@
    "tax2_m": null,
    "carry_m": 2380.51,
    "page": 33,
-   "note": "Cellar 738*, First Floor 1145, Total 1878"
+   "note": "Total floor area 1,878 (Cellar* 738, First Floor 1145); outdoor/limited common area 82 (S), 1009 (RY)",
+   "baths": 2.5
   },
   {
    "unit": "2F",
@@ -134,7 +105,8 @@
    "floor": "Second Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 677,
    "sf2": null,
    "ext_sf": null,
@@ -148,7 +120,8 @@
    "tax2_m": null,
    "carry_m": 1102.9,
    "page": 33,
-   "note": null
+   "note": "Limited common area 51 (S), 22 (T)",
+   "baths": 1
   },
   {
    "unit": "2R",
@@ -156,7 +129,8 @@
    "floor": "Second Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 687,
    "sf2": null,
    "ext_sf": null,
@@ -170,7 +144,8 @@
    "tax2_m": null,
    "carry_m": 1108.85,
    "page": 33,
-   "note": null
+   "note": "Limited common area 51 (S), 12 (T)",
+   "baths": 1
   },
   {
    "unit": "3F",
@@ -178,7 +153,8 @@
    "floor": "Third Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 699,
    "sf2": null,
    "ext_sf": null,
@@ -192,7 +168,8 @@
    "tax2_m": null,
    "carry_m": 1118.78,
    "page": 33,
-   "note": null
+   "note": "Limited common area 51 (S), 14 (B)",
+   "baths": 1
   },
   {
    "unit": "3R",
@@ -200,7 +177,8 @@
    "floor": "Third Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 697,
    "sf2": null,
    "ext_sf": null,
@@ -214,7 +192,8 @@
    "tax2_m": null,
    "carry_m": 1119.77,
    "page": 33,
-   "note": null
+   "note": "Limited common area 48 (S), 30 (B)",
+   "baths": 1
   },
   {
    "unit": "4F",
@@ -222,9 +201,10 @@
    "floor": "Fourth Floor/Mezzanine",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
-   "int_sf": 808,
-   "sf2": null,
+   "full_baths": 1,
+   "half_baths": 0,
+   "int_sf": 687,
+   "sf2": 121,
    "ext_sf": null,
    "price": 1200000,
    "pct": 15.56,
@@ -236,7 +216,8 @@
    "tax2_m": null,
    "carry_m": 1544.65,
    "page": 33,
-   "note": "Fourth Floor 687, Mezzanine 121, Total 808"
+   "note": "Total floor area 808 (Fourth Floor 687, Mezzanine 121*); limited common area 52 (S), 29 (B), 290 (R)",
+   "baths": 1
   },
   {
    "unit": "4R",
@@ -244,9 +225,10 @@
    "floor": "Fourth Floor/Mezzanine",
    "rooms": null,
    "beds": 1,
-   "baths": 1.5,
-   "int_sf": 855,
-   "sf2": null,
+   "full_baths": 1.5,
+   "half_baths": 0,
+   "int_sf": 685,
+   "sf2": 165,
    "ext_sf": null,
    "price": 1200000,
    "pct": 15.63,
@@ -258,8 +240,8 @@
    "tax2_m": null,
    "carry_m": 1551.6,
    "page": 33,
-   "note": "Fourth Floor 685, Mezzanine 165, Total 855"
+   "note": "Total floor area 855 (Fourth Floor 685, Mezzanine 165*); limited common area 50 (S), 36 (B), 149 (R); bath figure printed as \"1/1.5\"",
+   "baths": 1.5
   }
- ],
- "rechecked": "2026-09-30"
+ ]
 }

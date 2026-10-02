@@ -12,35 +12,35 @@
  "call_log": [
   {
    "model": "haiku",
-   "tokens": 12618,
-   "output_tokens": 602,
-   "seconds": 11,
-   "cost_usd": 0.024644
+   "tokens": 22602,
+   "output_tokens": 613,
+   "seconds": 80,
+   "cost_usd": 0.026027300000000003
   },
   {
    "model": "haiku",
-   "tokens": 4941,
+   "tokens": 5159,
    "output_tokens": 97,
-   "seconds": 5,
-   "cost_usd": 0.005329
+   "seconds": 3,
+   "cost_usd": 0.005547
   },
   {
    "model": "haiku",
-   "tokens": 8760,
-   "output_tokens": 606,
-   "seconds": 9,
-   "cost_usd": 0.01695
+   "tokens": 11186,
+   "output_tokens": 172,
+   "seconds": 7,
+   "cost_usd": 0.015776
   },
   {
    "model": "sonnet",
-   "tokens": 11983,
-   "output_tokens": 1360,
-   "seconds": 18,
-   "cost_usd": 0.0365748
+   "tokens": 14892,
+   "output_tokens": 1259,
+   "seconds": 16,
+   "cost_usd": 0.0418858
   }
  ],
- "tokens": 38302,
- "api_equiv_usd": 0.083,
+ "tokens": 53839,
+ "api_equiv_usd": 0.089,
  "located_pages": [],
  "text_layer": true,
  "found": true,
@@ -56,6 +56,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 19920000,
@@ -77,18 +79,24 @@
   "Projected Monthly Carrying Charges",
   "Projected Annual Carrying Charges"
  ],
- "tax2": "-",
- "sf2": "uninhabitable",
+ "tax2": null,
+ "sf2": "uninhabitable sf",
  "printed_totals": {
   "price": 19920000,
   "pct": 100,
   "cc_m": 3542.67,
   "tax_m": 10375.83,
   "int_sf": 10398,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Table has no floor column; \"rooms\" column not present (only Bdrs/Bths given, listed in beds/baths). Unit has multiple additional area columns (Rear Yard & Court, two Roof Deck columns) beyond the uninhabitable sq.ft. column; put uninhabitable sq ft in sf2 and listed the yard/roof-deck figures in note per unit rather than ext_sf since several separate areas are printed. Page number for all rows is the printed \"40\" (header page), though the file is PDF page 44."
+  "Unit 1R printed habitable size \"1,200.00\" and uninhabitable size \"837.00\"; this pairing is unusually large relative to other rows and is copied as printed without verification.",
+  "Table has no separate \"int_sf\"/\"sf2\" column headers beyond habitable/uninhabitable sizes; uninhabitable sq ft placed in SF2 per instructions. No ext_sf (terrace/balcony) column present; Rear Yard & Court and Roof Deck columns are limited common elements, not unit interior/exterior areas, so not mapped to ext_sf and left out of note per row since they are separate LCE columns not required by the schema.",
+  "\"Bdrs/Bths\" column format \"2/2.5\" interpreted per rules as beds 2, full baths 2, half baths 1; \"3/2\" as beds 3, full 2, half 0; \"3/3\" as beds 3, full 3, half 0.",
+  "No pct2, tax2_m, carry totals beyond annual figures given; TOTAL row's full_baths/half_baths/beds not printed (only sq ft, price, %, common charges, taxes totals), so left as -."
  ],
  "units": [
   {
@@ -97,7 +105,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1204,
    "sf2": 29,
    "ext_sf": null,
@@ -105,13 +114,14 @@
    "pct": 13.39,
    "pct2": null,
    "cc_m": 474.36,
-   "cc_a": 22364.25,
+   "cc_a": 5692.32,
    "tax_m": 1389.32,
    "tax_a": 16671.89,
    "tax2_m": null,
    "carry_m": 1863.69,
-   "page": 40,
-   "note": "Rear Yard & Court: 429.00; Roof Deck: None; Roof Deck: None"
+   "page": 44,
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "1R",
@@ -119,7 +129,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1200,
    "sf2": 837,
    "ext_sf": null,
@@ -127,13 +138,14 @@
    "pct": 13.42,
    "pct2": null,
    "cc_m": 475.43,
-   "cc_a": 22414.35,
+   "cc_a": 5705.16,
    "tax_m": 1392.44,
    "tax_a": 16709.24,
    "tax2_m": null,
    "carry_m": 1867.86,
-   "page": 40,
-   "note": "Rear Yard & Court: 467.00; Roof Deck: None; Roof Deck: None"
+   "page": 44,
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "2L",
@@ -141,7 +153,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1178,
    "sf2": 29,
    "ext_sf": null,
@@ -149,13 +162,14 @@
    "pct": 10.48,
    "pct2": null,
    "cc_m": 371.27,
-   "cc_a": 17503.91,
+   "cc_a": 4455.24,
    "tax_m": 1087.39,
    "tax_a": 13048.65,
    "tax2_m": null,
    "carry_m": 1458.66,
-   "page": 40,
-   "note": "Rear Yard & Court: None; Roof Deck: 388.00; Roof Deck: None"
+   "page": 44,
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "2R",
@@ -163,7 +177,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1229,
    "sf2": 38,
    "ext_sf": null,
@@ -171,13 +186,14 @@
    "pct": 11.01,
    "pct2": null,
    "cc_m": 390.05,
-   "cc_a": 18389.12,
+   "cc_a": 4680.6,
    "tax_m": 1142.38,
    "tax_a": 13708.55,
    "tax2_m": null,
    "carry_m": 1532.43,
-   "page": 40,
-   "note": "Rear Yard & Court: None; Roof Deck: 444.00; Roof Deck: None"
+   "page": 44,
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3L",
@@ -185,7 +201,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1178,
    "sf2": 29,
    "ext_sf": null,
@@ -193,13 +210,14 @@
    "pct": 10.58,
    "pct2": null,
    "cc_m": 374.81,
-   "cc_a": 17670.93,
+   "cc_a": 4497.72,
    "tax_m": 1097.76,
    "tax_a": 13173.16,
    "tax2_m": null,
    "carry_m": 1472.58,
-   "page": 40,
-   "note": "Rear Yard & Court: None; Roof Deck: 298.00; Roof Deck: None"
+   "page": 44,
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3R",
@@ -207,7 +225,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1229,
    "sf2": 22,
    "ext_sf": null,
@@ -215,13 +234,14 @@
    "pct": 11.11,
    "pct2": null,
    "cc_m": 393.59,
-   "cc_a": 18556.14,
+   "cc_a": 4723.08,
    "tax_m": 1152.76,
    "tax_a": 13833.06,
    "tax2_m": null,
    "carry_m": 1546.35,
-   "page": 40,
-   "note": "Rear Yard & Court: None; Roof Deck: 365.00; Roof Deck: None"
+   "page": 44,
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "4L",
@@ -229,7 +249,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": 0,
    "int_sf": 1554,
    "sf2": 57,
    "ext_sf": null,
@@ -237,13 +258,14 @@
    "pct": 14.66,
    "pct2": null,
    "cc_m": 519.35,
-   "cc_a": 24485.43,
+   "cc_a": 6232.2,
    "tax_m": 1521.1,
    "tax_a": 18253.17,
    "tax2_m": null,
    "carry_m": 2040.45,
-   "page": 40,
-   "note": "Rear Yard & Court: None; Roof Deck: 317.00; Roof Deck: None"
+   "page": 44,
+   "note": null,
+   "baths": 3
   },
   {
    "unit": "4R",
@@ -251,7 +273,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": 0,
    "int_sf": 1626,
    "sf2": 57,
    "ext_sf": null,
@@ -259,13 +282,14 @@
    "pct": 15.35,
    "pct2": null,
    "cc_m": 543.8,
-   "cc_a": 25637.88,
+   "cc_a": 6525.6,
    "tax_m": 1592.69,
    "tax_a": 19112.29,
    "tax2_m": null,
    "carry_m": 2136.49,
-   "page": 40,
-   "note": "Rear Yard & Court: None; Roof Deck: 164.00; Roof Deck: 48.00"
+   "page": 44,
+   "note": null,
+   "baths": 3
   }
  ]
 }

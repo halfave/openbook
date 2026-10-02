@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4493,
-   "output_tokens": 949,
-   "seconds": 11,
-   "cost_usd": 0.023662000000000002
+   "tokens": 6261,
+   "output_tokens": 1208,
+   "seconds": 16,
+   "cost_usd": 0.032288
   }
  ],
- "tokens": 4493,
- "api_equiv_usd": 0.024,
+ "tokens": 6261,
+ "api_equiv_usd": 0.032,
  "located_pages": [
   35
  ],
@@ -37,6 +37,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 2807925,
@@ -47,8 +49,8 @@
   "Price",
   "Number of Rooms, Bedrooms (BR), Bathrooms (BTH)",
   "Approximate Floor Area in Square Feet",
-  "NON-HABITABLE SPACE",
   "Rear Yard/Terrace/Porch",
+  "NON-HABITABLE SPACE",
   "Total",
   "Percentage of Common Interest",
   "Estimated Monthly Common Charges",
@@ -57,18 +59,22 @@
   "Total Monthly Combined Common Charges & Real Estate Taxes"
  ],
  "tax2": null,
- "sf2": "non-habitable space (yard/terrace/porch)",
+ "sf2": "non-habitable space",
  "printed_totals": {
   "price": 2807925,
   "pct": 100,
   "cc_m": 1474.77,
   "tax_m": 2212,
   "int_sf": 4172,
-  "ext_sf": 1962
+  "ext_sf": 1962,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Column headers list separate \"NON-HABITABLE SPACE\" and \"Rear Yard/Terrace/Porch\" categories but data for 2B lists both \"143 P; 398 Y\" combined in one field, interpreted as sf2; could not determine separate numeric split with certainty beyond the printed string.",
-  "Total row interior sf (4172) and sf2 (1962) are printed totals; individual rows' int_sf/sf2 split assumed from column order (first number = interior, second = non-habitable) based on row context."
+  "Unit 2B's non-habitable space is printed as \"143 P; 398 Y\" (two separate figures totaling 541); combined into sf2 since the table shows one Total column and format does not allow multiple entries in note without losing the Total check figure.",
+  "Monthly common charges column appears to actually hold annual figures given it's roughly 12x the \"Estimate of Monthly Real Estate Taxes\" column pattern is reversed; actually tax_m (575.12 etc.) and cc_m (383.44) are both labeled monthly but cc_a is not printed separately from tax_a — table only has one \"Estimated Monthly Common Charges\" (cc_m) column and no annual common charges column, so cc_a is left blank.",
+  "Column header order in source text was Price, Number of Rooms/BR/BTH, then floor area columns, then Percentage, then Monthly Common Charges, then Annual RE Taxes, then Monthly RE Taxes, then Total Monthly — tax_a (6901.44 etc.) appears before tax_m (958.56... actually corrected) in the printed row; I assigned based on footnote labels (5)=Monthly RE Taxes and (5 dup)=Annual RE Taxes, matching numeric order in each row as: cc_m, tax_m, tax_a, carry_m per row text, but row text order is cc_m, tax_m, tax_a, carry_m — please verify tax_m vs tax_a placement against original PDF layout."
  ],
  "units": [
   {
@@ -77,7 +83,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 906,
    "sf2": 1061,
    "ext_sf": null,
@@ -91,7 +98,8 @@
    "tax2_m": null,
    "carry_m": 958.56,
    "page": 35,
-   "note": "Y"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "2A",
@@ -99,7 +107,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 729,
    "sf2": 177,
    "ext_sf": null,
@@ -113,7 +122,8 @@
    "tax2_m": null,
    "carry_m": 737.35,
    "page": 35,
-   "note": "T"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "2B",
@@ -121,9 +131,10 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 733,
-   "sf2": null,
+   "sf2": 541,
    "ext_sf": null,
    "price": 531425,
    "pct": 23,
@@ -135,7 +146,8 @@
    "tax2_m": null,
    "carry_m": 847.95,
    "page": 35,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3A",
@@ -143,7 +155,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 637,
    "sf2": 92,
    "ext_sf": null,
@@ -157,7 +170,8 @@
    "tax2_m": null,
    "carry_m": 516.15,
    "page": 35,
-   "note": "T"
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3B",
@@ -165,7 +179,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 640,
    "sf2": 93,
    "ext_sf": null,
@@ -179,7 +194,8 @@
    "tax2_m": null,
    "carry_m": 516.15,
    "page": 35,
-   "note": "T"
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "P1",
@@ -187,7 +203,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 181,
    "sf2": 0,
    "ext_sf": null,
@@ -201,7 +218,8 @@
    "tax2_m": null,
    "carry_m": 36.87,
    "page": 35,
-   "note": null
+   "note": null,
+   "baths": null
   },
   {
    "unit": "P2",
@@ -209,7 +227,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 164,
    "sf2": 0,
    "ext_sf": null,
@@ -223,7 +242,8 @@
    "tax2_m": null,
    "carry_m": 36.87,
    "page": 35,
-   "note": null
+   "note": null,
+   "baths": null
   },
   {
    "unit": "P3",
@@ -231,7 +251,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 182,
    "sf2": 0,
    "ext_sf": null,
@@ -245,7 +266,8 @@
    "tax2_m": null,
    "carry_m": 36.87,
    "page": 35,
-   "note": null
+   "note": null,
+   "baths": null
   }
  ]
 }

@@ -3,39 +3,23 @@
  "steps": [
   {
    "step": "sonnet-text",
-   "verdict": "hold",
-   "units": 8,
-   "failed": [
-    "carrying",
-    "monthlyTotals"
-   ]
-  },
-  {
-   "step": "sonnet-text-retry",
    "verdict": "publish_ag",
    "units": 8,
    "failed": []
   }
  ],
- "calls": 2,
+ "calls": 1,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 8911,
-   "output_tokens": 1013,
-   "seconds": 87,
-   "cost_usd": 0.0267154
-  },
-  {
-   "model": "sonnet",
-   "tokens": 4857,
-   "output_tokens": 909,
-   "seconds": 11,
-   "cost_usd": 0.024877999999999997
+   "tokens": 6457,
+   "output_tokens": 1004,
+   "seconds": 9,
+   "cost_usd": 0.031848
   }
  ],
- "tokens": 13768,
- "api_equiv_usd": 0.052,
+ "tokens": 6457,
+ "api_equiv_usd": 0.032,
  "located_pages": [
   36
  ],
@@ -48,15 +32,17 @@
   "pct100": true,
   "ccProportional": true,
   "carrying": true,
-  "sqftTotal": true,
+  "sqftTotal": null,
   "monthlyTotals": true,
-  "psf": true,
+  "psf": null,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 6743100,
- "step": "sonnet-text-retry",
+ "step": "sonnet-text",
  "budget_period": "JULY 1, 2023 TO JUNE 30, 2024",
  "columns_printed": [
   "Unit No.",
@@ -82,10 +68,15 @@
   "cc_m": 2125.08,
   "tax_m": 9178.17,
   "int_sf": 6249,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "1/2 Bathroom(s) per Unit column values are all 0 except where noted; baths computed as 1 + (1/2 bath value as 0.5) per unit based on printed 1/2 bath column."
+  "Offering Price and Square footage columns are interleaved in the source text in a confusing order (\"1,034,550.00 $ 686.00 466.00\"); I interpreted 1,034,550.00 as price, 686.00 as square footage, and 466.00 as cellar space square footage based on column header order.",
+  "Limited Common Element square feet values (e.g. 425.00, 348.00, 19.00) appear inconsistent with the \"Limited common areas\" descriptions listed separately (balcony, roof terrace, areaway, rear yard); kept as printed in the numeric table.",
+  "unit sizes left out: the area columns did not add up to the printed totals"
  ],
  "units": [
   {
@@ -94,9 +85,10 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1.5,
-   "int_sf": 686,
-   "sf2": 466,
+   "full_baths": 1,
+   "half_baths": 1,
+   "int_sf": null,
+   "sf2": null,
    "ext_sf": null,
    "price": 1034550,
    "pct": 15.218,
@@ -107,8 +99,9 @@
    "tax_a": 16760.8,
    "tax2_m": null,
    "carry_m": 1720.13,
-   "page": 36,
-   "note": "Balcony (19 sf)"
+   "page": 19,
+   "note": null,
+   "baths": 1.5
   },
   {
    "unit": "1L",
@@ -116,9 +109,10 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1.5,
-   "int_sf": 691,
-   "sf2": 433,
+   "full_baths": 1,
+   "half_baths": 1,
+   "int_sf": null,
+   "sf2": null,
    "ext_sf": null,
    "price": 1080150,
    "pct": 16.082,
@@ -129,8 +123,9 @@
    "tax_a": 17712.39,
    "tax2_m": null,
    "carry_m": 1817.79,
-   "page": 36,
-   "note": "Balcony (19 sf); Roof terrace (146 sf)"
+   "page": 19,
+   "note": null,
+   "baths": 1.5
   },
   {
    "unit": "2R",
@@ -138,9 +133,10 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
-   "int_sf": 750,
-   "sf2": 0,
+   "full_baths": 1,
+   "half_baths": 0,
+   "int_sf": null,
+   "sf2": null,
    "ext_sf": null,
    "price": 712500,
    "pct": 10.425,
@@ -151,8 +147,9 @@
    "tax_a": 11481.89,
    "tax2_m": null,
    "carry_m": 1178.36,
-   "page": 36,
-   "note": "Rear yard (348 sf)"
+   "page": 19,
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "2L",
@@ -160,9 +157,10 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
-   "int_sf": 750,
-   "sf2": 0,
+   "full_baths": 1,
+   "half_baths": 0,
+   "int_sf": null,
+   "sf2": null,
    "ext_sf": null,
    "price": 712500,
    "pct": 10.425,
@@ -173,8 +171,9 @@
    "tax_a": 11481.89,
    "tax2_m": null,
    "carry_m": 1178.36,
-   "page": 36,
-   "note": "Areaway (70 sf); Rear yard (355 sf)"
+   "page": 19,
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3R",
@@ -182,9 +181,10 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
-   "int_sf": 750,
-   "sf2": 0,
+   "full_baths": 1,
+   "half_baths": 0,
+   "int_sf": null,
+   "sf2": null,
    "ext_sf": null,
    "price": 712500,
    "pct": 10.425,
@@ -195,8 +195,9 @@
    "tax_a": 11481.89,
    "tax2_m": null,
    "carry_m": 1178.36,
-   "page": 36,
-   "note": "Balcony (19 sf)"
+   "page": 19,
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3L",
@@ -204,9 +205,10 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
-   "int_sf": 750,
-   "sf2": 0,
+   "full_baths": 1,
+   "half_baths": 0,
+   "int_sf": null,
+   "sf2": null,
    "ext_sf": null,
    "price": 712500,
    "pct": 10.425,
@@ -217,8 +219,9 @@
    "tax_a": 11481.89,
    "tax2_m": null,
    "carry_m": 1178.36,
-   "page": 36,
-   "note": "Balcony (19 sf); Roof terrace (146 sf)"
+   "page": 19,
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "4R",
@@ -226,9 +229,10 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 1,
-   "int_sf": 936,
-   "sf2": 0,
+   "full_baths": 1,
+   "half_baths": 0,
+   "int_sf": null,
+   "sf2": null,
    "ext_sf": null,
    "price": 889200,
    "pct": 13.5,
@@ -239,8 +243,9 @@
    "tax_a": 14868.63,
    "tax2_m": null,
    "carry_m": 1525.94,
-   "page": 36,
-   "note": null
+   "page": 19,
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "4L",
@@ -248,9 +253,10 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 1,
-   "int_sf": 936,
-   "sf2": 0,
+   "full_baths": 1,
+   "half_baths": 0,
+   "int_sf": null,
+   "sf2": null,
    "ext_sf": null,
    "price": 889200,
    "pct": 13.5,
@@ -261,8 +267,9 @@
    "tax_a": 14868.63,
    "tax2_m": null,
    "carry_m": 1525.94,
-   "page": 36,
-   "note": null
+   "page": 19,
+   "note": null,
+   "baths": 1
   }
  ]
 }

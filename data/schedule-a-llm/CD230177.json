@@ -3,23 +3,39 @@
  "steps": [
   {
    "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 5,
+   "failed": [
+    "sqftTotal",
+    "bedsBaths"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
    "verdict": "publish_ag",
    "units": 5,
    "failed": []
   }
  ],
- "calls": 1,
+ "calls": 2,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4524,
-   "output_tokens": 765,
-   "seconds": 9,
-   "cost_usd": 0.022682
+   "tokens": 6308,
+   "output_tokens": 1045,
+   "seconds": 11,
+   "cost_usd": 0.031498
+  },
+  {
+   "model": "sonnet",
+   "tokens": 11407,
+   "output_tokens": 877,
+   "seconds": 91,
+   "cost_usd": 0.030882600000000003
   }
  ],
- "tokens": 4524,
- "api_equiv_usd": 0.023,
+ "tokens": 17715,
+ "api_equiv_usd": 0.062,
  "located_pages": [
   34
  ],
@@ -37,10 +53,12 @@
   "psf": null,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 9280000,
- "step": "sonnet-text",
+ "step": "sonnet-text-retry",
  "budget_period": "January 1, 2024- December 31, 2024",
  "columns_printed": [
   "Unit No.",
@@ -53,20 +71,27 @@
   "Common Charges (Monthly)",
   "Projected Real Estate Taxes (Monthly)",
   "Projected Real Estate Taxes (Annual)",
-  "Projected Common Carrying Charges (Monthly)"
+  "Projected Carrying Charges (Monthly)"
  ],
  "tax2": null,
- "sf2": "outdoor/uninhabitable/limited common area",
+ "sf2": null,
  "printed_totals": {
   "price": 9280000,
   "pct": 100,
   "cc_m": 3011.67,
   "tax_m": 4181.19,
   "int_sf": 5235,
-  "ext_sf": 1482
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Unit 1's floor area is printed as two figures (725 Basement, 1227 First Floor); int_sf field holds 1227 (larger/main figure) and both values plus outdoor areas are noted; bedrooms/bathrooms given as single combined column \"No. of Bedrooms/Bathrooms\" (e.g. \"3/2\"), interpreted as beds/baths.",
+  "Unit G bath figure \"0/1\" read per \"Bedooms/Bathrooms\" header as 0 beds/1 bath (full); half_baths set to 0.",
+  "Unit 1's outdoor/uninhabitable area has three components (498 BY, 122 D, 97 S); ext_sf left blank per rule, components noted here: 498(BY), 122(D), 97(S).",
+  "Unit 2's limited common area has two components (347 T, 86 S); ext_sf left blank, components: 347(T), 86(S).",
+  "Unit 3's limited common area has two components (77 S, 27 B); ext_sf left blank, components: 77(S), 27(B).",
+  "Total row's \"Approx. Outdoor/Uninhabitable/Limited Common Area\" total printed as 1,482; not clearly separable into ext_sf/sf2 so omitted from TOTAL line (only int_sf 5,235 included).",
   "unit sizes left out: the area columns did not add up to the printed totals"
  ],
  "units": [
@@ -76,7 +101,8 @@
    "floor": "Basement",
    "rooms": null,
    "beds": 0,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -90,7 +116,8 @@
    "tax2_m": null,
    "carry_m": 598.45,
    "page": 34,
-   "note": null
+   "note": "S",
+   "baths": 1
   },
   {
    "unit": "1",
@@ -98,7 +125,8 @@
    "floor": "Basement/First Floor",
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -112,7 +140,8 @@
    "tax2_m": null,
    "carry_m": 2703.8,
    "page": 34,
-   "note": "Area listed as 725 (Basement) and 1227 (First Floor); 498 (BY), 122 (D), 97 (S)"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "2",
@@ -120,7 +149,8 @@
    "floor": "Second Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -134,7 +164,8 @@
    "tax2_m": null,
    "carry_m": 1498.27,
    "page": 34,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3",
@@ -142,7 +173,8 @@
    "floor": "Third Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -156,7 +188,8 @@
    "tax2_m": null,
    "carry_m": 1215.59,
    "page": 34,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "4",
@@ -164,7 +197,8 @@
    "floor": "Fourth Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -178,7 +212,8 @@
    "tax2_m": null,
    "carry_m": 1176.75,
    "page": 34,
-   "note": null
+   "note": null,
+   "baths": 1
   }
  ]
 }

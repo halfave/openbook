@@ -12,42 +12,42 @@
  "call_log": [
   {
    "model": "haiku",
-   "tokens": 12622,
-   "output_tokens": 612,
-   "seconds": 8,
-   "cost_usd": 0.024683999999999998
+   "tokens": 12822,
+   "output_tokens": 576,
+   "seconds": 9,
+   "cost_usd": 0.024861
   },
   {
    "model": "haiku",
-   "tokens": 4941,
+   "tokens": 5175,
    "output_tokens": 97,
+   "seconds": 3,
+   "cost_usd": 0.005563
+  },
+  {
+   "model": "haiku",
+   "tokens": 5185,
+   "output_tokens": 110,
    "seconds": 5,
-   "cost_usd": 0.005329
+   "cost_usd": 0.005625
   },
   {
    "model": "haiku",
-   "tokens": 4937,
-   "output_tokens": 97,
-   "seconds": 65,
-   "cost_usd": 0.005325
-  },
-  {
-   "model": "haiku",
-   "tokens": 8707,
-   "output_tokens": 559,
-   "seconds": 8,
-   "cost_usd": 0.016697999999999998
+   "tokens": 8956,
+   "output_tokens": 570,
+   "seconds": 9,
+   "cost_usd": 0.017118
   },
   {
    "model": "sonnet",
-   "tokens": 11203,
-   "output_tokens": 576,
-   "seconds": 9,
-   "cost_usd": 0.0287432
+   "tokens": 14398,
+   "output_tokens": 759,
+   "seconds": 13,
+   "cost_usd": 0.0368984
   }
  ],
- "tokens": 42410,
- "api_equiv_usd": 0.081,
+ "tokens": 46536,
+ "api_equiv_usd": 0.09,
  "located_pages": [],
  "text_layer": true,
  "found": true,
@@ -63,6 +63,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 19900000,
@@ -87,10 +89,13 @@
   "cc_m": 10133.31,
   "tax_m": 12546.36,
   "int_sf": 9803,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "-"
+  "3/2.5 for Unit 2 parsed as 3 beds, 2 full baths, 1 half bath per \"Bedrooms/Bathrooms\" combined column convention."
  ],
  "units": [
   {
@@ -99,7 +104,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 1936,
    "sf2": null,
    "ext_sf": null,
@@ -113,7 +119,8 @@
    "tax2_m": null,
    "carry_m": 3974.13,
    "page": 43,
-   "note": "Retail Unit not offered herein"
+   "note": "Retail Unit not being offered; terrace/balcony areas noted separately",
+   "baths": null
   },
   {
    "unit": "2",
@@ -121,10 +128,11 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 2168,
    "sf2": null,
-   "ext_sf": 976,
+   "ext_sf": null,
    "price": 5000000,
    "pct": 24.467,
    "pct2": null,
@@ -135,7 +143,8 @@
    "tax2_m": null,
    "carry_m": 5493.76,
    "page": 43,
-   "note": null
+   "note": "Unit 2 also enjoys use of a terrace comprising 976 square feet",
+   "baths": 2.5
   },
   {
    "unit": "3",
@@ -143,10 +152,11 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1507,
    "sf2": null,
-   "ext_sf": 43,
+   "ext_sf": null,
    "price": 3400000,
    "pct": 15.396,
    "pct2": null,
@@ -157,7 +167,8 @@
    "tax2_m": null,
    "carry_m": 3456.96,
    "page": 43,
-   "note": null
+   "note": "Unit 3 also enjoys use of a balcony comprising 43 square feet",
+   "baths": 2
   },
   {
    "unit": "4",
@@ -165,10 +176,11 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1507,
    "sf2": null,
-   "ext_sf": 43,
+   "ext_sf": null,
    "price": 3500000,
    "pct": 15.396,
    "pct2": null,
@@ -179,7 +191,8 @@
    "tax2_m": null,
    "carry_m": 3456.96,
    "page": 43,
-   "note": null
+   "note": "Unit 4 also enjoys use of a balcony comprising 43 square feet",
+   "baths": 2
   },
   {
    "unit": "PH",
@@ -187,10 +200,11 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": 0,
    "int_sf": 2685,
    "sf2": null,
-   "ext_sf": 320,
+   "ext_sf": null,
    "price": 8000000,
    "pct": 28.048,
    "pct2": null,
@@ -201,7 +215,8 @@
    "tax2_m": null,
    "carry_m": 6297.86,
    "page": 43,
-   "note": null
+   "note": "Unit PH also enjoys use of a terrace comprising 320 square feet",
+   "baths": 3
   }
  ]
 }

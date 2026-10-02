@@ -14,14 +14,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4590,
-   "output_tokens": 605,
-   "seconds": 79,
-   "cost_usd": 0.0068506
+   "tokens": 11841,
+   "output_tokens": 689,
+   "seconds": 83,
+   "cost_usd": 0.0303088
   }
  ],
- "tokens": 4590,
- "api_equiv_usd": 0.007,
+ "tokens": 11841,
+ "api_equiv_usd": 0.03,
  "located_pages": [
   35
  ],
@@ -39,6 +39,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 5750000,
@@ -51,27 +53,31 @@
   "Bdms/Bths",
   "% of Common Interest",
   "Offering Price",
-  "Monthly Common Charges",
-  "Annual Common Charges",
-  "1st Year Monthly Real Estate Taxes",
-  "1st Year Annual Real Estate Taxes",
-  "1st Year Monthly Carrying Charges",
-  "Post-Completion Monthly Real Estate Taxes",
-  "Post-Completion Annual Real Estate Taxes",
-  "Post-Completion Monthly Carrying Charges"
+  "1st Year Estimated Monthly Common Charges",
+  "1st Year Estimated Annual Common Charges",
+  "1st Year Estimated Monthly Real Estate Taxes",
+  "1st Year Estimated Annual Real Estate Taxes",
+  "1st Year Estimated Monthly Carrying Charges",
+  "Post-Completion Estimated Monthly Real Estate Taxes",
+  "Post-Completion Estimated Annual Real Estate Taxes",
+  "Post-Completion Estimated Monthly Carrying Charges"
  ],
- "tax2": "-",
- "sf2": "uninhabitable sf",
+ "tax2": "post-completion reassessment",
+ "sf2": "uninhabitable sq. ftg.",
  "printed_totals": {
   "price": 5750000,
   "pct": 100,
   "cc_m": 1241.58,
   "tax_m": 1895.75,
   "int_sf": 3410,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Table has two sets of real estate tax/carrying charge columns (1st Year and Post-Completion); tax_m/tax_a/carry_m taken from 1st Year columns, Post-Completion monthly tax placed in tax2_m per TAX2 note (labeled \"Post-Completion\" not \"without 421-a\"); Post-Completion annual tax and carrying charge annual not captured in per-unit columns as no slot exists."
+  "carry_m uses tax_m (first-year, with-abatement figures) per rules; the printed \"Post-Completion\" carrying charge column uses tax2_m and was placed there, not in carry_m.",
+  "Bdms/Bths column format \"3/3 ½\" interpreted as 3 bedrooms, 3 full baths, 1 half bath; \"2/2\" interpreted as 2 bedrooms, 2 full baths, 0 half baths."
  ],
  "units": [
   {
@@ -80,7 +86,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3.5,
+   "full_baths": 3,
+   "half_baths": 1,
    "int_sf": 1770,
    "sf2": 1544.6,
    "ext_sf": null,
@@ -94,7 +101,8 @@
    "tax2_m": 1381.5,
    "carry_m": 1675.06,
    "page": 35,
-   "note": null
+   "note": null,
+   "baths": 3.5
   },
   {
    "unit": "2",
@@ -102,7 +110,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 789,
    "sf2": 67,
    "ext_sf": null,
@@ -116,7 +125,8 @@
    "tax2_m": 516.26,
    "carry_m": 625.97,
    "page": 35,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3",
@@ -124,7 +134,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 851,
    "sf2": 902,
    "ext_sf": null,
@@ -138,7 +149,8 @@
    "tax2_m": 689.74,
    "carry_m": 836.31,
    "page": 35,
-   "note": null
+   "note": null,
+   "baths": 2
   }
  ]
 }

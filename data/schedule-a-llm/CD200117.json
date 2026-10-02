@@ -3,23 +3,53 @@
  "steps": [
   {
    "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 8,
+   "failed": [
+    "monthlyTotals"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "hold",
+   "units": 8,
+   "failed": [
+    "monthlyTotals"
+   ]
+  },
+  {
+   "step": "sonnet-images",
    "verdict": "publish_ag",
    "units": 8,
    "failed": []
   }
  ],
- "calls": 1,
+ "calls": 3,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 9428,
-   "output_tokens": 1198,
-   "seconds": 91,
-   "cost_usd": 0.0292626
+   "tokens": 12256,
+   "output_tokens": 1016,
+   "seconds": 12,
+   "cost_usd": 0.0337636
+  },
+  {
+   "model": "sonnet",
+   "tokens": 6710,
+   "output_tokens": 1091,
+   "seconds": 10,
+   "cost_usd": 0.033381999999999995
+  },
+  {
+   "model": "sonnet",
+   "tokens": 18101,
+   "output_tokens": 1176,
+   "seconds": 14,
+   "cost_usd": 0.047969
   }
  ],
- "tokens": 9428,
- "api_equiv_usd": 0.029,
+ "tokens": 37067,
+ "api_equiv_usd": 0.115,
  "located_pages": [
   33
  ],
@@ -37,10 +67,12 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 7654000,
- "step": "sonnet-text",
+ "step": "sonnet-images",
  "budget_period": "FROM DECEMBER 1, 2020 TO NOVEMBER 30, 2021",
  "columns_printed": [
   "Unit number",
@@ -52,22 +84,25 @@
   "Est. common charges monthly/annually (5)",
   "Est. real estate taxes monthly/annually with Condo Abatement (6)*",
   "Est. real estate taxes monthly/annually without Condo Abatement (6)*",
-  "Est. carrying costs monthly/annually without Condo Abatement (7)",
-  "Est. carrying costs monthly/annualy with Condo Abatement (7)"
+  "Est. carrying costs monthly/annualy with Condo Abatement (7)",
+  "Est. carrying costs monthly/annually without Condo Abatement (7)"
  ],
- "tax2": "without 421-a",
- "sf2": "Limited Common Elements area",
+ "tax2": "without Condo Abatement",
+ "sf2": "Limited Common Elements area sq. ft.",
  "printed_totals": {
   "price": 7654000,
   "pct": 100,
   "cc_m": 2972.42,
   "tax_m": 1621.96,
   "int_sf": 6330,
-  "ext_sf": null
+  "ext_sf": 3036,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Column order for the 5 numeric pairs (common charges, tax-with-abatement, tax-without-abatement, carrying-without-abatement, carrying-with-abatement) inferred from header order at bottom of page since headers appear after data; cc_m/cc_a assumed to be first pair (2972.42/35669.00 total); tax_m/tax_a assumed from \"with Condo Abatement\" column (121.65 etc.) since carrying cost likely uses that; tax2_m taken as \"without Condo Abatement\" monthly (146.56 etc.); carry_m taken as carrying cost without abatement monthly (344.58); the second carrying-cost pair (with abatement, e.g. 369.49/4433.93 for 1A) is not captured in any column per the 20-field format.",
-  "Unit 4B shows \"1/2\" for bedrooms/bathrooms — read as 1 bed/2 baths per literal text."
+  "Bedrooms/Bathrooms column prints single \"X/Y\" figures (e.g. \"1/1\", \"4A 2/2\", \"4B 1/2\"); per header rules the first figure is bedrooms and the second is baths with no half bath indicated, so full_baths = second figure, half_baths = 0; this gives Unit 4B full_baths=2, which is unusual but copied as printed.",
+  "Est. carrying costs columns are headed \"with Condo Abatement\" and \"without Condo Abatement\"; neither is explicitly tied to tax_m vs tax2_m, so carry_m was left as - (not printed as matching tax_m scenario clearly) — actually used the \"with Condo Abatement\" carrying cost figure (cc_m column header omitted per instructions since carry_m field not in output list, no action needed)."
  ],
  "units": [
   {
@@ -76,7 +111,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 687,
    "sf2": 0,
    "ext_sf": null,
@@ -90,7 +126,8 @@
    "tax2_m": 146.56,
    "carry_m": 344.58,
    "page": 33,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "1B",
@@ -98,7 +135,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 728,
    "sf2": 885,
    "ext_sf": null,
@@ -112,7 +150,8 @@
    "tax2_m": 332.21,
    "carry_m": 781.04,
    "page": 33,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "2A",
@@ -120,7 +159,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 751,
    "sf2": 0,
    "ext_sf": null,
@@ -134,7 +174,8 @@
    "tax2_m": 166.1,
    "carry_m": 390.52,
    "page": 33,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "2B",
@@ -142,7 +183,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 789,
    "sf2": 551,
    "ext_sf": null,
@@ -156,7 +198,8 @@
    "tax2_m": 273.58,
    "carry_m": 643.21,
    "page": 33,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3A",
@@ -164,7 +207,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 751,
    "sf2": 0,
    "ext_sf": null,
@@ -178,7 +222,8 @@
    "tax2_m": 166.1,
    "carry_m": 390.52,
    "page": 33,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3B",
@@ -186,7 +231,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 789,
    "sf2": 0,
    "ext_sf": null,
@@ -200,7 +246,8 @@
    "tax2_m": 175.88,
    "carry_m": 413.49,
    "page": 33,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "4A",
@@ -208,7 +255,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1046,
    "sf2": 769,
    "ext_sf": null,
@@ -222,7 +270,8 @@
    "tax2_m": 361.52,
    "carry_m": 849.96,
    "page": 33,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "4B",
@@ -230,7 +279,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 789,
    "sf2": 831,
    "ext_sf": null,
@@ -244,7 +294,8 @@
    "tax2_m": 332.21,
    "carry_m": 781.04,
    "page": 33,
-   "note": null
+   "note": null,
+   "baths": 2
   }
  ]
 }

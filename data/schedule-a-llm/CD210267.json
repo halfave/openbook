@@ -3,23 +3,41 @@
  "steps": [
   {
    "step": "sonnet-text",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
    "verdict": "publish_ag",
    "units": 4,
    "failed": []
   }
  ],
- "calls": 1,
+ "calls": 2,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4681,
-   "output_tokens": 807,
-   "seconds": 8,
-   "cost_usd": 0.023562
+   "tokens": 6222,
+   "output_tokens": 845,
+   "seconds": 11,
+   "cost_usd": 0.029954
+  },
+  {
+   "model": "sonnet",
+   "tokens": 27118,
+   "output_tokens": 1015,
+   "seconds": 86,
+   "cost_usd": 0.0472938
   }
  ],
- "tokens": 4681,
- "api_equiv_usd": 0.024,
+ "tokens": 33340,
+ "api_equiv_usd": 0.077,
  "located_pages": [
   44
  ],
@@ -37,10 +55,12 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 5850000,
- "step": "sonnet-text",
+ "step": "sonnet-images",
  "budget_period": "September 1, 2022 through August 30, 2023",
  "columns_printed": [
   "Unit #",
@@ -60,17 +80,20 @@
   "Estimated Total Monthly Carrying Taxes 9/1/2022 - 8/30/2023"
  ],
  "tax2": null,
- "sf2": "cellar (non-habitable)",
+ "sf2": "cellar (non-habitable sq.ft.)",
  "printed_totals": {
   "price": 5850000,
   "pct": 100,
   "cc_m": 1598.67,
   "tax_m": 1413.85,
   "int_sf": 3623.81,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Units 2, 3, and 4 have a single ext_sf figure printed per unit (Balcony only), used as ext_sf; Unit 1 has both storage and balcony separate from cellar, so storage/roof/balcony figures beyond the primary ones are listed in note per the two-separate-areas rule."
+  "int_sf taken as \"Square Footage of Unit - Main Floor\" (habitable); sf2 holds Cellar (non-habitable) figure per SF2 column, only present for Unit 1; ext_sf left blank since Storage, Balcony, Yard, Roof are separate limited common element figures (listed in note) rather than one combined outdoor figure; Total Square Footage of Unit column (combining main floor + all LCEs) not used for int_sf or ext_sf per instructions."
  ],
  "units": [
   {
@@ -79,7 +102,8 @@
    "floor": "Cellar and First Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 795.49,
    "sf2": 499.1,
    "ext_sf": null,
@@ -93,7 +117,8 @@
    "tax2_m": null,
    "carry_m": 903.76,
    "page": 44,
-   "note": "Storage 35.07 sf; Balcony 1050.00 sf"
+   "note": "storage 35.07; balcony -; yard 1050.00; roof -; total sf 2379.66",
+   "baths": 2.5
   },
   {
    "unit": "2",
@@ -101,10 +126,11 @@
    "floor": "Second Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 842.71,
    "sf2": null,
-   "ext_sf": 50,
+   "ext_sf": null,
    "price": 1200000,
    "pct": 22.5,
    "pct2": null,
@@ -115,7 +141,8 @@
    "tax2_m": null,
    "carry_m": 677.82,
    "page": 44,
-   "note": "Storage 30.08 sf"
+   "note": "storage 30.08; balcony 50.00; total sf 922.79",
+   "baths": 2
   },
   {
    "unit": "3",
@@ -123,10 +150,11 @@
    "floor": "Third Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 842.71,
    "sf2": null,
-   "ext_sf": 50,
+   "ext_sf": null,
    "price": 1200000,
    "pct": 22.5,
    "pct2": null,
@@ -137,7 +165,8 @@
    "tax2_m": null,
    "carry_m": 677.82,
    "page": 44,
-   "note": "Storage 30.08 sf"
+   "note": "storage 30.08; balcony 50.00; total sf 922.79",
+   "baths": 2
   },
   {
    "unit": "4",
@@ -145,10 +174,11 @@
    "floor": "Fourth Floor and Penthouse",
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1142.9,
    "sf2": null,
-   "ext_sf": 50,
+   "ext_sf": null,
    "price": 1600000,
    "pct": 25,
    "pct2": null,
@@ -159,7 +189,8 @@
    "tax2_m": null,
    "carry_m": 753.13,
    "page": 44,
-   "note": "Storage 30.08 sf; Roof 292.50 sf"
+   "note": "storage 30.08; balcony 50.00; roof 292.50; total sf 1515.48",
+   "baths": 2
   }
  ]
 }

@@ -3,63 +3,23 @@
  "steps": [
   {
    "step": "sonnet-text",
-   "verdict": "hold",
-   "units": 6,
-   "failed": [
-    "ag",
-    "printed",
-    "pct100",
-    "sqftTotal",
-    "monthlyTotals",
-    "allRowsParsed"
-   ]
-  },
-  {
-   "step": "sonnet-text-retry",
-   "verdict": "hold",
-   "units": 6,
-   "failed": [
-    "ag",
-    "printed",
-    "pct100",
-    "sqftTotal",
-    "monthlyTotals",
-    "allRowsParsed"
-   ]
-  },
-  {
-   "step": "sonnet-images",
    "verdict": "publish_ag",
    "units": 7,
    "failed": []
   }
  ],
- "calls": 3,
+ "calls": 1,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4249,
-   "output_tokens": 935,
-   "seconds": 12,
-   "cost_usd": 0.022601999999999997
-  },
-  {
-   "model": "sonnet",
-   "tokens": 4271,
-   "output_tokens": 953,
-   "seconds": 14,
-   "cost_usd": 0.022798
-  },
-  {
-   "model": "sonnet",
-   "tokens": 13494,
-   "output_tokens": 1173,
-   "seconds": 16,
-   "cost_usd": 0.0382706
+   "tokens": 5828,
+   "output_tokens": 1117,
+   "seconds": 13,
+   "cost_usd": 0.03001
   }
  ],
- "tokens": 22014,
- "api_equiv_usd": 0.084,
+ "tokens": 5828,
+ "api_equiv_usd": 0.03,
  "located_pages": [
   32
  ],
@@ -77,48 +37,56 @@
   "psf": null,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 12890000,
- "step": "sonnet-images",
+ "step": "sonnet-text",
  "budget_period": "October 1, 2026– September 30, 2027",
  "columns_printed": [
   "Unit No.",
   "Location",
   "Approximate Area (SF)",
-  "Approximate Limited Common Element Area (SF)",
+  "Limited Common Element Area (SF)",
   "No. of Bedrooms/Bathrooms",
   "Offering Price",
   "Percent Common Interest",
   "Projected Monthly Common Charges",
-  "Projected Post Construction Real Estate Taxes (Monthly)",
-  "Projected Post Construction Real Estate Taxes (Annual)",
-  "Projected Post Construction Monthly Carrying Charges"
+  "Projected Post Construction Monthly Common Charges (Annual)",
+  "Projected Post Construction Real Estate Taxes",
+  "Monthly Carrying Charges"
  ],
  "tax2": null,
- "sf2": "limited common element area (SF)",
+ "sf2": null,
  "printed_totals": {
   "price": 12890000,
   "pct": 100,
   "cc_m": 4287.79,
   "tax_m": null,
   "int_sf": 11133,
-  "ext_sf": null
+  "ext_sf": 1086,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Unit 1 has two location rows (Cellar 1235/158 and 1st Floor 1510/58); unclear which is the primary interior SF and which is the limited common element — transcribed Cellar line as int_sf/sf2 and noted 1st Floor figures in note.",
-  "Unit 6A has an extra \"Roof 135\" row with no clear column alignment; treated 470 as int_sf and 763 (roof terrace) as sf2, with Roof 135 noted separately.",
-  "Annual real estate tax total not printed in total row; left as - for tax_m total since not requested, and int_sf total matches printed 11133.",
+  "Unit 1 beds/baths printed as \"0/1.5\" labeled \"storage\" with separate \"1st Floor 1510 58 bathroom\" line; interpreted as beds 0, full_baths 1, half_baths 1, but the \"1510\" and \"58 bathroom\" line's relation to Unit 1's area/limited common element columns is unclear — int_sf taken as 1235, and 158 taken as limited common element area; the \"1510\"/\"58\" figures could not be confidently placed and are omitted.",
+  "For units 2–5, \"Limited Common Element Area (SF)\" column values (0, 32, 28, 32) placed in ext_sf per column meaning (balcony/roof), but column header does not explicitly restate \"balcony\"/\"roof terrace\" per row beyond inline text; treated inline descriptors as confirming ext_sf.",
+  "Unit 6A has an extra \"Roof 135\" line after its row; unclear if 135 sf is additional limited common element (roof) separate from the 763 balcony figure — not included in any column, noted here only.",
+  "pct2 column not present in table; PCT2 left blank for all rows.",
+  "Total row's full_baths/half_baths columns not printed as distinct totals; left as -.",
   "unit sizes left out: the area columns did not add up to the printed totals"
  ],
  "units": [
   {
    "unit": "1",
-   "type": "residential",
-   "floor": "Cellar/1st Floor",
+   "type": "storage",
+   "floor": "Cellar",
    "rooms": null,
-   "beds": 0,
-   "baths": 1.5,
+   "beds": null,
+   "full_baths": 0,
+   "half_baths": 1,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -132,7 +100,8 @@
    "tax2_m": null,
    "carry_m": 1970.66,
    "page": 32,
-   "note": "Unit has two locations: Cellar 1235 SF/158 SF storage and 1st Floor 1510 SF/58 SF bathroom; interior area unclear which figure is primary"
+   "note": "half bath per row note: 0/1.5 beds/baths printed for storage row",
+   "baths": 0.5
   },
   {
    "unit": "2",
@@ -140,7 +109,8 @@
    "floor": "2nd Floor",
    "rooms": null,
    "beds": 5,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -154,7 +124,8 @@
    "tax2_m": null,
    "carry_m": 1685.27,
    "page": 32,
-   "note": null
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "3",
@@ -162,7 +133,8 @@
    "floor": "3rd Floor",
    "rooms": null,
    "beds": 5,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -176,7 +148,8 @@
    "tax2_m": null,
    "carry_m": 1695.54,
    "page": 32,
-   "note": null
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "4",
@@ -184,7 +157,8 @@
    "floor": "4th Floor",
    "rooms": null,
    "beds": 5,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -198,7 +172,8 @@
    "tax2_m": null,
    "carry_m": 1732.67,
    "page": 32,
-   "note": null
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "5",
@@ -206,7 +181,8 @@
    "floor": "5th Floor",
    "rooms": null,
    "beds": 5,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -220,15 +196,17 @@
    "tax2_m": null,
    "carry_m": 1780.91,
    "page": 32,
-   "note": null
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "6A",
    "type": "residential",
-   "floor": "6th Floor/Roof",
+   "floor": "6th Floor",
    "rooms": null,
    "beds": 0,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -242,7 +220,8 @@
    "tax2_m": null,
    "carry_m": 1118.83,
    "page": 32,
-   "note": "Roof area 135 SF listed separately; 763 roof terrace listed as limited common element area"
+   "note": "roof terrace; Roof 135 sf listed separately",
+   "baths": 1
   },
   {
    "unit": "6B",
@@ -250,7 +229,8 @@
    "floor": "6th Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -264,7 +244,8 @@
    "tax2_m": null,
    "carry_m": 1019.93,
    "page": 32,
-   "note": null
+   "note": null,
+   "baths": 1
   }
  ]
 }

@@ -3,71 +3,47 @@
  "steps": [
   {
    "step": "sonnet-text",
-   "verdict": "not_found",
-   "units": 0,
-   "failed": [
-    "ag",
-    "printed",
-    "monthlyTotals",
-    "allRowsParsed"
-   ]
-  },
-  {
-   "step": "sonnet-images",
-   "verdict": "hold",
-   "units": 2,
-   "failed": [
-    "ag",
-    "printed",
-    "pct100",
-    "sqftTotal",
-    "monthlyTotals",
-    "psf",
-    "allRowsParsed"
-   ]
+   "verdict": "publish_ag",
+   "units": 3,
+   "failed": []
   }
  ],
- "calls": 2,
+ "calls": 1,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4297,
-   "output_tokens": 742,
-   "seconds": 8,
-   "cost_usd": 0.021636000000000002
-  },
-  {
-   "model": "sonnet",
-   "tokens": 13741,
-   "output_tokens": 948,
-   "seconds": 13,
-   "cost_usd": 0.0370118
+   "tokens": 5866,
+   "output_tokens": 805,
+   "seconds": 12,
+   "cost_usd": 0.028290000000000003
   }
  ],
- "tokens": 18038,
- "api_equiv_usd": 0.059,
+ "tokens": 5866,
+ "api_equiv_usd": 0.028,
  "located_pages": [
   37
  ],
  "text_layer": true,
  "found": true,
- "verdict": "hold",
+ "verdict": "publish_ag",
  "checks": {
-  "ag": false,
-  "printed": false,
-  "pct100": false,
-  "ccProportional": null,
+  "ag": true,
+  "printed": true,
+  "pct100": true,
+  "ccProportional": true,
   "carrying": true,
-  "sqftTotal": false,
-  "monthlyTotals": false,
-  "psf": false,
+  "sqftTotal": true,
+  "monthlyTotals": true,
+  "psf": true,
   "notPlaceholder": true,
-  "allRowsParsed": false,
+  "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
- "price_total": 4385000,
- "step": "sonnet-images",
- "budget_period": "JANUARY 1, 2025 THROUGH DECEMBER 31, 2025",
+ "price_total": 6885000,
+ "step": "sonnet-text",
+ "budget_period": "FROM JANUARY 1, 2025 THROUGH DECEMBER 31, 2025",
  "columns_printed": [
   "Unit",
   "Beds (1)",
@@ -83,31 +59,57 @@
   "Est. RE Taxes monthly/annually Second Year (6)",
   "Est. Carrying Costs monthly/annually First Year (7)"
  ],
- "tax2": "Est. RE Taxes monthly/annually Second Year",
- "sf2": "limited common element area",
+ "tax2": "second year",
+ "sf2": null,
  "printed_totals": {
   "price": 6885000,
   "pct": 100,
   "cc_m": 2330.17,
   "tax_m": 1226.83,
   "int_sf": 4622,
-  "ext_sf": null
+  "ext_sf": 1606,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "row with 21 cells dropped: U\t1\tR\tCellar/Floor 1\t-\t-\t2\t2.5\t2017\t757\t1690000\t2500000\t44.00\t-\t1025.27\t12303.28",
-  "Unit 1 price printed as 2,500,000.00 but totaled with Units 2 and 3 (1,735,000 + 2,650,000 = 4,385,000) plus Unit 1 does not equal the printed total of 6,885,000.00; transcribed Unit 1 price as printed (2500000) despite this discrepancy.",
-  "ext_sf left blank for all units: each unit's limited common elements consist of multiple separate areas (yard, terrace, deck, condenser, storage, balcony, skylights, etc.) rather than a single outdoor area figure, so per instructions these are not combined; individual areas not itemized in note field but can be found in COLS/text layer (Rear Yard 516, Terrace 184, Deck 50, Condenser 7 for Unit 1; Storage 40, Terrace 27, Condenser 7 for Unit 2; Storage 65, Balcony 36, Rear Terrace 581, Front Terrace 60, Skylights 26, Condenser 7 for Unit 3)."
+  "Unit 1 location printed across multiple lines (Cellar/Floor 1/Total); used \"Cellar\" as primary location. Unit totals for area (2017, 1086, 1519) appear to be sums of multi-level unit areas (e.g. Unit 1: Cellar 942 + Floor 1 1075 = 2017); used the \"Total\" interior figure since no single net figure is distinguished from gross. Ext_sf (Ltd Common Element total) used the printed \"Total\" line for each unit's limited common element area (757, 74, 775) rather than a single terrace figure, since multiple outdoor/other areas are combined under one Limited Common Element total per unit. Carrying costs columns: table has two RE Tax columns (First Year, Second Year) but only one Carrying Costs column (First Year); assumed tax_m/tax_a are First Year figures and tax2_m is Second Year; carry_m used as printed First Year carrying cost."
  ],
  "units": [
   {
+   "unit": "1",
+   "type": "residential",
+   "floor": null,
+   "rooms": null,
+   "beds": 2,
+   "full_baths": 2,
+   "half_baths": 1,
+   "int_sf": 2017,
+   "sf2": null,
+   "ext_sf": 757,
+   "price": 2500000,
+   "pct": 44,
+   "pct2": null,
+   "cc_m": 1025.27,
+   "cc_a": 12303.28,
+   "tax_m": 539.81,
+   "tax_a": 6477.68,
+   "tax2_m": 793.17,
+   "carry_m": 1565.08,
+   "page": 37,
+   "note": null,
+   "baths": 2.5
+  },
+  {
    "unit": "2",
    "type": "residential",
-   "floor": "Floor 2/Roof Plan",
+   "floor": null,
    "rooms": null,
-   "beds": null,
-   "baths": 2,
-   "int_sf": 2,
-   "sf2": 1086,
+   "beds": 2,
+   "full_baths": 2,
+   "half_baths": 0,
+   "int_sf": 1086,
+   "sf2": null,
    "ext_sf": 74,
    "price": 1735000,
    "pct": 19,
@@ -119,17 +121,19 @@
    "tax2_m": 342.51,
    "carry_m": 675.83,
    "page": 37,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3",
    "type": "residential",
-   "floor": "Floor 3/Penthouse",
+   "floor": null,
    "rooms": null,
-   "beds": null,
-   "baths": 3,
-   "int_sf": 2,
-   "sf2": 1519,
+   "beds": 3,
+   "full_baths": 2,
+   "half_baths": 0,
+   "int_sf": 1519,
+   "sf2": null,
    "ext_sf": 775,
    "price": 2650000,
    "pct": 37,
@@ -141,7 +145,8 @@
    "tax2_m": 666.99,
    "carry_m": 1316.09,
    "page": 37,
-   "note": null
+   "note": null,
+   "baths": 2
   }
  ]
 }

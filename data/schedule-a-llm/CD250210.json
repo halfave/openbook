@@ -14,14 +14,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 3863,
-   "output_tokens": 660,
+   "tokens": 5285,
+   "output_tokens": 691,
    "seconds": 10,
-   "cost_usd": 0.019407999999999998
+   "cost_usd": 0.025282
   }
  ],
- "tokens": 3863,
- "api_equiv_usd": 0.019,
+ "tokens": 5285,
+ "api_equiv_usd": 0.025,
  "located_pages": [
   46
  ],
@@ -39,6 +39,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 12000000,
@@ -46,33 +48,36 @@
  "budget_period": "APRIL 1, 2026 - MARCH 31, 2027",
  "columns_printed": [
   "Unit",
-  "Approximate Square Footage",
-  "Approximate Limited Common Element Square Footage*",
+  "Approximate Unit Square Footage",
+  "Approximate Limited Common Element Square Footage",
   "BR",
   "Bath",
   "Offering Price",
   "Percentage of Common Interest",
   "Estimated Monthly Common Charges",
-  "Estimated Monthly Common Charges Annually",
+  "Annually",
   "Estimated Real Estate Taxes Monthly",
-  "Estimated Real Estate Taxes Annually",
+  "Annually",
   "Total of Estimated Common Charges and Real Estate Taxes Monthly",
-  "Total of Estimated Common Charges and Real Estate Taxes Annually"
+  "Annually"
  ],
  "tax2": null,
- "sf2": "limited common element sf",
+ "sf2": "Limited Common Element Square Footage",
  "printed_totals": {
   "price": 12000000,
   "pct": 100,
   "cc_m": 3331.04,
   "tax_m": 4260.75,
   "int_sf": 5638,
-  "ext_sf": 918
+  "ext_sf": 918,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Unit 1's limited common element sf is a combined total (108 storage + 564 yard = 672); individual components listed in source but ext_sf left blank per rules since these are storage/yard, not a single terrace/balcony figure.",
-  "\"Bath\" column shows values like \"2/2\" and \"3/1\" which appear to be BR/Bath codes already split from a BR column also showing \"2\" and \"3\" — unclear if \"2/2\" means 2 bed/2 bath or something else; used BR column value for beds and left baths empty, placing raw code in note was considered but BR seems reliable so beds filled, baths left as given value only in rooms-less context — actually baths unclear, see note.",
-  "Could not clearly determine separate monthly/annual tax2 column; only one tax scenario appears printed."
+  "Unit 1 Bath column prints \"2/2\" (interpreted as 2 full, 0 half per single-bath-figure rule applied to each side; \"2/2\" format under BR/Bath header is unusual—read as BR 2, Bath 2, giving full_baths 2, half_baths 0, but the raw cell literally reads \"2/2\"); flagging for review.",
+  "Unit 2 Bath column prints \"3/1\" (interpreted as BR 3, Bath... but header already separates BR and Bath columns, so \"3/1\" under Bath alone is ambiguous; read as 3 full, 1 half per combined bath convention).",
+  "Unit 1 Limited Common Element Square Footage is a combination \"108 (Storage), 564 (Yard); Total: 672\" — sf2 given as total 672; individual components (108 storage, 564 yard) not separately placed; ext_sf left as - since this is a limited common element total, not a single ext_sf figure, and components noted here."
  ],
  "units": [
   {
@@ -81,7 +86,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": null,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 2772,
    "sf2": 672,
    "ext_sf": null,
@@ -95,7 +101,8 @@
    "tax2_m": null,
    "carry_m": 3803.98,
    "page": 46,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "2",
@@ -103,7 +110,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": null,
+   "full_baths": 3,
+   "half_baths": 1,
    "int_sf": 2866,
    "sf2": 246,
    "ext_sf": null,
@@ -117,7 +125,8 @@
    "tax2_m": null,
    "carry_m": 3787.81,
    "page": 46,
-   "note": null
+   "note": null,
+   "baths": 3.5
   }
  ]
 }

@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4393,
-   "output_tokens": 520,
-   "seconds": 7,
-   "cost_usd": 0.020687999999999998
+   "tokens": 5950,
+   "output_tokens": 577,
+   "seconds": 6,
+   "cost_usd": 0.027258
   }
  ],
- "tokens": 4393,
- "api_equiv_usd": 0.021,
+ "tokens": 5950,
+ "api_equiv_usd": 0.027,
  "located_pages": [
   38
  ],
@@ -37,6 +37,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 4370000,
@@ -66,10 +68,13 @@
   "cc_m": 1822.14,
   "tax_m": 2364.58,
   "int_sf": 3762,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Limited Common Element square feet column (752.00/246.00/787.00) not included as it has no designated cell in the schema; ext_sf left - because multiple separate limited common areas are listed in notes rather than a single printed figure."
+  "Unit column header is \"Unit No.\" with values 1, 2, 3 (no letter suffixes); Limited Common Element square feet column (752.00/246.00/787.00) was not requested and omitted; ext_sf not printed as a single figure per unit (multiple separate areas listed in Limited common areas note) so left blank with details in plan text, not in note field per-unit."
  ],
  "units": [
   {
@@ -78,7 +83,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 1.5,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": 940,
    "sf2": 464,
    "ext_sf": null,
@@ -92,7 +98,8 @@
    "tax2_m": null,
    "carry_m": 1559.26,
    "page": 38,
-   "note": null
+   "note": null,
+   "baths": 1.5
   },
   {
    "unit": "2",
@@ -100,7 +107,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 958,
    "sf2": 0,
    "ext_sf": null,
@@ -114,7 +122,8 @@
    "tax2_m": null,
    "carry_m": 710.21,
    "page": 38,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3",
@@ -122,7 +131,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": 0,
    "int_sf": 1864,
    "sf2": 0,
    "ext_sf": null,
@@ -136,7 +146,8 @@
    "tax2_m": null,
    "carry_m": 1917.25,
    "page": 38,
-   "note": null
+   "note": null,
+   "baths": 3
   }
  ]
 }

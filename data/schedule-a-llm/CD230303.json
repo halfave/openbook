@@ -3,41 +3,23 @@
  "steps": [
   {
    "step": "sonnet-text",
-   "verdict": "not_found",
-   "units": 0,
-   "failed": [
-    "ag",
-    "printed",
-    "monthlyTotals",
-    "allRowsParsed"
-   ]
-  },
-  {
-   "step": "sonnet-images",
    "verdict": "publish_ag",
    "units": 3,
    "failed": []
   }
  ],
- "calls": 2,
+ "calls": 1,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4227,
-   "output_tokens": 787,
-   "seconds": 12,
-   "cost_usd": 0.021626
-  },
-  {
-   "model": "sonnet",
-   "tokens": 13466,
-   "output_tokens": 893,
-   "seconds": 14,
-   "cost_usd": 0.0359998
+   "tokens": 5955,
+   "output_tokens": 1008,
+   "seconds": 70,
+   "cost_usd": 0.029864
   }
  ],
- "tokens": 17693,
- "api_equiv_usd": 0.058,
+ "tokens": 5955,
+ "api_equiv_usd": 0.03,
  "located_pages": [
   45
  ],
@@ -49,16 +31,18 @@
   "printed": true,
   "pct100": true,
   "ccProportional": true,
-  "carrying": true,
+  "carrying": null,
   "sqftTotal": true,
   "monthlyTotals": true,
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 7100000,
- "step": "sonnet-images",
+ "step": "sonnet-text",
  "budget_period": "January 1, 2025 through December 31, 2025",
  "columns_printed": [
   "Unit #",
@@ -79,17 +63,22 @@
   "Estimated Total Monthly Carrying Taxes 1/1/2025-12/31/2025"
  ],
  "tax2": null,
- "sf2": "accessory space - cellar floor",
+ "sf2": "cellar/penthouse/yard/areaway accessory space",
  "printed_totals": {
   "price": 7100000,
   "pct": 100,
   "cc_m": 2109.83,
   "tax_m": 2191.67,
   "int_sf": 3448,
-  "ext_sf": null
+  "ext_sf": 751,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Unit 1 row: \"penthouse 546 sf, yard 546 sf\" — the 546 figure appears under the Yard column per the header alignment, but visually seems placed under the Penthouse column in the row; transcribed per column header position (Yard=546). Several units have area spread across multiple limited common element columns (yard, areaway, balcony, roof) not capturable in single ext_sf field, so listed in note instead."
+  "Unit column has no explicit letter suffixes; labels are plain numbers \"1\",\"2\",\"3\" as printed.",
+  "SF2 column holds multiple non-habitable/accessory area figures (cellar, penthouse, yard, areaway, balcony, roof) rather than a single value; only total sf is placed in int_sf (Main Floor habitable), with ext_sf left blank since several separate areas are printed (listed in SF2/note instead). Balcony and Roof figures for unit 3 (50, 751) could not be cleanly assigned to a single ext_sf field.",
+  "Table's \"Projected Monthly\" and \"Projected Annual\" real estate tax columns appear reversed in sequence from typical layout (monthly value listed before a larger figure then annual) - transcribed as printed with monthly=810.92/657.50/723.25 and annual=9731.00/7890.00/8679.00 per row, matching header order where monthly column precedes annual in source text but values suggest monthly listed after annual in raw text; printed exactly as given with tax_m before the annual figure swapped per actual number magnitude."
  ],
  "units": [
   {
@@ -98,21 +87,23 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1120,
-   "sf2": 1103,
+   "sf2": null,
    "ext_sf": null,
    "price": 2700000,
    "pct": 37,
    "pct2": null,
    "cc_m": 780.64,
-   "cc_a": null,
+   "cc_a": 9731,
    "tax_m": 810.92,
-   "tax_a": 9731,
-   "tax2_m": null,
-   "carry_m": 1591.56,
+   "tax_a": null,
+   "tax2_m": 1591.56,
+   "carry_m": null,
    "page": 45,
-   "note": "penthouse 546 sf, yard 546 sf, areaway 54 sf"
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "2",
@@ -120,7 +111,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1076,
    "sf2": null,
    "ext_sf": null,
@@ -128,13 +120,14 @@
    "pct": 30,
    "pct2": null,
    "cc_m": 632.95,
-   "cc_a": null,
+   "cc_a": 7890,
    "tax_m": 657.5,
-   "tax_a": 7890,
-   "tax2_m": null,
-   "carry_m": 1290.45,
+   "tax_a": null,
+   "tax2_m": 1290.45,
+   "carry_m": null,
    "page": 45,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3",
@@ -142,7 +135,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": 0,
    "int_sf": 1252,
    "sf2": null,
    "ext_sf": null,
@@ -150,13 +144,14 @@
    "pct": 33,
    "pct2": null,
    "cc_m": 696.25,
-   "cc_a": null,
+   "cc_a": 8679,
    "tax_m": 723.25,
-   "tax_a": 8679,
-   "tax2_m": null,
-   "carry_m": 1419.5,
+   "tax_a": null,
+   "tax2_m": 1419.5,
+   "carry_m": null,
    "page": 45,
-   "note": "penthouse 364 sf, balcony 50 sf, roof 751 sf"
+   "note": null,
+   "baths": 3
   }
  ]
 }

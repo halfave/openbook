@@ -14,14 +14,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 14674,
-   "output_tokens": 1031,
-   "seconds": 15,
-   "cost_usd": 0.039626800000000004
+   "tokens": 27586,
+   "output_tokens": 1168,
+   "seconds": 90,
+   "cost_usd": 0.0492858
   }
  ],
- "tokens": 14674,
- "api_equiv_usd": 0.04,
+ "tokens": 27586,
+ "api_equiv_usd": 0.049,
  "located_pages": [
   45
  ],
@@ -39,25 +39,27 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 148239800,
  "step": "sonnet-images",
  "budget_period": "January 1, 2020 to December 31, 2020",
  "columns_printed": [
-  "Unit",
-  "BR",
-  "Baths, 1/2 Baths",
-  "INTERIOR SF",
-  "EXTERIOR SF",
-  "Offering Price",
-  "% Common Interest",
-  "Estimated Monthly Common Charges",
-  "Estimated Monthly RE Tax",
-  "Estimated Total Monthly Carrying Costs",
-  "Estimated Yearly Common Charges",
-  "Estimated Yearly RE Tax",
-  "Estimated Total Yearly Carrying Costs"
+  "(1) Unit",
+  "(1) BR",
+  "(1) Baths, 1/2 Baths",
+  "(2) INTERIOR SF",
+  "(2) EXTERIOR SF",
+  "(3) Offering Price",
+  "(4) % Common Interest",
+  "(5) Estimated Monthly Common Charges",
+  "(6) Estimated Monthly RE Tax",
+  "(7) Estimated Total Monthly Carrying Costs",
+  "(5) Estimated Yearly Common Charges",
+  "(6) Estimated Yearly RE Tax",
+  "(7) Estimated Total Yearly Carrying Costs"
  ],
  "tax2": null,
  "sf2": null,
@@ -67,10 +69,13 @@
   "cc_m": 33170,
   "tax_m": 50500,
   "int_sf": 46373,
-  "ext_sf": 5560
+  "ext_sf": 5560,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "BR column and \"Baths, 1/2 Baths\" column combined into beds/baths (e.g., \"4 BR\" + \"4 FULL, 2 HALF\" = 4/2); half baths shown as whole-number count in note form, not decimal, per source format \"X FULL, Y HALF\"."
+  "TAX2 and SF2 are empty; the table has no separate \"without abatement\" tax column or second square-footage column. Baths, 1/2 Baths column is combined (\"4 FULL, 2 HALF\" etc.); split into full_baths/half_baths as shown. BR column gives bedroom count per unit (townhouses and PH units may include non-bedroom rooms not broken out separately). Unit column uses descriptive labels (\"Townhouse East\", \"Townhouse West\", \"PH E\", \"PH W\") as printed rather than numeric IDs."
  ],
  "units": [
   {
@@ -79,7 +84,8 @@
    "floor": null,
    "rooms": null,
    "beds": 4,
-   "baths": null,
+   "full_baths": 4,
+   "half_baths": 2,
    "int_sf": 6073,
    "sf2": null,
    "ext_sf": 944,
@@ -93,7 +99,8 @@
    "tax2_m": null,
    "carry_m": 6902.76,
    "page": 45,
-   "note": null
+   "note": null,
+   "baths": 5
   },
   {
    "unit": "Townhouse West",
@@ -101,7 +108,8 @@
    "floor": null,
    "rooms": null,
    "beds": 4,
-   "baths": null,
+   "full_baths": 5,
+   "half_baths": 2,
    "int_sf": 7977,
    "sf2": null,
    "ext_sf": 1018,
@@ -115,7 +123,8 @@
    "tax2_m": null,
    "carry_m": 7321.11,
    "page": 45,
-   "note": null
+   "note": null,
+   "baths": 6
   },
   {
    "unit": "3E",
@@ -123,7 +132,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": null,
+   "full_baths": 3,
+   "half_baths": 1,
    "int_sf": 3000,
    "sf2": null,
    "ext_sf": 50,
@@ -137,7 +147,8 @@
    "tax2_m": null,
    "carry_m": 6693.59,
    "page": 45,
-   "note": null
+   "note": null,
+   "baths": 3.5
   },
   {
    "unit": "3W",
@@ -145,7 +156,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": null,
+   "full_baths": 3,
+   "half_baths": 1,
    "int_sf": 2892,
    "sf2": null,
    "ext_sf": 48,
@@ -159,7 +171,8 @@
    "tax2_m": null,
    "carry_m": 6902.76,
    "page": 45,
-   "note": null
+   "note": null,
+   "baths": 3.5
   },
   {
    "unit": "4E",
@@ -167,7 +180,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": null,
+   "full_baths": 3,
+   "half_baths": 1,
    "int_sf": 3000,
    "sf2": null,
    "ext_sf": 50,
@@ -181,7 +195,8 @@
    "tax2_m": null,
    "carry_m": 6902.76,
    "page": 45,
-   "note": null
+   "note": null,
+   "baths": 3.5
   },
   {
    "unit": "4W",
@@ -189,7 +204,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": null,
+   "full_baths": 3,
+   "half_baths": 1,
    "int_sf": 2892,
    "sf2": null,
    "ext_sf": 44,
@@ -203,7 +219,8 @@
    "tax2_m": null,
    "carry_m": 7111.94,
    "page": 45,
-   "note": null
+   "note": null,
+   "baths": 3.5
   },
   {
    "unit": "5E",
@@ -211,7 +228,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": null,
+   "full_baths": 3,
+   "half_baths": 1,
    "int_sf": 3000,
    "sf2": null,
    "ext_sf": 50,
@@ -225,7 +243,8 @@
    "tax2_m": null,
    "carry_m": 7111.94,
    "page": 45,
-   "note": null
+   "note": null,
+   "baths": 3.5
   },
   {
    "unit": "5W",
@@ -233,7 +252,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": null,
+   "full_baths": 3,
+   "half_baths": 1,
    "int_sf": 2892,
    "sf2": null,
    "ext_sf": 44,
@@ -247,7 +267,8 @@
    "tax2_m": null,
    "carry_m": 7321.11,
    "page": 45,
-   "note": null
+   "note": null,
+   "baths": 3.5
   },
   {
    "unit": "PH E",
@@ -255,7 +276,8 @@
    "floor": null,
    "rooms": null,
    "beds": 6,
-   "baths": null,
+   "full_baths": 6,
+   "half_baths": 2,
    "int_sf": 7475,
    "sf2": null,
    "ext_sf": 1693,
@@ -269,7 +291,8 @@
    "tax2_m": null,
    "carry_m": 13596.35,
    "page": 45,
-   "note": null
+   "note": null,
+   "baths": 7
   },
   {
    "unit": "PH W",
@@ -277,7 +300,8 @@
    "floor": null,
    "rooms": null,
    "beds": 6,
-   "baths": null,
+   "full_baths": 6,
+   "half_baths": 2,
    "int_sf": 7172,
    "sf2": null,
    "ext_sf": 1619,
@@ -291,7 +315,8 @@
    "tax2_m": null,
    "carry_m": 13805.52,
    "page": 45,
-   "note": null
+   "note": null,
+   "baths": 7
   }
  ]
 }

@@ -2,47 +2,28 @@
  "plan_id": "CD160009",
  "steps": [
   {
-   "step": "sonnet-images",
+   "step": "sonnet-text",
    "verdict": "publish_ag",
    "units": 5,
    "failed": []
   }
  ],
- "calls": 4,
+ "calls": 1,
  "call_log": [
   {
-   "model": "haiku",
-   "tokens": 12613,
-   "output_tokens": 619,
-   "seconds": 10,
-   "cost_usd": 0.024649
-  },
-  {
-   "model": "haiku",
-   "tokens": 5009,
-   "output_tokens": 97,
-   "seconds": 4,
-   "cost_usd": 0.005397000000000001
-  },
-  {
-   "model": "haiku",
-   "tokens": 8766,
-   "output_tokens": 554,
-   "seconds": 8,
-   "cost_usd": 0.016769
-  },
-  {
    "model": "sonnet",
-   "tokens": 11774,
-   "output_tokens": 1039,
-   "seconds": 11,
-   "cost_usd": 0.033600000000000005
+   "tokens": 6078,
+   "output_tokens": 1070,
+   "seconds": 16,
+   "cost_usd": 0.030728
   }
  ],
- "tokens": 38162,
- "api_equiv_usd": 0.08,
- "located_pages": [],
- "text_layer": false,
+ "tokens": 6078,
+ "api_equiv_usd": 0.031,
+ "located_pages": [
+  35
+ ],
+ "text_layer": true,
  "found": true,
  "verdict": "publish_ag",
  "checks": {
@@ -56,11 +37,13 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 18630000,
- "step": "sonnet-images",
- "budget_period": "First Year January 1, 2017 through December 31, 2017",
+ "step": "sonnet-text",
+ "budget_period": "January 1, 2017 through December 31, 2017",
  "columns_printed": [
   "UNIT NUMBER",
   "BR",
@@ -69,26 +52,33 @@
   "OUTDOOR AREA",
   "STORAGE AREA",
   "PURCHASE PRICE",
-  "CONDOMINIUM COMMON INTEREST (%)",
+  "CONDOMINIUM INTEREST (%)",
   "PROJECTED MONTHLY COMMON CHARGES",
   "PROJECTED ANNUAL COMMON CHARGES",
   "PROJECTED MONTHLY REAL ESTATE TAXES",
   "PROJECTED ANNUAL REAL ESTATE TAXES",
-  "TOTAL MONTHLY PROJECTED CARRYING CHARGES",
-  "TOTAL ANNUAL PROJECTED CARRYING CHARGES"
+  "TOTAL MONTHLY CARRYING CHARGES",
+  "TOTAL ANNUAL CARRYING CHARGES"
  ],
  "tax2": null,
- "sf2": null,
+ "sf2": "outdoor area",
  "printed_totals": {
   "price": 18630000,
   "pct": 100,
   "cc_m": 10879.86,
   "tax_m": 3312.39,
   "int_sf": 9366.11,
-  "ext_sf": 2166.93
+  "ext_sf": 2166.93,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Outdoor Area for units 1 and 5 printed as two separate figures (RY/RT or B/RT) on separate lines; summed into ext_sf since no single combined figure was printed, with components noted. Storage Area column present but not in the specified 20-cell schema, so its values (noted per unit) are not placed in int_sf/sf2 since they are not interior/gross sf."
+  "Unit numbers for rows 2-5 are not legibly printed (OCR shows garbled text like \"Zune\", \"Sapo\", \"Fruplex\"); sequential numbering 2-5 assumed from context.",
+  "Row 1 bath figure \"3.5\" interpreted as 3 full, 1 half per rules.",
+  "Row 5 \"BS\" and floor area baths figure unclear; printed as \"3-25\" possibly meaning 3 beds, baths unclear - left as 3/0.",
+  "Storage area column (103.97 total) could not be reliably assigned to individual rows due to OCR corruption; left blank except where legible (94.10 repeated, 598.77/412.26 for unit 1).",
+  "outdoor space left out: its column did not add up to the printed total"
  ],
  "units": [
   {
@@ -97,10 +87,11 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3.5,
+   "full_baths": 3,
+   "half_baths": 1,
    "int_sf": 3585.95,
-   "sf2": null,
-   "ext_sf": 1011.03,
+   "sf2": 412.26,
+   "ext_sf": null,
    "price": 5995000,
    "pct": 32.688,
    "pct2": null,
@@ -111,18 +102,20 @@
    "tax2_m": null,
    "carry_m": 4639.16,
    "page": 35,
-   "note": "Maisonette Unit; Outdoor Area 598.77 RY + 412.26 RT = 1011.03"
+   "note": "Maisonette Unit; outdoor area RY+RT (598.77+412.26); baths 3.5=3 full,1 half",
+   "baths": 3.5
   },
   {
    "unit": "2",
    "type": "residential",
-   "floor": "3rd",
+   "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1313.12,
    "sf2": null,
-   "ext_sf": 94.1,
+   "ext_sf": null,
    "price": 2495000,
    "pct": 13.086,
    "pct2": null,
@@ -133,18 +126,20 @@
    "tax2_m": null,
    "carry_m": 1857.2,
    "page": 35,
-   "note": "Two Bedroom Unit - 3rd Floor; Storage Area 26.17 B"
+   "note": "One Bedroom Unit; outdoor area 26.17 (B)",
+   "baths": 2
   },
   {
    "unit": "3",
    "type": "residential",
-   "floor": "4th",
+   "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1313.12,
    "sf2": null,
-   "ext_sf": 94.1,
+   "ext_sf": null,
    "price": 2550000,
    "pct": 13.359,
    "pct2": null,
@@ -155,18 +150,20 @@
    "tax2_m": null,
    "carry_m": 1895.94,
    "page": 35,
-   "note": "Two Bedroom Unit - 4th Floor; Storage Area 24.34 B"
+   "note": "Two Bedroom Unit (label unclear, OCR \"Zune\"); outdoor area 24.34 (B)",
+   "baths": 2
   },
   {
    "unit": "4",
    "type": "residential",
-   "floor": "5th",
+   "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1313.12,
    "sf2": null,
-   "ext_sf": 94.1,
+   "ext_sf": null,
    "price": 2595000,
    "pct": 13.631,
    "pct2": null,
@@ -177,7 +174,8 @@
    "tax2_m": null,
    "carry_m": 1934.55,
    "page": 35,
-   "note": "Two Bedroom Unit - 5th Floor; Storage Area 26.32 B"
+   "note": "Three Bedroom Unit (label unclear, OCR \"Sapo\"); outdoor area 26.38 (B)",
+   "baths": 2
   },
   {
    "unit": "5",
@@ -185,10 +183,11 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2.5,
+   "full_baths": 3,
+   "half_baths": 0,
    "int_sf": 1840.8,
-   "sf2": null,
-   "ext_sf": 873.6,
+   "sf2": 779.5,
+   "ext_sf": null,
    "price": 4995000,
    "pct": 27.236,
    "pct2": null,
@@ -199,7 +198,8 @@
    "tax2_m": null,
    "carry_m": 3865.4,
    "page": 35,
-   "note": "Duplex Penthouse Unit; Outdoor Area 94.10 B + 779.50 RT = 873.60; Storage Area 27.14 B"
+   "note": "Duplex Penthouse; baths \"25\" unclear, outdoor area 27.14+779.50 (B+RT)",
+   "baths": 3
   }
  ]
 }

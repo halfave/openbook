@@ -12,35 +12,35 @@
  "call_log": [
   {
    "model": "haiku",
-   "tokens": 12588,
+   "tokens": 12812,
    "output_tokens": 573,
-   "seconds": 9,
-   "cost_usd": 0.024498
+   "seconds": 7,
+   "cost_usd": 0.024834000000000002
   },
   {
    "model": "haiku",
-   "tokens": 4939,
+   "tokens": 5175,
    "output_tokens": 97,
-   "seconds": 6,
-   "cost_usd": 0.005327
+   "seconds": 3,
+   "cost_usd": 0.005563
   },
   {
    "model": "haiku",
-   "tokens": 8700,
-   "output_tokens": 554,
-   "seconds": 9,
-   "cost_usd": 0.016669999999999997
+   "tokens": 8946,
+   "output_tokens": 571,
+   "seconds": 6,
+   "cost_usd": 0.017107
   },
   {
    "model": "sonnet",
-   "tokens": 11309,
-   "output_tokens": 688,
-   "seconds": 12,
-   "cost_usd": 0.0298506
+   "tokens": 19739,
+   "output_tokens": 719,
+   "seconds": 80,
+   "cost_usd": 0.0375668
   }
  ],
- "tokens": 37536,
- "api_equiv_usd": 0.076,
+ "tokens": 46672,
+ "api_equiv_usd": 0.085,
  "located_pages": [],
  "text_layer": true,
  "found": true,
@@ -56,6 +56,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 10950000,
@@ -76,17 +78,21 @@
   "Annual Carrying Charges (10)"
  ],
  "tax2": null,
- "sf2": "other sq ftg",
+ "sf2": "Other Sq. Ftg.",
  "printed_totals": {
   "price": 10950000,
   "pct": 100,
   "cc_m": 1850,
   "tax_m": 2650.45,
   "int_sf": null,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "ext_sf not separately printed; \"Other Sq. Ftg.\" column placed in sf2 per Notes 1, which describes shared yard/terrace/roof deck areas for each unit (740, 740, 204+223, 263) but the table only prints one combined \"Other Sq. Ftg.\" figure per unit, so these were not split into int_sf/ext_sf."
+  "Bdms/Bths column prints \"3/2.5\" for each unit, parsed as 3 beds, 2 full baths, 1 half bath per rules for X.5 notation.",
+  "Habitable Sq. Ftg. footnoted with * for units 1 and 2, which includes a non-habitable storage room of ~104 sf per notes; copied as printed."
  ],
  "units": [
   {
@@ -95,7 +101,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1694,
    "sf2": 740,
    "ext_sf": null,
@@ -109,7 +116,8 @@
    "tax2_m": null,
    "carry_m": 1137.66,
    "page": 27,
-   "note": null
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "2",
@@ -117,7 +125,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1709,
    "sf2": 740,
    "ext_sf": null,
@@ -131,7 +140,8 @@
    "tax2_m": null,
    "carry_m": 1146.74,
    "page": 27,
-   "note": null
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "3",
@@ -139,7 +149,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1675,
    "sf2": 427,
    "ext_sf": null,
@@ -153,7 +164,8 @@
    "tax2_m": null,
    "carry_m": 1079.12,
    "page": 27,
-   "note": null
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "4",
@@ -161,7 +173,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1812,
    "sf2": 263,
    "ext_sf": null,
@@ -175,7 +188,8 @@
    "tax2_m": null,
    "carry_m": 1136.9,
    "page": 27,
-   "note": null
+   "note": null,
+   "baths": 2.5
   }
  ]
 }

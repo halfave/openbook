@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4109,
-   "output_tokens": 681,
-   "seconds": 7,
-   "cost_usd": 0.020517999999999998
+   "tokens": 5550,
+   "output_tokens": 620,
+   "seconds": 9,
+   "cost_usd": 0.025916
   }
  ],
- "tokens": 4109,
- "api_equiv_usd": 0.021,
+ "tokens": 5550,
+ "api_equiv_usd": 0.026,
  "located_pages": [
   33
  ],
@@ -32,11 +32,13 @@
   "pct100": true,
   "ccProportional": true,
   "carrying": true,
-  "sqftTotal": null,
+  "sqftTotal": true,
   "monthlyTotals": true,
-  "psf": null,
+  "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 6360000,
@@ -44,14 +46,14 @@
  "budget_period": "FROM JANUARY 1, 2022 TO DECEMBER 31, 2022",
  "columns_printed": [
   "Unit (Use) Location",
-  "Bedrooms/Baths (1)",
-  "Approx. area sq. ft. (2)",
-  "Approx. Ltd. Common Element sq. ft. (8)",
-  "Offering Price (3)",
-  "Common Interest (4)",
-  "Est. Common Charges monthly/annually (5)",
-  "Est. Real Estate Taxes monthly/annually (6)",
-  "Est. monthly carrying cost (7)"
+  "Bedrooms/Baths",
+  "Approx. area sq. ft.",
+  "Approx. Ltd. Common Element sq. ft.",
+  "Offering Price",
+  "Common Interest",
+  "Est. Common Charges monthly/annually",
+  "Est. Real Estate Taxes monthly/annually",
+  "Est. monthly carrying cost"
  ],
  "tax2": null,
  "sf2": "Approx. Ltd. Common Element sq. ft.",
@@ -61,11 +63,13 @@
   "cc_m": 2693.42,
   "tax_m": 2094.33,
   "int_sf": 5289,
-  "ext_sf": 2344
+  "ext_sf": 2344,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Total row's int_sf/ext_sf/sf2 columns appear to be a single combined total (5,289) for area and (2,344) for Ltd. Common Element; mapped 5289 to int_sf and 2344 to sf2 per column order, ext_sf left blank as no separate ext_sf column exists in this table.",
-  "unit sizes left out: the area columns did not add up to the printed totals"
+  "Common charges column is headed \"monthly/annually\" with both figures printed per row; assigned first figure to cc_m/tax_m and second to cc_a/tax_a based on magnitude."
  ],
  "units": [
   {
@@ -74,9 +78,10 @@
    "floor": "Cellar, 1st Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 1.5,
-   "int_sf": null,
-   "sf2": null,
+   "full_baths": 1,
+   "half_baths": 1,
+   "int_sf": 1938,
+   "sf2": 926,
    "ext_sf": null,
    "price": 2125000,
    "pct": 33.5,
@@ -88,7 +93,8 @@
    "tax2_m": null,
    "carry_m": 1603.9,
    "page": 33,
-   "note": null
+   "note": null,
+   "baths": 1.5
   },
   {
    "unit": "2",
@@ -96,9 +102,10 @@
    "floor": "2nd Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
-   "int_sf": null,
-   "sf2": null,
+   "full_baths": 2,
+   "half_baths": 0,
+   "int_sf": 1043,
+   "sf2": 397,
    "ext_sf": null,
    "price": 1450000,
    "pct": 23,
@@ -110,7 +117,8 @@
    "tax2_m": null,
    "carry_m": 1101.18,
    "page": 33,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3",
@@ -118,9 +126,10 @@
    "floor": "3rd Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
-   "int_sf": null,
-   "sf2": null,
+   "full_baths": 2,
+   "half_baths": 0,
+   "int_sf": 1053,
+   "sf2": 450,
    "ext_sf": null,
    "price": 1295000,
    "pct": 20,
@@ -132,7 +141,8 @@
    "tax2_m": null,
    "carry_m": 957.55,
    "page": 33,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "PH",
@@ -140,9 +150,10 @@
    "floor": "4th Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
-   "int_sf": null,
-   "sf2": null,
+   "full_baths": 2,
+   "half_baths": 0,
+   "int_sf": 1053,
+   "sf2": 571,
    "ext_sf": null,
    "price": 1395000,
    "pct": 22,
@@ -154,7 +165,8 @@
    "tax2_m": null,
    "carry_m": 1053.31,
    "page": 33,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "P1",
@@ -162,9 +174,10 @@
    "floor": "1st Floor",
    "rooms": null,
    "beds": null,
-   "baths": null,
-   "int_sf": null,
-   "sf2": null,
+   "full_baths": null,
+   "half_baths": null,
+   "int_sf": 202,
+   "sf2": 0,
    "ext_sf": null,
    "price": 95000,
    "pct": 1.5,
@@ -176,7 +189,8 @@
    "tax2_m": null,
    "carry_m": 71.82,
    "page": 33,
-   "note": "N/A beds/baths"
+   "note": null,
+   "baths": null
   }
  ]
 }

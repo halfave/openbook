@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 3478,
-   "output_tokens": 475,
+   "tokens": 4999,
+   "output_tokens": 486,
    "seconds": 7,
-   "cost_usd": 0.016758000000000002
+   "cost_usd": 0.022908
   }
  ],
- "tokens": 3478,
- "api_equiv_usd": 0.017,
+ "tokens": 4999,
+ "api_equiv_usd": 0.023,
  "located_pages": [
   12
  ],
@@ -32,11 +32,13 @@
   "pct100": true,
   "ccProportional": true,
   "carrying": true,
-  "sqftTotal": null,
+  "sqftTotal": true,
   "monthlyTotals": true,
-  "psf": null,
+  "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 3096000,
@@ -44,8 +46,8 @@
  "budget_period": "July 1, 2004 through June 30, 2005",
  "columns_printed": [
   "Unit #",
-  "Bedrooms/Bathrooms",
-  "Area in (NSF)",
+  "Number of Bedrooms/Bathrooms",
+  "Area in Unit (NSF)",
   "Offering Price",
   "% Interest Common Elements",
   "Estimated Monthly Common Charges",
@@ -60,12 +62,14 @@
   "cc_m": 1131.09,
   "tax_m": 744.17,
   "int_sf": 5907,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Unit 3 interior square footage is illegible in the OCR (\"Lp ST,\") and could not be transcribed.",
-  "Unit 3 pct printed as \"23.3118\" — likely OCR error for 23.311%; transcribed as 23.311.",
-  "unit sizes left out: the area columns did not add up to the printed totals"
+  "Unit 3 interior square feet printed as \"Lp ST,\" (OCR garble); used 1377 as best guess reading but value is uncertain.",
+  "Row for unit 1 unit number printed as \"uf\" (OCR garble); transcribed as 1 based on sequence."
  ],
  "units": [
   {
@@ -74,8 +78,9 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
-   "int_sf": null,
+   "full_baths": 2,
+   "half_baths": null,
+   "int_sf": 1577,
    "sf2": null,
    "ext_sf": null,
    "price": 799000,
@@ -88,7 +93,8 @@
    "tax2_m": null,
    "carry_m": 500.64,
    "page": 12,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "2",
@@ -96,8 +102,9 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
-   "int_sf": null,
+   "full_baths": 2,
+   "half_baths": null,
+   "int_sf": 1569,
    "sf2": null,
    "ext_sf": null,
    "price": 839000,
@@ -110,7 +117,8 @@
    "tax2_m": null,
    "carry_m": 498.11,
    "page": 12,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3",
@@ -118,8 +126,9 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
-   "int_sf": null,
+   "full_baths": 2,
+   "half_baths": null,
+   "int_sf": 1377,
    "sf2": null,
    "ext_sf": null,
    "price": 739000,
@@ -132,7 +141,8 @@
    "tax2_m": null,
    "carry_m": 437.14,
    "page": 12,
-   "note": "int_sf unclear (OCR unreadable)"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "4",
@@ -140,8 +150,9 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 1.5,
-   "int_sf": null,
+   "full_baths": 1,
+   "half_baths": 1,
+   "int_sf": 1384,
    "sf2": null,
    "ext_sf": null,
    "price": 719000,
@@ -154,7 +165,8 @@
    "tax2_m": null,
    "carry_m": 439.37,
    "page": 12,
-   "note": null
+   "note": null,
+   "baths": 1.5
   }
  ]
 }

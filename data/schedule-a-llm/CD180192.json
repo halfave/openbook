@@ -12,35 +12,35 @@
  "call_log": [
   {
    "model": "haiku",
-   "tokens": 22376,
-   "output_tokens": 618,
-   "seconds": 81,
-   "cost_usd": 0.025813800000000005
+   "tokens": 12851,
+   "output_tokens": 604,
+   "seconds": 8,
+   "cost_usd": 0.025001
   },
   {
    "model": "haiku",
-   "tokens": 5043,
-   "output_tokens": 110,
-   "seconds": 4,
-   "cost_usd": 0.005483
+   "tokens": 5167,
+   "output_tokens": 97,
+   "seconds": 3,
+   "cost_usd": 0.005555000000000001
   },
   {
    "model": "haiku",
-   "tokens": 8792,
-   "output_tokens": 569,
+   "tokens": 8955,
+   "output_tokens": 575,
    "seconds": 6,
-   "cost_usd": 0.016868
+   "cost_usd": 0.017133999999999996
   },
   {
    "model": "sonnet",
-   "tokens": 11728,
-   "output_tokens": 1001,
-   "seconds": 10,
-   "cost_usd": 0.0332032
+   "tokens": 14830,
+   "output_tokens": 1195,
+   "seconds": 15,
+   "cost_usd": 0.04125
   }
  ],
- "tokens": 47939,
- "api_equiv_usd": 0.081,
+ "tokens": 41803,
+ "api_equiv_usd": 0.089,
  "located_pages": [],
  "text_layer": true,
  "found": true,
@@ -56,6 +56,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 6644000,
@@ -63,32 +65,37 @@
  "budget_period": "June 1, 2019 - May 31, 2020",
  "columns_printed": [
   "Unit No.",
-  "Bdrs/Bths",
-  "Approx. Size of Units in sq. ft. [habitable]",
-  "Approx. Size of Units in sq. ft. [uninhabitable]",
+  "Bdrs/Bths (1)",
+  "Approx. Size of Units in sq. ft. [habitable] (1)",
+  "Approx. Size of Units in sq. ft. [uninhabitable] (1)",
   "Rear Yard",
   "Balcony",
   "Terrace",
-  "Offering Prices",
-  "% of Common Interest",
+  "Offering Prices (3)",
+  "% of Common Interest (4)",
   "Projected Monthly Common Charges",
-  "Projected Monthly Real Estate Taxes",
-  "Projected Annual Real Estate Taxes",
+  "Projected Monthly Real Estate Taxes (6)",
+  "Projected Annual Real Estate Taxes (6)",
   "Projected Monthly Carrying Charges",
   "Projected Annual Carrying Charges"
  ],
  "tax2": null,
- "sf2": "uninhabitable",
+ "sf2": "uninhabitable (cellar/rear yard/balcony/terrace)",
  "printed_totals": {
   "price": 6644000,
   "pct": 100,
   "cc_m": 1546.25,
   "tax_m": 4308.08,
   "int_sf": 4517,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Outdoor areas printed as three separate columns (Rear Yard, Balcony, Terrace) rather than a single ext_sf figure; per instructions these are listed in each unit's note instead of ext_sf."
+  "Bdrs/Bths column gives combined bedroom/bathroom figures (e.g. \"0/1.5\", \"1/1.5\", \"1/1\", \"2/2\"); full_baths/half_baths derived per rules (x.5 = x full, 1 half). No separate full/half bath columns printed.",
+  "ext_sf: multiple separate outdoor area columns (Rear Yard, Balcony, Terrace) are printed instead of one; per instructions these are listed in note rather than ext_sf, and ext_sf is left blank.",
+  "Totals row only gives totals for habitable sq ft (4,517.00), Offering Prices, % of Common Interest, Common Charges, and Real Estate Taxes monthly; no totals printed for annual tax, carrying charges, ext_sf, beds, or baths."
  ],
  "units": [
   {
@@ -97,10 +104,11 @@
    "floor": null,
    "rooms": null,
    "beds": 0,
-   "baths": 1.5,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": 384,
    "sf2": 392,
-   "ext_sf": null,
+   "ext_sf": 390,
    "price": 795000,
    "pct": 13.8,
    "pct2": null,
@@ -111,7 +119,8 @@
    "tax2_m": null,
    "carry_m": 807.9,
    "page": 33,
-   "note": "Rear Yard: None; Balcony: None; Terrace: 390.00"
+   "note": "Rear Yard None; Balcony None; Terrace 390.00; uninhabitable sf 392.00",
+   "baths": 1.5
   },
   {
    "unit": "2",
@@ -119,7 +128,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1.5,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": 642,
    "sf2": 639,
    "ext_sf": null,
@@ -133,7 +143,8 @@
    "tax2_m": null,
    "carry_m": 1208.92,
    "page": 33,
-   "note": "Rear Yard: 1,041.00; Balcony: 38.00; Terrace: None"
+   "note": "Rear Yard 1041.00; Balcony 38.00; Terrace None; uninhabitable sf 639.00",
+   "baths": 1.5
   },
   {
    "unit": "3",
@@ -141,10 +152,11 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": 665,
    "sf2": 0,
-   "ext_sf": null,
+   "ext_sf": 407,
    "price": 895000,
    "pct": 13.32,
    "pct2": null,
@@ -155,7 +167,8 @@
    "tax2_m": null,
    "carry_m": 779.8,
    "page": 33,
-   "note": "Rear Yard: None; Balcony: None; Terrace: 407.00"
+   "note": "Rear Yard None; Balcony None; Terrace 407.00",
+   "baths": 1.5
   },
   {
    "unit": "4",
@@ -163,7 +176,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": 669,
    "sf2": 0,
    "ext_sf": null,
@@ -177,7 +191,8 @@
    "tax2_m": null,
    "carry_m": 732.96,
    "page": 33,
-   "note": "Rear Yard: None; Balcony: 38.00; Terrace: None"
+   "note": "Rear Yard None; Balcony 38.00; Terrace None",
+   "baths": 1.5
   },
   {
    "unit": "5",
@@ -185,10 +200,11 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1073,
    "sf2": 0,
-   "ext_sf": null,
+   "ext_sf": 259,
    "price": 1350000,
    "pct": 19.77,
    "pct2": null,
@@ -199,7 +215,8 @@
    "tax2_m": null,
    "carry_m": 1157.4,
    "page": 33,
-   "note": "Rear Yard: None; Balcony: None; Terrace: 259.00"
+   "note": "Rear Yard None; Balcony None; Terrace 259.00",
+   "baths": 2
   },
   {
    "unit": "6",
@@ -207,10 +224,11 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1084,
    "sf2": 0,
-   "ext_sf": null,
+   "ext_sf": 257,
    "price": 1370000,
    "pct": 19.94,
    "pct2": null,
@@ -221,7 +239,8 @@
    "tax2_m": null,
    "carry_m": 1167.35,
    "page": 33,
-   "note": "Rear Yard: None; Balcony: 50.00; Terrace: 257.00"
+   "note": "Rear Yard None; Balcony 50.00; Terrace 257.00",
+   "baths": 2
   }
  ]
 }

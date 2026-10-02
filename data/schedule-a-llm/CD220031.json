@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4129,
-   "output_tokens": 601,
-   "seconds": 7,
-   "cost_usd": 0.020118
+   "tokens": 10857,
+   "output_tokens": 621,
+   "seconds": 80,
+   "cost_usd": 0.0277052
   }
  ],
- "tokens": 4129,
- "api_equiv_usd": 0.02,
+ "tokens": 10857,
+ "api_equiv_usd": 0.028,
  "located_pages": [
   37
  ],
@@ -37,6 +37,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 6900000,
@@ -66,10 +68,14 @@
   "cc_m": 2142.25,
   "tax_m": 3863.08,
   "int_sf": 4803,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "ext_sf not printed as single column (Limited Common Element sf includes cellar and outdoor areas combined per unit; individual outdoor areas listed separately in notes: TH - Roof Terrace 162 sf, Balcony 38 sf; 2 - Back Yard 625 sf, Front Yard 143 sf, Areaway 218 sf; PH - Balcony 38 sf, Roof Terrace 532 sf, Roof Terrace 488 sf, Private Elevator 37 sf)"
+  "Ext_sf not separately printed; limited common area square feet given per unit (986, 200, 1095 sf) represent outdoor spaces (roof terrace/balcony/yard) but multiple separate areas listed in notes, so left as note text rather than ext_sf per instructions.",
+  "tax_m and tax_a columns are labeled simply \"Real Estate Taxes\" with no abatement/exemption scenario indicated (no 421-a mentioned); treated as the only tax figures, TAX2 left empty."
  ],
  "units": [
   {
@@ -78,7 +84,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1121,
    "sf2": 880,
    "ext_sf": null,
@@ -92,7 +99,8 @@
    "tax2_m": null,
    "carry_m": 2252.38,
    "page": 37,
-   "note": null
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "2",
@@ -100,7 +108,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1657,
    "sf2": 0,
    "ext_sf": null,
@@ -114,7 +123,8 @@
    "tax2_m": null,
    "carry_m": 1400.29,
    "page": 37,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "PH",
@@ -122,7 +132,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 2025,
    "sf2": 0,
    "ext_sf": null,
@@ -136,7 +147,8 @@
    "tax2_m": null,
    "carry_m": 2352.67,
    "page": 37,
-   "note": null
+   "note": null,
+   "baths": 2.5
   }
  ]
 }

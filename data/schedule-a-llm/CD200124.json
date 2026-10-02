@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 9635,
-   "output_tokens": 1121,
-   "seconds": 89,
-   "cost_usd": 0.029089000000000004
+   "tokens": 12722,
+   "output_tokens": 1208,
+   "seconds": 84,
+   "cost_usd": 0.036259
   }
  ],
- "tokens": 9635,
- "api_equiv_usd": 0.029,
+ "tokens": 12722,
+ "api_equiv_usd": 0.036,
  "located_pages": [
   31
  ],
@@ -37,6 +37,8 @@
   "psf": null,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 9005000,
@@ -45,8 +47,8 @@
  "columns_printed": [
   "Unit No.",
   "Floor Location",
-  "Approx. Floor Area",
-  "Approx. Outdoor/Uninhabitable/Limited Common Area",
+  "Approx. Interior Floor Area",
+  "Approx. Outdoor/Uninhabitable/Limited Common Floor Area",
   "No. of Bedooms/Bathrooms",
   "Offering Price",
   "Percent Common Interest",
@@ -56,17 +58,21 @@
   "Projected Carrying Charges (Monthly)"
  ],
  "tax2": null,
- "sf2": "Outdoor/Uninhabitable/Limited Common Area",
+ "sf2": "outdoor/uninhabitable/limited common area",
  "printed_totals": {
   "price": 9005000,
   "pct": 100,
   "cc_m": 5018.34,
   "tax_m": 5738.61,
   "int_sf": 10518,
-  "ext_sf": 2535
+  "ext_sf": 2535,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Bedrooms/Bathrooms column header is printed as \"Bedooms/Bathrooms\" (likely typo for Bedrooms); transcribed as printed in COLS. Outdoor/limited common areas contain multiple sub-components (Y, AW, B, S, T) so full breakdown placed in SF2 cell rather than a single number; ext_sf left as - per instructions since these are not single terrace/balcony figures but combined limited-common-element listings.",
+  "Bedrooms/Bathrooms column prints combined \"X/Y\" values (e.g. \"2/1.5\", \"3/2\") interpreted as beds/baths per header; half baths inferred only where \".5\" printed (1B: 2 bed/1 full/1 half), others with whole numbers (e.g. \"2/2\", \"3/2\") treated as full baths with 0 half baths.",
+  "Outdoor/limited common area column (SF2) contains multiple sub-figures per unit (Y/B/S/T/AW codes); listed as printed since a single combined figure was not given.",
   "unit sizes left out: the area columns did not add up to the printed totals"
  ],
  "units": [
@@ -76,7 +82,8 @@
    "floor": "Cellar & First Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 1.5,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -90,7 +97,8 @@
    "tax2_m": null,
    "carry_m": 1337.09,
    "page": 31,
-   "note": null
+   "note": null,
+   "baths": 1.5
   },
   {
    "unit": "2A",
@@ -98,7 +106,8 @@
    "floor": "Second Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -112,7 +121,8 @@
    "tax2_m": null,
    "carry_m": 844.42,
    "page": 31,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "2B",
@@ -120,7 +130,8 @@
    "floor": "Second & Third Floor",
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -134,7 +145,8 @@
    "tax2_m": null,
    "carry_m": 1482.31,
    "page": 31,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3A",
@@ -142,7 +154,8 @@
    "floor": "Third Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -156,7 +169,8 @@
    "tax2_m": null,
    "carry_m": 863.78,
    "page": 31,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "4A",
@@ -164,7 +178,8 @@
    "floor": "Fourth Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -178,7 +193,8 @@
    "tax2_m": null,
    "carry_m": 865.94,
    "page": 31,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "4B",
@@ -186,7 +202,8 @@
    "floor": "Third & Fourth Floor",
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -200,7 +217,8 @@
    "tax2_m": null,
    "carry_m": 1284.38,
    "page": 31,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "5A",
@@ -208,7 +226,8 @@
    "floor": "Fifth Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -222,7 +241,8 @@
    "tax2_m": null,
    "carry_m": 875.61,
    "page": 31,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "5B",
@@ -230,7 +250,8 @@
    "floor": "Fifth Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -244,7 +265,8 @@
    "tax2_m": null,
    "carry_m": 897.13,
    "page": 31,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "6A",
@@ -252,7 +274,8 @@
    "floor": "Sixth Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -266,7 +289,8 @@
    "tax2_m": null,
    "carry_m": 882.07,
    "page": 31,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "6B",
@@ -274,7 +298,8 @@
    "floor": "Sixth Floor & Penthouse",
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -288,7 +313,8 @@
    "tax2_m": null,
    "carry_m": 1424.22,
    "page": 31,
-   "note": null
+   "note": null,
+   "baths": 2
   }
  ]
 }

@@ -3,13 +3,24 @@
  "steps": [
   {
    "step": "sonnet-text",
-   "verdict": "not_found",
-   "units": 0,
+   "verdict": "hold",
+   "units": 20,
    "failed": [
     "ag",
     "printed",
-    "monthlyTotals",
-    "allRowsParsed"
+    "pct100",
+    "sqftTotal",
+    "monthlyTotals"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "hold",
+   "units": 20,
+   "failed": [
+    "sqftTotal",
+    "psf",
+    "bedsBaths"
    ]
   },
   {
@@ -19,25 +30,32 @@
    "failed": []
   }
  ],
- "calls": 2,
+ "calls": 3,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 5875,
-   "output_tokens": 1654,
-   "seconds": 15,
-   "cost_usd": 0.03342
+   "tokens": 7615,
+   "output_tokens": 1891,
+   "seconds": 16,
+   "cost_usd": 0.041802
   },
   {
    "model": "sonnet",
-   "tokens": 16224,
-   "output_tokens": 2085,
-   "seconds": 20,
-   "cost_usd": 0.0512084
+   "tokens": 7418,
+   "output_tokens": 1689,
+   "seconds": 15,
+   "cost_usd": 0.039802000000000004
+  },
+  {
+   "model": "sonnet",
+   "tokens": 19197,
+   "output_tokens": 2054,
+   "seconds": 19,
+   "cost_usd": 0.0572068
   }
  ],
- "tokens": 22099,
- "api_equiv_usd": 0.085,
+ "tokens": 34230,
+ "api_equiv_usd": 0.139,
  "located_pages": [
   44
  ],
@@ -55,6 +73,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 9939600,
@@ -84,11 +104,13 @@
   "cc_m": 11509.53,
   "tax_m": 4991.28,
   "int_sf": 9036,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Table has two price columns (Non-Tenants and Tenants); \"price\" field holds the Non-Tenants price, and the Tenants price is recorded in each row's note since the schema has no dedicated second price column.",
-  "\"No. of Bedrooms/Bathrooms\" column shows \"1/1\" for all units; per instructions this is placed in beds/baths as 1/1 could mean 1 bedroom/1 bathroom — recorded as beds=1, baths=1."
+  "Table has two offering prices (for Non-Tenants and for Tenants); the \"for Non-Tenants\" figure was used as price, and the \"for Tenants\" figure recorded in note. Taxes (Monthly) column is labeled as a single figure (not split into with/without abatement), so tax2_m left blank. No Limited Common Elements Floor Area or sf2/ext_sf columns are printed in this table. Total row's Taxes (Monthly) total is $4,991.28, recorded as tax_m total; no separate annual total check performed."
  ],
  "units": [
   {
@@ -96,8 +118,9 @@
    "type": "residential",
    "floor": "1st Floor",
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 421,
    "sf2": null,
    "ext_sf": null,
@@ -111,15 +134,17 @@
    "tax2_m": null,
    "carry_m": 749.13,
    "page": 44,
-   "note": "Offering Price for Tenants: $301,015"
+   "note": "Price for Tenants $301,015",
+   "baths": 1
   },
   {
    "unit": "1B",
    "type": "residential",
    "floor": "1st Floor",
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 426,
    "sf2": null,
    "ext_sf": null,
@@ -133,15 +158,17 @@
    "tax2_m": null,
    "carry_m": 754.08,
    "page": 44,
-   "note": "Offering Price for Tenants: $304,590"
+   "note": "Price for Tenants $304,590",
+   "baths": 1
   },
   {
    "unit": "1C",
    "type": "residential",
    "floor": "1st Floor",
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 408,
    "sf2": null,
    "ext_sf": null,
@@ -155,15 +182,17 @@
    "tax2_m": null,
    "carry_m": 793.69,
    "page": 44,
-   "note": "Offering Price for Tenants: $291,720"
+   "note": "Price for Tenants $291,720",
+   "baths": 1
   },
   {
    "unit": "1D",
    "type": "residential",
    "floor": "1st Floor",
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 417,
    "sf2": null,
    "ext_sf": null,
@@ -177,15 +206,17 @@
    "tax2_m": null,
    "carry_m": 810.19,
    "page": 44,
-   "note": "Offering Price for Tenants: $298,155"
+   "note": "Price for Tenants $298,155",
+   "baths": 1
   },
   {
    "unit": "2A",
    "type": "residential",
    "floor": "2nd Floor",
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 508,
    "sf2": null,
    "ext_sf": null,
@@ -199,15 +230,17 @@
    "tax2_m": null,
    "carry_m": 930.65,
    "page": 44,
-   "note": "Offering Price for Tenants: $363,220"
+   "note": "Price for Tenants $363,220",
+   "baths": 1
   },
   {
    "unit": "2B",
    "type": "residential",
    "floor": "2nd Floor",
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 508,
    "sf2": null,
    "ext_sf": null,
@@ -221,15 +254,17 @@
    "tax2_m": null,
    "carry_m": 930.65,
    "page": 44,
-   "note": "Offering Price for Tenants: $363,220"
+   "note": "Price for Tenants $363,220",
+   "baths": 1
   },
   {
    "unit": "2C",
    "type": "residential",
    "floor": "2nd Floor",
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 408,
    "sf2": null,
    "ext_sf": null,
@@ -243,15 +278,17 @@
    "tax2_m": null,
    "carry_m": 747.48,
    "page": 44,
-   "note": "Offering Price for Tenants: $291,720"
+   "note": "Price for Tenants $291,720",
+   "baths": 1
   },
   {
    "unit": "2D",
    "type": "residential",
    "floor": "2nd Floor",
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 417,
    "sf2": null,
    "ext_sf": null,
@@ -265,15 +302,17 @@
    "tax2_m": null,
    "carry_m": 763.99,
    "page": 44,
-   "note": "Offering Price for Tenants: $298,155"
+   "note": "Price for Tenants $298,155",
+   "baths": 1
   },
   {
    "unit": "3A",
    "type": "residential",
    "floor": "2nd Floor",
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 508,
    "sf2": null,
    "ext_sf": null,
@@ -287,15 +326,17 @@
    "tax2_m": null,
    "carry_m": 930.65,
    "page": 44,
-   "note": "Offering Price for Tenants: $363,220"
+   "note": "Price for Tenants $363,220",
+   "baths": 1
   },
   {
    "unit": "3B",
    "type": "residential",
    "floor": "3rd Floor",
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 508,
    "sf2": null,
    "ext_sf": null,
@@ -309,15 +350,17 @@
    "tax2_m": null,
    "carry_m": 930.65,
    "page": 44,
-   "note": "Offering Price for Tenants: $363,220"
+   "note": "Price for Tenants $363,220",
+   "baths": 1
   },
   {
    "unit": "3C",
    "type": "residential",
    "floor": "3rd Floor",
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 408,
    "sf2": null,
    "ext_sf": null,
@@ -331,15 +374,17 @@
    "tax2_m": null,
    "carry_m": 747.48,
    "page": 44,
-   "note": "Offering Price for Tenants: $291,720"
+   "note": "Price for Tenants $291,720",
+   "baths": 1
   },
   {
    "unit": "3D",
    "type": "residential",
    "floor": "3rd Floor",
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 417,
    "sf2": null,
    "ext_sf": null,
@@ -353,15 +398,17 @@
    "tax2_m": null,
    "carry_m": 763.99,
    "page": 44,
-   "note": "Offering Price for Tenants: $298,155"
+   "note": "Price for Tenants $298,155",
+   "baths": 1
   },
   {
    "unit": "4A",
    "type": "residential",
    "floor": "4th Floor",
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 508,
    "sf2": null,
    "ext_sf": null,
@@ -375,15 +422,17 @@
    "tax2_m": null,
    "carry_m": 930.65,
    "page": 44,
-   "note": "Offering Price for Tenants: $363,220"
+   "note": "Price for Tenants $363,220",
+   "baths": 1
   },
   {
    "unit": "4B",
    "type": "residential",
    "floor": "4th Floor",
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 508,
    "sf2": null,
    "ext_sf": null,
@@ -397,15 +446,17 @@
    "tax2_m": null,
    "carry_m": 930.65,
    "page": 44,
-   "note": "Offering Price for Tenants: $363,220"
+   "note": "Price for Tenants $363,220",
+   "baths": 1
   },
   {
    "unit": "4C",
    "type": "residential",
    "floor": "4th Floor",
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 408,
    "sf2": null,
    "ext_sf": null,
@@ -419,15 +470,17 @@
    "tax2_m": null,
    "carry_m": 747.48,
    "page": 44,
-   "note": "Offering Price for Tenants: $291,720"
+   "note": "Price for Tenants $291,720",
+   "baths": 1
   },
   {
    "unit": "4D",
    "type": "residential",
    "floor": "4th Floor",
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 417,
    "sf2": null,
    "ext_sf": null,
@@ -441,15 +494,17 @@
    "tax2_m": null,
    "carry_m": 763.99,
    "page": 44,
-   "note": "Offering Price for Tenants: $298,155"
+   "note": "Price for Tenants $298,155",
+   "baths": 1
   },
   {
    "unit": "5A",
    "type": "residential",
    "floor": "5th Floor",
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 508,
    "sf2": null,
    "ext_sf": null,
@@ -463,15 +518,17 @@
    "tax2_m": null,
    "carry_m": 900.94,
    "page": 44,
-   "note": "Offering Price for Tenants: $363,220"
+   "note": "Price for Tenants $363,220",
+   "baths": 1
   },
   {
    "unit": "5B",
    "type": "residential",
    "floor": "5th Floor",
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 508,
    "sf2": null,
    "ext_sf": null,
@@ -485,15 +542,17 @@
    "tax2_m": null,
    "carry_m": 900.94,
    "page": 44,
-   "note": "Offering Price for Tenants: $363,220"
+   "note": "Price for Tenants $363,220",
+   "baths": 1
   },
   {
    "unit": "5C",
    "type": "residential",
    "floor": "5th Floor",
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 408,
    "sf2": null,
    "ext_sf": null,
@@ -507,15 +566,17 @@
    "tax2_m": null,
    "carry_m": 727.69,
    "page": 44,
-   "note": "Offering Price for Tenants: $291,720"
+   "note": "Price for Tenants $291,720",
+   "baths": 1
   },
   {
    "unit": "5D",
    "type": "residential",
    "floor": "5th Floor",
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 417,
    "sf2": null,
    "ext_sf": null,
@@ -529,7 +590,8 @@
    "tax2_m": null,
    "carry_m": 745.84,
    "page": 44,
-   "note": "Offering Price for Tenants: $298,155"
+   "note": "Price for Tenants $298,155",
+   "baths": 1
   }
  ]
 }

@@ -3,73 +3,23 @@
  "steps": [
   {
    "step": "sonnet-text",
-   "verdict": "hold",
-   "units": 3,
-   "failed": [
-    "outdoor"
-   ]
-  },
-  {
-   "step": "sonnet-text-retry",
-   "verdict": "hold",
-   "units": 3,
-   "failed": [
-    "outdoor"
-   ]
-  },
-  {
-   "step": "sonnet-images",
-   "verdict": "not_found",
-   "units": 0,
-   "failed": [
-    "ag",
-    "printed",
-    "sqftTotal",
-    "monthlyTotals",
-    "allRowsParsed",
-    "outdoor"
-   ]
-  },
-  {
-   "step": "sonnet-images-think",
    "verdict": "publish_ag",
    "units": 3,
    "failed": []
   }
  ],
- "calls": 4,
+ "calls": 1,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 3962,
-   "output_tokens": 768,
-   "seconds": 10,
-   "cost_usd": 0.020451999999999998
-  },
-  {
-   "model": "sonnet",
-   "tokens": 3860,
-   "output_tokens": 667,
-   "seconds": 7,
-   "cost_usd": 0.019437999999999997
-  },
-  {
-   "model": "sonnet",
-   "tokens": 12842,
-   "output_tokens": 763,
-   "seconds": 11,
-   "cost_usd": 0.033662399999999995
-  },
-  {
-   "model": "sonnet",
-   "tokens": 14675,
-   "output_tokens": 2585,
-   "seconds": 25,
-   "cost_usd": 0.051934
+   "tokens": 5406,
+   "output_tokens": 739,
+   "seconds": 9,
+   "cost_usd": 0.026054
   }
  ],
- "tokens": 35339,
- "api_equiv_usd": 0.125,
+ "tokens": 5406,
+ "api_equiv_usd": 0.026,
  "located_pages": [
   47
  ],
@@ -87,10 +37,12 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 6750000,
- "step": "sonnet-images-think",
+ "step": "sonnet-text",
  "budget_period": "For the Period May 1, 2026 through April 30, 2027",
  "columns_printed": [
   "Unit #",
@@ -107,17 +59,22 @@
   "Estimated Total Monthly Carrying Taxes 5/1/2026-4/30/2027"
  ],
  "tax2": null,
- "sf2": null,
+ "sf2": "total square footage of unit",
  "printed_totals": {
   "price": 6750000,
   "pct": 100,
   "cc_m": 2846.83,
   "tax_m": 3481.03,
   "int_sf": 4106,
-  "ext_sf": null
+  "ext_sf": 850,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Table has two separate outdoor-area columns (Rear Yard, Roof); ext_sf left blank and values listed per unit in note. Total row prints separate Rear Yard (801.00) and Roof (850.00) totals, not a single combined ext_sf total, so TOTAL ext_sf is \"-\"."
+  "Columns are Rear Yard and Roof (both limited common elements); ext_sf left empty per instructions since two separate outdoor areas exist, and both are listed in the unit rows' sf2/structure rather than a single ext_sf figure. Roof figures (801.00, 850.00) represent Rear Yard and Roof LCE sq.ft., not a single ext_sf column — recorded contextually but not placed in ext_sf field.",
+  "Floor is combined with a descriptive label (\"Third Floor & Penthouse\") in the Unit # column per the table's formatting.",
+  "outdoor space left out: its column did not add up to the printed total"
  ],
  "units": [
   {
@@ -126,9 +83,10 @@
    "floor": "First Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1186,
-   "sf2": null,
+   "sf2": 1987,
    "ext_sf": null,
    "price": 2200000,
    "pct": 35,
@@ -140,7 +98,8 @@
    "tax2_m": null,
    "carry_m": 2214.75,
    "page": 47,
-   "note": "Rear Yard 801.00 sf; Roof -"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "2",
@@ -148,9 +107,10 @@
    "floor": "Second Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1183,
-   "sf2": null,
+   "sf2": 1183,
    "ext_sf": null,
    "price": 2100000,
    "pct": 25,
@@ -162,7 +122,8 @@
    "tax2_m": null,
    "carry_m": 1581.97,
    "page": 47,
-   "note": "Rear Yard -; Roof -"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3",
@@ -170,9 +131,10 @@
    "floor": "Third Floor & Penthouse",
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": null,
    "int_sf": 1737,
-   "sf2": null,
+   "sf2": 2587,
    "ext_sf": null,
    "price": 2450000,
    "pct": 40,
@@ -184,7 +146,8 @@
    "tax2_m": null,
    "carry_m": 2531.15,
    "page": 47,
-   "note": "Rear Yard -; Roof 850.00 sf"
+   "note": null,
+   "baths": 3
   }
  ]
 }

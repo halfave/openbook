@@ -14,35 +14,35 @@
  "call_log": [
   {
    "model": "haiku",
-   "tokens": 12618,
-   "output_tokens": 602,
-   "seconds": 11,
-   "cost_usd": 0.024643
-  },
-  {
-   "model": "haiku",
-   "tokens": 4961,
-   "output_tokens": 106,
-   "seconds": 4,
-   "cost_usd": 0.005385
-  },
-  {
-   "model": "haiku",
-   "tokens": 8724,
-   "output_tokens": 570,
+   "tokens": 12861,
+   "output_tokens": 608,
    "seconds": 7,
-   "cost_usd": 0.01677
+   "cost_usd": 0.025034
+  },
+  {
+   "model": "haiku",
+   "tokens": 5181,
+   "output_tokens": 106,
+   "seconds": 3,
+   "cost_usd": 0.005605000000000001
+  },
+  {
+   "model": "haiku",
+   "tokens": 8957,
+   "output_tokens": 575,
+   "seconds": 7,
+   "cost_usd": 0.017137
   },
   {
    "model": "sonnet",
-   "tokens": 12041,
-   "output_tokens": 1410,
-   "seconds": 19,
-   "cost_usd": 0.0370916
+   "tokens": 15933,
+   "output_tokens": 2296,
+   "seconds": 23,
+   "cost_usd": 0.0522642
   }
  ],
- "tokens": 38344,
- "api_equiv_usd": 0.084,
+ "tokens": 42932,
+ "api_equiv_usd": 0.1,
  "located_pages": [],
  "text_layer": true,
  "found": true,
@@ -58,36 +58,32 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 3165000,
  "step": "sonnet-images",
- "budget_period": "July 1, 2021 to June 30, 2022",
- "columns_printed": [
-  "UNIT DESIGNATION",
-  "NUMBER OF BEDROOMS AND BATHROOMS",
-  "(A)1 APPROXIMATE SQUARE FOOTAGE OF UNIT",
-  "(A)2 APPROXIMATE SQUARE FOOTAGE OF UNINHABITABLE SPACE",
-  "(B) OFFERING PRICE",
-  "(C) COMMON INTEREST PERCENTAGE",
-  "(D) ESTIMATED MONTHLY COMMON CHARGES",
-  "MONTHLY & ANNUAL REAL ESTATE TAXES FOR FIRST YEAR",
-  "(F) MONTHLY COMMON CHARGES & REAL ESTATE TAXES"
- ],
+ "budget_period": null,
+ "columns_printed": null,
  "tax2": "-",
- "sf2": "uninhabitable space (RY/BL/RT)",
+ "sf2": "uninhabitable space",
  "printed_totals": {
   "price": 3125000,
   "pct": 100,
   "cc_m": 3333.33,
   "tax_m": 1572.49,
   "int_sf": 4015.7,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Unit 4A's uninhabitable space is listed as two separate codes (BL-36; RT-267, i.e., balcony 36 sf and roof terrace 267 sf) rather than a single figure, so sf2 for 4A is left blank and noted instead, per instructions for multiple separate areas.",
-  "The table has no separate \"floor,\" \"rooms,\" or single external square footage (balcony/terrace) column; bedroom/bathroom counts are combined in one \"Number of Bedrooms and Bathrooms\" column (e.g., \"2B;2BA;RY\"), interpreted as beds/baths only, with suffix codes (RY, BL, RT, D) referring to uninhabitable space types, not additional rooms.",
-  "Annual tax figures (e.g., 4088, 2157) are printed as part of \"Monthly/Annual\" combined cells (e.g., \"$340.68/4088\"); annual portion put in tax_a."
+  "Table has no separate full/half bath or bedroom/bath columns; bedroom/bathroom count combined in one printed field (e.g. \"2B;2BA;RY\") and was split into beds/full_baths per the \"B\"/\"BA\" codes; half_baths assumed 0 since none printed.",
+  "No separate exterior-space (terrace/balcony/yard) column; sf2 holds the printed \"(A)2 Approximate Square Footage of Uninhabitable Space\" figures, which per the footnotes represent rear yard (RY), balcony (BL), roof terrace (RT), or duplex (D) areas; codes given in note per row; ext_sf left blank for all rows.",
+  "Unit 4A's uninhabitable-space cell prints \"BL-36; RT-267\" as two separate figures on two lines; I summed them (36+267=303) to populate sf2 since only one sf2 field is allowed, per instruction to combine separate areas — flagging in case original per-area figures are preferred.",
+  "No floor or rooms columns printed in this table."
  ],
  "units": [
   {
@@ -96,7 +92,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 870,
    "sf2": 675,
    "ext_sf": null,
@@ -110,7 +107,8 @@
    "tax2_m": null,
    "carry_m": 1062.85,
    "page": 43,
-   "note": "RY-675 (uninhabitable space is roof yard, not a single ext_sf number)"
+   "note": "RY-675 (rear yard uninhabitable sf)",
+   "baths": 2
   },
   {
    "unit": "2A",
@@ -118,7 +116,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 459,
    "sf2": null,
    "ext_sf": null,
@@ -132,7 +131,8 @@
    "tax2_m": null,
    "carry_m": 560.74,
    "page": 43,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "2B",
@@ -140,7 +140,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 533,
    "sf2": null,
    "ext_sf": null,
@@ -154,7 +155,8 @@
    "tax2_m": null,
    "carry_m": 651.15,
    "page": 43,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3A",
@@ -162,7 +164,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 443,
    "sf2": 36,
    "ext_sf": null,
@@ -176,7 +179,8 @@
    "tax2_m": null,
    "carry_m": 541.19,
    "page": 43,
-   "note": "BL-36"
+   "note": "BL-36 (balcony uninhabitable sf)",
+   "baths": 1
   },
   {
    "unit": "3B",
@@ -184,7 +188,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 531,
    "sf2": 37,
    "ext_sf": null,
@@ -198,7 +203,8 @@
    "tax2_m": null,
    "carry_m": 648.7,
    "page": 43,
-   "note": "BL-37"
+   "note": "BL-37 (balcony uninhabitable sf)",
+   "baths": 1
   },
   {
    "unit": "4A",
@@ -206,9 +212,10 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 648.7,
-   "sf2": null,
+   "sf2": 303,
    "ext_sf": null,
    "price": 495000,
    "pct": 16.1541,
@@ -220,7 +227,8 @@
    "tax2_m": null,
    "carry_m": 792.49,
    "page": 43,
-   "note": "BL-36; RT-267 (two uninhabitable areas, see note)"
+   "note": "uninhabitable sf is BL-36 + RT-267 (two areas, 36+267=303); duplex unit",
+   "baths": 1
   },
   {
    "unit": "4B",
@@ -228,7 +236,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 531,
    "sf2": 37,
    "ext_sf": null,
@@ -242,7 +251,8 @@
    "tax2_m": null,
    "carry_m": 648.7,
    "page": 43,
-   "note": "BL-37"
+   "note": "BL-37 (balcony uninhabitable sf)",
+   "baths": 1
   }
  ]
 }

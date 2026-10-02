@@ -11,30 +11,45 @@
   },
   {
    "step": "sonnet-text-retry",
+   "verdict": "hold",
+   "units": 4,
+   "failed": [
+    "carrying"
+   ]
+  },
+  {
+   "step": "sonnet-images",
    "verdict": "publish_ag",
    "units": 4,
    "failed": []
   }
  ],
- "calls": 2,
+ "calls": 3,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4558,
-   "output_tokens": 727,
-   "seconds": 9,
-   "cost_usd": 0.02259
+   "tokens": 6027,
+   "output_tokens": 695,
+   "seconds": 7,
+   "cost_usd": 0.028273999999999997
   },
   {
    "model": "sonnet",
-   "tokens": 4635,
-   "output_tokens": 803,
+   "tokens": 11631,
+   "output_tokens": 957,
+   "seconds": 84,
+   "cost_usd": 0.031985
+  },
+  {
+   "model": "sonnet",
+   "tokens": 17247,
+   "output_tokens": 894,
    "seconds": 13,
-   "cost_usd": 0.023354
+   "cost_usd": 0.043947799999999995
   }
  ],
- "tokens": 9193,
- "api_equiv_usd": 0.046,
+ "tokens": 34905,
+ "api_equiv_usd": 0.104,
  "located_pages": [
   31
  ],
@@ -52,10 +67,12 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 11040000,
- "step": "sonnet-text-retry",
+ "step": "sonnet-images",
  "budget_period": "April 1, 2023 - March 31, 2024",
  "columns_printed": [
   "Unit",
@@ -64,28 +81,30 @@
   "Bdms/Bths",
   "% of Common Interest",
   "Offering Price",
-  "Monthly Common Charges",
-  "Annual Common Charges",
-  "Monthly Real Estate Taxes",
-  "Annual Real Estate Taxes",
-  "Monthly Carrying Charges",
-  "Monthly Real Estate Taxes",
-  "Annual Real Estate Taxes",
-  "Monthly Carrying Charges"
+  "Estimated Monthly Common Charges",
+  "Estimated Annual Common Charges",
+  "1st Year Estimated Monthly Real Estate Taxes",
+  "1st Year Estimated Annual Real Estate Taxes",
+  "1st Year Estimated Monthly Carrying Charges",
+  "Post-Completion Estimated Monthly Real Estate Taxes",
+  "Post-Completion Estimated Annual Real Estate Taxes",
+  "Post-Completion Estimated Monthly Carrying Charges"
  ],
- "tax2": null,
- "sf2": "uninhabitable sq. ftg.",
+ "tax2": "Post-Completion (without initial abatement)",
+ "sf2": "uninhabitable sf",
  "printed_totals": {
   "price": 11040000,
   "pct": 100,
   "cc_m": 2235.67,
   "tax_m": 5040.83,
   "int_sf": 6154,
-  "ext_sf": 4796
+  "ext_sf": 4796,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "beds/baths given as combined codes (e.g. \"3/2f2h\", \"3/2.5\") in Bdms/Bths column; left beds/baths blank per unclear-code rule and recorded codes in note.",
-  "Table has two tax/carrying-charge scenarios (\"1st Year\" and \"Post-Completion\"); used 1st Year figures for tax_m/tax_a/carry_m and put post-completion monthly/annual figures in note since no tax2_m column was indicated for this layout."
+  "Bdms/Bths column prints as \"3/2f2h\" for Unit 1 and \"3/2.5\" for others; interpreted \"2f2h\" as 2 full baths, 2 half baths, but this conflicts with the general rule that half_baths rarely exceeds 1 — flagging for review; carry_m used is the 1st Year Estimated Monthly Carrying Charges (col 9), which pairs with tax_m (col 7, with abatement); post-completion figures (cols 10-12) placed as tax2_m/carry_m equivalent per TAX2 note, but only one carry_m slot exists so post-completion carrying charge (col 12) could not be included in output."
  ],
  "units": [
   {
@@ -93,8 +112,9 @@
    "type": "residential",
    "floor": null,
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 3,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1452,
    "sf2": 2543,
    "ext_sf": null,
@@ -105,18 +125,20 @@
    "cc_a": 7617.32,
    "tax_m": 1431.25,
    "tax_a": 17175.03,
-   "tax2_m": null,
+   "tax2_m": 1717.93,
    "carry_m": 2066.03,
    "page": 31,
-   "note": "3/2f2h; post-completion monthly taxes 1717.93, annual 20615.15, carrying 2352.71"
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "2",
    "type": "residential",
    "floor": null,
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 3,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1572,
    "sf2": 993,
    "ext_sf": null,
@@ -127,18 +149,20 @@
    "cc_a": 6641.33,
    "tax_m": 1247.87,
    "tax_a": 14974.42,
-   "tax2_m": null,
+   "tax2_m": 1497.81,
    "carry_m": 1801.31,
    "page": 31,
-   "note": "3/2.5; post-completion monthly taxes 1497.81, annual 17973.76, carrying 2051.26"
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "3",
    "type": "residential",
    "floor": null,
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 3,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1563,
    "sf2": 571,
    "ext_sf": null,
@@ -149,18 +173,20 @@
    "cc_a": 6223.56,
    "tax_m": 1169.37,
    "tax_a": 14032.48,
-   "tax2_m": null,
+   "tax2_m": 1403.6,
    "carry_m": 1688,
    "page": 31,
-   "note": "3/2.5; post-completion monthly taxes 1403.60, annual 16843.15, carrying 1922.23"
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "4",
    "type": "residential",
    "floor": null,
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 3,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1567,
    "sf2": 689,
    "ext_sf": null,
@@ -171,10 +197,11 @@
    "cc_a": 6345.79,
    "tax_m": 1192.34,
    "tax_a": 14308.07,
-   "tax2_m": null,
+   "tax2_m": 1431.16,
    "carry_m": 1721.15,
    "page": 31,
-   "note": "3/2.5; post-completion monthly taxes 1431.16, annual 17173.94, carrying 1959.98"
+   "note": null,
+   "baths": 2.5
   }
  ]
 }

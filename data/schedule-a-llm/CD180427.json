@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 3919,
-   "output_tokens": 501,
-   "seconds": 7,
-   "cost_usd": 0.018678
+   "tokens": 5636,
+   "output_tokens": 716,
+   "seconds": 13,
+   "cost_usd": 0.026836
   }
  ],
- "tokens": 3919,
- "api_equiv_usd": 0.019,
+ "tokens": 5636,
+ "api_equiv_usd": 0.027,
  "located_pages": [
   49
  ],
@@ -37,6 +37,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 22300000,
@@ -44,7 +46,7 @@
  "budget_period": "JULY 1, 2021 - JUNE 30, 2022",
  "columns_printed": [
   "NO. UNIT",
-  "BEDROOMS",
+  "BED-ROOMS",
   "APPROX SQUARE FOOTAGE",
   "APPROX EXTERIOR SQUARE FOOTAGE",
   "OFFERING PRICE",
@@ -53,7 +55,7 @@
   "PROJECTED ANNUAL COMMON CHARGES",
   "PROJECTED MONTHLY RE TAXES",
   "PROJECTED ANNUAL RE TAXES",
-  "TOTAL PROJECTED MONTHLY CARRYING CHARGES"
+  "PROJECTED TOTAL MONTHLY CARRYING CHARGES"
  ],
  "tax2": null,
  "sf2": null,
@@ -63,10 +65,15 @@
   "cc_m": 28646.83,
   "tax_m": 12663,
   "int_sf": 10807,
-  "ext_sf": 2040
+  "ext_sf": 2040,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Row 3's footnote marker appears as \"**\" in the unit column but the explanatory note below is marked \"***\"; used *** in note field to match the detailed footnote text for that row."
+  "Bedroom/bath figures printed as combined codes (e.g. \"5+BR/5.5BA\") in a single UNIT BED-ROOMS-style column; interpreted \"5+BR/5.5BA\" as 5 beds/5 full/1 half, \"4BR/4.5BA\" as 4 beds/4 full/1 half, \"3BR/3.5BA\" as 3 beds/3 full/1 half.",
+  "Footnote *** appears in the key but is not printed next to any unit number in the table; assigned it to unit 3 based on footnote text order, but unit 3 is marked ** in the table body - unresolved discrepancy between table marks and footnote list.",
+  "Total row's bed/bath-type columns not printed (no total for bedrooms/baths), left as -."
  ],
  "units": [
   {
@@ -75,7 +82,8 @@
    "floor": null,
    "rooms": null,
    "beds": 5,
-   "baths": 5.5,
+   "full_baths": 5,
+   "half_baths": 1,
    "int_sf": 3995,
    "sf2": null,
    "ext_sf": 860,
@@ -89,7 +97,8 @@
    "tax2_m": null,
    "carry_m": 15367,
    "page": 49,
-   "note": "*"
+   "note": "*",
+   "baths": 5.5
   },
   {
    "unit": "2",
@@ -97,7 +106,8 @@
    "floor": null,
    "rooms": null,
    "beds": 4,
-   "baths": 4.5,
+   "full_baths": 4,
+   "half_baths": 1,
    "int_sf": 3378,
    "sf2": null,
    "ext_sf": 675,
@@ -111,7 +121,8 @@
    "tax2_m": null,
    "carry_m": 12946,
    "page": 49,
-   "note": "**"
+   "note": "**",
+   "baths": 4.5
   },
   {
    "unit": "3",
@@ -119,7 +130,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3.5,
+   "full_baths": 3,
+   "half_baths": 1,
    "int_sf": 3434,
    "sf2": null,
    "ext_sf": 505,
@@ -133,7 +145,8 @@
    "tax2_m": null,
    "carry_m": 12996,
    "page": 49,
-   "note": "***"
+   "note": "***",
+   "baths": 3.5
   }
  ]
 }

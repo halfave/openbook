@@ -3,23 +3,38 @@
  "steps": [
   {
    "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 7,
+   "failed": [
+    "carrying"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
    "verdict": "publish_ag",
    "units": 7,
    "failed": []
   }
  ],
- "calls": 1,
+ "calls": 2,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 5037,
-   "output_tokens": 813,
-   "seconds": 8,
-   "cost_usd": 0.025022000000000003
+   "tokens": 6831,
+   "output_tokens": 1097,
+   "seconds": 12,
+   "cost_usd": 0.033902
+  },
+  {
+   "model": "sonnet",
+   "tokens": 12364,
+   "output_tokens": 898,
+   "seconds": 87,
+   "cost_usd": 0.0330582
   }
  ],
- "tokens": 5037,
- "api_equiv_usd": 0.025,
+ "tokens": 19195,
+ "api_equiv_usd": 0.067,
  "located_pages": [
   34
  ],
@@ -37,10 +52,12 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 3980000,
- "step": "sonnet-text",
+ "step": "sonnet-text-retry",
  "budget_period": "July 1, 2021 - June 30, 2022",
  "columns_printed": [
   "Unit",
@@ -55,17 +72,20 @@
   "Monthly Carrying Charges"
  ],
  "tax2": "without ICAP",
- "sf2": "uninhabitable / CF square footage",
+ "sf2": "Uninhab. Sq. Ftg.",
  "printed_totals": {
   "price": 3980000,
   "pct": 100,
   "cc_m": 3674,
   "tax_m": 3196.5,
   "int_sf": 5872.82,
-  "ext_sf": 984.93
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Grand Total row's real estate taxes figure (3196.50) appears to be a combined/blended value distinct from the With/Without ICAP columns for CF units; carrying charges grand total shown as 6869.81 (With ICAP) vs 8451.40 (Without ICAP) - used With ICAP figure for TOTAL cc/tax per instructions."
+  "Grand Total full_baths/half_baths not printed as single total; Bdms/Bths column format \"2/2\" interpreted as 2 bedrooms/2 baths (full baths, no half baths column present) per residential rows; Community Facility units have no Bdms/Bths value (N/A) so beds/baths left blank; carry_m for CF units uses the with-ICAP tax scenario per instructions, without-ICAP carrying charges (1732.92, 2014.98) noted but not placed in carry_m field."
  ],
  "units": [
   {
@@ -74,7 +94,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1019.83,
    "sf2": 431.61,
    "ext_sf": null,
@@ -88,7 +109,8 @@
    "tax2_m": null,
    "carry_m": 1482.69,
    "page": 34,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "2",
@@ -96,7 +118,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 519.4,
    "sf2": 48.33,
    "ext_sf": null,
@@ -110,7 +133,8 @@
    "tax2_m": null,
    "carry_m": 698.77,
    "page": 34,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3",
@@ -118,7 +142,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 500.67,
    "sf2": 48.33,
    "ext_sf": null,
@@ -132,7 +157,8 @@
    "tax2_m": null,
    "carry_m": 673.84,
    "page": 34,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "4",
@@ -140,7 +166,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 519.4,
    "sf2": 48.33,
    "ext_sf": null,
@@ -154,7 +181,8 @@
    "tax2_m": null,
    "carry_m": 698.77,
    "page": 34,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "5",
@@ -162,7 +190,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 772.18,
    "sf2": 408.33,
    "ext_sf": null,
@@ -176,7 +205,8 @@
    "tax2_m": null,
    "carry_m": 1149.44,
    "page": 34,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "Cellar",
@@ -184,7 +214,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 1174.92,
    "sf2": 0,
    "ext_sf": null,
@@ -194,11 +225,12 @@
    "cc_m": 705.45,
    "cc_a": null,
    "tax_m": 296.27,
-   "tax_a": null,
-   "tax2_m": 1027.48,
+   "tax_a": 1027.48,
+   "tax2_m": null,
    "carry_m": 1001.72,
    "page": 34,
-   "note": "With ICAP tax used; tax2_m=1027.48 is Without ICAP; carry_m With ICAP shown"
+   "note": "With ICAP tax benefits; without-ICAP monthly tax 1027.48, without-ICAP carrying 1732.92",
+   "baths": null
   },
   {
    "unit": "First Floor",
@@ -206,7 +238,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 1366.42,
    "sf2": 0,
    "ext_sf": null,
@@ -216,11 +249,12 @@
    "cc_m": 820.04,
    "cc_a": null,
    "tax_m": 344.56,
-   "tax_a": null,
-   "tax2_m": 1194.94,
+   "tax_a": 1194.94,
+   "tax2_m": null,
    "carry_m": 1164.6,
    "page": 34,
-   "note": "With ICAP tax used; tax2_m=1194.94 is Without ICAP; carry_m With ICAP shown"
+   "note": "With ICAP tax benefits; without-ICAP monthly tax 1194.94, without-ICAP carrying 2014.98",
+   "baths": null
   }
  ]
 }

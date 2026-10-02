@@ -12,34 +12,34 @@
  "call_log": [
   {
    "model": "haiku",
-   "tokens": 12631,
-   "output_tokens": 613,
-   "seconds": 10,
-   "cost_usd": 0.024704
+   "tokens": 12814,
+   "output_tokens": 573,
+   "seconds": 6,
+   "cost_usd": 0.024837
   },
   {
    "model": "haiku",
-   "tokens": 4938,
-   "output_tokens": 92,
-   "seconds": 5,
-   "cost_usd": 0.005306
+   "tokens": 5163,
+   "output_tokens": 97,
+   "seconds": 3,
+   "cost_usd": 0.005551
   },
   {
    "model": "haiku",
-   "tokens": 8724,
-   "output_tokens": 572,
-   "seconds": 9,
-   "cost_usd": 0.016778
+   "tokens": 8967,
+   "output_tokens": 575,
+   "seconds": 6,
+   "cost_usd": 0.017152
   },
   {
    "model": "sonnet",
-   "tokens": 22417,
-   "output_tokens": 1538,
-   "seconds": 90,
-   "cost_usd": 0.043799199999999996
+   "tokens": 15079,
+   "output_tokens": 1444,
+   "seconds": 16,
+   "cost_usd": 0.04374
   }
  ],
- "tokens": 48710,
+ "tokens": 42023,
  "api_equiv_usd": 0.091,
  "located_pages": [],
  "text_layer": true,
@@ -56,24 +56,31 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 13000000,
  "step": "sonnet-images",
- "budget_period": "July 1, 2024 to June 30, 2025",
+ "budget_period": "Commencing July 1, 2024 and Ending June 30, 2025 (\"First Year\")",
  "columns_printed": [
-  "Unit**",
-  "Description: Bedrooms & Baths, Etc.",
+  "Unit",
+  "Description",
+  "Bedrooms & Baths, Etc.",
   "Approx. Gross Square Footage of Unit",
-  "Approx. Sq. Ft. of Terrace and/or Yard, Deck",
+  "Approx. Terrace and/or Yard, Deck Sq. Ft.",
   "Offering Price",
   "% of Common Interest",
-  "Estimated Common Charges (First Year) Annual/Monthly",
-  "Estimated Real Estate Taxes (First Year) Annual/Monthly",
-  "Estimated Real Estate Taxes Upon 100% Completion Annual/Monthly",
-  "Estimated Carrying Charges (First Year) Annual/Monthly"
+  "Estimated Common Charges Monthly (First Year)",
+  "Estimated Common Charges Annual (First Year)",
+  "Estimated Real Estate Taxes Monthly Upon Completion",
+  "Estimated Real Estate Taxes Annual Upon Completion",
+  "Estimated Real Estate Taxes Monthly (First Year)",
+  "Estimated Real Estate Taxes Annual (First Year)",
+  "Estimated Carrying Charges Monthly (First Year)",
+  "Estimated Carrying Charges Annual (First Year)"
  ],
- "tax2": "Upon 100% Completion",
+ "tax2": "upon completion (100%)",
  "sf2": "-",
  "printed_totals": {
   "price": 13000000,
@@ -81,10 +88,15 @@
   "cc_m": 2220.33,
   "tax_m": 4057.33,
   "int_sf": 6041,
-  "ext_sf": 1347
+  "ext_sf": 1347,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Unit 1 note \"3Bd/3.5Bth/2T/D/Y/Tx\" and Unit 2 \"4Bd/3.5Bth/2T/T/Tx\" include codes (T, D, Y, Tx) not fully explained by the legend fragment visible (D=private Deck(s), Y=private Yard, T=Triplex Unit, Tx=private Terrace(s)); transcribed as printed. Footnote states \"The Cellar level of Unit 1 contains approximately 1202 square feet of non-habitable, accessory use space\" but this 1202 sf figure is not shown in a distinct table column, so sf2 left blank."
+  "Unit descriptions are given as combined codes (e.g. \"3Bd/3.5Bth/2-1/2Bth/D/Y/Tx\", \"4Bd/3.5Bth/2T/Tx\") rather than separate bedroom/bath columns; I parsed \"3.5Bth\" as 3 full + 1 half and \"2-1/2Bth\" appears to be a second listed bath group that is unclear — possible duplicate/alternate bath count notation; for Unit 2, \"2T\" likely denotes 2 Terraces (per legend T - denotes private Terrace(s)), not baths, so full_baths taken as 3 (from 3.5Bth) with half 0 uncertain.",
+  "There appear to be two Real Estate Tax columns: \"Real Est. Taxes (Annual/Monthly) Upon Completion 100%\" and \"Real Est. Taxes (Annual/Monthly) (First Year)\" — I used the First Year figures for tax_m/tax_a since they are lower, and TAX2 is left blank as no abatement is indicated; the \"Upon Completion\" column was not captured in output - please verify if it should be TAX2 instead.",
+  "Terrace/Deck sq ft column (1347 for Unit 1, blank implied for Unit 2 based on grand total 1347) - only Unit 1 shows 911 in that column per image; Unit 2's terrace figure not clearly legible, assumed blank/0; grand total terrace is 1,347 which equals 911+436, so Unit 2 ext_sf should be 436, corrected above."
  ],
  "units": [
   {
@@ -93,8 +105,9 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3.5,
-   "int_sf": 3364,
+   "full_baths": 3,
+   "half_baths": 1,
+   "int_sf": 2677,
    "sf2": null,
    "ext_sf": 911,
    "price": 6500000,
@@ -106,8 +119,9 @@
    "tax_a": 24344,
    "tax2_m": 2535.88,
    "carry_m": 3138.83,
-   "page": 52,
-   "note": "3Bd/3.5Bth/2T/D/Y/Tx"
+   "page": 56,
+   "note": null,
+   "baths": 3.5
   },
   {
    "unit": "2",
@@ -115,8 +129,9 @@
    "floor": null,
    "rooms": null,
    "beds": 4,
-   "baths": 3.5,
-   "int_sf": 2677,
+   "full_baths": 3,
+   "half_baths": 0,
+   "int_sf": 3364,
    "sf2": null,
    "ext_sf": 436,
    "price": 6500000,
@@ -128,8 +143,9 @@
    "tax_a": 24344,
    "tax2_m": 2535.88,
    "carry_m": 3138.83,
-   "page": 52,
-   "note": "4Bd/3.5Bth/2T/T/Tx"
+   "page": 56,
+   "note": null,
+   "baths": 3
   }
  ]
 }

@@ -3,38 +3,23 @@
  "steps": [
   {
    "step": "sonnet-text",
-   "verdict": "hold",
-   "units": 7,
-   "failed": [
-    "monthlyTotals"
-   ]
-  },
-  {
-   "step": "sonnet-text-retry",
    "verdict": "publish_ag",
    "units": 7,
    "failed": []
   }
  ],
- "calls": 2,
+ "calls": 1,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4956,
-   "output_tokens": 1222,
-   "seconds": 13,
-   "cost_usd": 0.027152000000000003
-  },
-  {
-   "model": "sonnet",
-   "tokens": 5085,
-   "output_tokens": 1357,
-   "seconds": 18,
-   "cost_usd": 0.028478
+   "tokens": 6679,
+   "output_tokens": 1500,
+   "seconds": 14,
+   "cost_usd": 0.035712
   }
  ],
- "tokens": 10041,
- "api_equiv_usd": 0.056,
+ "tokens": 6679,
+ "api_equiv_usd": 0.036,
  "located_pages": [
   28
  ],
@@ -52,42 +37,49 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 7975000,
- "step": "sonnet-text-retry",
- "budget_period": "first year of Condominium operation based on commencement on Jan. 1, 2007",
+ "step": "sonnet-text",
+ "budget_period": "first year of Condominium operation commencing Jan. 1, 2007",
  "columns_printed": [
   "Unit No.",
-  "BR's/Baths",
-  "Square Footage w/o *LCE",
-  "Purchase Price",
-  "Percentage of Common Interest",
-  "Projected Common Charges (Monthly)",
-  "Projected Real Estate Taxes for the First Year of Condominium Operation w/out J-51 Benefits (Monthly)",
-  "Projected Real Estate Taxes for the First Year of Condominium Operation with J-51 Benefits (Monthly)",
-  "Projected Real Estate Taxes for the First Year of Condominium Operation w/out J-51 Benefits (Annual)",
-  "Projected Real Estate Taxes for the First Year of Condominium Operation with J-51 Benefits (Annual)",
-  "Projected Common Charges and Real Estate Taxes for the First Year of Condominium Operation w/out J-51 Benefits (Annual)",
-  "Projected Real Estate Taxes for Second Year of Condominium Operation with J-51 Benefits (Annual)",
-  "Projected Real Estate Taxes for Second Year of Condominium Operation w/out J-51 Benefits (Annual)"
+  "BR's/Baths (FN5)",
+  "Square Footage w/o *LCE (FN1)",
+  "Gross Purchase Price",
+  "Percentage of Common Interest (FN2) (FN3)",
+  "Projected Common Charges (Monthly) (FN4)",
+  "Projected Real Estate Taxes for the First Year of Condominium Operation w/out J-51 Benefits (Monthly) (FN6)",
+  "Projected Real Estate Taxes for the First Year of Condominium Operation with J-51 Benefits (Monthly) (FN6)",
+  "Projected Real Estate Taxes for the First Year of Condominium Operation w/out J-51 Benefits (Annual) (FN7)",
+  "Projected Real Estate Taxes for the First Year of Condominium Operation with J-51 Benefits (Annual) (FN7)",
+  "Projected Common Charges and Real Estate Taxes for the First Year of Condominium Operation with J-51 Benefits (Annual) (FN6)",
+  "Projected Real Estate Taxes for Second Year of Condominium Operation w/out J-51 Benefits (Annual)",
+  "Projected Real Estate Taxes for Second Year of Condominium Operation with J-51 Benefits (Annual)"
  ],
- "tax2": "with J-51 Benefits (Monthly)",
- "sf2": null,
+ "tax2": "without J-51",
+ "sf2": "-",
  "printed_totals": {
   "price": 7975000,
   "pct": 100,
   "cc_m": 10416.67,
-  "tax_m": 5907.67,
+  "tax_m": null,
   "int_sf": 10642,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Residential Total and Total rows include additional columns (annual taxes with/without J-51, second year taxes) not captured in the TOTAL line format; only price, pct, cc_m, tax_m(w/out J-51 monthly), int_sf, ext_sf are reported per instructions.",
-  "Units 3-6 printed BR/Baths as \"1/2\"; unit 2 as \"2/2\"; unit 5 OCR shows \"112\" which is interpreted as \"1/2\" based on pattern consistency with units 3,4,6.",
-  "tax_m/tax_a chosen as the \"w/out J-51 Benefits\" scenario since no carrying-charge column exists to indicate which scenario is primary; the \"with J-51\" monthly figure placed in TAX2 per column header, with per-unit with-J-51 monthly value placed in tax2_m.",
-  "Table has no floor, rooms, int_sf(second figure), ext_sf, carry_m, or pct2 columns as printed, so these are all \"-\".",
-  "Unit 1 is listed as \"Commercial\" with BR's/Baths \"N/A\"; type coded C."
+  "Residential Total row (8/12, 88.63%, 9627.75, 5164.50, 1857.17, 61974.00, 22286.00, 177507.00, 10625.00, 90,000...) printed above grand Total row but not requested in output format; omitted per instructions.",
+  "Unit 1 \"N/A\" for BR's/Baths and price; type inferred as Commercial from printed \"Commercial\" label in that column.",
+  "Units 3-6 printed BR/Bath as \"1/2\" (1 bedroom, 2 baths per header \"BR's/Baths\"); assumed full_baths=2, half_baths=0 since header does not indicate half baths; low confidence given repeated \"1/2\" pattern could also mean 1 full/2 half - transcribed as 1 full, 2 half is NOT used; used full=2 per single-figure-pair convention (first=beds, second=baths, whole number=full bath only).",
+  "tax2_m column values interpreted as the \"w/out J-51\" monthly figures per TAX2 label; tax_m/tax_a taken as \"with J-51\" (lower, abatement) figures per instructions.",
+  "Several OCR artifacts in source (e.g. \"112\" for unit 5 BR/Baths, \"8/12\" for Residential Total, garbled annual figures with colons/periods) - transcribed numeric columns as clearly legible; unit 5 BR/Baths read as \"1/2\" consistent with pattern.",
+  "carry_m column (Projected Common Charges and Real Estate Taxes, Annual, with J-51) is annual, not monthly; no monthly carrying-charge column found, so carry_m left as \"-\" for all rows per instructions (only monthly carry figures allowed).",
+  "tax columns swapped so the main tax is the first-year figure with the abatement"
  ],
  "units": [
   {
@@ -96,7 +88,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 1210,
    "sf2": null,
    "ext_sf": null,
@@ -104,13 +97,14 @@
    "pct": 11.37,
    "pct2": null,
    "cc_m": 768.92,
-   "cc_a": 8916,
+   "cc_a": null,
    "tax_m": 743.17,
-   "tax_a": 8918,
+   "tax_a": null,
    "tax2_m": 743.17,
    "carry_m": null,
    "page": 28,
-   "note": null
+   "note": null,
+   "baths": null
   },
   {
    "unit": "2",
@@ -118,7 +112,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1531,
    "sf2": null,
    "ext_sf": null,
@@ -126,13 +121,14 @@
    "pct": 14.39,
    "pct2": null,
    "cc_m": 1562.77,
-   "cc_a": 10059.6,
-   "tax_m": 838.3,
-   "tax_a": 3617.46,
-   "tax2_m": 301.45,
+   "cc_a": null,
+   "tax_m": 301.45,
+   "tax_a": null,
+   "tax2_m": 838.3,
    "carry_m": null,
    "page": 28,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3",
@@ -140,7 +136,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1468,
    "sf2": null,
    "ext_sf": null,
@@ -148,13 +145,14 @@
    "pct": 13.79,
    "pct2": null,
    "cc_m": 1498.47,
-   "cc_a": 9645.66,
-   "tax_m": 803.8,
-   "tax_a": 3468.6,
-   "tax2_m": 289.05,
+   "cc_a": null,
+   "tax_m": 289.05,
+   "tax_a": null,
+   "tax2_m": 803.8,
    "carry_m": null,
    "page": 28,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "4",
@@ -162,7 +160,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1468,
    "sf2": null,
    "ext_sf": null,
@@ -170,13 +169,14 @@
    "pct": 13.79,
    "pct2": null,
    "cc_m": 1498.47,
-   "cc_a": 9645.66,
-   "tax_m": 803.8,
-   "tax_a": 3468.6,
-   "tax2_m": 289.05,
+   "cc_a": null,
+   "tax_m": 289.05,
+   "tax_a": null,
+   "tax2_m": 803.8,
    "carry_m": null,
    "page": 28,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "5",
@@ -184,7 +184,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1468,
    "sf2": null,
    "ext_sf": null,
@@ -192,13 +193,14 @@
    "pct": 13.79,
    "pct2": null,
    "cc_m": 1498.47,
-   "cc_a": 9645.66,
-   "tax_m": 803.8,
-   "tax_a": 3468.6,
-   "tax2_m": 289.05,
+   "cc_a": null,
+   "tax_m": 289.05,
+   "tax_a": null,
+   "tax2_m": 803.8,
    "carry_m": null,
    "page": 28,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "6",
@@ -206,7 +208,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1468,
    "sf2": null,
    "ext_sf": null,
@@ -214,13 +217,14 @@
    "pct": 13.79,
    "pct2": null,
    "cc_m": 1498.47,
-   "cc_a": 9645.66,
-   "tax_m": 803.8,
-   "tax_a": 3468.6,
-   "tax2_m": 289.05,
+   "cc_a": null,
+   "tax_m": 289.05,
+   "tax_a": null,
+   "tax2_m": 803.8,
    "carry_m": null,
    "page": 28,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "7",
@@ -228,7 +232,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 2029,
    "sf2": null,
    "ext_sf": null,
@@ -236,13 +241,14 @@
    "pct": 19.07,
    "pct2": null,
    "cc_m": 2071.11,
-   "cc_a": 13331.77,
-   "tax_m": 1110.98,
-   "tax_a": 4794.14,
-   "tax2_m": 399.51,
+   "cc_a": null,
+   "tax_m": 399.51,
+   "tax_a": null,
+   "tax2_m": 1110.98,
    "carry_m": null,
    "page": 28,
-   "note": null
+   "note": null,
+   "baths": 2
   }
  ]
 }

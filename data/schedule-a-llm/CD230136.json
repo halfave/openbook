@@ -12,42 +12,42 @@
  "call_log": [
   {
    "model": "haiku",
-   "tokens": 12616,
-   "output_tokens": 582,
-   "seconds": 6,
-   "cost_usd": 0.024576
+   "tokens": 12814,
+   "output_tokens": 574,
+   "seconds": 7,
+   "cost_usd": 0.024841000000000002
   },
   {
    "model": "haiku",
-   "tokens": 4943,
+   "tokens": 5169,
    "output_tokens": 97,
-   "seconds": 62,
-   "cost_usd": 0.005331000000000001
+   "seconds": 4,
+   "cost_usd": 0.0055569999999999994
   },
   {
    "model": "haiku",
-   "tokens": 4939,
+   "tokens": 5165,
    "output_tokens": 97,
-   "seconds": 5,
-   "cost_usd": 0.005327
+   "seconds": 4,
+   "cost_usd": 0.005553000000000001
   },
   {
    "model": "haiku",
-   "tokens": 8771,
-   "output_tokens": 611,
-   "seconds": 10,
-   "cost_usd": 0.016984
+   "tokens": 9179,
+   "output_tokens": 795,
+   "seconds": 9,
+   "cost_usd": 0.018241
   },
   {
    "model": "sonnet",
-   "tokens": 11486,
-   "output_tokens": 861,
-   "seconds": 76,
-   "cost_usd": 0.031589
+   "tokens": 14435,
+   "output_tokens": 800,
+   "seconds": 12,
+   "cost_usd": 0.0373
   }
  ],
- "tokens": 42755,
- "api_equiv_usd": 0.084,
+ "tokens": 46762,
+ "api_equiv_usd": 0.091,
  "located_pages": [],
  "text_layer": true,
  "found": true,
@@ -63,6 +63,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 7050000,
@@ -70,31 +72,36 @@
  "budget_period": "April 1, 2024 through March 31, 2025",
  "columns_printed": [
   "Unit",
-  "Number of Bedrooms",
-  "Number of Baths",
-  "Square Footage of Each Unit Listed by Floor",
-  "Square Footage Roof Top Limited Common Element",
-  "Square Footage Rear Yard Limited Common Element",
-  "Total Square Footage Including Limited Common Elements",
-  "Estimated Offering Price",
-  "Percentage of Common Interest",
-  "**Projected Monthly Real Estate Tax",
-  "Projected Annual Real Estate Tax",
-  "Projected Monthly Common Charges",
-  "Projected Annual Common Charges"
+  "Number of Bedrooms (2)",
+  "Number of Baths (2)",
+  "Square Footage of Each Unit Listed by Floor (2)",
+  "Square Footage Roof Top Limited Common Element (2)",
+  "Square Footage Rear Yard Limited Common Element (2)",
+  "Total Square Footage Including Limited Common Elements (2)",
+  "Estimated Offering Price (1)",
+  "Percentage of Common Interest (3)",
+  "**Projected Monthly Real Estate Tax (5)",
+  "Projected Annual Real Estate Tax (5)",
+  "Projected Monthly Common Charges (4)",
+  "Projected Annual Common Charges (4)"
  ],
  "tax2": "-",
- "sf2": "roof top / rear yard limited common element sf",
+ "sf2": "Total Square Footage Including Limited Common Elements",
  "printed_totals": {
   "price": 7050000,
   "pct": 100,
   "cc_m": 1401.17,
   "tax_m": 1656.25,
   "int_sf": 4887,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Image provided for file p0044-150.png actually displays printed page 43, labeled PDF page 44 by filename; content transcribed as shown. Beds field holds bedroom counts (2 Bed/3 Bed/3 Bed) not rooms; no separate \"rooms\" column exists. Roof top and rear yard limited common element areas are separate (sf2 combines both into one cell per rules; roof top values: 0,0,1112; rear yard values: 385,0,0 — unit 1 has rear yard 385 not roof top, unit 3 has roof top 1112 not rear yard; these differ per unit so sf2 as single cell may be ambiguous — recorded sf2 as roof top figure for unit1=0, but unit1 actually has rear yard 385, not roof top; please verify unit 1 sf2 should be 385 (rear yard) and unit 3 sf2 should be 1112 (roof top))."
+  "Unit 1's sf2 (Total Square Footage Including Limited Common Elements = 2753) is the sum of int_sf (2343) plus roof top (0) and rear yard (385) limited common elements; unit 3's sf2 (2251) includes 1112 roof top limited common element — these limited common area breakdowns (roof top and rear yard square footage) are not captured in the fixed 21-column schema and are omitted; see note fields left blank.",
+  "carry_m (monthly carrying charges combining common charges and taxes) is not printed as a separate column in this table; left as -.",
+  "Table headers are rotated/vertical in the source image; transcribed as best interpreted."
  ],
  "units": [
   {
@@ -103,9 +110,10 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": null,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 2343,
-   "sf2": 0,
+   "sf2": 2753,
    "ext_sf": null,
    "price": 2850000,
    "pct": 41,
@@ -116,8 +124,9 @@
    "tax_a": 8148.75,
    "tax2_m": null,
    "carry_m": null,
-   "page": 43,
-   "note": null
+   "page": 44,
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "2",
@@ -125,9 +134,10 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1201,
-   "sf2": 0,
+   "sf2": 1201,
    "ext_sf": null,
    "price": 1850000,
    "pct": 25,
@@ -138,8 +148,9 @@
    "tax_a": 4968.75,
    "tax2_m": null,
    "carry_m": null,
-   "page": 43,
-   "note": null
+   "page": 44,
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3",
@@ -147,9 +158,10 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1343,
-   "sf2": 1112,
+   "sf2": 2251,
    "ext_sf": null,
    "price": 2350000,
    "pct": 34,
@@ -160,8 +172,9 @@
    "tax_a": 6757.5,
    "tax2_m": null,
    "carry_m": null,
-   "page": 43,
-   "note": null
+   "page": 44,
+   "note": null,
+   "baths": 2
   }
  ]
 }

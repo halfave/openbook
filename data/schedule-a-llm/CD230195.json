@@ -3,65 +3,23 @@
  "steps": [
   {
    "step": "sonnet-text",
-   "verdict": "not_found",
-   "units": 0,
-   "failed": [
-    "ag",
-    "printed",
-    "sqftTotal",
-    "monthlyTotals",
-    "allRowsParsed"
-   ]
-  },
-  {
-   "step": "sonnet-images",
-   "verdict": "not_found",
-   "units": 0,
-   "failed": [
-    "ag",
-    "printed",
-    "sqftTotal",
-    "monthlyTotals",
-    "allRowsParsed",
-    "outdoor"
-   ]
-  },
-  {
-   "step": "sonnet-images-think",
-   "verdict": "hold",
+   "verdict": "publish_ag",
    "units": 4,
-   "failed": [
-    "sqftTotal",
-    "outdoor"
-   ]
+   "failed": []
   }
  ],
- "calls": 3,
+ "calls": 1,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4403,
-   "output_tokens": 829,
-   "seconds": 68,
-   "cost_usd": 0.022582
-  },
-  {
-   "model": "sonnet",
-   "tokens": 13963,
-   "output_tokens": 850,
-   "seconds": 11,
-   "cost_usd": 0.0368102
-  },
-  {
-   "model": "sonnet",
-   "tokens": 17104,
-   "output_tokens": 3982,
-   "seconds": 38,
-   "cost_usd": 0.0681776
+   "tokens": 5877,
+   "output_tokens": 718,
+   "seconds": 9,
+   "cost_usd": 0.027812
   }
  ],
- "tokens": 35470,
- "api_equiv_usd": 0.128,
+ "tokens": 5877,
+ "api_equiv_usd": 0.028,
  "located_pages": [
   34
  ],
@@ -74,67 +32,71 @@
   "pct100": true,
   "ccProportional": true,
   "carrying": true,
-  "sqftTotal": null,
+  "sqftTotal": true,
   "monthlyTotals": true,
-  "psf": null,
+  "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 9600000,
- "step": "sonnet-images-think",
+ "step": "sonnet-text",
  "budget_period": "July 1, 2024- June 30, 2025",
  "columns_printed": [
   "Unit No.",
-  "Location",
+  "Floor Location",
   "Approx. Floor Area",
-  "Approx. Outdoor/Uninhabitable/Limited Common Floor Area",
-  "No. of Bedrooms/Bathrooms",
+  "Approx. Outdoor/Uninhabitable/Limited Common Area",
+  "No. of Bedooms/Bathrooms",
   "Offering Price",
   "Percent Common Interest",
-  "Projected Monthly Common Charges",
+  "Monthly Common Charges",
   "Projected Real Estate Taxes (Monthly)",
   "Projected Real Estate Taxes (Annual)",
   "Projected Carrying Charges (Monthly)"
  ],
  "tax2": null,
- "sf2": null,
+ "sf2": "outdoor/uninhabitable/limited common area",
  "printed_totals": {
   "price": 9600000,
   "pct": 100,
   "cc_m": 3736.67,
   "tax_m": 4193.84,
   "int_sf": 5348,
-  "ext_sf": 1440
+  "ext_sf": 1440,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "The second area column (\"Approx. Outdoor/Uninhabitable/Limited Common Floor Area\") mixes different element types (patio, balcony, terrace, roof terrace, storage) per unit with separate sub-values; these could not be assigned to a single sf2/ext_sf number and were left blank with breakdowns placed in note instead.",
-  "Unit 1's \"Approx. Floor Area\" prints two values (749* for Cellar and 1138 for First Floor); both are given in int_sf as printed rather than a single number.",
-  "No annual common charges column or second tax-scenario column is printed in this table, so cc_a and tax2_m are \"-\".",
-  "unit sizes left out: the area columns did not add up to the printed totals"
+  "Unit 1 bedrooms/bathrooms printed as \"2/2.5\" (2 beds, 2 full, 1 half); outdoor/uninhabitable/limited common area column contains multiple separate figures per unit (cellar+limited common elements) and could not be reduced to single sf2/ext_sf values, so all are listed in sf2 as printed; ext_sf left blank since no single terrace/balcony figure is isolated."
  ],
  "units": [
   {
    "unit": "1",
    "type": "residential",
-   "floor": "Cellar/First Floor",
+   "floor": "Cellar*/First Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
-   "int_sf": null,
-   "sf2": null,
+   "full_baths": 2,
+   "half_baths": 1,
+   "int_sf": 1138,
+   "sf2": 749,
    "ext_sf": null,
    "price": 2950000,
    "pct": 30.26,
    "pct2": null,
    "cc_m": 1130.72,
-   "cc_a": null,
+   "cc_a": 15228.68,
    "tax_m": 1269.06,
-   "tax_a": 15228.68,
+   "tax_a": null,
    "tax2_m": null,
    "carry_m": 2399.78,
    "page": 34,
-   "note": "Cellar 749* + First Floor 1138; Outdoor/Limited Common: 202(P), 100(B); *cellar non-habitable per note"
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "2",
@@ -142,21 +104,23 @@
    "floor": "Second Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
-   "int_sf": null,
+   "full_baths": 2,
+   "half_baths": 0,
+   "int_sf": 1155,
    "sf2": null,
    "ext_sf": null,
    "price": 2200000,
    "pct": 23.02,
    "pct2": null,
    "cc_m": 860.18,
-   "cc_a": null,
+   "cc_a": 11585.07,
    "tax_m": 965.42,
-   "tax_a": 11585.07,
+   "tax_a": null,
    "tax2_m": null,
    "carry_m": 1825.6,
    "page": 34,
-   "note": "Outdoor/Limited Common: 65(S), 89(T), 207(R)"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3",
@@ -164,21 +128,23 @@
    "floor": "Third Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
-   "int_sf": null,
+   "full_baths": 2,
+   "half_baths": 0,
+   "int_sf": 1153,
    "sf2": null,
    "ext_sf": null,
    "price": 2200000,
    "pct": 22.99,
    "pct2": null,
    "cc_m": 859.06,
-   "cc_a": null,
+   "cc_a": 11569.97,
    "tax_m": 964.16,
-   "tax_a": 11569.97,
+   "tax_a": null,
    "tax2_m": null,
    "carry_m": 1823.22,
    "page": 34,
-   "note": "Outdoor/Limited Common: 65(S), 60(B), 235(R)"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "4",
@@ -186,22 +152,23 @@
    "floor": "Fourth Floor/Penthouse",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
-   "int_sf": null,
+   "full_baths": 2,
+   "half_baths": 0,
+   "int_sf": 1153,
    "sf2": null,
    "ext_sf": null,
    "price": 2250000,
    "pct": 23.73,
    "pct2": null,
    "cc_m": 886.71,
-   "cc_a": null,
+   "cc_a": 11942.38,
    "tax_m": 995.2,
-   "tax_a": 11942.38,
+   "tax_a": null,
    "tax2_m": null,
    "carry_m": 1881.91,
    "page": 34,
-   "note": "Outdoor/Limited Common: 71(S), 60(B), 487(R)"
+   "note": null,
+   "baths": 2
   }
- ],
- "rechecked": "2026-09-30"
+ ]
 }

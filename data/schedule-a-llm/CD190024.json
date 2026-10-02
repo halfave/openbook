@@ -12,35 +12,35 @@
  "call_log": [
   {
    "model": "haiku",
-   "tokens": 12188,
-   "output_tokens": 622,
-   "seconds": 10,
-   "cost_usd": 0.023846
+   "tokens": 12368,
+   "output_tokens": 573,
+   "seconds": 7,
+   "cost_usd": 0.023944
   },
   {
    "model": "haiku",
-   "tokens": 4935,
-   "output_tokens": 106,
+   "tokens": 5141,
+   "output_tokens": 97,
+   "seconds": 3,
+   "cost_usd": 0.005529
+  },
+  {
+   "model": "haiku",
+   "tokens": 8793,
+   "output_tokens": 575,
    "seconds": 6,
-   "cost_usd": 0.005359
-  },
-  {
-   "model": "haiku",
-   "tokens": 8568,
-   "output_tokens": 570,
-   "seconds": 9,
-   "cost_usd": 0.016456
+   "cost_usd": 0.016811
   },
   {
    "model": "sonnet",
-   "tokens": 12038,
-   "output_tokens": 1515,
-   "seconds": 15,
-   "cost_usd": 0.0377172
+   "tokens": 14650,
+   "output_tokens": 1129,
+   "seconds": 14,
+   "cost_usd": 0.040152999999999994
   }
  ],
- "tokens": 37729,
- "api_equiv_usd": 0.083,
+ "tokens": 40952,
+ "api_equiv_usd": 0.086,
  "located_pages": [],
  "text_layer": true,
  "found": true,
@@ -56,6 +56,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 7470437,
@@ -69,24 +71,26 @@
   "Estimated Purchase Price ($) (3)",
   "% of Common Interest (4)",
   "Projected Monthly Common Charges ($) (5)",
-  "Projected Real Estate Taxes ($) (6)",
+  "Projected Real Estate Taxes ($) (6) Mo./Year",
   "Projected Total Monthly Carrying Charges ($) (5)",
   "Projected Monthly Carrying Charges Deductible for Income Tax Purposes ($) (7)"
  ],
  "tax2": null,
- "sf2": "uninhabitable",
+ "sf2": "Uninhabitable",
  "printed_totals": {
   "price": 7470437,
   "pct": 100,
   "cc_m": 4791.66,
-  "tax_m": 5000,
+  "tax_m": null,
   "int_sf": 6722,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Bedrooms/Bathrooms column printed as e.g. \"1-1\" and \"3-2\" (not clear X+X format for beds/baths); left beds/baths columns blank and noted raw code per unit.",
-  "Column (2) \"Approx. Sq. Ft. Area (Uninhabitable)\" contains mixed values (yard \"(YD)\" or balcony \"(B)\"); placed in sf2 per instructions since not clearly a single ext_sf terrace/balcony number for all rows (Unit 1 is yard, others balcony) — labeled SF2 as \"uninhabitable\".",
-  "Annual real estate tax total for all units shown is 60,000.00 but not requested in TOTAL line per template (only tax_m requested); monthly total tax is 5,000.00."
+  "Column (1) \"Number of Bedrooms and Bathrooms\" prints combined figures like \"1 – 1\" and \"3 – 2\"; interpreted first number as bedrooms and second as full baths (no separate half-bath column printed), half_baths set to 0/-.",
+  "Uninhabitable Sq. Ft. column shows values with \"(B)\" (Balcony) or \"(YD)\" (Rear Yard) suffixes per the note; these suffixes were dropped from the numeric sf2 value and noted in the note column instead."
  ],
  "units": [
   {
@@ -94,10 +98,11 @@
    "type": "residential",
    "floor": null,
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 622,
-   "sf2": null,
+   "sf2": 890,
    "ext_sf": null,
    "price": 760437,
    "pct": 9.2,
@@ -109,15 +114,17 @@
    "tax2_m": null,
    "carry_m": 900.84,
    "page": 24,
-   "note": "Bedrooms/Bathrooms \"1-1\"; uninhabitable sq ft \"890 (YD)\" Rear Yard"
+   "note": "Rear Yard (B)/(YD) per note",
+   "baths": 1
   },
   {
    "unit": "2",
    "type": "residential",
    "floor": null,
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 3,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1220,
    "sf2": null,
    "ext_sf": null,
@@ -131,17 +138,19 @@
    "tax2_m": null,
    "carry_m": 1772.29,
    "page": 24,
-   "note": "Bedrooms/Bathrooms \"3-2\""
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3A",
    "type": "residential",
    "floor": null,
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 610,
-   "sf2": null,
+   "sf2": 20,
    "ext_sf": null,
    "price": 671000,
    "pct": 9.1,
@@ -153,17 +162,19 @@
    "tax2_m": null,
    "carry_m": 891.04,
    "page": 24,
-   "note": "Bedrooms/Bathrooms \"1-1\"; uninhabitable sq ft \"20(B)\" Balcony"
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3B",
    "type": "residential",
    "floor": null,
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 610,
-   "sf2": null,
+   "sf2": 55,
    "ext_sf": null,
    "price": 671000,
    "pct": 9.1,
@@ -175,17 +186,19 @@
    "tax2_m": null,
    "carry_m": 891.04,
    "page": 24,
-   "note": "Bedrooms/Bathrooms \"1-1\"; uninhabitable sq ft \"55(B)\" Balcony"
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "4A",
    "type": "residential",
    "floor": null,
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 610,
-   "sf2": null,
+   "sf2": 20,
    "ext_sf": null,
    "price": 671000,
    "pct": 9.1,
@@ -197,17 +210,19 @@
    "tax2_m": null,
    "carry_m": 891.04,
    "page": 24,
-   "note": "Bedrooms/Bathrooms \"1-1\"; uninhabitable sq ft \"20(B)\" Balcony"
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "4B",
    "type": "residential",
    "floor": null,
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 610,
-   "sf2": null,
+   "sf2": 55,
    "ext_sf": null,
    "price": 671000,
    "pct": 9.1,
@@ -219,17 +234,19 @@
    "tax2_m": null,
    "carry_m": 891.04,
    "page": 24,
-   "note": "Bedrooms/Bathrooms \"1-1\"; uninhabitable sq ft \"55(B)\" Balcony"
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "5A",
    "type": "residential",
    "floor": null,
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 610,
-   "sf2": null,
+   "sf2": 20,
    "ext_sf": null,
    "price": 671000,
    "pct": 9.1,
@@ -241,17 +258,19 @@
    "tax2_m": null,
    "carry_m": 891.04,
    "page": 24,
-   "note": "Bedrooms/Bathrooms \"1-1\"; uninhabitable sq ft \"20(B)\" Balcony"
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "5B",
    "type": "residential",
    "floor": null,
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 610,
-   "sf2": null,
+   "sf2": 55,
    "ext_sf": null,
    "price": 671000,
    "pct": 9.1,
@@ -263,17 +282,19 @@
    "tax2_m": null,
    "carry_m": 891.04,
    "page": 24,
-   "note": "Bedrooms/Bathrooms \"1-1\"; uninhabitable sq ft \"55(B)\" Balcony"
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "6",
    "type": "residential",
    "floor": null,
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 3,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1220,
-   "sf2": null,
+   "sf2": 75,
    "ext_sf": null,
    "price": 1342000,
    "pct": 18.1,
@@ -285,7 +306,8 @@
    "tax2_m": null,
    "carry_m": 1772.29,
    "page": 24,
-   "note": "Bedrooms/Bathrooms \"3-2\"; uninhabitable sq ft \"75(B)\" Balcony"
+   "note": null,
+   "baths": 2
   }
  ]
 }

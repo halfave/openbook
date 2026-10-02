@@ -3,23 +3,53 @@
  "steps": [
   {
    "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 7,
+   "failed": [
+    "carrying"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "hold",
+   "units": 7,
+   "failed": [
+    "carrying"
+   ]
+  },
+  {
+   "step": "sonnet-images",
    "verdict": "publish_ag",
    "units": 7,
    "failed": []
   }
  ],
- "calls": 1,
+ "calls": 3,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 5351,
-   "output_tokens": 1238,
+   "tokens": 6898,
+   "output_tokens": 1279,
+   "seconds": 15,
+   "cost_usd": 0.035262
+  },
+  {
+   "model": "sonnet",
+   "tokens": 6864,
+   "output_tokens": 1245,
+   "seconds": 13,
+   "cost_usd": 0.034921999999999995
+  },
+  {
+   "model": "sonnet",
+   "tokens": 18218,
+   "output_tokens": 1293,
    "seconds": 16,
-   "cost_usd": 0.028828
+   "cost_usd": 0.049139
   }
  ],
- "tokens": 5351,
- "api_equiv_usd": 0.029,
+ "tokens": 31980,
+ "api_equiv_usd": 0.119,
  "located_pages": [
   35
  ],
@@ -37,10 +67,12 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 4483000,
- "step": "sonnet-text",
+ "step": "sonnet-images",
  "budget_period": "October 1, 2019- September 30, 2020",
  "columns_printed": [
   "Unit No.",
@@ -51,27 +83,30 @@
   "Offering Price",
   "Percent Common Interest",
   "Projected Monthly Common Charges",
-  "Projected Real Estate Taxes with421-a (Monthly)",
-  "Projected Real Estate Taxes with421-a (Annual)",
-  "Projected Real Estate Taxes w/o421-a (Monthly)",
-  "Projected Real Estate Taxes w/o421-a (Annual)",
+  "Projected Real Estate Taxes with 421-a (Monthly)",
+  "Projected Real Estate taxes with 421-a (Annual)",
+  "Projected Real Estate Taxes w/o 421-a (Monthly)",
+  "Projected Real Estate Taxes w/o 421-a (Annual)",
   "Projected Carrying Charges w/ 421-a (Monthly)",
   "Projected Carrying Charges w/o 421-a (Monthly)"
  ],
  "tax2": "w/o 421-a",
- "sf2": "Outdoor/Limited Square Footage",
+ "sf2": "outdoor/limited square footage",
  "printed_totals": {
   "price": 4483000,
   "pct": 100,
   "cc_m": 2773.34,
   "tax_m": 744.39,
   "int_sf": 5416,
-  "ext_sf": 1862
+  "ext_sf": 1862,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Unit 1 interior sf printed as two figures (715* cellar, 1018 first floor); int_sf combines first floor + cellar per instructions is unclear since cellar is listed as \"715*\" with asterisk (likely referring to a footnote marked \"*Note:\" but no text given) and 1018 as first floor - I used 1733 as sum (1018+715) for int_sf since habitable area seems split across two levels, but this may not match intended convention; sf2 for Unit 1 set to 889 (174+... actually outdoor/limited column shows 174 for cellar and separate 1073 for first floor, unclear which belongs where)",
-  "Unit 3F/3R/4F outdoor-limited sf values (30(S) for 3F listed under 3R row, 29(S) under 4F row) appear misaligned in source OCR; I assigned sf2 as sum of balcony+storage number printed adjacent to each unit but exact split (B vs S separately) could not be confirmed",
-  "\"*Note:\" at bottom has no accompanying text, so the meaning of the asterisk on Unit 1's \"715*\" figure is unknown"
+  "Unit 1 prints two square footage figures on separate lines (715* cellar and 1018 first floor); per instructions the habitable floor's figure (1018 first floor) was used for int_sf and the cellar figure (715) would normally go to sf2, but sf2 is already used for the outdoor/limited square footage column per the table's own layout; combined int_sf of 1733 (715+1018) was used instead since the table's own Total row sums to 5416 implying both floors count as interior area - treating both 715 and 1018 as interior (summed) rather than splitting cellar into sf2.",
+  "carry_m: table prints two carrying-charge columns (w/421-a and w/o 421-a monthly); per instructions used the w/421-a column since tax_m/tax_a are the with-421-a (lower, abatement) figures.",
+  "Unit 1's \"No. of Bedooms/Bathrooms\" column reads \"2/2.5\" meaning 2 beds, 2 full baths, 1 half bath per combined-cell rule."
  ],
  "units": [
   {
@@ -80,9 +115,10 @@
    "floor": "Cellar/First Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1733,
-   "sf2": 889,
+   "sf2": null,
    "ext_sf": null,
    "price": 1149000,
    "pct": 27.71,
@@ -94,7 +130,8 @@
    "tax2_m": 1251.31,
    "carry_m": 1336.65,
    "page": 35,
-   "note": "(A); areaway and rear yard LCE"
+   "note": "715* cellar/1018 first floor; carry_m uses tax_m with 421-a",
+   "baths": 2.5
   },
   {
    "unit": "2F",
@@ -102,9 +139,10 @@
    "floor": "Second Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 565,
-   "sf2": 12,
+   "sf2": null,
    "ext_sf": null,
    "price": 499000,
    "pct": 10.58,
@@ -116,7 +154,8 @@
    "tax2_m": 477.76,
    "carry_m": 305.83,
    "page": 35,
-   "note": "(S); storage LCE"
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "2R",
@@ -124,9 +163,10 @@
    "floor": "Second Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 564,
-   "sf2": 30,
+   "sf2": null,
    "ext_sf": null,
    "price": 499000,
    "pct": 10.66,
@@ -138,7 +178,8 @@
    "tax2_m": 481.38,
    "carry_m": 308.15,
    "page": 35,
-   "note": "(S); storage LCE"
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3F",
@@ -146,9 +187,10 @@
    "floor": "Third Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 565,
-   "sf2": 55,
+   "sf2": null,
    "ext_sf": null,
    "price": 529000,
    "pct": 11.15,
@@ -160,7 +202,8 @@
    "tax2_m": 503.5,
    "carry_m": 322.31,
    "page": 35,
-   "note": "(B)(S); balcony+storage LCE"
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3R",
@@ -168,9 +211,10 @@
    "floor": "Third Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 564,
-   "sf2": 79,
+   "sf2": null,
    "ext_sf": null,
    "price": 529000,
    "pct": 11.29,
@@ -182,7 +226,8 @@
    "tax2_m": 509.83,
    "carry_m": 326.36,
    "page": 35,
-   "note": "(B)(S); balcony+storage LCE"
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "4F",
@@ -190,9 +235,10 @@
    "floor": "Fourth Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 548,
-   "sf2": 54,
+   "sf2": null,
    "ext_sf": null,
    "price": 529000,
    "pct": 11,
@@ -204,17 +250,19 @@
    "tax2_m": 496.73,
    "carry_m": 317.98,
    "page": 35,
-   "note": "(B)(S); balcony+storage LCE"
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "4R",
    "type": "residential",
-   "floor": "Fourth Floor/Penthouse",
+   "floor": "Fourth Floor Penthouse",
    "rooms": null,
    "beds": 1,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 877,
-   "sf2": 331,
+   "sf2": null,
    "ext_sf": null,
    "price": 749000,
    "pct": 17.61,
@@ -226,7 +274,8 @@
    "tax2_m": 795.22,
    "carry_m": 600.45,
    "page": 35,
-   "note": "(B)(T); terrace+balcony LCE"
+   "note": null,
+   "baths": 2
   }
  ]
 }

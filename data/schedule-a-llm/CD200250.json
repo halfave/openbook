@@ -3,17 +3,14 @@
  "steps": [
   {
    "step": "sonnet-text",
-   "verdict": "not_found",
-   "units": 0,
+   "verdict": "hold",
+   "units": 10,
    "failed": [
-    "ag",
-    "printed",
-    "monthlyTotals",
-    "allRowsParsed"
+    "bedsBaths"
    ]
   },
   {
-   "step": "sonnet-images",
+   "step": "sonnet-text-retry",
    "verdict": "publish_ag",
    "units": 10,
    "failed": []
@@ -23,20 +20,20 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 5031,
-   "output_tokens": 1043,
+   "tokens": 6562,
+   "output_tokens": 1075,
    "seconds": 10,
-   "cost_usd": 0.026378000000000002
+   "cost_usd": 0.032694
   },
   {
    "model": "sonnet",
-   "tokens": 14754,
-   "output_tokens": 1083,
-   "seconds": 11,
-   "cost_usd": 0.040205599999999994
+   "tokens": 12083,
+   "output_tokens": 1103,
+   "seconds": 86,
+   "cost_usd": 0.034087599999999996
   }
  ],
- "tokens": 19785,
+ "tokens": 18645,
  "api_equiv_usd": 0.067,
  "located_pages": [
   46
@@ -55,14 +52,16 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 13243000,
- "step": "sonnet-images",
+ "step": "sonnet-text-retry",
  "budget_period": "JULY 1, 2021 - JUNE 30, 2022",
  "columns_printed": [
   "Unit",
-  "Unit Square Footage",
+  "Square Footage",
   "Limited Common Element",
   "Limited Common Element Square Footage",
   "BR",
@@ -78,17 +77,21 @@
   "Total of Estimated Common Charges and Real Estate Taxes Annually"
  ],
  "tax2": null,
- "sf2": "limited common element square footage",
+ "sf2": "Limited Common Element Square Footage",
  "printed_totals": {
   "price": 13243000,
   "pct": 100,
   "cc_m": 5130.67,
   "tax_m": 10565.8,
   "int_sf": 10128,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "\"Commercial\" unit has no unit number/letter printed, only labeled \"Commercial Unit\" in the Unit column; Bath value \".5\" for Commercial Unit is unclear (likely a printing artifact, transcribed as printed)."
+  "Commercial Unit row has \"Bath\" value \".5\" with no BR figure; left beds blank and put bath figure as printed (not clearly full/half, so not placed in full_baths/half_baths) — see note column instead.",
+  "Residential Units Subtotal, Non-Residential Unit Subtotal, and TOTAL rows are printed but only the TOTAL row is reported per instructions; subtotal figures omitted."
  ],
  "units": [
   {
@@ -96,8 +99,9 @@
    "type": "residential",
    "floor": null,
    "rooms": null,
-   "beds": null,
-   "baths": 1,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 1542,
    "sf2": 1036,
    "ext_sf": null,
@@ -111,15 +115,17 @@
    "tax2_m": null,
    "carry_m": 1749.01,
    "page": 46,
-   "note": null
+   "note": "Rear Yard",
+   "baths": 1
   },
   {
    "unit": "2A",
    "type": "residential",
    "floor": null,
    "rooms": null,
-   "beds": null,
-   "baths": 1,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 774,
    "sf2": 0,
    "ext_sf": null,
@@ -133,15 +139,17 @@
    "tax2_m": null,
    "carry_m": 1268.31,
    "page": 46,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "2B",
    "type": "residential",
    "floor": null,
    "rooms": null,
-   "beds": null,
-   "baths": 1,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 773,
    "sf2": 0,
    "ext_sf": null,
@@ -155,15 +163,17 @@
    "tax2_m": null,
    "carry_m": 1266.66,
    "page": 46,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3A",
    "type": "residential",
    "floor": null,
    "rooms": null,
-   "beds": null,
-   "baths": 1,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 774,
    "sf2": 0,
    "ext_sf": null,
@@ -177,15 +187,17 @@
    "tax2_m": null,
    "carry_m": 1268.31,
    "page": 46,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3B",
    "type": "residential",
    "floor": null,
    "rooms": null,
-   "beds": null,
-   "baths": 1,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 773,
    "sf2": 0,
    "ext_sf": null,
@@ -199,15 +211,17 @@
    "tax2_m": null,
    "carry_m": 1266.66,
    "page": 46,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "4A",
    "type": "residential",
    "floor": null,
    "rooms": null,
-   "beds": null,
-   "baths": 1,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 774,
    "sf2": 0,
    "ext_sf": null,
@@ -221,15 +235,17 @@
    "tax2_m": null,
    "carry_m": 1268.31,
    "page": 46,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "4B",
    "type": "residential",
    "floor": null,
    "rooms": null,
-   "beds": null,
-   "baths": 1,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 773,
    "sf2": 0,
    "ext_sf": null,
@@ -243,7 +259,8 @@
    "tax2_m": null,
    "carry_m": 1266.66,
    "page": 46,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "PHA",
@@ -251,7 +268,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": null,
    "int_sf": 1648,
    "sf2": 0,
    "ext_sf": null,
@@ -265,7 +283,8 @@
    "tax2_m": null,
    "carry_m": 2700.48,
    "page": 46,
-   "note": null
+   "note": null,
+   "baths": 3
   },
   {
    "unit": "PHB",
@@ -273,7 +292,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1816,
    "sf2": 502,
    "ext_sf": null,
@@ -287,15 +307,17 @@
    "tax2_m": null,
    "carry_m": 3058.04,
    "page": 46,
-   "note": null
+   "note": "Terrace",
+   "baths": 2
   },
   {
-   "unit": "Commercial",
+   "unit": "Commercial Unit",
    "type": "commercial",
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": 0.5,
+   "full_baths": null,
+   "half_baths": 0.5,
    "int_sf": 481,
    "sf2": 0,
    "ext_sf": null,
@@ -309,7 +331,8 @@
    "tax2_m": null,
    "carry_m": 584.03,
    "page": 46,
-   "note": null
+   "note": null,
+   "baths": 0.25
   }
  ]
 }

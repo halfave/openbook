@@ -14,14 +14,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4552,
-   "output_tokens": 963,
-   "seconds": 8,
-   "cost_usd": 0.023982
+   "tokens": 6074,
+   "output_tokens": 901,
+   "seconds": 10,
+   "cost_usd": 0.029698000000000002
   }
  ],
- "tokens": 4552,
- "api_equiv_usd": 0.024,
+ "tokens": 6074,
+ "api_equiv_usd": 0.03,
  "located_pages": [
   50
  ],
@@ -39,6 +39,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 14324000,
@@ -68,10 +70,13 @@
   "cc_m": 3961.92,
   "tax_m": 7715,
   "int_sf": 7715,
-  "ext_sf": 1500
+  "ext_sf": 1500,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Total square footage row totals main floor, cellar, areaway, yard, and roof separately (7715.00, 1801.00, 696.00, 744.00, 1500.00) summing to 12456.00; int_sf/ext_sf in TOTAL line reflect main floor (7715.00) and roof (1500.00) only, per column instructions."
+  "Areaway and Yard limited common element sf columns are printed but not captured in a dedicated field (only total sf and cellar accessory space captured); ext_sf left as roof sf per rules since multiple separate outdoor areas (areaway, yard, roof) are printed but only roof given a single value per row usable as ext_sf."
  ],
  "units": [
   {
@@ -80,7 +85,8 @@
    "floor": "Cellar and First Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1145,
    "sf2": 901,
    "ext_sf": null,
@@ -94,7 +100,8 @@
    "tax2_m": null,
    "carry_m": 2101.85,
    "page": 50,
-   "note": "areaway 347.00 sf; yard 367.00 sf"
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "1B",
@@ -102,7 +109,8 @@
    "floor": "Cellar and First Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1115,
    "sf2": 900,
    "ext_sf": null,
@@ -116,7 +124,8 @@
    "tax2_m": null,
    "carry_m": 2101.85,
    "page": 50,
-   "note": "areaway 349.00 sf; yard 377.00 sf"
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "2A",
@@ -124,7 +133,8 @@
    "floor": "Second Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1190,
    "sf2": null,
    "ext_sf": 429,
@@ -138,7 +148,8 @@
    "tax2_m": null,
    "carry_m": 1634.77,
    "page": 50,
-   "note": "roof 429.00 sf"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "2B",
@@ -146,7 +157,8 @@
    "floor": "Second Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1170,
    "sf2": null,
    "ext_sf": 405,
@@ -160,7 +172,8 @@
    "tax2_m": null,
    "carry_m": 1634.77,
    "page": 50,
-   "note": "roof 405.00 sf"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3A",
@@ -168,7 +181,8 @@
    "floor": "Third Floor and Penthouse",
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": 0,
    "int_sf": 1559,
    "sf2": null,
    "ext_sf": 333,
@@ -182,7 +196,8 @@
    "tax2_m": null,
    "carry_m": 2101.85,
    "page": 50,
-   "note": "roof 333.00 sf"
+   "note": null,
+   "baths": 3
   },
   {
    "unit": "3B",
@@ -190,7 +205,8 @@
    "floor": "Third Floor and Penthouse",
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": 0,
    "int_sf": 1536,
    "sf2": null,
    "ext_sf": 333,
@@ -204,7 +220,8 @@
    "tax2_m": null,
    "carry_m": 2101.85,
    "page": 50,
-   "note": "roof 333.00 sf"
+   "note": null,
+   "baths": 3
   }
  ]
 }

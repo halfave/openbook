@@ -12,44 +12,44 @@
  "call_log": [
   {
    "model": "haiku",
-   "tokens": 12220,
-   "output_tokens": 574,
+   "tokens": 12368,
+   "output_tokens": 575,
+   "seconds": 8,
+   "cost_usd": 0.023952
+  },
+  {
+   "model": "haiku",
+   "tokens": 5147,
+   "output_tokens": 97,
+   "seconds": 3,
+   "cost_usd": 0.005535
+  },
+  {
+   "model": "haiku",
+   "tokens": 5137,
+   "output_tokens": 97,
+   "seconds": 3,
+   "cost_usd": 0.005525
+  },
+  {
+   "model": "haiku",
+   "tokens": 8796,
+   "output_tokens": 570,
    "seconds": 5,
-   "cost_usd": 0.023725999999999997
-  },
-  {
-   "model": "haiku",
-   "tokens": 4985,
-   "output_tokens": 97,
-   "seconds": 4,
-   "cost_usd": 0.005373
-  },
-  {
-   "model": "haiku",
-   "tokens": 4989,
-   "output_tokens": 97,
-   "seconds": 4,
-   "cost_usd": 0.005377
-  },
-  {
-   "model": "haiku",
-   "tokens": 8594,
-   "output_tokens": 554,
-   "seconds": 10,
-   "cost_usd": 0.016431
+   "cost_usd": 0.016798
   },
   {
    "model": "sonnet",
-   "tokens": 17888,
-   "output_tokens": 692,
-   "seconds": 16,
-   "cost_usd": 0.030794999999999996
+   "tokens": 14266,
+   "output_tokens": 793,
+   "seconds": 12,
+   "cost_usd": 0.036582
   }
  ],
- "tokens": 48676,
- "api_equiv_usd": 0.082,
+ "tokens": 45714,
+ "api_equiv_usd": 0.088,
  "located_pages": [],
- "text_layer": false,
+ "text_layer": true,
  "found": true,
  "verdict": "publish_ag",
  "checks": {
@@ -63,6 +63,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 5800000,
@@ -80,28 +82,32 @@
   "Estimated RE Taxes Annual"
  ],
  "tax2": null,
- "sf2": "cellar/basement sf (Unit 1 only)",
+ "sf2": "cellar/basement",
  "printed_totals": {
   "price": 5800000,
   "pct": 100,
   "cc_m": 1438,
   "tax_m": 1074,
   "int_sf": 6339,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Column headers are numbered (1-5 plus unit labels) rather than worded for offering price/charges/taxes; header row combined unit identifiers (6A, 7A) with column groupings — transcribed using the descriptive labels (Bedrooms & Baths, % of Common Interest, Area in Square Feet, Offering Price, Projected Common Charges, Estimated RE Taxes). Table has no \"floor\" or \"rooms\" columns, no sf2/ext_sf for Units 2-3, no pct2, no carry_m, and no distinct tax2_m scenario."
+  "Unit 1's bedrooms/baths shown as \"2/3\" (2 bedrooms, 3 baths, format unclear whether full/half) - no separate half-bath column printed, so recorded as 3 full, 0 half; Units 2 and 3 show \"3/2.5\" interpreted as 3 bedrooms, 2 full baths, 1 half bath. Unit 1's int_sf/sf2 interpretation: habitable area unclear since both \"Cellar\" and \"Basement\" labeled; used Cellar figure as sf2 and Basement figure as int_sf per convention, but this may be reversed. No \"7A\" header label found elsewhere in table — columns 6A and 7A appear to be unit identifiers for Projected Common Charges and Estimated RE Taxes sections respectively, not separate units; treated as column groupings only."
  ],
  "units": [
   {
-   "unit": "1*",
+   "unit": "1",
    "type": "residential",
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 3,
-   "int_sf": 1292,
-   "sf2": 1226,
+   "full_baths": 3,
+   "half_baths": null,
+   "int_sf": 1226,
+   "sf2": 1292,
    "ext_sf": null,
    "price": 1550000,
    "pct": 30,
@@ -113,15 +119,17 @@
    "tax2_m": null,
    "carry_m": null,
    "page": 28,
-   "note": "Area for Unit 1 printed as \"Cellar: 1,226 Basement: 1,292\"; interior sf taken as Basement (1,292), cellar sf as second figure"
+   "note": "Unit 1 is a Duplex on the cellar and basement floors; area shown as Cellar: 1,226 / Basement: 1,292",
+   "baths": 3
   },
   {
-   "unit": "2*",
+   "unit": "2",
    "type": "residential",
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1993,
    "sf2": null,
    "ext_sf": null,
@@ -135,15 +143,17 @@
    "tax2_m": null,
    "carry_m": null,
    "page": 28,
-   "note": null
+   "note": "Unit 2 is a Duplex on the first and second floors",
+   "baths": 2.5
   },
   {
-   "unit": "3*",
+   "unit": "3",
    "type": "residential",
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1828,
    "sf2": null,
    "ext_sf": null,
@@ -157,7 +167,8 @@
    "tax2_m": null,
    "carry_m": null,
    "page": 28,
-   "note": null
+   "note": "Unit 3 is a Duplex on the third and fourth floors",
+   "baths": 2.5
   }
  ]
 }

@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4286,
-   "output_tokens": 602,
+   "tokens": 6062,
+   "output_tokens": 869,
    "seconds": 9,
-   "cost_usd": 0.020752
+   "cost_usd": 0.029458
   }
  ],
- "tokens": 4286,
- "api_equiv_usd": 0.021,
+ "tokens": 6062,
+ "api_equiv_usd": 0.029,
  "located_pages": [
   31
  ],
@@ -37,48 +37,57 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 7450000,
  "step": "sonnet-text",
- "budget_period": "June 1, 2022",
+ "budget_period": "For the First Year of Operation commencing June 1, 2022",
  "columns_printed": [
   "Home # (Desc.)",
   "Interior Habitable Space",
   "♦Interior Uninhabitable Space (Cellar Space)",
-  "Total Interior Square Footage (habitable & uninhabitable)",
+  "Total Interior Square Footage (habitable & uninhabitable) (1)",
   "Selling Price",
   "♦♦Limited Common Element Square Footage",
-  "Bedrooms / Bathrooms",
-  "Percentage of Common Interest",
-  "Monthly Common Charges",
-  "Annual Common Charges",
-  "Monthly Real Estate Taxes",
-  "Annual Real Estate Taxes",
-  "Total Monthly Carrying Charges",
+  "Bedrooms / Bathrooms (2)",
+  "Percentage of Common Interest (3)",
+  "Monthly Common Charges (3)",
+  "Annual Common Charges (4)",
+  "Monthly Real Estate Taxes (4)",
+  "Annual Real Estate Taxes (5)",
+  "Total Monthly Carrying Charges (5)",
   "Total Annual Carrying Charges"
  ],
  "tax2": null,
- "sf2": "cellar space",
+ "sf2": "cellar (interior uninhabitable space)",
  "printed_totals": {
   "price": 7450000,
   "pct": 100,
   "cc_m": 2283.26,
   "tax_m": 1879.51,
   "int_sf": 3692,
-  "ext_sf": 1808
+  "ext_sf": 1808,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Apt 2 cellar space printed as \"OSF\" (likely 0 SF), written as - per blank-cell rule since value unclear; ext_sf column not present in table (limited common element sf used instead, kept in dedicated column); individual outdoor area breakdowns listed in footnotes, not in note field since ext_sf column itself not applicable per instructions."
+  "sf2 for units 2 and 3 printed as \"OSF\" (likely \"0 SF\") rather than a numeric value; transcribed as \"-\" and noted.",
+  "Unit 1 bedrooms/bathrooms printed as \"1/1 + 2 pwdr\" — interpreted as 1 bedroom, 1 full bath; the \"2 pwdr\" (2 half baths/powder rooms) placed in half_baths despite half_baths normally capped at 1-2.",
+  "Unit 3 has no half bath printed (\"3/2\"), half_baths set to -; TOTALS row does not print half_baths column total.",
+  "\"Limited Common Element Square Footage\" column placed in ext_sf per instructions, though it includes combined terrace/patio/yard/roof areas per footnotes (multiple sub-areas listed in notes below table, not per-row)."
  ],
  "units": [
   {
-   "unit": "1",
+   "unit": "1 - Garden Duplex",
    "type": "residential",
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 2,
    "int_sf": 917,
    "sf2": 907,
    "ext_sf": 921,
@@ -92,15 +101,17 @@
    "tax2_m": null,
    "carry_m": 1387.87,
    "page": 31,
-   "note": "Garden Duplex; 1/1 + 2 pwdr"
+   "note": "1/1 + 2 pwdr",
+   "baths": 2
   },
   {
-   "unit": "2",
+   "unit": "2 - Central Duplex",
    "type": "residential",
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1503,
    "sf2": null,
    "ext_sf": 547,
@@ -114,15 +125,17 @@
    "tax2_m": null,
    "carry_m": 1387.46,
    "page": 31,
-   "note": "Central Duplex; 3/2 +1 pwdr"
+   "note": "3/2 +1 pwdr; sf2 printed as \"OSF\"",
+   "baths": 2.5
   },
   {
-   "unit": "3",
+   "unit": "3 - Penthouse Duplex",
    "type": "residential",
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1272,
    "sf2": null,
    "ext_sf": 340,
@@ -136,7 +149,8 @@
    "tax2_m": null,
    "carry_m": 1387.46,
    "page": 31,
-   "note": "Penthouse Duplex"
+   "note": "3/2; sf2 printed as \"OSF\"",
+   "baths": 2
   }
  ]
 }

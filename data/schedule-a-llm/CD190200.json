@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4453,
-   "output_tokens": 860,
-   "seconds": 11,
-   "cost_usd": 0.022968000000000002
+   "tokens": 5999,
+   "output_tokens": 901,
+   "seconds": 9,
+   "cost_usd": 0.029398
   }
  ],
- "tokens": 4453,
- "api_equiv_usd": 0.023,
+ "tokens": 5999,
+ "api_equiv_usd": 0.029,
  "located_pages": [
   23
  ],
@@ -37,6 +37,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 5930000,
@@ -51,25 +53,28 @@
   "Offering Price",
   "With J51 Tax Ben. Monthly Common Charges",
   "With J51 Tax Ben. Monthly Real Es. Taxes",
-  "Without J51 Tax Ben. Monthly Carrying Charges",
+  "Without J51 Tax Ben. Monthly Common Charges",
   "Without J51 Tax Ben. Monthly Real Es. Taxes",
   "With J51 Tax Ben. Monthly Carrying Charges",
   "Without J51 Tax Ben. Annual Real Es. Taxes",
-  "Without J51 Tax Ben. Annual Real Es. Taxes"
+  "With J51 Tax Ben. Annual Real Es. Taxes"
  ],
  "tax2": "without J51",
- "sf2": "other sq ftg",
+ "sf2": "other sq. ftg.",
  "printed_totals": {
   "price": 5930000,
   "pct": 100,
   "cc_m": 1590,
-  "tax_m": null,
+  "tax_m": 865,
   "int_sf": null,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Column header order and labels are ambiguous due to complex multi-scenario (With/Without J51) layout; mapped tax_m/tax_a to the \"Without J51\" figures per columns 7 and 10 since carrying charges (col 9, Without J51) appear with col 7's real estate tax figure; tax2_m assigned to col 5 (With J51 monthly real es. taxes). cc_m taken as col 6 (With J51 monthly common charges); carry_m taken as col 9 (With J51 monthly carrying charges). Exact mapping of which tax/carrying column is \"the one used\" is uncertain given the table's dense notation.",
-  "tax columns swapped so the main tax is the one used in the carrying charges"
+  "Column order/mapping inferred: headers were printed as a numbered list (1-11) separate from text labels; mapped by matching label text to numbered columns and sample row values. \"With J51 Tax Ben.\" carrying charges (col 9) assigned to carry_m; tax_a columns include both \"Without J51\" (col 10) and \"With J51\" (col 11) annual figures. cc_a (annual common charges) not printed/not present in this table.",
+  "Bdms/Bths column uses combined format \"2/2.5\" interpreted as 2 bedrooms, 2 full baths, 1 half bath per worked examples; for \"2/2\" interpreted as 2 bedrooms, 2 full baths, 0 half baths."
  ],
  "units": [
   {
@@ -78,7 +83,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 785,
    "sf2": 629,
    "ext_sf": null,
@@ -87,12 +93,13 @@
    "pct2": null,
    "cc_m": 308.35,
    "cc_a": null,
-   "tax_m": 486.96,
-   "tax_a": null,
-   "tax2_m": 167.75,
-   "carry_m": 795.3,
+   "tax_m": 167.75,
+   "tax_a": 2012.98,
+   "tax2_m": 486.96,
+   "carry_m": 476.1,
    "page": 23,
-   "note": null
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "1B",
@@ -100,7 +107,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 797,
    "sf2": 857,
    "ext_sf": null,
@@ -109,12 +117,13 @@
    "pct2": null,
    "cc_m": 361.97,
    "cc_a": null,
-   "tax_m": 571.64,
-   "tax_a": null,
-   "tax2_m": 196.92,
-   "carry_m": 933.62,
+   "tax_m": 196.92,
+   "tax_a": 2363.07,
+   "tax2_m": 571.64,
+   "carry_m": 558.9,
    "page": 23,
-   "note": null
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "2A",
@@ -122,7 +131,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 827,
    "sf2": null,
    "ext_sf": null,
@@ -131,12 +141,13 @@
    "pct2": null,
    "cc_m": 231.93,
    "cc_a": null,
-   "tax_m": 366.28,
-   "tax_a": null,
-   "tax2_m": 126.18,
-   "carry_m": 598.21,
+   "tax_m": 126.18,
+   "tax_a": 1514.11,
+   "tax2_m": 366.28,
+   "carry_m": 358.11,
    "page": 23,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "2B",
@@ -144,7 +155,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 827,
    "sf2": null,
    "ext_sf": null,
@@ -153,12 +165,13 @@
    "pct2": null,
    "cc_m": 230.59,
    "cc_a": null,
-   "tax_m": 364.16,
-   "tax_a": null,
-   "tax2_m": 125.45,
-   "carry_m": 594.75,
+   "tax_m": 125.45,
+   "tax_a": 1505.36,
+   "tax2_m": 364.16,
+   "carry_m": 356.04,
    "page": 23,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3A",
@@ -166,7 +179,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 827,
    "sf2": null,
    "ext_sf": null,
@@ -175,12 +189,13 @@
    "pct2": null,
    "cc_m": 229.25,
    "cc_a": null,
-   "tax_m": 362.04,
-   "tax_a": null,
-   "tax2_m": 124.72,
-   "carry_m": 591.29,
+   "tax_m": 124.72,
+   "tax_a": 1496.61,
+   "tax2_m": 362.04,
+   "carry_m": 353.97,
    "page": 23,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3B",
@@ -188,7 +203,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 827,
    "sf2": null,
    "ext_sf": null,
@@ -197,12 +213,13 @@
    "pct2": null,
    "cc_m": 227.91,
    "cc_a": null,
-   "tax_m": 359.92,
-   "tax_a": null,
-   "tax2_m": 123.99,
-   "carry_m": 587.83,
+   "tax_m": 123.99,
+   "tax_a": 1487.86,
+   "tax2_m": 359.92,
+   "carry_m": 351.9,
    "page": 23,
-   "note": null
+   "note": null,
+   "baths": 2
   }
  ]
 }

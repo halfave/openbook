@@ -3,53 +3,23 @@
  "steps": [
   {
    "step": "sonnet-text",
-   "verdict": "hold",
-   "units": 5,
-   "failed": [
-    "monthlyTotals"
-   ]
-  },
-  {
-   "step": "sonnet-text-retry",
-   "verdict": "hold",
-   "units": 5,
-   "failed": [
-    "ccProportional"
-   ]
-  },
-  {
-   "step": "sonnet-images",
    "verdict": "publish_ag",
    "units": 5,
    "failed": []
   }
  ],
- "calls": 3,
+ "calls": 1,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4106,
-   "output_tokens": 910,
-   "seconds": 11,
-   "cost_usd": 0.02188
-  },
-  {
-   "model": "sonnet",
-   "tokens": 3973,
-   "output_tokens": 780,
-   "seconds": 11,
-   "cost_usd": 0.020568
-  },
-  {
-   "model": "sonnet",
-   "tokens": 12903,
-   "output_tokens": 824,
-   "seconds": 14,
-   "cost_usd": 0.034272399999999995
+   "tokens": 10119,
+   "output_tokens": 727,
+   "seconds": 87,
+   "cost_usd": 0.0269928
   }
  ],
- "tokens": 20982,
- "api_equiv_usd": 0.077,
+ "tokens": 10119,
+ "api_equiv_usd": 0.027,
  "located_pages": [
   21
  ],
@@ -67,10 +37,12 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 58750000,
- "step": "sonnet-images",
+ "step": "sonnet-text",
  "budget_period": "January 1, 2022 - December 31, 2022",
  "columns_printed": [
   "Unit",
@@ -86,26 +58,30 @@
   "Projected Total Annual Carrying Charges and TaX"
  ],
  "tax2": null,
- "sf2": "limited common area (terrace sqft)",
+ "sf2": null,
  "printed_totals": {
   "price": 58750000,
   "pct": 100,
   "cc_m": 35189.26,
   "tax_m": 49670.25,
   "int_sf": 24992,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Unit column prints floor/area labels (e.g. \"1st & Cellar\", \"2nd Floor\") rather than unit numbers/letters; transcribed as printed. BR/BTH \"Retail\" and numeric codes like \"5BR/5.5BTH\" transcribed as beds/baths per stated rule. Limited Common Area (terrace) treated as sf2 since it's a separate second area column, not ext_sf per instructions since only given for two rows."
+  "BR/BTH column gives whole-number baths (e.g. \"5BTH\", \"8BTH\") with no half-bath indication; half_baths set to - for residential rows. Retail row has no BR/BTH figures, so beds/baths/int_sf/sf2 fields left blank except Sq. Ft which was placed in int_sf as the only area figure printed. \"Projected Total Monthly Carrying Charges and Tax\" placed in carry_m (only one tax scenario printed, no 421-a distinction, so tax2_m is -)."
  ],
  "units": [
   {
    "unit": "1st & Cellar",
    "type": "commercial",
-   "floor": "1st & Cellar",
+   "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 5530,
    "sf2": null,
    "ext_sf": null,
@@ -119,15 +95,17 @@
    "tax2_m": null,
    "carry_m": 14951.06,
    "page": 21,
-   "note": null
+   "note": "Retail",
+   "baths": null
   },
   {
    "unit": "2nd Floor",
    "type": "residential",
-   "floor": "2nd Floor",
+   "floor": null,
    "rooms": null,
    "beds": 5,
-   "baths": 5.5,
+   "full_baths": 5,
+   "half_baths": 1,
    "int_sf": 4258,
    "sf2": null,
    "ext_sf": null,
@@ -141,15 +119,17 @@
    "tax2_m": null,
    "carry_m": 15295.44,
    "page": 21,
-   "note": null
+   "note": null,
+   "baths": 5.5
   },
   {
    "unit": "3rd Floor",
    "type": "residential",
-   "floor": "3rd Floor",
+   "floor": null,
    "rooms": null,
    "beds": 5,
-   "baths": 5.5,
+   "full_baths": 5,
+   "half_baths": 1,
    "int_sf": 4258,
    "sf2": null,
    "ext_sf": null,
@@ -163,15 +143,17 @@
    "tax2_m": null,
    "carry_m": 15295.44,
    "page": 21,
-   "note": null
+   "note": null,
+   "baths": 5.5
   },
   {
    "unit": "4th Floor",
    "type": "residential",
-   "floor": "4th Floor",
+   "floor": null,
    "rooms": null,
    "beds": 5,
-   "baths": 5.5,
+   "full_baths": 5,
+   "half_baths": 1,
    "int_sf": 4258,
    "sf2": null,
    "ext_sf": null,
@@ -185,15 +167,17 @@
    "tax2_m": null,
    "carry_m": 15295.44,
    "page": 21,
-   "note": null
+   "note": null,
+   "baths": 5.5
   },
   {
    "unit": "5th/6th Floor",
    "type": "residential",
-   "floor": "5th/6th Floor",
+   "floor": null,
    "rooms": null,
    "beds": 7,
-   "baths": 8,
+   "full_baths": 8,
+   "half_baths": null,
    "int_sf": 6688,
    "sf2": null,
    "ext_sf": null,
@@ -207,7 +191,8 @@
    "tax2_m": null,
    "carry_m": 24022.13,
    "page": 21,
-   "note": null
+   "note": null,
+   "baths": 8
   }
  ]
 }

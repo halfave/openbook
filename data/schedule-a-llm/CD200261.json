@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4892,
-   "output_tokens": 1112,
-   "seconds": 11,
-   "cost_usd": 0.026236000000000002
+   "tokens": 6331,
+   "output_tokens": 1045,
+   "seconds": 12,
+   "cost_usd": 0.03159
   }
  ],
- "tokens": 4892,
- "api_equiv_usd": 0.026,
+ "tokens": 6331,
+ "api_equiv_usd": 0.032,
  "located_pages": [
   43
  ],
@@ -31,12 +31,14 @@
   "printed": true,
   "pct100": true,
   "ccProportional": true,
-  "carrying": true,
+  "carrying": null,
   "sqftTotal": true,
   "monthlyTotals": true,
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 6300000,
@@ -62,22 +64,24 @@
   "Estimated Total Monthly Carrying Costs 10/1/2025-9/30/2026",
   "Estimated Total Monthly Carrying Costs 10/1/2026-9/30/2027"
  ],
- "tax2": "post-completion assessment monthly real estate taxes 10/1/2026-9/30/2027",
- "sf2": "cellar floor sq.ft.",
+ "tax2": "post-completion assessment",
+ "sf2": "cellar",
  "printed_totals": {
   "price": 6300000,
   "pct": 100,
   "cc_m": 1788.67,
-  "tax_m": null,
+  "tax_m": 973,
   "int_sf": 3924.31,
-  "ext_sf": 913.86
+  "ext_sf": 913.86,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Carrying costs column order in source has 10/1/2026-9/30/2027 value printed before 10/1/2025-9/30/2026 value in the row text; carry_m taken as the first-year (2025-2026) figure (1749.81, 1419.60, 1562.26), with the 2026-2027 figure (1021.81, 828.60, 911.26) omitted since only one carry_m column exists.",
-  "Unit 3's total sq.ft. (1878.13) doesn't map to a single ext_sf; Penthouse/Roof figures listed in note instead per ext_sf rule for multiple separate areas.",
-  "Unit 1 and 3 have both Yard/Areaway/Roof as limited common elements with values; only one ext_sf cell exists, so additional areas placed in note.",
-  "tax columns swapped so the main tax is the one used in the carrying charges",
-  "outdoor space left out: its column did not add up to the printed total"
+  "TAX2/post-completion annual figures (tax_a) are printed but not requested as a field beyond tax_a column; carry_m uses pre-completion (tax_m) figures as instructed, post-completion carrying cost column omitted per spec.",
+  "ext_sf: unit 1 and unit 3 have multiple separate outdoor areas (yard, areaway, roof); left ext_sf blank and listed in note per rule.",
+  "int_sf for units with penthouse/cellar additions (units 1 and 3): used \"Main Floor\" figure as int_sf per net/habitable-floor rule; penthouse/cellar figures noted or placed in sf2.",
+  "carrying charges left out: they were printed for the other tax scenario"
  ],
  "units": [
   {
@@ -86,7 +90,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1194.53,
    "sf2": 1060.48,
    "ext_sf": null,
@@ -95,12 +100,13 @@
    "pct2": null,
    "cc_m": 661.81,
    "cc_a": null,
-   "tax_m": 1088,
-   "tax_a": null,
-   "tax2_m": 360,
-   "carry_m": 1749.81,
+   "tax_m": 360,
+   "tax_a": 4320,
+   "tax2_m": 1088,
+   "carry_m": null,
    "page": 17,
-   "note": "Penthouse 0.00 sf, Areaway 5.33 sf, Roof 0.00 sf"
+   "note": "penthouse floor 0.00; yard 748.50 sq.ft.; areaway 5.33 sq.ft.; roof 0.00 sq.ft.",
+   "baths": 2.5
   },
   {
    "unit": "2",
@@ -108,21 +114,23 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1345.28,
-   "sf2": 0,
+   "sf2": null,
    "ext_sf": null,
    "price": 1850000,
    "pct": 30,
    "pct2": null,
    "cc_m": 536.6,
    "cc_a": null,
-   "tax_m": 883,
-   "tax_a": null,
-   "tax2_m": 292,
-   "carry_m": 1419.6,
+   "tax_m": 292,
+   "tax_a": 3504,
+   "tax2_m": 883,
+   "carry_m": null,
    "page": 17,
-   "note": "Penthouse 0.00 sf, Yard 0.00 sf, Areaway 0.00 sf, Roof 0.00 sf"
+   "note": "penthouse floor 0.00; cellar 0.00; yard/areaway/roof 0.00",
+   "baths": 2
   },
   {
    "unit": "3",
@@ -130,21 +138,23 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": 0,
    "int_sf": 1384.5,
-   "sf2": 0,
-   "ext_sf": null,
+   "sf2": null,
+   "ext_sf": 913.86,
    "price": 2300000,
    "pct": 33,
    "pct2": null,
    "cc_m": 590.26,
    "cc_a": null,
-   "tax_m": 972,
-   "tax_a": null,
-   "tax2_m": 321,
-   "carry_m": 1562.26,
+   "tax_m": 321,
+   "tax_a": 3852,
+   "tax2_m": 972,
+   "carry_m": null,
    "page": 17,
-   "note": "Penthouse 493.63 sf, Yard 0.00 sf, Areaway 0.00 sf"
+   "note": "penthouse floor 493.63 sq.ft.; cellar 0.00; yard/areaway 0.00",
+   "baths": 3
   }
  ]
 }

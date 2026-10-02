@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4435,
-   "output_tokens": 659,
-   "seconds": 9,
-   "cost_usd": 0.02169
+   "tokens": 5928,
+   "output_tokens": 650,
+   "seconds": 8,
+   "cost_usd": 0.027608
   }
  ],
- "tokens": 4435,
- "api_equiv_usd": 0.022,
+ "tokens": 5928,
+ "api_equiv_usd": 0.028,
  "located_pages": [
   39
  ],
@@ -37,6 +37,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 4400000,
@@ -59,17 +61,20 @@
   "Total Monthly Carrying Charges"
  ],
  "tax2": null,
- "sf2": "cellar space square footage",
+ "sf2": "Cellar Space square footage",
  "printed_totals": {
   "price": 4400000,
   "pct": 100,
   "cc_m": 1573.75,
   "tax_m": 1336.67,
   "int_sf": 3774,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Ext_sf not a single printed column; terrace/storage areas per unit (e.g. Unit 1: Storage 41 sf, Roof Terrace 155 sf; Unit 2: Storage 42 sf, Roof Terrace 305 sf; Unit 3: Storage 68 sf, Roof Terrace 246 sf) listed separately in notes, left ext_sf blank per rules."
+  "Limited Common Element square feet column (600/196/347/314) not included per instructed schema; omitted as not one of the defined fields."
  ],
  "units": [
   {
@@ -78,7 +83,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 1.5,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": 831,
    "sf2": 334,
    "ext_sf": null,
@@ -92,7 +98,8 @@
    "tax2_m": null,
    "carry_m": 1005.23,
    "page": 39,
-   "note": null
+   "note": "Limited common areas: Rear yard (600 sf)",
+   "baths": 1.5
   },
   {
    "unit": "2",
@@ -100,7 +107,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 909,
    "sf2": 0,
    "ext_sf": null,
@@ -114,7 +122,8 @@
    "tax2_m": null,
    "carry_m": 560.83,
    "page": 39,
-   "note": null
+   "note": "Limited common areas: Storage (41 sf); Roof Terrace (155 sf)",
+   "baths": 2
   },
   {
    "unit": "3",
@@ -122,7 +131,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 909,
    "sf2": 0,
    "ext_sf": null,
@@ -136,7 +146,8 @@
    "tax2_m": null,
    "carry_m": 638.27,
    "page": 39,
-   "note": null
+   "note": "Limited common areas: Storage (42 sf); Roof Terrace (305 sf)",
+   "baths": 2
   },
   {
    "unit": "4",
@@ -144,7 +155,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": 0,
    "int_sf": 1125,
    "sf2": 0,
    "ext_sf": null,
@@ -158,7 +170,8 @@
    "tax2_m": null,
    "carry_m": 706.09,
    "page": 39,
-   "note": "Study room may not be used as bedroom/dining room/habitable space"
+   "note": "Limited common areas: Storage (68 sf); Roof Terrace (246 sf); study room may not be used as bedroom/dining room",
+   "baths": 3
   }
  ]
 }

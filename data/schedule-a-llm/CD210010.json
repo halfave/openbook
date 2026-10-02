@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4101,
-   "output_tokens": 614,
-   "seconds": 7,
-   "cost_usd": 0.020083999999999998
+   "tokens": 5667,
+   "output_tokens": 676,
+   "seconds": 12,
+   "cost_usd": 0.02672
   }
  ],
- "tokens": 4101,
- "api_equiv_usd": 0.02,
+ "tokens": 5667,
+ "api_equiv_usd": 0.027,
  "located_pages": [
   33
  ],
@@ -32,11 +32,13 @@
   "pct100": true,
   "ccProportional": null,
   "carrying": true,
-  "sqftTotal": null,
+  "sqftTotal": true,
   "monthlyTotals": true,
-  "psf": null,
+  "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 2000000,
@@ -56,18 +58,21 @@
   "Projected Carrying Charges (Monthly)"
  ],
  "tax2": null,
- "sf2": "outdoor/limited",
+ "sf2": null,
  "printed_totals": {
   "price": 2000000,
   "pct": 100,
   "cc_m": 1522.92,
   "tax_m": 2104.5,
   "int_sf": 4025,
-  "ext_sf": 1568
+  "ext_sf": 1568,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Unit 1 and Unit 2 each have multiple floor areas (interior) printed on separate lines; int_sf shows only the first (Cellar/Third Floor) figure per rules, with full breakdown in note. Outdoor/Limited Square Footage total is also a sum of multiple labeled areas; reported sf2 is first listed figure only with full breakdown in note. Bedrooms/Bathrooms printed as \"3/2 Full; 2 Half\" and \"3/2.5\" — interpreted as 3 beds, 2.5 baths for both.",
-  "unit sizes left out: the area columns did not add up to the printed totals"
+  "Unit 1 and Unit 2 each have interior square footage printed as multiple separate figures across floors (Cellar/First/Second for Unit 1; Third/Fourth/Roof for Unit 2); I summed the floor figures to get int_sf since no single interior total was printed separately from the \"Total\" row's overall sum. Outdoor/limited square footage also printed as multiple separate figures per unit (listed in note) rather than one ext_sf number, so ext_sf is summed similarly and itemized in note. Bathroom counts \"3/2 Full; 2 Half\" and \"3/2.5\" interpreted as 3 bedrooms, 2 full baths, 1 half bath for both units (2.5 = 2 full, 1 half).",
+  "outdoor space left out: its column did not add up to the printed total"
  ],
  "units": [
   {
@@ -76,8 +81,9 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2.5,
-   "int_sf": null,
+   "full_baths": 2,
+   "half_baths": 1,
+   "int_sf": 2316,
    "sf2": null,
    "ext_sf": null,
    "price": 1050000,
@@ -90,7 +96,8 @@
    "tax2_m": null,
    "carry_m": 1981.3,
    "page": 33,
-   "note": "Cellar 837, First Floor 720, Second Floor 759; outdoor/limited: 110 (D), 549 (RY)"
+   "note": "Cellar 837, First Floor 720, Second Floor 759; outdoor/limited 110 (D) + 549 (RY)",
+   "baths": 2.5
   },
   {
    "unit": "2",
@@ -98,8 +105,9 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2.5,
-   "int_sf": null,
+   "full_baths": 2,
+   "half_baths": 1,
+   "int_sf": 1709,
    "sf2": null,
    "ext_sf": null,
    "price": 950000,
@@ -112,7 +120,8 @@
    "tax2_m": null,
    "carry_m": 1646.12,
    "page": 33,
-   "note": "Third Floor 791, Fourth Floor 837, Roof 81; outdoor/limited: 36+36 (B), 756 (RT), 81 (R)"
+   "note": "Third Floor 791, Fourth Floor 837, Roof 81; outdoor/limited 36+36 (B) + 756 (RT) + 81 (R)",
+   "baths": 2.5
   }
  ]
 }

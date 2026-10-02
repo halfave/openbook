@@ -3,41 +3,23 @@
  "steps": [
   {
    "step": "sonnet-text",
-   "verdict": "not_found",
-   "units": 0,
-   "failed": [
-    "ag",
-    "printed",
-    "monthlyTotals",
-    "allRowsParsed"
-   ]
-  },
-  {
-   "step": "sonnet-images",
    "verdict": "publish_ag",
    "units": 3,
    "failed": []
   }
  ],
- "calls": 2,
+ "calls": 1,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4708,
-   "output_tokens": 782,
-   "seconds": 67,
-   "cost_usd": 0.023520000000000003
-  },
-  {
-   "model": "sonnet",
-   "tokens": 14416,
-   "output_tokens": 883,
-   "seconds": 11,
-   "cost_usd": 0.0379158
+   "tokens": 6433,
+   "output_tokens": 1003,
+   "seconds": 10,
+   "cost_usd": 0.031745999999999996
   }
  ],
- "tokens": 19124,
- "api_equiv_usd": 0.061,
+ "tokens": 6433,
+ "api_equiv_usd": 0.032,
  "located_pages": [
   44
  ],
@@ -55,11 +37,13 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 5576200,
- "step": "sonnet-images",
- "budget_period": "For the Period January 1, 2023 through December 31, 2023",
+ "step": "sonnet-text",
+ "budget_period": "January 1, 2023 through December 31, 2023",
  "columns_printed": [
   "Unit #",
   "Bedrooms / Bathrooms",
@@ -68,7 +52,7 @@
   "Cellar (non-habitable sq.ft.)",
   "Areaway - Limited Common Element (sq.ft.)",
   "Yard - Limited Common Element (sq.ft.)",
-  "Roof Terrace-Limited Common Element (sq.ft.)",
+  "Roof Terrace- Limited Common Element (sq.ft.)",
   "Total Square Footage of Unit",
   "Offering Price",
   "Percentage of Common Interest",
@@ -78,17 +62,22 @@
   "Estimated Total Monthly Carrying Taxes 1/1/2023 - 12/31/2023"
  ],
  "tax2": null,
- "sf2": "cellar (non-habitable sq.ft.)",
+ "sf2": "cellar",
  "printed_totals": {
   "price": 5576200,
   "pct": 100,
   "cc_m": 1517.33,
   "tax_m": 1507.59,
   "int_sf": 3983,
-  "ext_sf": 698
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "ext_sf left blank for all units because multiple separate outdoor-area columns are printed (storage, areaway, yard, roof terrace); figures listed in note instead per instructions."
+  "No half-bath column printed; \"2 1/2 Bathrooms\" for Unit 1 interpreted as 2 full, 1 half; \"3 Bathrooms\"/\"2 Bathrooms\" for Units 2/3 interpreted as whole numbers with 0 half baths.",
+  "ext_sf left blank for all units because multiple separate limited-common-element areas (Areaway, Yard, Roof Terrace, Storage) are printed per unit rather than a single outdoor figure; these are listed in note instead.",
+  "TOTAL row's Storage/Cellar/Areaway/Yard/Roof Terrace totals (120.00, 651.00, 93.00, 537.00, 698.00) and Total Square Footage (6082.00) are printed but have no matching column in the requested TOTAL line format."
  ],
  "units": [
   {
@@ -97,7 +86,8 @@
    "floor": "Cellar and First Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 886,
    "sf2": 651,
    "ext_sf": null,
@@ -111,7 +101,8 @@
    "tax2_m": null,
    "carry_m": 1058.72,
    "page": 44,
-   "note": "Storage 40.00 sq.ft.; Areaway 93.00 sq.ft.; Yard 537.00 sq.ft.; Total sq.ft. 2,207.00"
+   "note": "Storage 40.00 sq.ft., Areaway 93.00 sq.ft., Yard 537.00 sq.ft. not captured in int_sf/sf2/ext_sf; Total Square Footage 2207.00",
+   "baths": 2.5
   },
   {
    "unit": "2",
@@ -119,7 +110,8 @@
    "floor": "Second Floor",
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1400,
    "sf2": null,
    "ext_sf": null,
@@ -133,7 +125,8 @@
    "tax2_m": null,
    "carry_m": 756.23,
    "page": 44,
-   "note": "Storage 47.00 sq.ft.; Total sq.ft. 1,447.00"
+   "note": "Storage 47.00 sq.ft. not captured; Total Square Footage 1447.00",
+   "baths": 2
   },
   {
    "unit": "3",
@@ -141,7 +134,8 @@
    "floor": "Third, Fourth, and Penthouse Floors",
    "rooms": null,
    "beds": 4,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": null,
    "int_sf": 1697,
    "sf2": null,
    "ext_sf": 698,
@@ -155,7 +149,8 @@
    "tax2_m": null,
    "carry_m": 1209.97,
    "page": 44,
-   "note": "Storage 33.00 sq.ft.; Roof Terrace 698.00 sq.ft.; Total sq.ft. 2,428.00"
+   "note": "Storage 33.00 sq.ft. not captured; Total Square Footage 2428.00",
+   "baths": 3
   }
  ]
 }

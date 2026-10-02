@@ -14,14 +14,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4537,
-   "output_tokens": 792,
-   "seconds": 9,
-   "cost_usd": 0.022896
+   "tokens": 6159,
+   "output_tokens": 913,
+   "seconds": 13,
+   "cost_usd": 0.03011
   }
  ],
- "tokens": 4537,
- "api_equiv_usd": 0.023,
+ "tokens": 6159,
+ "api_equiv_usd": 0.03,
  "located_pages": [
   39
  ],
@@ -32,13 +32,15 @@
   "ag": false,
   "printed": true,
   "pct100": true,
-  "ccProportional": null,
+  "ccProportional": true,
   "carrying": true,
   "sqftTotal": true,
   "monthlyTotals": true,
-  "psf": null,
+  "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 12450000,
@@ -59,29 +61,35 @@
   "Annual Carrying Charges"
  ],
  "tax2": null,
- "sf2": "non-habitable / limited common elements sf",
+ "sf2": "non-habitable / limited common elements",
  "printed_totals": {
   "price": 12450000,
   "pct": 100,
   "cc_m": 3502.95,
   "tax_m": 6729.39,
   "int_sf": 7289,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Column (c) header is ambiguous (\"Square Footage\"); not explicitly labeled interior vs. gross, but treated as int_sf since column (d) is the non-habitable/limited common elements sf. Non-habitable/limited common sf for individual units is printed as multiple sub-items (storage, terrace, etc.) rather than a single column figure, so sf2 is left - for unit rows and itemized in note instead; total row's non-habitable sf (2487) not placed in a column per instructions."
+  "Non-habitable/Limited Common Elements column (d) contains multiple sub-items per unit (e.g. storage, areaway, rear yard, terrace, roof, bulkhead) printed as separate labeled figures; I summed them into sf2 for TH, 2A, 2B, PH and listed the breakdown in note since only one sf2 cell is allowed.",
+  "Parking unit \"~\" symbol before 244 unclear; square footage 244 assumed to be int_sf with sf2 0 as printed (\"0\").",
+  "TH unit's note (b) states square footage includes 625 sf of non-habitable accessory space in cellar, but the 2,627 figure is the single printed square footage for the unit; could not separate into two distinct int_sf/sf2 figures as no second number was printed on its own line."
  ],
  "units": [
   {
    "unit": "Parking",
-   "type": "other",
+   "type": "parking",
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 244,
-   "sf2": 0,
-   "ext_sf": null,
+   "sf2": null,
+   "ext_sf": 0,
    "price": 150000,
    "pct": 3.1,
    "pct2": null,
@@ -92,17 +100,19 @@
    "tax2_m": null,
    "carry_m": 180.52,
    "page": 39,
-   "note": null
+   "note": null,
+   "baths": null
   },
   {
    "unit": "TH",
-   "type": "other",
+   "type": "residential",
    "floor": null,
    "rooms": null,
    "beds": 4,
-   "baths": 3.5,
+   "full_baths": 3,
+   "half_baths": 1,
    "int_sf": 2627,
-   "sf2": null,
+   "sf2": 233,
    "ext_sf": null,
    "price": 4000000,
    "pct": 36.29,
@@ -114,17 +124,19 @@
    "tax2_m": null,
    "carry_m": 3753.7,
    "page": 39,
-   "note": "storage-73, areaway-160, rear yard-750"
+   "note": "storage - 73; areaway - 160; rear yard - 750",
+   "baths": 3.5
   },
   {
    "unit": "2A",
-   "type": "other",
+   "type": "residential",
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1260,
-   "sf2": null,
+   "sf2": 105,
    "ext_sf": null,
    "price": 2100000,
    "pct": 16.24,
@@ -136,17 +148,19 @@
    "tax2_m": null,
    "carry_m": 1759.72,
    "page": 39,
-   "note": "storage-34, terrace-71"
+   "note": "storage - 34; terrace - 71",
+   "baths": 2
   },
   {
    "unit": "2B",
-   "type": "other",
+   "type": "residential",
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1260,
-   "sf2": null,
+   "sf2": 105,
    "ext_sf": null,
    "price": 2200000,
    "pct": 16.24,
@@ -158,17 +172,19 @@
    "tax2_m": null,
    "carry_m": 1759.72,
    "page": 39,
-   "note": "storage-34, terrace-71"
+   "note": "storage - 34; terrace - 71",
+   "baths": 2
   },
   {
    "unit": "PH",
-   "type": "other",
+   "type": "residential",
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1898,
-   "sf2": null,
+   "sf2": 1294,
    "ext_sf": null,
    "price": 4000000,
    "pct": 28.12,
@@ -180,7 +196,8 @@
    "tax2_m": null,
    "carry_m": 2778.67,
    "page": 39,
-   "note": "storage-38, terrace-93, roof-1070, bulkhead-93"
+   "note": "storage - 38; terrace - 93; roof - 1070; bulkhead - 93",
+   "baths": 2.5
   }
  ]
 }

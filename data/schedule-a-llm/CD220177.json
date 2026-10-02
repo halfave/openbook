@@ -3,41 +3,23 @@
  "steps": [
   {
    "step": "sonnet-text",
-   "verdict": "not_found",
-   "units": 0,
-   "failed": [
-    "ag",
-    "printed",
-    "monthlyTotals",
-    "allRowsParsed"
-   ]
-  },
-  {
-   "step": "sonnet-images",
    "verdict": "publish_ag",
    "units": 4,
    "failed": []
   }
  ],
- "calls": 2,
+ "calls": 1,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 8249,
-   "output_tokens": 727,
-   "seconds": 82,
-   "cost_usd": 0.0230658
-  },
-  {
-   "model": "sonnet",
-   "tokens": 14033,
-   "output_tokens": 832,
-   "seconds": 11,
-   "cost_usd": 0.0367086
+   "tokens": 6102,
+   "output_tokens": 846,
+   "seconds": 10,
+   "cost_usd": 0.02948
   }
  ],
- "tokens": 22282,
- "api_equiv_usd": 0.06,
+ "tokens": 6102,
+ "api_equiv_usd": 0.029,
  "located_pages": [
   34
  ],
@@ -55,16 +37,18 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 6750000,
- "step": "sonnet-images",
- "budget_period": "July 1, 2023- June 30, 2024",
+ "step": "sonnet-text",
+ "budget_period": "Year Projected to Begin: July 1, 2023- June 30, 2024",
  "columns_printed": [
   "Unit No.",
-  "Location",
+  "Floor Location",
   "Approx. Floor Area",
-  "Approx. Outdoor/Uninhabitable/Limited Common Floor Area",
+  "Approx. Outdoor/Uninhabitable/Limited Common Area",
   "No. of Bedooms/Bathrooms",
   "Offering Price",
   "Percent Common Interest",
@@ -74,18 +58,22 @@
   "Projected Carrying Charges (Monthly)"
  ],
  "tax2": null,
- "sf2": "outdoor/uninhabitable/limited common floor area",
+ "sf2": "outdoor/uninhabitable/limited common area",
  "printed_totals": {
   "price": 6750000,
   "pct": 100,
   "cc_m": 1894.16,
   "tax_m": 4388.18,
   "int_sf": 5394,
-  "ext_sf": 2016
+  "ext_sf": 2016,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Unit 1's interior area is printed as two figures on separate lines (684* for cellar, 1070 for first floor); per instructions the habitable floor's figure (1070) was used for int_sf and the cellar figure (684) for sf2, though sf2 column is actually labeled as outdoor/uninhabitable/limited common area, not a simple second interior area.",
-  "Units 2, 3, and 4 have limited common areas (terrace/storage/balcony) listed as multiple separate figures, so these were placed in the note column per instructions rather than in ext_sf."
+  "Unit 1 prints two interior floor-area figures (684 cellar, 1070 first floor); per instructions the habitable (first floor) figure was used for int_sf and the cellar figure placed in sf2, though sf2 is otherwise used for the outdoor/uninhabitable/limited common area column.",
+  "Bedrooms/Bathrooms column prints combined figures like \"2/2.5\" and \"3/2\"; interpreted per header rule as beds/baths, with \".5\" as one half bath (no separate half-bath column printed).",
+  "Outdoor/Uninhabitable/Limited Common Area column contains multiple separate figures per unit (e.g. Unit 1: 657 RY, 55 A, 22 S); could not be reduced to a single sf2 number, so all figures are listed in that cell as printed."
  ],
  "units": [
   {
@@ -94,7 +82,8 @@
    "floor": "Cellar/First Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1070,
    "sf2": 684,
    "ext_sf": null,
@@ -108,7 +97,8 @@
    "tax2_m": null,
    "carry_m": 1804.92,
    "page": 34,
-   "note": "657 (RY), 55 (A), 22 (S)"
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "2",
@@ -116,7 +106,8 @@
    "floor": "Second Floor",
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1153,
    "sf2": null,
    "ext_sf": null,
@@ -130,7 +121,8 @@
    "tax2_m": null,
    "carry_m": 1321.8,
    "page": 34,
-   "note": "51 (T), 22 (S)"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3",
@@ -138,7 +130,8 @@
    "floor": "Third Floor",
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1178,
    "sf2": null,
    "ext_sf": null,
@@ -152,7 +145,8 @@
    "tax2_m": null,
    "carry_m": 1360.76,
    "page": 34,
-   "note": "59 (B), 22 (S)"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "4",
@@ -160,7 +154,8 @@
    "floor": "Fourth Floor/Penthouse",
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1309,
    "sf2": null,
    "ext_sf": null,
@@ -174,7 +169,8 @@
    "tax2_m": null,
    "carry_m": 1794.86,
    "page": 34,
-   "note": "1069 (T), 59 (B)"
+   "note": null,
+   "baths": 2
   }
  ]
 }

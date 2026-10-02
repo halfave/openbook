@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4322,
-   "output_tokens": 709,
-   "seconds": 9,
-   "cost_usd": 0.021538
+   "tokens": 5806,
+   "output_tokens": 689,
+   "seconds": 7,
+   "cost_usd": 0.027354
   }
  ],
- "tokens": 4322,
- "api_equiv_usd": 0.022,
+ "tokens": 5806,
+ "api_equiv_usd": 0.027,
  "located_pages": [
   33
  ],
@@ -37,11 +37,13 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 10410000,
  "step": "sonnet-text",
- "budget_period": "JUNE 1, 2020 TO MAY 31, 2021",
+ "budget_period": "FROM JUNE 1, 2020 TO MAY 31, 2021",
  "columns_printed": [
   "Unit number and location",
   "Bedrooms/Bathrooms (1)",
@@ -53,7 +55,7 @@
   "Est. real estate taxes monthly/annually without tax benefits (6)",
   "Est. carrying costs monthly/annually without tax benefits (7)"
  ],
- "tax2": null,
+ "tax2": "without tax benefits",
  "sf2": "Limited Common Elements area",
  "printed_totals": {
   "price": 10410000,
@@ -61,10 +63,13 @@
   "cc_m": 2321.16,
   "tax_m": 2944.83,
   "int_sf": 8901,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Carrying costs monthly figure not requested by column list but present in table (12006.46, 13902.22, 12638.38, 13902.22, 10742.62, 63191.90 total) — omitted since not in requested cc_m/cc_a/tax_m/tax_a/carry_m mapping; carry_m column header not explicitly separate from \"Est. carrying costs monthly/annually\" so last figure per row placed in carry_m."
+  "carry_m is derived from tax_m and cc_m columns which are themselves \"without tax benefits\" figures (no separate \"with benefits\" scenario is printed), so carry_m uses tax_m as instructed, but there is no true first-year-with-abatement tax figure shown; tax2_m left blank since no second tax column exists."
  ],
  "units": [
   {
@@ -73,7 +78,8 @@
    "floor": "Cellar, Basement",
    "rooms": null,
    "beds": 1,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1632,
    "sf2": 611,
    "ext_sf": null,
@@ -87,7 +93,8 @@
    "tax2_m": null,
    "carry_m": 1000.54,
    "page": 33,
-   "note": null
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "1N",
@@ -95,7 +102,8 @@
    "floor": "Cellar, Basement",
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1905,
    "sf2": 661,
    "ext_sf": null,
@@ -109,7 +117,8 @@
    "tax2_m": null,
    "carry_m": 1158.52,
    "page": 33,
-   "note": null
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "2",
@@ -117,7 +126,8 @@
    "floor": "First Floor",
    "rooms": null,
    "beds": 3,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1881,
    "sf2": 443,
    "ext_sf": null,
@@ -131,7 +141,8 @@
    "tax2_m": null,
    "carry_m": 1053.2,
    "page": 33,
-   "note": null
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "3",
@@ -139,7 +150,8 @@
    "floor": "Second Floor",
    "rooms": null,
    "beds": 3,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1994,
    "sf2": 391,
    "ext_sf": null,
@@ -153,7 +165,8 @@
    "tax2_m": null,
    "carry_m": 1158.52,
    "page": 33,
-   "note": null
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "PH",
@@ -161,7 +174,8 @@
    "floor": "Third Floor",
    "rooms": null,
    "beds": 3,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1489,
    "sf2": 505,
    "ext_sf": null,
@@ -175,7 +189,8 @@
    "tax2_m": null,
    "carry_m": 895.22,
    "page": 33,
-   "note": null
+   "note": null,
+   "baths": 2.5
   }
  ]
 }

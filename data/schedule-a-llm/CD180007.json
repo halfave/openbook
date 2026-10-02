@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 5325,
-   "output_tokens": 1161,
-   "seconds": 14,
-   "cost_usd": 0.028262
+   "tokens": 12361,
+   "output_tokens": 1127,
+   "seconds": 84,
+   "cost_usd": 0.034861
   }
  ],
- "tokens": 5325,
- "api_equiv_usd": 0.028,
+ "tokens": 12361,
+ "api_equiv_usd": 0.035,
  "located_pages": [
   43
  ],
@@ -37,6 +37,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 12070000,
@@ -44,8 +46,8 @@
  "budget_period": "SEPTEMBER 1, 2018 TO AUGUST 31, 2019",
  "columns_printed": [
   "UNIT",
-  "(1) # OF BED-ROOMS/BATH-ROOMS",
-  "(2) UNIT (indoor)",
+  "(1) # OF BED-ROOMS / BATH-ROOMS",
+  "APPROXIMATE TOTAL SQ. FT. (2) UNIT (indoor)",
   "(2) BALCONY/TERRACE/YARD",
   "(3) NONHABITABLE AREA* (in Sq. Ft.)",
   "(4) OFFERING PRICE",
@@ -54,8 +56,7 @@
   "(7) PROJECTED MONTHLY REAL ESTATE TAXES",
   "(8) PROJECTED TOTAL MONTHLY CARRYING CHARGES",
   "(9) PROJECTED ANNUAL REAL ESTATE TAXES",
-  "(10) TOTAL PROJECTED ANNUAL CHARGES",
-  "APPROXIMATE TOTAL SQ. FT."
+  "(10) TOTAL PROJECTED ANNUAL CHARGES"
  ],
  "tax2": null,
  "sf2": "nonhabitable area",
@@ -65,10 +66,16 @@
   "cc_m": 3929.25,
   "tax_m": 5000,
   "int_sf": 7569,
-  "ext_sf": 1710
+  "ext_sf": 1710,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "The SF2 column holds mixed meanings across rows: for Garden it is nonhabitable cellar+yard combined figure (\"397 (cellar) + 357 (yards)\"), while for other units it is balcony/terrace/roof area; ext_sf for Garden (357 yards) is embedded in the same combined cell as cellar sf2 and could not be cleanly separated into its own column, so it is left blank per the two-level-unit rule ambiguity; \"1.5\" baths for Garden assumed from \"1/1.5\" bed/bath code; TOTAL row's \"2,107\" (nonhabitable area total) and 107,151.00 (total annual charges) and tax_m total (5,000.00 shown as cc_a position) were not individually mapped to int_sf/ext_sf/tax_m columns beyond what is printed."
+  "Bedroom/bathroom column prints combined \"X/Y\" format (e.g. \"1/1.5\", \"2/2\"); interpreted per header as beds/baths, with \".5\" as 1 half bath.",
+  "Nonhabitable area column prints two figures for PH5/PH6 (121 terrace-related note vs separate roof); placed total nonhabitable sf2 figure as printed (354) per row, could not fully reconcile 121+354 split with single sf2 cell - used value as shown in area breakdown.",
+  "TOTAL row's nonhabitable area (2,107) and ext_sf total (1,710) could not be cross-verified against per-unit sums without computing.",
+  "Common charges monthly for TOTAL row shows \"$60,000.00\" after annual real estate taxes figure \"107,151.00\" - order of TOTAL row figures is ambiguous; tax_m total not explicitly separated from carry figures in printed total row, carry_m total left blank."
  ],
  "units": [
   {
@@ -76,8 +83,9 @@
    "type": "residential",
    "floor": null,
    "rooms": null,
-   "beds": null,
-   "baths": 1.5,
+   "beds": 1,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": 1294,
    "sf2": 397,
    "ext_sf": 357,
@@ -91,17 +99,19 @@
    "tax2_m": null,
    "carry_m": 1589.41,
    "page": 43,
-   "note": "see note 1; beds derived from \"1/1.5\""
+   "note": "cellar+yards nonhabitable",
+   "baths": 1.5
   },
   {
    "unit": "2",
    "type": "residential",
    "floor": null,
    "rooms": null,
-   "beds": null,
-   "baths": 2,
+   "beds": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1255,
-   "sf2": null,
+   "sf2": 161,
    "ext_sf": 161,
    "price": 1975000,
    "pct": 15.26,
@@ -113,17 +123,19 @@
    "tax2_m": null,
    "carry_m": 1362.6,
    "page": 43,
-   "note": "see note 2; sf2 is terrace not nonhabitable; beds from \"2/2\""
+   "note": "terrace",
+   "baths": 2
   },
   {
    "unit": "3",
    "type": "residential",
    "floor": null,
    "rooms": null,
-   "beds": null,
-   "baths": 2,
+   "beds": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1255,
-   "sf2": null,
+   "sf2": 121,
    "ext_sf": 121,
    "price": 1999000,
    "pct": 14.83,
@@ -135,17 +147,19 @@
    "tax2_m": null,
    "carry_m": 1324.21,
    "page": 43,
-   "note": "see note 3; sf2 is terraces not nonhabitable; beds from \"2/2\""
+   "note": "terraces",
+   "baths": 2
   },
   {
    "unit": "4",
    "type": "residential",
    "floor": null,
    "rooms": null,
-   "beds": null,
-   "baths": 2,
+   "beds": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1255,
-   "sf2": null,
+   "sf2": 121,
    "ext_sf": 121,
    "price": 1999000,
    "pct": 14.83,
@@ -157,17 +171,19 @@
    "tax2_m": null,
    "carry_m": 1324.21,
    "page": 43,
-   "note": "see note 3; sf2 is terraces not nonhabitable; beds from \"2/2\""
+   "note": "terraces",
+   "baths": 2
   },
   {
    "unit": "PH5",
    "type": "residential",
    "floor": null,
    "rooms": null,
-   "beds": null,
-   "baths": 2,
+   "beds": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1255,
-   "sf2": null,
+   "sf2": 354,
    "ext_sf": 475,
    "price": 2199000,
    "pct": 18.64,
@@ -179,17 +195,19 @@
    "tax2_m": null,
    "carry_m": 1664.41,
    "page": 43,
-   "note": "see note 4; sf2 is terrace+roof not nonhabitable; beds from \"2/2\""
+   "note": "terrace+roof, nonhabitable=121",
+   "baths": 2
   },
   {
    "unit": "PH6",
    "type": "residential",
    "floor": null,
    "rooms": null,
-   "beds": null,
-   "baths": 2,
+   "beds": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1255,
-   "sf2": null,
+   "sf2": 354,
    "ext_sf": 475,
    "price": 2199000,
    "pct": 18.64,
@@ -201,7 +219,8 @@
    "tax2_m": null,
    "carry_m": 1664.41,
    "page": 43,
-   "note": "see note 4; sf2 is terrace+roof not nonhabitable; beds from \"2/2\""
+   "note": "terrace+roof, nonhabitable=121",
+   "baths": 2
   }
  ]
 }

@@ -3,69 +3,23 @@
  "steps": [
   {
    "step": "sonnet-text",
-   "verdict": "hold",
-   "units": 16,
-   "failed": [
-    "sqftTotal",
-    "outdoor"
-   ]
-  },
-  {
-   "step": "sonnet-text-retry",
-   "verdict": "hold",
-   "units": 16,
-   "failed": [
-    "outdoor"
-   ]
-  },
-  {
-   "step": "sonnet-images",
-   "verdict": "hold",
-   "units": 16,
-   "failed": [
-    "sqftTotal"
-   ]
-  },
-  {
-   "step": "sonnet-images-think",
    "verdict": "publish_ag",
    "units": 16,
    "failed": []
   }
  ],
- "calls": 4,
+ "calls": 1,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 6303,
-   "output_tokens": 1875,
-   "seconds": 16,
-   "cost_usd": 0.036458000000000004
-  },
-  {
-   "model": "sonnet",
-   "tokens": 5926,
-   "output_tokens": 1504,
-   "seconds": 12,
-   "cost_usd": 0.032724
-  },
-  {
-   "model": "sonnet",
-   "tokens": 16451,
-   "output_tokens": 1916,
-   "seconds": 16,
-   "cost_usd": 0.050350000000000006
-  },
-  {
-   "model": "sonnet",
-   "tokens": 36202,
-   "output_tokens": 12936,
-   "seconds": 192,
-   "cost_usd": 0.16236440000000002
+   "tokens": 8268,
+   "output_tokens": 2307,
+   "seconds": 23,
+   "cost_usd": 0.04691
   }
  ],
- "tokens": 64882,
- "api_equiv_usd": 0.282,
+ "tokens": 8268,
+ "api_equiv_usd": 0.047,
  "located_pages": [
   35
  ],
@@ -83,44 +37,49 @@
   "psf": null,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 9711000,
- "step": "sonnet-images-think",
+ "step": "sonnet-text",
  "budget_period": "November 1, 2025 to October 31, 2026",
  "columns_printed": [
   "Home Number",
-  "(2) No. of Beds/Bath",
-  "(2) First Floor Square Footage",
-  "(2) Second Floor Square Footage",
-  "*Storage/Mechanical Area Approx. Square Footage as Limited Common Element",
-  "**Patio/Balcony Square Footage as Limited Common Element",
+  "No. of Beds/Bath",
+  "First Floor Square Footage",
+  "Second Floor Square Footage",
+  "Storage/Mechanical Area Approx. Square Footage as Limited Common Element",
+  "Patio/Balcony Square Footage as Limited Common Element",
   "Total Approx. Square Footage with Limited Common Elements",
-  "(1) Total Offering Price",
-  "(3) Percentage of Common Interest",
-  "(4) Common Charges Monthly",
-  "(4) Common Charges Annual",
-  "(5) 2025-26 Estimated Real Estate Taxes Monthly",
-  "(5) 2025-26 Estimated Real Estate Taxes Annual",
-  "(6) Total Carrying Charges 2025-26 Tax Year Monthly",
-  "(6) Total Carrying Charges 2025-26 Tax Year Annual"
+  "Total Offering Price",
+  "Percentage of Common Interest",
+  "Common Charges Monthly",
+  "Common Charges Annual",
+  "2025-26 Estimated Real Estate Taxes Monthly",
+  "2025-26 Estimated Real Estate Taxes Annual",
+  "Total Carrying Charges Monthly",
+  "Total Carrying Charges Annual"
  ],
  "tax2": null,
- "sf2": "storage/mechanical area",
+ "sf2": "Second Floor Square Footage",
  "printed_totals": {
   "price": 9711000,
   "pct": 100,
   "cc_m": 10193.28,
   "tax_m": 17851.54,
-  "int_sf": null,
-  "ext_sf": null
+  "int_sf": 6708,
+  "ext_sf": 20907,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Table has no separate \"floor\" or \"rooms\" columns.",
-  "Interior square footage is split into two columns (First Floor SF, Second Floor SF) rather than one; per-unit values recorded in the note field instead of int_sf.",
-  "Patio/Balcony column prints compound text (e.g. \"12.5 fnt /57 rear\") rather than a single square-footage number; recorded verbatim in the note field instead of ext_sf.",
-  "A \"Total Approx. Square Footage with Limited Common Elements\" column (combining first floor, second floor, storage, and patio areas) is printed but has no dedicated field in the requested schema; recorded in the note field per unit and omitted from the TOTAL line.",
-  "Printed total row does not show sums for Second Floor SF, Storage/Mechanical SF, or Patio/Balcony SF columns (cells appear blank in the total row)."
+  "The source table lists 21 columns of area/financial data per Home with no explicit \"int_sf\"/\"ext_sf\" distinction; I mapped First Floor and Second Floor sf (whichever is nonzero) to int_sf, Storage/Mechanical area to sf2, and left ext_sf blank since Patio/Balcony sf is not individually itemized per unit (only \"fnt\"/\"rear\" descriptive text, no numeric value printed per row) — placed descriptive text in note instead.",
+  "Table has no bedroom/bathroom columns broken into beds/full/half; \"No. of Beds/Bath\" column header appears but no numeric values are printed in the per-row data for this field in the given OCR text — beds/baths left blank (-) for all rows since no figures could be read.",
+  "TOTAL row's beds/full_baths/half_baths not printed as totals; TOTAL pct2, cc_a-derived checks, and tax2_m not printed, left as -.",
+  "No unit \"type\" (R/C/P/S/O) column printed; assumed R (residential \"Home\") for all rows.",
+  "unit sizes left out: the area columns did not add up to the printed totals"
  ],
  "units": [
   {
@@ -129,9 +88,10 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": null,
-   "sf2": 439,
+   "sf2": null,
    "ext_sf": null,
    "price": 615000,
    "pct": 6.25,
@@ -142,8 +102,9 @@
    "tax_a": 13517.1,
    "tax2_m": null,
    "carry_m": 1763.51,
-   "page": 35,
-   "note": "1st fl 868, 2nd fl 0; total sf w/LCE 1376.5; patio 12.5 fnt /57 rear"
+   "page": 21,
+   "note": "fnt /57 rear patio/balcony; storage 439; total approx sf with LCE 1376.5",
+   "baths": 2
   },
   {
    "unit": "2",
@@ -151,9 +112,10 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": null,
-   "sf2": 387,
+   "sf2": null,
    "ext_sf": null,
    "price": 629000,
    "pct": 6.25,
@@ -164,8 +126,9 @@
    "tax_a": 13743.08,
    "tax2_m": null,
    "carry_m": 1782.34,
-   "page": 35,
-   "note": "1st fl 0, 2nd fl 913; total sf w/LCE 1369.5; patio 12.5 fnt /57 rear"
+   "page": 21,
+   "note": "fnt /57 rear patio/balcony; storage 387; total approx sf with LCE 1369.5; first floor sf blank (0 printed), int_sf taken from second floor",
+   "baths": 2
   },
   {
    "unit": "3",
@@ -173,9 +136,10 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": null,
-   "sf2": 387,
+   "sf2": null,
    "ext_sf": null,
    "price": 599000,
    "pct": 6.25,
@@ -186,8 +150,9 @@
    "tax_a": 13258.83,
    "tax2_m": null,
    "carry_m": 1741.98,
-   "page": 35,
-   "note": "1st fl 830, 2nd fl 0; total sf w/LCE 1254.5; patio 12.5 fnt /25 rear"
+   "page": 21,
+   "note": "fnt /25 rear patio/balcony; storage 387; total approx sf with LCE 1254.5",
+   "baths": 2
   },
   {
    "unit": "4",
@@ -195,9 +160,10 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": null,
-   "sf2": 403,
+   "sf2": null,
    "ext_sf": null,
    "price": 610000,
    "pct": 6.25,
@@ -208,8 +174,9 @@
    "tax_a": 13436.39,
    "tax2_m": null,
    "carry_m": 1756.78,
-   "page": 35,
-   "note": "1st fl 0, 2nd fl 911; total sf w/LCE 1351.5; patio 12.5 fnt /25 rear"
+   "page": 21,
+   "note": "fnt /25 rear patio/balcony; storage 403; total approx sf with LCE 1351.5; int_sf from second floor (first floor 0)",
+   "baths": 2
   },
   {
    "unit": "5",
@@ -217,9 +184,10 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": null,
-   "sf2": 384,
+   "sf2": null,
    "ext_sf": null,
    "price": 599000,
    "pct": 6.25,
@@ -230,8 +198,9 @@
    "tax_a": 13258.83,
    "tax2_m": null,
    "carry_m": 1741.98,
-   "page": 35,
-   "note": "1st fl 830, 2nd fl 0; total sf w/LCE 1283.5; patio 12.5 fnt /57 rear"
+   "page": 21,
+   "note": "fnt /57 rear patio/balcony; storage 384; total approx sf with LCE 1283.5",
+   "baths": 2
   },
   {
    "unit": "6",
@@ -239,9 +208,10 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": null,
-   "sf2": 387,
+   "sf2": null,
    "ext_sf": null,
    "price": 615000,
    "pct": 6.25,
@@ -252,8 +222,9 @@
    "tax_a": 13517.1,
    "tax2_m": null,
    "carry_m": 1763.51,
-   "page": 35,
-   "note": "1st fl 0, 2nd fl 903; total sf w/LCE 1359.5; patio 12.5 fnt /57 rear"
+   "page": 21,
+   "note": "fnt /57 rear patio/balcony; storage 387; total approx sf with LCE 1359.5; int_sf from second floor",
+   "baths": 2
   },
   {
    "unit": "7",
@@ -261,9 +232,10 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": null,
-   "sf2": 387,
+   "sf2": null,
    "ext_sf": null,
    "price": 599000,
    "pct": 6.25,
@@ -274,8 +246,9 @@
    "tax_a": 13258.83,
    "tax2_m": null,
    "carry_m": 1741.98,
-   "page": 35,
-   "note": "1st fl 830, 2nd fl 0; total sf w/LCE 1254.5; patio 12.5 fnt /25 rear"
+   "page": 21,
+   "note": "fnt /25 rear patio/balcony; storage 387; total approx sf with LCE 1254.5",
+   "baths": 2
   },
   {
    "unit": "8",
@@ -283,9 +256,10 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": null,
-   "sf2": 403,
+   "sf2": null,
    "ext_sf": null,
    "price": 605000,
    "pct": 6.25,
@@ -296,8 +270,9 @@
    "tax_a": 13355.68,
    "tax2_m": null,
    "carry_m": 1750.05,
-   "page": 35,
-   "note": "1st fl 0, 2nd fl 911; total sf w/LCE 1351.5; patio 12.5 fnt /25 rear"
+   "page": 21,
+   "note": "fnt /25 rear patio/balcony; storage 403; total approx sf with LCE 1351.5; int_sf from second floor",
+   "baths": 2
   },
   {
    "unit": "9",
@@ -305,9 +280,10 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": null,
-   "sf2": 403,
+   "sf2": null,
    "ext_sf": null,
    "price": 579000,
    "pct": 6.25,
@@ -318,8 +294,9 @@
    "tax_a": 12936,
    "tax2_m": null,
    "carry_m": 1715.08,
-   "page": 35,
-   "note": "1st fl 830, 2nd fl 0; total sf w/LCE 1245.5; patio 12.5 fnt"
+   "page": 21,
+   "note": "fnt patio/balcony; storage 403; total approx sf with LCE 1245.5",
+   "baths": 2
   },
   {
    "unit": "10",
@@ -327,9 +304,10 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": null,
-   "sf2": 386,
+   "sf2": null,
    "ext_sf": null,
    "price": 600000,
    "pct": 6.25,
@@ -340,8 +318,9 @@
    "tax_a": 13274.97,
    "tax2_m": null,
    "carry_m": 1745.58,
-   "page": 35,
-   "note": "1st fl 0, 2nd fl 903; total sf w/LCE 1301.5; patio 12.5 fnt"
+   "page": 21,
+   "note": "fnt patio/balcony; storage 386; total approx sf with LCE 1301.5; int_sf from second floor",
+   "baths": 2
   },
   {
    "unit": "11",
@@ -349,9 +328,10 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": null,
-   "sf2": 385,
+   "sf2": null,
    "ext_sf": null,
    "price": 579000,
    "pct": 6.25,
@@ -362,8 +342,9 @@
    "tax_a": 12936,
    "tax2_m": null,
    "carry_m": 1715.08,
-   "page": 35,
-   "note": "1st fl 840, 2nd fl 0; total sf w/LCE 1237.5; patio 12.5 fnt"
+   "page": 21,
+   "note": "fnt patio/balcony; storage 385; total approx sf with LCE 1237.5",
+   "baths": 2
   },
   {
    "unit": "12",
@@ -371,9 +352,10 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": null,
-   "sf2": 412,
+   "sf2": null,
    "ext_sf": null,
    "price": 605000,
    "pct": 6.25,
@@ -384,8 +366,9 @@
    "tax_a": 13355.68,
    "tax2_m": null,
    "carry_m": 1750.05,
-   "page": 35,
-   "note": "1st fl 0, 2nd fl 920; total sf w/LCE 1344.5; patio 12.5 fnt"
+   "page": 21,
+   "note": "fnt patio/balcony; storage 412; total approx sf with LCE 1344.5; int_sf from second floor",
+   "baths": 2
   },
   {
    "unit": "13",
@@ -393,9 +376,10 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": null,
-   "sf2": 271,
+   "sf2": null,
    "ext_sf": null,
    "price": 619000,
    "pct": 6.25,
@@ -406,8 +390,9 @@
    "tax_a": 13581.66,
    "tax2_m": null,
    "carry_m": 1768.89,
-   "page": 35,
-   "note": "1st fl 840, 2nd fl 0; total sf w/LCE 1180.5; patio 12.5 fnt /57 rear"
+   "page": 21,
+   "note": "fnt /57 rear patio/balcony; storage 271; total approx sf with LCE 1180.5",
+   "baths": 2
   },
   {
    "unit": "14",
@@ -415,9 +400,10 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": null,
-   "sf2": 380,
+   "sf2": null,
    "ext_sf": null,
    "price": 629000,
    "pct": 6.25,
@@ -428,8 +414,9 @@
    "tax_a": 13743.08,
    "tax2_m": null,
    "carry_m": 1782.34,
-   "page": 35,
-   "note": "1st fl 0, 2nd fl 913; total sf w/LCE 1362.5; patio 12.5 fnt /57 rear"
+   "page": 21,
+   "note": "fnt /57 rear patio/balcony; storage 380; total approx sf with LCE 1362.5; int_sf from second floor",
+   "baths": 2
   },
   {
    "unit": "15",
@@ -437,9 +424,10 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": null,
-   "sf2": 392,
+   "sf2": null,
    "ext_sf": null,
    "price": 610000,
    "pct": 6.25,
@@ -450,8 +438,9 @@
    "tax_a": 13436.39,
    "tax2_m": null,
    "carry_m": 1756.78,
-   "page": 35,
-   "note": "1st fl 840, 2nd fl 0; total sf w/LCE 1269.5; patio 12.5 fnt /25 rear"
+   "page": 21,
+   "note": "fnt /25 rear patio/balcony; storage 392; total approx sf with LCE 1269.5",
+   "baths": 2
   },
   {
    "unit": "16",
@@ -459,9 +448,10 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": null,
-   "sf2": 407,
+   "sf2": null,
    "ext_sf": null,
    "price": 619000,
    "pct": 6.25,
@@ -472,8 +462,9 @@
    "tax_a": 13581.66,
    "tax2_m": null,
    "carry_m": 1768.89,
-   "page": 35,
-   "note": "1st fl 0, 2nd fl 920; total sf w/LCE 1364.5; patio 12.5 fnt /25 rear"
+   "page": 21,
+   "note": "fnt /25 rear patio/balcony; storage 407; total approx sf with LCE 1364.5; int_sf from second floor",
+   "baths": 2
   }
  ]
 }

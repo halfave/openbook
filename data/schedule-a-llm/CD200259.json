@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4932,
-   "output_tokens": 898,
-   "seconds": 12,
-   "cost_usd": 0.025112000000000002
+   "tokens": 12038,
+   "output_tokens": 958,
+   "seconds": 85,
+   "cost_usd": 0.032847600000000005
   }
  ],
- "tokens": 4932,
- "api_equiv_usd": 0.025,
+ "tokens": 12038,
+ "api_equiv_usd": 0.033,
  "located_pages": [
   39
  ],
@@ -37,6 +37,8 @@
   "psf": null,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 4704000,
@@ -59,17 +61,20 @@
   "Total Monthly Carrying Charges"
  ],
  "tax2": null,
- "sf2": "cellar space square footage",
+ "sf2": "cellar",
  "printed_totals": {
   "price": 4704000,
   "pct": 100,
   "cc_m": 2115.75,
   "tax_m": 4603.42,
   "int_sf": 4472,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "1/2 Bathroom(s) per Unit column prints 1 for every unit; combined with Bathroom(s) column this does not match typical half-bath notation, so baths were read as full+half (e.g. 1F: 1 full+1 half=1.5); verify against source if precision matters.",
+  "The \"Square footage\" column (int_sf) appears to hold interior square footage values that match unit areas, but int_sf values printed in the table appear in a different column position than \"Offering Price\"; I mapped Square footage → int_sf and Cellar Space square footage → sf2 as labeled. Note values for square footage (400, 526, 538, 544, 538, 544, 838, 544) were printed adjacent to the \"$\" of offering price and may have been misaligned in source OCR; transcribed as printed.",
   "unit sizes left out: the area columns did not add up to the printed totals"
  ],
  "units": [
@@ -79,7 +84,8 @@
    "floor": null,
    "rooms": null,
    "beds": 0,
-   "baths": 1.5,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -93,7 +99,8 @@
    "tax2_m": null,
    "carry_m": 970.24,
    "page": 39,
-   "note": "Unit 1F is a studio apartment; Limited common area: Balcony (34 sf)"
+   "note": "Unit 1F is a studio apartment.",
+   "baths": 1.5
   },
   {
    "unit": "1R",
@@ -101,7 +108,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1.5,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -115,7 +123,8 @@
    "tax2_m": null,
    "carry_m": 1315.33,
    "page": 39,
-   "note": null
+   "note": null,
+   "baths": 1.5
   },
   {
    "unit": "2F",
@@ -123,7 +132,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -137,7 +147,8 @@
    "tax2_m": null,
    "carry_m": 672.67,
    "page": 39,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "2R",
@@ -145,7 +156,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -159,7 +171,8 @@
    "tax2_m": null,
    "carry_m": 680.17,
    "page": 39,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3F",
@@ -167,7 +180,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -181,7 +195,8 @@
    "tax2_m": null,
    "carry_m": 672.67,
    "page": 39,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3R",
@@ -189,7 +204,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -203,7 +219,8 @@
    "tax2_m": null,
    "carry_m": 680.17,
    "page": 39,
-   "note": "Limited common area: Balcony (34 sf)"
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "4F",
@@ -211,7 +228,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -225,7 +243,8 @@
    "tax2_m": null,
    "carry_m": 1047.76,
    "page": 39,
-   "note": "Limited common area: Terrace (264 sf)"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "4R",
@@ -233,7 +252,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -247,7 +267,8 @@
    "tax2_m": null,
    "carry_m": 680.17,
    "page": 39,
-   "note": "Limited common area: Areaway (173 sf); Rear yard (468 sf)"
+   "note": null,
+   "baths": 1
   }
  ]
 }

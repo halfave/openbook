@@ -3,23 +3,43 @@
  "steps": [
   {
    "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 2,
+   "failed": [
+    "ag",
+    "printed",
+    "pct100",
+    "sqftTotal",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
    "verdict": "publish_ag",
    "units": 6,
    "failed": []
   }
  ],
- "calls": 1,
+ "calls": 2,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 9267,
-   "output_tokens": 1157,
-   "seconds": 90,
-   "cost_usd": 0.028600600000000004
+   "tokens": 6858,
+   "output_tokens": 1301,
+   "seconds": 12,
+   "cost_usd": 0.035234
+  },
+  {
+   "model": "sonnet",
+   "tokens": 6622,
+   "output_tokens": 1063,
+   "seconds": 12,
+   "cost_usd": 0.032862
   }
  ],
- "tokens": 9267,
- "api_equiv_usd": 0.029,
+ "tokens": 13480,
+ "api_equiv_usd": 0.068,
  "located_pages": [
   45
  ],
@@ -37,10 +57,12 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 10794000,
- "step": "sonnet-text",
+ "step": "sonnet-text-retry",
  "budget_period": "January 1, 2022 through December 31, 2022",
  "columns_printed": [
   "Unit #",
@@ -61,17 +83,23 @@
   "Estimated Total Monthly Carrying Charges - 1/1/2022 - 12/31/2022"
  ],
  "tax2": null,
- "sf2": "cellar",
+ "sf2": "cellar/penthouse (uninhabitable accessory space)",
  "printed_totals": {
   "price": 10794000,
   "pct": 100,
   "cc_m": 3065,
   "tax_m": 5293.61,
-  "int_sf": 7940.41,
-  "ext_sf": 1794.38
+  "int_sf": 10614.94,
+  "ext_sf": 1794.38,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "ext_sf column not present as a single printed figure for terrace/balcony/yard/roof; multiple limited common element areas (Yard, Areaway, Storage, Roof) are printed per unit and listed in note instead, per ext_sf rule for multiple separate areas."
+  "Ext_sf column is ambiguous: table has four limited-common-element area columns (Yard, Areaway, Storage, Roof); I used Roof for ext_sf and omitted Yard/Areaway/Storage figures per row since only one ext_sf slot is allowed — Yard/Areaway/Storage values not captured in any column.",
+  "Bath counts derived from combined \"Bedrooms/Bathrooms\" text (e.g. \"2 1/2 Bathrooms\" = 2 full, 1 half; \"2 Bathrooms\" = 2 full, 0 half; \"3 Bathrooms\" = 3 full, 0 half).",
+  "TOTAL row full/half baths/beds not printed as sums; left as -.",
+  "outdoor space left out: its column did not add up to the printed total"
  ],
  "units": [
   {
@@ -80,7 +108,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1244.63,
    "sf2": 1079.75,
    "ext_sf": null,
@@ -94,7 +123,8 @@
    "tax2_m": null,
    "carry_m": 1504.55,
    "page": 45,
-   "note": "Penthouse 0.00; Total 2324.38; Yard 782.76; Areaway 182.60; Storage 0.00; Roof 0.00"
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "1B",
@@ -102,7 +132,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1130.5,
    "sf2": 1076.54,
    "ext_sf": null,
@@ -116,7 +147,8 @@
    "tax2_m": null,
    "carry_m": 1504.55,
    "page": 45,
-   "note": "Penthouse 0.00; Total 2207.04; Yard 782.76; Areaway 182.20; Storage 0.00; Roof 0.00"
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "2A",
@@ -124,9 +156,10 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1400.99,
-   "sf2": 0,
+   "sf2": null,
    "ext_sf": null,
    "price": 1699000,
    "pct": 15,
@@ -138,7 +171,8 @@
    "tax2_m": null,
    "carry_m": 1253.79,
    "page": 45,
-   "note": "Penthouse 0.00; Total 1400.99; Yard 0.00; Areaway 0.00; Storage 40.00; Roof 0.00"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "2B",
@@ -146,9 +180,10 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1381.65,
-   "sf2": 0,
+   "sf2": null,
    "ext_sf": null,
    "price": 1699000,
    "pct": 15,
@@ -160,7 +195,8 @@
    "tax2_m": null,
    "carry_m": 1253.79,
    "page": 45,
-   "note": "Penthouse 0.00; Total 1381.65; Yard 0.00; Areaway 0.00; Storage 38.00; Roof 0.00"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3A",
@@ -168,10 +204,11 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": 0,
    "int_sf": 1400.99,
-   "sf2": 0,
-   "ext_sf": 907.19,
+   "sf2": 259.12,
+   "ext_sf": null,
    "price": 1799000,
    "pct": 17,
    "pct2": null,
@@ -182,7 +219,8 @@
    "tax2_m": null,
    "carry_m": 1420.96,
    "page": 45,
-   "note": "Penthouse 259.12; Total 1660.11; Yard 0.00; Areaway 0.00; Storage 0.00"
+   "note": null,
+   "baths": 3
   },
   {
    "unit": "3B",
@@ -190,10 +228,11 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": 0,
    "int_sf": 1381.65,
-   "sf2": 0,
-   "ext_sf": 887.19,
+   "sf2": 259.12,
+   "ext_sf": null,
    "price": 1799000,
    "pct": 17,
    "pct2": null,
@@ -204,7 +243,8 @@
    "tax2_m": null,
    "carry_m": 1420.96,
    "page": 45,
-   "note": "Penthouse 259.12; Total 1640.77; Yard 0.00; Areaway 0.00; Storage 0.00"
+   "note": null,
+   "baths": 3
   }
  ]
 }

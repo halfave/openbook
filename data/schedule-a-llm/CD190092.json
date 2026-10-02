@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4196,
-   "output_tokens": 616,
-   "seconds": 7,
-   "cost_usd": 0.020476
+   "tokens": 5743,
+   "output_tokens": 658,
+   "seconds": 10,
+   "cost_usd": 0.026916
   }
  ],
- "tokens": 4196,
- "api_equiv_usd": 0.02,
+ "tokens": 5743,
+ "api_equiv_usd": 0.027,
  "located_pages": [
   37
  ],
@@ -37,6 +37,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 3659000,
@@ -57,17 +59,20 @@
   "Total Monthly Carrying Charges"
  ],
  "tax2": null,
- "sf2": "cellar space",
+ "sf2": "cellar",
  "printed_totals": {
   "price": 3659000,
   "pct": 100,
   "cc_m": 1875.75,
   "tax_m": 1801.42,
   "int_sf": 4150,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Limited Common Element Sq. Ft. column (424.00, 212.00, 0.00, 692.00, total 1,328.00) could not be mapped to a defined output field; omitted from U lines."
+  "Annual Common Charges and Annual Real Estate Taxes columns are printed but not requested fields; only monthly figures were mapped per the schema. Common charges/taxes columns are headed \"Annual\"/\"Monthly\" with no abatement scenario indicated, so TAX2 is left empty."
  ],
  "units": [
   {
@@ -76,7 +81,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1276,
    "sf2": 756,
    "ext_sf": null,
@@ -90,7 +96,8 @@
    "tax2_m": null,
    "carry_m": 1130.62,
    "page": 37,
-   "note": "Deck: 52 sq. ft.; Rear Yard: 372 sq. ft."
+   "note": "Deck: 52 sq. ft.; Rear Yard: 372 sq. ft.",
+   "baths": 2.5
   },
   {
    "unit": "2",
@@ -98,10 +105,11 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 842,
    "sf2": 0,
-   "ext_sf": 212,
+   "ext_sf": null,
    "price": 850000,
    "pct": 20.2892,
    "pct2": null,
@@ -112,7 +120,8 @@
    "tax2_m": null,
    "carry_m": 746.07,
    "page": 37,
-   "note": "Terrace: 212 sq. ft."
+   "note": "Terrace: 212 sq. ft.",
+   "baths": 2
   },
   {
    "unit": "3",
@@ -120,7 +129,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 880,
    "sf2": 0,
    "ext_sf": null,
@@ -134,7 +144,8 @@
    "tax2_m": null,
    "carry_m": 779.74,
    "page": 37,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "4",
@@ -142,7 +153,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1152,
    "sf2": 0,
    "ext_sf": null,
@@ -156,7 +168,8 @@
    "tax2_m": null,
    "carry_m": 1020.74,
    "page": 37,
-   "note": "2 Terraces: 271 sq. ft.; 421 sq. ft."
+   "note": "2 Terraces: 271 sq. ft.; 421 sq. ft.",
+   "baths": 2
   }
  ]
 }

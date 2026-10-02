@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4954,
-   "output_tokens": 1056,
-   "seconds": 14,
-   "cost_usd": 0.026148
+   "tokens": 6411,
+   "output_tokens": 1007,
+   "seconds": 12,
+   "cost_usd": 0.031682
   }
  ],
- "tokens": 4954,
- "api_equiv_usd": 0.026,
+ "tokens": 6411,
+ "api_equiv_usd": 0.032,
  "located_pages": [
   30
  ],
@@ -37,6 +37,8 @@
   "psf": null,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 4840000,
@@ -47,7 +49,7 @@
   "Location",
   "Approx. Floor Area Square Footage",
   "Approx. Limited Common Area Square Footage",
-  "No. of Bedooms/Bathrooms",
+  "No.of Bedooms/Bathrooms",
   "Offering Price",
   "Percent Common Interest",
   "Projected Monthly Common Charges",
@@ -56,19 +58,23 @@
   "Projected Carrying Charges (Monthly)"
  ],
  "tax2": null,
- "sf2": "limited common area sf",
+ "sf2": "limited common area square footage",
  "printed_totals": {
   "price": 4840000,
   "pct": 100,
   "cc_m": 2156.14,
-  "tax_m": 3134.02,
+  "tax_m": null,
   "int_sf": 5602,
-  "ext_sf": 2524
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Unit 4R's limited common area figures are ambiguous: table shows \"67(B)\" near 4R but also \"310(T)\" on a separate line; placed 67 in sf2 and noted 310(T) since unclear which belongs solely to 4R vs shared formatting artifact from OCR.",
-  "ext_sf left as \"-\" for all units since no single dedicated exterior-area column was printed; all outdoor/limited-common areas (RY, WW, B, S, T) are combined into the \"Limited Common Area Square Footage\" column, so per rules these go in sf2/note rather than ext_sf.",
-  "Unit 1's \"Cellar* 707 154(WW)\" line appears before Unit 1's own row in the source; unclear if 707/154(WW) belongs to Unit 1 or is a separate cellar note — not included as a distinct unit line.",
+  "Unit SI's real estate taxes monthly (4.39) and annual (52.73) are printed as shown but 4.39*12=52.68, close to printed 52.73; copied as printed.",
+  "Unit 4F's limited common area footage is listed across multiple lines in source (68(B), 28(S), 372(TI), 67(B)) with unclear structure; used 96 as the storage-only figure (28+68) is ambiguous — transcribed the printed \"372(TI\" figure's associated line is unclear; flagging for review.",
+  "tax_m/tax_a columns: only one tax scenario is printed (no 421-a mentioned), so these are used as tax_m/tax_a per instructions; TAX2 left blank.",
+  "Rooms column not present in table; left as -.",
   "unit sizes left out: the area columns did not add up to the printed totals"
  ],
  "units": [
@@ -78,7 +84,8 @@
    "floor": "First Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -92,7 +99,8 @@
    "tax2_m": null,
    "carry_m": 1454.18,
    "page": 30,
-   "note": "(RY); also 48(S)"
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "2F",
@@ -100,7 +108,8 @@
    "floor": "Second Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -114,7 +123,8 @@
    "tax2_m": null,
    "carry_m": 441.29,
    "page": 30,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "2R",
@@ -122,7 +132,8 @@
    "floor": "Second Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -136,7 +147,8 @@
    "tax2_m": null,
    "carry_m": 693.45,
    "page": 30,
-   "note": "133 sf also noted; (RY)"
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3F",
@@ -144,7 +156,8 @@
    "floor": "Third Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -158,7 +171,8 @@
    "tax2_m": null,
    "carry_m": 574.79,
    "page": 30,
-   "note": "also 28(S)"
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3R",
@@ -166,7 +180,8 @@
    "floor": "Third Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -180,7 +195,8 @@
    "tax2_m": null,
    "carry_m": 581.68,
    "page": 30,
-   "note": "also 36(S)"
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "4F",
@@ -188,7 +204,8 @@
    "floor": "Fourth Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -202,15 +219,17 @@
    "tax2_m": null,
    "carry_m": 679.68,
    "page": 30,
-   "note": "also 28(S), 372(T)"
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "4R",
    "type": "residential",
-   "floor": "Penthouse",
+   "floor": "Fourth Floor / Penthouse",
    "rooms": null,
    "beds": 2,
-   "baths": 1.5,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -224,15 +243,17 @@
    "tax2_m": null,
    "carry_m": 865.09,
    "page": 30,
-   "note": "310(T) listed; also 28(S)"
+   "note": null,
+   "baths": 1.5
   },
   {
-   "unit": "S1",
+   "unit": "SI",
    "type": "storage",
    "floor": "Cellar",
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -246,7 +267,8 @@
    "tax2_m": null,
    "carry_m": 7.41,
    "page": 30,
-   "note": null
+   "note": null,
+   "baths": null
   }
  ]
 }

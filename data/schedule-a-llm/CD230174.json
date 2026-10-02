@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4747,
-   "output_tokens": 808,
-   "seconds": 12,
-   "cost_usd": 0.023832000000000002
+   "tokens": 6405,
+   "output_tokens": 962,
+   "seconds": 15,
+   "cost_usd": 0.031388
   }
  ],
- "tokens": 4747,
- "api_equiv_usd": 0.024,
+ "tokens": 6405,
+ "api_equiv_usd": 0.031,
  "located_pages": [
   33
  ],
@@ -37,37 +37,45 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 9135000,
  "step": "sonnet-text",
- "budget_period": "July 1, 2024 -June 30, 2025",
+ "budget_period": "July 1, 2024 - June 30, 2025",
  "columns_printed": [
   "Unit No.",
   "Floor Location",
   "Approx. Floor Area",
-  "Approx. Outdoor/Uninhabitable/Limited Common Floor Area",
+  "Approx. Outdoor/Uninhabitable/Limited Common Area",
   "No. of Bedooms/Bathrooms",
   "Offering Price",
   "Percent Common Interest",
-  "Projected First Year Common Charges (Monthly)",
+  "Approx. Monthly Common Charges",
   "Projected First Year Real Estate Taxes (Monthly)",
   "Projected First Year Real Estate Taxes (Annual)",
   "Projected Second Year Real Estate Taxes (Annual)",
   "Projected Carrying Charges (Monthly)"
  ],
  "tax2": null,
- "sf2": null,
+ "sf2": "cellar",
  "printed_totals": {
   "price": 9135000,
   "pct": 100,
   "cc_m": 2310.83,
-  "tax_m": null,
+  "tax_m": 1671.56,
   "int_sf": 6014,
-  "ext_sf": 2575
+  "ext_sf": 2575,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "tax_m column header prints \"Monthly\" but values under it (453.33, 379.44, etc.) align with \"Taxes (Monthly)\" — used as tax_m; annual tax column used as tax_a. ext_sf left empty for units 1,2,4 due to multiple separate outdoor areas listed in note."
+  "Unit 1, 2, and 4 each have multiple separate outdoor/limited common area figures (e.g. areaway, back yard, balcony, elevator, terrace) printed on separate lines; ext_sf left blank per instructions and all figures listed in note instead.",
+  "Unit 1's \"Floor Location\" shows \"First Floor\" with \"Cellar\" and area figures 1079 / 972* on separate lines; 972 treated as cellar/sf2 per the cellar footnote, 1079 as interior.",
+  "The \"Annual\" column with \"(6)\" footnote labeled \"Projected Second Year Real Estate Taxes (Annual)\" was not requested as a standard field and is not included in the per-unit output; only tax_a (first year annual) and carry_m were mapped per the schedule.",
+  "outdoor space left out: its column did not add up to the printed total"
  ],
  "units": [
   {
@@ -76,7 +84,8 @@
    "floor": "First Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1079,
    "sf2": 972,
    "ext_sf": null,
@@ -90,7 +99,8 @@
    "tax2_m": 11818.62,
    "carry_m": 1080.03,
    "page": 33,
-   "note": "Cellar 972* (A); outdoor/limited common areas: 335 (A), 511 (BY)"
+   "note": "Areaway 335 (A), Back Yard 511 (BY)",
+   "baths": 2.5
   },
   {
    "unit": "2",
@@ -98,7 +108,8 @@
    "floor": "Second Floor",
    "rooms": null,
    "beds": 3,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1232,
    "sf2": null,
    "ext_sf": null,
@@ -112,7 +123,8 @@
    "tax2_m": 9892.43,
    "carry_m": 904,
    "page": 33,
-   "note": "outdoor/limited common areas: 299 (BY), 135 (B)"
+   "note": "Back Yard 299 (BY), Balcony 135 (B)",
+   "baths": 2.5
   },
   {
    "unit": "3F",
@@ -120,7 +132,8 @@
    "floor": "Third Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 606,
    "sf2": null,
    "ext_sf": null,
@@ -134,7 +147,8 @@
    "tax2_m": 4201.02,
    "carry_m": 383.9,
    "page": 33,
-   "note": "outdoor/limited common area: 85 (B)"
+   "note": "Balcony 85 (B)",
+   "baths": 1
   },
   {
    "unit": "3R",
@@ -142,7 +156,8 @@
    "floor": "Third Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 623,
    "sf2": null,
    "ext_sf": null,
@@ -156,7 +171,8 @@
    "tax2_m": 4375.33,
    "carry_m": 399.83,
    "page": 33,
-   "note": "outdoor/limited common area: 85 (B)"
+   "note": "Balcony 85 (B)",
+   "baths": 1
   },
   {
    "unit": "4",
@@ -164,7 +180,8 @@
    "floor": "Fourth Floor Penthouse",
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": 0,
    "int_sf": 1502,
    "sf2": null,
    "ext_sf": null,
@@ -178,7 +195,8 @@
    "tax2_m": 13291.6,
    "carry_m": 1214.63,
    "page": 33,
-   "note": "outdoor/limited common areas: 207 (B), 29 (E), 889 (T)"
+   "note": "Balcony 207 (B), Elevator 29 (E), Terrace 889 (T)",
+   "baths": 3
   }
  ]
 }

@@ -3,72 +3,23 @@
  "steps": [
   {
    "step": "sonnet-text",
-   "verdict": "hold",
+   "verdict": "publish_ag",
    "units": 10,
-   "failed": [
-    "outdoor"
-   ]
-  },
-  {
-   "step": "sonnet-text-retry",
-   "verdict": "hold",
-   "units": 10,
-   "failed": [
-    "sqftTotal"
-   ]
-  },
-  {
-   "step": "sonnet-images",
-   "verdict": "hold",
-   "units": 10,
-   "failed": [
-    "sqftTotal",
-    "outdoor"
-   ]
-  },
-  {
-   "step": "sonnet-images-think",
-   "verdict": "hold",
-   "units": 10,
-   "failed": [
-    "sqftTotal",
-    "outdoor"
-   ]
+   "failed": []
   }
  ],
- "calls": 4,
+ "calls": 1,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 5121,
-   "output_tokens": 1147,
-   "seconds": 10,
-   "cost_usd": 0.027362
-  },
-  {
-   "model": "sonnet",
-   "tokens": 9049,
-   "output_tokens": 1099,
-   "seconds": 82,
-   "cost_usd": 0.0276846
-  },
-  {
-   "model": "sonnet",
-   "tokens": 23120,
-   "output_tokens": 1253,
-   "seconds": 89,
-   "cost_usd": 0.043461
-  },
-  {
-   "model": "sonnet",
-   "tokens": 22558,
-   "output_tokens": 8912,
-   "seconds": 73,
-   "cost_usd": 0.1184716
+   "tokens": 6752,
+   "output_tokens": 1192,
+   "seconds": 12,
+   "cost_usd": 0.034156
   }
  ],
- "tokens": 59848,
- "api_equiv_usd": 0.217,
+ "tokens": 6752,
+ "api_equiv_usd": 0.034,
  "located_pages": [
   36
  ],
@@ -86,6 +37,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 9705000,
@@ -95,38 +48,43 @@
   "Unit No.",
   "Floor Location",
   "Approx. Floor Area",
-  "Uninhabitable/Limited Common Area",
+  "Approx. Outdoor/Uninhabitable/Limited Common Area",
   "No. of Bedooms/Bathrooms",
   "Offering Price",
-  "Approx. Percent Common Interest",
-  "Projected Common Charges (Monthly)",
+  "Percent Common Interest",
+  "Monthly Common Charges",
   "Projected Real Estate Taxes (Monthly)",
   "Projected Real Estate Taxes (Annual)",
-  "Projected Common Charges (Monthly)"
+  "Projected Carrying Charges (Monthly)"
  ],
  "tax2": null,
- "sf2": "Outdoor/Uninhabitable/Limited Common Area",
+ "sf2": null,
  "printed_totals": {
   "price": 9705000,
   "pct": 100,
   "cc_m": 5083.34,
   "tax_m": 6121.35,
   "int_sf": 10387,
-  "ext_sf": 2530
+  "ext_sf": 2530,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "beds/baths printed as combined \"No. of Bedrooms/Bathrooms\" (e.g. \"2/2.5\") assumed to mean beds/baths, not rooms/beds.",
-  "Uninhabitable/Limited Common Area column contains multiple sub-areas per unit (e.g. balcony, roof terrace, rear yard) with codes; listed in note rather than a single ext_sf value.",
-  "Total row's \"Uninhabitable/Limited Common Area\" total (2,530) placed in SF2 total column above; not separately broken out by type."
+  "Units 2B, 4A, 4B have two separate limited common area figures printed (not a single ext_sf number); left ext_sf blank and listed both in note per instructions.",
+  "Header reads \"No. of Bedooms/Bathrooms\" (printed as shown, likely typo for \"Bedrooms/Bathrooms\"); combined figures like \"2/2.5\" parsed as beds 2, full 2, half 1 per rules.",
+  "Total row's int_sf (10,387) and sf2 (2,530) are printed totals; unclear if sf2 total includes the dual-listed LCA figures for units 2B, 4A, 4B since those were left blank in individual rows.",
+  "outdoor space left out: its column did not add up to the printed total"
  ],
  "units": [
   {
    "unit": "1A",
    "type": "residential",
-   "floor": "First Floor",
+   "floor": "Cellar/First Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 806,
    "sf2": 511,
    "ext_sf": null,
@@ -140,15 +98,17 @@
    "tax2_m": null,
    "carry_m": 1155.2,
    "page": 36,
-   "note": "Cellar*"
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "1B",
    "type": "residential",
-   "floor": "First Floor",
+   "floor": "Cellar/First Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 897,
    "sf2": 952,
    "ext_sf": null,
@@ -162,7 +122,8 @@
    "tax2_m": null,
    "carry_m": 1666.14,
    "page": 36,
-   "note": "Cellar*"
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "2A",
@@ -170,7 +131,8 @@
    "floor": "Second Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 731,
    "sf2": null,
    "ext_sf": null,
@@ -184,7 +146,8 @@
    "tax2_m": null,
    "carry_m": 823.55,
    "page": 36,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "2B",
@@ -192,7 +155,8 @@
    "floor": "Second Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 808,
    "sf2": null,
    "ext_sf": null,
@@ -206,7 +170,8 @@
    "tax2_m": null,
    "carry_m": 1087.97,
    "page": 36,
-   "note": null
+   "note": "note: LCA listed as 521 (RY) and 55 (ST), two figures",
+   "baths": 2
   },
   {
    "unit": "2C",
@@ -214,7 +179,8 @@
    "floor": "Second Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 658,
    "sf2": null,
    "ext_sf": null,
@@ -228,7 +194,8 @@
    "tax2_m": null,
    "carry_m": 747.35,
    "page": 36,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3A",
@@ -236,7 +203,8 @@
    "floor": "Third Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 731,
    "sf2": null,
    "ext_sf": null,
@@ -250,7 +218,8 @@
    "tax2_m": null,
    "carry_m": 823.55,
    "page": 36,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3B",
@@ -258,7 +227,8 @@
    "floor": "Third Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 808,
    "sf2": null,
    "ext_sf": null,
@@ -272,7 +242,8 @@
    "tax2_m": null,
    "carry_m": 927.75,
    "page": 36,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3C",
@@ -280,7 +251,8 @@
    "floor": "Third Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 658,
    "sf2": null,
    "ext_sf": null,
@@ -294,7 +266,8 @@
    "tax2_m": null,
    "carry_m": 747.35,
    "page": 36,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "4A",
@@ -302,7 +275,8 @@
    "floor": "Fourth Floor Penthouse",
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": 0,
    "int_sf": 1423,
    "sf2": null,
    "ext_sf": null,
@@ -316,7 +290,8 @@
    "tax2_m": null,
    "carry_m": 1681.83,
    "page": 36,
-   "note": null
+   "note": "note: LCA listed as 118 (B) and 428 (RT), two figures",
+   "baths": 3
   },
   {
    "unit": "4B",
@@ -324,7 +299,8 @@
    "floor": "Fourth Floor Penthouse",
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": 0,
    "int_sf": 1404,
    "sf2": null,
    "ext_sf": null,
@@ -338,8 +314,8 @@
    "tax2_m": null,
    "carry_m": 1544,
    "page": 36,
-   "note": null
+   "note": "note: LCA listed as 167 (B) and 179 (RT), two figures",
+   "baths": 3
   }
- ],
- "rechecked": "2026-09-30"
+ ]
 }

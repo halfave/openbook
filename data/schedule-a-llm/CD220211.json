@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 8765,
-   "output_tokens": 2433,
-   "seconds": 21,
-   "cost_usd": 0.049654
+   "tokens": 18160,
+   "output_tokens": 2322,
+   "seconds": 34,
+   "cost_usd": 0.0564794
   }
  ],
- "tokens": 8765,
- "api_equiv_usd": 0.05,
+ "tokens": 18160,
+ "api_equiv_usd": 0.056,
  "located_pages": [
   90
  ],
@@ -37,48 +37,52 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 151181350,
  "step": "sonnet-text",
- "budget_period": "Twelve-Month Period Commencing April 1, 2023 and Ending March 31, 2024 (\"First Year\")",
+ "budget_period": "April 1, 2023 and Ending March 31, 2024",
  "columns_printed": [
   "Unit",
   "Description: Number of BDrooms & Baths, Etc.",
   "Approximate Square Footage of Unit*",
-  "Total Approx. Sq. Ft. of Balcony, and/or Terrace Areas",
-  "% of Offering Price",
-  "Residential % of Common Interest",
+  "Approx. Sq. Ft. of Balcony, and/or Terrace Areas",
+  "Total Offering Price",
   "% of Common Interest",
+  "Residential % of Common Interest",
   "Estimated Annual/Monthly Common Charges (First Year)",
   "Estimated Annual/Monthly Real Estate Taxes (First Year)",
   "Estimated Annual/Monthly Real Estate Taxes Upon 100% Completion",
   "Estimated Monthly Carrying Charges (First Year)",
   "Annual Carrying Charges (First Year)"
  ],
- "tax2": null,
- "sf2": null,
+ "tax2": "-",
+ "sf2": "balcony/terrace area",
  "printed_totals": {
   "price": 151181350,
   "pct": 100,
   "cc_m": 66030.78,
   "tax_m": 63718.5,
   "int_sf": 57779,
-  "ext_sf": 5289
+  "ext_sf": 5289,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "PH bed/bath printed as \"5 BD/4.5 Bath/T/Dx\"; recorded as 5 beds, 4.5 baths per rule for \"+X-1/2\" style notation.",
-  "Unit Grand Total row's annual/monthly common charges and taxes columns (792368/66030.78, 764622/63718.50, 936504/78042.12) — used annual common charges and annual real estate taxes (First Year, upon 100% completion column not used) for cc_m/tax_m per instructions; TOTAL row above uses monthly figures 66030.78 and 63718.50 as printed.",
-  "Residential/Commercial/Grand subtotal rows also printed but not included as they are not the final total row."
+  "Residential Totals and Commercial Totals subtotal rows were printed but omitted from output per instructions (only unit rows and grand total requested); Unit Grand Total row used for TOTAL line. beds/baths for PH given as \"5 BD/4.5 Bath\" = 5 beds, 4 full, 1 half. Commercial units (CFU-A to E) have no bed/bath data printed, left blank."
  ],
  "units": [
   {
-   "unit": "9*",
+   "unit": "9",
    "type": "residential",
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 763,
    "sf2": null,
    "ext_sf": 0,
@@ -92,7 +96,8 @@
    "tax2_m": 755.39,
    "carry_m": 1346.37,
    "page": 90,
-   "note": "Unit 9 will be the Superintendent's Unit"
+   "note": "Unit 9 will be the Superintendent's Unit",
+   "baths": 1
   },
   {
    "unit": "10",
@@ -100,7 +105,8 @@
    "floor": null,
    "rooms": null,
    "beds": 4,
-   "baths": 4,
+   "full_baths": 4,
+   "half_baths": null,
    "int_sf": 3542,
    "sf2": null,
    "ext_sf": 177,
@@ -114,7 +120,8 @@
    "tax2_m": 3984.86,
    "carry_m": 7102.41,
    "page": 90,
-   "note": null
+   "note": null,
+   "baths": 4
   },
   {
    "unit": "11",
@@ -122,7 +129,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": null,
    "int_sf": 2659,
    "sf2": null,
    "ext_sf": 787,
@@ -136,7 +144,8 @@
    "tax2_m": 3050.14,
    "carry_m": 5436.41,
    "page": 90,
-   "note": null
+   "note": null,
+   "baths": 3
   },
   {
    "unit": "12A",
@@ -144,7 +153,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 875,
    "sf2": null,
    "ext_sf": 71,
@@ -158,7 +168,8 @@
    "tax2_m": 590.64,
    "carry_m": 1052.73,
    "page": 90,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "12B",
@@ -166,7 +177,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1188,
    "sf2": null,
    "ext_sf": 90,
@@ -180,7 +192,8 @@
    "tax2_m": 1220.1,
    "carry_m": 2174.64,
    "page": 90,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "14A",
@@ -188,7 +201,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 875,
    "sf2": null,
    "ext_sf": 71,
@@ -202,7 +216,8 @@
    "tax2_m": 610.33,
    "carry_m": 1087.82,
    "page": 90,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "14B",
@@ -210,7 +225,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1188,
    "sf2": null,
    "ext_sf": 90,
@@ -224,7 +240,8 @@
    "tax2_m": 1247.21,
    "carry_m": 2222.96,
    "page": 90,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "15A",
@@ -232,7 +249,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 875,
    "sf2": null,
    "ext_sf": 71,
@@ -246,7 +264,8 @@
    "tax2_m": 630.02,
    "carry_m": 1122.91,
    "page": 90,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "15B",
@@ -254,7 +273,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1188,
    "sf2": null,
    "ext_sf": 90,
@@ -268,7 +288,8 @@
    "tax2_m": 1274.32,
    "carry_m": 2271.29,
    "page": 90,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "16A",
@@ -276,7 +297,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 875,
    "sf2": null,
    "ext_sf": 71,
@@ -290,7 +312,8 @@
    "tax2_m": 649.71,
    "carry_m": 1158,
    "page": 90,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "16B",
@@ -298,7 +321,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1188,
    "sf2": null,
    "ext_sf": 90,
@@ -312,7 +336,8 @@
    "tax2_m": 1301.44,
    "carry_m": 2319.61,
    "page": 90,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "17",
@@ -320,7 +345,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": null,
    "int_sf": 2662,
    "sf2": null,
    "ext_sf": 161,
@@ -334,7 +360,8 @@
    "tax2_m": 2993.71,
    "carry_m": 5335.83,
    "page": 90,
-   "note": null
+   "note": null,
+   "baths": 3
   },
   {
    "unit": "18",
@@ -342,7 +369,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": null,
    "int_sf": 2662,
    "sf2": null,
    "ext_sf": 161,
@@ -356,7 +384,8 @@
    "tax2_m": 3113.46,
    "carry_m": 5549.26,
    "page": 90,
-   "note": null
+   "note": null,
+   "baths": 3
   },
   {
    "unit": "19",
@@ -364,7 +393,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": null,
    "int_sf": 2662,
    "sf2": null,
    "ext_sf": 161,
@@ -378,7 +408,8 @@
    "tax2_m": 3233.2,
    "carry_m": 5762.7,
    "page": 90,
-   "note": null
+   "note": null,
+   "baths": 3
   },
   {
    "unit": "20",
@@ -386,7 +417,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": null,
    "int_sf": 2662,
    "sf2": null,
    "ext_sf": 161,
@@ -400,7 +432,8 @@
    "tax2_m": 3412.83,
    "carry_m": 6082.85,
    "page": 90,
-   "note": null
+   "note": null,
+   "baths": 3
   },
   {
    "unit": "21",
@@ -408,7 +441,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": null,
    "int_sf": 2662,
    "sf2": null,
    "ext_sf": 161,
@@ -422,7 +456,8 @@
    "tax2_m": 3592.45,
    "carry_m": 6403,
    "page": 90,
-   "note": null
+   "note": null,
+   "baths": 3
   },
   {
    "unit": "22",
@@ -430,7 +465,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": null,
    "int_sf": 2662,
    "sf2": null,
    "ext_sf": 161,
@@ -444,7 +480,8 @@
    "tax2_m": 3831.95,
    "carry_m": 6829.86,
    "page": 90,
-   "note": null
+   "note": null,
+   "baths": 3
   },
   {
    "unit": "23",
@@ -452,7 +489,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": null,
    "int_sf": 2662,
    "sf2": null,
    "ext_sf": 161,
@@ -466,7 +504,8 @@
    "tax2_m": 4191.19,
    "carry_m": 7470.16,
    "page": 90,
-   "note": null
+   "note": null,
+   "baths": 3
   },
   {
    "unit": "24",
@@ -474,7 +513,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": null,
    "int_sf": 2662,
    "sf2": null,
    "ext_sf": 161,
@@ -488,7 +528,8 @@
    "tax2_m": 4430.69,
    "carry_m": 7897.03,
    "page": 90,
-   "note": null
+   "note": null,
+   "baths": 3
   },
   {
    "unit": "25",
@@ -496,7 +537,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": null,
    "int_sf": 2662,
    "sf2": null,
    "ext_sf": 161,
@@ -510,7 +552,8 @@
    "tax2_m": 4670.18,
    "carry_m": 8323.9,
    "page": 90,
-   "note": null
+   "note": null,
+   "baths": 3
   },
   {
    "unit": "PH",
@@ -518,7 +561,8 @@
    "floor": null,
    "rooms": null,
    "beds": 5,
-   "baths": 4.5,
+   "full_baths": 4,
+   "half_baths": 1,
    "int_sf": 4380,
    "sf2": null,
    "ext_sf": 432,
@@ -532,7 +576,8 @@
    "tax2_m": 9264.07,
    "carry_m": 16511.81,
    "page": 90,
-   "note": "5 BD/4.5 Bath/T/Dx"
+   "note": null,
+   "baths": 4.5
   },
   {
    "unit": "CFU-A",
@@ -540,7 +585,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 1090,
    "sf2": null,
    "ext_sf": 0,
@@ -554,7 +600,8 @@
    "tax2_m": 1126.49,
    "carry_m": 1481.08,
    "page": 90,
-   "note": "Community Facility Unit"
+   "note": null,
+   "baths": null
   },
   {
    "unit": "CFU-B",
@@ -562,7 +609,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 3116,
    "sf2": null,
    "ext_sf": 0,
@@ -576,7 +624,8 @@
    "tax2_m": 5644.19,
    "carry_m": 7420.81,
    "page": 90,
-   "note": "Community Facility Unit"
+   "note": null,
+   "baths": null
   },
   {
    "unit": "CFU-C",
@@ -584,7 +633,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 3341,
    "sf2": null,
    "ext_sf": 1800,
@@ -598,7 +648,8 @@
    "tax2_m": 4407.86,
    "carry_m": 5795.31,
    "page": 90,
-   "note": "Community Facility Unit"
+   "note": null,
+   "baths": null
   },
   {
    "unit": "CFU-D",
@@ -606,7 +657,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 3328,
    "sf2": null,
    "ext_sf": 0,
@@ -620,7 +672,8 @@
    "tax2_m": 4407.86,
    "carry_m": 5795.31,
    "page": 90,
-   "note": "Community Facility Unit"
+   "note": null,
+   "baths": null
   },
   {
    "unit": "CFU-E",
@@ -628,7 +681,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 3350,
    "sf2": null,
    "ext_sf": 0,
@@ -642,7 +696,8 @@
    "tax2_m": 4407.86,
    "carry_m": 5795.31,
    "page": 90,
-   "note": "Community Facility Unit"
+   "note": null,
+   "baths": null
   }
  ]
 }

@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4220,
-   "output_tokens": 743,
-   "seconds": 8,
-   "cost_usd": 0.021334
+   "tokens": 10738,
+   "output_tokens": 770,
+   "seconds": 88,
+   "cost_usd": 0.028632400000000002
   }
  ],
- "tokens": 4220,
- "api_equiv_usd": 0.021,
+ "tokens": 10738,
+ "api_equiv_usd": 0.029,
  "located_pages": [
   38
  ],
@@ -37,6 +37,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 1940000,
@@ -62,12 +64,15 @@
   "price": 1940000,
   "pct": 100,
   "cc_m": 2349.42,
-  "tax_m": null,
+  "tax_m": 2377.47,
   "int_sf": 5054,
-  "ext_sf": 778
+  "ext_sf": 778,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Total row prints monthly real estate taxes as 2377.47 but TOTAL line format excludes tax_m per spec header mismatch — using cc_m only per instructions; tax_a total 28530.00 and carry_m total 4726.89 and carry_a total 56722.68 also printed but not in TOTAL line format."
+  "Unit column header is \"No. of Bedroom + Baths\" combining bedrooms/baths as one figure (e.g. \"2/1\"); interpreted first number as beds, second as full baths, with half_baths 0, per header-based rules. PS1/PS2/PS3H are parking-type units with no bedroom/bath figures printed."
  ],
  "units": [
   {
@@ -76,7 +81,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 1100,
    "sf2": 1100,
    "ext_sf": null,
@@ -90,7 +96,8 @@
    "tax2_m": null,
    "carry_m": 1055.02,
    "page": 38,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "2A",
@@ -98,7 +105,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1321,
    "sf2": 1431,
    "ext_sf": 110,
@@ -112,7 +120,8 @@
    "tax2_m": null,
    "carry_m": 1279.18,
    "page": 38,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3A",
@@ -120,7 +129,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1321,
    "sf2": 1431,
    "ext_sf": 110,
@@ -134,7 +144,8 @@
    "tax2_m": null,
    "carry_m": 1279.18,
    "page": 38,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "4A",
@@ -142,7 +153,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 772,
    "sf2": 1330,
    "ext_sf": 558,
@@ -156,7 +168,8 @@
    "tax2_m": null,
    "carry_m": 748.02,
    "page": 38,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "PS1",
@@ -164,7 +177,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 153,
    "sf2": 153,
    "ext_sf": null,
@@ -178,7 +192,8 @@
    "tax2_m": null,
    "carry_m": 121.83,
    "page": 38,
-   "note": null
+   "note": null,
+   "baths": null
   },
   {
    "unit": "PS2",
@@ -186,7 +201,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 153,
    "sf2": 153,
    "ext_sf": null,
@@ -200,7 +216,8 @@
    "tax2_m": null,
    "carry_m": 121.83,
    "page": 38,
-   "note": null
+   "note": null,
+   "baths": null
   },
   {
    "unit": "PS3H",
@@ -208,7 +225,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 234,
    "sf2": 234,
    "ext_sf": null,
@@ -222,7 +240,8 @@
    "tax2_m": null,
    "carry_m": 121.83,
    "page": 38,
-   "note": null
+   "note": null,
+   "baths": null
   }
  ]
 }

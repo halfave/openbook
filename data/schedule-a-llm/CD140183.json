@@ -3,23 +3,42 @@
  "steps": [
   {
    "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 4,
+   "failed": [
+    "ag",
+    "printed",
+    "pct100",
+    "sqftTotal",
+    "monthlyTotals"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
    "verdict": "publish_ag",
    "units": 5,
    "failed": []
   }
  ],
- "calls": 1,
+ "calls": 2,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 7645,
-   "output_tokens": 1007,
-   "seconds": 86,
-   "cost_usd": 0.0240094
+   "tokens": 5409,
+   "output_tokens": 639,
+   "seconds": 9,
+   "cost_usd": 0.025466
+  },
+  {
+   "model": "sonnet",
+   "tokens": 5615,
+   "output_tokens": 844,
+   "seconds": 9,
+   "cost_usd": 0.02752
   }
  ],
- "tokens": 7645,
- "api_equiv_usd": 0.024,
+ "tokens": 11024,
+ "api_equiv_usd": 0.053,
  "located_pages": [
   37
  ],
@@ -37,21 +56,23 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 35000000,
- "step": "sonnet-text",
- "budget_period": "Projected Financial Information for the First Year of Condominium Operation Based on Projected Commencement on January 1, 2016",
+ "step": "sonnet-text-retry",
+ "budget_period": "Based on Projected Commencment on January 1, 2016",
  "columns_printed": [
   "(1) No. of Unit",
   "(1) Residential Bedrooms",
-  "(2) No. of Bathrooms",
+  "(2) Approximate No. of Bathrooms",
   "(2) Approximate Unit Sq Ft",
-  "(3) Approximate Terrace Sq Ft",
+  "(3) Terrace Sq Ft",
   "(4a) Offering Price",
   "(4b) Common Interest",
-  "(5) Projected Common Interest",
-  "(6) Monthly Common Charges",
+  "(5) Residential Common Interest",
+  "(6) Projected Monthly Common Charges",
   "(7) Projected Monthly Real Estate Tax",
   "(8) Total Monthly Carrying Charges",
   "Projected Initial Year Real Estate Tax"
@@ -64,12 +85,15 @@
   "cc_m": 15428.17,
   "tax_m": 15134.83,
   "int_sf": 12573,
-  "ext_sf": 1690
+  "ext_sf": 1690,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Total row includes separate Residential subtotal (price 28000000, pct 87, cc_m 14235.33, tax_m 13167.33, int_sf 10438, ext_sf 1690) and Grand Total (price 35000000, pct 100, cc_m 15428.17, tax_m 15134.83, int_sf 12573, ext_sf 1690); TOTAL line above uses Grand Total figures.",
-  "Column (8) is labeled \"Total Monthly Carrying Charges\" but values appear to equal cc_m + tax_m (not a separately printed annual real estate tax); the final column \"Projected Initial Year Real Estate Tax\" is annual and placed in tax_a.",
-  "No unit-number/letter identifiers beyond \"2\", \"3\", \"4\", \"PH\", and \"Commercial\"; no floor or interior/habitable sq ft distinction printed (single \"Approximate Unit Sq Ft\" column used for int_sf)."
+  "Grand Total row (price 35,000,000; pct 100; cc_m 15428.17; tax_m 15134.83; int_sf 12573; ext_sf 1690) used for TOTAL line; a separate \"Total Residential\" subtotal row is also printed (28,000,000; 87%; 14,235.33; 13,167.33; 10,438; 1,690) but only one total can be reported.",
+  "Commercial row has no bedroom/bathroom data (N/A) and no distinct unit label beyond \"Commercial\"; type coded C.",
+  "PH unit bath column printed as \"4 Full, 2 Half\" meaning 2 full, 2 half — wait, re-check: printed \"4 Full, 2 Half\" refers to 4 full baths and 2 half baths, not beds; beds for PH taken from adjacent bedroom column (4)."
  ],
  "units": [
   {
@@ -78,7 +102,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": null,
    "int_sf": 2067,
    "sf2": null,
    "ext_sf": 167,
@@ -92,7 +117,8 @@
    "tax2_m": null,
    "carry_m": 5206.51,
    "page": 37,
-   "note": null
+   "note": null,
+   "baths": 3
   },
   {
    "unit": "3",
@@ -100,7 +126,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": null,
    "int_sf": 2064,
    "sf2": null,
    "ext_sf": 78,
@@ -114,7 +141,8 @@
    "tax2_m": null,
    "carry_m": 5480.53,
    "page": 37,
-   "note": null
+   "note": null,
+   "baths": 3
   },
   {
    "unit": "4",
@@ -122,7 +150,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": null,
    "int_sf": 2044,
    "sf2": null,
    "ext_sf": 78,
@@ -136,7 +165,8 @@
    "tax2_m": null,
    "carry_m": 5754.56,
    "page": 37,
-   "note": null
+   "note": null,
+   "baths": 3
   },
   {
    "unit": "PH",
@@ -144,7 +174,8 @@
    "floor": null,
    "rooms": null,
    "beds": 4,
-   "baths": 4.5,
+   "full_baths": 4,
+   "half_baths": 2,
    "int_sf": 4263,
    "sf2": null,
    "ext_sf": 1367,
@@ -158,7 +189,8 @@
    "tax2_m": null,
    "carry_m": 10961.06,
    "page": 37,
-   "note": "4 Full, 2 Half baths"
+   "note": null,
+   "baths": 5
   },
   {
    "unit": "Commercial",
@@ -166,7 +198,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 2135,
    "sf2": null,
    "ext_sf": null,
@@ -180,7 +213,8 @@
    "tax2_m": null,
    "carry_m": 3160.33,
    "page": 37,
-   "note": "N/A bedrooms/baths"
+   "note": "N/A",
+   "baths": null
   }
  ]
 }

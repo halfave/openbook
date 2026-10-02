@@ -4,15 +4,10 @@
   {
    "step": "sonnet-text",
    "verdict": "hold",
-   "units": 18,
+   "units": 17,
    "failed": [
-    "ag",
-    "printed",
-    "pct100",
     "carrying",
-    "sqftTotal",
-    "monthlyTotals",
-    "outdoor"
+    "sqftTotal"
    ]
   },
   {
@@ -26,21 +21,21 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 6058,
-   "output_tokens": 2022,
-   "seconds": 20,
-   "cost_usd": 0.03636
+   "tokens": 7434,
+   "output_tokens": 1949,
+   "seconds": 22,
+   "cost_usd": 0.041426000000000004
   },
   {
    "model": "sonnet",
-   "tokens": 5910,
-   "output_tokens": 1876,
-   "seconds": 17,
-   "cost_usd": 0.034892
+   "tokens": 0,
+   "output_tokens": 0,
+   "seconds": 229,
+   "cost_usd": 0.022341000000000003
   }
  ],
- "tokens": 11968,
- "api_equiv_usd": 0.071,
+ "tokens": 7434,
+ "api_equiv_usd": 0.064,
  "located_pages": [
   24
  ],
@@ -58,6 +53,8 @@
   "psf": null,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 10270000,
@@ -86,9 +83,20 @@
   "cc_m": 13620,
   "tax_m": 4388.91,
   "int_sf": 14118,
-  "ext_sf": 2860
+  "ext_sf": 2860,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
+  "Unit column headers \"A B B\" and \"C D E F F\" etc. are OCR artifacts of repeated per-column letter markers; not transcribed as data.",
+  "Row for unit 2D: bedroom/bath cell printed as \"2/2\" (ambiguous whether second figure is full baths or combined baths); interpreted as 2 beds, 2 full baths, 0 half baths per convention, but header does not explicitly label columns as beds/full/half.",
+  "Row for unit 3A: cell printed \"211\" interpreted as 2 beds/1 full bath/1 (unclear third digit); used beds=2, full=1, half left blank (-) since format unclear beyond two digits.",
+  "Row for unit 3D: cell printed \"212\" interpreted as beds=2, full=1, half=2; half_baths of 2 is unusual per instructions (rarely more than 1) — flagging for review, kept as read from OCR text \"212\".",
+  "Several int_sf values are OCR-garbled (\"BOO\" instead of likely \"800\"); transcribed as printed per unit note above.",
+  "TOTALS row for Interior Square Footage printed \"14118\" without comma/formatting consistent with other rows (e.g., \"19,902\" appears to be a separate/garbled total number); used 14118 as int_sf total and could not reconcile the \"19,902\" figure — not included as it doesn't match column order; flagging discrepancy.",
+  "Total row monthly carrying charges (with benefits) column shows \"$18,008.91\" and (no benefits) \"$21,884.00\" in source, but these appear swapped relative to per-unit order (tax4_m total $99,168.00, carry columns listed as $18,008.91 then $21,884.00) — transcribed in printed order under TOTAL as cc_m and tax_m only per requested TOTAL fields; carrying charge totals not part of requested TOTAL output so omitted.",
+  "pct2 column not present in source table; written as \"-\" throughout.",
   "unit sizes left out: the area columns did not add up to the printed totals"
  ],
  "units": [
@@ -98,7 +106,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -112,7 +121,8 @@
    "tax2_m": 418.43,
    "carry_m": 840.66,
    "page": 24,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "1B",
@@ -120,7 +130,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -134,7 +145,8 @@
    "tax2_m": 474.76,
    "carry_m": 953.82,
    "page": 24,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "2A",
@@ -142,7 +154,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -156,7 +169,8 @@
    "tax2_m": 386.24,
    "carry_m": 775.99,
    "page": 24,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "2B",
@@ -164,7 +178,8 @@
    "floor": null,
    "rooms": null,
    "beds": 0,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -178,7 +193,8 @@
    "tax2_m": 329.92,
    "carry_m": 662.83,
    "page": 24,
-   "note": "PROBLEM: printed as \"S1,429.05\""
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "2C",
@@ -186,7 +202,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -200,7 +217,8 @@
    "tax2_m": 386.24,
    "carry_m": 775.99,
    "page": 24,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "2D",
@@ -208,7 +226,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -222,7 +241,8 @@
    "tax2_m": 700.07,
    "carry_m": 1406.49,
    "page": 24,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "2E",
@@ -230,7 +250,8 @@
    "floor": null,
    "rooms": null,
    "beds": 0,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -244,7 +265,8 @@
    "tax2_m": 354.06,
    "carry_m": 711.33,
    "page": 24,
-   "note": "PROBLEM: int_sf printed as \"BOO\", read as 800 by analogy with other 0/1 units; tax_m printed as \"S127.BO\" read as 127.80"
+   "note": "int_sf printed as \"BOO\" (likely OCR error for 800)",
+   "baths": 1
   },
   {
    "unit": "2F",
@@ -252,7 +274,8 @@
    "floor": null,
    "rooms": null,
    "beds": 0,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -266,7 +289,8 @@
    "tax2_m": 354.06,
    "carry_m": 711.33,
    "page": 24,
-   "note": "PROBLEM: tax_m printed as \"$127.BO\" read as 127.80"
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "2G",
@@ -274,7 +298,8 @@
    "floor": null,
    "rooms": null,
    "beds": 0,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -288,7 +313,8 @@
    "tax2_m": 370.15,
    "carry_m": 743.66,
    "page": 24,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3A",
@@ -296,7 +322,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -310,7 +337,8 @@
    "tax2_m": 474.76,
    "carry_m": 953.82,
    "page": 24,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3B",
@@ -318,7 +346,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -332,7 +361,8 @@
    "tax2_m": 394.29,
    "carry_m": 792.16,
    "page": 24,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3C",
@@ -340,7 +370,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -354,7 +385,8 @@
    "tax2_m": 482.8,
    "carry_m": 969.99,
    "page": 24,
-   "note": "PROBLEM: ext_sf printed as \"BOO\", read as 800 by analogy with 3D"
+   "note": "int_sf exterior printed as \"BOO\" (likely OCR error for 800)",
+   "baths": 1
   },
   {
    "unit": "3D",
@@ -362,7 +394,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 1,
+   "half_baths": 2,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -376,7 +409,8 @@
    "tax2_m": 764.44,
    "carry_m": 1535.82,
    "page": 24,
-   "note": null
+   "note": "rooms column shows \"212\" - interpreted as 2 bed/1 full/2... see PROBLEM",
+   "baths": 2
   },
   {
    "unit": "3E",
@@ -384,7 +418,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -398,7 +433,8 @@
    "tax2_m": 386.24,
    "carry_m": 775.99,
    "page": 24,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3F",
@@ -406,7 +442,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -420,7 +457,8 @@
    "tax2_m": 394.29,
    "carry_m": 792.16,
    "page": 24,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3G",
@@ -428,7 +466,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -442,7 +481,8 @@
    "tax2_m": 386.24,
    "carry_m": 775.99,
    "page": 24,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "CF",
@@ -450,7 +490,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -464,7 +505,8 @@
    "tax2_m": 1207.01,
    "carry_m": 3830.89,
    "page": 24,
-   "note": "PROBLEM: tax_a printed as \"$14,484.13\" but carry_a-area totals row shows \"$3,196.30\" for the no-tax-benefit monthly carrying charge, inconsistent with per-unit monthly figure of $3,830.89; transcribed as printed"
+   "note": null,
+   "baths": null
   }
  ]
 }

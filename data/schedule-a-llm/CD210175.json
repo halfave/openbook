@@ -3,38 +3,23 @@
  "steps": [
   {
    "step": "sonnet-text",
-   "verdict": "hold",
-   "units": 3,
-   "failed": [
-    "carrying"
-   ]
-  },
-  {
-   "step": "sonnet-text-retry",
    "verdict": "publish_ag",
    "units": 3,
    "failed": []
   }
  ],
- "calls": 2,
+ "calls": 1,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4465,
-   "output_tokens": 839,
-   "seconds": 13,
-   "cost_usd": 0.02289
-  },
-  {
-   "model": "sonnet",
-   "tokens": 4345,
-   "output_tokens": 723,
-   "seconds": 9,
-   "cost_usd": 0.021714
+   "tokens": 6396,
+   "output_tokens": 1264,
+   "seconds": 18,
+   "cost_usd": 0.033164
   }
  ],
- "tokens": 8810,
- "api_equiv_usd": 0.045,
+ "tokens": 6396,
+ "api_equiv_usd": 0.033,
  "located_pages": [
   39
  ],
@@ -52,16 +37,18 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 2590000,
- "step": "sonnet-text-retry",
+ "step": "sonnet-text",
  "budget_period": "OCTOBER 1, 2022 TO SEPTEMBER 30, 2023",
  "columns_printed": [
   "UNIT",
   "NUMBER OF BEDROOMS/BATHROOMS",
-  "APPROX. TOTAL SQ. FT.",
   "BALCONY/TERRACE/YARD",
+  "APPROX. TOTAL SQ. FT.",
   "OFFERING PRICE",
   "% OF COMMON INTEREST",
   "PROJECTED MONTHLY COMMON CHARGES",
@@ -71,17 +58,25 @@
   "TOTAL PROJECTED ANNUAL CHARGES"
  ],
  "tax2": null,
- "sf2": null,
+ "sf2": "cellar/nonhabitable",
  "printed_totals": {
   "price": 2590000,
   "pct": 100,
   "cc_m": 1283.75,
   "tax_m": 1500,
   "int_sf": 7429,
-  "ext_sf": 2976
+  "ext_sf": 2976,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "cc_a and tax_a (annual figures) not explicitly in listed columns but monthly figures multiplied are printed; used printed monthly values for cc_m/tax_m; annual columns (8)/(9) correspond to tax_a/carry_a but table only requests tax_m/tax_a — tax_a not clearly printed per unit (only annual totals for common charges $18,000.00 and taxes $33,405.00 given in TOTAL row); per-unit annual real estate tax values not printed separately from monthly, so tax_a column left blank per unit."
+  "\"BALCONY/TERRACE/YARD\" column header exists but only unit 3 has a value in that position per note; units 1 and 2 show 0.00/blank in that column position in the raw text and their actual outdoor/limited-common areas are described only in footnotes, not as single printed figures for ext_sf.",
+  "Unit 2 \"4 br + 3 full and 3 half\" is unusual (3 full and 3 half baths) - transcribed exactly as printed; half_baths capped guidance (rarely >1) conflicts with printed \"3 half\" - printed value used as instructed.",
+  "Unit row labels are \"see note 1\", \"see note 2\", \"see note 3\" with unit numbers 1, 2, 3 appearing in a separate adjacent position; used the numeric unit identifiers (1, 2, 3) as the unit label since \"see note X\" is a footnote reference, not a unit label.",
+  "TOTAL row's \"APPROX. TOTAL SQ. FT.\" shows two figures (7,429 and 2,976) corresponding to int_sf total and a second total (likely sf2/nonhabitable total) - both reported in TOTAL line as int_sf and ext_sf positions per column order given; uncertain which total column (2,976) maps to - treated as ext_sf total but may actually be sf2 total.",
+  "TOTAL annual real estate taxes shows two values (18,000.00 and 33,405.00) with $ signs scattered; tax_m total not clearly isolated from carry charges in printed total row - used 1,500.00 as tax_m total and could not confidently find a single tax_a total matching the per-unit sum.",
+  "outdoor space left out: its column did not add up to the printed total"
  ],
  "units": [
   {
@@ -90,21 +85,23 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1.5,
+   "full_baths": 1,
+   "half_baths": 2,
    "int_sf": 2628,
-   "sf2": null,
+   "sf2": 1313,
    "ext_sf": null,
    "price": 1600000,
    "pct": 31.228,
    "pct2": null,
    "cc_m": 400.89,
-   "cc_a": 4812,
+   "cc_a": null,
    "tax_m": 468.42,
    "tax_a": 5621.04,
    "tax2_m": null,
    "carry_m": 869.31,
    "page": 39,
-   "note": "see note 1; 1br + 1 full & 2 half bath"
+   "note": "see note 1; 1br + 1 full & 2 half bath; int_sf reflects 1st floor (1,315 sf printed), sf2 is cellar (1,313 sf); balcony/terrace/yard column blank (0.00)",
+   "baths": 2
   },
   {
    "unit": "2",
@@ -112,21 +109,23 @@
    "floor": null,
    "rooms": null,
    "beds": 4,
-   "baths": 3.5,
+   "full_baths": 3,
+   "half_baths": 3,
    "int_sf": 3271,
    "sf2": null,
-   "ext_sf": 1559,
+   "ext_sf": null,
    "price": null,
    "pct": 44.9251,
    "pct2": null,
    "cc_m": 576.73,
-   "cc_a": 6901,
+   "cc_a": null,
    "tax_m": 673.88,
    "tax_a": 8086.56,
    "tax2_m": null,
    "carry_m": 1250.61,
    "page": 39,
-   "note": "see note 2; 4 br + 3 full and 3 half"
+   "note": "see note 2; 4 br + 3 full and 3 half; NOT FOR SALE; ext_sf not single figure (garage 260, rear terrace 462, front balcony 110, cellar/stairs 727 - all limited common elements) so left blank per rule",
+   "baths": 4.5
   },
   {
    "unit": "3",
@@ -134,21 +133,23 @@
    "floor": null,
    "rooms": null,
    "beds": 4,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1530,
-   "sf2": null,
-   "ext_sf": 1417,
+   "sf2": 1366,
+   "ext_sf": null,
    "price": 990000,
    "pct": 23.8469,
    "pct2": null,
    "cc_m": 306.13,
-   "cc_a": 3673,
+   "cc_a": null,
    "tax_m": 357.7,
    "tax_a": 4292.4,
    "tax2_m": null,
    "carry_m": 663.83,
    "page": 39,
-   "note": "see note 3; \"4/2.5\" code"
+   "note": "note 3: unit includes 51 sqft balcony and 1,366 sqft rooftop space (nonhabitable); rooftop placed in sf2, balcony in ext_sf",
+   "baths": 2.5
   }
  ]
 }

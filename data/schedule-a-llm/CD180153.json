@@ -14,14 +14,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4401,
-   "output_tokens": 764,
-   "seconds": 7,
-   "cost_usd": 0.022184000000000002
+   "tokens": 6026,
+   "output_tokens": 887,
+   "seconds": 8,
+   "cost_usd": 0.029422
   }
  ],
- "tokens": 4401,
- "api_equiv_usd": 0.022,
+ "tokens": 6026,
+ "api_equiv_usd": 0.029,
  "located_pages": [
   34
  ],
@@ -39,6 +39,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 16400000,
@@ -66,10 +68,15 @@
   "cc_m": 3884.63,
   "tax_m": 6223.76,
   "int_sf": 15049,
-  "ext_sf": null
+  "ext_sf": 4082,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Unit 1 contains approximately 1,333.94 square feet of cellar space per note, but this is not a separate printed cell in the table; LCE Square Feet column (sf2) used as-is."
+  "Column header \"Bthrms\" combines full and half baths as a single decimal figure (e.g. \"2.5\"); interpreted per rules as full=2, half=1 (and \"2\" as full=2, half=0).",
+  "Unit column shows only numbers with no letter suffixes; used as printed.",
+  "Note states Unit 1 contains ~1,333.94 sf of cellar space, but no separate cellar sf figure is printed in the table for Unit 1; sf2 column used is \"LCE Square Feet\" per header."
  ],
  "units": [
   {
@@ -78,7 +85,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 2477,
    "sf2": 1872,
    "ext_sf": null,
@@ -92,7 +100,8 @@
    "tax2_m": null,
    "carry_m": 2018.67,
    "page": 34,
-   "note": null
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "2",
@@ -100,7 +109,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 2008,
    "sf2": 0,
    "ext_sf": null,
@@ -114,7 +124,8 @@
    "tax2_m": null,
    "carry_m": 1187.76,
    "page": 34,
-   "note": null
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "3",
@@ -122,7 +133,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 2008,
    "sf2": 254,
    "ext_sf": null,
@@ -136,7 +148,8 @@
    "tax2_m": null,
    "carry_m": 1262.8,
    "page": 34,
-   "note": null
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "4",
@@ -144,7 +157,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 2008,
    "sf2": 254,
    "ext_sf": null,
@@ -158,7 +172,8 @@
    "tax2_m": null,
    "carry_m": 1262.8,
    "page": 34,
-   "note": null
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "5",
@@ -166,7 +181,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 2008,
    "sf2": 254,
    "ext_sf": null,
@@ -180,7 +196,8 @@
    "tax2_m": null,
    "carry_m": 1262.8,
    "page": 34,
-   "note": null
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "6",
@@ -188,7 +205,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1834,
    "sf2": 428,
    "ext_sf": null,
@@ -202,7 +220,8 @@
    "tax2_m": null,
    "carry_m": 1211.18,
    "page": 34,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "7",
@@ -210,7 +229,8 @@
    "floor": null,
    "rooms": null,
    "beds": 4,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 2706,
    "sf2": 1020,
    "ext_sf": null,
@@ -224,7 +244,8 @@
    "tax2_m": null,
    "carry_m": 1902.39,
    "page": 34,
-   "note": null
+   "note": null,
+   "baths": 2.5
   }
  ]
 }

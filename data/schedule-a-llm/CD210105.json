@@ -3,41 +3,23 @@
  "steps": [
   {
    "step": "sonnet-text",
-   "verdict": "not_found",
-   "units": 0,
-   "failed": [
-    "ag",
-    "printed",
-    "monthlyTotals",
-    "allRowsParsed"
-   ]
-  },
-  {
-   "step": "sonnet-images",
    "verdict": "publish_ag",
    "units": 3,
    "failed": []
   }
  ],
- "calls": 2,
+ "calls": 1,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4378,
-   "output_tokens": 852,
-   "seconds": 9,
-   "cost_usd": 0.02262
-  },
-  {
-   "model": "sonnet",
-   "tokens": 13553,
-   "output_tokens": 814,
-   "seconds": 10,
-   "cost_usd": 0.035558400000000004
+   "tokens": 10981,
+   "output_tokens": 915,
+   "seconds": 84,
+   "cost_usd": 0.0302882
   }
  ],
- "tokens": 17931,
- "api_equiv_usd": 0.058,
+ "tokens": 10981,
+ "api_equiv_usd": 0.03,
  "located_pages": [
   39
  ],
@@ -55,23 +37,25 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 3814000,
- "step": "sonnet-images",
+ "step": "sonnet-text",
  "budget_period": "OCTOBER 1, 2021 TO SEPTEMBER 30, 2022",
  "columns_printed": [
   "UNIT",
-  "(1) NUMBER OF BEDROOMS/BATHROOMS",
-  "(2) APPROXIMATE TOTAL SQ. FT. UNIT",
-  "(2) APPROXIMATE TOTAL SQ. FT. BALCONY/TERRACE/YARD",
-  "(3) OFFERING PRICE",
-  "(4) % OF COMMON INTEREST",
-  "(5) PROJECTED MONTHLY COMMON CHARGES",
-  "(6) PROJECTED MONTHLY REAL ESTATE TAXES",
-  "(7) PROJECTED TOTAL MONTHLY CARRYING CHARGES",
-  "(8) PROJECTED ANNUAL REAL ESTATE TAXES",
-  "(9) TOTAL PROJECTED ANNUAL CHARGES"
+  "NUMBER OF BEDROOMS/BATHROOMS",
+  "APPROXIMATE TOTAL SQ. FT.",
+  "BALCONY/TERRACE/YARD",
+  "OFFERING PRICE",
+  "% OF COMMON INTEREST",
+  "PROJECTED MONTHLY COMMON CHARGES",
+  "PROJECTED MONTHLY REAL ESTATE TAXES",
+  "PROJECTED TOTAL MONTHLY CARRYING CHARGES",
+  "PROJECTED ANNUAL REAL ESTATE TAXES",
+  "TOTAL PROJECTED ANNUAL CHARGES"
  ],
  "tax2": null,
  "sf2": null,
@@ -81,11 +65,16 @@
   "cc_m": 1349.92,
   "tax_m": 1250,
   "int_sf": 4297,
-  "ext_sf": 1701
+  "ext_sf": 1701,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Unit 1's floor-area note describes 2,551 sf habitable plus terrace 86 sf, yard 766 sf, cellar 697 sf, but the \"BALCONY/TERRACE/YARD\" column prints 852.00, which does not match the sum of those note figures exactly; transcribed as printed (852.00) per instructions to copy numbers exactly.",
-  "Unit 3's \"BALCONY/TERRACE/YARD\" column shows 849.00, matching the rooftop terrace area from note 2; transcribed as printed."
+  "Note 1 states Unit 1 has 2,551 sq ft habitable plus terrace 86 sqft, private rear yard 766 sqft, and cellar 697 sqft (nonhabitable); table only prints one \"BALCONY/TERRACE/YARD\" figure (852.00) which appears to be a combined/different nonhabitable total, not matching the sum of individual areas in the note; could not determine exact breakdown, so 852.00 placed in ext_sf column as printed.",
+  "Note 2 states Unit 3 has 940 sq ft habitable plus rooftop terrace ~849 sq ft (nonhabitable); 849.00 placed in ext_sf as printed, consistent with table column header.",
+  "No separate \"rooms\" or \"floor\" columns printed; bedrooms/bathrooms given as combined \"3/2.5\" style figures in single \"NUMBER OF BEDROOMS/BATHROOMS\" column.",
+  "TOTAL row's \"4,297\" and \"1,701\" appear under total sq ft and balcony/terrace/yard columns respectively; placed as int_sf and ext_sf totals per column order, though these appear to be simple sums of printed unit figures."
  ],
  "units": [
   {
@@ -94,7 +83,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 2551,
    "sf2": null,
    "ext_sf": 852,
@@ -108,7 +98,8 @@
    "tax2_m": null,
    "carry_m": 1234.96,
    "page": 39,
-   "note": "see note 1"
+   "note": "see note 1",
+   "baths": 2.5
   },
   {
    "unit": "2",
@@ -116,7 +107,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 806,
    "sf2": null,
    "ext_sf": null,
@@ -130,7 +122,8 @@
    "tax2_m": null,
    "carry_m": 533.52,
    "page": 39,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3",
@@ -138,7 +131,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 940,
    "sf2": null,
    "ext_sf": 849,
@@ -152,7 +146,8 @@
    "tax2_m": null,
    "carry_m": 831.44,
    "page": 39,
-   "note": "see note 2"
+   "note": "see note 2",
+   "baths": 2
   }
  ]
 }

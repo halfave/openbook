@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4214,
-   "output_tokens": 776,
+   "tokens": 5882,
+   "output_tokens": 942,
    "seconds": 9,
-   "cost_usd": 0.021508
+   "cost_usd": 0.029176
   }
  ],
- "tokens": 4214,
- "api_equiv_usd": 0.022,
+ "tokens": 5882,
+ "api_equiv_usd": 0.029,
  "located_pages": [
   25
  ],
@@ -37,6 +37,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 10700000,
@@ -66,10 +68,16 @@
   "cc_m": 5025,
   "tax_m": 13211.75,
   "int_sf": 9104,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Total Square Footage column (10,453 total) appears to be int_sf + sf2 combined; per instructions this combined total is not placed in ext_sf and is omitted from per-unit rows. TOTAL line's int_sf (9,104) is the Approx. Gross Square Footage total as printed; ext_sf not separately printed in totals."
+  "Unit column prints only numeric labels (2,3,4,5,6,1) with no letter suffixes; transcribed as printed.",
+  "\"Number of Bedrooms & Baths\" column holds combined figures like \"3/2\" (bedrooms/bathrooms per header); transcribed as beds 3, full_baths 2, half_baths 0 per rules. Commercial unit 1 has \"‐\" for this field.",
+  "Total row's Total Square Footage printed as 10,453, which does not match sum of Approx. Gross Square Footage (9,104) + Limited Common Element (not totaled separately); only Approx. Gross Square Footage total (9,104) placed in int_sf column of TOTAL per instructions; sf2 and ext_sf totals not printed separately.",
+  "outdoor space left out: its column did not add up to the printed total"
  ],
  "units": [
   {
@@ -78,7 +86,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1333,
    "sf2": 427,
    "ext_sf": null,
@@ -92,7 +101,8 @@
    "tax2_m": null,
    "carry_m": 2758.37,
    "page": 25,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3",
@@ -100,7 +110,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1333,
    "sf2": 448,
    "ext_sf": null,
@@ -114,7 +125,8 @@
    "tax2_m": null,
    "carry_m": 2768.1,
    "page": 25,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "4",
@@ -122,7 +134,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1333,
    "sf2": 63,
    "ext_sf": null,
@@ -136,7 +149,8 @@
    "tax2_m": null,
    "carry_m": 2618.31,
    "page": 25,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "5",
@@ -144,7 +158,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1333,
    "sf2": 63,
    "ext_sf": null,
@@ -158,7 +173,8 @@
    "tax2_m": null,
    "carry_m": 2618.31,
    "page": 25,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "6",
@@ -166,7 +182,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1830,
    "sf2": 348,
    "ext_sf": null,
@@ -180,7 +197,8 @@
    "tax2_m": null,
    "carry_m": 3695.98,
    "page": 25,
-   "note": "roof terrace appurtenant"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "1",
@@ -188,7 +206,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 1942,
    "sf2": null,
    "ext_sf": null,
@@ -202,7 +221,8 @@
    "tax2_m": null,
    "carry_m": 3777.68,
    "page": 25,
-   "note": null
+   "note": null,
+   "baths": null
   }
  ]
 }

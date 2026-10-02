@@ -3,19 +3,6 @@
  "steps": [
   {
    "step": "sonnet-images",
-   "verdict": "not_found",
-   "units": 0,
-   "failed": [
-    "ag",
-    "printed",
-    "sqftTotal",
-    "monthlyTotals",
-    "allRowsParsed",
-    "outdoor"
-   ]
-  },
-  {
-   "step": "sonnet-images-think",
    "verdict": "publish_ag",
    "units": 3,
    "failed": []
@@ -25,56 +12,56 @@
  "call_log": [
   {
    "model": "haiku",
-   "tokens": 12594,
-   "output_tokens": 579,
-   "seconds": 6,
-   "cost_usd": 0.024530999999999997
+   "tokens": 12807,
+   "output_tokens": 570,
+   "seconds": 7,
+   "cost_usd": 0.024817000000000002
   },
   {
    "model": "haiku",
-   "tokens": 4943,
+   "tokens": 7434,
+   "output_tokens": 119,
+   "seconds": 75,
+   "cost_usd": 0.00791
+  },
+  {
+   "model": "haiku",
+   "tokens": 5165,
    "output_tokens": 97,
    "seconds": 3,
-   "cost_usd": 0.005331000000000001
+   "cost_usd": 0.005553000000000001
   },
   {
    "model": "haiku",
-   "tokens": 4941,
+   "tokens": 5189,
+   "output_tokens": 110,
+   "seconds": 4,
+   "cost_usd": 0.005629
+  },
+  {
+   "model": "haiku",
+   "tokens": 5171,
    "output_tokens": 97,
-   "seconds": 2,
-   "cost_usd": 0.005329
+   "seconds": 4,
+   "cost_usd": 0.005559
   },
   {
    "model": "haiku",
-   "tokens": 4943,
-   "output_tokens": 97,
-   "seconds": 3,
-   "cost_usd": 0.005331000000000001
-  },
-  {
-   "model": "haiku",
-   "tokens": 8747,
-   "output_tokens": 593,
-   "seconds": 6,
-   "cost_usd": 0.016885999999999998
+   "tokens": 8980,
+   "output_tokens": 598,
+   "seconds": 7,
+   "cost_usd": 0.017252
   },
   {
    "model": "sonnet",
-   "tokens": 11004,
-   "output_tokens": 541,
-   "seconds": 8,
-   "cost_usd": 0.028048800000000002
-  },
-  {
-   "model": "sonnet",
-   "tokens": 25960,
-   "output_tokens": 2129,
-   "seconds": 188,
-   "cost_usd": 0.046662800000000004
+   "tokens": 14369,
+   "output_tokens": 740,
+   "seconds": 15,
+   "cost_usd": 0.036687399999999995
   }
  ],
- "tokens": 73132,
- "api_equiv_usd": 0.132,
+ "tokens": 59115,
+ "api_equiv_usd": 0.103,
  "located_pages": [],
  "text_layer": true,
  "found": true,
@@ -90,37 +77,43 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 3450000,
- "step": "sonnet-images-think",
+ "step": "sonnet-images",
  "budget_period": "March 1, 2025 – February 28, 2026",
  "columns_printed": [
   "Unit No.",
   "Location",
-  "Approximate Habitable Area (SF) (1)",
-  "Approximate Unhabitable Area (SF) (1)",
-  "Approximate Outdoor Area (SF) (1)",
-  "No. of Bedrooms/Bathrooms (1)",
-  "Offering Price (2)",
-  "Percent Common Interest (3)",
-  "Projected Monthly Common Charges (4)",
-  "Projected Post Construction Real Estate Taxes (Monthly) (5)",
-  "Projected Post Construction Real Estate Taxes (Annual) (5)",
-  "Projected Monthly Carrying Charges (6)"
+  "Approximate Habitable Area (SF)",
+  "Approximate Unhabitable Area (SF)",
+  "Approximate Outdoor Area (SF)",
+  "No. of Bedrooms/Bathrooms",
+  "Offering Price",
+  "Percent Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Post Construction Real Estate Taxes (Monthly)",
+  "Projected Post Construction Real Estate Taxes (Annual)",
+  "Projected Monthly Carrying Charges"
  ],
- "tax2": null,
- "sf2": "unhabitable",
+ "tax2": "-",
+ "sf2": "unhabitable area (cellar/storage)",
  "printed_totals": {
   "price": 3450000,
   "pct": 100,
   "cc_m": 1448.08,
   "tax_m": 1134.75,
   "int_sf": 2907,
-  "ext_sf": 1064
+  "ext_sf": 1064,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Table has no separate \"rooms\" column; \"Location\" column used for floor. No second percentage or second tax-monthly column present."
+  "Bedrooms/Bathrooms column prints a combined figure per unit (e.g. \"2/2.5\", \"2/2\"); per instructions the first figure is bedrooms and a decimal second figure like 2.5 = 2 full, 1 half bath; applied accordingly.",
+  "Table header labels real estate tax columns \"Projected Post Construction Real Estate Taxes (Monthly)/(Annual)\" with no second tax scenario (no 421-a/abatement mentioned); treated as the only tax figures (tax_m/tax_a), TAX2 left blank."
  ],
  "units": [
   {
@@ -129,7 +122,8 @@
    "floor": "Cellar/1st Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 932,
    "sf2": 684,
    "ext_sf": 829,
@@ -143,7 +137,8 @@
    "tax2_m": null,
    "carry_m": 1077.3,
    "page": 31,
-   "note": null
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "2",
@@ -151,7 +146,8 @@
    "floor": "2nd Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 929,
    "sf2": 67,
    "ext_sf": 0,
@@ -165,7 +161,8 @@
    "tax2_m": null,
    "carry_m": 655.78,
    "page": 31,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3",
@@ -173,7 +170,8 @@
    "floor": "3rd Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1046,
    "sf2": 38,
    "ext_sf": 235,
@@ -187,7 +185,8 @@
    "tax2_m": null,
    "carry_m": 849.75,
    "page": 31,
-   "note": null
+   "note": null,
+   "baths": 2
   }
  ]
 }

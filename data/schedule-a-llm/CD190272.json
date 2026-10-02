@@ -3,41 +3,23 @@
  "steps": [
   {
    "step": "sonnet-text",
-   "verdict": "not_found",
-   "units": 0,
-   "failed": [
-    "ag",
-    "printed",
-    "monthlyTotals",
-    "allRowsParsed"
-   ]
-  },
-  {
-   "step": "sonnet-images",
    "verdict": "publish_ag",
    "units": 3,
    "failed": []
   }
  ],
- "calls": 2,
+ "calls": 1,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4326,
-   "output_tokens": 711,
+   "tokens": 5809,
+   "output_tokens": 690,
    "seconds": 7,
-   "cost_usd": 0.021566
-  },
-  {
-   "model": "sonnet",
-   "tokens": 13689,
-   "output_tokens": 762,
-   "seconds": 10,
-   "cost_usd": 0.0354332
+   "cost_usd": 0.027372
   }
  ],
- "tokens": 18015,
- "api_equiv_usd": 0.057,
+ "tokens": 5809,
+ "api_equiv_usd": 0.027,
  "located_pages": [
   35
  ],
@@ -50,15 +32,17 @@
   "pct100": true,
   "ccProportional": true,
   "carrying": true,
-  "sqftTotal": true,
+  "sqftTotal": null,
   "monthlyTotals": true,
-  "psf": true,
+  "psf": null,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 3217000,
- "step": "sonnet-images",
+ "step": "sonnet-text",
  "budget_period": "July 1, 2021- June 30, 2022",
  "columns_printed": [
   "Unit No.",
@@ -74,17 +58,22 @@
   "Projected Carrying Charges (Monthly)"
  ],
  "tax2": null,
- "sf2": "outdoor/limited square footage",
+ "sf2": null,
  "printed_totals": {
   "price": 3217000,
   "pct": 100,
   "cc_m": 1554.59,
   "tax_m": 1267.98,
   "int_sf": 3959,
-  "ext_sf": 2236
+  "ext_sf": 2236,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Unit 1's interior square footage is printed as two figures (845 for Cellar and 1214 for First Floor); per instructions the habitable floor's figure (1214, First Floor) was used for int_sf and the other (845, Cellar) placed in sf2, though sf2 is defined in the table header as \"Approx. Outdoor/Limited Square Footage\" — the outdoor/limited figures for Unit 1 (181(A), 734(RY), 141(D), 14(S)) are listed in the note column instead since they are multiple separate areas."
+  "Unit 1 has two interior square footage figures (Cellar 845, First Floor 1214) rather than an interior/cellar pair for one unit; both recorded in int_sf as printed since neither is a basement-under-one-unit split in the documented sense.",
+  "Bedrooms/Bathrooms column prints \"2/2\" per unit; no separate half-bath column, so half_baths recorded as - rather than 0 per instructions (blank/- rule).",
+  "unit sizes left out: the area columns did not add up to the printed totals"
  ],
  "units": [
   {
@@ -92,10 +81,11 @@
    "type": "residential",
    "floor": "Cellar/First Floor",
    "rooms": null,
-   "beds": null,
-   "baths": null,
-   "int_sf": 1214,
-   "sf2": 845,
+   "beds": 2,
+   "full_baths": 2,
+   "half_baths": null,
+   "int_sf": null,
+   "sf2": null,
    "ext_sf": null,
    "price": 1299000,
    "pct": 42.63,
@@ -107,16 +97,18 @@
    "tax2_m": null,
    "carry_m": 1203.26,
    "page": 35,
-   "note": "Cellar*/First Floor location; outdoor/limited sf: 181(A), 734(RY), 141(D), 14(S)"
+   "note": "Cellar area 845 and First Floor area 1214 both printed; LCA includes alleyway, rear yard, deck, step out",
+   "baths": 2
   },
   {
    "unit": "2",
    "type": "residential",
    "floor": "Second Floor",
    "rooms": null,
-   "beds": null,
-   "baths": null,
-   "int_sf": 985,
+   "beds": 2,
+   "full_baths": 2,
+   "half_baths": null,
+   "int_sf": null,
    "sf2": null,
    "ext_sf": null,
    "price": 949000,
@@ -129,16 +121,18 @@
    "tax2_m": null,
    "carry_m": 823.06,
    "page": 35,
-   "note": "Outdoor/limited sf: 236(T), 351(R)"
+   "note": "LCA is two separate areas (terrace 236, roof 351)",
+   "baths": 2
   },
   {
    "unit": "3",
    "type": "residential",
    "floor": "Third Floor",
    "rooms": null,
-   "beds": null,
-   "baths": null,
-   "int_sf": 915,
+   "beds": 2,
+   "full_baths": 2,
+   "half_baths": null,
+   "int_sf": null,
    "sf2": null,
    "ext_sf": null,
    "price": 969000,
@@ -151,7 +145,8 @@
    "tax2_m": null,
    "carry_m": 796.25,
    "page": 35,
-   "note": "Outdoor/limited sf: 70(T), 509(R)"
+   "note": "LCA is two separate areas (terrace 70, roof 509)",
+   "baths": 2
   }
  ]
 }

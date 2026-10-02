@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4234,
-   "output_tokens": 717,
-   "seconds": 11,
-   "cost_usd": 0.021234
+   "tokens": 5945,
+   "output_tokens": 916,
+   "seconds": 73,
+   "cost_usd": 0.029272
   }
  ],
- "tokens": 4234,
- "api_equiv_usd": 0.021,
+ "tokens": 5945,
+ "api_equiv_usd": 0.029,
  "located_pages": [
   31
  ],
@@ -37,6 +37,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 3624000,
@@ -46,37 +48,43 @@
   "Unit No.",
   "Floor Location",
   "Approx. Floor Area",
-  "Approx. Outdoor/Uninhabitable/Limited Common Area",
+  "Outdoor/Uninhabitable/Limited Common Area",
   "No. of Bedooms/Bathrooms",
   "Offering Price",
-  "Percent Common Interest",
-  "Common Charges (Monthly)",
+  "Approx. Percent Common Interest",
+  "Projected Monthly Common Charges",
   "Projected Real Estate Taxes (Monthly)",
   "Projected Real Estate Taxes (Annual)",
   "Projected Carrying Charges (Monthly)"
  ],
  "tax2": null,
- "sf2": "cellar/uninhabitable/limited common area",
+ "sf2": "cellar/basement and other uninhabitable/limited common area",
  "printed_totals": {
   "price": 3624000,
   "pct": 100,
   "cc_m": 2310.83,
   "tax_m": 1361.19,
   "int_sf": 4465,
-  "ext_sf": 749
+  "ext_sf": 749,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Unit 1R's uninhabitable/limited common area line shows two figures (369 and 161(A)); 369 used as sf2, 161(A) (areaway) noted separately along with RY (rear yard, no numeric value given) in note field; ext_sf left blank for 1R since multiple limited common areas are listed.",
+  "Bedrooms/Bathrooms column prints a single combined figure per row (e.g. \"0/1.5\", \"1/1.5\", \"1/1\", \"2/2\"); interpreted per header as beds/baths with baths split into full/half (e.g. 1.5 = 1 full, 1 half).",
+  "Unit 1F and 1R outdoor/uninhabitable/limited common area column has multiple stacked figures (cellar sf marked with *, plus areaway (A) and rear yard (RY) for 1R); placed cellar sf in sf2 and noted areaway/rear yard figures separately since no ext_sf column is clearly delineated.",
+  "Units 2F, 2R, 3, 4 have no second area figure printed (sf2 left blank/-).",
   "outdoor space left out: its column did not add up to the printed total"
  ],
  "units": [
   {
    "unit": "1F",
    "type": "residential",
-   "floor": "Cellar Basement",
+   "floor": "Cellar/Basement",
    "rooms": null,
    "beds": 0,
-   "baths": 1.5,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": 356,
    "sf2": 257,
    "ext_sf": null,
@@ -90,15 +98,17 @@
    "tax2_m": null,
    "carry_m": 447.62,
    "page": 31,
-   "note": "*"
+   "note": null,
+   "baths": 1.5
   },
   {
    "unit": "1R",
    "type": "residential",
-   "floor": "Cellar Basement",
+   "floor": "Cellar/Basement",
    "rooms": null,
    "beds": 1,
-   "baths": 1.5,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": 476,
    "sf2": 369,
    "ext_sf": null,
@@ -112,7 +122,8 @@
    "tax2_m": null,
    "carry_m": 738.81,
    "page": 31,
-   "note": "161(A), RY"
+   "note": "Limited common area also includes 161 areaway; 588 sf is rear yard (RY)",
+   "baths": 1.5
   },
   {
    "unit": "2F",
@@ -120,7 +131,8 @@
    "floor": "First Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 501,
    "sf2": null,
    "ext_sf": null,
@@ -134,7 +146,8 @@
    "tax2_m": null,
    "carry_m": 463.41,
    "page": 31,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "2R",
@@ -142,7 +155,8 @@
    "floor": "First Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 498,
    "sf2": null,
    "ext_sf": null,
@@ -156,7 +170,8 @@
    "tax2_m": null,
    "carry_m": 461.94,
    "page": 31,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3",
@@ -164,7 +179,8 @@
    "floor": "Second Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1004,
    "sf2": null,
    "ext_sf": null,
@@ -178,7 +194,8 @@
    "tax2_m": null,
    "carry_m": 801.23,
    "page": 31,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "4",
@@ -186,7 +203,8 @@
    "floor": "Second Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1004,
    "sf2": null,
    "ext_sf": null,
@@ -200,7 +218,8 @@
    "tax2_m": null,
    "carry_m": 759.01,
    "page": 31,
-   "note": null
+   "note": null,
+   "baths": 2
   }
  ]
 }

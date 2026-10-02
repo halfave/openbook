@@ -3,41 +3,23 @@
  "steps": [
   {
    "step": "sonnet-text",
-   "verdict": "not_found",
-   "units": 0,
-   "failed": [
-    "ag",
-    "printed",
-    "monthlyTotals",
-    "allRowsParsed"
-   ]
-  },
-  {
-   "step": "sonnet-images",
    "verdict": "publish_ag",
    "units": 3,
    "failed": []
   }
  ],
- "calls": 2,
+ "calls": 1,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4095,
-   "output_tokens": 615,
-   "seconds": 14,
-   "cost_usd": 0.020066
-  },
-  {
-   "model": "sonnet",
-   "tokens": 13400,
-   "output_tokens": 749,
-   "seconds": 11,
-   "cost_usd": 0.03472359999999999
+   "tokens": 5690,
+   "output_tokens": 701,
+   "seconds": 9,
+   "cost_usd": 0.026962
   }
  ],
- "tokens": 17495,
- "api_equiv_usd": 0.055,
+ "tokens": 5690,
+ "api_equiv_usd": 0.027,
  "located_pages": [
   34
  ],
@@ -55,37 +37,42 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 7850000,
- "step": "sonnet-images",
+ "step": "sonnet-text",
  "budget_period": "JANUARY 1, 2024 THROUGH DECEMBER 31, 2024",
  "columns_printed": [
-  "(1) UNIT",
-  "(2) BEDROOMS AND BATHS",
-  "(3) UNIT SQUARE FOOTAGE HABITABLE SPACE ONLY AS TO RESIDENTIAL UNITS*",
-  "(3) LIMITED COMMON ELEMENTS SQUARE FOOTAGE (UNINHABITABLE SPACE**)",
-  "(4) TOTAL OFFERING PRICE",
-  "(5) % OF COMMON INTEREST",
-  "(6) ESTIMATED MONTHLY COMMON CHARGES",
-  "(6) ESTIMATED ANNUAL COMMON CHARGES",
-  "(7) ESTIMATED MONTHLY REAL ESTATE TAXES",
-  "(7) ESTIMATED ANNUAL REAL ESTATE TAXES",
-  "(8) TOTAL ESTIMATED MONTHLY CARRYING COSTS",
-  "(8) TOTAL ESTIMATED ANNUAL CARRYING COSTS"
+  "UNIT",
+  "BEDROOMS AND BATHS",
+  "UNIT SQUARE FOOTAGE HABITABLE SPACE ONLY AS TO RESIDENTIAL UNITS*",
+  "LIMITED COMMON ELEMENTS SQUARE FOOTAGE (UNINHABITABLE SPACE**)",
+  "TOTAL OFFERING PRICE",
+  "% OF COMMON INTEREST",
+  "ESTIMATED MONTHLY COMMON CHARGES",
+  "ESTIMATED ANNUAL COMMON CHARGES",
+  "ESTIMATED MONTHLY REAL ESTATE TAXES",
+  "ESTIMATED ANNUAL REAL ESTATE TAXES",
+  "TOTAL ESTIMATED MONTHLY CARRYING COSTS",
+  "TOTAL ESTIMATED ANNUAL CARRYING COSTS"
  ],
  "tax2": null,
- "sf2": "limited common elements (uninhabitable space)",
+ "sf2": "uninhabitable space (limited common elements)",
  "printed_totals": {
   "price": 7850000,
   "pct": 100,
   "cc_m": 3240.67,
   "tax_m": 1871.84,
   "int_sf": 6557,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "-"
+  "Bedrooms/baths given as combined codes (e.g. \"2+3-1/2\") parsed as beds+full-half; PRY/PB/PT are terrace/yard/balcony designations with no separate ext_sf figure printed, so ext_sf left blank and codes placed in note."
  ],
  "units": [
   {
@@ -94,7 +81,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 3.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 2548,
    "sf2": 655,
    "ext_sf": null,
@@ -108,7 +96,8 @@
    "tax2_m": null,
    "carry_m": 1986.69,
    "page": 34,
-   "note": "2+3-1/2; PRY"
+   "note": "PRY",
+   "baths": 2.5
   },
   {
    "unit": "2",
@@ -116,7 +105,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3.5,
+   "full_baths": 3,
+   "half_baths": 1,
    "int_sf": 2212,
    "sf2": 56,
    "ext_sf": null,
@@ -130,7 +120,8 @@
    "tax2_m": null,
    "carry_m": 1724.7,
    "page": 34,
-   "note": "3+3-1/2; PB(2)"
+   "note": "PB(2)",
+   "baths": 3.5
   },
   {
    "unit": "3",
@@ -138,7 +129,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1797,
    "sf2": 464,
    "ext_sf": null,
@@ -152,7 +144,8 @@
    "tax2_m": null,
    "carry_m": 1401.12,
    "page": 34,
-   "note": "3+2-1/2; PB(2), PT"
+   "note": "PB(2), PT",
+   "baths": 2.5
   }
  ]
 }

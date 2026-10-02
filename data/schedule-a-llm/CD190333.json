@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4833,
-   "output_tokens": 932,
-   "seconds": 10,
-   "cost_usd": 0.02492
+   "tokens": 11721,
+   "output_tokens": 903,
+   "seconds": 88,
+   "cost_usd": 0.0317474
   }
  ],
- "tokens": 4833,
- "api_equiv_usd": 0.025,
+ "tokens": 11721,
+ "api_equiv_usd": 0.032,
  "located_pages": [
   34
  ],
@@ -37,6 +37,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 4447000,
@@ -64,10 +66,15 @@
   "cc_m": 2455.14,
   "tax_m": 4484.75,
   "int_sf": 4553,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Rooms column not present in table; \"Bedroom/Bathroom\" column used for beds/baths only. \"Limited Common Element Sq. Ft.\" column not mapped to a schema field (omitted from U lines; totals row value 1,531.50 also not placed). Annual Common Charges total printed as \"29,461.66 $\" (odd formatting) - not included since cc_a not in requested U-line schema."
+  "Bedroom/Bathroom column prints combined figures like \"1/1.5\"; interpreted as 1 bedroom, 1 full bath, 1 half bath per the 2/2.5-style rule. Units 2A-4A show \"1/1\" with no half bath, so half_baths set to 0.",
+  "Annual Common Charges column header has no $ sign in total row and shows \"29,461.66 $\" with the $ after the number; copied value as printed (29461.66 not used directly since not requested, but cc_m total 2455.14 copied as printed).",
+  "Note numbers (Note 1-10) appear under headers but are footnote references, not data; not included in COLS text beyond header labels themselves."
  ],
  "units": [
   {
@@ -76,7 +83,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1.5,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": 516,
    "sf2": 355.5,
    "ext_sf": null,
@@ -90,7 +98,8 @@
    "tax2_m": null,
    "carry_m": 1068.79,
    "page": 34,
-   "note": "Areaway: 16.5 sq. ft."
+   "note": null,
+   "baths": 1.5
   },
   {
    "unit": "1B",
@@ -98,7 +107,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1.5,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": 649,
    "sf2": 643.6,
    "ext_sf": null,
@@ -112,7 +122,8 @@
    "tax2_m": null,
    "carry_m": 1417.16,
    "page": 34,
-   "note": "Rear Yard: 728.5 sq. ft.; Areaways: 16.5 sq. ft. and 16.5 sq. ft."
+   "note": null,
+   "baths": 1.5
   },
   {
    "unit": "2A",
@@ -120,7 +131,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 678,
    "sf2": 0,
    "ext_sf": null,
@@ -134,7 +146,8 @@
    "tax2_m": null,
    "carry_m": 891.31,
    "page": 34,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "2B",
@@ -142,7 +155,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 676,
    "sf2": 0,
    "ext_sf": null,
@@ -156,7 +170,8 @@
    "tax2_m": null,
    "carry_m": 888.69,
    "page": 34,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3A",
@@ -164,7 +179,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 678,
    "sf2": 0,
    "ext_sf": null,
@@ -178,7 +194,8 @@
    "tax2_m": null,
    "carry_m": 891.31,
    "page": 34,
-   "note": "Balcony: 29.5 sq. ft."
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3B",
@@ -186,7 +203,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 676,
    "sf2": 0,
    "ext_sf": null,
@@ -200,7 +218,8 @@
    "tax2_m": null,
    "carry_m": 888.69,
    "page": 34,
-   "note": "Balcony: 29.5 sq. ft."
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "4A",
@@ -208,7 +227,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 680,
    "sf2": 0,
    "ext_sf": null,
@@ -222,7 +242,8 @@
    "tax2_m": null,
    "carry_m": 893.94,
    "page": 34,
-   "note": "Terrace: 665 sq. ft.; Balcony: 29.5 sq. ft."
+   "note": null,
+   "baths": 1
   }
  ]
 }

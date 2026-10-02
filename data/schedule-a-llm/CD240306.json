@@ -3,23 +3,41 @@
  "steps": [
   {
    "step": "sonnet-text",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
    "verdict": "publish_ag",
    "units": 3,
    "failed": []
   }
  ],
- "calls": 1,
+ "calls": 2,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4501,
-   "output_tokens": 620,
+   "tokens": 6002,
+   "output_tokens": 614,
+   "seconds": 9,
+   "cost_usd": 0.027688
+  },
+  {
+   "model": "sonnet",
+   "tokens": 17066,
+   "output_tokens": 597,
    "seconds": 8,
-   "cost_usd": 0.02172
+   "cost_usd": 0.0412214
   }
  ],
- "tokens": 4501,
- "api_equiv_usd": 0.022,
+ "tokens": 23068,
+ "api_equiv_usd": 0.069,
  "located_pages": [
   40
  ],
@@ -37,10 +55,12 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 3479000,
- "step": "sonnet-text",
+ "step": "sonnet-images",
  "budget_period": "JANUARY 1, 2026 TO DECEMBER 31, 2026",
  "columns_printed": [
   "Unit No.",
@@ -66,10 +86,13 @@
   "cc_m": 1895.25,
   "tax_m": 790.79,
   "int_sf": 3046,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Bathroom(s)/half-bathroom(s) columns printed as separate integer columns (not combined codes); Unit 1 shows 2 full + 1 half = 2.5 baths, Units 2 and 3 show 2 full + 0 half = 2 baths. No ext_sf column printed separately from limited common element areas (listed in note)."
+  "ext_sf not printed as a separate column; Limited Common Element square feet (766/107/403) excluded as it is a combined limited-common-area figure, not ext_sf alone."
  ],
  "units": [
   {
@@ -78,7 +101,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 998,
    "sf2": 682,
    "ext_sf": null,
@@ -92,7 +116,8 @@
    "tax2_m": null,
    "carry_m": 1312.96,
    "page": 40,
-   "note": "Limited common area: Rear yard (766 sf)"
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "2",
@@ -100,7 +125,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 948,
    "sf2": 0,
    "ext_sf": null,
@@ -114,7 +140,8 @@
    "tax2_m": null,
    "carry_m": 566.3,
    "page": 40,
-   "note": "Limited common area: Storage (59 sf); Deck (48 sf)"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3",
@@ -122,7 +149,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1100,
    "sf2": 0,
    "ext_sf": null,
@@ -136,7 +164,8 @@
    "tax2_m": null,
    "carry_m": 806.78,
    "page": 40,
-   "note": "Limited common area: Storage (96 sf); Roof terrace (307 sf)"
+   "note": null,
+   "baths": 2
   }
  ]
 }

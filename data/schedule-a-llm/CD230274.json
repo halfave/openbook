@@ -3,17 +3,6 @@
  "steps": [
   {
    "step": "sonnet-text",
-   "verdict": "not_found",
-   "units": 0,
-   "failed": [
-    "ag",
-    "printed",
-    "monthlyTotals",
-    "allRowsParsed"
-   ]
-  },
-  {
-   "step": "sonnet-images",
    "verdict": "publish_printed",
    "units": 3,
    "failed": [
@@ -21,25 +10,18 @@
    ]
   }
  ],
- "calls": 2,
+ "calls": 1,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4476,
-   "output_tokens": 816,
-   "seconds": 68,
-   "cost_usd": 0.022796
-  },
-  {
-   "model": "sonnet",
-   "tokens": 13955,
-   "output_tokens": 940,
-   "seconds": 12,
-   "cost_usd": 0.037398
+   "tokens": 6030,
+   "output_tokens": 864,
+   "seconds": 11,
+   "cost_usd": 0.0293
   }
  ],
- "tokens": 18431,
- "api_equiv_usd": 0.06,
+ "tokens": 6030,
+ "api_equiv_usd": 0.029,
  "located_pages": [
   45
  ],
@@ -57,10 +39,12 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 7156900,
- "step": "sonnet-images",
+ "step": "sonnet-text",
  "budget_period": "July 1, 2024 through June 30, 2025",
  "columns_printed": [
   "Unit #",
@@ -81,17 +65,20 @@
   "Estimated Total Monthly Carrying Taxes - 7/1/2024 - 6/30/2025"
  ],
  "tax2": null,
- "sf2": "cellar (accessory space, non-habitable)",
+ "sf2": null,
  "printed_totals": {
   "price": 7156900,
   "pct": 100,
   "cc_m": 2203.42,
   "tax_m": 616.61,
   "int_sf": 4285,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Unit 3 has three outdoor/accessory figures (Penthouse 452, Stairwell 74, Roof 869) in addition to the cellar column; only the cellar figure (none for unit 3) could go to sf2, so all three are listed in note per the multiple-areas rule. Carrying-charge column (vi, Estimated Total Monthly Carrying Taxes) does not clearly correspond to a single tax_m value by column header wording, so tax_m was taken as the \"Projected Monthly Real Estate Taxes\" column as the most likely basis."
+  "int_sf/ext_sf: table has multiple area subcolumns (Main Floor, Accessory Space-Cellar, Penthouse Floor, Yard, Stairwell, Areaway, Roof) rather than a simple int_sf/sf2/ext_sf split; I used Main Floor sq.ft. as int_sf and listed cellar/penthouse/yard/areaway/roof figures in notes since they don't fit cleanly into ext_sf (which is meant for a single terrace/balcony figure). Total row's full_baths/half_baths not printed as separate totals."
  ],
  "units": [
   {
@@ -100,10 +87,11 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1478,
-   "sf2": 1313,
-   "ext_sf": null,
+   "sf2": null,
+   "ext_sf": 206,
    "price": 2899500,
    "pct": 37,
    "pct2": null,
@@ -114,7 +102,8 @@
    "tax2_m": null,
    "carry_m": 1043.41,
    "page": 45,
-   "note": "Yard 590 sf, Roof 206 sf"
+   "note": "cellar 1313 sf, penthouse 590 sf, areaway 206 sf",
+   "baths": 2.5
   },
   {
    "unit": "2",
@@ -122,7 +111,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1329,
    "sf2": null,
    "ext_sf": null,
@@ -136,7 +126,8 @@
    "tax2_m": null,
    "carry_m": 846.01,
    "page": 45,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3",
@@ -144,7 +135,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": 0,
    "int_sf": 1478,
    "sf2": null,
    "ext_sf": null,
@@ -158,7 +150,8 @@
    "tax2_m": null,
    "carry_m": 930.61,
    "page": 45,
-   "note": "Penthouse 452 sf, Stairwell 74 sf, Roof 869 sf"
+   "note": "penthouse 452 sf, areaway 74 sf, roof 869 sf",
+   "baths": 3
   }
  ]
 }

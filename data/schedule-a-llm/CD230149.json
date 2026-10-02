@@ -3,18 +3,6 @@
  "steps": [
   {
    "step": "sonnet-text",
-   "verdict": "not_found",
-   "units": 0,
-   "failed": [
-    "ag",
-    "printed",
-    "sqftTotal",
-    "monthlyTotals",
-    "allRowsParsed"
-   ]
-  },
-  {
-   "step": "sonnet-images",
    "verdict": "publish_printed",
    "units": 4,
    "failed": [
@@ -22,25 +10,18 @@
    ]
   }
  ],
- "calls": 2,
+ "calls": 1,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4526,
-   "output_tokens": 777,
-   "seconds": 8,
-   "cost_usd": 0.022761999999999998
-  },
-  {
-   "model": "sonnet",
-   "tokens": 15249,
-   "output_tokens": 706,
-   "seconds": 10,
-   "cost_usd": 0.0408584
+   "tokens": 5897,
+   "output_tokens": 569,
+   "seconds": 7,
+   "cost_usd": 0.026998
   }
  ],
- "tokens": 19775,
- "api_equiv_usd": 0.064,
+ "tokens": 5897,
+ "api_equiv_usd": 0.027,
  "located_pages": [
   39
  ],
@@ -58,10 +39,12 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 8100000,
- "step": "sonnet-images",
+ "step": "sonnet-text",
  "budget_period": "JANUARY 1, 2025 TO DECEMBER 31, 2025",
  "columns_printed": [
   "Unit No.",
@@ -80,17 +63,20 @@
   "Total Monthly Carrying Charges"
  ],
  "tax2": null,
- "sf2": "Cellar Space square footage",
+ "sf2": "cellar",
  "printed_totals": {
   "price": 8100000,
   "pct": 100,
   "cc_m": 1863.42,
   "tax_m": 4865.33,
   "int_sf": 4612,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Ext_sf not included: each unit has multiple separate limited common areas (lightwell/rear yard/storage, terrace/roof terrace/storage, balcony/roof terrace/storage, balcony/terrace/storage) listed in the notes rather than a single ext_sf column; not placed in note field per row since areas are listed by unit number in table notes, not per-row note text."
+  "Limited Common Element square feet column (802.00, 533.00, 404.00, 550.00, total 2,788.00) not included in the specified output fields but noted here for completeness; not used elsewhere."
  ],
  "units": [
   {
@@ -99,7 +85,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1045,
    "sf2": 802,
    "ext_sf": null,
@@ -113,7 +100,8 @@
    "tax2_m": null,
    "carry_m": 1917.69,
    "page": 39,
-   "note": null
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "2",
@@ -121,7 +109,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1237,
    "sf2": 0,
    "ext_sf": null,
@@ -135,7 +124,8 @@
    "tax2_m": null,
    "carry_m": 1648.54,
    "page": 39,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3",
@@ -143,7 +133,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1237,
    "sf2": 0,
    "ext_sf": null,
@@ -157,7 +148,8 @@
    "tax2_m": null,
    "carry_m": 1648.54,
    "page": 39,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "4",
@@ -165,7 +157,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1093,
    "sf2": 0,
    "ext_sf": null,
@@ -179,7 +172,8 @@
    "tax2_m": null,
    "carry_m": 1513.97,
    "page": 39,
-   "note": null
+   "note": null,
+   "baths": 2
   }
  ]
 }

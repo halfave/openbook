@@ -3,38 +3,23 @@
  "steps": [
   {
    "step": "sonnet-text",
-   "verdict": "hold",
-   "units": 5,
-   "failed": [
-    "monthlyTotals"
-   ]
-  },
-  {
-   "step": "sonnet-text-retry",
    "verdict": "publish_ag",
    "units": 5,
    "failed": []
   }
  ],
- "calls": 2,
+ "calls": 1,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4435,
-   "output_tokens": 957,
-   "seconds": 13,
-   "cost_usd": 0.023478
-  },
-  {
-   "model": "sonnet",
-   "tokens": 4110,
-   "output_tokens": 632,
-   "seconds": 8,
-   "cost_usd": 0.020228
+   "tokens": 5686,
+   "output_tokens": 710,
+   "seconds": 80,
+   "cost_usd": 0.0080988
   }
  ],
- "tokens": 8545,
- "api_equiv_usd": 0.044,
+ "tokens": 5686,
+ "api_equiv_usd": 0.008,
  "located_pages": [
   53
  ],
@@ -52,10 +37,12 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 10000000,
- "step": "sonnet-text-retry",
+ "step": "sonnet-text",
  "budget_period": "JANUARY 1 2025 - DECEMBER 31 2025",
  "columns_printed": [
   "Unit",
@@ -73,18 +60,22 @@
   "Total of Estimated Common Charges and Real Estate Taxes Monthly",
   "Total of Estimated Common Charges and Real Estate Taxes Annually"
  ],
- "tax2": "-",
- "sf2": "Limited Common Element Square Footage",
+ "tax2": null,
+ "sf2": "limited common element square footage",
  "printed_totals": {
   "price": 10000000,
   "pct": 100,
   "cc_m": 4246.12,
   "tax_m": 4116.08,
   "int_sf": 5732,
-  "ext_sf": null
+  "ext_sf": 1472,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Limited Common Element Description (e.g. Yard, Terrace & Storage) not captured in any designated column; omitted from output per schema."
+  "BR column header suggests bedroom count but values appear to represent rooms given the per-unit SF; copied as printed into beds field per instructions since no separate bedroom/room columns are distinguished in header.",
+  "Full/half bath breakdown not printed separately; single \"Bath\" column value copied to full_baths, half_baths left blank."
  ],
  "units": [
   {
@@ -93,7 +84,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 760,
    "sf2": 750,
    "ext_sf": null,
@@ -107,7 +99,8 @@
    "tax2_m": null,
    "carry_m": 1298.88,
    "page": 53,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "2",
@@ -115,7 +108,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1243,
    "sf2": 331,
    "ext_sf": null,
@@ -129,7 +123,8 @@
    "tax2_m": null,
    "carry_m": 1817.41,
    "page": 53,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3",
@@ -137,7 +132,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1243,
    "sf2": 117,
    "ext_sf": null,
@@ -151,7 +147,8 @@
    "tax2_m": null,
    "carry_m": 1744.07,
    "page": 53,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "4",
@@ -159,7 +156,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1243,
    "sf2": 121,
    "ext_sf": null,
@@ -173,7 +171,8 @@
    "tax2_m": null,
    "carry_m": 1745.44,
    "page": 53,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "5",
@@ -181,7 +180,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1243,
    "sf2": 153,
    "ext_sf": null,
@@ -195,7 +195,8 @@
    "tax2_m": null,
    "carry_m": 1756.41,
    "page": 53,
-   "note": null
+   "note": null,
+   "baths": 2
   }
  ]
 }

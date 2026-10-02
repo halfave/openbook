@@ -3,23 +3,41 @@
  "steps": [
   {
    "step": "sonnet-text",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
    "verdict": "publish_ag",
    "units": 4,
    "failed": []
   }
  ],
- "calls": 1,
+ "calls": 2,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4006,
-   "output_tokens": 599,
+   "tokens": 5588,
+   "output_tokens": 593,
    "seconds": 6,
-   "cost_usd": 0.019614
+   "cost_usd": 0.025906
+  },
+  {
+   "model": "sonnet",
+   "tokens": 16409,
+   "output_tokens": 732,
+   "seconds": 9,
+   "cost_usd": 0.0409082
   }
  ],
- "tokens": 4006,
- "api_equiv_usd": 0.02,
+ "tokens": 21997,
+ "api_equiv_usd": 0.067,
  "located_pages": [
   32
  ],
@@ -37,10 +55,12 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 3965000,
- "step": "sonnet-text",
+ "step": "sonnet-images",
  "budget_period": "January 1, 2025 – December 31, 2025",
  "columns_printed": [
   "Unit No.",
@@ -51,23 +71,27 @@
   "No. of Bedrooms/Bathrooms",
   "Offering Price*",
   "Percent Common Interest",
-  "Projected Post Completion Common Charges (Monthly)",
+  "Projected Common Charges (Monthly)",
   "Projected Post Completion Real Estate Taxes (Monthly)",
   "Projected Post Completion Real Estate Taxes (Annual)",
-  "Monthly Carrying Charges"
+  "Projected Post Completion Monthly Carrying Charges"
  ],
  "tax2": null,
- "sf2": "Uninhabitable Area",
+ "sf2": "uninhabitable area",
  "printed_totals": {
   "price": 3965000,
   "pct": 100,
   "cc_m": 2116.08,
   "tax_m": 2875.25,
   "int_sf": 4084,
-  "ext_sf": 1154
+  "ext_sf": 1154,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "beds/baths for each unit printed as a single code (e.g. \"3/1.5\") in the \"No. of Bedrooms/Bathrooms\" column; interpreted as beds/baths per rules and noted."
+  "Bathrooms column is given as a single combined \"Bedrooms/Bathrooms\" figure (e.g. \"3/1.5\", \"2/2\") with no separate full/half bath columns; interpreted per rule as beds/full.half baths (1.5 → 1 full, 1 half).",
+  "Total row does not print totals for full_baths/half_baths/pct2/tax_a; left as -."
  ],
  "units": [
   {
@@ -75,8 +99,9 @@
    "type": "residential",
    "floor": "Basement/Cellar",
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 3,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": 1100,
    "sf2": 658,
    "ext_sf": 759,
@@ -90,15 +115,17 @@
    "tax2_m": null,
    "carry_m": 1607.45,
    "page": 32,
-   "note": "3+1.5 beds/baths"
+   "note": null,
+   "baths": 1.5
   },
   {
    "unit": "B",
    "type": "residential",
    "floor": "1st Floor",
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 989,
    "sf2": 51,
    "ext_sf": 243,
@@ -112,15 +139,17 @@
    "tax2_m": null,
    "carry_m": 1154,
    "page": 32,
-   "note": "2 beds/2 baths"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "C",
    "type": "residential",
    "floor": "2nd Floor",
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 3,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 993,
    "sf2": 50,
    "ext_sf": 76,
@@ -134,15 +163,17 @@
    "tax2_m": null,
    "carry_m": 1123.45,
    "page": 32,
-   "note": "3 beds/2 baths"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "PH",
    "type": "residential",
    "floor": "3rd Floor",
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 3,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1002,
    "sf2": 37,
    "ext_sf": 76,
@@ -156,7 +187,8 @@
    "tax2_m": null,
    "carry_m": 1106.43,
    "page": 32,
-   "note": "3 beds/2 baths"
+   "note": null,
+   "baths": 2
   }
  ]
 }

@@ -3,23 +3,38 @@
  "steps": [
   {
    "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 7,
+   "failed": [
+    "bedsBaths"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
    "verdict": "publish_ag",
    "units": 7,
    "failed": []
   }
  ],
- "calls": 1,
+ "calls": 2,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4909,
-   "output_tokens": 838,
-   "seconds": 79,
-   "cost_usd": 0.0091978
+   "tokens": 6862,
+   "output_tokens": 1202,
+   "seconds": 82,
+   "cost_usd": 0.0131556
+  },
+  {
+   "model": "sonnet",
+   "tokens": 6571,
+   "output_tokens": 915,
+   "seconds": 9,
+   "cost_usd": 0.03177
   }
  ],
- "tokens": 4909,
- "api_equiv_usd": 0.009,
+ "tokens": 13433,
+ "api_equiv_usd": 0.045,
  "located_pages": [
   52
  ],
@@ -37,10 +52,12 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 5344000,
- "step": "sonnet-text",
+ "step": "sonnet-text-retry",
  "budget_period": "JUNE 1, 2023 TO MAY 31, 2024",
  "columns_printed": [
   "Unit No.",
@@ -57,17 +74,20 @@
   "Estimated Monthly Carrying Charges"
  ],
  "tax2": null,
- "sf2": "Unihabitable Space",
+ "sf2": "Unihabitable Space (Cellar)",
  "printed_totals": {
   "price": 5344000,
   "pct": 100,
   "cc_m": 3055.42,
   "tax_m": 5220.25,
   "int_sf": 5374.19,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": 9,
+  "full_baths": 8,
+  "half_baths": 1
  },
  "problems": [
-  "Unit 1 rooms/beds/baths printed as \"2 Bedroom/2.5 Bathrooms\" — beds/baths recorded as 2/2.5; floor column value for units 2A-4B shown as combined location text, not a separate numeric floor field."
+  "Total row baths printed as \"9 Bedrooms/8.5 Bathrooms\"; full_baths 8 and half_baths 1 inferred from the .5. Ext_sf not printed in the main table; limited common element areas (terrace/balcony/yard) listed separately per unit are not included in ext_sf column per instructions (no single ext_sf column exists in Schedule A). SF2 column header not clearly labeled \"gross\" or similar; used \"Unihabitable Space\" per notes as the second area figure."
  ],
  "units": [
   {
@@ -75,13 +95,14 @@
    "type": "residential",
    "floor": "First Floor",
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 2,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1687.71,
    "sf2": 665.17,
    "ext_sf": null,
    "price": 1450000,
-   "pct": 31.41,
+   "pct": 31.4,
    "pct2": null,
    "cc_m": 959.52,
    "cc_a": 11514.27,
@@ -89,8 +110,9 @@
    "tax_a": 19672.4,
    "tax2_m": null,
    "carry_m": 2598.89,
-   "page": 48,
-   "note": "Cellar [665.17 sf]; multistory unit located on Cellar and First Floor"
+   "page": 52,
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "2A",
@@ -98,7 +120,8 @@
    "floor": "Second Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 574.87,
    "sf2": null,
    "ext_sf": null,
@@ -111,8 +134,9 @@
    "tax_a": 6700.84,
    "tax2_m": null,
    "carry_m": 885.24,
-   "page": 48,
-   "note": null
+   "page": 52,
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "2B",
@@ -120,7 +144,8 @@
    "floor": "Second Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 558.64,
    "sf2": null,
    "ext_sf": null,
@@ -133,8 +158,9 @@
    "tax_a": 6511.66,
    "tax2_m": null,
    "carry_m": 860.24,
-   "page": 48,
-   "note": null
+   "page": 52,
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3A",
@@ -142,7 +168,8 @@
    "floor": "Third Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 574.87,
    "sf2": null,
    "ext_sf": null,
@@ -155,8 +182,9 @@
    "tax_a": 6700.84,
    "tax2_m": null,
    "carry_m": 885.24,
-   "page": 48,
-   "note": null
+   "page": 52,
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3B",
@@ -164,7 +192,8 @@
    "floor": "Third Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 558.64,
    "sf2": null,
    "ext_sf": null,
@@ -177,8 +206,9 @@
    "tax_a": 6511.66,
    "tax2_m": null,
    "carry_m": 860.24,
-   "page": 48,
-   "note": null
+   "page": 52,
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "4A",
@@ -186,7 +216,8 @@
    "floor": "Fourth Floor Roof",
    "rooms": null,
    "beds": 2,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 860.82,
    "sf2": null,
    "ext_sf": null,
@@ -199,8 +230,9 @@
    "tax_a": 10033.95,
    "tax2_m": null,
    "carry_m": 1325.57,
-   "page": 48,
-   "note": "multistory unit located on Fourth and Roof Floor"
+   "page": 52,
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "4B",
@@ -208,7 +240,8 @@
    "floor": "Fourth Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 558.64,
    "sf2": null,
    "ext_sf": null,
@@ -221,8 +254,9 @@
    "tax_a": 6511.66,
    "tax2_m": null,
    "carry_m": 860.24,
-   "page": 48,
-   "note": null
+   "page": 52,
+   "note": null,
+   "baths": 1
   }
  ]
 }

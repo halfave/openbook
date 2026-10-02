@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4404,
-   "output_tokens": 736,
-   "seconds": 9,
-   "cost_usd": 0.022028
+   "tokens": 5838,
+   "output_tokens": 666,
+   "seconds": 78,
+   "cost_usd": 0.007698
   }
  ],
- "tokens": 4404,
- "api_equiv_usd": 0.022,
+ "tokens": 5838,
+ "api_equiv_usd": 0.008,
  "located_pages": [
   38
  ],
@@ -37,6 +37,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 6445000,
@@ -59,17 +61,20 @@
   "Total Monthly Carrying Charges"
  ],
  "tax2": null,
- "sf2": "cellar",
+ "sf2": "Cellar Space",
  "printed_totals": {
   "price": 6445000,
   "pct": 100,
   "cc_m": 2175,
   "tax_m": 1091.75,
   "int_sf": 3604,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Table has no \"floor\" or \"rooms\" columns; those cells are -. Unit 1 has 1/2 Bathroom(s)=1, so baths listed as 2.5 (2 full + 1 half). ext_sf not printed as a single column; limited common areas (light well, rear yard, deck, roof terrace) listed separately per unit but not assigned to ext_sf per instructions since no single ext_sf column exists — listed below instead. Unit 1: Light well (32 sf); Rear yard (235 sf). Unit 2: Rear yard (490 sf); Deck (80 sf). Unit 3: Roof Terrace (320 sf). Unit 4: Roof Terrace (536 sf)."
+  "\"Limited Common Element square feet\" column (267.00, 570.00, 320.00, 536.00) does not match ext_sf note descriptions exactly for units 2 and 3; copied as printed and placed descriptive areas in note field since multiple separate areas are listed for some units."
  ],
  "units": [
   {
@@ -78,7 +83,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 864,
    "sf2": 788,
    "ext_sf": null,
@@ -91,8 +97,9 @@
    "tax_a": 4131.6,
    "tax2_m": null,
    "carry_m": 1030.22,
-   "page": 38,
-   "note": null
+   "page": 20,
+   "note": "Limited common area: Light well (32 sf); Rear yard (235 sf)",
+   "baths": 2.5
   },
   {
    "unit": "2",
@@ -100,7 +107,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 915,
    "sf2": 0,
    "ext_sf": null,
@@ -113,8 +121,9 @@
    "tax_a": 3197.2,
    "tax2_m": null,
    "carry_m": 797.23,
-   "page": 38,
-   "note": null
+   "page": 20,
+   "note": "Limited common area: Rear yard (490 sf); Deck (80 sf)",
+   "baths": 2
   },
   {
    "unit": "3",
@@ -122,7 +131,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 915,
    "sf2": 0,
    "ext_sf": null,
@@ -135,8 +145,9 @@
    "tax_a": 2658.95,
    "tax2_m": null,
    "carry_m": 663.01,
-   "page": 38,
-   "note": null
+   "page": 20,
+   "note": "Limited common area: Roof Terrace (320 sf)",
+   "baths": 2
   },
   {
    "unit": "4",
@@ -144,7 +155,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 910,
    "sf2": 0,
    "ext_sf": null,
@@ -157,8 +169,9 @@
    "tax_a": 3113.24,
    "tax2_m": null,
    "carry_m": 776.29,
-   "page": 38,
-   "note": null
+   "page": 20,
+   "note": "Limited common area: Roof Terrace (536 sf)",
+   "baths": 2
   }
  ]
 }

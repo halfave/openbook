@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4686,
-   "output_tokens": 897,
-   "seconds": 8,
-   "cost_usd": 0.024122
+   "tokens": 6062,
+   "output_tokens": 767,
+   "seconds": 9,
+   "cost_usd": 0.028846
   }
  ],
- "tokens": 4686,
- "api_equiv_usd": 0.024,
+ "tokens": 6062,
+ "api_equiv_usd": 0.029,
  "located_pages": [
   38
  ],
@@ -37,6 +37,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 23900000,
@@ -57,18 +59,20 @@
   "Estimated Total Annual Charges 1st Year"
  ],
  "tax2": null,
- "sf2": "Limited Common Elements",
+ "sf2": null,
  "printed_totals": {
   "price": 23900000,
   "pct": 100,
   "cc_m": 8704,
   "tax_m": 15251,
   "int_sf": 11481,
-  "ext_sf": null
+  "ext_sf": 879,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Unit 1 baths printed as \"2.5* BA\" with footnote * = 2 Full Baths and 1 Powder Room; treated as 2.5 baths per half-bath rule",
-  "Limited Common Elements column (sf2) total printed as 879, but individual unit values sum to 879 (493+386); included as-is"
+  "Unit 1 bedroom/bath cell printed as \"2 BR/2.5* BA\" with footnote * = \"2 Full Baths and 1 Powder Room\"; recorded as 2 full, 1 half accordingly."
  ],
  "units": [
   {
@@ -77,10 +81,11 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 2200,
-   "sf2": 493,
-   "ext_sf": null,
+   "sf2": null,
+   "ext_sf": 493,
    "price": 4250000,
    "pct": 19.8555,
    "pct2": null,
@@ -91,7 +96,8 @@
    "tax2_m": null,
    "carry_m": 4756,
    "page": 38,
-   "note": "2 BR/2.5* BA (Duplex); ** includes approx 994 sf accessory floor area in cellar"
+   "note": "Unit includes approx 994 sf accessory floor area in cellar; 2 full baths and 1 powder room",
+   "baths": 2.5
   },
   {
    "unit": "2",
@@ -99,7 +105,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1543,
    "sf2": null,
    "ext_sf": null,
@@ -113,7 +120,8 @@
    "tax2_m": null,
    "carry_m": 3159,
    "page": 38,
-   "note": "2 BR/2 BA/ST (Simplex)"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3",
@@ -121,7 +129,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1543,
    "sf2": null,
    "ext_sf": null,
@@ -135,7 +144,8 @@
    "tax2_m": null,
    "carry_m": 3159,
    "page": 38,
-   "note": "2 BR/2 BA/ST (Simplex)"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "4",
@@ -143,7 +153,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1543,
    "sf2": null,
    "ext_sf": null,
@@ -157,7 +168,8 @@
    "tax2_m": null,
    "carry_m": 3159,
    "page": 38,
-   "note": "2 BR/2 BA/ST (Simplex)"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "5",
@@ -165,7 +177,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1543,
    "sf2": null,
    "ext_sf": null,
@@ -179,7 +192,8 @@
    "tax2_m": null,
    "carry_m": 3159,
    "page": 38,
-   "note": "2 BR/2 BA/ST (Simplex)"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "6",
@@ -187,7 +201,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1543,
    "sf2": null,
    "ext_sf": null,
@@ -201,7 +216,8 @@
    "tax2_m": null,
    "carry_m": 3159,
    "page": 38,
-   "note": "2 BR/2 BA/ST (Simplex)"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "PH",
@@ -209,10 +225,11 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1566,
-   "sf2": 386,
-   "ext_sf": null,
+   "sf2": null,
+   "ext_sf": 386,
    "price": 3650000,
    "pct": 14.2085,
    "pct2": null,
@@ -223,7 +240,8 @@
    "tax2_m": null,
    "carry_m": 3404,
    "page": 38,
-   "note": "2 BR/2 BA/DS (Simplex)"
+   "note": null,
+   "baths": 2
   }
  ]
 }

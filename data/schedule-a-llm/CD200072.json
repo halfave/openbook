@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4424,
-   "output_tokens": 748,
-   "seconds": 12,
-   "cost_usd": 0.02218
+   "tokens": 6012,
+   "output_tokens": 831,
+   "seconds": 10,
+   "cost_usd": 0.02903
   }
  ],
- "tokens": 4424,
- "api_equiv_usd": 0.022,
+ "tokens": 6012,
+ "api_equiv_usd": 0.029,
  "located_pages": [
   36
  ],
@@ -37,6 +37,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 4145000,
@@ -58,17 +60,21 @@
   "Total Monthly Carrying Charges"
  ],
  "tax2": null,
- "sf2": "Cellar Space square footage",
+ "sf2": "cellar space",
  "printed_totals": {
   "price": 4145000,
   "pct": 100,
   "cc_m": 1808.59,
   "tax_m": 1931.84,
   "int_sf": 3358,
-  "ext_sf": 986
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Limited Common Element square feet (col 8) listed per-unit values that appear to duplicate/relate to balcony/yard notes; placed as ext_sf. Total row's \"986.00\" corresponds to Limited Common Element column, reported here as ext_sf per instructions."
+  "Limited Common Element square feet column (0.00/600.00/43.00/343.00 etc.) not mapped to any output field; ext_sf left blank per instructions since it's a \"limited common element\" column rather than a single terrace/balcony figure, and notes list the limited common elements as printed for units with nonzero values.",
+  "Bedroom and Bathroom columns print single integers per unit (e.g. \"0 1\", \"1 1\"); treated as beds and full_baths per header order, half_baths left blank as none printed."
  ],
  "units": [
   {
@@ -77,7 +83,8 @@
    "floor": null,
    "rooms": null,
    "beds": 0,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 366,
    "sf2": 0,
    "ext_sf": null,
@@ -91,7 +98,8 @@
    "tax2_m": null,
    "carry_m": 407.68,
    "page": 36,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "1B",
@@ -99,10 +107,11 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 559,
    "sf2": 0,
-   "ext_sf": 600,
+   "ext_sf": null,
    "price": 649000,
    "pct": 16.6468,
    "pct2": null,
@@ -113,7 +122,8 @@
    "tax2_m": null,
    "carry_m": 622.66,
    "page": 36,
-   "note": "Rear yard (600sf)"
+   "note": "Rear yard (600sf)",
+   "baths": 1
   },
   {
    "unit": "2A",
@@ -121,10 +131,11 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 534,
    "sf2": 0,
-   "ext_sf": 0,
+   "ext_sf": null,
    "price": 649000,
    "pct": 15.9023,
    "pct2": null,
@@ -135,7 +146,8 @@
    "tax2_m": null,
    "carry_m": 594.81,
    "page": 36,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "2B",
@@ -143,10 +155,11 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 539,
    "sf2": 0,
-   "ext_sf": 0,
+   "ext_sf": null,
    "price": 649000,
    "pct": 16.0512,
    "pct2": null,
@@ -157,7 +170,8 @@
    "tax2_m": null,
    "carry_m": 600.38,
    "page": 36,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3A",
@@ -165,10 +179,11 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 534,
    "sf2": 0,
-   "ext_sf": 43,
+   "ext_sf": null,
    "price": 649000,
    "pct": 15.9023,
    "pct2": null,
@@ -179,7 +194,8 @@
    "tax2_m": null,
    "carry_m": 594.81,
    "page": 36,
-   "note": "Balcony (43sf)"
+   "note": "Balcony (43sf)",
+   "baths": 1
   },
   {
    "unit": "3B",
@@ -187,10 +203,11 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 826,
    "sf2": 0,
-   "ext_sf": 343,
+   "ext_sf": null,
    "price": 1099000,
    "pct": 24.5981,
    "pct2": null,
@@ -201,7 +218,8 @@
    "tax2_m": null,
    "carry_m": 920.07,
    "page": 36,
-   "note": "Balcony (43sf) and roof terrace (300sf)"
+   "note": "Balcony (43sf) and roof terrace (300sf)",
+   "baths": 2
   }
  ]
 }

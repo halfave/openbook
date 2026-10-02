@@ -3,41 +3,23 @@
  "steps": [
   {
    "step": "sonnet-text",
-   "verdict": "not_found",
-   "units": 0,
-   "failed": [
-    "ag",
-    "printed",
-    "monthlyTotals",
-    "allRowsParsed"
-   ]
-  },
-  {
-   "step": "sonnet-images",
    "verdict": "publish_ag",
    "units": 4,
    "failed": []
   }
  ],
- "calls": 2,
+ "calls": 1,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4372,
-   "output_tokens": 761,
+   "tokens": 5846,
+   "output_tokens": 728,
    "seconds": 10,
-   "cost_usd": 0.02205
-  },
-  {
-   "model": "sonnet",
-   "tokens": 13862,
-   "output_tokens": 943,
-   "seconds": 13,
-   "cost_usd": 0.03722640000000001
+   "cost_usd": 0.027748
   }
  ],
- "tokens": 18234,
- "api_equiv_usd": 0.059,
+ "tokens": 5846,
+ "api_equiv_usd": 0.028,
  "located_pages": [
   32
  ],
@@ -55,17 +37,19 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 6080000,
- "step": "sonnet-images",
+ "step": "sonnet-text",
  "budget_period": "January 1, 2025-December 31, 2025",
  "columns_printed": [
   "Unit No.",
-  "Location",
+  "Floor Location",
   "Approx. Floor Area",
   "Approx. Outdoor/Uninhabitable/Limited Common Floor Area",
-  "No. of Bedooms/Bathrooms",
+  "No. of Bedrooms/Bathrooms",
   "Offering Price",
   "Percent Common Interest",
   "Projected Monthly Common Charges",
@@ -81,11 +65,14 @@
   "cc_m": 2148.33,
   "tax_m": 5546.01,
   "int_sf": 5624,
-  "ext_sf": 1371
+  "ext_sf": 1371,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Unit 1's floor area is printed as two figures on separate lines (692* for Cellar, 1128 for First Floor); per rules the habitable figure (1128) was placed in int_sf and the cellar figure (692*) was placed in sf2, though the outdoor/limited common column also contains entries (133 (P), 70 (L)) which were listed in note per the multiple-area ext_sf rule.",
-  "Units 2, 3A, 3B have multiple outdoor/limited-common area entries (e.g. 44(T); 144(B)+556(T); 144(B)+280(T)); per rules these were left out of ext_sf and listed in note instead."
+  "Unit 1 interior sf: printed as \"692*\" then \"1128\"; per instructions used habitable floor figure (1128) as int_sf and cellar figure (692) as sf2.",
+  "Outdoor/limited common area column holds multiple figures per unit (e.g. \"133 (P)\" and \"70 (L)\"); placed combined listing in ext_sf field per unit as printed, could not isolate single ext_sf value for units with multiple areas."
  ],
  "units": [
   {
@@ -94,7 +81,8 @@
    "floor": "Cellar/First Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1128,
    "sf2": 692,
    "ext_sf": null,
@@ -108,7 +96,8 @@
    "tax2_m": null,
    "carry_m": 1954.37,
    "page": 32,
-   "note": "Cellar area 692* is uninhabitable; ext_sf areas: 133 (P), 70 (L)"
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "2",
@@ -116,7 +105,8 @@
    "floor": "Second Floor",
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1166,
    "sf2": null,
    "ext_sf": null,
@@ -130,7 +120,8 @@
    "tax2_m": null,
    "carry_m": 1667.36,
    "page": 32,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3A",
@@ -138,7 +129,8 @@
    "floor": "Third Floor/Fourth Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1239,
    "sf2": null,
    "ext_sf": null,
@@ -152,7 +144,8 @@
    "tax2_m": null,
    "carry_m": 1986.68,
    "page": 32,
-   "note": "ext_sf areas: 144 (B), 556 (T)"
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "3B",
@@ -160,7 +153,8 @@
    "floor": "Third Floor/Fourth Floor/Penthouse",
    "rooms": null,
    "beds": 3,
-   "baths": 3.5,
+   "full_baths": 3,
+   "half_baths": 1,
    "int_sf": 1399,
    "sf2": null,
    "ext_sf": null,
@@ -174,7 +168,8 @@
    "tax2_m": null,
    "carry_m": 2085.93,
    "page": 32,
-   "note": "ext_sf areas: 144 (B), 280 (T)"
+   "note": null,
+   "baths": 3.5
   }
  ]
 }

@@ -4,14 +4,10 @@
   {
    "step": "sonnet-text",
    "verdict": "hold",
-   "units": 1,
+   "units": 6,
    "failed": [
-    "ag",
-    "printed",
-    "pct100",
     "sqftTotal",
-    "monthlyTotals",
-    "allRowsParsed"
+    "monthlyTotals"
    ]
   },
   {
@@ -25,21 +21,21 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4631,
-   "output_tokens": 886,
-   "seconds": 10,
-   "cost_usd": 0.023836
+   "tokens": 11684,
+   "output_tokens": 1186,
+   "seconds": 90,
+   "cost_usd": 0.0339054
   },
   {
    "model": "sonnet",
-   "tokens": 4624,
-   "output_tokens": 876,
-   "seconds": 12,
-   "cost_usd": 0.023748000000000002
+   "tokens": 6350,
+   "output_tokens": 1095,
+   "seconds": 14,
+   "cost_usd": 0.031966
   }
  ],
- "tokens": 9255,
- "api_equiv_usd": 0.048,
+ "tokens": 18034,
+ "api_equiv_usd": 0.066,
  "located_pages": [
   33
  ],
@@ -57,16 +53,18 @@
   "psf": null,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 7624000,
  "step": "sonnet-text-retry",
- "budget_period": "January 1, 2024 - December 31, 2024",
+ "budget_period": "Year Projected to Begin: January 1, 2024 -December 31, 2024",
  "columns_printed": [
   "Unit No.",
   "Floor Location",
   "Approx. Floor Area",
-  "Uninhabitable/Limited Common Area",
+  "Outdoor/Uninhabitable/Limited Common Area",
   "No. of Bedooms/Bathrooms",
   "Offering Price",
   "Percent Common Interest",
@@ -76,17 +74,22 @@
   "Projected Carrying Charges (Monthly)"
  ],
  "tax2": null,
- "sf2": "Uninhabitable/Limited Common Area",
+ "sf2": "Outdoor/Uninhabitable/Limited Common Area",
  "printed_totals": {
   "price": 7624000,
   "pct": 100,
   "cc_m": 2510.84,
   "tax_m": 1427.36,
   "int_sf": 5636,
-  "ext_sf": 1955
+  "ext_sf": 1955,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Unit 1B's area breakdown (Cellar*643, First Floor 645, Second Floor 643) and Limited Common areas (643(RY), 399(A)) could not be confidently mapped to int_sf/sf2/ext_sf per the stated rules; reported best-guess placement above.",
+  "Unit 1B's floor area is printed across three lines with a cellar figure (643, marked *) plus First Floor 645 and Second Floor 643 (RY), plus 399 (A); I summed the First+Second Floor figures (645+643=1288?) but the printed OCR text is ambiguous/garbled (\"643 / 645 / 643 (RY) / 399 (A)\") — I used int_sf=1687 (645+643+399) as a best reading but could not confirm the exact breakdown; the \"*643\" cellar figure was not placed in sf2 due to uncertainty over which figure is cellar vs habitable floors.",
+  "Unit 1B bedrooms/bathrooms printed as \"3/3.5\" — interpreted as 3 beds, 3 full baths, 1 half bath per combined-cell rule.",
+  "Unit 4A floor area printed as \"1080\" and \"295 (T)\" on two lines under Fourth Floor/Penthouse; treated 1080 as int_sf and 295 (T) as ext_sf (terrace).",
   "unit sizes left out: the area columns did not add up to the printed totals"
  ],
  "units": [
@@ -96,7 +99,8 @@
    "floor": "First Floor",
    "rooms": null,
    "beds": 0,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -110,15 +114,17 @@
    "tax2_m": null,
    "carry_m": 267.8,
    "page": 33,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "1B",
    "type": "residential",
-   "floor": "Cellar*/First Floor/Second Floor",
+   "floor": "Cellar/First Floor/Second Floor",
    "rooms": null,
    "beds": 3,
-   "baths": 3.5,
+   "full_baths": 3,
+   "half_baths": 1,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -132,7 +138,8 @@
    "tax2_m": null,
    "carry_m": 1367.34,
    "page": 33,
-   "note": "int_sf and ext_sf unclear: printed areas are Cellar*643, First Floor 645, Second Floor 643; Limited Common areas 643(RY), 399(A); unable to determine which figure is interior vs outdoor per rules, used First Floor 645 as int_sf and Cellar 643 as sf2; ext_sf left blank, see note for 643(RY) and 399(A)"
+   "note": "Floor area printed as Cellar*643, First Floor 645, Second Floor 643 (RY); int_sf taken as 645+643+399=1687 could not be confirmed, see PROBLEM",
+   "baths": 3.5
   },
   {
    "unit": "2A",
@@ -140,7 +147,8 @@
    "floor": "Second Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -154,7 +162,8 @@
    "tax2_m": null,
    "carry_m": 519.84,
    "page": 33,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3A",
@@ -162,7 +171,8 @@
    "floor": "Third Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -176,7 +186,8 @@
    "tax2_m": null,
    "carry_m": 476.13,
    "page": 33,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3B",
@@ -184,7 +195,8 @@
    "floor": "Third Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -198,7 +210,8 @@
    "tax2_m": null,
    "carry_m": 476.13,
    "page": 33,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "4A",
@@ -206,7 +219,8 @@
    "floor": "Fourth Floor/Penthouse",
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -220,7 +234,8 @@
    "tax2_m": null,
    "carry_m": 830.96,
    "page": 33,
-   "note": "ext_sf 295 labeled (T) for Terrace; note states unit allocated two terraces"
+   "note": "Unit allocated two terraces per note",
+   "baths": 2
   }
  ]
 }

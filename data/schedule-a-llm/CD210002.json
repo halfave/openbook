@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 7184,
-   "output_tokens": 376,
-   "seconds": 78,
-   "cost_usd": 0.0180564
+   "tokens": 5341,
+   "output_tokens": 429,
+   "seconds": 79,
+   "cost_usd": 0.005276
   }
  ],
- "tokens": 7184,
- "api_equiv_usd": 0.018,
+ "tokens": 5341,
+ "api_equiv_usd": 0.005,
  "located_pages": [
   27
  ],
@@ -37,6 +37,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 6490000,
@@ -64,10 +66,13 @@
   "cc_m": 1170.67,
   "tax_m": 3254.33,
   "int_sf": null,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Beds/Bths column prints as single values (3/3.5 and 3/3) interpreted as beds/baths per rules."
+  "Unit 1 Bdms/Bths printed as \"3/3.5\" (3 bedrooms, 3 full baths, 1 half bath per 2.5-style rule); half_baths set to 1 accordingly. Unit 2 \"3/3\" = 3 full, 0 half."
  ],
  "units": [
   {
@@ -76,7 +81,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3.5,
+   "full_baths": 3,
+   "half_baths": 1,
    "int_sf": 2015,
    "sf2": 1824,
    "ext_sf": null,
@@ -90,7 +96,8 @@
    "tax2_m": null,
    "carry_m": 2519.15,
    "page": 27,
-   "note": null
+   "note": null,
+   "baths": 3.5
   },
   {
    "unit": "2",
@@ -98,7 +105,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": 0,
    "int_sf": 1813,
    "sf2": 1092,
    "ext_sf": null,
@@ -112,7 +120,8 @@
    "tax2_m": null,
    "carry_m": 1905.85,
    "page": 27,
-   "note": null
+   "note": null,
+   "baths": 3
   }
  ]
 }

@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4819,
-   "output_tokens": 901,
-   "seconds": 15,
-   "cost_usd": 0.024678000000000002
+   "tokens": 11841,
+   "output_tokens": 1001,
+   "seconds": 86,
+   "cost_usd": 0.0327736
   }
  ],
- "tokens": 4819,
- "api_equiv_usd": 0.025,
+ "tokens": 11841,
+ "api_equiv_usd": 0.033,
  "located_pages": [
   37
  ],
@@ -32,11 +32,13 @@
   "pct100": true,
   "ccProportional": true,
   "carrying": true,
-  "sqftTotal": true,
+  "sqftTotal": null,
   "monthlyTotals": true,
-  "psf": true,
+  "psf": null,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 4650000,
@@ -59,17 +61,22 @@
   "Total Monthly Carrying Charges"
  ],
  "tax2": null,
- "sf2": "cellar space square footage",
+ "sf2": "cellar",
  "printed_totals": {
   "price": 4650000,
   "pct": 100,
   "cc_m": 2142.19,
   "tax_m": 3577.92,
   "int_sf": 4384,
-  "ext_sf": 1328
+  "ext_sf": 970,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Bathroom(s) per Unit column prints whole numbers (1,1,1,1,1,1,2) with a separate 1/2 Bathroom(s) column printing values like \"1\" for units 1F/1R and \"0\" for others; actual printed baths figures used above combine these as best read (e.g. 1F/1R show 1.5) — original table formatting for the baths/half-baths columns was ambiguous in the OCR text and may not align exactly with source."
+  "int_sf and sf2 appear swapped in the header order (Square footage listed before Cellar Space square footage) but Square footage column values (460, 606, 603, 608, 611, 608, 888) were used as int_sf per instructions since they represent above-grade interior sf; Cellar Space square footage (293, 677, 0, 0, 0, 0, 0) used as sf2.",
+  "Limited Common Element square feet column (293 for 1F, 1064 for 1R, 46 for 3F, 60 for 3R, 158 for 4F) does not clearly correspond to ext_sf; narrative notes list specific balcony/terrace/rear yard/light well areas separately, so this column was not used for ext_sf and is omitted; ext_sf left as - for all units per instruction to leave empty and list in note when multiple separate areas exist, but could not confidently match each unit to its narrative area.",
+  "unit sizes left out: the area columns did not add up to the printed totals"
  ],
  "units": [
   {
@@ -78,9 +85,10 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1.5,
-   "int_sf": 460,
-   "sf2": 293,
+   "full_baths": 1,
+   "half_baths": 1,
+   "int_sf": null,
+   "sf2": null,
    "ext_sf": null,
    "price": 650000,
    "pct": 12.0867,
@@ -92,7 +100,8 @@
    "tax2_m": null,
    "carry_m": 691.37,
    "page": 37,
-   "note": null
+   "note": null,
+   "baths": 1.5
   },
   {
    "unit": "1R",
@@ -100,10 +109,11 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1.5,
-   "int_sf": 606,
-   "sf2": 677,
-   "ext_sf": 1064,
+   "full_baths": 1,
+   "half_baths": 1,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
    "price": 830000,
    "pct": 30.4173,
    "pct2": null,
@@ -114,7 +124,8 @@
    "tax2_m": null,
    "carry_m": 1739.9,
    "page": 37,
-   "note": null
+   "note": null,
+   "baths": 1.5
   },
   {
    "unit": "2F",
@@ -122,9 +133,10 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
-   "int_sf": 603,
-   "sf2": 0,
+   "full_baths": 1,
+   "half_baths": 0,
+   "int_sf": null,
+   "sf2": null,
    "ext_sf": null,
    "price": 580000,
    "pct": 9.6791,
@@ -136,7 +148,8 @@
    "tax2_m": null,
    "carry_m": 553.65,
    "page": 37,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "2R",
@@ -144,9 +157,10 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
-   "int_sf": 608,
-   "sf2": 0,
+   "full_baths": 1,
+   "half_baths": 0,
+   "int_sf": null,
+   "sf2": null,
    "ext_sf": null,
    "price": 580000,
    "pct": 9.7592,
@@ -158,7 +172,8 @@
    "tax2_m": null,
    "carry_m": 558.24,
    "page": 37,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3F",
@@ -166,10 +181,11 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
-   "int_sf": 611,
-   "sf2": 0,
-   "ext_sf": 46,
+   "full_baths": 1,
+   "half_baths": 0,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
    "price": 595000,
    "pct": 10.5457,
    "pct2": null,
@@ -180,7 +196,8 @@
    "tax2_m": null,
    "carry_m": 603.23,
    "page": 37,
-   "note": "Balcony (46 sf)"
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3R",
@@ -188,10 +205,11 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
-   "int_sf": 608,
-   "sf2": 0,
-   "ext_sf": 60,
+   "full_baths": 1,
+   "half_baths": 0,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
    "price": 595000,
    "pct": 10.7223,
    "pct2": null,
@@ -202,7 +220,8 @@
    "tax2_m": null,
    "carry_m": 613.33,
    "page": 37,
-   "note": "Balcony (60 sf)"
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "4F",
@@ -210,10 +229,11 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
-   "int_sf": 888,
-   "sf2": 0,
-   "ext_sf": 158,
+   "full_baths": 2,
+   "half_baths": 0,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
    "price": 820000,
    "pct": 16.7897,
    "pct2": null,
@@ -224,7 +244,8 @@
    "tax2_m": null,
    "carry_m": 960.39,
    "page": 37,
-   "note": "Terraces (78 sf and 80 sf)"
+   "note": null,
+   "baths": 2
   }
  ]
 }

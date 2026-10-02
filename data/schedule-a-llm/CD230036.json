@@ -14,14 +14,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4770,
-   "output_tokens": 934,
-   "seconds": 8,
-   "cost_usd": 0.02468
+   "tokens": 6410,
+   "output_tokens": 985,
+   "seconds": 12,
+   "cost_usd": 0.031546
   }
  ],
- "tokens": 4770,
- "api_equiv_usd": 0.025,
+ "tokens": 6410,
+ "api_equiv_usd": 0.032,
  "located_pages": [
   51
  ],
@@ -39,6 +39,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 43950000,
@@ -63,17 +65,20 @@
   "Total of Estimated Common Charges and Real Estate Taxes Annually"
  ],
  "tax2": null,
- "sf2": "cellar sf",
+ "sf2": "cellar",
  "printed_totals": {
   "price": 43950000,
   "pct": 100,
   "cc_m": 11167.62,
   "tax_m": 25556.25,
   "int_sf": 17792,
-  "ext_sf": 1300
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Subtotal rows (Residential Units Subtotal, Non-Residential Unit Subtotal) omitted from unit list as they are not individual units. TOTAL row's int_sf/ext_sf columns mapped to Total Square Footage(17792)/Cellar Square Footage(1300) per printed total row; Unit Habitable Square Footage total (17125) not included in TOTAL line per requested format."
+  "Unit PH bath value printed as \"3.5\" treated as 3 full, 1 half per rules; Unit 1 bath value printed as \"2 and 2(.5)\" treated as 2 full, 1 half; residential and non-residential subtotal rows omitted from U lines (not individual units); ext_sf for Units 2-5 printed as \"0\" under Limited Common Element Square Footage with no separate heading value, treated as - (none); PH unit ext_sf of 1201 listed under \"Terraces\" label in Limited Common Element column."
  ],
  "units": [
   {
@@ -82,7 +87,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": null,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1886,
    "sf2": 877,
    "ext_sf": 99,
@@ -96,7 +102,8 @@
    "tax2_m": null,
    "carry_m": 5415.16,
    "page": 51,
-   "note": null
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "Unit 2",
@@ -104,7 +111,8 @@
    "floor": null,
    "rooms": null,
    "beds": 4,
-   "baths": 4.5,
+   "full_baths": 4,
+   "half_baths": 1,
    "int_sf": 3031,
    "sf2": 0,
    "ext_sf": null,
@@ -118,7 +126,8 @@
    "tax2_m": null,
    "carry_m": 5887.67,
    "page": 51,
-   "note": null
+   "note": null,
+   "baths": 4.5
   },
   {
    "unit": "Unit 3",
@@ -126,7 +135,8 @@
    "floor": null,
    "rooms": null,
    "beds": 4,
-   "baths": 4.5,
+   "full_baths": 4,
+   "half_baths": 1,
    "int_sf": 3031,
    "sf2": 0,
    "ext_sf": null,
@@ -140,7 +150,8 @@
    "tax2_m": null,
    "carry_m": 5887.67,
    "page": 51,
-   "note": null
+   "note": null,
+   "baths": 4.5
   },
   {
    "unit": "Unit 4",
@@ -148,7 +159,8 @@
    "floor": null,
    "rooms": null,
    "beds": 4,
-   "baths": 4.5,
+   "full_baths": 4,
+   "half_baths": 1,
    "int_sf": 3031,
    "sf2": 0,
    "ext_sf": null,
@@ -162,7 +174,8 @@
    "tax2_m": null,
    "carry_m": 5887.67,
    "page": 51,
-   "note": null
+   "note": null,
+   "baths": 4.5
   },
   {
    "unit": "Unit 5",
@@ -170,7 +183,8 @@
    "floor": null,
    "rooms": null,
    "beds": 4,
-   "baths": 4.5,
+   "full_baths": 4,
+   "half_baths": 1,
    "int_sf": 3031,
    "sf2": 0,
    "ext_sf": null,
@@ -184,7 +198,8 @@
    "tax2_m": null,
    "carry_m": 5887.67,
    "page": 51,
-   "note": null
+   "note": null,
+   "baths": 4.5
   },
   {
    "unit": "Unit PH",
@@ -192,7 +207,8 @@
    "floor": null,
    "rooms": null,
    "beds": 4,
-   "baths": 3.5,
+   "full_baths": 3,
+   "half_baths": 1,
    "int_sf": 3115,
    "sf2": 0,
    "ext_sf": 1201,
@@ -206,7 +222,8 @@
    "tax2_m": null,
    "carry_m": 6634.08,
    "page": 51,
-   "note": "Terraces"
+   "note": "Terraces 1,201 (ext sf)",
+   "baths": 3.5
   },
   {
    "unit": "Commercial Unit",
@@ -214,7 +231,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 667,
    "sf2": 0,
    "ext_sf": null,
@@ -228,7 +246,8 @@
    "tax2_m": null,
    "carry_m": 1123.95,
    "page": 51,
-   "note": null
+   "note": null,
+   "baths": null
   }
  ]
 }

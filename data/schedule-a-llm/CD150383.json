@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 8228,
-   "output_tokens": 1026,
-   "seconds": 24,
-   "cost_usd": 0.025383799999999998
+   "tokens": 11332,
+   "output_tokens": 1110,
+   "seconds": 86,
+   "cost_usd": 0.0325658
   }
  ],
- "tokens": 8228,
- "api_equiv_usd": 0.025,
+ "tokens": 11332,
+ "api_equiv_usd": 0.033,
  "located_pages": [
   35
  ],
@@ -37,11 +37,13 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 26974000,
  "step": "sonnet-text",
- "budget_period": "October 1, 2016- September 30, 2017",
+ "budget_period": "For the Period from October 1, 2016- September 30, 2017",
  "columns_printed": [
   "Unit",
   "Approx. Sq. Ft.",
@@ -49,12 +51,12 @@
   "Offering Price",
   "BR/ BA/ Balcony/ Terrace",
   "Approx. Sq. Ft. for limited Common Elements",
-  "Per MO (Common Charges)",
-  "Per Year (Common Charges)",
-  "Per MO (Tax)",
-  "Per Year (Tax)",
-  "Per MO (Est. Carrying Charges)",
-  "Per Year (Est. Carrying Charges)"
+  "Estimated Common Charges Per MO",
+  "Estimated Common Charges Per Year",
+  "Estimated Tax Per MO",
+  "Estimated Tax Per Year",
+  "Est. Carrying Charges Per MO",
+  "Est. Carrying Charges Per Year"
  ],
  "tax2": null,
  "sf2": null,
@@ -64,19 +66,25 @@
   "cc_m": 8441.67,
   "tax_m": 12922.43,
   "int_sf": 8429,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "beds/baths left empty for all units because BR/BA/Balcony/Terrace column uses unclear slash codes (e.g. \"3/3/B/T\", \"2/2/B\"); codes recorded in note instead."
+  "Column \"BR/BA/Balcony/Terrace\" combines bedroom count, bathroom count, and balcony/terrace indicator in one code (e.g. \"3/3/B/T\"); full_baths filled from the second figure, half_baths left - as none printed; the B/T letters are not half-bath counts and are noted in note instead.",
+  "Cellar, 1F and 2F are labeled commercial units per the footnote (\"*Units Cellar, 1F & 2F are commercial units\"); beds/baths left - for these rows accordingly.",
+  "Total row's full_baths/half_baths not printed, left -."
  ],
  "units": [
   {
    "unit": "Cellar",
    "type": "commercial",
-   "floor": "Cellar",
+   "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 1427,
    "sf2": null,
    "ext_sf": null,
@@ -90,15 +98,17 @@
    "tax2_m": null,
    "carry_m": 2557.52,
    "page": 35,
-   "note": "Units Cellar, 1F & 2F are commercial units."
+   "note": null,
+   "baths": null
   },
   {
    "unit": "1F",
    "type": "commercial",
-   "floor": "1F",
+   "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 1418,
    "sf2": null,
    "ext_sf": null,
@@ -112,15 +122,17 @@
    "tax2_m": null,
    "carry_m": 3061.72,
    "page": 35,
-   "note": "Units Cellar, 1F & 2F are commercial units."
+   "note": null,
+   "baths": null
   },
   {
    "unit": "2F",
    "type": "commercial",
-   "floor": "2F",
+   "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 525,
    "sf2": null,
    "ext_sf": null,
@@ -134,15 +146,17 @@
    "tax2_m": null,
    "carry_m": 1123.99,
    "page": 35,
-   "note": "Unit 2F is only the front portion of the 2nd floor; units Cellar, 1F & 2F are commercial units."
+   "note": "only the front portion of the 2nd floor",
+   "baths": null
   },
   {
    "unit": "3F",
    "type": "residential",
-   "floor": "3F",
+   "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": null,
    "int_sf": 1509,
    "sf2": null,
    "ext_sf": 420,
@@ -156,15 +170,17 @@
    "tax2_m": null,
    "carry_m": 4358.6,
    "page": 35,
-   "note": "BR/BA/Balcony/Terrace code \"3/3/B/T\"; duplex including 3rd floor and rear portion of 2nd floor; includes terrace on 2nd floor rear & balcony on 3rd floor"
+   "note": "duplex incl. 3rd floor and rear portion of 2nd floor; BR/BA/Balcony/Terrace \"3/3/B/T\"; includes terrace on 2nd floor rear & balcony on 3rd floor",
+   "baths": 3
   },
   {
    "unit": "4F",
    "type": "residential",
-   "floor": "4F",
+   "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1100,
    "sf2": null,
    "ext_sf": 65,
@@ -178,15 +194,17 @@
    "tax2_m": null,
    "carry_m": 3179.29,
    "page": 35,
-   "note": "BR/BA/Balcony/Terrace code \"2/2/B\"; includes balcony on 4th floor"
+   "note": "BR/BA/Balcony \"2/2/B\"; includes balcony on 4th floor",
+   "baths": 2
   },
   {
    "unit": "5F",
    "type": "residential",
-   "floor": "5F",
+   "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1100,
    "sf2": null,
    "ext_sf": 65,
@@ -200,15 +218,17 @@
    "tax2_m": null,
    "carry_m": 3179.29,
    "page": 35,
-   "note": "BR/BA/Balcony/Terrace code \"2/2/B\"; includes balcony on 5th floor"
+   "note": "BR/BA/Balcony \"2/2/B\"; includes balcony on 5th floor",
+   "baths": 2
   },
   {
    "unit": "6F",
    "type": "residential",
-   "floor": "6F",
+   "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1350,
    "sf2": null,
    "ext_sf": 700,
@@ -222,7 +242,8 @@
    "tax2_m": null,
    "carry_m": 3903.69,
    "page": 35,
-   "note": "BR/BA/Balcony/Terrace code \"2/2/B/T\"; duplex including penthouse floor; includes balcony on 6th floor & roof terrace on penthouse floor"
+   "note": "duplex including the penthouse floor; BR/BA/Balcony/Terrace \"2/2/B/T\"; includes balcony on 6th floor & roof terrace on penthouse floor",
+   "baths": 2
   }
  ]
 }

@@ -14,14 +14,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4523,
-   "output_tokens": 763,
-   "seconds": 81,
-   "cost_usd": 0.0083856
+   "tokens": 6095,
+   "output_tokens": 750,
+   "seconds": 9,
+   "cost_usd": 0.028876
   }
  ],
- "tokens": 4523,
- "api_equiv_usd": 0.008,
+ "tokens": 6095,
+ "api_equiv_usd": 0.029,
  "located_pages": [
   33
  ],
@@ -39,6 +39,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 9300000,
@@ -53,26 +55,29 @@
   "Offering Price",
   "Monthly Common Charges",
   "Annual Common Charges",
-  "1st Year Estimated Monthly Real Estate Taxes",
-  "1st Year Estimated Annual Real Estate Taxes",
-  "1st Year Estimated Monthly Carrying Charges",
-  "Post-Completion Estimated Monthly Real Estate Taxes",
-  "Post-Completion Estimated Annual Real Estate Taxes",
-  "Post-Completion Estimated Monthly Carrying Charges"
+  "Monthly Real Estate Taxes",
+  "Annual Real Estate Taxes",
+  "Post-Completion Monthly Carrying Charges",
+  "Post-Completion Monthly Real Estate Taxes",
+  "Post-Completion Annual Real Estate Taxes",
+  "Post-Completion Monthly Carrying Charges"
  ],
- "tax2": "post-completion monthly real estate taxes",
- "sf2": "uninhabitable sq. ftg.",
+ "tax2": "without 421-a",
+ "sf2": "uninhabitable sf",
  "printed_totals": {
   "price": 9300000,
   "pct": 100,
   "cc_m": 3047.5,
   "tax_m": 4519.33,
   "int_sf": 5415,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Ext_sf not a single printed column; Unit A has cellar ~1063sf, rear yard ~395sf, under-stoop ~75sf (limited common elements) and Unit C has roof deck ~306sf (limited common element), per footnotes — not itemized in note per instructions since these are separate areas described in footnotes rather than a single ext_sf column.",
-  "TOTALS row annual carrying charges printed as \"36,570.00\" without $ sign (possible typo in source, transcribed as printed: 36570.00) — not included in TOTAL line since not in requested columns."
+  "Carry_m (post-completion monthly carrying charges, col 12) uses tax2_m (post-completion taxes without 421-a), not tax_m; no carrying-charges column using tax_m is printed, but I placed the printed carry_m value as the closest match per column order since the instructions say carry_m should use tax_m only — treated as not matching, kept value as printed per source table but flag uncertainty.",
+  "Totals row's \"Monthly Real Estate Taxes\" annual-looking figure \"36,570.00\" under Annual Common Charges has no $ sign printed (likely a typo in source for $36,570.00); copied as printed value's digits only."
  ],
  "units": [
   {
@@ -81,7 +86,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1424,
    "sf2": 1533,
    "ext_sf": null,
@@ -95,7 +101,8 @@
    "tax2_m": 1714.35,
    "carry_m": 2327.79,
    "page": 33,
-   "note": null
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "B",
@@ -103,7 +110,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1267,
    "sf2": 0,
    "ext_sf": null,
@@ -117,7 +125,8 @@
    "tax2_m": 1201.87,
    "carry_m": 1631.93,
    "page": 33,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "C",
@@ -125,7 +134,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 908,
    "sf2": 306,
    "ext_sf": null,
@@ -139,7 +149,8 @@
    "tax2_m": 933.89,
    "carry_m": 1268.06,
    "page": 33,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "D",
@@ -147,7 +158,8 @@
    "floor": null,
    "rooms": null,
    "beds": 4,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1816,
    "sf2": 0,
    "ext_sf": null,
@@ -161,7 +173,8 @@
    "tax2_m": 1722.65,
    "carry_m": 2339.06,
    "page": 33,
-   "note": null
+   "note": null,
+   "baths": 2.5
   }
  ]
 }

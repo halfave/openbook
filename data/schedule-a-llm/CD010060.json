@@ -2,47 +2,28 @@
  "plan_id": "CD010060",
  "steps": [
   {
-   "step": "sonnet-images",
+   "step": "sonnet-text",
    "verdict": "publish_ag",
    "units": 6,
    "failed": []
   }
  ],
- "calls": 4,
+ "calls": 1,
  "call_log": [
   {
-   "model": "haiku",
-   "tokens": 12622,
-   "output_tokens": 554,
-   "seconds": 9,
-   "cost_usd": 0.024472999999999998
-  },
-  {
-   "model": "haiku",
-   "tokens": 5013,
-   "output_tokens": 97,
-   "seconds": 3,
-   "cost_usd": 0.0054009999999999996
-  },
-  {
-   "model": "haiku",
-   "tokens": 8794,
-   "output_tokens": 569,
-   "seconds": 7,
-   "cost_usd": 0.016871
-  },
-  {
    "model": "sonnet",
-   "tokens": 11484,
-   "output_tokens": 751,
-   "seconds": 10,
-   "cost_usd": 0.030715799999999998
+   "tokens": 5568,
+   "output_tokens": 809,
+   "seconds": 9,
+   "cost_usd": 0.027122
   }
  ],
- "tokens": 37913,
- "api_equiv_usd": 0.077,
- "located_pages": [],
- "text_layer": false,
+ "tokens": 5568,
+ "api_equiv_usd": 0.027,
+ "located_pages": [
+  27
+ ],
+ "text_layer": true,
  "found": true,
  "verdict": "publish_ag",
  "checks": {
@@ -56,10 +37,12 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 3150000,
- "step": "sonnet-images",
+ "step": "sonnet-text",
  "budget_period": "Commencing October 1, 2001 and Ending September 30, 2002",
  "columns_printed": [
   "Unit",
@@ -67,11 +50,11 @@
   "Percentage of Common Interest",
   "Offering Price",
   "Estimated Monthly Common Charges",
-  "Estimated Annual Common Charges",
+  "Total Estimated Annual Common Charges",
   "Estimated Monthly Real Estate Taxes",
-  "Estimated Annual Real Estate Taxes",
-  "Total Estimated Monthly Carrying Charges",
-  "Total Estimated Annual Carrying Charges"
+  "Total Estimated Annual Real Estate Taxes",
+  "Estimated Monthly Carrying Charges",
+  "Estimated Annual Carrying Charges"
  ],
  "tax2": null,
  "sf2": null,
@@ -81,10 +64,15 @@
   "cc_m": 3669,
   "tax_m": 4145.75,
   "int_sf": 18020,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Table has no \"Type,\" \"Floor,\" \"Rooms,\" or \"Bedrooms/Bathrooms\" columns as printed; left those fields blank."
+  "Unit 6 price printed as \"$2.200,000\" (period as thousands separator) — transcribed as 2200000; note asterisk refers to footnote about Caretaker Unit square footage.",
+  "Table header has no bedroom/bathroom/room columns, so beds, full_baths, half_baths, floor, rooms, pct2, ext_sf, and page-level unit letter/type suffixes are all left blank (-).",
+  "Total row labeled \"6 Units\" with total square footage 18,020 and total offering price \"$3.150,000\" (also period-separated) — transcribed as 3150000."
  ],
  "units": [
   {
@@ -93,7 +81,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 4095,
    "sf2": null,
    "ext_sf": null,
@@ -107,7 +96,8 @@
    "tax2_m": null,
    "carry_m": 1302.46,
    "page": 27,
-   "note": null
+   "note": null,
+   "baths": null
   },
   {
    "unit": "2",
@@ -115,7 +105,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 2563,
    "sf2": null,
    "ext_sf": null,
@@ -129,7 +120,8 @@
    "tax2_m": null,
    "carry_m": 1302.46,
    "page": 27,
-   "note": null
+   "note": null,
+   "baths": null
   },
   {
    "unit": "3",
@@ -137,7 +129,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 2625,
    "sf2": null,
    "ext_sf": null,
@@ -151,7 +144,8 @@
    "tax2_m": null,
    "carry_m": 1302.46,
    "page": 27,
-   "note": null
+   "note": null,
+   "baths": null
   },
   {
    "unit": "4",
@@ -159,7 +153,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 2625,
    "sf2": null,
    "ext_sf": null,
@@ -173,7 +168,8 @@
    "tax2_m": null,
    "carry_m": 1302.46,
    "page": 27,
-   "note": null
+   "note": null,
+   "baths": null
   },
   {
    "unit": "5",
@@ -181,7 +177,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 2638,
    "sf2": null,
    "ext_sf": null,
@@ -195,15 +192,17 @@
    "tax2_m": null,
    "carry_m": 1302.46,
    "page": 27,
-   "note": null
+   "note": null,
+   "baths": null
   },
   {
-   "unit": "6*",
+   "unit": "6",
    "type": "residential",
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 3474,
    "sf2": null,
    "ext_sf": null,
@@ -217,7 +216,8 @@
    "tax2_m": null,
    "carry_m": 1302.45,
    "page": 27,
-   "note": "Unit 6 includes approximately 1,200 square feet for the Caretaker Unit"
+   "note": "*",
+   "baths": null
   }
  ]
 }

@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4444,
-   "output_tokens": 490,
-   "seconds": 10,
-   "cost_usd": 0.020711999999999998
+   "tokens": 6061,
+   "output_tokens": 599,
+   "seconds": 7,
+   "cost_usd": 0.027833999999999998
   }
  ],
- "tokens": 4444,
- "api_equiv_usd": 0.021,
+ "tokens": 6061,
+ "api_equiv_usd": 0.028,
  "located_pages": [
   27
  ],
@@ -37,6 +37,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 2985000,
@@ -44,30 +46,33 @@
  "budget_period": "April 1, 2021 - March 31, 2022",
  "columns_printed": [
   "Unit",
-  "Habitable Sq. Ftg.",
-  "Other Sq. Ftg.",
-  "Bdms/Bths",
-  "% of Common Interest",
-  "Offering Price",
-  "Estimated Monthly Common Charges",
-  "Estimated Monthly Real Es. Taxes",
-  "Estimated Monthly Carrying Charges",
+  "Habitable Sq. Ftg. (1A)",
+  "Other Sq. Ftg. (1B)",
+  "Bdms/Bths (2)",
+  "% of Common Interest (3)",
+  "Offering Price (4)",
+  "Estimated Monthly Common Charges (5)",
+  "Estimated Monthly Real Es. Taxes (6)",
+  "Estimated Monthly Carrying Charges (7)",
   "Estimated Annual Common Charges",
   "Estimated Annual Real Es. Taxes",
   "Estimated Annual Carrying Charges"
  ],
  "tax2": null,
- "sf2": "other sq. ftg.",
+ "sf2": "Other Sq. Ftg.",
  "printed_totals": {
   "price": 2985000,
   "pct": 100,
   "cc_m": 1349.5,
   "tax_m": 2083,
   "int_sf": 2346,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": 6,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Other Sq. Ftg. for Unit 1 is a cellar (533 sf) per notes; Unit 3's 141 sf is a terrace limited common element, not standard \"other sq. ftg.\" interior space, but placed in sf2/Other column per table structure."
+  "Column (2) header \"Bdms/Bths\" prints combined values like \"1/1.5\" meaning 1 bedroom, 1 full bath, 0.5 (half) bath; interpreted \"1/1.5\" as beds 1, full_baths 1, half_baths 1; \"2/2\" and \"3/2\" as whole-number baths with half_baths 0. TOTALS row bath figure \"5.5\" not decomposed into full/half since it is a sum; half_baths left - in total line."
  ],
  "units": [
   {
@@ -76,7 +81,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1.5,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": 558,
    "sf2": 533,
    "ext_sf": null,
@@ -90,7 +96,8 @@
    "tax2_m": null,
    "carry_m": 1096.34,
    "page": 27,
-   "note": null
+   "note": null,
+   "baths": 1.5
   },
   {
    "unit": "2",
@@ -98,7 +105,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 719,
    "sf2": null,
    "ext_sf": null,
@@ -112,7 +120,8 @@
    "tax2_m": null,
    "carry_m": 943.25,
    "page": 27,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3",
@@ -120,7 +129,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1069,
    "sf2": 141,
    "ext_sf": null,
@@ -134,7 +144,8 @@
    "tax2_m": null,
    "carry_m": 1392.91,
    "page": 27,
-   "note": null
+   "note": null,
+   "baths": 2
   }
  ]
 }

@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4484,
-   "output_tokens": 648,
-   "seconds": 10,
-   "cost_usd": 0.02182
+   "tokens": 5840,
+   "output_tokens": 607,
+   "seconds": 6,
+   "cost_usd": 0.026998
   }
  ],
- "tokens": 4484,
- "api_equiv_usd": 0.022,
+ "tokens": 5840,
+ "api_equiv_usd": 0.027,
  "located_pages": [
   40
  ],
@@ -37,6 +37,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 4650000,
@@ -58,18 +60,21 @@
   "Monthly Real Estate Taxes",
   "Total Monthly Carrying Charges"
  ],
- "tax2": null,
- "sf2": "cellar space square footage",
+ "tax2": "-",
+ "sf2": "Cellar Space",
  "printed_totals": {
   "price": 4650000,
   "pct": 100,
   "cc_m": 2154.16,
   "tax_m": 2188.25,
   "int_sf": 3657,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Unit 1 has 2 full baths + 1 half bath (2.5 total); \"1/2 Bathroom(s) per Unit\" column value of 1 interpreted as half-bath count, added to the 2 full baths. Ext_sf not printed as a single column; Limited Common Element areas (balcony, storage, areaway, rear yard) are separate limited common elements, not standard ext_sf, so left as - per unit (note: see Limited Common Elements list per unit if needed)."
+  "Table has no \"rooms\" or \"floor\" column; left - for both. \"Limited Common Element square feet\" column exists but is not one of the specified fields, so it was not transcribed as ext_sf (ext_sf areas are listed per-unit in a separate Limited Common Elements note, not a single number); left ext_sf as -."
  ],
  "units": [
   {
@@ -78,7 +83,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 851,
    "sf2": 584,
    "ext_sf": null,
@@ -91,8 +97,9 @@
    "tax_a": 9453.24,
    "tax2_m": null,
    "carry_m": 1563.27,
-   "page": 40,
-   "note": null
+   "page": 19,
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "2",
@@ -100,7 +107,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 930,
    "sf2": 0,
    "ext_sf": null,
@@ -113,8 +121,9 @@
    "tax_a": 5601.91,
    "tax2_m": null,
    "carry_m": 926.38,
-   "page": 40,
-   "note": null
+   "page": 19,
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3",
@@ -122,7 +131,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 938,
    "sf2": 0,
    "ext_sf": null,
@@ -135,8 +145,9 @@
    "tax_a": 5601.91,
    "tax2_m": null,
    "carry_m": 926.38,
-   "page": 40,
-   "note": null
+   "page": 19,
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "4",
@@ -144,7 +155,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 938,
    "sf2": 0,
    "ext_sf": null,
@@ -157,8 +169,9 @@
    "tax_a": 5601.94,
    "tax2_m": null,
    "carry_m": 926.38,
-   "page": 40,
-   "note": null
+   "page": 19,
+   "note": null,
+   "baths": 2
   }
  ]
 }

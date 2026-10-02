@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4203,
-   "output_tokens": 595,
-   "seconds": 80,
-   "cost_usd": 0.0066752
+   "tokens": 5691,
+   "output_tokens": 575,
+   "seconds": 8,
+   "cost_usd": 0.026209999999999997
   }
  ],
- "tokens": 4203,
- "api_equiv_usd": 0.007,
+ "tokens": 5691,
+ "api_equiv_usd": 0.026,
  "located_pages": [
   34
  ],
@@ -37,6 +37,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 4800000,
@@ -49,11 +51,11 @@
   "Bdms/Bths",
   "% of Common Interest",
   "Offering Price",
-  "Monthly Common Charges",
-  "Annual Common Charges",
-  "Monthly Real Estate Taxes",
-  "Annual Real Estate Taxes",
-  "Monthly Carrying Charges"
+  "Estimated Monthly Common Charges",
+  "Estimated Annual Common Charges",
+  "Estimated Monthly Real Estate Taxes",
+  "Estimated Annual Real Estate Taxes",
+  "Estimated Monthly Carrying Charges"
  ],
  "tax2": null,
  "sf2": "uninhabitable sf",
@@ -63,10 +65,14 @@
   "cc_m": 1140.33,
   "tax_m": 1086.69,
   "int_sf": 3875,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Unit 1's bedroom/bathroom code \"2/2f1h\" was unclear so beds/baths left blank and code placed in note; Unit 1's offering price is blank/not printed in the table."
+  "Unit 1 price is blank/\"-\" in the printed table, so recorded as - per instructions.",
+  "Unit 1 Bdms/Bths printed as \"2/2f1h\" (2 bed, 2 full, 1 half); units 2-4 printed as \"2/2\" (2 bed, 2 full, 0 half)."
  ],
  "units": [
   {
@@ -74,8 +80,9 @@
    "type": "residential",
    "floor": null,
    "rooms": null,
-   "beds": null,
-   "baths": null,
+   "beds": 2,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1057,
    "sf2": 1802,
    "ext_sf": null,
@@ -89,7 +96,8 @@
    "tax2_m": null,
    "carry_m": 768.73,
    "page": 34,
-   "note": "2/2f1h; cellar accessory ~923 sf, rear yard ~783 sf (limited common element), areaway ~96 sf (limited common element)"
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "2",
@@ -97,7 +105,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 926,
    "sf2": 57,
    "ext_sf": null,
@@ -111,7 +120,8 @@
    "tax2_m": null,
    "carry_m": 479.34,
    "page": 34,
-   "note": "balcony ~57 sf (limited common element)"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3",
@@ -119,7 +129,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 943,
    "sf2": 57,
    "ext_sf": null,
@@ -133,7 +144,8 @@
    "tax2_m": null,
    "carry_m": 488,
    "page": 34,
-   "note": "balcony ~57 sf (limited common element)"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "4",
@@ -141,7 +153,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 949,
    "sf2": 57,
    "ext_sf": null,
@@ -155,7 +168,8 @@
    "tax2_m": null,
    "carry_m": 491.06,
    "page": 34,
-   "note": "balcony ~57 sf (limited common element)"
+   "note": null,
+   "baths": 2
   }
  ]
 }

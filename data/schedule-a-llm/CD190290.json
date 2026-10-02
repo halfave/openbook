@@ -12,35 +12,35 @@
  "call_log": [
   {
    "model": "haiku",
-   "tokens": 12558,
-   "output_tokens": 554,
-   "seconds": 8,
-   "cost_usd": 0.024377000000000003
+   "tokens": 12808,
+   "output_tokens": 573,
+   "seconds": 9,
+   "cost_usd": 0.024828000000000003
   },
   {
    "model": "haiku",
-   "tokens": 4947,
+   "tokens": 5161,
    "output_tokens": 97,
-   "seconds": 5,
-   "cost_usd": 0.0053349999999999995
+   "seconds": 4,
+   "cost_usd": 0.005549
   },
   {
    "model": "haiku",
-   "tokens": 8722,
-   "output_tokens": 571,
-   "seconds": 10,
-   "cost_usd": 0.016771
+   "tokens": 8944,
+   "output_tokens": 570,
+   "seconds": 7,
+   "cost_usd": 0.0171
   },
   {
    "model": "sonnet",
-   "tokens": 11344,
-   "output_tokens": 711,
-   "seconds": 84,
-   "cost_usd": 0.0192416
+   "tokens": 14227,
+   "output_tokens": 594,
+   "seconds": 10,
+   "cost_usd": 0.0352358
   }
  ],
- "tokens": 37571,
- "api_equiv_usd": 0.066,
+ "tokens": 41140,
+ "api_equiv_usd": 0.083,
  "located_pages": [],
  "text_layer": true,
  "found": true,
@@ -56,6 +56,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 6250000,
@@ -74,17 +76,20 @@
   "Annual Real Es. Taxes"
  ],
  "tax2": null,
- "sf2": "other sf",
+ "sf2": "other sq ftg (rear yard/terrace/balcony/roof/cellar storage)",
  "printed_totals": {
   "price": 6250000,
   "pct": null,
   "cc_m": 1517,
   "tax_m": 2657,
   "int_sf": 3526,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Unit 1 beds/baths printed as \"3/2.5\"; interpreted as 3 bedrooms/2.5 baths. Ext_sf not printed as a single separate column (rear yard/terrace/balcony+roof areas described only in Notes, not per-unit in table), so left as - per rule for multiple separate areas; see Note 2 for details (Unit1: 600sf yard; Unit2: 168sf terrace; Unit3: 18sf balcony+576sf roof, all within \"Other Sq. Ftg.\" column which is used as SF2). Annual real estate taxes total not printed as a single total in TOTAL row request (table shows $31,884.00 as annual tax total, but requested TOTAL line only asks for price/pct/cc_m/tax_m/int_sf/ext_sf, so omitted per instructions)."
+  "Unit 1 bath figure printed as \"2.5\" = 2 full, 1 half baths. SF2 column (\"Other Sq. Ftg.\") combines rear yard/terrace/balcony/roof and cellar storage per the notes; individual breakdown not given per unit in the table itself. Total row does not print totals for Bdms/Bths or % of Common Interest."
  ],
  "units": [
   {
@@ -93,7 +98,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1840,
    "sf2": 600,
    "ext_sf": null,
@@ -107,7 +113,8 @@
    "tax2_m": null,
    "carry_m": 2170.48,
    "page": 26,
-   "note": null
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "2",
@@ -115,7 +122,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 843,
    "sf2": 168,
    "ext_sf": null,
@@ -129,7 +137,8 @@
    "tax2_m": null,
    "carry_m": 1001.76,
    "page": 26,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3",
@@ -137,7 +146,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 843,
    "sf2": 594,
    "ext_sf": null,
@@ -151,7 +161,8 @@
    "tax2_m": null,
    "carry_m": 1001.76,
    "page": 26,
-   "note": null
+   "note": null,
+   "baths": 1
   }
  ]
 }

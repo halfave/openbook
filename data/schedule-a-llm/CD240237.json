@@ -14,14 +14,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 5281,
-   "output_tokens": 1112,
-   "seconds": 10,
-   "cost_usd": 0.027791999999999997
+   "tokens": 12593,
+   "output_tokens": 1075,
+   "seconds": 88,
+   "cost_usd": 0.0349374
   }
  ],
- "tokens": 5281,
- "api_equiv_usd": 0.028,
+ "tokens": 12593,
+ "api_equiv_usd": 0.035,
  "located_pages": [
   39
  ],
@@ -39,13 +39,15 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 8482900,
  "step": "sonnet-text",
  "budget_period": "JULY 1, 2025 TO JUNE 30, 2026",
  "columns_printed": [
-  "Unit",
+  "Unit No.",
   "Bedrooms per Unit",
   "Bathroom(s) per Unit",
   "1/2 Bathroom(s) per Unit",
@@ -61,18 +63,20 @@
   "Total Monthly Carrying Charges"
  ],
  "tax2": null,
- "sf2": "cellar space",
+ "sf2": "Cellar Space square footage",
  "printed_totals": {
   "price": 8482900,
   "pct": 100,
   "cc_m": 4013.33,
   "tax_m": 2771.42,
   "int_sf": 7497,
-  "ext_sf": 1854
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Parking Space Licenses (6 spaces at $65,000 each, assigned to units 2A-3C) are listed separately without a unified price table matching the U-line format; not transcribed as separate unit rows since they lack the required columns (sf, cc, tax, etc.).",
-  "\"1/2 Bathroom(s) per Unit\" column is all 0 for every unit, so baths reflect full baths only; no half-bath adjustments needed."
+  "Table includes a separate \"Parking Space Licenses\" list (units 2A-3C with $65,000.00 price each) and a \"Limited common areas\" list (balconies/terraces per unit); these are not part of the main residential unit price table and were not transcribed as U lines. cc_m and tax_m values appear in columns labeled \"Annual\" and tax_m under \"Monthly Real Estate Taxes\" but per-row figures were matched to header order as printed; cc_a/cc_m and tax_a/tax_m column order in source rows appears as Annual then Monthly for both common charges and taxes, which was followed exactly."
  ],
  "units": [
   {
@@ -81,7 +85,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 524,
    "sf2": 0,
    "ext_sf": null,
@@ -95,7 +100,8 @@
    "tax2_m": null,
    "carry_m": 481.72,
    "page": 39,
-   "note": "Balcony (50 sf)"
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "2B",
@@ -103,7 +109,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 526,
    "sf2": 0,
    "ext_sf": null,
@@ -117,7 +124,8 @@
    "tax2_m": null,
    "carry_m": 495.29,
    "page": 39,
-   "note": "Balcony (50 sf); Balcony (50 sf)"
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "2C",
@@ -125,7 +133,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 859,
    "sf2": 0,
    "ext_sf": null,
@@ -139,7 +148,8 @@
    "tax2_m": null,
    "carry_m": 597.06,
    "page": 39,
-   "note": "Balcony (50 sf); Balcony (50 sf)"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3A",
@@ -147,10 +157,11 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 524,
    "sf2": 0,
-   "ext_sf": 50,
+   "ext_sf": null,
    "price": 594000,
    "pct": 7.4,
    "pct2": null,
@@ -161,7 +172,8 @@
    "tax2_m": null,
    "carry_m": 502.07,
    "page": 39,
-   "note": "Balcony (50 sf); Balcony (50 sf)"
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3B",
@@ -169,10 +181,11 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 526,
    "sf2": 0,
-   "ext_sf": 50,
+   "ext_sf": null,
    "price": 597300,
    "pct": 7.5,
    "pct2": null,
@@ -183,7 +196,8 @@
    "tax2_m": null,
    "carry_m": 508.86,
    "page": 39,
-   "note": "Balcony (54 sf); Terrace (135 sf); Terrace (580 sf)"
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3C",
@@ -191,10 +205,11 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 859,
    "sf2": 0,
-   "ext_sf": 100,
+   "ext_sf": null,
    "price": 935000,
    "pct": 9.9,
    "pct2": null,
@@ -205,7 +220,8 @@
    "tax2_m": null,
    "carry_m": 671.69,
    "page": 39,
-   "note": "Balcony (50 sf); Balcony (50 sf); Terrace (585 sf)"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "4A",
@@ -213,10 +229,11 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1049,
    "sf2": 0,
-   "ext_sf": 100,
+   "ext_sf": null,
    "price": 1225000,
    "pct": 16.8,
    "pct2": null,
@@ -227,7 +244,8 @@
    "tax2_m": null,
    "carry_m": 1139.84,
    "page": 39,
-   "note": "Balcony (50 sf)"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "4B",
@@ -235,10 +253,11 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 859,
    "sf2": 0,
-   "ext_sf": 100,
+   "ext_sf": null,
    "price": 945000,
    "pct": 9.9,
    "pct2": null,
@@ -249,7 +268,8 @@
    "tax2_m": null,
    "carry_m": 671.69,
    "page": 39,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "5A",
@@ -257,10 +277,11 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 912,
    "sf2": 0,
-   "ext_sf": 769,
+   "ext_sf": null,
    "price": 1150000,
    "pct": 15.5,
    "pct2": null,
@@ -271,7 +292,8 @@
    "tax2_m": null,
    "carry_m": 1051.64,
    "page": 39,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "5B",
@@ -279,10 +301,11 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 859,
    "sf2": 0,
-   "ext_sf": 685,
+   "ext_sf": null,
    "price": 999000,
    "pct": 9.8,
    "pct2": null,
@@ -293,7 +316,8 @@
    "tax2_m": null,
    "carry_m": 664.91,
    "page": 39,
-   "note": null
+   "note": null,
+   "baths": 2
   }
  ]
 }

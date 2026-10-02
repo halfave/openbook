@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4272,
-   "output_tokens": 688,
-   "seconds": 11,
-   "cost_usd": 0.021212
+   "tokens": 5923,
+   "output_tokens": 836,
+   "seconds": 10,
+   "cost_usd": 0.028704
   }
  ],
- "tokens": 4272,
- "api_equiv_usd": 0.021,
+ "tokens": 5923,
+ "api_equiv_usd": 0.029,
  "located_pages": [
   34
  ],
@@ -37,6 +37,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 9450000,
@@ -44,16 +46,17 @@
  "budget_period": "July 1, 2023 - June 30, 2024",
  "columns_printed": [
   "Unit",
-  "Sq. Ftg. (1A)",
-  "CF Sq. Ftg. (1B)",
-  "LCE Rooms/Toilets (2)",
-  "% of Common Interest (3)",
-  "Offering Price (4)",
-  "Monthly Common Charges (5)",
-  "Monthly Real Estate Taxes (6)",
-  "Monthly Carrying Charges (7)",
-  "Annual Common Charges (8)",
-  "Annual Real Estate Taxes (8)"
+  "Sq. Ftg.",
+  "CF Sq. Ftg.",
+  "LCE Sq. Ftg.",
+  "Rooms/Toilets",
+  "% of Common Interest",
+  "Offering Price",
+  "Monthly Common Charges",
+  "Monthly Real Estate Taxes",
+  "Monthly Carrying Charges",
+  "Annual Common Charges",
+  "Annual Real Estate Taxes"
  ],
  "tax2": null,
  "sf2": "CF sq. ftg.",
@@ -63,10 +66,14 @@
   "cc_m": 3897,
   "tax_m": 11630.08,
   "int_sf": 8431,
-  "ext_sf": 855
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Column (2) \"Rooms/Toilets\" values (e.g. \"1/4\", \"1/1\") do not clearly map to rooms/beds/baths fields, so left unit's rooms/beds/baths empty and did not transcribe into those columns."
+  "Table has no bedroom/bathroom columns, only a combined \"Rooms/Toilets\" count (e.g. \"1/4\", \"1/1\"); beds and baths left blank and the raw value noted per row.",
+  "Sq. Ftg. column (1A) treated as int_sf and CF Sq. Ftg. column (1B) treated as sf2 per column headers (1)/(2); LCE Sq. Ftg. is a separate limited-common-element area not mapped to ext_sf since it represents roof space, not terrace/balcony, per the notes."
  ],
  "units": [
   {
@@ -75,7 +82,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 3046,
    "sf2": 148,
    "ext_sf": null,
@@ -89,7 +97,8 @@
    "tax2_m": null,
    "carry_m": 5537.46,
    "page": 34,
-   "note": null
+   "note": "1/4 rooms/toilets",
+   "baths": null
   },
   {
    "unit": "2",
@@ -97,7 +106,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 1077,
    "sf2": 707,
    "ext_sf": null,
@@ -111,7 +121,8 @@
    "tax2_m": null,
    "carry_m": 2251.9,
    "page": 34,
-   "note": null
+   "note": "1/1 rooms/toilets",
+   "baths": null
   },
   {
    "unit": "3",
@@ -119,7 +130,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 1077,
    "sf2": 0,
    "ext_sf": null,
@@ -133,7 +145,8 @@
    "tax2_m": null,
    "carry_m": 1934.43,
    "page": 34,
-   "note": null
+   "note": "1/1 rooms/toilets",
+   "baths": null
   },
   {
    "unit": "4",
@@ -141,7 +154,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 1077,
    "sf2": 0,
    "ext_sf": null,
@@ -155,7 +169,8 @@
    "tax2_m": null,
    "carry_m": 1934.43,
    "page": 34,
-   "note": null
+   "note": "1/1 rooms/toilets",
+   "baths": null
   },
   {
    "unit": "5",
@@ -163,7 +178,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 1077,
    "sf2": 0,
    "ext_sf": null,
@@ -177,7 +193,8 @@
    "tax2_m": null,
    "carry_m": 1934.43,
    "page": 34,
-   "note": null
+   "note": "1/1 rooms/toilets",
+   "baths": null
   },
   {
    "unit": "6",
@@ -185,7 +202,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 1077,
    "sf2": 0,
    "ext_sf": null,
@@ -199,7 +217,8 @@
    "tax2_m": null,
    "carry_m": 1934.43,
    "page": 34,
-   "note": null
+   "note": "1/1 rooms/toilets",
+   "baths": null
   }
  ]
 }

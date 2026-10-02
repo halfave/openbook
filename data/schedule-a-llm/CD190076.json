@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4263,
-   "output_tokens": 735,
-   "seconds": 8,
-   "cost_usd": 0.021457999999999998
+   "tokens": 10908,
+   "output_tokens": 840,
+   "seconds": 94,
+   "cost_usd": 0.0295424
   }
  ],
- "tokens": 4263,
- "api_equiv_usd": 0.021,
+ "tokens": 10908,
+ "api_equiv_usd": 0.03,
  "located_pages": [
   40
  ],
@@ -37,6 +37,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 6244000,
@@ -58,17 +60,20 @@
   "Total of Estimated Common Charges and Real Estate Taxes Annually"
  ],
  "tax2": null,
- "sf2": "limited common element sf",
+ "sf2": "limited common element square footage",
  "printed_totals": {
   "price": 6244000,
   "pct": 100,
   "cc_m": 3428.59,
   "tax_m": 5730.33,
   "int_sf": 7317,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "-"
+  "Bath column prints a single figure per row (e.g. \"1.5\", \"1\", \"2\"); interpreted per rules as full/half baths (1.5=1 full 1 half). BR/Bath columns are separate single-value columns, not a combined \"beds/baths\" cell."
  ],
  "units": [
   {
@@ -77,7 +82,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1.5,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": 1095,
    "sf2": 606,
    "ext_sf": null,
@@ -91,7 +97,8 @@
    "tax2_m": null,
    "carry_m": 1466.65,
    "page": 40,
-   "note": null
+   "note": null,
+   "baths": 1.5
   },
   {
    "unit": "1R",
@@ -99,7 +106,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 1.5,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": 1400,
    "sf2": 526,
    "ext_sf": null,
@@ -113,7 +121,8 @@
    "tax2_m": null,
    "carry_m": 1782.18,
    "page": 40,
-   "note": null
+   "note": null,
+   "baths": 1.5
   },
   {
    "unit": "2F",
@@ -121,7 +130,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 751,
    "sf2": 0,
    "ext_sf": null,
@@ -135,7 +145,8 @@
    "tax2_m": null,
    "carry_m": 850.55,
    "page": 40,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "2R",
@@ -143,7 +154,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 753,
    "sf2": 0,
    "ext_sf": null,
@@ -157,7 +169,8 @@
    "tax2_m": null,
    "carry_m": 852.82,
    "page": 40,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3F",
@@ -165,7 +178,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 751,
    "sf2": 0,
    "ext_sf": null,
@@ -179,7 +193,8 @@
    "tax2_m": null,
    "carry_m": 850.55,
    "page": 40,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3R",
@@ -187,7 +202,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 753,
    "sf2": 0,
    "ext_sf": null,
@@ -201,7 +217,8 @@
    "tax2_m": null,
    "carry_m": 852.82,
    "page": 40,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "4F",
@@ -209,7 +226,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 751,
    "sf2": 675,
    "ext_sf": null,
@@ -223,7 +241,8 @@
    "tax2_m": null,
    "carry_m": 1102.84,
    "page": 40,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "4R",
@@ -231,7 +250,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1063,
    "sf2": 526,
    "ext_sf": null,
@@ -245,7 +265,8 @@
    "tax2_m": null,
    "carry_m": 1400.51,
    "page": 40,
-   "note": null
+   "note": null,
+   "baths": 2
   }
  ]
 }

@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4170,
-   "output_tokens": 552,
-   "seconds": 9,
-   "cost_usd": 0.019988
+   "tokens": 5599,
+   "output_tokens": 531,
+   "seconds": 7,
+   "cost_usd": 0.025578
   }
  ],
- "tokens": 4170,
- "api_equiv_usd": 0.02,
+ "tokens": 5599,
+ "api_equiv_usd": 0.026,
  "located_pages": [
   40
  ],
@@ -37,6 +37,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 3270000,
@@ -59,17 +61,20 @@
   "Total Monthly Carrying Charges"
  ],
  "tax2": null,
- "sf2": "cellar",
+ "sf2": "Cellar Space square footage",
  "printed_totals": {
   "price": 3270000,
   "pct": 100,
   "cc_m": 2463.44,
   "tax_m": 945.75,
   "int_sf": 2967,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Ext_sf column not separately printed; limited common element sf placed in note per unit, not in ext_sf per instructions (no single terrace/balcony column distinct from limited common areas)."
+  "Limited Common Element square feet column exists but is not one of the defined output fields, so it is included only in the note."
  ],
  "units": [
   {
@@ -78,7 +83,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 1.5,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": 1019,
    "sf2": 788,
    "ext_sf": 924,
@@ -92,7 +98,8 @@
    "tax2_m": null,
    "carry_m": 1837.84,
    "page": 40,
-   "note": "Limited common areas: Rear yard (900 sf); Vestibule (24 sf)"
+   "note": "Limited common areas: Rear yard (900 sf); Vestibule (24 sf)",
+   "baths": 1.5
   },
   {
    "unit": "2",
@@ -100,7 +107,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 942,
    "sf2": 0,
    "ext_sf": 39,
@@ -114,7 +122,8 @@
    "tax2_m": null,
    "carry_m": 660.17,
    "page": 40,
-   "note": "Limited common areas: Balcony (39 sf)"
+   "note": "Limited common areas: Balcony (39 sf)",
+   "baths": 2
   },
   {
    "unit": "3",
@@ -122,7 +131,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1006,
    "sf2": 0,
    "ext_sf": 897,
@@ -136,7 +146,8 @@
    "tax2_m": null,
    "carry_m": 911.18,
    "page": 40,
-   "note": "Limited common areas: Roof terrace (897 sf)"
+   "note": "Limited common areas: Roof terrace (897 sf)",
+   "baths": 2
   }
  ]
 }

@@ -3,38 +3,23 @@
  "steps": [
   {
    "step": "sonnet-text",
-   "verdict": "hold",
-   "units": 10,
-   "failed": [
-    "outdoor"
-   ]
-  },
-  {
-   "step": "sonnet-text-retry",
    "verdict": "publish_ag",
    "units": 10,
    "failed": []
   }
  ],
- "calls": 2,
+ "calls": 1,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 5252,
-   "output_tokens": 1030,
-   "seconds": 10,
-   "cost_usd": 0.027184
-  },
-  {
-   "model": "sonnet",
-   "tokens": 5276,
-   "output_tokens": 1055,
-   "seconds": 9,
-   "cost_usd": 0.02743
+   "tokens": 6972,
+   "output_tokens": 1162,
+   "seconds": 13,
+   "cost_usd": 0.034856
   }
  ],
- "tokens": 10528,
- "api_equiv_usd": 0.055,
+ "tokens": 6972,
+ "api_equiv_usd": 0.035,
  "located_pages": [
   39
  ],
@@ -52,10 +37,12 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 31850000,
- "step": "sonnet-text-retry",
+ "step": "sonnet-text",
  "budget_period": "JULY 1, 2025 TO JUNE 30, 2026",
  "columns_printed": [
   "Unit No.",
@@ -73,17 +60,20 @@
   "Total Monthly Carrying Charges"
  ],
  "tax2": null,
- "sf2": "Cellar Space square footage",
+ "sf2": "Cellar Space",
  "printed_totals": {
   "price": 31850000,
   "pct": 100,
   "cc_m": 6803.17,
   "tax_m": 27825.25,
   "int_sf": 14625,
-  "ext_sf": null
+  "ext_sf": 2011,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Unit 1 is not listed in the table (numbering starts at C1, then 2); this may be intentional per source. ext_sf left blank for units with separate limited common areas (balcony/terrace) per rules, listed in note instead."
+  "Bedrooms/Bathroom(s) columns for unit C1 are blank/dashed in source, treated as commercial with no residential bed/bath data; ext_sf values for units 5,6,7,10 shown in notes (Terrace 800sf, Balcony 94sf) represent limited common element balcony/terrace areas, not a separate single ext_sf column, so ext_sf left as printed \"Limited Common Element square feet\" figure for all units; unit 2's Limited Common Element square footage (800.00) corresponds to a Terrace per notes but is listed under unit 10 in the narrative notes section—unit-to-note mapping for limited common areas was inferred from the order given (C1, 2, 3, 4, 5 Balcony, 6 Balcony, 7 Balcony, 8, 9, 10) and may not perfectly align with printed order; please verify against source image."
  ],
  "units": [
   {
@@ -92,7 +82,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 1881,
    "sf2": 1254,
    "ext_sf": null,
@@ -106,7 +97,8 @@
    "tax2_m": null,
    "carry_m": 3192.88,
    "page": 39,
-   "note": null
+   "note": null,
+   "baths": null
   },
   {
    "unit": "2",
@@ -114,10 +106,11 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1416,
    "sf2": null,
-   "ext_sf": null,
+   "ext_sf": 800,
    "price": 3250000,
    "pct": 13.4375,
    "pct2": null,
@@ -128,7 +121,8 @@
    "tax2_m": null,
    "carry_m": 4653.19,
    "page": 39,
-   "note": "Balcony (94 sf); Terrace (459 sf)"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3",
@@ -136,10 +130,11 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1416,
    "sf2": 0,
-   "ext_sf": null,
+   "ext_sf": 94,
    "price": 2700000,
    "pct": 9.3343,
    "pct2": null,
@@ -150,7 +145,8 @@
    "tax2_m": null,
    "carry_m": 3232.32,
    "page": 39,
-   "note": "Balcony (94 sf)"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "4",
@@ -158,10 +154,11 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1416,
    "sf2": 0,
-   "ext_sf": null,
+   "ext_sf": 94,
    "price": 2800000,
    "pct": 9.3343,
    "pct2": null,
@@ -172,7 +169,8 @@
    "tax2_m": null,
    "carry_m": 3232.32,
    "page": 39,
-   "note": "Balcony (94 sf)"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "5",
@@ -180,10 +178,11 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1416,
    "sf2": 0,
-   "ext_sf": null,
+   "ext_sf": 94,
    "price": 2910000,
    "pct": 9.3343,
    "pct2": null,
@@ -194,7 +193,8 @@
    "tax2_m": null,
    "carry_m": 3232.32,
    "page": 39,
-   "note": "Balcony (94 sf)"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "6",
@@ -202,10 +202,11 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1416,
    "sf2": 0,
-   "ext_sf": null,
+   "ext_sf": 94,
    "price": 3030000,
    "pct": 9.3343,
    "pct2": null,
@@ -216,7 +217,8 @@
    "tax2_m": null,
    "carry_m": 3232.32,
    "page": 39,
-   "note": "Balcony (94 sf)"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "7",
@@ -224,10 +226,11 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1416,
    "sf2": 0,
-   "ext_sf": null,
+   "ext_sf": 94,
    "price": 3160000,
    "pct": 9.3343,
    "pct2": null,
@@ -238,7 +241,8 @@
    "tax2_m": null,
    "carry_m": 3232.32,
    "page": 39,
-   "note": "Balcony (94 sf)"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "8",
@@ -246,10 +250,11 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1416,
    "sf2": 0,
-   "ext_sf": null,
+   "ext_sf": 94,
    "price": 3300000,
    "pct": 9.3343,
    "pct2": null,
@@ -260,7 +265,8 @@
    "tax2_m": null,
    "carry_m": 3232.32,
    "page": 39,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "9",
@@ -268,10 +274,11 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1416,
    "sf2": 0,
-   "ext_sf": null,
+   "ext_sf": 94,
    "price": 3450000,
    "pct": 9.3343,
    "pct2": null,
@@ -282,7 +289,8 @@
    "tax2_m": null,
    "carry_m": 3232.32,
    "page": 39,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "10",
@@ -290,10 +298,11 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1416,
    "sf2": 0,
-   "ext_sf": null,
+   "ext_sf": 553,
    "price": 4250000,
    "pct": 12.002,
    "pct2": null,
@@ -304,7 +313,8 @@
    "tax2_m": null,
    "carry_m": 4156.1,
    "page": 39,
-   "note": "Terrace (800 sf)"
+   "note": null,
+   "baths": 2
   }
  ]
 }

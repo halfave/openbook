@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4032,
-   "output_tokens": 545,
+   "tokens": 5464,
+   "output_tokens": 522,
    "seconds": 8,
-   "cost_usd": 0.019393999999999998
+   "cost_usd": 0.024984
   }
  ],
- "tokens": 4032,
- "api_equiv_usd": 0.019,
+ "tokens": 5464,
+ "api_equiv_usd": 0.025,
  "located_pages": [
   32
  ],
@@ -37,6 +37,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 4700000,
@@ -55,17 +57,20 @@
   "Total monthly carrying charges (7)"
  ],
  "tax2": null,
- "sf2": "Uninhabitable Space (cellar)",
+ "sf2": "uninhabitable space",
  "printed_totals": {
   "price": 4700000,
   "pct": 100,
   "cc_m": 1725.83,
   "tax_m": 3660.83,
   "int_sf": 4988.93,
-  "ext_sf": 1856
+  "ext_sf": 1856,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Unit 1 outdoor area breakdown (74 SF terrace, 2 patios 160/72 SF, 210 SF yard), Unit 2 (230 SF yard, 220 SF terrace), Unit 3 (40 SF balcony, 2 terraces 430/420 SF) printed as separate areas in footnote but single combined Outdoor Area figure used in table per unit"
+  "Bedrooms/bathrooms column prints a single combined figure \"3/3\" per row rather than separate bedroom and bathroom counts; interpreted as 3 bedrooms, 3 full baths, 0 half baths per header note (1), though the table does not explicitly label which figure is beds vs baths."
  ],
  "units": [
   {
@@ -74,7 +79,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": null,
    "int_sf": 1240.11,
    "sf2": 982.96,
    "ext_sf": 516,
@@ -88,7 +94,8 @@
    "tax2_m": null,
    "carry_m": 2005.46,
    "page": 32,
-   "note": null
+   "note": null,
+   "baths": 3
   },
   {
    "unit": "2",
@@ -96,7 +103,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": null,
    "int_sf": 1824.87,
    "sf2": 104.14,
    "ext_sf": 450,
@@ -110,7 +118,8 @@
    "tax2_m": null,
    "carry_m": 1646.16,
    "page": 32,
-   "note": null
+   "note": null,
+   "baths": 3
   },
   {
    "unit": "3",
@@ -118,7 +127,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": null,
    "int_sf": 1923.95,
    "sf2": 98.06,
    "ext_sf": 890,
@@ -132,7 +142,8 @@
    "tax2_m": null,
    "carry_m": 1735.04,
    "page": 32,
-   "note": null
+   "note": null,
+   "baths": 3
   }
  ]
 }

@@ -3,55 +3,23 @@
  "steps": [
   {
    "step": "sonnet-text",
-   "verdict": "hold",
-   "units": 8,
-   "failed": [
-    "sqftTotal"
-   ]
-  },
-  {
-   "step": "sonnet-text-retry",
-   "verdict": "hold",
-   "units": 8,
-   "failed": [
-    "sqftTotal"
-   ]
-  },
-  {
-   "step": "sonnet-images",
    "verdict": "publish_ag",
-   "units": 14,
-   "failed": [
-    "printed"
-   ]
+   "units": 8,
+   "failed": []
   }
  ],
- "calls": 3,
+ "calls": 1,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 9069,
-   "output_tokens": 1055,
-   "seconds": 84,
-   "cost_usd": 0.027379
-  },
-  {
-   "model": "sonnet",
-   "tokens": 4960,
-   "output_tokens": 957,
-   "seconds": 8,
-   "cost_usd": 0.025578
-  },
-  {
-   "model": "sonnet",
-   "tokens": 15169,
-   "output_tokens": 1468,
-   "seconds": 14,
-   "cost_usd": 0.0441186
+   "tokens": 6516,
+   "output_tokens": 926,
+   "seconds": 9,
+   "cost_usd": 0.031616
   }
  ],
- "tokens": 29198,
- "api_equiv_usd": 0.097,
+ "tokens": 6516,
+ "api_equiv_usd": 0.032,
  "located_pages": [
   38
  ],
@@ -60,19 +28,21 @@
  "verdict": "publish_ag",
  "checks": {
   "ag": true,
-  "printed": false,
+  "printed": true,
   "pct100": true,
   "ccProportional": true,
   "carrying": true,
-  "sqftTotal": true,
+  "sqftTotal": null,
   "monthlyTotals": true,
-  "psf": true,
+  "psf": null,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
- "price_total": 8790000,
- "step": "sonnet-images",
+ "price_total": 8700000,
+ "step": "sonnet-text",
  "budget_period": "JULY 1, 2025 TO JUNE 30, 2026",
  "columns_printed": [
   "Unit No.",
@@ -91,17 +61,22 @@
   "Total Monthly Carrying Charges"
  ],
  "tax2": null,
- "sf2": "cellar space",
+ "sf2": "Cellar Space",
  "printed_totals": {
   "price": 8700000,
   "pct": 100,
   "cc_m": 3742.42,
   "tax_m": 7532.75,
   "int_sf": 6991,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "1R has \"1/2 Bathroom(s) per Unit\" = 1, so baths taken as 2+0.5=2.5. \"Limited Common Element square feet\" column values (408, 1171, -, 34, 57, 57, 379, 478) placed in note text, not a defined output column. Storage licenses (S1-S6) have no unit type/size data in table; treated as separate units with only price given."
+  "Square footage column (641, 840, 845, 1285, etc.) is ambiguous as int_sf vs. a limited common/cellar figure given the table layout, but values were assigned to int_sf per column order; cellar space column assigned to sf2.",
+  "Storage Space Licenses (S1–S6, $15,000.00 each) are listed separately but have no associated unit data columns (type, beds, baths, sf, etc.); not included as U rows since they lack the required fields.",
+  "unit sizes left out: the area columns did not add up to the printed totals"
  ],
  "units": [
   {
@@ -110,9 +85,10 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
-   "int_sf": 641,
-   "sf2": 0,
+   "full_baths": 1,
+   "half_baths": 0,
+   "int_sf": null,
+   "sf2": null,
    "ext_sf": null,
    "price": 750000,
    "pct": 10.071,
@@ -124,7 +100,8 @@
    "tax2_m": null,
    "carry_m": 1135.53,
    "page": 38,
-   "note": "Front yard (408 sf); Limited Common Element 408.00 sf"
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "1R",
@@ -132,9 +109,10 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
-   "int_sf": 840,
-   "sf2": 841,
+   "full_baths": 2,
+   "half_baths": 1,
+   "int_sf": null,
+   "sf2": null,
    "ext_sf": null,
    "price": 1350000,
    "pct": 27.381,
@@ -146,7 +124,8 @@
    "tax2_m": null,
    "carry_m": 3087.25,
    "page": 38,
-   "note": "Rear yard (935 sf); Areaway (236 sf); Limited Common Element 1171.00 sf"
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "2F",
@@ -154,9 +133,10 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
-   "int_sf": 845,
-   "sf2": 0,
+   "full_baths": 2,
+   "half_baths": 0,
+   "int_sf": null,
+   "sf2": null,
    "ext_sf": null,
    "price": 945000,
    "pct": 8.1125,
@@ -168,7 +148,8 @@
    "tax2_m": null,
    "carry_m": 914.7,
    "page": 38,
-   "note": "Limited Common Element: -----"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "2R",
@@ -176,10 +157,11 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
-   "int_sf": 845,
-   "sf2": 0,
-   "ext_sf": 34,
+   "full_baths": 2,
+   "half_baths": 0,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
    "price": 995000,
    "pct": 8.4389,
    "pct2": null,
@@ -190,7 +172,8 @@
    "tax2_m": null,
    "carry_m": 951.5,
    "page": 38,
-   "note": "Balcony (34 sf)"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3F",
@@ -198,10 +181,11 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
-   "int_sf": 845,
-   "sf2": 0,
-   "ext_sf": 57,
+   "full_baths": 2,
+   "half_baths": 0,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
    "price": 1045000,
    "pct": 8.6598,
    "pct2": null,
@@ -212,7 +196,8 @@
    "tax2_m": null,
    "carry_m": 976.4,
    "page": 38,
-   "note": "Balcony (57 sf)"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3R",
@@ -220,10 +205,11 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
-   "int_sf": 845,
-   "sf2": 0,
-   "ext_sf": 57,
+   "full_baths": 2,
+   "half_baths": 0,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
    "price": 1045000,
    "pct": 8.6598,
    "pct2": null,
@@ -234,7 +220,8 @@
    "tax2_m": null,
    "carry_m": 976.4,
    "page": 38,
-   "note": "Balcony (57 sf)"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "4F",
@@ -242,10 +229,11 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
-   "int_sf": 845,
-   "sf2": 0,
-   "ext_sf": 379,
+   "full_baths": 2,
+   "half_baths": 0,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
    "price": 1095000,
    "pct": 11.7512,
    "pct2": null,
@@ -256,7 +244,8 @@
    "tax2_m": null,
    "carry_m": 1324.96,
    "page": 38,
-   "note": "Balcony (57 sf); Roof terrace (322 sf)"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "4R",
@@ -264,10 +253,11 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
-   "int_sf": 1285,
-   "sf2": 0,
-   "ext_sf": 478,
+   "full_baths": 2,
+   "half_baths": 0,
+   "int_sf": null,
+   "sf2": null,
+   "ext_sf": null,
    "price": 1475000,
    "pct": 16.9259,
    "pct2": null,
@@ -278,139 +268,8 @@
    "tax2_m": null,
    "carry_m": 1908.42,
    "page": 38,
-   "note": "Balcony (55 sf); Roof terrace (423 sf)"
-  },
-  {
-   "unit": "S1",
-   "type": "storage",
-   "floor": null,
-   "rooms": null,
-   "beds": null,
-   "baths": null,
-   "int_sf": null,
-   "sf2": null,
-   "ext_sf": null,
-   "price": 15000,
-   "pct": null,
-   "pct2": null,
-   "cc_m": null,
-   "cc_a": null,
-   "tax_m": null,
-   "tax_a": null,
-   "tax2_m": null,
-   "carry_m": null,
-   "page": 38,
-   "note": "Storage space license; no monthly fees"
-  },
-  {
-   "unit": "S2",
-   "type": "storage",
-   "floor": null,
-   "rooms": null,
-   "beds": null,
-   "baths": null,
-   "int_sf": null,
-   "sf2": null,
-   "ext_sf": null,
-   "price": 15000,
-   "pct": null,
-   "pct2": null,
-   "cc_m": null,
-   "cc_a": null,
-   "tax_m": null,
-   "tax_a": null,
-   "tax2_m": null,
-   "carry_m": null,
-   "page": 38,
-   "note": "Storage space license; no monthly fees"
-  },
-  {
-   "unit": "S3",
-   "type": "storage",
-   "floor": null,
-   "rooms": null,
-   "beds": null,
-   "baths": null,
-   "int_sf": null,
-   "sf2": null,
-   "ext_sf": null,
-   "price": 15000,
-   "pct": null,
-   "pct2": null,
-   "cc_m": null,
-   "cc_a": null,
-   "tax_m": null,
-   "tax_a": null,
-   "tax2_m": null,
-   "carry_m": null,
-   "page": 38,
-   "note": "Storage space license; no monthly fees"
-  },
-  {
-   "unit": "S4",
-   "type": "storage",
-   "floor": null,
-   "rooms": null,
-   "beds": null,
-   "baths": null,
-   "int_sf": null,
-   "sf2": null,
-   "ext_sf": null,
-   "price": 15000,
-   "pct": null,
-   "pct2": null,
-   "cc_m": null,
-   "cc_a": null,
-   "tax_m": null,
-   "tax_a": null,
-   "tax2_m": null,
-   "carry_m": null,
-   "page": 38,
-   "note": "Storage space license; no monthly fees"
-  },
-  {
-   "unit": "S5",
-   "type": "storage",
-   "floor": null,
-   "rooms": null,
-   "beds": null,
-   "baths": null,
-   "int_sf": null,
-   "sf2": null,
-   "ext_sf": null,
-   "price": 15000,
-   "pct": null,
-   "pct2": null,
-   "cc_m": null,
-   "cc_a": null,
-   "tax_m": null,
-   "tax_a": null,
-   "tax2_m": null,
-   "carry_m": null,
-   "page": 38,
-   "note": "Storage space license; no monthly fees"
-  },
-  {
-   "unit": "S6",
-   "type": "storage",
-   "floor": null,
-   "rooms": null,
-   "beds": null,
-   "baths": null,
-   "int_sf": null,
-   "sf2": null,
-   "ext_sf": null,
-   "price": 15000,
-   "pct": null,
-   "pct2": null,
-   "cc_m": null,
-   "cc_a": null,
-   "tax_m": null,
-   "tax_a": null,
-   "tax2_m": null,
-   "carry_m": null,
-   "page": 38,
-   "note": "Storage space license; no monthly fees"
+   "note": null,
+   "baths": 2
   }
  ]
 }

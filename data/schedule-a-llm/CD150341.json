@@ -12,42 +12,42 @@
  "call_log": [
   {
    "model": "haiku",
-   "tokens": 12708,
-   "output_tokens": 625,
-   "seconds": 10,
-   "cost_usd": 0.02486
+   "tokens": 12830,
+   "output_tokens": 581,
+   "seconds": 78,
+   "cost_usd": 0.0063888999999999994
   },
   {
    "model": "haiku",
-   "tokens": 5030,
-   "output_tokens": 97,
-   "seconds": 6,
-   "cost_usd": 0.005418000000000001
-  },
-  {
-   "model": "haiku",
-   "tokens": 5026,
+   "tokens": 5182,
    "output_tokens": 97,
    "seconds": 3,
-   "cost_usd": 0.005414
+   "cost_usd": 0.00557
   },
   {
    "model": "haiku",
-   "tokens": 8927,
-   "output_tokens": 575,
-   "seconds": 8,
-   "cost_usd": 0.017155999999999998
+   "tokens": 5180,
+   "output_tokens": 97,
+   "seconds": 4,
+   "cost_usd": 0.005568
+  },
+  {
+   "model": "haiku",
+   "tokens": 9098,
+   "output_tokens": 577,
+   "seconds": 5,
+   "cost_usd": 0.017423
   },
   {
    "model": "sonnet",
-   "tokens": 12035,
-   "output_tokens": 1214,
-   "seconds": 17,
-   "cost_usd": 0.0357054
+   "tokens": 15110,
+   "output_tokens": 1381,
+   "seconds": 15,
+   "cost_usd": 0.0434822
   }
  ],
- "tokens": 43726,
- "api_equiv_usd": 0.089,
+ "tokens": 47400,
+ "api_equiv_usd": 0.078,
  "located_pages": [],
  "text_layer": true,
  "found": true,
@@ -63,6 +63,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 18075000,
@@ -82,20 +84,24 @@
   "Total Estimated Monthly/Annual Carrying Charges"
  ],
  "tax2": null,
- "sf2": "storage unit SF",
+ "sf2": null,
  "printed_totals": {
   "price": 18075000,
   "pct": 100,
   "cc_m": 10169.42,
   "tax_m": 11041.67,
   "int_sf": 10518,
-  "ext_sf": 1214
+  "ext_sf": 1214,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "FIRST FLOOR unit's BR/BA printed as \"1/1, Two .5\" (interpreted as 1 bed/1.5 bath); unclear if \"Two .5\" indicates two half-baths or other meaning — recorded as 1 bed, 1.5 bath.",
-  "FIRST FLOOR limited common elements \"GARDEN*/PATIO**\" (Garden=64 sf, Patio=580 sf per footnotes) total 644 sf shown in Limited Common Elements sf column; these are separate outdoor areas (garden + patio), listed in note but ext_sf left blank per instructions since combined figure not usable as single ext_sf.",
-  "PENTHOUSE limited common element \"BALCONY***/GARAGE****\" combines balcony (77 sf) and garage (261.5 sf) into one printed figure of 339 sf; ext_sf left blank, areas noted here instead of in note column due to formatting constraint - actual note value should be \"Garden 64sf/Patio 580sf\" for FIRST FLOOR and \"Balcony 77sf/Garage 261.5sf\" for PENTHOUSE.",
-  "Storage Unit SF column (18) appears for Second-Penthouse floors but is ambiguous whether it represents storage square footage or a storage unit number; placed in sf2 per column header \"Storage Unit SF\"."
+  "Unit column lists floor names (FIRST FLOOR, SECOND FLOOR, etc.) rather than individual unit numbers/letters; no separate unit identifiers are printed in the table.",
+  "BR/BA column gives combined bedroom/bath figures (e.g. \"3/2.5\") rather than separate full/half bath columns; interpreted per rules as beds/full.half baths (3 beds, 2 full, 1 half for \"3/2.5\"; first floor \"1/1, Two .5\" interpreted as 1 bed, 1 full, and an additional \".5\" that is ambiguous — recorded as 1 full/1 half but note the unusual \"Two .5\" phrasing could not be fully resolved).",
+  "\"Approximate Square Footage of Limited Common Elements\" column (644, 77, 77, 77, 339) was placed in ext_sf as it represents garden/patio/balcony/garage areas per footnotes; Storage Unit SF column placed in sf2-equivalent but no SF2 header printed, so SF2 left blank and storage SF noted in individual row notes instead.",
+  "Total % of Common Interest for FIRST FLOOR shows 19.8% but this does not use the \"Storage Unit SF\" column (blank for that row) — copied as printed.",
+  "TOTAL line: only price, pct, cc_m, tax_m, int_sf, ext_sf are printed in the Building Total row; full_baths/half_baths/beds totals are not printed as single figures (left as -)."
  ],
  "units": [
   {
@@ -104,7 +110,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1.5,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": 1993,
    "sf2": null,
    "ext_sf": 644,
@@ -118,7 +125,8 @@
    "tax2_m": null,
    "carry_m": 4199.79,
    "page": 39,
-   "note": null
+   "note": "note: BR/BA printed as \"1/1, Two .5\"; limited common elements Garden*/Patio*",
+   "baths": 1.5
   },
   {
    "unit": "SECOND FLOOR",
@@ -126,9 +134,10 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1705,
-   "sf2": 18,
+   "sf2": null,
    "ext_sf": null,
    "price": 2800000,
    "pct": 13.7,
@@ -140,7 +149,8 @@
    "tax2_m": null,
    "carry_m": 2905.92,
    "page": 39,
-   "note": null
+   "note": "Storage Unit SF 18; no limited common elements listed",
+   "baths": 2.5
   },
   {
    "unit": "THIRD FLOOR",
@@ -148,9 +158,10 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1705,
-   "sf2": 18,
+   "sf2": null,
    "ext_sf": 77,
    "price": 2875000,
    "pct": 13.7,
@@ -162,7 +173,8 @@
    "tax2_m": null,
    "carry_m": 2905.92,
    "page": 39,
-   "note": null
+   "note": "Storage Unit SF 18; Balcony***",
+   "baths": 2.5
   },
   {
    "unit": "FOURTH FLOOR",
@@ -170,9 +182,10 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1705,
-   "sf2": 18,
+   "sf2": null,
    "ext_sf": 77,
    "price": 2950000,
    "pct": 13.7,
@@ -184,7 +197,8 @@
    "tax2_m": null,
    "carry_m": 2905.92,
    "page": 39,
-   "note": null
+   "note": "Storage Unit SF 18; Balcony***",
+   "baths": 2.5
   },
   {
    "unit": "FIFTH FLOOR",
@@ -192,9 +206,10 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1705,
-   "sf2": 18,
+   "sf2": null,
    "ext_sf": 77,
    "price": 3400000,
    "pct": 18.2,
@@ -206,7 +221,8 @@
    "tax2_m": null,
    "carry_m": 3860.42,
    "page": 39,
-   "note": null
+   "note": "Storage Unit SF 18; Balcony***",
+   "baths": 2.5
   },
   {
    "unit": "PENTHOUSE",
@@ -214,9 +230,10 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1705,
-   "sf2": 18,
+   "sf2": null,
    "ext_sf": 339,
    "price": 3700000,
    "pct": 20.9,
@@ -228,7 +245,8 @@
    "tax2_m": null,
    "carry_m": 4433.12,
    "page": 39,
-   "note": null
+   "note": "Storage Unit SF 18; Balcony***/Garage****",
+   "baths": 2.5
   }
  ]
 }

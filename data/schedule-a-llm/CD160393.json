@@ -3,23 +3,62 @@
  "steps": [
   {
    "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 4,
+   "failed": [
+    "ag",
+    "printed",
+    "pct100",
+    "sqftTotal",
+    "monthlyTotals",
+    "psf",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
+   "verdict": "not_found",
+   "units": 0,
+   "failed": [
+    "ag",
+    "printed",
+    "monthlyTotals",
+    "allRowsParsed"
+   ]
+  },
+  {
+   "step": "sonnet-images",
    "verdict": "publish_ag",
    "units": 5,
    "failed": []
   }
  ],
- "calls": 1,
+ "calls": 3,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 7367,
-   "output_tokens": 695,
-   "seconds": 90,
-   "cost_usd": 0.0209608
+   "tokens": 5717,
+   "output_tokens": 932,
+   "seconds": 12,
+   "cost_usd": 0.028456000000000002
+  },
+  {
+   "model": "sonnet",
+   "tokens": 10454,
+   "output_tokens": 880,
+   "seconds": 91,
+   "cost_usd": 0.028905
+  },
+  {
+   "model": "sonnet",
+   "tokens": 22455,
+   "output_tokens": 984,
+   "seconds": 85,
+   "cost_usd": 0.0438116
   }
  ],
- "tokens": 7367,
- "api_equiv_usd": 0.021,
+ "tokens": 38626,
+ "api_equiv_usd": 0.101,
  "located_pages": [
   30
  ],
@@ -37,23 +76,25 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 29750000,
- "step": "sonnet-text",
+ "step": "sonnet-images",
  "budget_period": "July 1, 2017 through June 30, 2018",
  "columns_printed": [
   "Unit",
   "Bdrm/Baths",
-  "Interior (s . ft.)",
-  "Exterior Storage",
-  "Common Area",
+  "Interior",
+  "Exterior",
+  "Storage Unit Floor Area (sq. ft.)",
   "Offering Price",
   "Common Interest",
-  "Monthly Common Charges",
-  "Annual Common Charges",
-  "Monthly Real Estate Taxes",
-  "Annual Real Estate Taxes",
+  "Common Charges Monthly",
+  "Common Charges Annual",
+  "Real Estate Taxes Monthly",
+  "Real Estate Taxes Annual",
   "Total Monthly Carrying Charges"
  ],
  "tax2": null,
@@ -64,12 +105,16 @@
   "cc_m": 13750,
   "tax_m": 11042,
   "int_sf": 9673,
-  "ext_sf": 1184
+  "ext_sf": 1184,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Unit 1's storage figure printed as \"88 (G) / 620 (P)\" above \"156 (G)\" — unclear which value(s) correspond to the 156 cell; transcribed storage column as printed (156 (G)) per row alignment, but 88 (G) and 620 (P) may be additional storage/parking not captured in a column.",
-  "Offering price for Unit 5 printed as \"$6,950,oaa\" (OCR artifact) — transcribed as 6950000 assuming \"oaa\" = \"000\".",
-  "Unit 1 footnote references an additional 978 sq. ft. cellar space (with powder room/\"Recreational Room\") not represented in a numbered table column; not placed in sf2 since it's a footnote, not a column value.",
+  "Unit 1 Bdrm/Baths column reads \"3/4.5\" = 3 bedrooms, 4 full baths, 1 half bath.",
+  "Unit 1 Exterior area printed as three separate figures (88 sq ft G, 620 sq ft P, 156 sq ft G) with footnote markers; left ext_sf blank and listed in note per instructions.",
+  "\"Storage Unit Floor Area\" column placed in sf2 (labeled SF2: storage) since it is the second area column printed; it is not gross/cellar interior area.",
+  "Totals row lists only price, pct, cc_m, cc_a, tax_m, tax_a, carry_m, interior sq ft, exterior sq ft (1,184), and storage sq ft (187); no totals for beds/baths printed, left as -.",
   "outdoor space left out: its column did not add up to the printed total"
  ],
  "units": [
@@ -79,9 +124,10 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 4.5,
+   "full_baths": 4,
+   "half_baths": 1,
    "int_sf": 2633,
-   "sf2": 156,
+   "sf2": 30,
    "ext_sf": null,
    "price": 7950000,
    "pct": 34,
@@ -93,7 +139,8 @@
    "tax2_m": null,
    "carry_m": 8429,
    "page": 30,
-   "note": null
+   "note": "includes 978 sq ft cellar (powder room, Recreational Room); exterior areas 88 sq ft (G), 620 sq ft (P), 156 sq ft (G)",
+   "baths": 4.5
   },
   {
    "unit": "2",
@@ -101,9 +148,10 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1760,
-   "sf2": 80,
+   "sf2": 35,
    "ext_sf": null,
    "price": 4450000,
    "pct": 14,
@@ -115,7 +163,8 @@
    "tax2_m": null,
    "carry_m": 3471,
    "page": 30,
-   "note": null
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "3",
@@ -123,9 +172,10 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1760,
-   "sf2": 80,
+   "sf2": 34,
    "ext_sf": null,
    "price": 4950000,
    "pct": 14,
@@ -137,7 +187,8 @@
    "tax2_m": null,
    "carry_m": 3471,
    "page": 30,
-   "note": null
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "4",
@@ -145,9 +196,10 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1760,
-   "sf2": 80,
+   "sf2": 34,
    "ext_sf": null,
    "price": 5450000,
    "pct": 14,
@@ -159,7 +211,8 @@
    "tax2_m": null,
    "carry_m": 3471,
    "page": 30,
-   "note": null
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "5",
@@ -167,9 +220,10 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1760,
-   "sf2": 80,
+   "sf2": 34,
    "ext_sf": null,
    "price": 6950000,
    "pct": 24,
@@ -181,7 +235,8 @@
    "tax2_m": null,
    "carry_m": 5950,
    "page": 30,
-   "note": null
+   "note": null,
+   "baths": 2.5
   }
  ]
 }

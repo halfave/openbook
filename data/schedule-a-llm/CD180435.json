@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 5321,
-   "output_tokens": 1001,
+   "tokens": 6960,
+   "output_tokens": 1135,
    "seconds": 10,
-   "cost_usd": 0.027285999999999998
+   "cost_usd": 0.034645999999999996
   }
  ],
- "tokens": 5321,
- "api_equiv_usd": 0.027,
+ "tokens": 6960,
+ "api_equiv_usd": 0.035,
  "located_pages": [
   56
  ],
@@ -37,6 +37,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 7350000,
@@ -47,7 +49,6 @@
   "Location",
   "Total Approx. Floor Area [sf]",
   "Uninhabitable Space",
-  "Balcony",
   "#Bedroom/Bathrooms",
   "Percent Common Interest",
   "Offering Price",
@@ -65,10 +66,14 @@
   "cc_m": 4602.75,
   "tax_m": 7374.25,
   "int_sf": 9320.88,
-  "ext_sf": 923.22
+  "ext_sf": 923.22,
+  "beds": 16,
+  "full_baths": 16,
+  "half_baths": null
  },
  "problems": [
-  "-"
+  "Header row prints \"#Bedroom/Bathrooms\" as a single combined column (e.g. \"2 Bedrooms/2 Bathrooms\"); full_baths taken from this combined figure, half_baths left - since none printed.",
+  "Limited Common Element square-footage lists at bottom (Balcony, Storage Locker) are separate per-unit tables not matching the schedule's ext_sf/sf2 columns one-to-one; not incorporated into U lines beyond the printed Cellar sf2 figures."
  ],
  "units": [
   {
@@ -77,7 +82,8 @@
    "floor": "First Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1296.84,
    "sf2": 410.5,
    "ext_sf": null,
@@ -91,7 +97,8 @@
    "tax2_m": null,
    "carry_m": 1666.39,
    "page": 56,
-   "note": "Cellar space [410.50 sf]; multistory unit on Cellar and 1st Floor"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "1-B",
@@ -99,7 +106,8 @@
    "floor": "First Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1408.78,
    "sf2": 512.72,
    "ext_sf": null,
@@ -113,7 +121,8 @@
    "tax2_m": null,
    "carry_m": 1810.23,
    "page": 56,
-   "note": "Cellar space [512.72 sf]; multistory unit on Cellar and 1st Floor"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "2-A",
@@ -121,7 +130,8 @@
    "floor": "Second Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1078.13,
    "sf2": null,
    "ext_sf": null,
@@ -135,7 +145,8 @@
    "tax2_m": null,
    "carry_m": 1385.36,
    "page": 56,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "2-B",
@@ -143,7 +154,8 @@
    "floor": "Second Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1141.33,
    "sf2": null,
    "ext_sf": null,
@@ -157,7 +169,8 @@
    "tax2_m": null,
    "carry_m": 1466.57,
    "page": 56,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3-A",
@@ -165,7 +178,8 @@
    "floor": "Third Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1078.37,
    "sf2": null,
    "ext_sf": null,
@@ -179,7 +193,8 @@
    "tax2_m": null,
    "carry_m": 1385.67,
    "page": 56,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3-B",
@@ -187,7 +202,8 @@
    "floor": "Third Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1141.33,
    "sf2": null,
    "ext_sf": null,
@@ -201,7 +217,8 @@
    "tax2_m": null,
    "carry_m": 1466.57,
    "page": 56,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "4-A",
@@ -209,7 +226,8 @@
    "floor": "Fourth Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 518.16,
    "sf2": null,
    "ext_sf": null,
@@ -223,7 +241,8 @@
    "tax2_m": null,
    "carry_m": 665.82,
    "page": 56,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "4-B",
@@ -231,7 +250,8 @@
    "floor": "Fourth Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 517.08,
    "sf2": null,
    "ext_sf": null,
@@ -245,7 +265,8 @@
    "tax2_m": null,
    "carry_m": 664.43,
    "page": 56,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "4-C",
@@ -253,7 +274,8 @@
    "floor": "Fourth Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 581.57,
    "sf2": null,
    "ext_sf": null,
@@ -267,7 +289,8 @@
    "tax2_m": null,
    "carry_m": 747.3,
    "page": 56,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "4-D",
@@ -275,7 +298,8 @@
    "floor": "Fourth Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": null,
    "int_sf": 559.29,
    "sf2": null,
    "ext_sf": null,
@@ -289,7 +313,8 @@
    "tax2_m": null,
    "carry_m": 718.67,
    "page": 56,
-   "note": null
+   "note": null,
+   "baths": 1
   }
  ]
 }

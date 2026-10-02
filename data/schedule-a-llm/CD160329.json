@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4107,
-   "output_tokens": 671,
+   "tokens": 5493,
+   "output_tokens": 550,
    "seconds": 9,
-   "cost_usd": 0.02045
+   "cost_usd": 0.025268
   }
  ],
- "tokens": 4107,
- "api_equiv_usd": 0.02,
+ "tokens": 5493,
+ "api_equiv_usd": 0.025,
  "located_pages": [
   28
  ],
@@ -37,6 +37,8 @@
   "psf": null,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 3373999,
@@ -45,38 +47,40 @@
  "columns_printed": [
   "Unit No.",
   "Floor Location",
-  "Approx. Total Area (I)",
-  "Approx. Outdoor/L.C.E Area (I)",
-  "No.of Bedooms/Bathrooms (2)",
-  "Offering Price (3)",
-  "Percent Common Interest (4)",
-  "Projected Monthly Common Charges (5)",
-  "Projected Real Estate Taxes (Monthly) (5)",
-  "Projected Real Estate Taxes (Annual) (5)",
-  "Projected Carrying Charges (Monthly) (6)"
+  "Approx. Total Area",
+  "Approx. L.C.E Area",
+  "No.of Bedooms/Bathrooms",
+  "Offering Price",
+  "Percent Common Interest",
+  "Projected Monthly Common Charges",
+  "Projected Real Estate Taxes (Monthly)"
  ],
  "tax2": null,
- "sf2": "cellar",
+ "sf2": null,
  "printed_totals": {
   "price": 3373999,
   "pct": 100,
   "cc_m": 2020.84,
   "tax_m": 707.37,
   "int_sf": 1788,
-  "ext_sf": 1716
+  "ext_sf": 1716,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Unit 1 floor area line shows \"1782\" then \"/Cellar 654*\" on a separate line; interpreted 1782 as interior (int_sf) and 654 as cellar (sf2). Total area column total \"1788\" vs sum of individual unit areas (1782+894+894=3570) does not match; printed total row area values (1788 and 1716) transcribed as printed without correction. Outdoor/L.C.E. area for Units 2 and 3 not separately itemized (only \"R\" roof code with no numeric area printed), so ext_sf left blank and noted.",
+  "Unit 1 total area is printed as 1782 with a separate cellar figure of 654* (marked with footnote about below-grade cellar restrictions); used 1782 as int_sf and 654 as sf2. L.C.E area column holds outdoor area (BY/T/R codes) interpreted as ext_sf. Bedrooms/Bathrooms column combined as \"4/3.5\" (beds 4, full 3, half 1), \"2/1.5\" (beds 2, full 1, half 1), \"2/2\" (beds 2, full 2, half 0).",
   "unit sizes left out: the area columns did not add up to the printed totals"
  ],
  "units": [
   {
    "unit": "1",
    "type": "residential",
-   "floor": "First Floor/Basement/Cellar",
+   "floor": "First Floor/Basement",
    "rooms": null,
    "beds": 4,
-   "baths": 3.5,
+   "full_baths": 3,
+   "half_baths": 1,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -84,13 +88,14 @@
    "pct": 50,
    "pct2": null,
    "cc_m": 1010.42,
-   "cc_a": 4244.25,
+   "cc_a": null,
    "tax_m": 353.69,
-   "tax_a": null,
+   "tax_a": 4244.25,
    "tax2_m": null,
    "carry_m": 1364.11,
    "page": 28,
-   "note": "Back Yard (BY) and Terrace (61(T)) as L.C.E."
+   "note": "BY/T",
+   "baths": 3.5
   },
   {
    "unit": "2",
@@ -98,7 +103,8 @@
    "floor": "2nd Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 1.5,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -106,13 +112,14 @@
    "pct": 25,
    "pct2": null,
    "cc_m": 505.21,
-   "cc_a": 2122.12,
+   "cc_a": null,
    "tax_m": 176.84,
-   "tax_a": null,
+   "tax_a": 2122.12,
    "tax2_m": null,
    "carry_m": 682.05,
    "page": 28,
-   "note": "Roof (R) portion as L.C.E."
+   "note": "R",
+   "baths": 1.5
   },
   {
    "unit": "3",
@@ -120,7 +127,8 @@
    "floor": "3rd Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -128,13 +136,14 @@
    "pct": 25,
    "pct2": null,
    "cc_m": 505.21,
-   "cc_a": 2122.12,
+   "cc_a": null,
    "tax_m": 176.84,
-   "tax_a": null,
+   "tax_a": 2122.12,
    "tax2_m": null,
    "carry_m": 682.05,
    "page": 28,
-   "note": "Roof (R) portion as L.C.E."
+   "note": "R",
+   "baths": 2
   }
  ]
 }

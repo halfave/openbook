@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 5067,
-   "output_tokens": 1207,
-   "seconds": 13,
-   "cost_usd": 0.027506
+   "tokens": 6579,
+   "output_tokens": 1133,
+   "seconds": 85,
+   "cost_usd": 0.012422800000000001
   }
  ],
- "tokens": 5067,
- "api_equiv_usd": 0.028,
+ "tokens": 6579,
+ "api_equiv_usd": 0.012,
  "located_pages": [
   48
  ],
@@ -37,6 +37,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 70695000,
@@ -44,7 +46,7 @@
  "budget_period": "JANUARY 1, 2017-DECEMBER 31, 2017",
  "columns_printed": [
   "UNIT NO.",
-  "BEDROOMS/ NO. BATHROOMS",
+  "BEDROOMS / NO. BATHROOMS",
   "APPROX UNIT SQ. FT.",
   "APPROX EXT. SQ. FT.",
   "STORAGE LOCKER & SIZE",
@@ -65,19 +67,23 @@
   "cc_m": 42339.17,
   "tax_m": 32067.94,
   "int_sf": 23855,
-  "ext_sf": 1622
+  "ext_sf": 1622,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Unit column entries include suffix codes (*, **, DH) that are part of the printed unit identifiers, kept in unit field; \"beds/baths\" printed as single number pairs (e.g. 5.0/4.5) not clearly labeled bedrooms/bathrooms but assumed so per column header \"NO. BEDROOMS/NO. BATHROOMS\"; RESIDENTIAL TOTAL row (23855 int_sf, 1622 ext_sf, 70695000 price, 100.0000% pct, 42339.17 cc_m, 32067.94 tax_m) used for TOTAL line since it matches unit list; GRAND TOTAL row includes non-residential (community facility) units not itemized individually in this table (30122 sf, 100.0000%, 45417.58 cc_m, 40500.00 tax_m) but omitted from TOTAL line as it includes non-residential space not itemized as U rows."
+  "Bedroom/bath column printed as single combined figures like \"5.0/4.5\"; split per rule (whole number = full baths, .5 = 1 half bath). Storage locker codes placed in note since no dedicated storage column exists in output schema. Residential common interest placed in pct, second \"COMMON INTEREST\" (overall) placed in pct2. Grand total and non-residential/community facility rows not transcribed as unit rows per instructions (only U lines for individual units); residential subtotal row also omitted from TOTAL per instructions (only one printed total row allowed) — used RESIDENTIAL TOTAL row figures for TOTAL line."
  ],
  "units": [
   {
-   "unit": "*2A",
+   "unit": "2A",
    "type": "residential",
    "floor": null,
    "rooms": null,
    "beds": 5,
-   "baths": 4.5,
+   "full_baths": 4,
+   "half_baths": 1,
    "int_sf": 3669,
    "sf2": null,
    "ext_sf": 74,
@@ -91,15 +97,17 @@
    "tax2_m": null,
    "carry_m": 11157.09,
    "page": 48,
-   "note": "Triplex; storage locker st4-48"
+   "note": "Triplex; storage locker st4-48",
+   "baths": 4.5
   },
   {
-   "unit": "**1B DH",
+   "unit": "1B DH",
    "type": "residential",
    "floor": null,
    "rooms": null,
    "beds": 5,
-   "baths": 4,
+   "full_baths": 4,
+   "half_baths": 0,
    "int_sf": 4778,
    "sf2": null,
    "ext_sf": 338,
@@ -113,7 +121,8 @@
    "tax2_m": null,
    "carry_m": 14755.94,
    "page": 48,
-   "note": "Duplex, Double Height; storage locker st2-65"
+   "note": "Duplex, Double Height; storage locker st2-65",
+   "baths": 4
   },
   {
    "unit": "2B",
@@ -121,7 +130,8 @@
    "floor": null,
    "rooms": null,
    "beds": 4,
-   "baths": 3.5,
+   "full_baths": 3,
+   "half_baths": 1,
    "int_sf": 2619,
    "sf2": null,
    "ext_sf": null,
@@ -135,15 +145,17 @@
    "tax2_m": null,
    "carry_m": 7986.95,
    "page": 48,
-   "note": "storage locker st6-47"
+   "note": "storage locker st6-47; no ext sf printed",
+   "baths": 3.5
   },
   {
-   "unit": "**3A",
+   "unit": "3A",
    "type": "residential",
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": 0,
    "int_sf": 2743,
    "sf2": null,
    "ext_sf": null,
@@ -157,7 +169,8 @@
    "tax2_m": null,
    "carry_m": 8406.19,
    "page": 48,
-   "note": "Duplex; storage locker st7-65"
+   "note": "Duplex; storage locker st7-65; no ext sf printed",
+   "baths": 3
   },
   {
    "unit": "3B",
@@ -165,7 +178,8 @@
    "floor": null,
    "rooms": null,
    "beds": 4,
-   "baths": 3.5,
+   "full_baths": 3,
+   "half_baths": 1,
    "int_sf": 2616,
    "sf2": null,
    "ext_sf": null,
@@ -179,15 +193,17 @@
    "tax2_m": null,
    "carry_m": 8032.66,
    "page": 48,
-   "note": "storage locker st1-47"
+   "note": "storage locker st1-47; no ext sf printed",
+   "baths": 3.5
   },
   {
-   "unit": "**3C DH",
+   "unit": "3C DH",
    "type": "residential",
    "floor": null,
    "rooms": null,
    "beds": 5,
-   "baths": 4.5,
+   "full_baths": 4,
+   "half_baths": 1,
    "int_sf": 3757,
    "sf2": null,
    "ext_sf": null,
@@ -201,15 +217,17 @@
    "tax2_m": null,
    "carry_m": 11682.51,
    "page": 48,
-   "note": "Duplex, Double Height; storage locker st5-65"
+   "note": "Duplex, Double Height; storage locker st5-65; no ext sf printed",
+   "baths": 4.5
   },
   {
-   "unit": "**PH",
+   "unit": "PH",
    "type": "residential",
    "floor": null,
    "rooms": null,
    "beds": 4,
-   "baths": 4.5,
+   "full_baths": 4,
+   "half_baths": 1,
    "int_sf": 3673,
    "sf2": null,
    "ext_sf": 1210,
@@ -223,7 +241,8 @@
    "tax2_m": null,
    "carry_m": 12385.76,
    "page": 48,
-   "note": "Duplex; storage locker st3-65"
+   "note": "Duplex; storage locker st3-65",
+   "baths": 4.5
   }
  ]
 }

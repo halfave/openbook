@@ -12,37 +12,37 @@
  "call_log": [
   {
    "model": "haiku",
-   "tokens": 12695,
-   "output_tokens": 609,
-   "seconds": 8,
-   "cost_usd": 0.024786999999999997
+   "tokens": 12800,
+   "output_tokens": 567,
+   "seconds": 6,
+   "cost_usd": 0.024792
   },
   {
    "model": "haiku",
-   "tokens": 5005,
+   "tokens": 5163,
    "output_tokens": 97,
    "seconds": 3,
-   "cost_usd": 0.005393
+   "cost_usd": 0.005551
   },
   {
    "model": "haiku",
-   "tokens": 8764,
-   "output_tokens": 554,
-   "seconds": 6,
-   "cost_usd": 0.016766
+   "tokens": 8954,
+   "output_tokens": 570,
+   "seconds": 5,
+   "cost_usd": 0.017115
   },
   {
    "model": "sonnet",
-   "tokens": 11478,
-   "output_tokens": 695,
-   "seconds": 10,
-   "cost_usd": 0.030348200000000002
+   "tokens": 14348,
+   "output_tokens": 675,
+   "seconds": 12,
+   "cost_usd": 0.0362172
   }
  ],
- "tokens": 37942,
- "api_equiv_usd": 0.077,
+ "tokens": 41265,
+ "api_equiv_usd": 0.084,
  "located_pages": [],
- "text_layer": false,
+ "text_layer": true,
  "found": true,
  "verdict": "publish_ag",
  "checks": {
@@ -56,6 +56,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 1460000,
@@ -79,10 +81,13 @@
   "cc_m": 451.66,
   "tax_m": 427.77,
   "int_sf": 3516,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Bdrs/Bths column prints combined code (e.g. \"2/1\") interpreted as beds/baths per rules; int_sf column header says \"Approx. Sq. Ft. of Unit\" with no separate gross/ext column, so ext_sf left blank except balcony units noted in text only (no numeric balcony sf printed)."
+  "Bdrs/Bths column gives combined figures (e.g. \"2/1\", \"3/2\", \"4/2\"); interpreted as beds/full_baths per column header, half_baths set to 0 as no half-bath column or figure is printed."
  ],
  "units": [
   {
@@ -91,7 +96,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 645,
    "sf2": null,
    "ext_sf": null,
@@ -105,7 +111,8 @@
    "tax2_m": null,
    "carry_m": 211.06,
    "page": 20,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "2",
@@ -113,7 +120,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 950,
    "sf2": null,
    "ext_sf": null,
@@ -127,7 +135,8 @@
    "tax2_m": null,
    "carry_m": 290.21,
    "page": 20,
-   "note": "open balcony"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3",
@@ -135,7 +144,8 @@
    "floor": null,
    "rooms": null,
    "beds": 4,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1005,
    "sf2": null,
    "ext_sf": null,
@@ -149,7 +159,8 @@
    "tax2_m": null,
    "carry_m": 307.8,
    "page": 20,
-   "note": "two open balconies"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "PS1",
@@ -157,7 +168,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 201,
    "sf2": null,
    "ext_sf": null,
@@ -171,7 +183,8 @@
    "tax2_m": null,
    "carry_m": 13.19,
    "page": 20,
-   "note": null
+   "note": null,
+   "baths": null
   },
   {
    "unit": "PS2",
@@ -179,7 +192,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 258,
    "sf2": null,
    "ext_sf": null,
@@ -193,7 +207,8 @@
    "tax2_m": null,
    "carry_m": 24.18,
    "page": 20,
-   "note": null
+   "note": null,
+   "baths": null
   },
   {
    "unit": "Rear Yard",
@@ -201,7 +216,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 457,
    "sf2": null,
    "ext_sf": null,
@@ -215,7 +231,8 @@
    "tax2_m": null,
    "carry_m": 32.98,
    "page": 20,
-   "note": null
+   "note": null,
+   "baths": null
   }
  ]
 }

@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4156,
-   "output_tokens": 542,
-   "seconds": 7,
-   "cost_usd": 0.019872
+   "tokens": 5739,
+   "output_tokens": 622,
+   "seconds": 10,
+   "cost_usd": 0.026684
   }
  ],
- "tokens": 4156,
- "api_equiv_usd": 0.02,
+ "tokens": 5739,
+ "api_equiv_usd": 0.027,
  "located_pages": [
   32
  ],
@@ -37,6 +37,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 5047000,
@@ -56,17 +58,21 @@
   "Projected Total Monthly Carrying Charges"
  ],
  "tax2": null,
- "sf2": "limited common elements",
+ "sf2": null,
  "printed_totals": {
   "price": 5047000,
   "pct": 100,
   "cc_m": 1757.08,
   "tax_m": 1062.25,
   "int_sf": 3706.08,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Column 4 (\"Approximate area of Limited Common Elements\") placed in sf2 per instructions since int_sf (interior area) is the main habitable figure; ext_sf left blank as the limited common elements figures (yard, roof deck, storage, fire escape) are multiple separate areas already detailed in the source text, not a single ext_sf number."
+  "full_baths/half_baths: only a single combined \"Number of Bathrooms\" column is printed (e.g. \"2\"); no full/half split given, so full_baths copied as printed and half_baths set to -.",
+  "int_sf/sf2: Units 1 and 3 print interior area as a sum of multiple components (e.g. \"900.06 + 724.15 (Cellar) = 1,624.21 Sq.Ft.\"); the total interior figure was placed in int_sf and the Limited Common Elements area (also a sum) placed in sf2, per column headers."
  ],
  "units": [
   {
@@ -75,7 +81,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1624.21,
    "sf2": 871.95,
    "ext_sf": null,
@@ -89,7 +96,8 @@
    "tax2_m": null,
    "carry_m": 1088.82,
    "page": 32,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "2",
@@ -97,7 +105,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 905.69,
    "sf2": 56.47,
    "ext_sf": null,
@@ -111,7 +120,8 @@
    "tax2_m": null,
    "carry_m": 753.61,
    "page": 32,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3",
@@ -119,7 +129,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1176.18,
    "sf2": 237.17,
    "ext_sf": null,
@@ -133,7 +144,8 @@
    "tax2_m": null,
    "carry_m": 976.9,
    "page": 32,
-   "note": null
+   "note": null,
+   "baths": 2
   }
  ]
 }

@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4256,
-   "output_tokens": 653,
-   "seconds": 8,
-   "cost_usd": 0.020938
+   "tokens": 5948,
+   "output_tokens": 837,
+   "seconds": 9,
+   "cost_usd": 0.02881
   }
  ],
- "tokens": 4256,
- "api_equiv_usd": 0.021,
+ "tokens": 5948,
+ "api_equiv_usd": 0.029,
  "located_pages": [
   37
  ],
@@ -37,6 +37,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 6400000,
@@ -59,17 +61,20 @@
   "Total Monthly Carrying Charges"
  ],
  "tax2": null,
- "sf2": "cellar space square footage",
+ "sf2": "cellar",
  "printed_totals": {
   "price": 6400000,
   "pct": 100,
   "cc_m": 2178.17,
   "tax_m": 2773.92,
   "int_sf": 3978,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Bathroom(s) per Unit for unit 1 printed as \"1\" with 1/2 Bathroom(s) column printed as \"1\" as well, interpreted as 1 full + 1 half = 1.5 baths based on column layout."
+  "Common charges columns are printed as Annual then Monthly; cc_m/cc_a assigned accordingly. \"Limited Common Element square feet\" column treated as sf2/cellar per unit 1 note despite listing non-cellar areas in notes; unit 1's 597 figure and others appear to be limited common element sf, not strictly cellar, but matches \"Cellar Space square footage\" header position for unit 1 only (509) - two separate numeric columns (845/509 vs 597) exist; interpreted 845 as Square footage (int_sf), 509 as Cellar Space (sf2) for unit 1 only, and 597/23/68/374 as Limited Common Element square feet, placed in note via listed limited common areas instead of a numeric column since no clean slot remained."
  ],
  "units": [
   {
@@ -78,7 +83,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1.5,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": 845,
    "sf2": 509,
    "ext_sf": 597,
@@ -92,7 +98,8 @@
    "tax2_m": null,
    "carry_m": 1160.65,
    "page": 37,
-   "note": "Rear yard (503 sf); Areaway (94 sf)"
+   "note": "Rear yard (503 sf); Areaway (94 sf)",
+   "baths": 1.5
   },
   {
    "unit": "2",
@@ -100,7 +107,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 999,
    "sf2": 0,
    "ext_sf": 23,
@@ -114,7 +122,8 @@
    "tax2_m": null,
    "carry_m": 1160.64,
    "page": 37,
-   "note": "Storage (23 sf)"
+   "note": "Storage (23 sf)",
+   "baths": 2
   },
   {
    "unit": "3",
@@ -122,7 +131,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1000,
    "sf2": 0,
    "ext_sf": 68,
@@ -136,7 +146,8 @@
    "tax2_m": null,
    "carry_m": 1238.02,
    "page": 37,
-   "note": "Storage (23 sf); Balcony (45 sf)"
+   "note": "Storage (23 sf); Balcony (45 sf)",
+   "baths": 2
   },
   {
    "unit": "4",
@@ -144,7 +155,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1134,
    "sf2": 0,
    "ext_sf": 374,
@@ -158,7 +170,8 @@
    "tax2_m": null,
    "carry_m": 1392.77,
    "page": 37,
-   "note": "Storage (23 sf); Balcony (45 sf); Roof Terrace (306 sf)"
+   "note": "Storage (23 sf); Balcony (45 sf); Roof Terrace (306 sf)",
+   "baths": 2
   }
  ]
 }

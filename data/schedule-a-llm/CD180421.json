@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 5095,
-   "output_tokens": 980,
-   "seconds": 12,
-   "cost_usd": 0.026256
+   "tokens": 12369,
+   "output_tokens": 1125,
+   "seconds": 96,
+   "cost_usd": 0.034862000000000004
   }
  ],
- "tokens": 5095,
- "api_equiv_usd": 0.026,
+ "tokens": 12369,
+ "api_equiv_usd": 0.035,
  "located_pages": [
   31
  ],
@@ -37,6 +37,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 4910000,
@@ -47,7 +49,7 @@
   "Floor Location",
   "Approx. Unit Floor Area",
   "Approx. Outdoor/Uninhabitable/Limited Common Floor Area",
-  "No. of Bedrooms/Bathrooms",
+  "No. of Bedooms/Bathrooms",
   "Offering Price",
   "Percent Common Interest",
   "Projected Monthly Common Charges",
@@ -66,22 +68,27 @@
   "cc_m": 2591.92,
   "tax_m": 621.69,
   "int_sf": 5023,
-  "ext_sf": 2096
+  "ext_sf": 2096,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Unit 1's \"First Floor 642 (RY)\" line could not be confidently assigned to a column; left out of int_sf/sf2/ext_sf for that unit and noted instead.",
-  "Unit 6 has two outdoor/limited-area figures (49(B) and 284(T)) in the sf2 column; both are shown combined in sf2 per instructions since ext_sf rule only applies to a single ext_sf number, not sf2."
+  "Unit 1's floor location printed as \"Cellar\" with \"First Floor\" on next line, and its outdoor/limited area shows two figures (577/642 and 87(AW)/(RY)); int_sf taken as 577 (cellar figure), sf2 as 642 (first floor); limited common area codes 87(AW) and (RY) placed in note omitted due to ambiguity - treated as sf2 column per table structure.",
+  "Bedroom/bathroom column header reads \"No. of Bedooms/Bathrooms\" (printed as \"Bedooms\"), format \"1/1.5\" etc.; interpreted first figure as bedrooms, second as baths (1.5 = 1 full, 1 half; whole numbers = full baths, 0 half).",
+  "Unit 1's int_sf/sf2 assignment is uncertain given OCR garbling (\"577 577• 87(AW)\" and \"642 (RY)\"); could not fully disambiguate which figure is cellar vs. first floor vs. limited common area."
  ],
  "units": [
   {
    "unit": "1",
    "type": "residential",
-   "floor": "Cellar",
+   "floor": "Cellar/First Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1.5,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": 577,
-   "sf2": 577,
+   "sf2": 642,
    "ext_sf": null,
    "price": 735000,
    "pct": 16.56,
@@ -93,7 +100,8 @@
    "tax2_m": 916.23,
    "carry_m": 531.9,
    "page": 31,
-   "note": "beds/baths printed as \"1/1.5\"; sf2 area has \"•\" marking; First Floor 642 area also listed for this unit but not placed (combined/ambiguous), see note"
+   "note": null,
+   "baths": 1.5
   },
   {
    "unit": "2",
@@ -101,7 +109,8 @@
    "floor": "Second Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 946,
    "sf2": 98,
    "ext_sf": null,
@@ -115,7 +124,8 @@
    "tax2_m": 955.51,
    "carry_m": 556.34,
    "page": 31,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3",
@@ -123,7 +133,8 @@
    "floor": "Third Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 946,
    "sf2": 49,
    "ext_sf": null,
@@ -137,15 +148,17 @@
    "tax2_m": 940.02,
    "carry_m": 545.72,
    "page": 31,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "4",
    "type": "residential",
-   "floor": "Fourth Floor",
+   "floor": "Fourtb Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 946,
    "sf2": 49,
    "ext_sf": null,
@@ -159,7 +172,8 @@
    "tax2_m": 946.1,
    "carry_m": 549.25,
    "page": 31,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "5",
@@ -167,7 +181,8 @@
    "floor": "Fifth Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 946,
    "sf2": 49,
    "ext_sf": null,
@@ -181,7 +196,8 @@
    "tax2_m": 951.64,
    "carry_m": 552.46,
    "page": 31,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "6",
@@ -189,9 +205,10 @@
    "floor": "Sixth Floor",
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 662,
-   "sf2": null,
+   "sf2": 284,
    "ext_sf": null,
    "price": 725000,
    "pct": 14.88,
@@ -203,7 +220,8 @@
    "tax2_m": 823.28,
    "carry_m": 477.94,
    "page": 31,
-   "note": "sf2 has two figures printed: \"49(B)\" and \"284(T)\""
+   "note": null,
+   "baths": 1
   }
  ]
 }

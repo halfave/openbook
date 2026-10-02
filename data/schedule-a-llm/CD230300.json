@@ -11,50 +11,30 @@
   },
   {
    "step": "sonnet-images",
-   "verdict": "not_found",
-   "units": 0,
-   "failed": [
-    "ag",
-    "printed",
-    "sqftTotal",
-    "monthlyTotals",
-    "allRowsParsed",
-    "outdoor"
-   ]
-  },
-  {
-   "step": "sonnet-images-think",
    "verdict": "publish_ag",
    "units": 6,
    "failed": []
   }
  ],
- "calls": 3,
+ "calls": 2,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 3981,
-   "output_tokens": 183,
-   "seconds": 3,
-   "cost_usd": 0.017018
+   "tokens": 5958,
+   "output_tokens": 575,
+   "seconds": 78,
+   "cost_usd": 0.0068302
   },
   {
    "model": "sonnet",
-   "tokens": 14934,
-   "output_tokens": 1651,
-   "seconds": 17,
-   "cost_usd": 0.04507080000000001
-  },
-  {
-   "model": "sonnet",
-   "tokens": 45076,
-   "output_tokens": 9491,
-   "seconds": 581,
-   "cost_usd": 0.2016784
+   "tokens": 36865,
+   "output_tokens": 4646,
+   "seconds": 45,
+   "cost_usd": 0.1080602
   }
  ],
- "tokens": 63991,
- "api_equiv_usd": 0.264,
+ "tokens": 42823,
+ "api_equiv_usd": 0.115,
  "located_pages": [
   43
  ],
@@ -72,10 +52,12 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 15994800,
- "step": "sonnet-images-think",
+ "step": "sonnet-images",
  "budget_period": "September 1, 2024 through August 31, 2025",
  "columns_printed": [
   "Unit",
@@ -99,28 +81,34 @@
   "Total Estimated Annual Carrying Charges"
  ],
  "tax2": null,
- "sf2": "mezzanine",
+ "sf2": null,
  "printed_totals": {
   "price": 15994800,
   "pct": 100,
   "cc_m": 9906,
   "tax_m": 5289.25,
   "int_sf": 9453,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Table's \"Total Square Footage Including Limited Common Elements\" column for 2B, PHA, PHB was not legibly readable at print resolution; values (2330, 2180, 2091 respectively) were derived arithmetically from the printed component columns (interior sf, roof/terrace/patio/rear-yard sf) and cross-checked against the printed grand total of 12,580, which matches exactly."
+  "Table has only a single \"Number of Baths\" column (no separate full/half columns); single-figure baths (2, 1.5, 2.5) interpreted per rules: whole number = full baths/0 half, X.5 = X full/1 half.",
+  "Multiple separate outdoor/limited-common-element area columns (mezzanine, roof, terrace, patio, rear yard) are printed per unit; ext_sf left blank per rules since more than one area is listed, with the figures noted per row instead.",
+  "int_sf is not printed as a single per-unit figure; it was computed here as the sum of the printed floor-level square footages (e.g., Cellar+1st Floor) per the rule to use the interior/habitable figure, excluding the \"Total Square Footage Including Limited Common Elements\" column."
  ],
  "units": [
   {
    "unit": "1A",
    "type": "residential",
-   "floor": "Cellar, 1st Floor",
+   "floor": "Cellar/1st Floor",
    "rooms": null,
    "beds": 0,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1301,
-   "sf2": 0,
+   "sf2": null,
    "ext_sf": null,
    "price": 1951500,
    "pct": 10.342,
@@ -132,17 +120,19 @@
    "tax2_m": null,
    "carry_m": 1571.49,
    "page": 43,
-   "note": null
+   "note": "interior sf=638+663=1301; mezzanine/roof/terrace/patio/rear yard all 0",
+   "baths": 2
   },
   {
    "unit": "TH",
    "type": "residential",
-   "floor": "Cellar, 1st Floor",
+   "floor": "Cellar/1st Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 2699,
-   "sf2": 367,
+   "sf2": null,
    "ext_sf": null,
    "price": 4599000,
    "pct": 29.404,
@@ -154,7 +144,8 @@
    "tax2_m": null,
    "carry_m": 4468,
    "page": 43,
-   "note": "patio 129, rear yard 504"
+   "note": "Baths=2.5; mezzanine 367, roof 0, patio 129, rear yard 504 (multiple limited common areas; total sf 3699); interior sf=1,206+1,493=2,699",
+   "baths": 2.5
   },
   {
    "unit": "2A",
@@ -162,9 +153,10 @@
    "floor": "2nd Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 1.5,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": 979,
-   "sf2": 0,
+   "sf2": null,
    "ext_sf": null,
    "price": 1566400,
    "pct": 7.782,
@@ -176,7 +168,8 @@
    "tax2_m": null,
    "carry_m": 1182,
    "page": 43,
-   "note": null
+   "note": "Baths=1.5",
+   "baths": 1.5
   },
   {
    "unit": "2B",
@@ -184,9 +177,10 @@
    "floor": "2nd Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 1.5,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": 1512,
-   "sf2": 0,
+   "sf2": null,
    "ext_sf": null,
    "price": 2419200,
    "pct": 12.019,
@@ -198,17 +192,19 @@
    "tax2_m": null,
    "carry_m": 1826,
    "page": 43,
-   "note": "roof 818"
+   "note": "Baths=1.5",
+   "baths": 1.5
   },
   {
    "unit": "PHA",
    "type": "residential",
-   "floor": "3rd Floor, 4th Floor",
+   "floor": "3rd Floor/4th Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1530,
-   "sf2": 0,
+   "sf2": null,
    "ext_sf": null,
    "price": 2754000,
    "pct": 18.665,
@@ -220,17 +216,19 @@
    "tax2_m": null,
    "carry_m": 2836,
    "page": 43,
-   "note": "roof 650"
+   "note": "roof 818; interior sf=910+620=1530; total sf 2348",
+   "baths": 2
   },
   {
    "unit": "PHB",
    "type": "residential",
-   "floor": "3rd Floor, 4th Floor",
+   "floor": "3rd Floor/4th Floor",
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1432,
-   "sf2": 0,
+   "sf2": null,
    "ext_sf": null,
    "price": 2704700,
    "pct": 21.788,
@@ -242,7 +240,8 @@
    "tax2_m": null,
    "carry_m": 3311,
    "page": 43,
-   "note": "terrace 659"
+   "note": "roof 650, terrace 659 (multiple limited common areas); interior sf=901+531=1432; total sf 2741",
+   "baths": 2
   }
  ]
 }

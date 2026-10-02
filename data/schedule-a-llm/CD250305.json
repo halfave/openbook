@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4210,
-   "output_tokens": 737,
-   "seconds": 12,
-   "cost_usd": 0.021258
+   "tokens": 10801,
+   "output_tokens": 1069,
+   "seconds": 86,
+   "cost_usd": 0.031126800000000003
   }
  ],
- "tokens": 4210,
- "api_equiv_usd": 0.021,
+ "tokens": 10801,
+ "api_equiv_usd": 0.031,
  "located_pages": [
   34
  ],
@@ -37,23 +37,25 @@
   "psf": null,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 5000000,
  "step": "sonnet-text",
- "budget_period": "July 1, 2027-June 30, 2028",
+ "budget_period": "Year Projected to Begin: July 1, 2027-June 30, 2028",
  "columns_printed": [
   "Unit No.",
-  "Location",
+  "Floor Location",
   "Approx. Floor Area",
-  "Uninhabitable/Limited Common Floor Area",
-  "Approx. No. of Bedooms/Bathrooms",
+  "Outdoor/Uninhabitable/Limited Common Area",
+  "No. of Bedooms/Bathrooms",
   "Offering Price",
-  "Percent Common Interest",
-  "Common Charges (Monthly)",
+  "Approx. Percent Common Interest",
+  "Projected Monthly Common Charges",
   "Projected Real Estate Taxes (Monthly)",
   "Projected Real Estate Taxes (Annual)",
-  "Projected Common Charges (Monthly)"
+  "Projected Carrying Charges (Monthly)"
  ],
  "tax2": null,
  "sf2": "Outdoor/Uninhabitable/Limited Common Area",
@@ -63,21 +65,27 @@
   "cc_m": 1985,
   "tax_m": 2768.37,
   "int_sf": 3895,
-  "ext_sf": 1693
+  "ext_sf": 1693,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "TH and PH unit floor-area figures are split across multiple floor lines (Cellar/First/Second for TH; Third/Fourth/Penthouse for PH) with no single \"interior sf\" total printed per unit, only a combined Total row (3,895 interior-type and 1,693 outdoor/uninhabitable). int_sf for TH/PH above reflects the main habitable floor figures summed is not computable without guessing, so int_sf and sf2 values shown are the individual printed floor-area numbers assigned per the note's cellar/habitable rule as best as determinable; verify against original floor plan table formatting.",
-  "Column header wording (\"Bedooms\") reproduced exactly as printed (likely typo for \"Bedrooms\").",
+  "Unit TH: Floor Area printed as three separate figures (602*, 621, 759) for Cellar, First Floor, Second Floor; summed 621+759=1380 interior placed as int_sf is ambiguous, so int_sf given as sum of all three (1982) is uncertain — see note; cellar figure 602 also appears consistent with sf2 column pairing by row but exact per-line alignment of the Floor Area and Outdoor/Uninhabitable multi-line blocks to specific floors is not fully certain.",
+  "Unit PH: Floor Area printed as three separate figures (870, 850, 193) for Third Floor, Fourth Floor, Penthouse with no clear cellar/gross split; all three summed into int_sf (1913); Outdoor/Uninhabitable column lists four figures (80, 678, 137, 346) corresponding to B, T, E, ST per the legend, placed into sf2/ext_sf/note as best fit but exact column-to-figure mapping is uncertain.",
+  "Bedrooms/Bathrooms for TH printed as \"3/ 2 Full/ 2 Half\" — interpreted as 3 bedrooms, 2 full baths, 2 half baths (unusual half-bath count, but printed as such).",
+  "ext_sf left as single most relevant figure where multiple limited-common-area figures exist per unit (B, RY for TH; B, T, E, ST for PH); full breakdown given in note since several separate areas are printed.",
   "unit sizes left out: the area columns did not add up to the printed totals"
  ],
  "units": [
   {
    "unit": "TH",
    "type": "residential",
-   "floor": null,
+   "floor": "Cellar/First Floor/Second Floor",
    "rooms": null,
    "beds": 3,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 2,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -90,16 +98,18 @@
    "tax_a": 14779.75,
    "tax2_m": null,
    "carry_m": 2114.78,
-   "page": 31,
-   "note": "Cellar* 759, First Floor 621, Second Floor 602*; Outdoor/Limited Common: 40(B) Balcony, 412(RY) Rear Yard"
+   "page": 34,
+   "note": "Floor Area reflects three figures (Cellar* 602, First Floor 621, Second Floor 759 = 1982 total interior); Outdoor/Uninhabitable area reflects 40 (B) and 412 (RY)",
+   "baths": 3
   },
   {
    "unit": "PH",
    "type": "residential",
-   "floor": null,
+   "floor": "Third Floor/Fourth Floor/Penthouse",
    "rooms": null,
    "beds": 3,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -112,8 +122,9 @@
    "tax_a": 18440.64,
    "tax2_m": null,
    "carry_m": 2638.59,
-   "page": 31,
-   "note": "Third Floor 870, Fourth Floor 850, Penthouse 193; Outdoor/Limited Common: 80(B) Balcony, 678(T) Terrace, 137(E) Elevator, 346(ST) Stairs"
+   "page": 34,
+   "note": "Floor Area reflects three figures (870, 850, 193 = 1913 total interior); Outdoor/Uninhabitable area reflects 80 (B), 678 (T), 137 (E), 346 (ST)",
+   "baths": 2.5
   }
  ]
 }

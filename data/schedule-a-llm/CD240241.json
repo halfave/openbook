@@ -12,35 +12,35 @@
  "call_log": [
   {
    "model": "haiku",
-   "tokens": 12629,
-   "output_tokens": 612,
-   "seconds": 7,
-   "cost_usd": 0.024697000000000004
+   "tokens": 12854,
+   "output_tokens": 605,
+   "seconds": 8,
+   "cost_usd": 0.025011000000000002
   },
   {
    "model": "haiku",
-   "tokens": 4943,
+   "tokens": 5175,
    "output_tokens": 97,
    "seconds": 3,
-   "cost_usd": 0.005331000000000001
+   "cost_usd": 0.005563
   },
   {
    "model": "haiku",
-   "tokens": 8730,
-   "output_tokens": 571,
+   "tokens": 8954,
+   "output_tokens": 570,
    "seconds": 7,
-   "cost_usd": 0.016783
+   "cost_usd": 0.017115
   },
   {
    "model": "sonnet",
-   "tokens": 11525,
-   "output_tokens": 904,
-   "seconds": 15,
-   "cost_usd": 0.0320106
+   "tokens": 14564,
+   "output_tokens": 923,
+   "seconds": 10,
+   "cost_usd": 0.038542599999999996
   }
  ],
- "tokens": 37827,
- "api_equiv_usd": 0.079,
+ "tokens": 41547,
+ "api_equiv_usd": 0.086,
  "located_pages": [],
  "text_layer": true,
  "found": true,
@@ -56,6 +56,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 10500000,
@@ -67,6 +69,7 @@
   "Approx. Size of Units in sq. ft. (1)",
   "Rear Yard",
   "Balcony",
+  "Approx. Size of Limited Common Elements in sq. ft. [uninhabitable] (2)",
   "Offering Prices (3)",
   "% of Common Interest (4)",
   "Projected Monthly Common Charges",
@@ -76,19 +79,22 @@
   "Projected Annual Carrying Charges"
  ],
  "tax2": null,
- "sf2": null,
+ "sf2": "rear yard/balcony (limited common elements, uninhabitable)",
  "printed_totals": {
   "price": 10500000,
   "pct": 100,
   "cc_m": 3354.83,
   "tax_m": 8907.67,
   "int_sf": 7445.02,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Units have a \"Rear Yard\" area (877.27 sq ft for unit 1, none for others) and a \"Balcony\" column (None for unit 1-2, 129.60 for units 3-5); these are limited common element areas, not clearly ext_sf, so not placed in int_sf/sf2/ext_sf columns - noted here instead: Unit 1 Rear Yard 877.27; Units 3,4,5 Balcony 129.60.",
-  "Table column header for sq ft is \"Approx. Size of Units in sq. ft. (1)\" with no separate gross/cellar column, so sf2 left blank.",
-  "\"Annual Carrying Charges\" column exists but is not in the requested U-line schema; included only in COLS line."
+  "Bdrs/Bths column prints combined values (\"2/2\", \"3/2\"); bedrooms placed in beds, baths in full_baths, half_baths set to - (none printed) per the Beds/Baths rule.",
+  "Table has separate \"Rear Yard\" and \"Balcony\" columns (limited common elements, uninhabitable); values placed in sf2 column since ext_sf is defined for a single terrace/balcony figure and these are two separate area figures — see SF2 note.",
+  "Unit 1 has a Rear Yard value (877.27) but Balcony is \"None\"; sf2 for unit 1 reflects the Rear Yard figure."
  ],
  "units": [
   {
@@ -97,21 +103,23 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1275.98,
-   "sf2": null,
+   "sf2": 877.27,
    "ext_sf": null,
    "price": 1895000,
    "pct": 18.04,
    "pct2": null,
    "cc_m": 605.21,
-   "cc_a": 26545.86,
+   "cc_a": null,
    "tax_m": 1606.94,
    "tax_a": 19283.32,
    "tax2_m": null,
    "carry_m": 2212.16,
    "page": 44,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "2",
@@ -119,7 +127,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1542.26,
    "sf2": null,
    "ext_sf": null,
@@ -127,13 +136,14 @@
    "pct": 20.34,
    "pct2": null,
    "cc_m": 682.37,
-   "cc_a": 29930.31,
+   "cc_a": null,
    "tax_m": 1811.82,
    "tax_a": 21741.83,
    "tax2_m": null,
    "carry_m": 2494.19,
    "page": 44,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3",
@@ -141,21 +151,23 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1542.26,
    "sf2": null,
-   "ext_sf": null,
+   "ext_sf": 129.6,
    "price": 2100000,
    "pct": 20,
    "pct2": null,
    "cc_m": 670.97,
-   "cc_a": 29430,
+   "cc_a": null,
    "tax_m": 1781.53,
    "tax_a": 21378.4,
    "tax2_m": null,
    "carry_m": 2452.5,
    "page": 44,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "4",
@@ -163,21 +175,23 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1542.26,
    "sf2": null,
-   "ext_sf": null,
+   "ext_sf": 129.6,
    "price": 2175000,
    "pct": 20.72,
    "pct2": null,
    "cc_m": 695.12,
-   "cc_a": 30489.48,
+   "cc_a": null,
    "tax_m": 1845.67,
    "tax_a": 22148.02,
    "tax2_m": null,
    "carry_m": 2540.79,
    "page": 44,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "5",
@@ -185,21 +199,23 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1542.26,
    "sf2": null,
-   "ext_sf": null,
+   "ext_sf": 129.6,
    "price": 2195000,
    "pct": 20.9,
    "pct2": null,
    "cc_m": 701.16,
-   "cc_a": 30754.35,
+   "cc_a": null,
    "tax_m": 1861.7,
    "tax_a": 22340.43,
    "tax2_m": null,
    "carry_m": 2562.86,
    "page": 44,
-   "note": null
+   "note": null,
+   "baths": 2
   }
  ]
 }

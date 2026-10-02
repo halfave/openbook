@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4481,
-   "output_tokens": 748,
-   "seconds": 8,
-   "cost_usd": 0.022407999999999997
+   "tokens": 11066,
+   "output_tokens": 598,
+   "seconds": 78,
+   "cost_usd": 0.0279624
   }
  ],
- "tokens": 4481,
- "api_equiv_usd": 0.022,
+ "tokens": 11066,
+ "api_equiv_usd": 0.028,
  "located_pages": [
   35
  ],
@@ -37,6 +37,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 7482000,
@@ -64,10 +66,13 @@
   "cc_m": 1730.86,
   "tax_m": 3594.37,
   "int_sf": 4857,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Bedroom/Bathroom/1/2 bath column values (2,3,3,2 then 2,2,2,2 then 1,0,0,0) interpreted as beds, baths, half-baths respectively (e.g. Unit 1: 2 bed/2 bath/1 half = 2.5 baths); Limited Common Element square feet column included in note rather than a defined field since it duplicates the itemized limited common areas."
+  "Table has no separate \"floor\" or \"rooms\" columns; left as -. Limited Common Element square feet column (ext_sf equivalent) contains combined terrace/balcony/storage areas per unit, not a single figure, so ext_sf left - and details listed in the page's \"Limited common areas\" note (not per-row, so not placed in note field)."
  ],
  "units": [
   {
@@ -76,7 +81,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1163,
    "sf2": 826,
    "ext_sf": null,
@@ -90,7 +96,8 @@
    "tax2_m": null,
    "carry_m": 2111.66,
    "page": 35,
-   "note": "Limited common areas: Terrace (51 sf) and Storage (34 sf)"
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "2",
@@ -98,7 +105,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1300,
    "sf2": 0,
    "ext_sf": null,
@@ -112,7 +120,8 @@
    "tax2_m": null,
    "carry_m": 1035.64,
    "page": 35,
-   "note": "Limited common areas: Areaway (593 sf); Rear yard (212 sf); Storage (30 sf)"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3",
@@ -120,7 +129,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1300,
    "sf2": 0,
    "ext_sf": null,
@@ -134,7 +144,8 @@
    "tax2_m": null,
    "carry_m": 1116.4,
    "page": 35,
-   "note": "Limited common areas: Balcony (73 sf); Balcony (86 sf); Storage (34 sf)"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "4",
@@ -142,7 +153,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1094,
    "sf2": 0,
    "ext_sf": null,
@@ -156,7 +168,8 @@
    "tax2_m": null,
    "carry_m": 1061.53,
    "page": 35,
-   "note": "Limited common areas: Terrace (258 sf); Balcony (39 sf); Storage (34 sf)"
+   "note": null,
+   "baths": 2
   }
  ]
 }

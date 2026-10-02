@@ -3,23 +3,38 @@
  "steps": [
   {
    "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 3,
+   "failed": [
+    "bedsBaths"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
    "verdict": "publish_ag",
    "units": 3,
    "failed": []
   }
  ],
- "calls": 1,
+ "calls": 2,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4211,
-   "output_tokens": 451,
-   "seconds": 77,
-   "cost_usd": 0.0052656
+   "tokens": 5825,
+   "output_tokens": 568,
+   "seconds": 6,
+   "cost_usd": 0.026704
+  },
+  {
+   "model": "sonnet",
+   "tokens": 5745,
+   "output_tokens": 481,
+   "seconds": 6,
+   "cost_usd": 0.025862
   }
  ],
- "tokens": 4211,
- "api_equiv_usd": 0.005,
+ "tokens": 11570,
+ "api_equiv_usd": 0.053,
  "located_pages": [
   35
  ],
@@ -37,10 +52,12 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 4000000,
- "step": "sonnet-text",
+ "step": "sonnet-text-retry",
  "budget_period": "January 1, 2025 - December 31, 2025",
  "columns_printed": [
   "Unit",
@@ -49,11 +66,11 @@
   "Bdms/Bths",
   "% of Common Interest",
   "Offering Price",
-  "Monthly Common Charges",
-  "Annual Common Charges",
-  "Monthly Real Estate Taxes",
-  "Annual Real Estate Taxes",
-  "Monthly Carrying Charges"
+  "Estimated Monthly Common Charges",
+  "Estimated Annual Common Charges",
+  "Estimated Monthly Real Estate Taxes",
+  "Estimated Annual Real Estate Taxes",
+  "Estimated Monthly Carrying Charges"
  ],
  "tax2": null,
  "sf2": "uninhabitable sq ftg",
@@ -63,10 +80,13 @@
   "cc_m": 1055.86,
   "tax_m": 824.87,
   "int_sf": 3413,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "ext_sf not separately listed in table; multiple terrace/balcony/roof areas described in notes per unit, not assigned to ext_sf column."
+  "Unit 1 bed/bath \"2/2.5\" interpreted as 2 beds, 2 full, 1 half per header rule for combined Bdms/Bths column."
  ],
  "units": [
   {
@@ -75,7 +95,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 930,
    "sf2": 2780,
    "ext_sf": null,
@@ -89,7 +110,8 @@
    "tax2_m": null,
    "carry_m": 700.4,
    "page": 35,
-   "note": "Sponsor withholding this unit from initial offer"
+   "note": "Sponsor withholding unit from initial offer",
+   "baths": 2.5
   },
   {
    "unit": "2",
@@ -97,7 +119,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 945,
    "sf2": 54,
    "ext_sf": null,
@@ -111,7 +134,8 @@
    "tax2_m": null,
    "carry_m": 413.03,
    "page": 35,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3",
@@ -119,7 +143,8 @@
    "floor": null,
    "rooms": null,
    "beds": 4,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": 0,
    "int_sf": 1538,
    "sf2": 969,
    "ext_sf": null,
@@ -133,7 +158,8 @@
    "tax2_m": null,
    "carry_m": 767.31,
    "page": 35,
-   "note": null
+   "note": null,
+   "baths": 3
   }
  ]
 }

@@ -3,42 +3,23 @@
  "steps": [
   {
    "step": "sonnet-text",
-   "verdict": "not_found",
-   "units": 0,
-   "failed": [
-    "ag",
-    "printed",
-    "sqftTotal",
-    "monthlyTotals",
-    "allRowsParsed"
-   ]
-  },
-  {
-   "step": "sonnet-images",
    "verdict": "publish_ag",
    "units": 6,
    "failed": []
   }
  ],
- "calls": 2,
+ "calls": 1,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4634,
-   "output_tokens": 877,
-   "seconds": 8,
-   "cost_usd": 0.023794000000000003
-  },
-  {
-   "model": "sonnet",
-   "tokens": 13988,
-   "output_tokens": 793,
-   "seconds": 10,
-   "cost_usd": 0.036306
+   "tokens": 6021,
+   "output_tokens": 677,
+   "seconds": 78,
+   "cost_usd": 0.0078424
   }
  ],
- "tokens": 18622,
- "api_equiv_usd": 0.06,
+ "tokens": 6021,
+ "api_equiv_usd": 0.008,
  "located_pages": [
   38
  ],
@@ -56,10 +37,12 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 7595000,
- "step": "sonnet-images",
+ "step": "sonnet-text",
  "budget_period": "JULY 1, 2022 TO JUNE 30, 2023",
  "columns_printed": [
   "Unit No.",
@@ -78,17 +61,20 @@
   "Total Monthly Carrying Charges"
  ],
  "tax2": null,
- "sf2": "cellar space",
+ "sf2": "Cellar Space square footage",
  "printed_totals": {
   "price": 7595000,
   "pct": 100,
   "cc_m": 1902.5,
   "tax_m": 4722.76,
   "int_sf": 4778,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "-"
+  "Limited Common Element square feet column present but not in requested schema; omitted from U rows (values: 1005, -, 56, 66, 86, 308, total 1521.00)."
  ],
  "units": [
   {
@@ -97,10 +83,11 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1173,
    "sf2": 849,
-   "ext_sf": null,
+   "ext_sf": 1005,
    "price": 2500000,
    "pct": 35.9339,
    "pct2": null,
@@ -110,8 +97,9 @@
    "tax_a": 20364.81,
    "tax2_m": null,
    "carry_m": 2380.71,
-   "page": 38,
-   "note": "Limited common area: Areaway (192 sf); Rear yard (774 sf); Front yard (39 sf)"
+   "page": 19,
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "2A",
@@ -119,7 +107,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 622,
    "sf2": 0,
    "ext_sf": null,
@@ -132,8 +121,9 @@
    "tax_a": 6264.55,
    "tax2_m": null,
    "carry_m": 732.35,
-   "page": 38,
-   "note": null
+   "page": 19,
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "2B",
@@ -141,7 +131,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 636,
    "sf2": 0,
    "ext_sf": 56,
@@ -154,8 +145,9 @@
    "tax_a": 6405.55,
    "tax2_m": null,
    "carry_m": 748.83,
-   "page": 38,
-   "note": "Limited common area: Terrace (56 sf)"
+   "page": 19,
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3A",
@@ -163,7 +155,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 622,
    "sf2": 0,
    "ext_sf": 66,
@@ -176,8 +169,9 @@
    "tax_a": 6264.55,
    "tax2_m": null,
    "carry_m": 732.35,
-   "page": 38,
-   "note": "Limited common area: Balcony (66 sf)"
+   "page": 19,
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3B",
@@ -185,7 +179,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 636,
    "sf2": 0,
    "ext_sf": 86,
@@ -198,8 +193,9 @@
    "tax_a": 6405.55,
    "tax2_m": null,
    "carry_m": 748.83,
-   "page": 38,
-   "note": "Limited common area: Balcony (86 sf)"
+   "page": 19,
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "4",
@@ -207,7 +203,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1089,
    "sf2": 0,
    "ext_sf": 308,
@@ -220,8 +217,9 @@
    "tax_a": 10968.1,
    "tax2_m": null,
    "carry_m": 1282.2,
-   "page": 38,
-   "note": "Limited common area: Terrace (274 sf); Balcony (34 sf)"
+   "page": 19,
+   "note": null,
+   "baths": 2
   }
  ]
 }

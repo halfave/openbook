@@ -8,60 +8,39 @@
    "failed": []
   }
  ],
- "calls": 7,
+ "calls": 4,
  "call_log": [
   {
    "model": "haiku",
-   "tokens": 12588,
-   "output_tokens": 574,
+   "tokens": 12804,
+   "output_tokens": 570,
    "seconds": 7,
-   "cost_usd": 0.024502
+   "cost_usd": 0.02481
   },
   {
    "model": "haiku",
-   "tokens": 4939,
-   "output_tokens": 97,
-   "seconds": 6,
-   "cost_usd": 0.005327
-  },
-  {
-   "model": "haiku",
-   "tokens": 4949,
-   "output_tokens": 97,
-   "seconds": 6,
-   "cost_usd": 0.005337
-  },
-  {
-   "model": "haiku",
-   "tokens": 4943,
+   "tokens": 5167,
    "output_tokens": 97,
    "seconds": 4,
-   "cost_usd": 0.005331000000000001
+   "cost_usd": 0.005555000000000001
   },
   {
    "model": "haiku",
-   "tokens": 4941,
-   "output_tokens": 97,
-   "seconds": 4,
-   "cost_usd": 0.005329
-  },
-  {
-   "model": "haiku",
-   "tokens": 8684,
-   "output_tokens": 554,
-   "seconds": 8,
-   "cost_usd": 0.016646
+   "tokens": 8987,
+   "output_tokens": 600,
+   "seconds": 7,
+   "cost_usd": 0.017271
   },
   {
    "model": "sonnet",
-   "tokens": 11551,
-   "output_tokens": 932,
-   "seconds": 15,
-   "cost_usd": 0.0322864
+   "tokens": 14662,
+   "output_tokens": 1023,
+   "seconds": 84,
+   "cost_usd": 0.023829200000000002
   }
  ],
- "tokens": 52595,
- "api_equiv_usd": 0.095,
+ "tokens": 41620,
+ "api_equiv_usd": 0.071,
  "located_pages": [],
  "text_layer": true,
  "found": true,
@@ -77,6 +56,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 6170000,
@@ -106,10 +87,15 @@
   "cc_m": 2283.92,
   "tax_m": 3996.83,
   "int_sf": 4636,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "No \"floor\" or \"rooms\" columns printed in this table; only \"Bdrs/Bths\" given (put into beds/baths). Outdoor space areas (rear yard, balcony, roof terrace) are printed as separate columns rather than a single ext_sf figure, so they are listed in the note field instead of ext_sf per instructions. No PDF page number was given to confirm; used provided page 44 for all rows. Uninhabitable sq. ft. column is 0.00 for all units, placed in sf2."
+  "\"Bdrs/Bths\" column prints a single combined figure like \"3/2\" with no separate full/half bath columns; copied second number into full_baths and left half_baths blank (-) since it is not indicated as a half bath.",
+  "ext_sf left blank (-) because this table prints three separate outdoor area columns (Rear Yard, Balcony, Roof Terrace) rather than one; individual figures listed in note for each unit.",
+  "TOTAL row for int_sf (uninhabitable) printed as 0.00 for every unit and total; included as-is in sf2 column context but int_sf totals shown as 4636.00 is the habitable total; uninhabitable total also printed as 0.00, not separately reported in TOTAL line per instructions (only int_sf requested)."
  ],
  "units": [
   {
@@ -118,7 +104,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1177,
    "sf2": 0,
    "ext_sf": null,
@@ -132,7 +119,8 @@
    "tax2_m": null,
    "carry_m": 1592.8,
    "page": 44,
-   "note": "rear yard 1,025.00 sf, no balcony, no roof terrace"
+   "note": "rear yard 1025.00, roof terrace None",
+   "baths": 2
   },
   {
    "unit": "2A",
@@ -140,7 +128,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1332,
    "sf2": 0,
    "ext_sf": null,
@@ -154,7 +143,8 @@
    "tax2_m": null,
    "carry_m": 1806.97,
    "page": 44,
-   "note": "balcony 34.00 sf, roof terrace 804.00 sf, no rear yard"
+   "note": "balcony 34.00, roof terrace 804.00",
+   "baths": 2
   },
   {
    "unit": "3A",
@@ -162,7 +152,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1051,
    "sf2": 0,
    "ext_sf": null,
@@ -176,7 +167,8 @@
    "tax2_m": null,
    "carry_m": 1420.08,
    "page": 44,
-   "note": "roof terrace 261.00 sf, no rear yard, no balcony"
+   "note": "roof terrace 261.00",
+   "baths": 2
   },
   {
    "unit": "3B",
@@ -184,7 +176,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1076,
    "sf2": 0,
    "ext_sf": null,
@@ -198,7 +191,8 @@
    "tax2_m": null,
    "carry_m": 1460.9,
    "page": 44,
-   "note": "balcony 86.00 sf, roof terrace 278.00 sf, no rear yard"
+   "note": "balcony 86.00, roof terrace 278.00",
+   "baths": 2
   }
  ]
 }

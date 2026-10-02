@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4783,
-   "output_tokens": 1023,
-   "seconds": 8,
-   "cost_usd": 0.025266
+   "tokens": 6699,
+   "output_tokens": 1431,
+   "seconds": 17,
+   "cost_usd": 0.035378
   }
  ],
- "tokens": 4783,
- "api_equiv_usd": 0.025,
+ "tokens": 6699,
+ "api_equiv_usd": 0.035,
  "located_pages": [
   27
  ],
@@ -37,6 +37,8 @@
   "psf": null,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 15065000,
@@ -55,7 +57,7 @@
   "Terrace",
   "Total)"
  ],
- "tax2": null,
+ "tax2": "without ICAP",
  "sf2": "terrace",
  "printed_totals": {
   "price": 15065000,
@@ -63,11 +65,15 @@
   "cc_m": 5976.7,
   "tax_m": 6852.82,
   "int_sf": 16673,
-  "ext_sf": 2007
+  "ext_sf": 2007,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "-",
-  "outdoor space left out: its column did not add up to the printed total"
+  "Unit CF-1 \"Terrace\" column printed as N/A but Total still shows 2819 (same as Unit figure), suggesting no terrace sf for this row; copied Total as sf2 per header but it duplicates Unit sf.",
+  "Units are commercial/community facility (CFU); no bedroom/bath/rooms data printed, so those fields are -.",
+  "\"Total\" column in the floor-area group appears to be Unit+Terrace sum; placed Unit sf in int_sf and Terrace sf in sf2 (per SF2=terrace), per instructions ext_sf only used for a single printed terrace number — but here terrace is a second area column alongside Unit, not a true \"total\" combining int+ext in the schema sense; treated Terrace as sf2 rather than ext_sf since header groups it under \"Approximate Floor Area in Square Feet\" with Unit/Terrace/Total as sub-columns."
  ],
  "units": [
   {
@@ -76,7 +82,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 2819,
    "sf2": null,
    "ext_sf": null,
@@ -90,7 +97,8 @@
    "tax2_m": null,
    "carry_m": 2100.18,
    "page": 27,
-   "note": null
+   "note": null,
+   "baths": null
   },
   {
    "unit": "CF-2",
@@ -98,7 +106,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 2949,
    "sf2": null,
    "ext_sf": null,
@@ -112,7 +121,8 @@
    "tax2_m": null,
    "carry_m": 2450.43,
    "page": 27,
-   "note": null
+   "note": null,
+   "baths": null
   },
   {
    "unit": "CF-3",
@@ -120,7 +130,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 836,
    "sf2": null,
    "ext_sf": null,
@@ -134,7 +145,8 @@
    "tax2_m": null,
    "carry_m": 623.52,
    "page": 27,
-   "note": null
+   "note": null,
+   "baths": null
   },
   {
    "unit": "CF-4",
@@ -142,9 +154,10 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 1079,
-   "sf2": null,
+   "sf2": 1279,
    "ext_sf": null,
    "price": 1179000,
    "pct": 6.27,
@@ -156,7 +169,8 @@
    "tax2_m": null,
    "carry_m": 804.41,
    "page": 27,
-   "note": null
+   "note": null,
+   "baths": null
   },
   {
    "unit": "CF-5",
@@ -164,7 +178,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 836,
    "sf2": null,
    "ext_sf": null,
@@ -178,7 +193,8 @@
    "tax2_m": null,
    "carry_m": 623.52,
    "page": 27,
-   "note": null
+   "note": null,
+   "baths": null
   },
   {
    "unit": "CF-6",
@@ -186,7 +202,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 1079,
    "sf2": null,
    "ext_sf": null,
@@ -200,7 +217,8 @@
    "tax2_m": null,
    "carry_m": 804.41,
    "page": 27,
-   "note": null
+   "note": null,
+   "baths": null
   },
   {
    "unit": "CF-7",
@@ -208,7 +226,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 836,
    "sf2": null,
    "ext_sf": null,
@@ -222,7 +241,8 @@
    "tax2_m": null,
    "carry_m": 623.52,
    "page": 27,
-   "note": null
+   "note": null,
+   "baths": null
   },
   {
    "unit": "CF-8",
@@ -230,7 +250,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 1079,
    "sf2": null,
    "ext_sf": null,
@@ -244,7 +265,8 @@
    "tax2_m": null,
    "carry_m": 804.41,
    "page": 27,
-   "note": null
+   "note": null,
+   "baths": null
   },
   {
    "unit": "CF-9",
@@ -252,7 +274,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 836,
    "sf2": null,
    "ext_sf": null,
@@ -266,7 +289,8 @@
    "tax2_m": null,
    "carry_m": 623.52,
    "page": 27,
-   "note": null
+   "note": null,
+   "baths": null
   },
   {
    "unit": "CF-10",
@@ -274,7 +298,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 1079,
    "sf2": null,
    "ext_sf": null,
@@ -288,7 +313,8 @@
    "tax2_m": null,
    "carry_m": 804.41,
    "page": 27,
-   "note": null
+   "note": null,
+   "baths": null
   },
   {
    "unit": "CF-11",
@@ -296,7 +322,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 836,
    "sf2": null,
    "ext_sf": null,
@@ -310,7 +337,8 @@
    "tax2_m": null,
    "carry_m": 623.52,
    "page": 27,
-   "note": null
+   "note": null,
+   "baths": null
   },
   {
    "unit": "CF-12",
@@ -318,7 +346,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 1079,
    "sf2": null,
    "ext_sf": null,
@@ -332,7 +361,8 @@
    "tax2_m": null,
    "carry_m": 804.41,
    "page": 27,
-   "note": null
+   "note": null,
+   "baths": null
   },
   {
    "unit": "CF-13",
@@ -340,7 +370,8 @@
    "floor": null,
    "rooms": null,
    "beds": null,
-   "baths": null,
+   "full_baths": null,
+   "half_baths": null,
    "int_sf": 1330,
    "sf2": 728,
    "ext_sf": null,
@@ -354,7 +385,8 @@
    "tax2_m": null,
    "carry_m": 1139.26,
    "page": 27,
-   "note": null
+   "note": null,
+   "baths": null
   }
  ]
 }

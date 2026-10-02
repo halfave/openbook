@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4357,
-   "output_tokens": 749,
+   "tokens": 5911,
+   "output_tokens": 797,
    "seconds": 9,
-   "cost_usd": 0.021918
+   "cost_usd": 0.028422000000000003
   }
  ],
- "tokens": 4357,
- "api_equiv_usd": 0.022,
+ "tokens": 5911,
+ "api_equiv_usd": 0.028,
  "located_pages": [
   33
  ],
@@ -37,17 +37,19 @@
   "psf": null,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 3553000,
  "step": "sonnet-text",
- "budget_period": "July 1, 2018- June 30, 2019",
+ "budget_period": "Year Projected to Begin: July 1, 2018- June 30, 2019",
  "columns_printed": [
   "Unit No.",
   "Floor Location",
-  "Approx. Floor Area",
-  "Outdoor/Uninhabitable/Limited Common Area",
-  "No.of Bedooms/Bathrooms",
+  "Approx. Area",
+  "Approx. Outdoor/Uninhabitable/Limited Common Area",
+  "No. of Bedrooms/Bathrooms",
   "Offering Price",
   "Percent Common Interest",
   "Projected Monthly Common Charges",
@@ -56,29 +58,33 @@
   "Projected Carrying Charges (Monthly)"
  ],
  "tax2": null,
- "sf2": "uninhabitable/limited common area",
+ "sf2": "outdoor/uninhabitable/limited common area",
  "printed_totals": {
   "price": 3553000,
   "pct": 100,
   "cc_m": 2055.84,
   "tax_m": 1188.61,
   "int_sf": 1463,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Unit 1's floor area breakdown (688* cellar, 1062 basement, 824 1st, 815 2nd, 853 3rd, 277 penthouse = 4,519 total) appears at top of page but doesn't clearly map to the per-unit area figures (870, 170, 322) in the main table; unable to determine which figures correspond to int_sf vs sf2 vs ext_sf for each unit with confidence.",
-  "Unit 3's floor area cell is blank/missing in the source table (only unit 3 lacks a printed area figure among 870/170/322).",
-  "Unit numbering shows \"101 (A)\" under unit 1 row - unclear if this indicates a different unit designation.",
+  "Unit column rows show \"101 (A)\", then apparently unlabeled rows for units 2, 3, 4 (per the floor list on page 33: 2=1st Floor, 3=2nd Floor, 4=3rd Floor); labels 2/3/4 inferred from the floor/unit list above the table, not printed directly beside the price-table rows.",
+  "The interior area figures for units 101(A)/2/3/4 are not clearly separable in the OCR text (only \"1,463\" total and the outdoor/limited-common figures \"170(D)\", \"322(T)\", \"870(RY)\" are clearly matched); int_sf left blank except where inferable.",
+  "Bedrooms/Bathrooms column combined figures (\"2/2.5\", \"2/1\", \"2/2\", \"2/2.5\") parsed as beds/full.half baths per header convention.",
   "unit sizes left out: the area columns did not add up to the printed totals"
  ],
  "units": [
   {
-   "unit": "1",
+   "unit": "101 (A)",
    "type": "residential",
-   "floor": "Cellar/Basement/1st Floor",
+   "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -86,21 +92,23 @@
    "pct": 32.71,
    "pct2": null,
    "cc_m": 672.46,
-   "cc_a": 4665.53,
+   "cc_a": null,
    "tax_m": 388.79,
-   "tax_a": null,
+   "tax_a": 4665.53,
    "tax2_m": null,
    "carry_m": 1061.25,
    "page": 33,
-   "note": "RY; area includes Cellar 688* and Basement 1062"
+   "note": "RY",
+   "baths": 2.5
   },
   {
    "unit": "2",
    "type": "residential",
-   "floor": "1st Floor",
+   "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -108,21 +116,23 @@
    "pct": 19.91,
    "pct2": null,
    "cc_m": 409.32,
-   "cc_a": 2839.83,
+   "cc_a": null,
    "tax_m": 236.65,
-   "tax_a": null,
+   "tax_a": 2839.83,
    "tax2_m": null,
    "carry_m": 645.97,
    "page": 33,
-   "note": "D"
+   "note": "D; area not legibly printed for this unit",
+   "baths": 1
   },
   {
    "unit": "3",
    "type": "residential",
-   "floor": "2nd Floor",
+   "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -130,21 +140,23 @@
    "pct": 18.64,
    "pct2": null,
    "cc_m": 383.21,
-   "cc_a": 2658.68,
+   "cc_a": null,
    "tax_m": 221.56,
-   "tax_a": null,
+   "tax_a": 2658.68,
    "tax2_m": null,
    "carry_m": 604.77,
    "page": 33,
-   "note": null
+   "note": "area not legibly printed for this unit",
+   "baths": 2
   },
   {
    "unit": "4",
    "type": "residential",
-   "floor": "3rd Floor/Penthouse",
+   "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": null,
    "sf2": null,
    "ext_sf": null,
@@ -152,13 +164,14 @@
    "pct": 28.74,
    "pct2": null,
    "cc_m": 590.85,
-   "cc_a": 4099.28,
+   "cc_a": null,
    "tax_m": 341.61,
-   "tax_a": null,
+   "tax_a": 4099.28,
    "tax2_m": null,
    "carry_m": 932.46,
    "page": 33,
-   "note": "T"
+   "note": "T",
+   "baths": 2.5
   }
  ]
 }

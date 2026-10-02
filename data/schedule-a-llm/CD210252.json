@@ -3,38 +3,23 @@
  "steps": [
   {
    "step": "sonnet-text",
-   "verdict": "hold",
-   "units": 2,
-   "failed": [
-    "outdoor"
-   ]
-  },
-  {
-   "step": "sonnet-text-retry",
    "verdict": "publish_ag",
    "units": 2,
    "failed": []
   }
  ],
- "calls": 2,
+ "calls": 1,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 3910,
-   "output_tokens": 464,
-   "seconds": 64,
-   "cost_usd": 0.01842
-  },
-  {
-   "model": "sonnet",
-   "tokens": 3814,
-   "output_tokens": 369,
-   "seconds": 4,
-   "cost_usd": 0.017466
+   "tokens": 5580,
+   "output_tokens": 546,
+   "seconds": 8,
+   "cost_usd": 0.025592
   }
  ],
- "tokens": 7724,
- "api_equiv_usd": 0.036,
+ "tokens": 5580,
+ "api_equiv_usd": 0.026,
  "located_pages": [
   32
  ],
@@ -52,10 +37,12 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 2700000,
- "step": "sonnet-text-retry",
+ "step": "sonnet-text",
  "budget_period": "October 1, 2022 - September 30, 2023",
  "columns_printed": [
   "Unit",
@@ -63,26 +50,33 @@
   "Other Sq. Ftg. (Nonhabitable)",
   "Bdms/Bths",
   "% of Common Interest",
-  "1st Year Offering Price",
+  "Offering Price",
   "Monthly Common Charges",
   "Monthly Real Es. Taxes",
   "Monthly Carrying Charges",
   "Annual Common Charges",
   "Annual Real Es. Taxes",
-  "Annual Carrying Charges",
-  "Post-Completion Annual Real Es. Taxes"
+  "Post-Completion Annual Carrying Charges",
+  "Other 1st Year Annual Real Es. Taxes"
  ],
  "tax2": null,
- "sf2": "Other Sq. Ftg. (Nonhabitable)",
+ "sf2": "nonhabitable",
  "printed_totals": {
   "price": 2700000,
   "pct": 100,
   "cc_m": 580.67,
   "tax_m": 531.08,
   "int_sf": 2138,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
- "problems": [],
+ "problems": [
+  "Unit 1 Bdms/Bths printed as \"2/2.5\" = 2 beds, 2 full, 1 half bath; Unit 2 printed as \"2/2\" = 2 beds, 2 full, 0 half baths.",
+  "Columns (10) and (11) in header appear swapped relative to data order (Post-Completion Carrying Charges vs Other 1st Year Real Es. Taxes); mapped per printed column positions above.",
+  "TOTALS row full_baths/half_baths not printed; left blank."
+ ],
  "units": [
   {
    "unit": "1",
@@ -90,7 +84,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1046,
    "sf2": 865,
    "ext_sf": null,
@@ -104,7 +99,8 @@
    "tax2_m": null,
    "carry_m": 555.88,
    "page": 32,
-   "note": null
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "2",
@@ -112,7 +108,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1092,
    "sf2": 651,
    "ext_sf": null,
@@ -126,7 +123,8 @@
    "tax2_m": null,
    "carry_m": 555.88,
    "page": 32,
-   "note": null
+   "note": null,
+   "baths": 2
   }
  ]
 }

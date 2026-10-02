@@ -12,37 +12,37 @@
  "call_log": [
   {
    "model": "haiku",
-   "tokens": 12270,
-   "output_tokens": 623,
-   "seconds": 66,
-   "cost_usd": 0.023975000000000003
+   "tokens": 12380,
+   "output_tokens": 581,
+   "seconds": 6,
+   "cost_usd": 0.023994
   },
   {
    "model": "haiku",
-   "tokens": 4991,
+   "tokens": 5141,
    "output_tokens": 97,
    "seconds": 5,
-   "cost_usd": 0.005379
+   "cost_usd": 0.005529
   },
   {
    "model": "haiku",
-   "tokens": 8638,
-   "output_tokens": 571,
-   "seconds": 9,
-   "cost_usd": 0.016565
+   "tokens": 8800,
+   "output_tokens": 572,
+   "seconds": 11,
+   "cost_usd": 0.016812
   },
   {
    "model": "sonnet",
-   "tokens": 11516,
-   "output_tokens": 885,
-   "seconds": 12,
-   "cost_usd": 0.031644000000000005
+   "tokens": 22826,
+   "output_tokens": 1167,
+   "seconds": 22,
+   "cost_usd": 0.0421642
   }
  ],
- "tokens": 37415,
- "api_equiv_usd": 0.078,
+ "tokens": 49147,
+ "api_equiv_usd": 0.088,
  "located_pages": [],
- "text_layer": false,
+ "text_layer": true,
  "found": true,
  "verdict": "publish_ag",
  "checks": {
@@ -56,6 +56,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 5978000,
@@ -73,7 +75,7 @@
   "ESTIMATED TOTAL MONTHLY EXPENSE WITH 421-a BENEFITS",
   "ESTIMATED TOTAL ANNUAL EXPENSE WITHOUT 421-a BENEFITS"
  ],
- "tax2": "without 421-a",
+ "tax2": "without 421-a benefits",
  "sf2": null,
  "printed_totals": {
   "price": 5978000,
@@ -81,10 +83,13 @@
   "cc_m": 2750,
   "tax_m": 402.58,
   "int_sf": null,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "tax_a (annual, with 421-a benefits) printed in same cell as tax_m separated by \"/\"; carry_m and annual carrying total not requested fields were derivable but int_sf totals/ext_sf not printed in totals row."
+  "Column (7) \"With 421-a\" prints combined monthly/annual as one cell (e.g. \"$103.62/$1,243.44\"); split into tax_m and tax_a. Column (7) \"Without 421-a\" similarly split into tax2_m and tax_a-equivalent (annual without benefits not captured in a dedicated output field). Unit 1 bed/bath cell \"2+ 2.5\" interpreted as 2 bedrooms, 2 full baths, 1 half bath. Units 2-5 bed/bath cell \"3+2\" interpreted as 3 bedrooms, 2 full baths, 0 half baths (no half bath indicated). No floor or rooms columns printed. No int_sf/sf2 distinction printed (single \"SQUARE FOOTAGE\" column used for int_sf). No separate ext_sf column; D/P/PY/B/PRT codes (duplex/patio/private yard/balcony/private roof terrace) placed in note per unit instead. TOTALS row for taxes with/without 421-a prints combined monthly/annual figures (\"$402.58/$4,830.96\" and \"$5,850/$70,200\"); only monthly figures used above, annual totals not captured in TOTAL line fields given."
  ],
  "units": [
   {
@@ -93,7 +98,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 2196,
    "sf2": null,
    "ext_sf": null,
@@ -107,7 +113,8 @@
    "tax2_m": 1506,
    "carry_m": 811.42,
    "page": 34,
-   "note": "D/P/PY"
+   "note": "D/P/PY",
+   "baths": 2.5
   },
   {
    "unit": "2",
@@ -115,7 +122,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1584,
    "sf2": null,
    "ext_sf": null,
@@ -129,7 +137,8 @@
    "tax2_m": 1086,
    "carry_m": 585.29,
    "page": 34,
-   "note": "PRT"
+   "note": "PRT",
+   "baths": 2
   },
   {
    "unit": "3",
@@ -137,7 +146,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1584,
    "sf2": null,
    "ext_sf": null,
@@ -151,7 +161,8 @@
    "tax2_m": 1086,
    "carry_m": 585.29,
    "page": 34,
-   "note": "B/PRT"
+   "note": "B/PRT",
+   "baths": 2
   },
   {
    "unit": "4",
@@ -159,7 +170,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1584,
    "sf2": null,
    "ext_sf": null,
@@ -173,7 +185,8 @@
    "tax2_m": 1086,
    "carry_m": 585.29,
    "page": 34,
-   "note": "B/PRT"
+   "note": "B/PRT",
+   "baths": 2
   },
   {
    "unit": "5",
@@ -181,7 +194,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": null,
    "int_sf": 1584,
    "sf2": null,
    "ext_sf": null,
@@ -195,7 +209,8 @@
    "tax2_m": 1086,
    "carry_m": 585.29,
    "page": 34,
-   "note": "B/PRT"
+   "note": "B/PRT",
+   "baths": 2
   }
  ]
 }

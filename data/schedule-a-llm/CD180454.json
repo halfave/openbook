@@ -12,35 +12,35 @@
  "call_log": [
   {
    "model": "haiku",
-   "tokens": 12635,
-   "output_tokens": 620,
-   "seconds": 8,
-   "cost_usd": 0.024732999999999998
-  },
-  {
-   "model": "haiku",
-   "tokens": 5007,
-   "output_tokens": 97,
-   "seconds": 5,
-   "cost_usd": 0.0053950000000000005
-  },
-  {
-   "model": "haiku",
-   "tokens": 8742,
-   "output_tokens": 554,
+   "tokens": 12839,
+   "output_tokens": 604,
    "seconds": 7,
-   "cost_usd": 0.01676
+   "cost_usd": 0.024982999999999998
+  },
+  {
+   "model": "haiku",
+   "tokens": 5233,
+   "output_tokens": 97,
+   "seconds": 3,
+   "cost_usd": 0.005621
+  },
+  {
+   "model": "haiku",
+   "tokens": 9007,
+   "output_tokens": 575,
+   "seconds": 6,
+   "cost_usd": 0.017238999999999997
   },
   {
    "model": "sonnet",
-   "tokens": 12193,
-   "output_tokens": 1140,
-   "seconds": 85,
-   "cost_usd": 0.026085600000000004
+   "tokens": 15127,
+   "output_tokens": 1074,
+   "seconds": 13,
+   "cost_usd": 0.041719599999999996
   }
  ],
- "tokens": 38577,
- "api_equiv_usd": 0.073,
+ "tokens": 42206,
+ "api_equiv_usd": 0.09,
  "located_pages": [],
  "text_layer": true,
  "found": true,
@@ -56,6 +56,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 7944000,
@@ -63,33 +65,36 @@
  "budget_period": "January 1, 2020 - December 31, 2020",
  "columns_printed": [
   "Unit No.",
-  "Bdrs/Bths",
-  "Approx. Size of Units in sq. ft. [habitable]",
-  "Approx. Size of Units in sq. ft. [uninhabitable]",
-  "Offering Prices",
-  "% of Common Interest",
+  "Bdrs/Bths (1)",
+  "Approx. Size of Units in sq. ft. [habitable] (1)",
+  "Approx. Size of Units in sq. ft. [uninhabitable] (1)",
+  "Offering Prices (3)",
+  "% of Common Interest (4)",
   "Projected Monthly Common Charges",
-  "Projected Monthly Real Estate Taxes With Abatement",
-  "Projected Monthly Real Estate Taxes Without Abatement",
-  "Projected Annual Real Estate Taxes With Abatement",
-  "Projected Annual Real Estate Taxes Without Abatement",
+  "Projected Monthly Real Estate Taxes With Abatement (6)",
+  "Projected Monthly Real Estate Taxes Without Abatement (6)",
+  "Projected Annual Real Estate Taxes With Abatement (6)",
+  "Projected Annual Real Estate Taxes Without Abatement (6)",
   "Projected Monthly Carrying Charges With Abatement",
   "Projected Monthly Carrying Charges Without Abatement"
  ],
  "tax2": "without 421-a",
- "sf2": "uninhabitable sq ft",
+ "sf2": "uninhabitable sq. ft.",
  "printed_totals": {
   "price": 7944000,
   "pct": 100,
   "cc_m": 2061.92,
   "tax_m": 240.33,
   "int_sf": 7208,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "tax2_m column header is ambiguous: table has both \"With Abatement\" and \"Without Abatement\" monthly tax columns; tax_m/tax_a assigned to \"With Abatement\" since carrying-charge columns appear paired with abatement figures, and tax2_m holds the \"Without Abatement\" monthly figure.",
-  "Unit 1L's \"Without Abatement\" monthly tax figure appears to duplicate 1R's value ($364.87) in my reading; please verify against source if precision needed.",
-  "A separate table \"Approx. Size of Limited Common Elements in sq. ft. [uninhabitable]\" (Rear Yard, Storage Space, Roof Terrace by unit) is present but not part of Schedule A pricing table; not transcribed as U lines per instructions (ext_sf would require multiple separate areas, listed here for reference: 1R rear yard 548, roof terrace none; 1L rear yard 553; 2R storage 52, roof terrace 521; 2L storage 37, roof terrace 583; 3R storage 37, roof terrace 617; 3L storage 26, roof terrace 637)."
+  "Bdrs/Bths column shows \"2/2.5\" for units 1R and 1L (beds 2, full 2, half 1) and \"3/2\" for units 2R, 2L, 3R, 3L (beds 3, full 2, half 0); treated accordingly.",
+  "TOTALS row for carrying charges printed as $2,302.25 (with abatement) and $3,791.17 (without abatement) do not match sum of per-unit carrying charges shown; copied as printed in TOTAL line using tax_m (with-abatement) column value 2061.92/240.33 per instructions; carry_m total not requested separately so omitted per template (carry_m not in TOTAL line fields).",
+  "\"uninhabitable\" sq ft column (sf2) shows \"None\" for units 2R and 2L; written as \"-\" per blank rule."
  ],
  "units": [
   {
@@ -98,7 +103,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1169,
    "sf2": 736,
    "ext_sf": null,
@@ -106,13 +112,14 @@
    "pct": 20.45,
    "pct2": null,
    "cc_m": 421.66,
-   "cc_a": 5059.92,
+   "cc_a": null,
    "tax_m": 49.15,
-   "tax_a": 353.63,
-   "tax2_m": 364.87,
+   "tax_a": 589.78,
+   "tax2_m": 353.63,
    "carry_m": 470.81,
    "page": 36,
-   "note": null
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "1L",
@@ -120,7 +127,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1163,
    "sf2": 734,
    "ext_sf": null,
@@ -128,13 +136,14 @@
    "pct": 21.1,
    "pct2": null,
    "cc_m": 435.06,
-   "cc_a": 5220.72,
+   "cc_a": null,
    "tax_m": 50.71,
-   "tax_a": 364.87,
-   "tax2_m": null,
+   "tax_a": 608.52,
+   "tax2_m": 364.87,
    "carry_m": 485.77,
    "page": 36,
-   "note": null
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "2R",
@@ -142,7 +151,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1228,
    "sf2": null,
    "ext_sf": null,
@@ -150,13 +160,14 @@
    "pct": 14.16,
    "pct2": null,
    "cc_m": 291.97,
-   "cc_a": 3503.64,
+   "cc_a": null,
    "tax_m": 34.03,
-   "tax_a": 244.86,
-   "tax2_m": null,
+   "tax_a": 408.37,
+   "tax2_m": 244.86,
    "carry_m": 326,
    "page": 36,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "2L",
@@ -164,7 +175,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1210,
    "sf2": null,
    "ext_sf": null,
@@ -172,13 +184,14 @@
    "pct": 14.79,
    "pct2": null,
    "cc_m": 304.96,
-   "cc_a": 3659.52,
+   "cc_a": null,
    "tax_m": 35.55,
-   "tax_a": 255.76,
-   "tax2_m": null,
+   "tax_a": 426.54,
+   "tax2_m": 255.76,
    "carry_m": 340.5,
    "page": 36,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3R",
@@ -186,7 +199,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1228,
    "sf2": 68,
    "ext_sf": null,
@@ -194,13 +208,14 @@
    "pct": 14.46,
    "pct2": null,
    "cc_m": 298.15,
-   "cc_a": 3577.8,
+   "cc_a": null,
    "tax_m": 34.75,
-   "tax_a": 250.05,
-   "tax2_m": null,
+   "tax_a": 417.03,
+   "tax2_m": 250.05,
    "carry_m": 332.91,
    "page": 36,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3L",
@@ -208,7 +223,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1210,
    "sf2": 68,
    "ext_sf": null,
@@ -216,13 +232,14 @@
    "pct": 15.04,
    "pct2": null,
    "cc_m": 310.11,
-   "cc_a": 3721.32,
+   "cc_a": null,
    "tax_m": 36.15,
-   "tax_a": 260.08,
-   "tax2_m": null,
+   "tax_a": 433.75,
+   "tax2_m": 260.08,
    "carry_m": 346.26,
    "page": 36,
-   "note": null
+   "note": null,
+   "baths": 2
   }
  ]
 }

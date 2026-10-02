@@ -3,6 +3,16 @@
  "steps": [
   {
    "step": "sonnet-text",
+   "verdict": "hold",
+   "units": 4,
+   "failed": [
+    "printed",
+    "pct100",
+    "sqftTotal"
+   ]
+  },
+  {
+   "step": "sonnet-text-retry",
    "verdict": "not_found",
    "units": 0,
    "failed": [
@@ -19,25 +29,32 @@
    "failed": []
   }
  ],
- "calls": 2,
+ "calls": 3,
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4661,
-   "output_tokens": 1015,
-   "seconds": 15,
-   "cost_usd": 0.024730000000000002
+   "tokens": 11077,
+   "output_tokens": 1013,
+   "seconds": 87,
+   "cost_usd": 0.031264
   },
   {
    "model": "sonnet",
-   "tokens": 13933,
-   "output_tokens": 958,
+   "tokens": 6158,
+   "output_tokens": 1120,
    "seconds": 13,
-   "cost_usd": 0.037494
+   "cost_usd": 0.031348
+  },
+  {
+   "model": "sonnet",
+   "tokens": 16787,
+   "output_tokens": 1020,
+   "seconds": 11,
+   "cost_usd": 0.04397720000000001
   }
  ],
- "tokens": 18594,
- "api_equiv_usd": 0.062,
+ "tokens": 34022,
+ "api_equiv_usd": 0.107,
  "located_pages": [
   63
  ],
@@ -55,6 +72,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 7000000,
@@ -85,12 +104,14 @@
   "cc_m": 2208.33,
   "tax_m": 2082.42,
   "int_sf": 4987,
-  "ext_sf": 36
+  "ext_sf": 36,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Unit 1 has two sf figures printed on separate lines (Cellar *780, 1st Floor 985.5); per rules, cellar figure placed in SF2 and habitable 1st floor figure not separately distinguishable from the \"Total Square Footage\" column (1765.5 appears to be the sum of 780+985.5), so int_sf shown as 1765.5 total rather than the 1st floor alone — unable to isolate 985.5 as a distinct int_sf without guessing.",
-  "Baths for Unit 1 printed as \"1 Full/1 Half\" interpreted as 1.5 baths per rules (0.5 for half bath).",
-  "Rear yard (829) and balcony (0/18) are two separate limited common element sf columns for Unit 1/3/4; per rules these are listed in note rather than a single ext_sf since there are two separate area columns, except where one is 0."
+  "Unit 1 has a two-level footage listing (Cellar *780, 1st Floor 985.5); the cellar figure 780 is placed in SF2 and the 1st floor figure 985.5 is the habitable floor but int_sf used is the \"Total Square Footage\" column (1765.5, sum of cellar+1st floor) since that is the only combined per-unit total square footage printed distinct from the limited-common-element total; ext_sf (balcony/rear yard) values of 829 and 18 are separate limited common element areas, listed in SF2 per unit rather than ext_sf since the instructions direct two separate outdoor-type areas to note/SF2 and only a single combined ext figure to ext_sf — treated rear yard (829, unit 1) and balcony (18, units 3-4) as the SF2 column since both appear under the asterisked \"Square Footage\" limited common element headers.",
+  "Total row's \"Total Square Footage\" (4,987) and \"Total Square Footage Including Limited Common Elements\" (5,852) are both printed as totals; TOTAL line uses 4987 for int_sf per column order, and does not include the 5852 figure."
  ],
  "units": [
   {
@@ -99,10 +120,11 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1.5,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": 1765.5,
    "sf2": 829,
-   "ext_sf": 0,
+   "ext_sf": null,
    "price": 2100000,
    "pct": 30,
    "pct2": null,
@@ -113,7 +135,8 @@
    "tax2_m": null,
    "carry_m": 1287.23,
    "page": 63,
-   "note": "Cellar 780, 1st Floor 985.5; total sf incl. limited common elements 2594.5"
+   "note": null,
+   "baths": 1.5
   },
   {
    "unit": "2",
@@ -121,10 +144,11 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1074.5,
-   "sf2": 0,
-   "ext_sf": 0,
+   "sf2": null,
+   "ext_sf": null,
    "price": 1550000,
    "pct": 22,
    "pct2": null,
@@ -135,7 +159,8 @@
    "tax2_m": null,
    "carry_m": 943.97,
    "page": 63,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3",
@@ -143,9 +168,10 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1073.5,
-   "sf2": 0,
+   "sf2": null,
    "ext_sf": 18,
    "price": 1675000,
    "pct": 24,
@@ -157,7 +183,8 @@
    "tax2_m": null,
    "carry_m": 1029.78,
    "page": 63,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "4",
@@ -165,9 +192,10 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1073.5,
-   "sf2": 0,
+   "sf2": null,
    "ext_sf": 18,
    "price": 1675000,
    "pct": 24,
@@ -179,7 +207,8 @@
    "tax2_m": null,
    "carry_m": 1029.78,
    "page": 63,
-   "note": null
+   "note": null,
+   "baths": 2
   }
  ]
 }

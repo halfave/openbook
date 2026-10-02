@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 5522,
-   "output_tokens": 1209,
-   "seconds": 13,
-   "cost_usd": 0.029338
+   "tokens": 6862,
+   "output_tokens": 1090,
+   "seconds": 15,
+   "cost_usd": 0.033984
   }
  ],
- "tokens": 5522,
- "api_equiv_usd": 0.029,
+ "tokens": 6862,
+ "api_equiv_usd": 0.034,
  "located_pages": [
   38
  ],
@@ -32,11 +32,13 @@
   "pct100": true,
   "ccProportional": true,
   "carrying": true,
-  "sqftTotal": null,
+  "sqftTotal": true,
   "monthlyTotals": true,
-  "psf": null,
+  "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 8160000,
@@ -59,18 +61,22 @@
   "Total Monthly Carrying Charges"
  ],
  "tax2": null,
- "sf2": "cellar",
+ "sf2": "Cellar Space square footage",
  "printed_totals": {
   "price": 8160000,
   "pct": 100,
   "cc_m": 4066.17,
   "tax_m": 6908,
   "int_sf": 6563,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Columns are listed in the printed order (Bedrooms, Bathrooms, 1/2 Bathrooms) rather than beds/baths combined codes; beds and baths taken directly from separate \"Bedrooms per Unit\" and \"Bathroom(s) per Unit\" columns, 1/2 bathrooms column was 0 or 1 for all units but not added to baths since instructions require explicit half-bath statement format not present here; int_sf taken from \"Square footage\" column (labeled as habitable square footage); sf2 taken from \"Cellar Space square footage\" column; Limited Common Element square footage column (note 7) not mapped to any field per instructions (uninhabitable, not part of total sf) and listed only via notes where descriptive text existed; storage unit prices (S1-S6, $12,500-$20,000) not included in Schedule A unit table as they are a separate \"Storage Space License\" list without full column data matching U-line format.",
-  "unit sizes left out: the area columns did not add up to the printed totals"
+  "Columns labeled \"Offering Price\" and the dollar-figure columns show \"$\" markers inline inconsistently in the source (e.g., \"975,000.00 $\"); treated as the offering price and other $ figures regardless of $ placement.",
+  "Storage Space License fees (1A S1 $15,000.00, etc.) are a separate table for storage licenses, not unit rows; not included as U lines since they lack full Schedule A columns (sf, pct, taxes, etc.) and appear to be ancillary storage license pricing, not condominium units.",
+  "Limited Common Element square feet values (457, 885, 7, 5, 41, 53, 41, 406) correspond to limited common areas (balconies, yards, cellar) described in footnotes; not a Schedule A column requested in the output schema, so omitted from U lines per instructions (no column for it defined)."
  ],
  "units": [
   {
@@ -79,9 +85,10 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
-   "int_sf": null,
-   "sf2": null,
+   "full_baths": 1,
+   "half_baths": 1,
+   "int_sf": 624,
+   "sf2": 433,
    "ext_sf": null,
    "price": 975000,
    "pct": 11,
@@ -93,7 +100,8 @@
    "tax2_m": null,
    "carry_m": 1207.16,
    "page": 38,
-   "note": "Juliet balcony (7 sf); Areaway (119 sf); Front yard (338 sf)"
+   "note": null,
+   "baths": 1.5
   },
   {
    "unit": "1B",
@@ -101,9 +109,10 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
-   "int_sf": null,
-   "sf2": null,
+   "full_baths": 2,
+   "half_baths": 1,
+   "int_sf": 777,
+   "sf2": 456,
    "ext_sf": null,
    "price": 1250000,
    "pct": 15,
@@ -115,7 +124,8 @@
    "tax2_m": null,
    "carry_m": 1646.13,
    "page": 38,
-   "note": "Juliet balcony (5 sf); Areaway (119 sf); Rear yard (766 sf)"
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "2A",
@@ -123,9 +133,10 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
-   "int_sf": null,
-   "sf2": null,
+   "full_baths": 2,
+   "half_baths": 0,
+   "int_sf": 777,
+   "sf2": 0,
    "ext_sf": null,
    "price": 895000,
    "pct": 11,
@@ -137,7 +148,8 @@
    "tax2_m": null,
    "carry_m": 1207.16,
    "page": 38,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "2B",
@@ -145,9 +157,10 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
-   "int_sf": null,
-   "sf2": null,
+   "full_baths": 2,
+   "half_baths": 0,
+   "int_sf": 797,
+   "sf2": 0,
    "ext_sf": null,
    "price": 895000,
    "pct": 12,
@@ -159,7 +172,8 @@
    "tax2_m": null,
    "carry_m": 1316.9,
    "page": 38,
-   "note": "Balcony (41 sf)"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3A",
@@ -167,9 +181,10 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
-   "int_sf": null,
-   "sf2": null,
+   "full_baths": 2,
+   "half_baths": 0,
+   "int_sf": 781,
+   "sf2": 0,
    "ext_sf": null,
    "price": 950000,
    "pct": 12,
@@ -181,7 +196,8 @@
    "tax2_m": null,
    "carry_m": 1316.9,
    "page": 38,
-   "note": "Balcony (53 sf)"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3B",
@@ -189,9 +205,10 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
-   "int_sf": null,
-   "sf2": null,
+   "full_baths": 2,
+   "half_baths": 0,
+   "int_sf": 799,
+   "sf2": 0,
    "ext_sf": null,
    "price": 950000,
    "pct": 12,
@@ -203,7 +220,8 @@
    "tax2_m": null,
    "carry_m": 1316.9,
    "page": 38,
-   "note": "Balcony (41 sf)"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "4A",
@@ -211,9 +229,10 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
-   "int_sf": null,
-   "sf2": null,
+   "full_baths": 2,
+   "half_baths": 0,
+   "int_sf": 780,
+   "sf2": 0,
    "ext_sf": null,
    "price": 950000,
    "pct": 12,
@@ -225,7 +244,8 @@
    "tax2_m": null,
    "carry_m": 1316.9,
    "page": 38,
-   "note": "Balcony (53 sf); Roof terrace (353 sf)"
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "4B",
@@ -233,9 +253,10 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3,
-   "int_sf": null,
-   "sf2": null,
+   "full_baths": 3,
+   "half_baths": 0,
+   "int_sf": 1228,
+   "sf2": 0,
    "ext_sf": null,
    "price": 1295000,
    "pct": 15,
@@ -247,7 +268,8 @@
    "tax2_m": null,
    "carry_m": 1646.13,
    "page": 38,
-   "note": null
+   "note": null,
+   "baths": 3
   }
  ]
 }

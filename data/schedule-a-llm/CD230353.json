@@ -14,14 +14,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4443,
-   "output_tokens": 787,
-   "seconds": 7,
-   "cost_usd": 0.022490000000000003
+   "tokens": 6042,
+   "output_tokens": 795,
+   "seconds": 10,
+   "cost_usd": 0.028934
   }
  ],
- "tokens": 4443,
- "api_equiv_usd": 0.022,
+ "tokens": 6042,
+ "api_equiv_usd": 0.029,
  "located_pages": [
   36
  ],
@@ -39,6 +39,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 6470000,
@@ -59,17 +61,21 @@
   "Annual Carrying Charges"
  ],
  "tax2": null,
- "sf2": "uninhabitable sf",
+ "sf2": "uninhabitable",
  "printed_totals": {
   "price": 6470000,
   "pct": 100,
   "cc_m": 2972.66,
   "tax_m": 6249.63,
   "int_sf": null,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Uninhabitable Square Ftg. column includes balcony/roof terrace area for some units per notes (2A/3A: 77 sf balcony, 2B/3B: 76 sf balcony, PH: 656 sf roof terrace), but this is combined with other uninhabitable sf rather than a clean standalone ext_sf figure, so ext_sf was left as - per instructions (not a single printed ext_sf column)."
+  "Bdms/Bths column printed as single figure (e.g. \"1/1\", \"2/1\", \"2/2\", \"3/2\") with no separate half-bath column; interpreted first figure as bedrooms and second as full baths, with half_baths 0, per header-based rules.",
+  "TOTALS row did not print int_sf/ext_sf/beds/full_baths/half_baths totals."
  ],
  "units": [
   {
@@ -78,7 +84,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 568,
    "sf2": 0,
    "ext_sf": null,
@@ -92,7 +99,8 @@
    "tax2_m": null,
    "carry_m": 872.48,
    "page": 36,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "1B",
@@ -100,7 +108,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 677,
    "sf2": 0,
    "ext_sf": null,
@@ -114,7 +123,8 @@
    "tax2_m": null,
    "carry_m": 1040.56,
    "page": 36,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "2A",
@@ -122,7 +132,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 885,
    "sf2": 77,
    "ext_sf": null,
@@ -136,7 +147,8 @@
    "tax2_m": null,
    "carry_m": 1389.84,
    "page": 36,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "2B",
@@ -144,7 +156,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 890,
    "sf2": 76,
    "ext_sf": null,
@@ -158,7 +171,8 @@
    "tax2_m": null,
    "carry_m": 1397.14,
    "page": 36,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3A",
@@ -166,7 +180,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 885,
    "sf2": 77,
    "ext_sf": null,
@@ -180,7 +195,8 @@
    "tax2_m": null,
    "carry_m": 1389.84,
    "page": 36,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "3B",
@@ -188,7 +204,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 890,
    "sf2": 76,
    "ext_sf": null,
@@ -202,7 +219,8 @@
    "tax2_m": null,
    "carry_m": 1397.14,
    "page": 36,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "PH",
@@ -210,7 +228,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 965,
    "sf2": 656,
    "ext_sf": null,
@@ -224,7 +243,8 @@
    "tax2_m": null,
    "carry_m": 1735.29,
    "page": 36,
-   "note": null
+   "note": null,
+   "baths": 2
   }
  ]
 }

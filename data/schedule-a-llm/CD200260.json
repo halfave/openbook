@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 4134,
-   "output_tokens": 750,
-   "seconds": 10,
-   "cost_usd": 0.021032
+   "tokens": 6006,
+   "output_tokens": 1122,
+   "seconds": 18,
+   "cost_usd": 0.030752
   }
  ],
- "tokens": 4134,
- "api_equiv_usd": 0.021,
+ "tokens": 6006,
+ "api_equiv_usd": 0.031,
  "located_pages": [
   32
  ],
@@ -37,6 +37,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 8075000,
@@ -44,28 +46,36 @@
  "budget_period": "January 1, 2022 to December 31, 2022",
  "columns_printed": [
   "Unit",
-  "Approximate Floor Area in Square Feet (Yard \"Y\"/Terrace \"T\"/Storage \"S\"",
+  "Offering Price",
+  "Number of Rooms, Bedrooms (BR), Bathrooms (BTH)",
+  "Approximate Floor Area in Square Feet (Unit",
+  "Yard \"Y\"/Terrace \"T\"/Storage \"S\"",
   "Total)",
   "Percentage of Common Interest",
   "Estimated Monthly Common Charges",
   "Estimate of Monthly Real Estate Taxes",
   "Estimate of Annual Real Estate Taxes",
-  "Total Monthly Combined Common Charges & Real Estate Taxes"
+  "Total Monthly Combined Estimate of Common Charges & Real Estate Taxes"
  ],
  "tax2": null,
- "sf2": "Yard/Terrace/Storage",
+ "sf2": null,
  "printed_totals": {
   "price": 8075000,
   "pct": 100,
   "cc_m": 2893,
   "tax_m": 2411.42,
   "int_sf": 4833,
-  "ext_sf": null
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Total row's \"Total\" square footage column prints as 7,461 but Unit totals (3091+2212+2158=7461) match; int_sf total for TOTAL row uses printed 4,833 for interior and 5,719/7,461 appear to be other totals — only int_sf total (4833) requested is included; ext_sf not separately itemized as combined yard/terrace/storage figures per unit (see SF2 column), so ext_sf total left as -.",
-  "Beds/baths for Unit 1 printed as \"1 Br/1Bth/2 1/2 Bth\" interpreted as 1 bedroom, 2.5 bathrooms (1 full + 2 half?) — original text is garbled (\"1 Br/18th/2 1/2 8th\"); transcribed as 1 bed/2.5 bath but source OCR is unclear.",
-  "Number of Rooms column header present but per-unit room counts not clearly printed (only Bedrooms/Bathrooms given); rooms left as -."
+  "Unit 1's room/bath notation \"1 Br/1 8th/2 1/2 8th\" (OCR of \"1 Br/1 Bth/2 1/2 Bth\") is ambiguous — interpreted as 1 bedroom, 1 full bath, plus a separate half-bath notation; transcribed as 1 full, 1 half bath, but the source text is garbled and this is uncertain.",
+  "Units 2 and 3 show \"3 Br/3 Bth\" with no half-bath column; half_baths set to - per rule (blank/not printed), but full_baths count of 3 assumes \"3 Bth\" means 3 full baths with no half.",
+  "cc_a (annual common charges) is not printed in the table; only monthly common charges, monthly/annual real estate taxes, and combined monthly total are given. cc_a left as - throughout (not part of requested output fields anyway, but noting absence).",
+  "sf2 column combines yard/terrace and storage into one cell per unit (e.g. \"Y & 283 S\"); since multiple distinct areas are combined textually, exact breakdown kept as printed in sf2 field rather than split, per instructions ext_sf should be empty with components in note when several separate areas are printed — doing so here.",
+  "Total row's \"Total\" column reads 5,719 then 7,461 — unclear which corresponds to int_sf total vs combined total; used 4,833 as int_sf total (sum of unit int_sf 1773+1499+1561=4833) and left ext_sf total blank since source is ambiguous."
  ],
  "units": [
   {
@@ -74,21 +84,23 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 2.5,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": 1773,
-   "sf2": null,
+   "sf2": 1035,
    "ext_sf": null,
    "price": 3100000,
    "pct": 40.63,
    "pct2": null,
    "cc_m": 1175.43,
-   "cc_a": null,
+   "cc_a": 14105.16,
    "tax_m": 979.76,
    "tax_a": 11757.13,
    "tax2_m": null,
    "carry_m": 2155.19,
    "page": 32,
-   "note": null
+   "note": "note: sf2 is combined Y/T/S area (Y & 283 S); rooms notation unclear, see PROBLEM",
+   "baths": 1.5
   },
   {
    "unit": "2",
@@ -96,21 +108,23 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": null,
    "int_sf": 1499,
-   "sf2": null,
+   "sf2": 627,
    "ext_sf": null,
    "price": 2400000,
    "pct": 29.44,
    "pct2": null,
    "cc_m": 851.7,
-   "cc_a": null,
+   "cc_a": 10220.4,
    "tax_m": 709.92,
    "tax_a": 8519.07,
    "tax2_m": null,
    "carry_m": 1561.62,
    "page": 32,
-   "note": null
+   "note": "note: sf2 is combined T/S area (T & 86 S); half-bath not specified, see PROBLEM",
+   "baths": 3
   },
   {
    "unit": "3",
@@ -118,21 +132,23 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3,
+   "full_baths": 3,
+   "half_baths": null,
    "int_sf": 1561,
-   "sf2": null,
+   "sf2": 442,
    "ext_sf": null,
    "price": 2575000,
    "pct": 29.93,
    "pct2": null,
    "cc_m": 865.87,
-   "cc_a": null,
+   "cc_a": 10390.44,
    "tax_m": 721.74,
    "tax_a": 8660.87,
    "tax2_m": null,
    "carry_m": 1587.61,
    "page": 32,
-   "note": null
+   "note": "note: sf2 is combined T/S area (T & 155 S)",
+   "baths": 3
   }
  ]
 }

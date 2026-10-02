@@ -12,14 +12,14 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 3977,
-   "output_tokens": 494,
-   "seconds": 8,
-   "cost_usd": 0.018868
+   "tokens": 5531,
+   "output_tokens": 547,
+   "seconds": 12,
+   "cost_usd": 0.025402
   }
  ],
- "tokens": 3977,
- "api_equiv_usd": 0.019,
+ "tokens": 5531,
+ "api_equiv_usd": 0.025,
  "located_pages": [
   34
  ],
@@ -37,6 +37,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 4250000,
@@ -53,20 +55,23 @@
   "Projected Monthly Common Charges",
   "Projected Real Estate Taxes (Monthly)",
   "Projected Real Estate Taxes (Annual)",
-  "Projected Monthly Carrying Charges"
+  "Projected Carrying Charges (Monthly)"
  ],
  "tax2": null,
- "sf2": "outdoor/limited common element sf",
+ "sf2": "outdoor/limited common footage",
  "printed_totals": {
   "price": 4250000,
   "pct": 100,
   "cc_m": 1882.08,
   "tax_m": 1448.04,
   "int_sf": 4608,
-  "ext_sf": 1481
+  "ext_sf": 1481,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "Unit int_sf/sf2 computed from summing printed per-floor figures (Unit 1: 728+914+809=2451 interior; 166+687+31=884 outdoor/limited; Unit 2: 925+925+307=2157 interior; 283+283+31=597 outdoor/limited) since only per-floor breakdowns were printed, not single totals per unit; tax_a column not printed separately from tax_m/tax_a pair, both given directly."
+  "Unit int_sf and sf2 are sums of multiple floor/LCA lines printed separately (not single figures); summed per instructions' intent but individual breakdown kept in note. Bed/bath \"3/3.5\" interpreted as 3 bedrooms, 3 full baths, 1 half bath per combined-cell rule."
  ],
  "units": [
   {
@@ -75,9 +80,10 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3.5,
+   "full_baths": 3,
+   "half_baths": 1,
    "int_sf": 2451,
-   "sf2": 884,
+   "sf2": 1884,
    "ext_sf": null,
    "price": 2000000,
    "pct": 50,
@@ -89,7 +95,8 @@
    "tax2_m": null,
    "carry_m": 1665.06,
    "page": 34,
-   "note": null
+   "note": "Cellar 728/Basement 914/First Floor 809; LCA Deck 166/Rear Yard 687/Storage 31",
+   "baths": 3.5
   },
   {
    "unit": "2",
@@ -97,7 +104,8 @@
    "floor": null,
    "rooms": null,
    "beds": 3,
-   "baths": 3.5,
+   "full_baths": 3,
+   "half_baths": 1,
    "int_sf": 2157,
    "sf2": 597,
    "ext_sf": null,
@@ -111,7 +119,8 @@
    "tax2_m": null,
    "carry_m": 1665.06,
    "page": 34,
-   "note": null
+   "note": "Second Floor 925/Third Floor 925/Penthouse 307; LCA Roof Terrace 283+283/Stairwell 31",
+   "baths": 3.5
   }
  ]
 }

@@ -14,8 +14,7 @@
    "verdict": "hold",
    "units": 10,
    "failed": [
-    "carrying",
-    "outdoor"
+    "carrying"
    ]
   },
   {
@@ -29,28 +28,28 @@
  "call_log": [
   {
    "model": "sonnet",
-   "tokens": 6101,
-   "output_tokens": 1426,
-   "seconds": 18,
-   "cost_usd": 0.032956
+   "tokens": 7558,
+   "output_tokens": 1378,
+   "seconds": 17,
+   "cost_usd": 0.038496
   },
   {
    "model": "sonnet",
-   "tokens": 5777,
-   "output_tokens": 1101,
-   "seconds": 14,
-   "cost_usd": 0.02971
+   "tokens": 13656,
+   "output_tokens": 1298,
+   "seconds": 93,
+   "cost_usd": 0.038931400000000005
   },
   {
    "model": "sonnet",
-   "tokens": 16207,
-   "output_tokens": 1166,
-   "seconds": 12,
-   "cost_usd": 0.043912599999999996
+   "tokens": 19303,
+   "output_tokens": 1262,
+   "seconds": 15,
+   "cost_usd": 0.0511726
   }
  ],
- "tokens": 28085,
- "api_equiv_usd": 0.107,
+ "tokens": 40517,
+ "api_equiv_usd": 0.129,
  "located_pages": [
   39
  ],
@@ -68,6 +67,8 @@
   "psf": true,
   "notPlaceholder": true,
   "allRowsParsed": true,
+  "uniqueLabels": true,
+  "bedsBaths": true,
   "outdoor": true
  },
  "price_total": 7754000,
@@ -90,20 +91,24 @@
   "Total Monthly Carrying Charges w/o 421a",
   "Total Monthly Carrying Charges with 421a"
  ],
- "tax2": "with 421a",
- "sf2": "cellar space square footage",
+ "tax2": "without 421a",
+ "sf2": "cellar space",
  "printed_totals": {
   "price": 7754000,
   "pct": 100,
   "cc_m": 2530.56,
   "tax_m": null,
   "int_sf": 8210,
-  "ext_sf": 1388
+  "ext_sf": null,
+  "beds": null,
+  "full_baths": null,
+  "half_baths": null
  },
  "problems": [
-  "4B and 4C limited common element sq. ft. columns list multiple separate areas (balconies/terrace); ext_sf left blank per instructions since combined \"total\" figures not applicable here but multiple separate areas exist - see unit notes for breakdown: 4B Balcony 48, Balcony 80, Terrace 656; 4C Terrace 159 (single value used for 4C ext_sf column in table itself, 159, matches printed Limited Common Element figure)",
-  "tax columns swapped so the main tax is the one used in the carrying charges",
-  "outdoor space left out: its column did not add up to the printed total"
+  "4C bedroom/bathroom is printed \"2/2.25\"; non-standard bath figure (2.25) does not map cleanly to full/half baths, so half_baths left as 0 for full_baths=2 — recorded as read (full 2, half -) is uncertain; used half_baths=0 but flagging this unclear code.",
+  "TOTAL row beds/full_baths/half_baths not printed (Bedroom/Bathroom column has no total entry), so left as -.",
+  "Unit column header is \"Bedroom/Bathroom\" (single combined field), interpreted as beds/full baths per examples (e.g., \"1/1.5\" = 1 bed, 1 full, 1 half).",
+  "tax columns swapped so the main tax is the first-year figure with the abatement"
  ],
  "units": [
   {
@@ -112,7 +117,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1.5,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": 814,
    "sf2": 794,
    "ext_sf": null,
@@ -126,7 +132,8 @@
    "tax2_m": 919.91,
    "carry_m": 931.21,
    "page": 39,
-   "note": null
+   "note": null,
+   "baths": 1.5
   },
   {
    "unit": "1B",
@@ -134,7 +141,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1.5,
+   "full_baths": 1,
+   "half_baths": 1,
    "int_sf": 799,
    "sf2": 594,
    "ext_sf": null,
@@ -148,7 +156,8 @@
    "tax2_m": 902.93,
    "carry_m": 914.03,
    "page": 39,
-   "note": null
+   "note": null,
+   "baths": 1.5
   },
   {
    "unit": "2A",
@@ -156,7 +165,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 601,
    "sf2": 0,
    "ext_sf": null,
@@ -170,7 +180,8 @@
    "tax2_m": 679.18,
    "carry_m": 687.52,
    "page": 39,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "2B",
@@ -178,7 +189,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 895,
    "sf2": 0,
    "ext_sf": null,
@@ -192,7 +204,8 @@
    "tax2_m": 1011.42,
    "carry_m": 1023.85,
    "page": 39,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "2C",
@@ -200,7 +213,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2.5,
+   "full_baths": 2,
+   "half_baths": 1,
    "int_sf": 1270,
    "sf2": 0,
    "ext_sf": null,
@@ -214,7 +228,8 @@
    "tax2_m": 1435.2,
    "carry_m": 1452.84,
    "page": 39,
-   "note": null
+   "note": null,
+   "baths": 2.5
   },
   {
    "unit": "3A",
@@ -222,7 +237,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 601,
    "sf2": 0,
    "ext_sf": null,
@@ -236,7 +252,8 @@
    "tax2_m": 679.18,
    "carry_m": 687.52,
    "page": 39,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "3B",
@@ -244,7 +261,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 635,
    "sf2": 0,
    "ext_sf": null,
@@ -258,7 +276,8 @@
    "tax2_m": 717.61,
    "carry_m": 726.42,
    "page": 39,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "4A",
@@ -266,7 +285,8 @@
    "floor": null,
    "rooms": null,
    "beds": 1,
-   "baths": 1,
+   "full_baths": 1,
+   "half_baths": 0,
    "int_sf": 601,
    "sf2": 0,
    "ext_sf": null,
@@ -280,7 +300,8 @@
    "tax2_m": 679.18,
    "carry_m": 687.52,
    "page": 39,
-   "note": null
+   "note": null,
+   "baths": 1
   },
   {
    "unit": "4B",
@@ -288,7 +309,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 895,
    "sf2": 0,
    "ext_sf": null,
@@ -302,7 +324,8 @@
    "tax2_m": 1011.42,
    "carry_m": 1023.85,
    "page": 39,
-   "note": null
+   "note": null,
+   "baths": 2
   },
   {
    "unit": "4C",
@@ -310,7 +333,8 @@
    "floor": null,
    "rooms": null,
    "beds": 2,
-   "baths": 2.25,
+   "full_baths": 2,
+   "half_baths": 0,
    "int_sf": 1099,
    "sf2": 0,
    "ext_sf": null,
@@ -324,7 +348,8 @@
    "tax2_m": 1241.96,
    "carry_m": 1257.22,
    "page": 39,
-   "note": null
+   "note": null,
+   "baths": 2
   }
  ]
 }
